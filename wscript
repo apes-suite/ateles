@@ -49,6 +49,25 @@ def build(bld):
     bld.recurse('polynomials')
     bld.recurse('atl')
 
+    if not (bld.cmd == 'docu'):
+        bld.add_group()
+
+        bld(
+            rule = 'cp ${SRC} ${TGT[0].abspath()}',
+            source = bld.path.find_or_declare('atl/ateles'),
+            target = 'musubi'
+        )
+        bld(
+            rule = 'cp ${SRC} ${TGT[0].abspath()}',
+            source = bld.path.find_or_declare('atl/atl_harvesting'),
+            target = 'mus_harvesting'
+        )
+        bld(
+            rule = 'cp ${SRC} ${TGT[0].abspath()}',
+            source = bld.path.find_or_declare('aotus/lua'),
+            target = 'lua'
+        )
+
 #clean build directory and coco completely to create the build from scratch
 def cleanall(ctx):
     from waflib import Options
