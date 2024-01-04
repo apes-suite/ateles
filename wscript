@@ -55,12 +55,12 @@ def build(bld):
         bld(
             rule = 'cp ${SRC} ${TGT[0].abspath()}',
             source = bld.path.find_or_declare('atl/ateles'),
-            target = 'musubi'
+            target = 'ateles'
         )
         bld(
             rule = 'cp ${SRC} ${TGT[0].abspath()}',
             source = bld.path.find_or_declare('atl/atl_harvesting'),
-            target = 'mus_harvesting'
+            target = 'atl_harvesting'
         )
         bld(
             rule = 'cp ${SRC} ${TGT[0].abspath()}',
