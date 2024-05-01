@@ -45,7 +45,13 @@ def build(bld):
         bld.recurse('aotus')
     fill_revision_string(bld, subdir='atl')
     bld(rule='cp ${SRC} ${TGT}', source=bld.env.COCOSET, target='coco.set')
-    bld.recurse('tem')
+    if not (bld.cmd == 'docu' and bld.env.fordonline):
+        bld.recurse('tem')
+    else:
+        bld(rule='cp ${SRC} ${TGT}',
+            source = bld.path.find_node(['tem', 'source', 'arrayMacros.inc']),
+            target = bld.path.find_or_declare('arrayMacros.inc'))
+        bld.add_group()
     bld.recurse('polynomials')
     bld.recurse('atl')
 
