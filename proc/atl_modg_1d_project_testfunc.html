@@ -1,0 +1,896 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_modg_1d_project_testFunc &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_modg_1d_project_testFunc
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.0% of total for procedures.">15 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_modg_1d_kernel_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_modg_1d_kernel_module.f90.html'>atl_modg_1d_kernel_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/atl_modg_1d_kernel_module.html'>atl_modg_1d_kernel_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_modg_1d_project_testFunc</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine atl_modg_1d_project_testFunc(mesh, equation, kerneldata, facedata, sourcedata, penalizationdata, usePenalization, level, scheme)  
+</h2>
+    
+
+    <p>Subroutine to project modal representations of physical flux, numerical
+flux and source terms onto test functions.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh~70"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh</strong></td>
+            <td>
+                <p>Descritption of the cubical elements in the mesh</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~186"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+                <p>The equation description.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata~20"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata</strong></td>
+            <td>
+                <p>The data of the kernel. Holds the physical fluxes.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facedata~25"></span>
+              type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>facedata</strong></td>
+            <td>
+                <p>The representation on the face + representation of the flux.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-sourcedata~12"></span>
+              type(<a href='../type/atl_source_type.html'>atl_source_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>sourcedata</strong></td>
+            <td>
+                <p>Modal representation of the sources.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata~3"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationdata</strong></td>
+            <td>
+                <p>Volumetric data for the penalization</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-usepenalization~2"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>usePenalization</strong></td>
+            <td>
+                <p>Flag to indicate whether the penalization data has to be considered, or
+if it is taken care of somewhere else (imex)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-level~11"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>level</strong></td>
+            <td>
+                <p>The level you compute for</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme~60"></span>
+              type(<a href='../type/atl_modg_1d_scheme_type.html'>atl_modg_1d_scheme_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme</strong></td>
+            <td>
+                <p>The parameters of the MODG scheme</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~atl_modg_1d_project_testfunc~~CallsGraph Pages: 1 -->
+<svg id="procatl_modg_1d_project_testfuncCallsGraph" width="641pt" height="217pt"
+ viewBox="0.00 0.00 641.00 216.72" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph" class="graph" transform="scale(0.76 0.76) rotate(0) translate(4 280)">
+<title>proc~~atl_modg_1d_project_testfunc~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-280 836,-280 836,4 -4,4"/>
+<!-- proc~atl_modg_1d_project_testfunc -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_node1" class="node">
+<title>proc~atl_modg_1d_project_testfunc</title>
+<polygon fill="none" stroke="black" points="172,-129 0,-129 0,-105 172,-105 172,-129"/>
+<text text-anchor="middle" x="86" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_modg_1d_project_testFunc</text>
+</g>
+<!-- proc~modg_1d_project_testfunc_q -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_node2" class="node">
+<title>proc~modg_1d_project_testfunc_q</title>
+<g id="a_proc~~atl_modg_1d_project_testfunc~~CallsGraph_node2"><a xlink:href="../proc/modg_1d_project_testfunc_q.html" xlink:title="modg_1d_project_testFunc_Q">
+<polygon fill="#d9534f" stroke="#d9534f" points="375,-129 208,-129 208,-105 375,-105 375,-129"/>
+<text text-anchor="middle" x="291.5" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">modg_1d_project_testFunc_Q</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_modg_1d_project_testfunc&#45;&gt;proc~modg_1d_project_testfunc_q -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_edge1" class="edge">
+<title>proc~atl_modg_1d_project_testfunc&#45;&gt;proc~modg_1d_project_testfunc_q</title>
+<path fill="none" stroke="#000000" d="M172.12,-117C180.66,-117 189.35,-117 197.95,-117"/>
+<polygon fill="#000000" stroke="#000000" points="198,-120.5 208,-117 198,-113.5 198,-120.5"/>
+</g>
+<!-- nelems -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_node3" class="node">
+<title>nelems</title>
+<polygon fill="#777777" stroke="#777777" points="776,-108 722,-108 722,-84 776,-84 776,-108"/>
+<text text-anchor="middle" x="749" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">nelems</text>
+</g>
+<!-- proc~modg_1d_project_testfunc_q&#45;&gt;nelems -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_edge2" class="edge">
+<title>proc~modg_1d_project_testfunc_q&#45;&gt;nelems</title>
+<path fill="none" stroke="#000000" d="M375.25,-113.18C475.24,-108.58 639.05,-101.02 711.54,-97.68"/>
+<polygon fill="#000000" stroke="#000000" points="711.72,-101.18 721.55,-97.22 711.4,-94.18 711.72,-101.18"/>
+</g>
+<!-- proc~modg_1d_project_numflux_difftestx_q -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_node4" class="node">
+<title>proc~modg_1d_project_numflux_difftestx_q</title>
+<g id="a_proc~~atl_modg_1d_project_testfunc~~CallsGraph_node4"><a xlink:href="../proc/modg_1d_project_numflux_difftestx_q.html" xlink:title="modg_1d_project_numFlux_diffTestX_Q">
+<polygon fill="#d9534f" stroke="#d9534f" points="630,-234 411,-234 411,-210 630,-210 630,-234"/>
+<text text-anchor="middle" x="520.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">modg_1d_project_numFlux_diffTestX_Q</text>
+</a>
+</g>
+</g>
+<!-- proc~modg_1d_project_testfunc_q&#45;&gt;proc~modg_1d_project_numflux_difftestx_q -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_edge3" class="edge">
+<title>proc~modg_1d_project_testfunc_q&#45;&gt;proc~modg_1d_project_numflux_difftestx_q</title>
+<path fill="none" stroke="#000000" d="M314.48,-129.07C338.05,-141.84 376.72,-162.27 411,-178 432.85,-188.03 457.67,-198.18 478.05,-206.2"/>
+<polygon fill="#000000" stroke="#000000" points="476.78,-209.47 487.37,-209.85 479.33,-202.95 476.78,-209.47"/>
+</g>
+<!-- proc~modg_1d_project_numfluxx_q -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_node5" class="node">
+<title>proc~modg_1d_project_numfluxx_q</title>
+<g id="a_proc~~atl_modg_1d_project_testfunc~~CallsGraph_node5"><a xlink:href="../proc/modg_1d_project_numfluxx_q.html" xlink:title="modg_1d_project_numFluxX_Q">
+<polygon fill="#d9534f" stroke="#d9534f" points="608.5,-169 432.5,-169 432.5,-145 608.5,-145 608.5,-169"/>
+<text text-anchor="middle" x="520.5" y="-154.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">modg_1d_project_numFluxX_Q</text>
+</a>
+</g>
+</g>
+<!-- proc~modg_1d_project_testfunc_q&#45;&gt;proc~modg_1d_project_numfluxx_q -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_edge4" class="edge">
+<title>proc~modg_1d_project_testfunc_q&#45;&gt;proc~modg_1d_project_numfluxx_q</title>
+<path fill="none" stroke="#000000" d="M360.61,-129C385.97,-133.47 414.95,-138.58 441.15,-143.19"/>
+<polygon fill="#000000" stroke="#000000" points="440.59,-146.65 451.05,-144.94 441.81,-139.76 440.59,-146.65"/>
+</g>
+<!-- proc~modg_1d_project_penalization -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_node6" class="node">
+<title>proc~modg_1d_project_penalization</title>
+<g id="a_proc~~atl_modg_1d_project_testfunc~~CallsGraph_node6"><a xlink:href="../proc/modg_1d_project_penalization.html" xlink:title="modg_1d_project_penalization">
+<polygon fill="#d9534f" stroke="#d9534f" points="608,-89 433,-89 433,-65 608,-65 608,-89"/>
+<text text-anchor="middle" x="520.5" y="-74.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">modg_1d_project_penalization</text>
+</a>
+</g>
+</g>
+<!-- proc~modg_1d_project_testfunc_q&#45;&gt;proc~modg_1d_project_penalization -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_edge5" class="edge">
+<title>proc~modg_1d_project_testfunc_q&#45;&gt;proc~modg_1d_project_penalization</title>
+<path fill="none" stroke="#000000" d="M360.61,-105C385.97,-100.53 414.95,-95.42 441.15,-90.81"/>
+<polygon fill="#000000" stroke="#000000" points="441.81,-94.24 451.05,-89.06 440.59,-87.35 441.81,-94.24"/>
+</g>
+<!-- proc~modg_1d_project_source_q -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_node7" class="node">
+<title>proc~modg_1d_project_source_q</title>
+<g id="a_proc~~atl_modg_1d_project_testfunc~~CallsGraph_node7"><a xlink:href="../proc/modg_1d_project_source_q.html" xlink:title="modg_1d_project_source_Q">
+<polygon fill="#d9534f" stroke="#d9534f" points="599.5,-47 441.5,-47 441.5,-23 599.5,-23 599.5,-47"/>
+<text text-anchor="middle" x="520.5" y="-32.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">modg_1d_project_source_Q</text>
+</a>
+</g>
+</g>
+<!-- proc~modg_1d_project_testfunc_q&#45;&gt;proc~modg_1d_project_source_q -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_edge6" class="edge">
+<title>proc~modg_1d_project_testfunc_q&#45;&gt;proc~modg_1d_project_source_q</title>
+<path fill="none" stroke="#000000" d="M311.86,-104.84C334.71,-91.01 374.27,-68.72 411,-56 418,-53.58 425.35,-51.41 432.79,-49.47"/>
+<polygon fill="#000000" stroke="#000000" points="433.73,-52.84 442.6,-47.06 432.06,-46.05 433.73,-52.84"/>
+</g>
+<!-- proc~ply_facevalleftbndgradtest -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_node8" class="node">
+<title>proc~ply_facevalleftbndgradtest</title>
+<g id="a_proc~~atl_modg_1d_project_testfunc~~CallsGraph_node8"><a xlink:href="../proc/ply_facevalleftbndgradtest.html" xlink:title="ply_faceValLeftBndgradTest">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="828.5,-234 669.5,-234 669.5,-210 828.5,-210 828.5,-234"/>
+<text text-anchor="middle" x="749" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_faceValLeftBndgradTest</text>
+</a>
+</g>
+</g>
+<!-- proc~modg_1d_project_numflux_difftestx_q&#45;&gt;proc~ply_facevalleftbndgradtest -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_edge7" class="edge">
+<title>proc~modg_1d_project_numflux_difftestx_q&#45;&gt;proc~ply_facevalleftbndgradtest</title>
+<path fill="none" stroke="#000000" d="M630.11,-222C639.86,-222 649.66,-222 659.22,-222"/>
+<polygon fill="#000000" stroke="#000000" points="659.48,-225.5 669.48,-222 659.48,-218.5 659.48,-225.5"/>
+</g>
+<!-- proc~ply_facevalrightbndgradtest -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_node10" class="node">
+<title>proc~ply_facevalrightbndgradtest</title>
+<g id="a_proc~~atl_modg_1d_project_testfunc~~CallsGraph_node10"><a xlink:href="../proc/ply_facevalrightbndgradtest.html" xlink:title="ply_faceValRightBndgradTest">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="832,-276 666,-276 666,-252 832,-252 832,-276"/>
+<text text-anchor="middle" x="749" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_faceValRightBndgradTest</text>
+</a>
+</g>
+</g>
+<!-- proc~modg_1d_project_numflux_difftestx_q&#45;&gt;proc~ply_facevalrightbndgradtest -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_edge8" class="edge">
+<title>proc~modg_1d_project_numflux_difftestx_q&#45;&gt;proc~ply_facevalrightbndgradtest</title>
+<path fill="none" stroke="#000000" d="M586.41,-234.04C613.42,-239.04 644.94,-244.89 672.94,-250.08"/>
+<polygon fill="#000000" stroke="#000000" points="672.61,-253.58 683.08,-251.96 673.89,-246.7 672.61,-253.58"/>
+</g>
+<!-- proc~ply_facevalleftbndtest -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_node9" class="node">
+<title>proc~ply_facevalleftbndtest</title>
+<g id="a_proc~~atl_modg_1d_project_testfunc~~CallsGraph_node9"><a xlink:href="../proc/ply_facevalleftbndtest.html" xlink:title="ply_faceValLeftBndTest">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="816,-150 682,-150 682,-126 816,-126 816,-150"/>
+<text text-anchor="middle" x="749" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_faceValLeftBndTest</text>
+</a>
+</g>
+</g>
+<!-- proc~modg_1d_project_numfluxx_q&#45;&gt;proc~ply_facevalleftbndtest -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_edge9" class="edge">
+<title>proc~modg_1d_project_numfluxx_q&#45;&gt;proc~ply_facevalleftbndtest</title>
+<path fill="none" stroke="#000000" d="M608.75,-149.68C629.54,-147.94 651.56,-146.09 671.81,-144.39"/>
+<polygon fill="#000000" stroke="#000000" points="672.23,-147.87 681.9,-143.54 671.65,-140.89 672.23,-147.87"/>
+</g>
+<!-- proc~ply_facevalrightbndtest -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_node11" class="node">
+<title>proc~ply_facevalrightbndtest</title>
+<g id="a_proc~~atl_modg_1d_project_testfunc~~CallsGraph_node11"><a xlink:href="../proc/ply_facevalrightbndtest.html" xlink:title="ply_faceValRightBndTest">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="820,-192 678,-192 678,-168 820,-168 820,-192"/>
+<text text-anchor="middle" x="749" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_faceValRightBndTest</text>
+</a>
+</g>
+</g>
+<!-- proc~modg_1d_project_numfluxx_q&#45;&gt;proc~ply_facevalrightbndtest -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_edge10" class="edge">
+<title>proc~modg_1d_project_numfluxx_q&#45;&gt;proc~ply_facevalrightbndtest</title>
+<path fill="none" stroke="#000000" d="M608.75,-165.86C628.08,-167.82 648.48,-169.89 667.52,-171.83"/>
+<polygon fill="#000000" stroke="#000000" points="667.35,-175.33 677.65,-172.86 668.05,-168.36 667.35,-175.33"/>
+</g>
+<!-- proc~modg_1d_project_penalization&#45;&gt;nelems -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_edge11" class="edge">
+<title>proc~modg_1d_project_penalization&#45;&gt;nelems</title>
+<path fill="none" stroke="#000000" d="M608.1,-84.26C644.09,-87.28 683.89,-90.62 711.8,-92.96"/>
+<polygon fill="#000000" stroke="#000000" points="711.63,-96.46 721.89,-93.81 712.22,-89.49 711.63,-96.46"/>
+</g>
+<!-- proc~ply_scalproddualleg -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_node12" class="node">
+<title>proc~ply_scalproddualleg</title>
+<g id="a_proc~~atl_modg_1d_project_testfunc~~CallsGraph_node12"><a xlink:href="../proc/ply_scalproddualleg.html" xlink:title="ply_scalProdDualLeg">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="810,-66 688,-66 688,-42 810,-42 810,-66"/>
+<text text-anchor="middle" x="749" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_scalProdDualLeg</text>
+</a>
+</g>
+</g>
+<!-- proc~modg_1d_project_penalization&#45;&gt;proc~ply_scalproddualleg -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_edge12" class="edge">
+<title>proc~modg_1d_project_penalization&#45;&gt;proc~ply_scalproddualleg</title>
+<path fill="none" stroke="#000000" d="M608.1,-68.21C631.06,-65.87 655.58,-63.39 677.57,-61.15"/>
+<polygon fill="#000000" stroke="#000000" points="678.21,-64.6 687.81,-60.11 677.5,-57.64 678.21,-64.6"/>
+</g>
+<!-- proc~modg_1d_project_source_q&#45;&gt;proc~ply_scalproddualleg -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_edge13" class="edge">
+<title>proc~modg_1d_project_source_q&#45;&gt;proc~ply_scalproddualleg</title>
+<path fill="none" stroke="#000000" d="M599.77,-41.57C625.16,-43.7 653.17,-46.04 677.93,-48.12"/>
+<polygon fill="#000000" stroke="#000000" points="677.71,-51.62 687.97,-48.96 678.29,-44.64 677.71,-51.62"/>
+</g>
+<!-- val -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_node13" class="node">
+<title>val</title>
+<polygon fill="#777777" stroke="#777777" points="776,-24 722,-24 722,0 776,0 776,-24"/>
+<text text-anchor="middle" x="749" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">val</text>
+</g>
+<!-- proc~modg_1d_project_source_q&#45;&gt;val -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CallsGraph_edge14" class="edge">
+<title>proc~modg_1d_project_source_q&#45;&gt;val</title>
+<path fill="none" stroke="#000000" d="M599.77,-27.05C637.86,-23.18 681.8,-18.72 711.89,-15.67"/>
+<polygon fill="#000000" stroke="#000000" points="712.33,-19.14 721.93,-14.65 711.62,-12.18 712.33,-19.14"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocatl_modg_1d_project_testfuncCallsGraph = svgPanZoom('#procatl_modg_1d_project_testfuncCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~atl_modg_1d_project_testfunc~~CalledByGraph Pages: 1 -->
+<svg id="procatl_modg_1d_project_testfuncCalledByGraph" width="641pt" height="180pt"
+ viewBox="0.00 0.00 641.00 180.16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~atl_modg_1d_project_testfunc~~CalledByGraph" class="graph" transform="scale(0.74 0.74) rotate(0) translate(4 238)">
+<title>proc~~atl_modg_1d_project_testfunc~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-238 857,-238 857,4 -4,4"/>
+<!-- proc~atl_modg_1d_project_testfunc -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CalledByGraph_node1" class="node">
+<title>proc~atl_modg_1d_project_testfunc</title>
+<polygon fill="none" stroke="black" points="853,-129 681,-129 681,-105 853,-105 853,-129"/>
+<text text-anchor="middle" x="767" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_modg_1d_project_testFunc</text>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CalledByGraph_node2" class="node">
+<title>proc~compute_rhs_cubes_modg_1d</title>
+<g id="a_proc~~atl_modg_1d_project_testfunc~~CalledByGraph_node2"><a xlink:href="../proc/compute_rhs_cubes_modg_1d.html" xlink:title="compute_rhs_cubes_modg_1d">
+<polygon fill="#d9534f" stroke="#d9534f" points="645,-129 472,-129 472,-105 645,-105 645,-129"/>
+<text text-anchor="middle" x="558.5" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">compute_rhs_cubes_modg_1d</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;proc~atl_modg_1d_project_testfunc -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CalledByGraph_edge1" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;proc~atl_modg_1d_project_testfunc</title>
+<path fill="none" stroke="#000000" d="M645.28,-117C653.63,-117 662.14,-117 670.58,-117"/>
+<polygon fill="#000000" stroke="#000000" points="670.82,-120.5 680.82,-117 670.82,-113.5 670.82,-120.5"/>
+</g>
+<!-- proc~compute_rhs_cubes -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CalledByGraph_node3" class="node">
+<title>proc~compute_rhs_cubes</title>
+<g id="a_proc~~atl_modg_1d_project_testfunc~~CalledByGraph_node3"><a xlink:href="../proc/compute_rhs_cubes.html" xlink:title="compute_rhs_cubes">
+<polygon fill="#d9534f" stroke="#d9534f" points="436,-129 318,-129 318,-105 436,-105 436,-129"/>
+<text text-anchor="middle" x="377" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">compute_rhs_cubes</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes&#45;&gt;proc~compute_rhs_cubes_modg_1d -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CalledByGraph_edge2" class="edge">
+<title>proc~compute_rhs_cubes&#45;&gt;proc~compute_rhs_cubes_modg_1d</title>
+<path fill="none" stroke="#000000" d="M436.28,-117C444.45,-117 453.01,-117 461.65,-117"/>
+<polygon fill="#000000" stroke="#000000" points="461.81,-120.5 471.81,-117 461.81,-113.5 461.81,-120.5"/>
+</g>
+<!-- interface~atl_compute_rhs -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CalledByGraph_node4" class="node">
+<title>interface~atl_compute_rhs</title>
+<g id="a_proc~~atl_modg_1d_project_testfunc~~CalledByGraph_node4"><a xlink:href="../interface/atl_compute_rhs.html" xlink:title="atl_compute_rhs">
+<polygon fill="#a7506f" stroke="#a7506f" points="282,-129 182,-129 182,-105 282,-105 282,-129"/>
+<text text-anchor="middle" x="232" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_compute_rhs</text>
+</a>
+</g>
+</g>
+<!-- interface~atl_compute_rhs&#45;&gt;proc~compute_rhs_cubes -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CalledByGraph_edge3" class="edge">
+<title>interface~atl_compute_rhs&#45;&gt;proc~compute_rhs_cubes</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M282.21,-117C290.46,-117 299.14,-117 307.76,-117"/>
+<polygon fill="#000000" stroke="#000000" points="307.83,-120.5 317.83,-117 307.83,-113.5 307.83,-120.5"/>
+</g>
+<!-- proc~global_corrector_substep -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CalledByGraph_node5" class="node">
+<title>proc~global_corrector_substep</title>
+<g id="a_proc~~atl_modg_1d_project_testfunc~~CalledByGraph_node5"><a xlink:href="../proc/global_corrector_substep.html" xlink:title="global_corrector_substep">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-234 0,-234 0,-210 146,-210 146,-234"/>
+<text text-anchor="middle" x="73" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">global_corrector_substep</text>
+</a>
+</g>
+</g>
+<!-- proc~global_corrector_substep&#45;&gt;interface~atl_compute_rhs -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CalledByGraph_edge4" class="edge">
+<title>proc~global_corrector_substep&#45;&gt;interface~atl_compute_rhs</title>
+<path fill="none" stroke="#000000" d="M126.8,-209.93C133.48,-207.45 140.05,-204.5 146,-201 174.23,-184.4 199.96,-156.34 215.54,-137.26"/>
+<polygon fill="#000000" stroke="#000000" points="218.47,-139.2 221.96,-129.2 212.99,-134.84 218.47,-139.2"/>
+</g>
+<!-- proc~imexrk_substep -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CalledByGraph_node6" class="node">
+<title>proc~imexrk_substep</title>
+<g id="a_proc~~atl_modg_1d_project_testfunc~~CalledByGraph_node6"><a xlink:href="../proc/imexrk_substep.html" xlink:title="imexrk_substep">
+<polygon fill="#d9534f" stroke="#d9534f" points="120.5,-192 25.5,-192 25.5,-168 120.5,-168 120.5,-192"/>
+<text text-anchor="middle" x="73" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">imexrk_substep</text>
+</a>
+</g>
+</g>
+<!-- proc~imexrk_substep&#45;&gt;interface~atl_compute_rhs -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CalledByGraph_edge5" class="edge">
+<title>proc~imexrk_substep&#45;&gt;interface~atl_compute_rhs</title>
+<path fill="none" stroke="#000000" d="M119.73,-167.97C128.54,-165.29 137.63,-162.26 146,-159 164.46,-151.81 184.36,-142.1 200.25,-133.82"/>
+<polygon fill="#000000" stroke="#000000" points="201.9,-136.91 209.11,-129.14 198.63,-130.72 201.9,-136.91"/>
+</g>
+<!-- proc~mesh_timestep_euler -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CalledByGraph_node7" class="node">
+<title>proc~mesh_timestep_euler</title>
+<g id="a_proc~~atl_modg_1d_project_testfunc~~CalledByGraph_node7"><a xlink:href="../proc/mesh_timestep_euler.html" xlink:title="mesh_timestep_euler">
+<polygon fill="#d9534f" stroke="#d9534f" points="136.5,-150 9.5,-150 9.5,-126 136.5,-126 136.5,-150"/>
+<text text-anchor="middle" x="73" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mesh_timestep_euler</text>
+</a>
+</g>
+</g>
+<!-- proc~mesh_timestep_euler&#45;&gt;interface~atl_compute_rhs -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CalledByGraph_edge6" class="edge">
+<title>proc~mesh_timestep_euler&#45;&gt;interface~atl_compute_rhs</title>
+<path fill="none" stroke="#000000" d="M136.5,-129.64C148.14,-128.08 160.27,-126.46 171.81,-124.92"/>
+<polygon fill="#000000" stroke="#000000" points="172.32,-128.38 181.77,-123.59 171.39,-121.44 172.32,-128.38"/>
+</g>
+<!-- proc~rk2_substep -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CalledByGraph_node8" class="node">
+<title>proc~rk2_substep</title>
+<g id="a_proc~~atl_modg_1d_project_testfunc~~CalledByGraph_node8"><a xlink:href="../proc/rk2_substep.html" xlink:title="rk2_substep">
+<polygon fill="#d9534f" stroke="#d9534f" points="111,-108 35,-108 35,-84 111,-84 111,-108"/>
+<text text-anchor="middle" x="73" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">rk2_substep</text>
+</a>
+</g>
+</g>
+<!-- proc~rk2_substep&#45;&gt;interface~atl_compute_rhs -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CalledByGraph_edge7" class="edge">
+<title>proc~rk2_substep&#45;&gt;interface~atl_compute_rhs</title>
+<path fill="none" stroke="#000000" d="M111.21,-100.98C129.28,-103.39 151.44,-106.36 171.76,-109.08"/>
+<polygon fill="#000000" stroke="#000000" points="171.5,-112.57 181.87,-110.43 172.43,-105.63 171.5,-112.57"/>
+</g>
+<!-- proc~rk4_substep -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CalledByGraph_node9" class="node">
+<title>proc~rk4_substep</title>
+<g id="a_proc~~atl_modg_1d_project_testfunc~~CalledByGraph_node9"><a xlink:href="../proc/rk4_substep.html" xlink:title="rk4_substep">
+<polygon fill="#d9534f" stroke="#d9534f" points="111,-66 35,-66 35,-42 111,-42 111,-66"/>
+<text text-anchor="middle" x="73" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">rk4_substep</text>
+</a>
+</g>
+</g>
+<!-- proc~rk4_substep&#45;&gt;interface~atl_compute_rhs -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CalledByGraph_edge8" class="edge">
+<title>proc~rk4_substep&#45;&gt;interface~atl_compute_rhs</title>
+<path fill="none" stroke="#000000" d="M111.04,-63.46C122.4,-66.72 134.84,-70.65 146,-75 164.46,-82.19 184.36,-91.9 200.25,-100.18"/>
+<polygon fill="#000000" stroke="#000000" points="198.63,-103.28 209.11,-104.86 201.9,-97.09 198.63,-103.28"/>
+</g>
+<!-- proc~rktaylor_substep -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CalledByGraph_node10" class="node">
+<title>proc~rktaylor_substep</title>
+<g id="a_proc~~atl_modg_1d_project_testfunc~~CalledByGraph_node10"><a xlink:href="../proc/rktaylor_substep.html" xlink:title="rktaylor_substep">
+<polygon fill="#d9534f" stroke="#d9534f" points="123,-24 23,-24 23,0 123,0 123,-24"/>
+<text text-anchor="middle" x="73" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">rktaylor_substep</text>
+</a>
+</g>
+</g>
+<!-- proc~rktaylor_substep&#45;&gt;interface~atl_compute_rhs -->
+<g id="proc~~atl_modg_1d_project_testfunc~~CalledByGraph_edge9" class="edge">
+<title>proc~rktaylor_substep&#45;&gt;interface~atl_compute_rhs</title>
+<path fill="none" stroke="#000000" d="M123.01,-22.72C130.98,-25.46 138.93,-28.84 146,-33 174.23,-49.6 199.96,-77.66 215.54,-96.74"/>
+<polygon fill="#000000" stroke="#000000" points="212.99,-99.16 221.96,-104.8 218.47,-94.8 212.99,-99.16"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocatl_modg_1d_project_testfuncCalledByGraph = svgPanZoom('#procatl_modg_1d_project_testfuncCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

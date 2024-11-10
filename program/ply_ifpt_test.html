@@ -1,0 +1,1225 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>ply_ifpt_test &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>ply_ifpt_test      <small>Program</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 2.7% of total for programs.">62 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/ply_ifpt_test.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/ply_ifpt_test.f90.html'>ply_ifpt_test.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">ply_ifpt_test</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../program/ply_ifpt_test.html#variable-ipower~11">iPower</a>
+            <a class="list-group-item" href="../program/ply_ifpt_test.html#variable-res~113">res</a>
+            <a class="list-group-item" href="../program/ply_ifpt_test.html#variable-newres~16">newRes</a>
+            <a class="list-group-item" href="../program/ply_ifpt_test.html#variable-general~46">general</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../program/ply_ifpt_test.html#proc-ply_check_pnttoleg~2">ply_check_pntToLeg</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+        <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/env_module.html'>env_module</a></li>
+                  <li class="list-inline-item"><a href='../module/ply_modg_basis_module.html'>ply_modg_basis_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_general_module.html'>tem_general_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_param_module.html'>tem_param_module</a></li>
+                  <li class="list-inline-item"><a href='../module/ply_legfpt_module.html'>ply_legFpt_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_logging_module.html'>tem_logging_module</a></li>
+                  <li class="list-inline-item"><a href='../module/ply_fpt_header_module.html'>ply_fpt_header_module</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: program~~ply_ifpt_test~~UsesGraph Pages: 1 -->
+<svg id="programply_ifpt_testUsesGraph" width="641pt" height="349pt"
+ viewBox="0.00 0.00 641.00 349.31" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="program~~ply_ifpt_test~~UsesGraph" class="graph" transform="scale(0.67 0.67) rotate(0) translate(4 514.25)">
+<title>program~~ply_ifpt_test~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-514.25 947,-514.25 947,4 -4,4"/>
+<!-- program~ply_ifpt_test -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node1" class="node">
+<title>program~ply_ifpt_test</title>
+<polygon fill="none" stroke="black" points="943,-343.28 867,-343.28 867,-319.28 943,-319.28 943,-343.28"/>
+<text text-anchor="middle" x="905" y="-328.88" font-family="Helvetica,sans-Serif" font-size="10.50">ply_ifpt_test</text>
+</g>
+<!-- env_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node2" class="node">
+<title>env_module</title>
+<g id="a_program~~ply_ifpt_test~~UsesGraph_node2"><a xlink:href="https://apes-suite.github.io/treelm/module/env_module.html" xlink:title="env_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="78,-344.28 0,-344.28 0,-320.28 78,-320.28 78,-344.28"/>
+<text text-anchor="middle" x="39" y="-329.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">env_module</text>
+</a>
+</g>
+</g>
+<!-- program~ply_ifpt_test&#45;&gt;env_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge1" class="edge">
+<title>program~ply_ifpt_test&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M901.03,-343.29C893.89,-369.39 873.18,-431.24 831,-460.28 733.07,-527.7 685.03,-491.04 566.5,-500.28"/>
+</g>
+<!-- module~ply_fpt_header_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node3" class="node">
+<title>module~ply_fpt_header_module</title>
+<g id="a_program~~ply_ifpt_test~~UsesGraph_node3"><a xlink:href="../module/ply_fpt_header_module.html" xlink:title="ply_fpt_header_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="442,-354.28 305,-354.28 305,-330.28 442,-330.28 442,-354.28"/>
+<text text-anchor="middle" x="373.5" y="-339.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_header_module</text>
+</a>
+</g>
+</g>
+<!-- program~ply_ifpt_test&#45;&gt;module~ply_fpt_header_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge2" class="edge">
+<title>program~ply_ifpt_test&#45;&gt;module~ply_fpt_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M866.76,-340.86C804.79,-355.81 676.45,-382.56 566.5,-378.28"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M564.5,-378.28C515.96,-378.62 461.65,-367.1 423.56,-356.99"/>
+<polygon fill="#000000" stroke="#000000" points="424.32,-353.58 413.76,-354.33 422.49,-360.33 424.32,-353.58"/>
+</g>
+<!-- module~ply_legfpt_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node4" class="node">
+<title>module~ply_legfpt_module</title>
+<g id="a_program~~ply_ifpt_test~~UsesGraph_node4"><a xlink:href="../module/ply_legfpt_module.html" xlink:title="ply_legFpt_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="816,-275.28 704,-275.28 704,-251.28 816,-251.28 816,-275.28"/>
+<text text-anchor="middle" x="760" y="-260.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_legFpt_module</text>
+</a>
+</g>
+</g>
+<!-- program~ply_ifpt_test&#45;&gt;module~ply_legfpt_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge3" class="edge">
+<title>program~ply_ifpt_test&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M878.76,-319.27C855.73,-308.32 821.46,-292.03 795.83,-279.84"/>
+<polygon fill="#000000" stroke="#000000" points="797,-276.52 786.47,-275.38 793.99,-282.84 797,-276.52"/>
+</g>
+<!-- module~ply_modg_basis_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node5" class="node">
+<title>module~ply_modg_basis_module</title>
+<g id="a_program~~ply_ifpt_test~~UsesGraph_node5"><a xlink:href="../module/ply_modg_basis_module.html" xlink:title="ply_modg_basis_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="831,-451.28 689,-451.28 689,-427.28 831,-427.28 831,-451.28"/>
+<text text-anchor="middle" x="760" y="-436.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_modg_basis_module</text>
+</a>
+</g>
+</g>
+<!-- program~ply_ifpt_test&#45;&gt;module~ply_modg_basis_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge4" class="edge">
+<title>program~ply_ifpt_test&#45;&gt;module~ply_modg_basis_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M890.36,-343.41C875.95,-356.06 852.4,-376.22 831,-392.28 817.4,-402.48 801.72,-413.11 788.66,-421.66"/>
+<polygon fill="#000000" stroke="#000000" points="786.57,-418.85 780.09,-427.23 790.38,-424.72 786.57,-418.85"/>
+</g>
+<!-- tem_general_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node6" class="node">
+<title>tem_general_module</title>
+<g id="a_program~~ply_ifpt_test~~UsesGraph_node6"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_general_module.html" xlink:title="tem_general_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="823,-38.28 697,-38.28 697,-14.28 823,-14.28 823,-38.28"/>
+<text text-anchor="middle" x="760" y="-23.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_general_module</text>
+</a>
+</g>
+</g>
+<!-- program~ply_ifpt_test&#45;&gt;tem_general_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge5" class="edge">
+<title>program~ply_ifpt_test&#45;&gt;tem_general_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M904.52,-319.14C905.66,-276.62 903.73,-132.65 831,-52.28 827.93,-48.89 824.38,-45.94 820.54,-43.37"/>
+<polygon fill="#000000" stroke="#000000" points="822.15,-40.26 811.73,-38.34 818.68,-46.34 822.15,-40.26"/>
+</g>
+<!-- tem_logging_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node7" class="node">
+<title>tem_logging_module</title>
+<g id="a_program~~ply_ifpt_test~~UsesGraph_node7"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_logging_module.html" xlink:title="tem_logging_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="253.5,-134.28 129.5,-134.28 129.5,-110.28 253.5,-110.28 253.5,-134.28"/>
+<text text-anchor="middle" x="191.5" y="-119.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_module</text>
+</a>
+</g>
+</g>
+<!-- program~ply_ifpt_test&#45;&gt;tem_logging_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge6" class="edge">
+<title>program~ply_ifpt_test&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M896.68,-319.07C870.39,-276.61 775.71,-135.54 653,-90.28 583.64,-64.69 375.09,-92.6 263.99,-110.19"/>
+<polygon fill="#000000" stroke="#000000" points="263.2,-106.77 253.87,-111.81 264.3,-113.68 263.2,-106.77"/>
+</g>
+<!-- tem_param_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node8" class="node">
+<title>tem_param_module</title>
+<g id="a_program~~ply_ifpt_test~~UsesGraph_node8"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_param_module.html" xlink:title="tem_param_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="433.5,-396.28 313.5,-396.28 313.5,-372.28 433.5,-372.28 433.5,-396.28"/>
+<text text-anchor="middle" x="373.5" y="-381.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_param_module</text>
+</a>
+</g>
+</g>
+<!-- program~ply_ifpt_test&#45;&gt;tem_param_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge7" class="edge">
+<title>program~ply_ifpt_test&#45;&gt;tem_param_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M564.5,-378.28C524.55,-378.56 479.9,-379.92 443.93,-381.27"/>
+<polygon fill="#000000" stroke="#000000" points="443.4,-377.79 433.54,-381.67 443.67,-384.78 443.4,-377.79"/>
+</g>
+<!-- module~ply_fpt_header_module&#45;&gt;env_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge10" class="edge">
+<title>module~ply_fpt_header_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M317.15,-354.28C312.69,-356.74 308.55,-359.71 305,-363.28 266.34,-402.15 308.78,-443.54 269,-481.28 243.58,-505.39 226.75,-507.65 192.5,-500.28"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M190.5,-500.28C156.25,-492.9 141.31,-503.21 114,-481.28 73.13,-448.45 53.02,-387.28 44.77,-354.46"/>
+<polygon fill="#000000" stroke="#000000" points="48.12,-353.42 42.42,-344.49 41.31,-355.03 48.12,-353.42"/>
+</g>
+<!-- module~ply_fpt_header_module&#45;&gt;tem_logging_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge15" class="edge">
+<title>module~ply_fpt_header_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M362.4,-330.1C348.08,-312.36 321.75,-277.96 305,-245.28 283.07,-202.49 304.18,-176.03 269,-143.28 267.06,-141.47 264.98,-139.82 262.79,-138.3"/>
+<polygon fill="#000000" stroke="#000000" points="264.28,-135.12 253.87,-133.13 260.77,-141.18 264.28,-135.12"/>
+</g>
+<!-- aot_out_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node9" class="node">
+<title>aot_out_module</title>
+<g id="a_program~~ply_ifpt_test~~UsesGraph_node9"><a xlink:href="https://apes-suite.github.io/aotus/module/aot_out_module.html" xlink:title="aot_out_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="240.5,-430.28 142.5,-430.28 142.5,-406.28 240.5,-406.28 240.5,-430.28"/>
+<text text-anchor="middle" x="191.5" y="-415.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_out_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_fpt_header_module&#45;&gt;aot_out_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge8" class="edge">
+<title>module~ply_fpt_header_module&#45;&gt;aot_out_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M324.14,-354.35C317.5,-356.85 310.93,-359.81 305,-363.28 286,-374.39 288.18,-386.49 269,-397.28 263.19,-400.54 256.85,-403.32 250.38,-405.69"/>
+<polygon fill="#000000" stroke="#000000" points="249.24,-402.38 240.86,-408.86 251.45,-409.02 249.24,-402.38"/>
+</g>
+<!-- aotus_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node10" class="node">
+<title>aotus_module</title>
+<g id="a_program~~ply_ifpt_test~~UsesGraph_node10"><a xlink:href="https://apes-suite.github.io/aotus/module/aotus_module.html" xlink:title="aotus_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="235.5,-388.28 147.5,-388.28 147.5,-364.28 235.5,-364.28 235.5,-388.28"/>
+<text text-anchor="middle" x="191.5" y="-373.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aotus_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_fpt_header_module&#45;&gt;aotus_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge9" class="edge">
+<title>module~ply_fpt_header_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M308.79,-354.31C288.12,-358.21 265.42,-362.5 245.61,-366.24"/>
+<polygon fill="#000000" stroke="#000000" points="244.71,-362.85 235.54,-368.15 246.01,-369.73 244.71,-362.85"/>
+</g>
+<!-- module~ply_nodes_header_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node14" class="node">
+<title>module~ply_nodes_header_module</title>
+<g id="a_program~~ply_ifpt_test~~UsesGraph_node14"><a xlink:href="../module/ply_nodes_header_module.html" xlink:title="ply_nodes_header_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="269,-472.28 114,-472.28 114,-448.28 269,-448.28 269,-472.28"/>
+<text text-anchor="middle" x="191.5" y="-457.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_nodes_header_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_fpt_header_module&#45;&gt;module~ply_nodes_header_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge11" class="edge">
+<title>module~ply_fpt_header_module&#45;&gt;module~ply_nodes_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M318.69,-354.34C313.75,-356.79 309.08,-359.73 305,-363.28 276.78,-387.78 297.63,-415.25 269,-439.28 267.42,-440.6 265.76,-441.85 264.04,-443.01"/>
+<polygon fill="#000000" stroke="#000000" points="261.9,-440.2 254.97,-448.22 265.38,-446.28 261.9,-440.2"/>
+</g>
+<!-- tem_aux_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node17" class="node">
+<title>tem_aux_module</title>
+<g id="a_program~~ply_ifpt_test~~UsesGraph_node17"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_aux_module.html" xlink:title="tem_aux_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="243.5,-176.28 139.5,-176.28 139.5,-152.28 243.5,-152.28 243.5,-176.28"/>
+<text text-anchor="middle" x="191.5" y="-161.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_aux_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_fpt_header_module&#45;&gt;tem_aux_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge12" class="edge">
+<title>module~ply_fpt_header_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M362.38,-330.28C344.37,-309.13 305.21,-264.16 269,-229.28 251.95,-212.85 231.45,-195.55 215.97,-182.94"/>
+<polygon fill="#000000" stroke="#000000" points="217.91,-180.01 207.94,-176.44 213.51,-185.45 217.91,-180.01"/>
+</g>
+<!-- tem_compileconf_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node18" class="node">
+<title>tem_compileconf_module</title>
+<g id="a_program~~ply_ifpt_test~~UsesGraph_node18"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_compileconf_module.html" xlink:title="tem_compileconf_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="267,-304.28 116,-304.28 116,-280.28 267,-280.28 267,-304.28"/>
+<text text-anchor="middle" x="191.5" y="-289.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_compileconf_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_fpt_header_module&#45;&gt;tem_compileconf_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge13" class="edge">
+<title>module~ply_fpt_header_module&#45;&gt;tem_compileconf_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M329.71,-330.23C311.07,-325 288.96,-318.81 269,-313.28 261.71,-311.25 254.03,-309.13 246.45,-307.05"/>
+<polygon fill="#000000" stroke="#000000" points="247.17,-303.62 236.6,-304.34 245.32,-310.37 247.17,-303.62"/>
+</g>
+<!-- tem_float_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node19" class="node">
+<title>tem_float_module</title>
+<g id="a_program~~ply_ifpt_test~~UsesGraph_node19"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_float_module.html" xlink:title="tem_float_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="246,-262.28 137,-262.28 137,-238.28 246,-238.28 246,-262.28"/>
+<text text-anchor="middle" x="191.5" y="-247.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_float_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_fpt_header_module&#45;&gt;tem_float_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge14" class="edge">
+<title>module~ply_fpt_header_module&#45;&gt;tem_float_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M358.36,-330.27C339.25,-314.61 303.59,-287.33 269,-271.28 264.62,-269.24 260.01,-267.38 255.31,-265.66"/>
+<polygon fill="#000000" stroke="#000000" points="256.18,-262.26 245.59,-262.37 253.94,-268.89 256.18,-262.26"/>
+</g>
+<!-- tem_tools_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node20" class="node">
+<title>tem_tools_module</title>
+<g id="a_program~~ply_ifpt_test~~UsesGraph_node20"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_tools_module.html" xlink:title="tem_tools_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="246.5,-346.28 136.5,-346.28 136.5,-322.28 246.5,-322.28 246.5,-346.28"/>
+<text text-anchor="middle" x="191.5" y="-331.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tools_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_fpt_header_module&#45;&gt;tem_tools_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge16" class="edge">
+<title>module~ply_fpt_header_module&#45;&gt;tem_tools_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M304.96,-339.27C289.17,-338.57 272.39,-337.83 256.74,-337.13"/>
+<polygon fill="#000000" stroke="#000000" points="256.79,-333.63 246.65,-336.68 256.48,-340.62 256.79,-333.63"/>
+</g>
+<!-- module~ply_legfpt_module&#45;&gt;env_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge17" class="edge">
+<title>module~ply_legfpt_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M749.35,-251.18C723.62,-219.97 649.63,-136.89 566.5,-104.28"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M564.5,-104.28C377.18,-30.79 273.82,62.99 114,-59.28 73.51,-90.25 50.02,-250.55 42.59,-310.03"/>
+<polygon fill="#000000" stroke="#000000" points="39.09,-309.86 41.35,-320.21 46.04,-310.71 39.09,-309.86"/>
+</g>
+<!-- module~ply_legfpt_module&#45;&gt;module~ply_fpt_header_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge20" class="edge">
+<title>module~ply_legfpt_module&#45;&gt;module~ply_fpt_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M564.5,-302.28C520.63,-308.94 471.65,-319.33 434.4,-327.85"/>
+<polygon fill="#000000" stroke="#000000" points="433.18,-324.54 424.22,-330.19 434.75,-331.36 433.18,-324.54"/>
+</g>
+<!-- iso_c_binding -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node11" class="node">
+<title>iso_c_binding</title>
+<g id="a_program~~ply_ifpt_test~~UsesGraph_node11"><a xlink:href="http://fortranwiki.org/fortran/show/iso_c_binding" xlink:title="iso_c_binding">
+<polygon fill="#337ab7" stroke="#337ab7" points="233.5,-92.28 149.5,-92.28 149.5,-68.28 233.5,-68.28 233.5,-92.28"/>
+<text text-anchor="middle" x="191.5" y="-77.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_c_binding</text>
+</a>
+</g>
+</g>
+<!-- module~ply_legfpt_module&#45;&gt;iso_c_binding -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge18" class="edge">
+<title>module~ply_legfpt_module&#45;&gt;iso_c_binding</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M564.5,-104.28C485.89,-73.43 456.96,-122.46 374.5,-104.28"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M372.5,-104.28C329.63,-94.82 280.14,-88.55 243.91,-84.8"/>
+<polygon fill="#000000" stroke="#000000" points="243.89,-81.28 233.59,-83.76 243.19,-88.24 243.89,-81.28"/>
+</g>
+<!-- module~fftw_wrap -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node12" class="node">
+<title>module~fftw_wrap</title>
+<g id="a_program~~ply_ifpt_test~~UsesGraph_node12"><a xlink:href="../module/fftw_wrap.html" xlink:title="fftw_wrap">
+<polygon fill="#337ab7" stroke="#337ab7" points="405.5,-156.28 341.5,-156.28 341.5,-132.28 405.5,-132.28 405.5,-156.28"/>
+<text text-anchor="middle" x="373.5" y="-141.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">fftw_wrap</text>
+</a>
+</g>
+</g>
+<!-- module~ply_legfpt_module&#45;&gt;module~fftw_wrap -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge19" class="edge">
+<title>module~ply_legfpt_module&#45;&gt;module~fftw_wrap</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M564.5,-104.28C537.84,-93.82 462.87,-114.86 415.46,-130.2"/>
+<polygon fill="#000000" stroke="#000000" points="414.2,-126.93 405.79,-133.37 416.38,-133.58 414.2,-126.93"/>
+</g>
+<!-- module~ply_polybaseexc_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node15" class="node">
+<title>module~ply_polybaseexc_module</title>
+<g id="a_program~~ply_ifpt_test~~UsesGraph_node15"><a xlink:href="../module/ply_polybaseexc_module.html" xlink:title="ply_polyBaseExc_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="639,-236.28 492,-236.28 492,-212.28 639,-212.28 639,-236.28"/>
+<text text-anchor="middle" x="565.5" y="-221.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_polyBaseExc_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_legfpt_module&#45;&gt;module~ply_polybaseexc_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge21" class="edge">
+<title>module~ply_legfpt_module&#45;&gt;module~ply_polybaseexc_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M703.84,-252.1C682.74,-247.82 658.4,-242.89 636.12,-238.38"/>
+<polygon fill="#000000" stroke="#000000" points="636.54,-234.89 626.05,-236.34 635.15,-241.76 636.54,-234.89"/>
+</g>
+<!-- module~ply_legfpt_module&#45;&gt;tem_compileconf_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge22" class="edge">
+<title>module~ply_legfpt_module&#45;&gt;tem_compileconf_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M706.55,-275.35C667.98,-283.87 614.2,-295.02 566.5,-302.28"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M564.5,-302.28C466.69,-317.14 352.8,-310.65 277.06,-303.02"/>
+<polygon fill="#000000" stroke="#000000" points="277.4,-299.54 267.09,-301.99 276.68,-306.5 277.4,-299.54"/>
+</g>
+<!-- module~ply_modg_basis_module&#45;&gt;env_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge23" class="edge">
+<title>module~ply_modg_basis_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M733.91,-451.33C697.86,-467.67 628.89,-495.41 566.5,-500.28"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M564.5,-500.28C480.31,-506.84 458.49,-491.48 374.5,-500.28"/>
+</g>
+<!-- module~ply_dof_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node13" class="node">
+<title>module~ply_dof_module</title>
+<g id="a_program~~ply_ifpt_test~~UsesGraph_node13"><a xlink:href="../module/ply_dof_module.html" xlink:title="ply_dof_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="614,-472.28 517,-472.28 517,-448.28 614,-448.28 614,-472.28"/>
+<text text-anchor="middle" x="565.5" y="-457.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_dof_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_modg_basis_module&#45;&gt;module~ply_dof_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge24" class="edge">
+<title>module~ply_modg_basis_module&#45;&gt;module~ply_dof_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M688.96,-446.92C667.71,-449.23 644.63,-451.75 624.28,-453.97"/>
+<polygon fill="#000000" stroke="#000000" points="623.79,-450.5 614.23,-455.07 624.55,-457.46 623.79,-450.5"/>
+</g>
+<!-- module~ply_space_integration_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node16" class="node">
+<title>module~ply_space_integration_module</title>
+<g id="a_program~~ply_ifpt_test~~UsesGraph_node16"><a xlink:href="../module/ply_space_integration_module.html" xlink:title="ply_space_integration_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="653,-430.28 478,-430.28 478,-406.28 653,-406.28 653,-430.28"/>
+<text text-anchor="middle" x="565.5" y="-415.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_space_integration_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_modg_basis_module&#45;&gt;module~ply_space_integration_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge25" class="edge">
+<title>module~ply_modg_basis_module&#45;&gt;module~ply_space_integration_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M688.96,-431.63C680.61,-430.72 671.98,-429.78 663.35,-428.84"/>
+<polygon fill="#000000" stroke="#000000" points="663.55,-425.34 653.22,-427.74 662.79,-432.3 663.55,-425.34"/>
+</g>
+<!-- module~fftw_wrap&#45;&gt;tem_logging_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge28" class="edge">
+<title>module~fftw_wrap&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M341.15,-140.44C319.8,-137.83 290.66,-134.27 263.83,-130.99"/>
+<polygon fill="#000000" stroke="#000000" points="264.03,-127.49 253.68,-129.75 263.18,-134.44 264.03,-127.49"/>
+</g>
+<!-- module~fftw_wrap&#45;&gt;iso_c_binding -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge26" class="edge">
+<title>module~fftw_wrap&#45;&gt;iso_c_binding</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M341.39,-132.84C329.88,-128.47 316.78,-123.32 305,-118.28 288.73,-111.31 285.59,-107.42 269,-101.28 260.92,-98.29 252.23,-95.5 243.7,-93.01"/>
+<polygon fill="#000000" stroke="#000000" points="244.38,-89.56 233.81,-90.21 242.48,-96.3 244.38,-89.56"/>
+</g>
+<!-- module~fftw_wrap&#45;&gt;tem_aux_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge27" class="edge">
+<title>module~fftw_wrap&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M341.15,-147.76C317.09,-150.43 283.13,-154.21 253.74,-157.47"/>
+<polygon fill="#000000" stroke="#000000" points="253.11,-154.02 243.56,-158.6 253.89,-160.98 253.11,-154.02"/>
+</g>
+<!-- module~ply_dof_module&#45;&gt;env_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge29" class="edge">
+<title>module~ply_dof_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M520,-472.36C481.75,-482.09 424.96,-494.99 374.5,-500.28"/>
+</g>
+<!-- module~ply_nodes_header_module&#45;&gt;env_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge30" class="edge">
+<title>module~ply_nodes_header_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M130.17,-448.13C124.45,-445.7 118.94,-442.78 114,-439.28 82.91,-417.23 60.65,-377.75 49.09,-353.41"/>
+<polygon fill="#000000" stroke="#000000" points="52.27,-351.93 44.93,-344.29 45.9,-354.84 52.27,-351.93"/>
+</g>
+<!-- module~ply_polybaseexc_module&#45;&gt;env_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge31" class="edge">
+<title>module~ply_polybaseexc_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M372.5,-184.28C314.94,-174.98 163.4,-198.3 114,-229.28 82.82,-248.82 60.82,-286.75 49.29,-310.72"/>
+<polygon fill="#000000" stroke="#000000" points="46,-309.5 45,-320.05 52.36,-312.43 46,-309.5"/>
+</g>
+<!-- module~ply_polybaseexc_module&#45;&gt;module~ply_fpt_header_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge34" class="edge">
+<title>module~ply_polybaseexc_module&#45;&gt;module~ply_fpt_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M544.88,-236.46C511.09,-257.45 441.78,-300.49 402.77,-324.72"/>
+<polygon fill="#000000" stroke="#000000" points="400.66,-321.91 394.01,-330.16 404.35,-327.86 400.66,-321.91"/>
+</g>
+<!-- module~ply_polybaseexc_module&#45;&gt;tem_logging_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge37" class="edge">
+<title>module~ply_polybaseexc_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M513.94,-212.27C475.8,-203.54 422.09,-191.96 374.5,-184.28"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M372.5,-184.28C341.73,-179.31 333.56,-177.74 305,-165.28 287.81,-157.78 286.21,-150.72 269,-143.28 264.22,-141.21 259.19,-139.3 254.08,-137.54"/>
+<polygon fill="#000000" stroke="#000000" points="254.8,-134.09 244.21,-134.34 252.64,-140.75 254.8,-134.09"/>
+</g>
+<!-- module~ply_polybaseexc_module&#45;&gt;tem_param_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge38" class="edge">
+<title>module~ply_polybaseexc_module&#45;&gt;tem_param_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M542.6,-236.32C523.55,-247.69 496.21,-266.24 478,-288.28 454.45,-316.78 469.98,-339.11 442,-363.28 440.47,-364.6 438.85,-365.84 437.17,-367"/>
+<polygon fill="#000000" stroke="#000000" points="435.17,-364.12 428.3,-372.19 438.7,-370.16 435.17,-364.12"/>
+</g>
+<!-- module~ply_polybaseexc_module&#45;&gt;iso_c_binding -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge32" class="edge">
+<title>module~ply_polybaseexc_module&#45;&gt;iso_c_binding</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M553.21,-212.1C532.93,-190.97 488.16,-147.42 442,-123.28 414.38,-108.83 404.93,-110.99 374.5,-104.28"/>
+</g>
+<!-- module~ply_polybaseexc_module&#45;&gt;module~fftw_wrap -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge33" class="edge">
+<title>module~ply_polybaseexc_module&#45;&gt;module~fftw_wrap</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M537.89,-212.11C513.18,-200.92 475.3,-184.02 442,-170.28 433.3,-166.69 423.92,-162.97 414.99,-159.51"/>
+<polygon fill="#000000" stroke="#000000" points="416.13,-156.2 405.54,-155.88 413.61,-162.73 416.13,-156.2"/>
+</g>
+<!-- module~ply_polybaseexc_module&#45;&gt;tem_float_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge35" class="edge">
+<title>module~ply_polybaseexc_module&#45;&gt;tem_float_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M504.93,-236.33C485,-239.87 462.62,-243.31 442,-245.28 379.05,-251.27 306.79,-252.05 256.29,-251.62"/>
+<polygon fill="#000000" stroke="#000000" points="256.21,-248.12 246.17,-251.51 256.13,-255.12 256.21,-248.12"/>
+</g>
+<!-- tem_gamma_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_node21" class="node">
+<title>tem_gamma_module</title>
+<g id="a_program~~ply_ifpt_test~~UsesGraph_node21"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_gamma_module.html" xlink:title="tem_gamma_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="436.5,-236.28 310.5,-236.28 310.5,-212.28 436.5,-212.28 436.5,-236.28"/>
+<text text-anchor="middle" x="373.5" y="-221.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_gamma_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_polybaseexc_module&#45;&gt;tem_gamma_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge36" class="edge">
+<title>module~ply_polybaseexc_module&#45;&gt;tem_gamma_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M491.86,-224.28C477.05,-224.28 461.47,-224.28 446.67,-224.28"/>
+<polygon fill="#000000" stroke="#000000" points="446.57,-220.78 436.57,-224.28 446.57,-227.78 446.57,-220.78"/>
+</g>
+<!-- module~ply_space_integration_module&#45;&gt;env_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge39" class="edge">
+<title>module~ply_space_integration_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M504.68,-430.35C495.6,-432.89 486.45,-435.85 478,-439.28 428.52,-459.35 427.6,-494.71 374.5,-500.28"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M372.5,-500.28C292.94,-508.61 270.71,-517.12 192.5,-500.28"/>
+</g>
+<!-- module~ply_space_integration_module&#45;&gt;tem_param_module -->
+<g id="program~~ply_ifpt_test~~UsesGraph_edge40" class="edge">
+<title>module~ply_space_integration_module&#45;&gt;tem_param_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M497.25,-406.24C479.93,-403.14 461.27,-399.8 443.86,-396.69"/>
+<polygon fill="#000000" stroke="#000000" points="444.23,-393.2 433.77,-394.88 442.99,-400.09 444.23,-393.2"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprogramply_ifpt_testUsesGraph = svgPanZoom('#programply_ifpt_testUsesGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+    <p>Unit test to check functionallity of fast polynomial transformations.
+\author{Jens Zudrop}</p>
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: program~~ply_ifpt_test~~CallsGraph Pages: 1 -->
+<svg id="programply_ifpt_testCallsGraph" width="641pt" height="216pt"
+ viewBox="0.00 0.00 641.00 215.95" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="program~~ply_ifpt_test~~CallsGraph" class="graph" transform="scale(0.98 0.98) rotate(0) translate(4 217)">
+<title>program~~ply_ifpt_test~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-217 652,-217 652,4 -4,4"/>
+<!-- program~ply_ifpt_test -->
+<g id="program~~ply_ifpt_test~~CallsGraph_node1" class="node">
+<title>program~ply_ifpt_test</title>
+<polygon fill="none" stroke="black" points="76,-150 0,-150 0,-126 76,-126 76,-150"/>
+<text text-anchor="middle" x="38" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50">ply_ifpt_test</text>
+</g>
+<!-- fin_env -->
+<g id="program~~ply_ifpt_test~~CallsGraph_node2" class="node">
+<title>fin_env</title>
+<g id="a_program~~ply_ifpt_test~~CallsGraph_node2"><a xlink:href="https://apes-suite.github.io/treelm/proc/fin_env.html" xlink:title="fin_env">
+<polygon fill="#d9534f" stroke="#d9534f" points="198,-192 144,-192 144,-168 198,-168 198,-192"/>
+<text text-anchor="middle" x="171" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">fin_env</text>
+</a>
+</g>
+</g>
+<!-- program~ply_ifpt_test&#45;&gt;fin_env -->
+<g id="program~~ply_ifpt_test~~CallsGraph_edge1" class="edge">
+<title>program~ply_ifpt_test&#45;&gt;fin_env</title>
+<path fill="none" stroke="#000000" d="M76.19,-149.92C94.44,-155.78 116.33,-162.79 134.37,-168.58"/>
+<polygon fill="#000000" stroke="#000000" points="133.36,-171.93 143.95,-171.65 135.49,-165.26 133.36,-171.93"/>
+</g>
+<!-- proc~ply_check_pnttoleg~2 -->
+<g id="program~~ply_ifpt_test~~CallsGraph_node3" class="node">
+<title>proc~ply_check_pnttoleg~2</title>
+<g id="a_program~~ply_ifpt_test~~CallsGraph_node3"><a xlink:href="../proc/ply_check_pnttoleg~2.html" xlink:title="ply_check_pntToLeg">
+<polygon fill="#d9534f" stroke="#d9534f" points="230,-150 112,-150 112,-126 230,-126 230,-150"/>
+<text text-anchor="middle" x="171" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_check_pntToLeg</text>
+</a>
+</g>
+</g>
+<!-- program~ply_ifpt_test&#45;&gt;proc~ply_check_pnttoleg~2 -->
+<g id="program~~ply_ifpt_test~~CallsGraph_edge2" class="edge">
+<title>program~ply_ifpt_test&#45;&gt;proc~ply_check_pnttoleg~2</title>
+<path fill="none" stroke="#000000" d="M76.19,-138C84.13,-138 92.75,-138 101.45,-138"/>
+<polygon fill="#000000" stroke="#000000" points="101.65,-141.5 111.65,-138 101.65,-134.5 101.65,-141.5"/>
+</g>
+<!-- tem_start -->
+<g id="program~~ply_ifpt_test~~CallsGraph_node4" class="node">
+<title>tem_start</title>
+<g id="a_program~~ply_ifpt_test~~CallsGraph_node4"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_start.html" xlink:title="tem_start">
+<polygon fill="#d9534f" stroke="#d9534f" points="202.5,-108 139.5,-108 139.5,-84 202.5,-84 202.5,-108"/>
+<text text-anchor="middle" x="171" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_start</text>
+</a>
+</g>
+</g>
+<!-- program~ply_ifpt_test&#45;&gt;tem_start -->
+<g id="program~~ply_ifpt_test~~CallsGraph_edge3" class="edge">
+<title>program~ply_ifpt_test&#45;&gt;tem_start</title>
+<path fill="none" stroke="#000000" d="M76.19,-126.08C92.88,-120.72 112.61,-114.4 129.66,-108.93"/>
+<polygon fill="#000000" stroke="#000000" points="130.89,-112.21 139.35,-105.83 128.76,-105.55 130.89,-112.21"/>
+</g>
+<!-- proc~ply_fpt_header_define -->
+<g id="program~~ply_ifpt_test~~CallsGraph_node5" class="node">
+<title>proc~ply_fpt_header_define</title>
+<g id="a_program~~ply_ifpt_test~~CallsGraph_node5"><a xlink:href="../proc/ply_fpt_header_define.html" xlink:title="ply_fpt_header_define">
+<polygon fill="#d9534f" stroke="#d9534f" points="396,-202 266,-202 266,-178 396,-178 396,-202"/>
+<text text-anchor="middle" x="331" y="-187.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_header_define</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_check_pnttoleg~2&#45;&gt;proc~ply_fpt_header_define -->
+<g id="program~~ply_ifpt_test~~CallsGraph_edge4" class="edge">
+<title>proc~ply_check_pnttoleg~2&#45;&gt;proc~ply_fpt_header_define</title>
+<path fill="none" stroke="#000000" d="M208.65,-150.06C231,-157.42 259.78,-166.89 283.7,-174.76"/>
+<polygon fill="#000000" stroke="#000000" points="282.69,-178.11 293.28,-177.91 284.88,-171.46 282.69,-178.11"/>
+</g>
+<!-- proc~ply_init_legfpt -->
+<g id="program~~ply_ifpt_test~~CallsGraph_node6" class="node">
+<title>proc~ply_init_legfpt</title>
+<g id="a_program~~ply_ifpt_test~~CallsGraph_node6"><a xlink:href="../proc/ply_init_legfpt.html" xlink:title="ply_init_legFpt">
+<polygon fill="#d9534f" stroke="#d9534f" points="375,-150 287,-150 287,-126 375,-126 375,-150"/>
+<text text-anchor="middle" x="331" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_init_legFpt</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_check_pnttoleg~2&#45;&gt;proc~ply_init_legfpt -->
+<g id="program~~ply_ifpt_test~~CallsGraph_edge5" class="edge">
+<title>proc~ply_check_pnttoleg~2&#45;&gt;proc~ply_init_legfpt</title>
+<path fill="none" stroke="#000000" d="M230.38,-138C245.53,-138 261.75,-138 276.62,-138"/>
+<polygon fill="#000000" stroke="#000000" points="276.67,-141.5 286.67,-138 276.67,-134.5 276.67,-141.5"/>
+</g>
+<!-- proc~ply_legendre_1d -->
+<g id="program~~ply_ifpt_test~~CallsGraph_node7" class="node">
+<title>proc~ply_legendre_1d</title>
+<g id="a_program~~ply_ifpt_test~~CallsGraph_node7"><a xlink:href="../proc/ply_legendre_1d.html" xlink:title="ply_legendre_1D">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="381.5,-108 280.5,-108 280.5,-84 381.5,-84 381.5,-108"/>
+<text text-anchor="middle" x="331" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_legendre_1D</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_check_pnttoleg~2&#45;&gt;proc~ply_legendre_1d -->
+<g id="program~~ply_ifpt_test~~CallsGraph_edge6" class="edge">
+<title>proc~ply_check_pnttoleg~2&#45;&gt;proc~ply_legendre_1d</title>
+<path fill="none" stroke="#000000" d="M217.28,-125.96C235.21,-121.2 256,-115.67 274.8,-110.67"/>
+<polygon fill="#000000" stroke="#000000" points="275.95,-113.99 284.72,-108.04 274.15,-107.22 275.95,-113.99"/>
+</g>
+<!-- tem_abort -->
+<g id="program~~ply_ifpt_test~~CallsGraph_node11" class="node">
+<title>tem_abort</title>
+<g id="a_program~~ply_ifpt_test~~CallsGraph_node11"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="524,-213 457,-213 457,-189 524,-189 524,-213"/>
+<text text-anchor="middle" x="490.5" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_fpt_header_define&#45;&gt;tem_abort -->
+<g id="program~~ply_ifpt_test~~CallsGraph_edge7" class="edge">
+<title>proc~ply_fpt_header_define&#45;&gt;tem_abort</title>
+<path fill="none" stroke="#000000" d="M396.06,-194.47C412.95,-195.65 430.76,-196.9 446.26,-197.98"/>
+<polygon fill="#000000" stroke="#000000" points="446.36,-201.5 456.58,-198.7 446.85,-194.51 446.36,-201.5"/>
+</g>
+<!-- proc~fftw_plan_many_r2r -->
+<g id="program~~ply_ifpt_test~~CallsGraph_node8" class="node">
+<title>proc~fftw_plan_many_r2r</title>
+<g id="a_program~~ply_ifpt_test~~CallsGraph_node8"><a xlink:href="../proc/fftw_plan_many_r2r.html" xlink:title="fftw_plan_many_r2r">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="549,-171 432,-171 432,-147 549,-147 549,-171"/>
+<text text-anchor="middle" x="490.5" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">fftw_plan_many_r2r</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_init_legfpt&#45;&gt;proc~fftw_plan_many_r2r -->
+<g id="program~~ply_ifpt_test~~CallsGraph_edge8" class="edge">
+<title>proc~ply_init_legfpt&#45;&gt;proc~fftw_plan_many_r2r</title>
+<path fill="none" stroke="#000000" d="M375.04,-143.74C389.38,-145.65 405.73,-147.83 421.5,-149.93"/>
+<polygon fill="#000000" stroke="#000000" points="421.37,-153.45 431.75,-151.3 422.3,-146.51 421.37,-153.45"/>
+</g>
+<!-- proc~fftw_plan_r2r_1d -->
+<g id="program~~ply_ifpt_test~~CallsGraph_node9" class="node">
+<title>proc~fftw_plan_r2r_1d</title>
+<g id="a_program~~ply_ifpt_test~~CallsGraph_node9"><a xlink:href="../proc/fftw_plan_r2r_1d.html" xlink:title="fftw_plan_r2r_1d">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="540.5,-129 440.5,-129 440.5,-105 540.5,-105 540.5,-129"/>
+<text text-anchor="middle" x="490.5" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">fftw_plan_r2r_1d</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_init_legfpt&#45;&gt;proc~fftw_plan_r2r_1d -->
+<g id="program~~ply_ifpt_test~~CallsGraph_edge9" class="edge">
+<title>proc~ply_init_legfpt&#45;&gt;proc~fftw_plan_r2r_1d</title>
+<path fill="none" stroke="#000000" d="M375.04,-132.26C392.1,-129.99 412,-127.33 430.37,-124.88"/>
+<polygon fill="#000000" stroke="#000000" points="430.95,-128.34 440.39,-123.55 430.02,-121.4 430.95,-128.34"/>
+</g>
+<!-- proc~ply_fpt_init -->
+<g id="program~~ply_ifpt_test~~CallsGraph_node10" class="node">
+<title>proc~ply_fpt_init</title>
+<g id="a_program~~ply_ifpt_test~~CallsGraph_node10"><a xlink:href="../proc/ply_fpt_init.html" xlink:title="ply_fpt_init">
+<polygon fill="#d9534f" stroke="#d9534f" points="525.5,-87 455.5,-87 455.5,-63 525.5,-63 525.5,-87"/>
+<text text-anchor="middle" x="490.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_init</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_init_legfpt&#45;&gt;proc~ply_fpt_init -->
+<g id="program~~ply_ifpt_test~~CallsGraph_edge10" class="edge">
+<title>proc~ply_init_legfpt&#45;&gt;proc~ply_fpt_init</title>
+<path fill="none" stroke="#000000" d="M373.12,-125.93C380.83,-123.27 388.75,-120.26 396,-117 412.89,-109.4 415.23,-103.88 432,-96 436.4,-93.93 441.06,-91.94 445.75,-90.05"/>
+<polygon fill="#000000" stroke="#000000" points="447.28,-93.21 455.34,-86.34 444.75,-86.68 447.28,-93.21"/>
+</g>
+<!-- proc~ply_l -->
+<g id="program~~ply_ifpt_test~~CallsGraph_node12" class="node">
+<title>proc~ply_l</title>
+<g id="a_program~~ply_ifpt_test~~CallsGraph_node12"><a xlink:href="../proc/ply_l.html" xlink:title="ply_l">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="643.5,-150 589.5,-150 589.5,-126 643.5,-126 643.5,-150"/>
+<text text-anchor="middle" x="616.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_l</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_fpt_init&#45;&gt;proc~ply_l -->
+<g id="program~~ply_ifpt_test~~CallsGraph_edge11" class="edge">
+<title>proc~ply_fpt_init&#45;&gt;proc~ply_l</title>
+<path fill="none" stroke="#000000" d="M525.75,-86.15C533.53,-89.05 541.66,-92.39 549,-96 556.99,-99.93 574.1,-110.75 588.96,-120.43"/>
+<polygon fill="#000000" stroke="#000000" points="587.08,-123.38 597.36,-125.93 590.91,-117.52 587.08,-123.38"/>
+</g>
+<!-- proc~ply_l_int -->
+<g id="program~~ply_ifpt_test~~CallsGraph_node13" class="node">
+<title>proc~ply_l_int</title>
+<g id="a_program~~ply_ifpt_test~~CallsGraph_node13"><a xlink:href="../proc/ply_l_int.html" xlink:title="ply_l_int">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="644,-108 589,-108 589,-84 644,-84 644,-108"/>
+<text text-anchor="middle" x="616.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_l_int</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_fpt_init&#45;&gt;proc~ply_l_int -->
+<g id="program~~ply_ifpt_test~~CallsGraph_edge12" class="edge">
+<title>proc~ply_fpt_init&#45;&gt;proc~ply_l_int</title>
+<path fill="none" stroke="#000000" d="M525.71,-80.79C542.22,-83.59 562.03,-86.94 578.84,-89.79"/>
+<polygon fill="#000000" stroke="#000000" points="578.42,-93.27 588.87,-91.49 579.59,-86.37 578.42,-93.27"/>
+</g>
+<!-- proc~ply_m -->
+<g id="program~~ply_ifpt_test~~CallsGraph_node14" class="node">
+<title>proc~ply_m</title>
+<g id="a_program~~ply_ifpt_test~~CallsGraph_node14"><a xlink:href="../proc/ply_m.html" xlink:title="ply_m">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="643.5,-66 589.5,-66 589.5,-42 643.5,-42 643.5,-66"/>
+<text text-anchor="middle" x="616.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_m</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_fpt_init&#45;&gt;proc~ply_m -->
+<g id="program~~ply_ifpt_test~~CallsGraph_edge13" class="edge">
+<title>proc~ply_fpt_init&#45;&gt;proc~ply_m</title>
+<path fill="none" stroke="#000000" d="M525.71,-69.21C542.33,-66.39 562.32,-63.01 579.21,-60.15"/>
+<polygon fill="#000000" stroke="#000000" points="579.99,-63.56 589.26,-58.44 578.82,-56.66 579.99,-63.56"/>
+</g>
+<!-- proc~ply_m_int -->
+<g id="program~~ply_ifpt_test~~CallsGraph_node15" class="node">
+<title>proc~ply_m_int</title>
+<g id="a_program~~ply_ifpt_test~~CallsGraph_node15"><a xlink:href="../proc/ply_m_int.html" xlink:title="ply_m_int">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="648,-24 585,-24 585,0 648,0 648,-24"/>
+<text text-anchor="middle" x="616.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_m_int</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_fpt_init&#45;&gt;proc~ply_m_int -->
+<g id="program~~ply_ifpt_test~~CallsGraph_edge14" class="edge">
+<title>proc~ply_fpt_init&#45;&gt;proc~ply_m_int</title>
+<path fill="none" stroke="#000000" d="M515.41,-62.85C534.54,-53.14 561.56,-39.41 582.71,-28.66"/>
+<polygon fill="#000000" stroke="#000000" points="584.33,-31.76 591.66,-24.11 581.16,-25.52 584.33,-31.76"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprogramply_ifpt_testCallsGraph = svgPanZoom('#programply_ifpt_testCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<br>
+
+    <section>
+    <h2>Variables</h2>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ipower~11"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iPower</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-res~113"></span>
+              real(kind=rk)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>res</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-newres~16"></span>
+              real(kind=rk)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>newRes</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-general~46"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_general_type.html'>tem_general_type</a>)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>general</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    </section>
+    <br>
+    
+    
+    
+
+    
+
+
+    <section>
+    <h2>Subroutines</h2>
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-ply_check_pnttoleg~2"></span> <h3> subroutine <a href='../proc/ply_check_pnttoleg~2.html'>ply_check_pntToLeg</a>(power, res)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>do iPoly = 1, maxPolyDegree+1
+  write(<em>,</em>) 'Poly degree: ', iPoly, &amp;
+           &amp; ' iFPT: ', legVal(iPoly), &amp;
+           &amp; ' Ref.: ', legCoeffs(iPoly), &amp;
+           &amp; ' error: ', legVal(iPoly)-legCoeffs(iPoly)
+end do</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-power~22"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>power</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-res~114"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>res</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+    </section>    
+    
+
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

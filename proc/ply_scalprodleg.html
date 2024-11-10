@@ -1,0 +1,718 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>ply_scalProdLeg &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>ply_scalProdLeg
+      <small>Function</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.0% of total for procedures.">5 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/ply_modg_basis_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/ply_modg_basis_module.f90.html'>ply_modg_basis_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/ply_modg_basis_module.html'>ply_modg_basis_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">ply_scalProdLeg</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public pure function ply_scalProdLeg(ansFunc) result(scalProd)  
+</h2>
+    
+
+    <p>Function to calculate the L2 scalar product of a Legendre polynomial
+with itself on the reference element [-1,+1].</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ansfunc~5"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ansFunc</strong></td>
+            <td>
+                <p>The Legendre polynomial to calculate the scalar product for.
+The first Legendre polynomial has index 1.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <h3>Return Value
+        <small>
+          <span class="anchor" id="variable-scalprod~10"></span>
+          real(kind=rk)
+        </small>
+      </h3>
+      <p>The scalar product on the refenece element [-1,+1].</p>
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~ply_scalprodleg~~CalledByGraph Pages: 1 -->
+<svg id="procply_scalprodlegCalledByGraph" width="641pt" height="237pt"
+ viewBox="0.00 0.00 641.00 236.98" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~ply_scalprodleg~~CalledByGraph" class="graph" transform="scale(0.58 0.58) rotate(0) translate(4 406)">
+<title>proc~~ply_scalprodleg~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-406 1105,-406 1105,4 -4,4"/>
+<!-- proc~ply_scalprodleg -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node1" class="node">
+<title>proc~ply_scalprodleg</title>
+<polygon fill="none" stroke="black" points="1101,-223 1004,-223 1004,-199 1101,-199 1101,-223"/>
+<text text-anchor="middle" x="1052.5" y="-208.6" font-family="Helvetica,sans-Serif" font-size="10.50">ply_scalProdLeg</text>
+</g>
+<!-- proc~ply_init_l2p -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node2" class="node">
+<title>proc~ply_init_l2p</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node2"><a xlink:href="../proc/ply_init_l2p.html" xlink:title="ply_init_l2p">
+<polygon fill="#d9534f" stroke="#d9534f" points="915,-223 843,-223 843,-199 915,-199 915,-223"/>
+<text text-anchor="middle" x="879" y="-208.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_init_l2p</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_init_l2p&#45;&gt;proc~ply_scalprodleg -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge1" class="edge">
+<title>proc~ply_init_l2p&#45;&gt;proc~ply_scalprodleg</title>
+<path fill="none" stroke="#000000" d="M915.12,-211C937.7,-211 967.58,-211 993.61,-211"/>
+<polygon fill="#000000" stroke="#000000" points="993.75,-214.5 1003.75,-211 993.75,-207.5 993.75,-214.5"/>
+</g>
+<!-- proc~ply_init_modg_covolumecoeffs -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node3" class="node">
+<title>proc~ply_init_modg_covolumecoeffs</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node3"><a xlink:href="../proc/ply_init_modg_covolumecoeffs.html" xlink:title="ply_init_modg_covolumeCoeffs">
+<polygon fill="#d9534f" stroke="#d9534f" points="968,-129 790,-129 790,-105 968,-105 968,-129"/>
+<text text-anchor="middle" x="879" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_init_modg_covolumeCoeffs</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_init_modg_covolumecoeffs&#45;&gt;proc~ply_scalprodleg -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge2" class="edge">
+<title>proc~ply_init_modg_covolumecoeffs&#45;&gt;proc~ply_scalprodleg</title>
+<path fill="none" stroke="#000000" d="M902.07,-129.1C932.17,-145.59 986.25,-175.24 1020.44,-193.97"/>
+<polygon fill="#000000" stroke="#000000" points="1019.06,-197.21 1029.52,-198.95 1022.43,-191.07 1019.06,-197.21"/>
+</g>
+<!-- program~approximate_1d_jump -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node4" class="node">
+<title>program~approximate_1d_jump</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node4"><a xlink:href="../program/approximate_1d_jump.html" xlink:title="approximate_1D_jump">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="557.5,-402 425.5,-402 425.5,-378 557.5,-378 557.5,-402"/>
+<text text-anchor="middle" x="491.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">approximate_1D_jump</text>
+</a>
+</g>
+</g>
+<!-- program~approximate_1d_jump&#45;&gt;proc~ply_scalprodleg -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge3" class="edge">
+<title>program~approximate_1d_jump&#45;&gt;proc~ply_scalprodleg</title>
+<path fill="none" stroke="#000000" d="M543,-377.94C553.92,-375.16 565.38,-372.1 576,-369 737.11,-322.04 925.42,-256.14 1008.45,-226.5"/>
+<polygon fill="#000000" stroke="#000000" points="1009.81,-229.74 1018.04,-223.07 1007.45,-223.14 1009.81,-229.74"/>
+</g>
+<!-- proc~ply_poly_project_fillbody -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node6" class="node">
+<title>proc~ply_poly_project_fillbody</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node6"><a xlink:href="../proc/ply_poly_project_fillbody.html" xlink:title="ply_poly_project_fillbody">
+<polygon fill="#d9534f" stroke="#d9534f" points="754,-234 612,-234 612,-210 754,-210 754,-234"/>
+<text text-anchor="middle" x="683" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_poly_project_fillbody</text>
+</a>
+</g>
+</g>
+<!-- program~approximate_1d_jump&#45;&gt;proc~ply_poly_project_fillbody -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge16" class="edge">
+<title>program~approximate_1d_jump&#45;&gt;proc~ply_poly_project_fillbody</title>
+<path fill="none" stroke="#000000" d="M557.91,-380.64C564.55,-377.7 570.76,-373.9 576,-369 613.88,-333.58 578.4,-297.51 612,-258 618.71,-250.11 627.57,-243.74 636.73,-238.68"/>
+<polygon fill="#000000" stroke="#000000" points="638.57,-241.67 645.92,-234.05 635.42,-235.42 638.57,-241.67"/>
+</g>
+<!-- proc~atl_init_spacebasis -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node5" class="node">
+<title>proc~atl_init_spacebasis</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node5"><a xlink:href="../proc/atl_init_spacebasis.html" xlink:title="atl_init_spacebasis">
+<polygon fill="#d9534f" stroke="#d9534f" points="547.5,-24 435.5,-24 435.5,0 547.5,0 547.5,-24"/>
+<text text-anchor="middle" x="491.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_init_spacebasis</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_init_spacebasis&#45;&gt;proc~ply_init_modg_covolumecoeffs -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge6" class="edge">
+<title>proc~atl_init_spacebasis&#45;&gt;proc~ply_init_modg_covolumecoeffs</title>
+<path fill="none" stroke="#000000" d="M541.12,-24.01C552.57,-26.9 564.73,-30.02 576,-33 664.21,-56.35 766.42,-85.15 826.45,-102.24"/>
+<polygon fill="#000000" stroke="#000000" points="825.5,-105.61 836.07,-104.98 827.42,-98.88 825.5,-105.61"/>
+</g>
+<!-- proc~ply_poly_project_fillbody&#45;&gt;proc~ply_init_l2p -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge4" class="edge">
+<title>proc~ply_poly_project_fillbody&#45;&gt;proc~ply_init_l2p</title>
+<path fill="none" stroke="#000000" d="M754.04,-218.03C780.32,-216.54 809.47,-214.89 832.9,-213.56"/>
+<polygon fill="#000000" stroke="#000000" points="833.11,-217.05 842.9,-212.99 832.71,-210.06 833.11,-217.05"/>
+</g>
+<!-- program~ply_l2p_test -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node7" class="node">
+<title>program~ply_l2p_test</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node7"><a xlink:href="../program/ply_l2p_test.html" xlink:title="ply_l2p_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="720.5,-192 645.5,-192 645.5,-168 720.5,-168 720.5,-192"/>
+<text text-anchor="middle" x="683" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_l2p_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_l2p_test&#45;&gt;proc~ply_init_l2p -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge5" class="edge">
+<title>program~ply_l2p_test&#45;&gt;proc~ply_init_l2p</title>
+<path fill="none" stroke="#000000" d="M720.95,-185.9C752.73,-190.98 798.69,-198.33 832.69,-203.76"/>
+<polygon fill="#000000" stroke="#000000" points="832.4,-207.26 842.83,-205.38 833.5,-200.35 832.4,-207.26"/>
+</g>
+<!-- proc~atl_initialize -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node8" class="node">
+<title>proc~atl_initialize</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node8"><a xlink:href="../proc/atl_initialize.html" xlink:title="atl_initialize">
+<polygon fill="#d9534f" stroke="#d9534f" points="305,-45 229,-45 229,-21 305,-21 305,-45"/>
+<text text-anchor="middle" x="267" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_initialize&#45;&gt;proc~atl_init_spacebasis -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge7" class="edge">
+<title>proc~atl_initialize&#45;&gt;proc~atl_init_spacebasis</title>
+<path fill="none" stroke="#000000" d="M305.24,-29.49C337.83,-26.41 385.94,-21.87 424.96,-18.19"/>
+<polygon fill="#000000" stroke="#000000" points="425.56,-21.65 435.18,-17.22 424.9,-14.68 425.56,-21.65"/>
+</g>
+<!-- proc~ply_fill_project_list -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node15" class="node">
+<title>proc~ply_fill_project_list</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node15"><a xlink:href="../proc/ply_fill_project_list.html" xlink:title="ply_fill_project_list">
+<polygon fill="#d9534f" stroke="#d9534f" points="546,-66 437,-66 437,-42 546,-42 546,-66"/>
+<text text-anchor="middle" x="491.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fill_project_list</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_initialize&#45;&gt;proc~ply_fill_project_list -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge25" class="edge">
+<title>proc~atl_initialize&#45;&gt;proc~ply_fill_project_list</title>
+<path fill="none" stroke="#000000" d="M305.24,-36.51C338.36,-39.64 387.49,-44.28 426.83,-47.99"/>
+<polygon fill="#000000" stroke="#000000" points="426.59,-51.48 436.87,-48.94 427.24,-44.51 426.59,-51.48"/>
+</g>
+<!-- proc~check_fpt -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node9" class="node">
+<title>proc~check_fpt</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node9"><a xlink:href="../proc/check_fpt.html" xlink:title="check_fpt">
+<polygon fill="#d9534f" stroke="#d9534f" points="523.5,-234 459.5,-234 459.5,-210 523.5,-210 523.5,-234"/>
+<text text-anchor="middle" x="491.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">check_fpt</text>
+</a>
+</g>
+</g>
+<!-- proc~check_fpt&#45;&gt;proc~ply_poly_project_fillbody -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge8" class="edge">
+<title>proc~check_fpt&#45;&gt;proc~ply_poly_project_fillbody</title>
+<path fill="none" stroke="#000000" d="M523.79,-222C545.05,-222 574.18,-222 601.66,-222"/>
+<polygon fill="#000000" stroke="#000000" points="601.69,-225.5 611.69,-222 601.69,-218.5 601.69,-225.5"/>
+</g>
+<!-- proc~check_fpt_2d -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node10" class="node">
+<title>proc~check_fpt_2d</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node10"><a xlink:href="../proc/check_fpt_2d.html" xlink:title="check_fpt_2d">
+<polygon fill="#d9534f" stroke="#d9534f" points="532.5,-192 450.5,-192 450.5,-168 532.5,-168 532.5,-192"/>
+<text text-anchor="middle" x="491.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">check_fpt_2d</text>
+</a>
+</g>
+</g>
+<!-- proc~check_fpt_2d&#45;&gt;proc~ply_poly_project_fillbody -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge9" class="edge">
+<title>proc~check_fpt_2d&#45;&gt;proc~ply_poly_project_fillbody</title>
+<path fill="none" stroke="#000000" d="M532.69,-188.91C557.47,-194.4 589.81,-201.57 618.05,-207.83"/>
+<polygon fill="#000000" stroke="#000000" points="617.33,-211.25 627.85,-210 618.84,-204.42 617.33,-211.25"/>
+</g>
+<!-- proc~check_fpt_2d~2 -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node11" class="node">
+<title>proc~check_fpt_2d~2</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node11"><a xlink:href="../proc/check_fpt_2d~2.html" xlink:title="check_fpt_2d">
+<polygon fill="#d9534f" stroke="#d9534f" points="532.5,-150 450.5,-150 450.5,-126 532.5,-126 532.5,-150"/>
+<text text-anchor="middle" x="491.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">check_fpt_2d</text>
+</a>
+</g>
+</g>
+<!-- proc~check_fpt_2d~2&#45;&gt;proc~ply_poly_project_fillbody -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge10" class="edge">
+<title>proc~check_fpt_2d~2&#45;&gt;proc~ply_poly_project_fillbody</title>
+<path fill="none" stroke="#000000" d="M532.72,-142.94C547.15,-146.01 563.04,-150.98 576,-159 596.9,-171.94 591.39,-187.59 612,-201 614.63,-202.71 617.4,-204.28 620.26,-205.73"/>
+<polygon fill="#000000" stroke="#000000" points="619.11,-209.05 629.66,-209.96 621.97,-202.67 619.11,-209.05"/>
+</g>
+<!-- proc~check_fpt~2 -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node12" class="node">
+<title>proc~check_fpt~2</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node12"><a xlink:href="../proc/check_fpt~2.html" xlink:title="check_fpt">
+<polygon fill="#d9534f" stroke="#d9534f" points="523.5,-108 459.5,-108 459.5,-84 523.5,-84 523.5,-108"/>
+<text text-anchor="middle" x="491.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">check_fpt</text>
+</a>
+</g>
+</g>
+<!-- proc~check_fpt~2&#45;&gt;proc~ply_poly_project_fillbody -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge11" class="edge">
+<title>proc~check_fpt~2&#45;&gt;proc~ply_poly_project_fillbody</title>
+<path fill="none" stroke="#000000" d="M523.74,-97.24C540.89,-99.42 561.56,-104.68 576,-117 606.9,-143.36 581.7,-173.95 612,-201 613.49,-202.33 615.06,-203.58 616.7,-204.74"/>
+<polygon fill="#000000" stroke="#000000" points="614.99,-207.8 625.37,-209.95 618.6,-201.8 614.99,-207.8"/>
+</g>
+<!-- proc~check_fxt_2d -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node13" class="node">
+<title>proc~check_fxt_2d</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node13"><a xlink:href="../proc/check_fxt_2d.html" xlink:title="check_fxt_2d">
+<polygon fill="#d9534f" stroke="#d9534f" points="532.5,-360 450.5,-360 450.5,-336 532.5,-336 532.5,-360"/>
+<text text-anchor="middle" x="491.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">check_fxt_2d</text>
+</a>
+</g>
+</g>
+<!-- proc~check_fxt_2d&#45;&gt;proc~ply_poly_project_fillbody -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge12" class="edge">
+<title>proc~check_fxt_2d&#45;&gt;proc~ply_poly_project_fillbody</title>
+<path fill="none" stroke="#000000" d="M532.52,-344.85C547.42,-342 563.68,-336.72 576,-327 603.15,-305.57 587.47,-282.39 612,-258 619.87,-250.18 629.78,-243.7 639.65,-238.5"/>
+<polygon fill="#000000" stroke="#000000" points="641.22,-241.63 648.65,-234.08 638.13,-235.35 641.22,-241.63"/>
+</g>
+<!-- proc~check_fxt_3d -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node14" class="node">
+<title>proc~check_fxt_3d</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node14"><a xlink:href="../proc/check_fxt_3d.html" xlink:title="check_fxt_3D">
+<polygon fill="#d9534f" stroke="#d9534f" points="533,-318 450,-318 450,-294 533,-294 533,-318"/>
+<text text-anchor="middle" x="491.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">check_fxt_3D</text>
+</a>
+</g>
+</g>
+<!-- proc~check_fxt_3d&#45;&gt;proc~ply_poly_project_fillbody -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge13" class="edge">
+<title>proc~check_fxt_3d&#45;&gt;proc~ply_poly_project_fillbody</title>
+<path fill="none" stroke="#000000" d="M533.12,-299.18C547.13,-295.95 562.64,-291.37 576,-285 594.05,-276.39 595.05,-268.61 612,-258 622.95,-251.15 635.36,-244.45 646.65,-238.72"/>
+<polygon fill="#000000" stroke="#000000" points="648.43,-241.74 655.83,-234.16 645.31,-235.48 648.43,-241.74"/>
+</g>
+<!-- proc~ply_fill_project_list&#45;&gt;proc~ply_poly_project_fillbody -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge14" class="edge">
+<title>proc~ply_fill_project_list&#45;&gt;proc~ply_poly_project_fillbody</title>
+<path fill="none" stroke="#000000" d="M546.19,-58.82C557.17,-62.03 567.84,-67.1 576,-75 617.83,-115.52 571.09,-159.55 612,-201 613.09,-202.1 614.23,-203.14 615.42,-204.13"/>
+<polygon fill="#000000" stroke="#000000" points="613.64,-207.16 623.87,-209.91 617.59,-201.38 613.64,-207.16"/>
+</g>
+<!-- proc~test_project_stabviscnumflux -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node16" class="node">
+<title>proc~test_project_stabviscnumflux</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node16"><a xlink:href="../proc/test_project_stabviscnumflux.html" xlink:title="test_project_stabViscNumFlux">
+<polygon fill="#d9534f" stroke="#d9534f" points="576,-276 407,-276 407,-252 576,-252 576,-276"/>
+<text text-anchor="middle" x="491.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_project_stabViscNumFlux</text>
+</a>
+</g>
+</g>
+<!-- proc~test_project_stabviscnumflux&#45;&gt;proc~ply_poly_project_fillbody -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge15" class="edge">
+<title>proc~test_project_stabviscnumflux&#45;&gt;proc~ply_poly_project_fillbody</title>
+<path fill="none" stroke="#000000" d="M546.8,-251.96C568.91,-247.07 594.62,-241.37 617.66,-236.26"/>
+<polygon fill="#000000" stroke="#000000" points="618.68,-239.62 627.69,-234.04 617.17,-232.78 618.68,-239.62"/>
+</g>
+<!-- proc~atl_initialize_program -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node17" class="node">
+<title>proc~atl_initialize_program</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node17"><a xlink:href="../proc/atl_initialize_program.html" xlink:title="atl_initialize_program">
+<polygon fill="#d9534f" stroke="#d9534f" points="127,-66 0,-66 0,-42 127,-42 127,-66"/>
+<text text-anchor="middle" x="63.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize_program</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_initialize_program&#45;&gt;proc~atl_initialize -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge17" class="edge">
+<title>proc~atl_initialize_program&#45;&gt;proc~atl_initialize</title>
+<path fill="none" stroke="#000000" d="M127.15,-47.47C156.76,-44.39 191.51,-40.76 218.84,-37.91"/>
+<polygon fill="#000000" stroke="#000000" points="219.34,-41.38 228.93,-36.86 218.62,-34.42 219.34,-41.38"/>
+</g>
+<!-- proc~atl_modg_kernel_utests -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node18" class="node">
+<title>proc~atl_modg_kernel_utests</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node18"><a xlink:href="../proc/atl_modg_kernel_utests.html" xlink:title="atl_modg_kernel_utests">
+<polygon fill="#d9534f" stroke="#d9534f" points="336,-276 198,-276 198,-252 336,-252 336,-276"/>
+<text text-anchor="middle" x="267" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_kernel_utests</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_modg_kernel_utests&#45;&gt;proc~test_project_stabviscnumflux -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge26" class="edge">
+<title>proc~atl_modg_kernel_utests&#45;&gt;proc~test_project_stabviscnumflux</title>
+<path fill="none" stroke="#000000" d="M336.27,-264C355.28,-264 376.28,-264 396.49,-264"/>
+<polygon fill="#000000" stroke="#000000" points="396.66,-267.5 406.66,-264 396.66,-260.5 396.66,-267.5"/>
+</g>
+<!-- program~atl_harvesting -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node19" class="node">
+<title>program~atl_harvesting</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node19"><a xlink:href="../program/atl_harvesting.html" xlink:title="atl_harvesting">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="107.5,-24 19.5,-24 19.5,0 107.5,0 107.5,-24"/>
+<text text-anchor="middle" x="63.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_harvesting</text>
+</a>
+</g>
+</g>
+<!-- program~atl_harvesting&#45;&gt;proc~atl_initialize -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge18" class="edge">
+<title>program~atl_harvesting&#45;&gt;proc~atl_initialize</title>
+<path fill="none" stroke="#000000" d="M107.73,-16.51C140.42,-19.91 185.28,-24.59 218.89,-28.09"/>
+<polygon fill="#000000" stroke="#000000" points="218.62,-31.58 228.93,-29.14 219.35,-24.62 218.62,-31.58"/>
+</g>
+<!-- program~ply_project_2d_fpt_lobattopoints_test -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node20" class="node">
+<title>program~ply_project_2d_fpt_lobattopoints_test</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node20"><a xlink:href="../program/ply_project_2d_fpt_lobattopoints_test.html" xlink:title="ply_project_2d_fpt_lobattoPoints_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="371,-192 163,-192 163,-168 371,-168 371,-192"/>
+<text text-anchor="middle" x="267" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_project_2d_fpt_lobattoPoints_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_project_2d_fpt_lobattopoints_test&#45;&gt;proc~check_fpt_2d -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge20" class="edge">
+<title>program~ply_project_2d_fpt_lobattopoints_test&#45;&gt;proc~check_fpt_2d</title>
+<path fill="none" stroke="#000000" d="M371.11,-180C395.23,-180 419.86,-180 440.43,-180"/>
+<polygon fill="#000000" stroke="#000000" points="440.49,-183.5 450.49,-180 440.49,-176.5 440.49,-183.5"/>
+</g>
+<!-- program~ply_project_2d_fpt_test -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node21" class="node">
+<title>program~ply_project_2d_fpt_test</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node21"><a xlink:href="../program/ply_project_2d_fpt_test.html" xlink:title="ply_project_2d_fpt_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="333.5,-150 200.5,-150 200.5,-126 333.5,-126 333.5,-150"/>
+<text text-anchor="middle" x="267" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_project_2d_fpt_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_project_2d_fpt_test&#45;&gt;proc~check_fpt_2d~2 -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge21" class="edge">
+<title>program~ply_project_2d_fpt_test&#45;&gt;proc~check_fpt_2d~2</title>
+<path fill="none" stroke="#000000" d="M333.55,-138C367.53,-138 408.39,-138 439.89,-138"/>
+<polygon fill="#000000" stroke="#000000" points="440.2,-141.5 450.2,-138 440.2,-134.5 440.2,-141.5"/>
+</g>
+<!-- program~ply_project_fpt_lobattopoints_test -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node22" class="node">
+<title>program~ply_project_fpt_lobattopoints_test</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node22"><a xlink:href="../program/ply_project_fpt_lobattopoints_test.html" xlink:title="ply_project_fpt_lobattoPoints_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="361.5,-234 172.5,-234 172.5,-210 361.5,-210 361.5,-234"/>
+<text text-anchor="middle" x="267" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_project_fpt_lobattoPoints_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_project_fpt_lobattopoints_test&#45;&gt;proc~check_fpt -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge19" class="edge">
+<title>program~ply_project_fpt_lobattopoints_test&#45;&gt;proc~check_fpt</title>
+<path fill="none" stroke="#000000" d="M361.72,-222C392.27,-222 424.63,-222 449.27,-222"/>
+<polygon fill="#000000" stroke="#000000" points="449.33,-225.5 459.33,-222 449.33,-218.5 449.33,-225.5"/>
+</g>
+<!-- program~ply_project_fpt_test -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node23" class="node">
+<title>program~ply_project_fpt_test</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node23"><a xlink:href="../program/ply_project_fpt_test.html" xlink:title="ply_project_fpt_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="324.5,-108 209.5,-108 209.5,-84 324.5,-84 324.5,-108"/>
+<text text-anchor="middle" x="267" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_project_fpt_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_project_fpt_test&#45;&gt;proc~check_fpt~2 -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge22" class="edge">
+<title>program~ply_project_fpt_test&#45;&gt;proc~check_fpt~2</title>
+<path fill="none" stroke="#000000" d="M324.72,-96C363.46,-96 413.92,-96 448.94,-96"/>
+<polygon fill="#000000" stroke="#000000" points="449.29,-99.5 459.29,-96 449.29,-92.5 449.29,-99.5"/>
+</g>
+<!-- program~test_fxtd_n2m2n -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_node24" class="node">
+<title>program~test_fxtd_n2m2n</title>
+<g id="a_proc~~ply_scalprodleg~~CalledByGraph_node24"><a xlink:href="../program/test_fxtd_n2m2n.html" xlink:title="test_fxtd_n2m2n">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="317,-339 217,-339 217,-315 317,-315 317,-339"/>
+<text text-anchor="middle" x="267" y="-324.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_fxtd_n2m2n</text>
+</a>
+</g>
+</g>
+<!-- program~test_fxtd_n2m2n&#45;&gt;proc~check_fxt_2d -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge23" class="edge">
+<title>program~test_fxtd_n2m2n&#45;&gt;proc~check_fxt_2d</title>
+<path fill="none" stroke="#000000" d="M317.1,-331.63C353.72,-335.09 403.56,-339.79 440.41,-343.27"/>
+<polygon fill="#000000" stroke="#000000" points="440.15,-346.76 450.43,-344.22 440.81,-339.79 440.15,-346.76"/>
+</g>
+<!-- program~test_fxtd_n2m2n&#45;&gt;proc~check_fxt_3d -->
+<g id="proc~~ply_scalprodleg~~CalledByGraph_edge24" class="edge">
+<title>program~test_fxtd_n2m2n&#45;&gt;proc~check_fxt_3d</title>
+<path fill="none" stroke="#000000" d="M317.1,-322.37C353.48,-318.93 402.92,-314.27 439.7,-310.79"/>
+<polygon fill="#000000" stroke="#000000" points="440.09,-314.27 449.71,-309.85 439.43,-307.3 440.09,-314.27"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocply_scalprodlegCalledByGraph = svgPanZoom('#procply_scalprodlegCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

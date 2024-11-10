@@ -1,0 +1,1209 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_space_basis &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_space_basis
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+            <li class="list-inline-item" id="meta-author"><i class="fa fa-pencil"></i> Jens Zudrop</li>
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for modules and submodules.">35 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_space_basis.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_space_basis.f90.html'>atl_space_basis.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_space_basis</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_space_basis.html#proc-atl_init_spacebasis">atl_init_spacebasis</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      <p>author Peter Vitt 2014, 2017, 2018
+Module collecting all data types and subroutines related to the space basis.</p>
+<p>The polynomial basis defined here is used for the cubic modal discontinuous
+Galerkin (CuMoDiG) scheme and the reconstructed polynomials in the Finite
+Volume schemes within Ateles.
+It makes use of a module variable for the basis, which is thereby accessible
+by all modules, which use this module.</p>
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='atl_scheme_module.html'>atl_scheme_module</a></li>
+                  <li class="list-inline-item"><a href='ply_modg_basis_module.html'>ply_modg_basis_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_aux_module.html'>tem_aux_module</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_space_basis~~UsesGraph Pages: 1 -->
+<svg id="moduleatl_space_basisUsesGraph" width="641pt" height="544pt"
+ viewBox="0.00 0.00 641.00 543.62" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_space_basis~~UsesGraph" class="graph" transform="scale(0.62 0.62) rotate(0) translate(4 878)">
+<title>module~~atl_space_basis~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-878 1036,-878 1036,4 -4,4"/>
+<!-- module~atl_space_basis -->
+<g id="module~~atl_space_basis~~UsesGraph_node1" class="node">
+<title>module~atl_space_basis</title>
+<polygon fill="none" stroke="black" points="1032,-408 937,-408 937,-384 1032,-384 1032,-408"/>
+<text text-anchor="middle" x="984.5" y="-393.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_space_basis</text>
+</g>
+<!-- module~atl_scheme_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node2" class="node">
+<title>module~atl_scheme_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node2"><a xlink:href="../module/atl_scheme_module.html" xlink:title="atl_scheme_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="901,-408 782,-408 782,-384 901,-384 901,-408"/>
+<text text-anchor="middle" x="841.5" y="-393.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_scheme_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_space_basis&#45;&gt;module~atl_scheme_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge1" class="edge">
+<title>module~atl_space_basis&#45;&gt;module~atl_scheme_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M936.94,-396C928.7,-396 919.96,-396 911.25,-396"/>
+<polygon fill="#000000" stroke="#000000" points="911.08,-392.5 901.08,-396 911.08,-399.5 911.08,-392.5"/>
+</g>
+<!-- module~ply_modg_basis_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node3" class="node">
+<title>module~ply_modg_basis_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node3"><a xlink:href="../module/ply_modg_basis_module.html" xlink:title="ply_modg_basis_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="553,-836 411,-836 411,-812 553,-812 553,-836"/>
+<text text-anchor="middle" x="482" y="-821.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_modg_basis_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_space_basis&#45;&gt;module~ply_modg_basis_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge2" class="edge">
+<title>module~atl_space_basis&#45;&gt;module~ply_modg_basis_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M976.49,-408.08C950.65,-451.85 856.44,-604.46 746,-699 677.53,-757.62 651.96,-762.75 569,-798 559.54,-802.02 549.24,-805.7 539.17,-808.94"/>
+<polygon fill="#000000" stroke="#000000" points="538.13,-805.59 529.62,-811.91 540.21,-812.28 538.13,-805.59"/>
+</g>
+<!-- tem_aux_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node4" class="node">
+<title>tem_aux_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node4"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_aux_module.html" xlink:title="tem_aux_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="114,-46 10,-46 10,-22 114,-22 114,-46"/>
+<text text-anchor="middle" x="62" y="-31.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_aux_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_space_basis&#45;&gt;tem_aux_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge3" class="edge">
+<title>module~atl_space_basis&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M980.62,-383.71C964.18,-316.87 875.71,0 676.5,0 676.5,0 676.5,0 481,0 353.75,0 205.42,-15.85 124.11,-25.9"/>
+<polygon fill="#000000" stroke="#000000" points="123.54,-22.45 114.05,-27.16 124.4,-29.39 123.54,-22.45"/>
+</g>
+<!-- module~atl_scheme_module&#45;&gt;module~ply_modg_basis_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge11" class="edge">
+<title>module~atl_scheme_module&#45;&gt;module~ply_modg_basis_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M674.5,-685C616.11,-721.21 627.34,-761.7 569,-798 562.63,-801.97 555.61,-805.36 548.42,-808.26"/>
+<polygon fill="#000000" stroke="#000000" points="546.71,-805.16 538.55,-811.9 549.14,-811.72 546.71,-805.16"/>
+</g>
+<!-- module~atl_scheme_module&#45;&gt;tem_aux_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge12" class="edge">
+<title>module~atl_scheme_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M830.88,-383.67C779.53,-319.44 530.05,-26.42 260.5,-38"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.5,-38C213.65,-34.01 162.79,-33.08 124.19,-33.11"/>
+<polygon fill="#000000" stroke="#000000" points="124.14,-29.61 114.15,-33.14 124.16,-36.61 124.14,-29.61"/>
+</g>
+<!-- aot_table_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node5" class="node">
+<title>aot_table_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node5"><a xlink:href="https://apes-suite.github.io/aotus/module/aot_table_module.html" xlink:title="aot_table_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="313.5,-444 205.5,-444 205.5,-420 313.5,-420 313.5,-444"/>
+<text text-anchor="middle" x="259.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_scheme_module&#45;&gt;aot_table_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge4" class="edge">
+<title>module~atl_scheme_module&#45;&gt;aot_table_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M674.5,-396C589.5,-391.62 566.7,-380.58 483,-396"/>
+</g>
+<!-- aotus_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node6" class="node">
+<title>aotus_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node6"><a xlink:href="https://apes-suite.github.io/aotus/module/aotus_module.html" xlink:title="aotus_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="106,-423 18,-423 18,-399 106,-399 106,-423"/>
+<text text-anchor="middle" x="62" y="-408.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aotus_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_scheme_module&#45;&gt;aotus_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge5" class="edge">
+<title>module~atl_scheme_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M834.39,-408.32C807.99,-461.34 703.83,-668.05 676.5,-685"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M674.5,-685C624.26,-716.16 621.21,-631.73 569,-604 482.11,-557.85 453.57,-561.11 359,-534 271.54,-508.93 242.02,-525.36 160,-486 130.24,-471.72 100.95,-447.22 82.47,-430.13"/>
+<polygon fill="#000000" stroke="#000000" points="84.69,-427.4 75.01,-423.08 79.88,-432.49 84.69,-427.4"/>
+</g>
+<!-- env_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node7" class="node">
+<title>env_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node7"><a xlink:href="https://apes-suite.github.io/treelm/module/env_module.html" xlink:title="env_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="101,-640 23,-640 23,-616 101,-616 101,-640"/>
+<text text-anchor="middle" x="62" y="-625.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">env_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_scheme_module&#45;&gt;env_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge6" class="edge">
+<title>module~atl_scheme_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M481,-784C469.04,-787.4 272.51,-825.21 260.5,-822"/>
+</g>
+<!-- module~atl_modg_1d_scheme_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node8" class="node">
+<title>module~atl_modg_1d_scheme_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node8"><a xlink:href="../module/atl_modg_1d_scheme_module.html" xlink:title="atl_modg_1d_scheme_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="569,-368 395,-368 395,-344 569,-344 569,-368"/>
+<text text-anchor="middle" x="482" y="-353.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_1d_scheme_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_scheme_module&#45;&gt;module~atl_modg_1d_scheme_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge7" class="edge">
+<title>module~atl_scheme_module&#45;&gt;module~atl_modg_1d_scheme_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M781.64,-397.46C750.38,-397.87 711.33,-397.8 676.5,-396"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M674.5,-396C625.62,-393.48 571.08,-381.12 532.75,-370.8"/>
+<polygon fill="#000000" stroke="#000000" points="533.44,-367.36 522.87,-368.09 531.59,-374.11 533.44,-367.36"/>
+</g>
+<!-- module~atl_modg_2d_scheme_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node9" class="node">
+<title>module~atl_modg_2d_scheme_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node9"><a xlink:href="../module/atl_modg_2d_scheme_module.html" xlink:title="atl_modg_2d_scheme_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="569,-697 395,-697 395,-673 569,-673 569,-697"/>
+<text text-anchor="middle" x="482" y="-682.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_scheme_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_scheme_module&#45;&gt;module~atl_modg_2d_scheme_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge8" class="edge">
+<title>module~atl_scheme_module&#45;&gt;module~atl_modg_2d_scheme_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M674.5,-685C633,-710.74 576.08,-706.94 535.09,-699.03"/>
+<polygon fill="#000000" stroke="#000000" points="535.8,-695.6 525.3,-697 534.38,-702.45 535.8,-695.6"/>
+</g>
+<!-- module~atl_modg_scheme_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node10" class="node">
+<title>module~atl_modg_scheme_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node10"><a xlink:href="../module/atl_modg_scheme_module.html" xlink:title="atl_modg_scheme_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="559.5,-637 404.5,-637 404.5,-613 559.5,-613 559.5,-637"/>
+<text text-anchor="middle" x="482" y="-622.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_scheme_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_scheme_module&#45;&gt;module~atl_modg_scheme_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge9" class="edge">
+<title>module~atl_scheme_module&#45;&gt;module~atl_modg_scheme_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M674.5,-685C661.39,-693.13 574.78,-661.3 522.63,-640.91"/>
+<polygon fill="#000000" stroke="#000000" points="523.6,-637.52 513.01,-637.12 521.03,-644.04 523.6,-637.52"/>
+</g>
+<!-- module~atl_stabilization_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node11" class="node">
+<title>module~atl_stabilization_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node11"><a xlink:href="../module/atl_stabilization_module.html" xlink:title="atl_stabilization_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="746,-328 605,-328 605,-304 746,-304 746,-328"/>
+<text text-anchor="middle" x="675.5" y="-313.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_stabilization_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_scheme_module&#45;&gt;module~atl_stabilization_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge10" class="edge">
+<title>module~atl_scheme_module&#45;&gt;module~atl_stabilization_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M815.59,-383.85C787.49,-370.14 741.64,-347.78 710.32,-332.5"/>
+<polygon fill="#000000" stroke="#000000" points="711.63,-329.24 701.11,-328 708.56,-335.53 711.63,-329.24"/>
+</g>
+<!-- tem_logging_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node14" class="node">
+<title>tem_logging_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node14"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_logging_module.html" xlink:title="tem_logging_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="124,-88 0,-88 0,-64 124,-64 124,-88"/>
+<text text-anchor="middle" x="62" y="-73.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_scheme_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge13" class="edge">
+<title>module~atl_scheme_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.5,-38C209.35,-40.11 154.44,-51.61 115.36,-61.42"/>
+<polygon fill="#000000" stroke="#000000" points="114.1,-58.13 105.28,-64 115.83,-64.91 114.1,-58.13"/>
+</g>
+<!-- tem_stencil_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node15" class="node">
+<title>tem_stencil_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node15"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_stencil_module.html" xlink:title="tem_stencil_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="735,-448 616,-448 616,-424 735,-424 735,-448"/>
+<text text-anchor="middle" x="675.5" y="-433.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_stencil_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_scheme_module&#45;&gt;tem_stencil_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge14" class="edge">
+<title>module~atl_scheme_module&#45;&gt;tem_stencil_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M791.29,-408C773.86,-412.25 754.06,-417.08 735.87,-421.52"/>
+<polygon fill="#000000" stroke="#000000" points="734.84,-418.17 725.95,-423.94 736.5,-424.97 734.84,-418.17"/>
+</g>
+<!-- tem_tools_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node16" class="node">
+<title>tem_tools_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node16"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_tools_module.html" xlink:title="tem_tools_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="117,-560 7,-560 7,-536 117,-536 117,-560"/>
+<text text-anchor="middle" x="62" y="-545.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tools_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_scheme_module&#45;&gt;tem_tools_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge15" class="edge">
+<title>module~atl_scheme_module&#45;&gt;tem_tools_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M674.5,-685C647.79,-701.72 633.98,-686.62 605,-699 544.23,-724.96 546.53,-765.8 483,-784"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M481,-784C412.31,-803.68 214.52,-811.2 160,-765 105.05,-718.44 159.35,-669.75 124,-607 115.1,-591.2 100.66,-576.96 88.07,-566.43"/>
+<polygon fill="#000000" stroke="#000000" points="90.13,-563.59 80.13,-560.07 85.75,-569.05 90.13,-563.59"/>
+</g>
+<!-- module~ply_modg_basis_module&#45;&gt;env_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge16" class="edge">
+<title>module~ply_modg_basis_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M410.77,-832.21C366.85,-835.19 309.5,-835.11 260.5,-822"/>
+</g>
+<!-- module~ply_dof_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node12" class="node">
+<title>module~ply_dof_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node12"><a xlink:href="../module/ply_dof_module.html" xlink:title="ply_dof_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="308,-756 211,-756 211,-732 308,-732 308,-756"/>
+<text text-anchor="middle" x="259.5" y="-741.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_dof_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_modg_basis_module&#45;&gt;module~ply_dof_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge17" class="edge">
+<title>module~ply_modg_basis_module&#45;&gt;module~ply_dof_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M438.33,-811.91C424.43,-807.76 408.98,-802.91 395,-798 361.8,-786.34 324.74,-771.31 297.95,-760.07"/>
+<polygon fill="#000000" stroke="#000000" points="299.14,-756.77 288.56,-756.11 296.42,-763.22 299.14,-756.77"/>
+</g>
+<!-- module~ply_space_integration_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node13" class="node">
+<title>module~ply_space_integration_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node13"><a xlink:href="../module/ply_space_integration_module.html" xlink:title="ply_space_integration_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="347,-874 172,-874 172,-850 347,-850 347,-874"/>
+<text text-anchor="middle" x="259.5" y="-859.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_space_integration_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_modg_basis_module&#45;&gt;module~ply_space_integration_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge18" class="edge">
+<title>module~ply_modg_basis_module&#45;&gt;module~ply_space_integration_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M411.23,-836.02C388.7,-839.91 363.55,-844.24 340.35,-848.24"/>
+<polygon fill="#000000" stroke="#000000" points="339.45,-844.84 330.19,-849.99 340.64,-851.74 339.45,-844.84"/>
+</g>
+<!-- module~atl_modg_1d_scheme_module&#45;&gt;tem_aux_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge24" class="edge">
+<title>module~atl_modg_1d_scheme_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M453.61,-343.98C434.32,-334.1 409.43,-318.28 395,-297 354.32,-237.04 409.81,-189.65 359,-138 327.4,-105.88 298.65,-137.97 260.5,-114"/>
+</g>
+<!-- module~atl_modg_1d_scheme_module&#45;&gt;aot_table_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge19" class="edge">
+<title>module~atl_modg_1d_scheme_module&#45;&gt;aot_table_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M432.3,-368.01C419.87,-371.8 406.71,-376.48 395,-382 377.61,-390.2 376.53,-398.11 359,-406 347.91,-410.99 335.68,-415.18 323.71,-418.63"/>
+<polygon fill="#000000" stroke="#000000" points="322.47,-415.34 313.75,-421.36 324.32,-422.09 322.47,-415.34"/>
+</g>
+<!-- module~atl_modg_1d_scheme_module&#45;&gt;aotus_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge21" class="edge">
+<title>module~atl_modg_1d_scheme_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M437.31,-343.88C382.99,-329.54 293.41,-308.5 260.5,-316"/>
+</g>
+<!-- module~atl_modg_1d_scheme_module&#45;&gt;env_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge22" class="edge">
+<title>module~atl_modg_1d_scheme_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M394.92,-366.5C337.99,-374.06 271.81,-384.23 260.5,-392"/>
+</g>
+<!-- module~atl_modg_1d_scheme_module&#45;&gt;module~ply_dof_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge23" class="edge">
+<title>module~atl_modg_1d_scheme_module&#45;&gt;module~ply_dof_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M476.67,-368.09C463.87,-403.95 425.16,-512.94 395,-604 378.29,-654.44 397.46,-681.34 359,-718 347.92,-728.56 333.08,-734.95 318.28,-738.79"/>
+<polygon fill="#000000" stroke="#000000" points="317.09,-735.47 308.09,-741.05 318.61,-742.3 317.09,-735.47"/>
+</g>
+<!-- module~atl_modg_1d_scheme_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge25" class="edge">
+<title>module~atl_modg_1d_scheme_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M454.37,-343.95C435.19,-333.96 410.13,-318.01 395,-297 360.98,-249.73 401.95,-210.34 359,-171 326.12,-140.89 299.6,-173.42 260.5,-152"/>
+</g>
+<!-- module~atl_modg_1d_scheme_module&#45;&gt;tem_tools_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge26" class="edge">
+<title>module~atl_modg_1d_scheme_module&#45;&gt;tem_tools_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M435.98,-343.97C389.35,-334.06 315.71,-325.76 260.5,-354"/>
+</g>
+<!-- aot_top_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node17" class="node">
+<title>aot_top_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node17"><a xlink:href="https://apes-suite.github.io/aotus/module/aot_top_module.html" xlink:title="aot_top_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="308.5,-600 210.5,-600 210.5,-576 308.5,-576 308.5,-600"/>
+<text text-anchor="middle" x="259.5" y="-585.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_top_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_1d_scheme_module&#45;&gt;aot_top_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge20" class="edge">
+<title>module~atl_modg_1d_scheme_module&#45;&gt;aot_top_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M477.42,-368.21C466.3,-403.97 428.81,-509.25 359,-562 347.25,-570.88 332.72,-576.73 318.46,-580.59"/>
+<polygon fill="#000000" stroke="#000000" points="317.57,-577.21 308.67,-582.95 319.21,-584.01 317.57,-577.21"/>
+</g>
+<!-- module~atl_modg_2d_scheme_module&#45;&gt;tem_aux_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge32" class="edge">
+<title>module~atl_modg_2d_scheme_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M394.75,-690.5C320.51,-690.05 216.65,-676.04 160,-609 80.37,-514.77 198.87,-153.06 124,-55 123.41,-54.22 122.78,-53.47 122.13,-52.75"/>
+<polygon fill="#000000" stroke="#000000" points="124.08,-49.82 114.19,-46.02 119.55,-55.15 124.08,-49.82"/>
+</g>
+<!-- module~atl_modg_2d_scheme_module&#45;&gt;aot_table_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge27" class="edge">
+<title>module~atl_modg_2d_scheme_module&#45;&gt;aot_table_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M433.62,-672.83C419.27,-666.94 404.74,-658.36 395,-646 342.36,-579.17 417.05,-520.19 359,-458 349.58,-447.91 336.75,-441.55 323.46,-437.59"/>
+<polygon fill="#000000" stroke="#000000" points="324.3,-434.2 313.74,-435.12 322.57,-440.98 324.3,-434.2"/>
+</g>
+<!-- module~atl_modg_2d_scheme_module&#45;&gt;aotus_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge29" class="edge">
+<title>module~atl_modg_2d_scheme_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.5,-704C212.89,-679.59 191.56,-682.99 160,-642 127.32,-599.57 144.55,-576.46 124,-527 109.72,-492.62 88.77,-454.8 75.52,-431.98"/>
+<polygon fill="#000000" stroke="#000000" points="78.43,-430.03 70.35,-423.17 72.39,-433.57 78.43,-430.03"/>
+</g>
+<!-- module~atl_modg_2d_scheme_module&#45;&gt;env_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge30" class="edge">
+<title>module~atl_modg_2d_scheme_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M467.5,-697.1C427.01,-732.77 306.54,-834.32 260.5,-822"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.5,-822C214.97,-810.35 195.99,-825.11 160,-798 109.11,-759.66 80.73,-686.29 69.19,-649.77"/>
+<polygon fill="#000000" stroke="#000000" points="72.51,-648.66 66.26,-640.1 65.81,-650.69 72.51,-648.66"/>
+</g>
+<!-- module~atl_modg_2d_scheme_module&#45;&gt;module~ply_dof_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge31" class="edge">
+<title>module~atl_modg_2d_scheme_module&#45;&gt;module~ply_dof_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M436.69,-697.06C413.54,-703.33 384.76,-711.12 359,-718 345.25,-721.67 330.41,-725.61 316.53,-729.27"/>
+<polygon fill="#000000" stroke="#000000" points="315.39,-725.95 306.62,-731.89 317.18,-732.72 315.39,-725.95"/>
+</g>
+<!-- module~atl_modg_2d_scheme_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge33" class="edge">
+<title>module~atl_modg_2d_scheme_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M451.83,-697.12C407.59,-713.47 322.16,-736.99 260.5,-704"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.5,-704C212.89,-679.59 188.15,-685.4 160,-642 98.43,-547.08 142.79,-501.57 124,-390 105.48,-280.06 78.49,-149.43 67.71,-98.19"/>
+<polygon fill="#000000" stroke="#000000" points="71.09,-97.29 65.6,-88.23 64.25,-98.74 71.09,-97.29"/>
+</g>
+<!-- module~atl_modg_2d_scheme_module&#45;&gt;tem_tools_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge34" class="edge">
+<title>module~atl_modg_2d_scheme_module&#45;&gt;tem_tools_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.5,-704C212.89,-679.59 200.66,-673.98 160,-642 142.46,-628.2 140.02,-622.53 124,-607 110.29,-593.71 94.83,-578.75 82.9,-567.22"/>
+<polygon fill="#000000" stroke="#000000" points="85.25,-564.63 75.63,-560.19 80.39,-569.66 85.25,-564.63"/>
+</g>
+<!-- module~atl_modg_2d_scheme_module&#45;&gt;aot_top_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge28" class="edge">
+<title>module~atl_modg_2d_scheme_module&#45;&gt;aot_top_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M448.35,-672.92C431.76,-666.11 411.63,-656.81 395,-646 377.05,-634.34 377.86,-624.12 359,-614 346.52,-607.31 332.21,-602.26 318.44,-598.48"/>
+<polygon fill="#000000" stroke="#000000" points="319.1,-595.03 308.54,-595.94 317.36,-601.81 319.1,-595.03"/>
+</g>
+<!-- module~atl_modg_scheme_module&#45;&gt;tem_aux_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge40" class="edge">
+<title>module~atl_modg_scheme_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M465.5,-612.82C442.6,-594.97 398.22,-560.91 359,-534 316.35,-504.74 294.04,-511.38 260.5,-472"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.5,-472C229.6,-438.05 189.91,-486.07 160,-453 100.43,-387.13 178.78,-124.9 124,-55 123.31,-54.12 122.58,-53.27 121.81,-52.46"/>
+<polygon fill="#000000" stroke="#000000" points="124.04,-49.76 114.1,-46.09 119.58,-55.16 124.04,-49.76"/>
+</g>
+<!-- module~atl_modg_scheme_module&#45;&gt;aot_table_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge35" class="edge">
+<title>module~atl_modg_scheme_module&#45;&gt;aot_table_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M475.64,-612.7C461.45,-581.62 419.79,-499.5 359,-458 348.45,-450.8 336.02,-445.59 323.61,-441.83"/>
+<polygon fill="#000000" stroke="#000000" points="324.26,-438.38 313.69,-439.11 322.41,-445.13 324.26,-438.38"/>
+</g>
+<!-- module~atl_modg_scheme_module&#45;&gt;aotus_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge37" class="edge">
+<title>module~atl_modg_scheme_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M459.65,-612.8C435.82,-599.67 395.77,-579.07 359,-567 316.64,-553.1 302.63,-562.6 260.5,-548"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.5,-548C215.92,-533.25 198.41,-547.56 160,-524 121.92,-500.64 91.06,-457.34 75.01,-431.65"/>
+<polygon fill="#000000" stroke="#000000" points="77.97,-429.79 69.79,-423.06 71.99,-433.42 77.97,-429.79"/>
+</g>
+<!-- module~atl_modg_scheme_module&#45;&gt;env_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge38" class="edge">
+<title>module~atl_modg_scheme_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M404.33,-625.55C318.86,-626.16 183.21,-627.14 111.36,-627.65"/>
+<polygon fill="#000000" stroke="#000000" points="111.21,-624.15 101.23,-627.73 111.26,-631.15 111.21,-624.15"/>
+</g>
+<!-- module~atl_modg_scheme_module&#45;&gt;module~ply_dof_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge39" class="edge">
+<title>module~atl_modg_scheme_module&#45;&gt;module~ply_dof_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M442.83,-637.02C426.88,-643.32 408.87,-652.22 395,-664 373.02,-682.68 382.47,-701.23 359,-718 346.96,-726.61 332.26,-732.36 317.94,-736.22"/>
+<polygon fill="#000000" stroke="#000000" points="317.01,-732.84 308.11,-738.59 318.65,-739.64 317.01,-732.84"/>
+</g>
+<!-- module~atl_modg_scheme_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge41" class="edge">
+<title>module~atl_modg_scheme_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.5,-472C229.6,-438.05 192.48,-483.55 160,-453 107.09,-403.23 74.64,-171.22 65.6,-98.12"/>
+<polygon fill="#000000" stroke="#000000" points="69.07,-97.67 64.39,-88.16 62.12,-98.51 69.07,-97.67"/>
+</g>
+<!-- module~atl_modg_scheme_module&#45;&gt;tem_tools_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge42" class="edge">
+<title>module~atl_modg_scheme_module&#45;&gt;tem_tools_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.5,-548C216.55,-533.47 166.42,-533.78 127.43,-537.57"/>
+<polygon fill="#000000" stroke="#000000" points="126.83,-534.12 117.26,-538.66 127.58,-541.08 126.83,-534.12"/>
+</g>
+<!-- module~atl_modg_scheme_module&#45;&gt;aot_top_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge36" class="edge">
+<title>module~atl_modg_scheme_module&#45;&gt;aot_top_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M409.41,-612.99C380.07,-608.06 346.54,-602.44 318.74,-597.77"/>
+<polygon fill="#000000" stroke="#000000" points="319.21,-594.3 308.77,-596.1 318.06,-601.21 319.21,-594.3"/>
+</g>
+<!-- module~atl_stabilization_module&#45;&gt;tem_aux_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge49" class="edge">
+<title>module~atl_stabilization_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M661.95,-303.93C633.2,-277.24 559.15,-213.84 483,-192"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M481,-192C415.72,-173.28 420.37,-129.08 359,-100 318.28,-80.7 303.63,-89.03 260.5,-76"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.5,-76C233.76,-68.53 171.65,-55.54 124.02,-45.98"/>
+<polygon fill="#000000" stroke="#000000" points="124.59,-42.52 114.1,-43.99 123.22,-49.39 124.59,-42.52"/>
+</g>
+<!-- module~atl_stabilization_module&#45;&gt;aot_table_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge43" class="edge">
+<title>module~atl_stabilization_module&#45;&gt;aot_table_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M657.42,-328.1C637.21,-341.87 602.13,-364.12 569,-377 532.52,-391.19 521.5,-388.91 483,-396"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M481,-396C428.09,-405.74 367.79,-415.5 323.64,-422.39"/>
+<polygon fill="#000000" stroke="#000000" points="322.97,-418.95 313.62,-423.95 324.04,-425.87 322.97,-418.95"/>
+</g>
+<!-- module~atl_stabilization_module&#45;&gt;aotus_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge44" class="edge">
+<title>module~atl_stabilization_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M604.96,-306.68C521.84,-297.67 379.1,-288.96 260.5,-316"/>
+</g>
+<!-- module~atl_stabilization_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge50" class="edge">
+<title>module~atl_stabilization_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.5,-76C218.7,-63.98 172.23,-63.46 134.59,-66.19"/>
+<polygon fill="#000000" stroke="#000000" points="133.9,-62.74 124.22,-67.04 134.47,-69.71 133.9,-62.74"/>
+</g>
+<!-- module~atl_cons_positivity_preserv_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node18" class="node">
+<title>module~atl_cons_positivity_preserv_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node18"><a xlink:href="../module/atl_cons_positivity_preserv_module.html" xlink:title="atl_cons_positivity_preserv_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="359,-246 160,-246 160,-222 359,-222 359,-246"/>
+<text text-anchor="middle" x="259.5" y="-231.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_cons_positivity_preserv_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_stabilization_module&#45;&gt;module~atl_cons_positivity_preserv_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge45" class="edge">
+<title>module~atl_stabilization_module&#45;&gt;module~atl_cons_positivity_preserv_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M481,-192C473.5,-189.85 389.16,-206.81 327,-219.83"/>
+<polygon fill="#000000" stroke="#000000" points="325.92,-216.48 316.85,-221.96 327.35,-223.33 325.92,-216.48"/>
+</g>
+<!-- module~atl_covolume_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node19" class="node">
+<title>module~atl_covolume_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node19"><a xlink:href="../module/atl_covolume_module.html" xlink:title="atl_covolume_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="547,-288 417,-288 417,-264 547,-264 547,-288"/>
+<text text-anchor="middle" x="482" y="-273.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_covolume_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_stabilization_module&#45;&gt;module~atl_covolume_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge46" class="edge">
+<title>module~atl_stabilization_module&#45;&gt;module~atl_covolume_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M617.04,-304C596.12,-299.63 572.28,-294.65 550.56,-290.11"/>
+<polygon fill="#000000" stroke="#000000" points="551.25,-286.68 540.75,-288.06 549.82,-293.53 551.25,-286.68"/>
+</g>
+<!-- module~atl_positivity_preserv_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node20" class="node">
+<title>module~atl_positivity_preserv_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node20"><a xlink:href="../module/atl_positivity_preserv_module.html" xlink:title="atl_positivity_preserv_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="344,-204 175,-204 175,-180 344,-180 344,-204"/>
+<text text-anchor="middle" x="259.5" y="-189.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_positivity_preserv_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_stabilization_module&#45;&gt;module~atl_positivity_preserv_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge47" class="edge">
+<title>module~atl_stabilization_module&#45;&gt;module~atl_positivity_preserv_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M481,-192C440.55,-180.4 394.18,-178.76 354.43,-180.67"/>
+<polygon fill="#000000" stroke="#000000" points="354,-177.19 344.21,-181.24 354.39,-184.18 354,-177.19"/>
+</g>
+<!-- module~atl_spectral_viscosity_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node21" class="node">
+<title>module~atl_spectral_viscosity_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node21"><a xlink:href="../module/atl_spectral_viscosity_module.html" xlink:title="atl_spectral_viscosity_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="344.5,-288 174.5,-288 174.5,-264 344.5,-264 344.5,-288"/>
+<text text-anchor="middle" x="259.5" y="-273.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_spectral_viscosity_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_stabilization_module&#45;&gt;module~atl_spectral_viscosity_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge48" class="edge">
+<title>module~atl_stabilization_module&#45;&gt;module~atl_spectral_viscosity_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M481,-192C422.34,-175.17 416.46,-234.46 359,-255 352.53,-257.31 345.72,-259.41 338.84,-261.31"/>
+<polygon fill="#000000" stroke="#000000" points="337.52,-258.03 328.72,-263.94 339.28,-264.81 337.52,-258.03"/>
+</g>
+<!-- module~ply_dof_module&#45;&gt;env_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge51" class="edge">
+<title>module~ply_dof_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M210.61,-736.3C193.92,-732.36 175.5,-726.53 160,-718 127.27,-699.99 96.99,-668.55 79.25,-648.01"/>
+<polygon fill="#000000" stroke="#000000" points="81.78,-645.58 72.65,-640.2 76.43,-650.1 81.78,-645.58"/>
+</g>
+<!-- module~ply_space_integration_module&#45;&gt;env_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge52" class="edge">
+<title>module~ply_space_integration_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M183.48,-849.81C174.99,-846.3 166.92,-841.78 160,-836 100.66,-786.4 75.54,-692.44 66.86,-649.9"/>
+<polygon fill="#000000" stroke="#000000" points="70.29,-649.18 64.96,-640.02 63.42,-650.51 70.29,-649.18"/>
+</g>
+<!-- tem_param_module -->
+<g id="module~~atl_space_basis~~UsesGraph_node22" class="node">
+<title>tem_param_module</title>
+<g id="a_module~~atl_space_basis~~UsesGraph_node22"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_param_module.html" xlink:title="tem_param_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="122,-874 2,-874 2,-850 122,-850 122,-874"/>
+<text text-anchor="middle" x="62" y="-859.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_param_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_space_integration_module&#45;&gt;tem_param_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge53" class="edge">
+<title>module~ply_space_integration_module&#45;&gt;tem_param_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M171.9,-862C158.6,-862 145.02,-862 132.17,-862"/>
+<polygon fill="#000000" stroke="#000000" points="132.04,-858.5 122.04,-862 132.04,-865.5 132.04,-858.5"/>
+</g>
+<!-- module~atl_cons_positivity_preserv_module&#45;&gt;tem_aux_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge56" class="edge">
+<title>module~atl_cons_positivity_preserv_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M171.57,-221.88C167.39,-219.37 163.49,-216.44 160,-213 108.72,-162.43 172.12,-108.59 124,-55 123.12,-54.02 122.18,-53.08 121.21,-52.18"/>
+<polygon fill="#000000" stroke="#000000" points="123.15,-49.27 113.02,-46.15 119,-54.9 123.15,-49.27"/>
+</g>
+<!-- module~atl_cons_positivity_preserv_module&#45;&gt;aotus_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge54" class="edge">
+<title>module~atl_cons_positivity_preserv_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M176.22,-246.07C170.49,-248.53 165.01,-251.48 160,-255 111.75,-288.89 82.6,-355.19 70.13,-389.41"/>
+<polygon fill="#000000" stroke="#000000" points="66.8,-388.34 66.79,-398.93 73.4,-390.65 66.8,-388.34"/>
+</g>
+<!-- module~atl_cons_positivity_preserv_module&#45;&gt;env_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge55" class="edge">
+<title>module~atl_cons_positivity_preserv_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M170.24,-246.25C166.51,-248.74 163.06,-251.64 160,-255 112.77,-306.99 155.06,-506.01 124,-569 116.09,-585.04 101.96,-599.14 89.29,-609.53"/>
+<polygon fill="#000000" stroke="#000000" points="86.99,-606.89 81.26,-615.8 91.3,-612.4 86.99,-606.89"/>
+</g>
+<!-- module~atl_cons_positivity_preserv_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge57" class="edge">
+<title>module~atl_cons_positivity_preserv_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M176.94,-221.8C170.98,-219.37 165.26,-216.46 160,-213 116.27,-184.2 86.14,-128.33 72.06,-97.59"/>
+<polygon fill="#000000" stroke="#000000" points="75.15,-95.93 67.91,-88.2 68.75,-98.76 75.15,-95.93"/>
+</g>
+<!-- module~atl_cons_positivity_preserv_module&#45;&gt;tem_tools_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge58" class="edge">
+<title>module~atl_cons_positivity_preserv_module&#45;&gt;tem_tools_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M171.48,-246.02C167.32,-248.55 163.45,-251.52 160,-255 103.5,-312.03 150.95,-356.38 124,-432 111.5,-467.07 90.06,-504.7 76.21,-527.29"/>
+<polygon fill="#000000" stroke="#000000" points="73.11,-525.66 70.79,-536 79.05,-529.36 73.11,-525.66"/>
+</g>
+<!-- module~atl_covolume_module&#45;&gt;tem_aux_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge62" class="edge">
+<title>module~atl_covolume_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M462.03,-263.9C443.25,-251.2 414.54,-229.81 395,-206 373.31,-179.57 385.98,-159.01 359,-138 323.44,-110.32 298.65,-137.97 260.5,-114"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.5,-114C220.35,-90.03 199.43,-111.81 160,-90 140.47,-79.2 143.01,-66.69 124,-55 121.19,-53.27 118.21,-51.66 115.15,-50.16"/>
+<polygon fill="#000000" stroke="#000000" points="116.33,-46.86 105.77,-46.02 113.5,-53.26 116.33,-46.86"/>
+</g>
+<!-- module~atl_covolume_module&#45;&gt;aotus_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge59" class="edge">
+<title>module~atl_covolume_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M417,-286.96C362.85,-296.35 289.57,-309.37 260.5,-316"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.5,-316C214.57,-326.02 200.85,-320.99 160,-340 131.15,-353.42 102.27,-376.03 83.62,-392.13"/>
+<polygon fill="#000000" stroke="#000000" points="81.24,-389.57 76.04,-398.8 85.86,-394.82 81.24,-389.57"/>
+</g>
+<!-- module~atl_covolume_module&#45;&gt;env_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge60" class="edge">
+<title>module~atl_covolume_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M461.66,-288.15C443.86,-299.59 416.97,-317.54 395,-335 378.01,-348.51 378.15,-357.78 359,-368 319.25,-389.22 297.65,-366.5 260.5,-392"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.5,-392C221.74,-417.23 192.05,-380.01 160,-411 108.23,-461.07 159.35,-506.25 124,-569 115.1,-584.8 100.66,-599.04 88.07,-609.57"/>
+<polygon fill="#000000" stroke="#000000" points="85.75,-606.95 80.13,-615.93 90.13,-612.41 85.75,-606.95"/>
+</g>
+<!-- module~atl_covolume_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge63" class="edge">
+<title>module~atl_covolume_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M465.12,-263.76C447.6,-250.09 418.73,-227.12 395,-206 378.33,-191.16 378.78,-181.32 359,-171 319.47,-150.37 299.6,-173.42 260.5,-152"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.5,-152C218.98,-130.35 202.08,-144.11 160,-128 135.62,-118.67 109.63,-104.48 90.69,-93.28"/>
+<polygon fill="#000000" stroke="#000000" points="92.38,-90.21 82,-88.06 88.77,-96.21 92.38,-90.21"/>
+</g>
+<!-- module~atl_covolume_module&#45;&gt;tem_tools_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge64" class="edge">
+<title>module~atl_covolume_module&#45;&gt;tem_tools_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M457.2,-288.05C432.97,-299.96 394.09,-318.07 359,-330 316.34,-344.51 300.62,-333.48 260.5,-354"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.5,-354C218.38,-374.52 195.99,-350.89 160,-378 146.62,-388.08 96.32,-483.45 73.9,-526.77"/>
+<polygon fill="#000000" stroke="#000000" points="70.68,-525.39 69.2,-535.88 76.9,-528.6 70.68,-525.39"/>
+</g>
+<!-- module~atl_covolume_module&#45;&gt;module~atl_spectral_viscosity_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge61" class="edge">
+<title>module~atl_covolume_module&#45;&gt;module~atl_spectral_viscosity_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M416.93,-276C397.58,-276 375.93,-276 355.04,-276"/>
+<polygon fill="#000000" stroke="#000000" points="354.86,-272.5 344.86,-276 354.86,-279.5 354.86,-272.5"/>
+</g>
+<!-- module~atl_positivity_preserv_module&#45;&gt;tem_aux_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge67" class="edge">
+<title>module~atl_positivity_preserv_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M232.27,-179.93C210.64,-168.91 180.32,-150.87 160,-128 135.97,-100.96 151.15,-78.91 124,-55 122.49,-53.67 120.89,-52.42 119.21,-51.25"/>
+<polygon fill="#000000" stroke="#000000" points="120.77,-48.1 110.38,-46.02 117.21,-54.13 120.77,-48.1"/>
+</g>
+<!-- module~atl_positivity_preserv_module&#45;&gt;aotus_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge65" class="edge">
+<title>module~atl_positivity_preserv_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M174.84,-203.96C169.56,-206.47 164.55,-209.45 160,-213 101.83,-258.4 76.26,-347.7 67.18,-389.04"/>
+<polygon fill="#000000" stroke="#000000" points="63.74,-388.41 65.13,-398.91 70.59,-389.83 63.74,-388.41"/>
+</g>
+<!-- module~atl_positivity_preserv_module&#45;&gt;env_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge66" class="edge">
+<title>module~atl_positivity_preserv_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M174.6,-201.49C169.17,-204.53 164.2,-208.31 160,-213 106.93,-272.21 158.69,-497.45 124,-569 116.2,-585.1 102.08,-599.19 89.38,-609.57"/>
+<polygon fill="#000000" stroke="#000000" points="87.07,-606.93 81.33,-615.83 91.37,-612.46 87.07,-606.93"/>
+</g>
+<!-- module~atl_positivity_preserv_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge68" class="edge">
+<title>module~atl_positivity_preserv_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M194.47,-179.99C182.6,-176.42 170.61,-171.84 160,-166 127.27,-147.99 96.99,-116.55 79.25,-96.01"/>
+<polygon fill="#000000" stroke="#000000" points="81.78,-93.58 72.65,-88.2 76.43,-98.1 81.78,-93.58"/>
+</g>
+<!-- module~atl_positivity_preserv_module&#45;&gt;tem_tools_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge69" class="edge">
+<title>module~atl_positivity_preserv_module&#45;&gt;tem_tools_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M174.92,-201.78C169.42,-204.76 164.34,-208.45 160,-213 91.91,-284.37 155.36,-338.48 124,-432 112.23,-467.11 90.77,-504.46 76.7,-527.01"/>
+<polygon fill="#000000" stroke="#000000" points="73.57,-525.41 71.17,-535.72 79.48,-529.16 73.57,-525.41"/>
+</g>
+<!-- module~atl_spectral_viscosity_module&#45;&gt;tem_aux_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge72" class="edge">
+<title>module~atl_spectral_viscosity_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M174.08,-265.65C168.91,-262.78 164.14,-259.27 160,-255 97.16,-190.12 182.78,-123.57 124,-55 123.14,-54 122.23,-53.04 121.27,-52.13"/>
+<polygon fill="#000000" stroke="#000000" points="123.28,-49.26 113.19,-46 119.05,-54.83 123.28,-49.26"/>
+</g>
+<!-- module~atl_spectral_viscosity_module&#45;&gt;aotus_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge70" class="edge">
+<title>module~atl_spectral_viscosity_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M191.41,-288.02C180.45,-291.56 169.57,-296.12 160,-302 123.25,-324.57 92.48,-365.33 75.99,-390.1"/>
+<polygon fill="#000000" stroke="#000000" points="72.89,-388.45 70.39,-398.74 78.76,-392.26 72.89,-388.45"/>
+</g>
+<!-- module~atl_spectral_viscosity_module&#45;&gt;env_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge71" class="edge">
+<title>module~atl_spectral_viscosity_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M241.87,-288.09C219.44,-305.35 180.01,-339.29 160,-378 120.33,-454.74 164.97,-492.95 124,-569 115.46,-584.85 101.17,-599.02 88.57,-609.49"/>
+<polygon fill="#000000" stroke="#000000" points="86.25,-606.86 80.6,-615.82 90.61,-612.34 86.25,-606.86"/>
+</g>
+<!-- module~atl_spectral_viscosity_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge73" class="edge">
+<title>module~atl_spectral_viscosity_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M175.01,-263.82C169.69,-261.37 164.62,-258.46 160,-255 106.44,-214.95 79.07,-136.32 68.43,-98.02"/>
+<polygon fill="#000000" stroke="#000000" points="71.81,-97.12 65.86,-88.35 65.04,-98.91 71.81,-97.12"/>
+</g>
+<!-- module~atl_spectral_viscosity_module&#45;&gt;tem_tools_module -->
+<g id="module~~atl_space_basis~~UsesGraph_edge74" class="edge">
+<title>module~atl_spectral_viscosity_module&#45;&gt;tem_tools_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M230.88,-288.07C209.01,-298.87 179.07,-316.6 160,-340 132.26,-374.04 142.25,-392.06 124,-432 108.53,-465.86 87.91,-503.83 75.05,-526.82"/>
+<polygon fill="#000000" stroke="#000000" points="71.91,-525.27 70.05,-535.7 78.01,-528.7 71.91,-525.27"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panmoduleatl_space_basisUsesGraph = svgPanZoom('#moduleatl_space_basisUsesGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+          <div class="card">
+      <h3 class="card-header card-title bg-light">Used by</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_space_basis~~UsedByGraph Pages: 1 -->
+<svg id="moduleatl_space_basisUsedByGraph" width="543pt" height="74pt"
+ viewBox="0.00 0.00 543.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_space_basis~~UsedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
+<title>module~~atl_space_basis~~UsedByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 539,-70 539,4 -4,4"/>
+<!-- module~atl_space_basis -->
+<g id="module~~atl_space_basis~~UsedByGraph_node1" class="node">
+<title>module~atl_space_basis</title>
+<polygon fill="none" stroke="black" points="95,-46 0,-46 0,-22 95,-22 95,-46"/>
+<text text-anchor="middle" x="47.5" y="-31.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_space_basis</text>
+</g>
+<!-- module~atl_initialize_module -->
+<g id="module~~atl_space_basis~~UsedByGraph_node2" class="node">
+<title>module~atl_initialize_module</title>
+<g id="a_module~~atl_space_basis~~UsedByGraph_node2"><a xlink:href="../module/atl_initialize_module.html" xlink:title="atl_initialize_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="252,-46 131,-46 131,-22 252,-22 252,-46"/>
+<text text-anchor="middle" x="191.5" y="-31.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_initialize_module&#45;&gt;module~atl_space_basis -->
+<g id="module~~atl_space_basis~~UsedByGraph_edge1" class="edge">
+<title>module~atl_initialize_module&#45;&gt;module~atl_space_basis</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M130.69,-34C122.28,-34 113.66,-34 105.32,-34"/>
+<polygon fill="#000000" stroke="#000000" points="105.3,-30.5 95.3,-34 105.3,-37.5 105.3,-30.5"/>
+</g>
+<!-- module~atl_program_module -->
+<g id="module~~atl_space_basis~~UsedByGraph_node3" class="node">
+<title>module~atl_program_module</title>
+<g id="a_module~~atl_space_basis~~UsedByGraph_node3"><a xlink:href="../module/atl_program_module.html" xlink:title="atl_program_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="411,-26 288,-26 288,-2 411,-2 411,-26"/>
+<text text-anchor="middle" x="349.5" y="-11.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_program_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_program_module&#45;&gt;module~atl_initialize_module -->
+<g id="module~~atl_space_basis~~UsedByGraph_edge2" class="edge">
+<title>module~atl_program_module&#45;&gt;module~atl_initialize_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M287.74,-21.79C279.32,-22.87 270.61,-23.99 262.04,-25.08"/>
+<polygon fill="#000000" stroke="#000000" points="261.54,-21.62 252.07,-26.36 262.43,-28.56 261.54,-21.62"/>
+</g>
+<!-- program~atl_harvesting -->
+<g id="module~~atl_space_basis~~UsedByGraph_node4" class="node">
+<title>program~atl_harvesting</title>
+<g id="a_module~~atl_space_basis~~UsedByGraph_node4"><a xlink:href="../program/atl_harvesting.html" xlink:title="atl_harvesting">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="535,-66 447,-66 447,-42 535,-42 535,-66"/>
+<text text-anchor="middle" x="491" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_harvesting</text>
+</a>
+</g>
+</g>
+<!-- program~atl_harvesting&#45;&gt;module~atl_initialize_module -->
+<g id="module~~atl_space_basis~~UsedByGraph_edge3" class="edge">
+<title>program~atl_harvesting&#45;&gt;module~atl_initialize_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M446.74,-51.09C398.4,-47.84 319.42,-42.53 262.31,-38.69"/>
+<polygon fill="#000000" stroke="#000000" points="262.48,-35.2 252.27,-38.02 262.01,-42.18 262.48,-35.2"/>
+</g>
+<!-- program~atl_harvesting&#45;&gt;module~atl_program_module -->
+<g id="module~~atl_space_basis~~UsedByGraph_edge5" class="edge">
+<title>program~atl_harvesting&#45;&gt;module~atl_program_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M448.15,-42C433.79,-37.88 417.56,-33.23 402.5,-28.91"/>
+<polygon fill="#000000" stroke="#000000" points="403.38,-25.52 392.81,-26.13 401.46,-32.25 403.38,-25.52"/>
+</g>
+<!-- program~ateles -->
+<g id="module~~atl_space_basis~~UsedByGraph_node5" class="node">
+<title>program~ateles</title>
+<g id="a_module~~atl_space_basis~~UsedByGraph_node5"><a xlink:href="../program/ateles.html" xlink:title="ateles">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="518,-24 464,-24 464,0 518,0 518,-24"/>
+<text text-anchor="middle" x="491" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ateles</text>
+</a>
+</g>
+</g>
+<!-- program~ateles&#45;&gt;module~atl_program_module -->
+<g id="module~~atl_space_basis~~UsedByGraph_edge4" class="edge">
+<title>program~ateles&#45;&gt;module~atl_program_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M463.76,-12.38C451.52,-12.55 436.31,-12.77 421.05,-12.99"/>
+<polygon fill="#000000" stroke="#000000" points="420.99,-9.49 411.04,-13.13 421.09,-16.49 420.99,-9.49"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      <br>
+
+
+
+
+
+
+
+
+        <section>
+          <h2>Subroutines</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_init_spacebasis"></span> <h3>public  subroutine <a href='../proc/atl_init_spacebasis.html'>atl_init_spacebasis</a>(scheme_list, minlevel, maxlevel)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Initialize the space basis, this subroutine has to be called before
+using the module variable space_basis#basis.</p><a href="../proc/atl_init_spacebasis.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_list~11"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_list</strong>(minlevel:maxlevel)</td>
+            <td>
+<p>The list of schemes on the different level</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-minlevel~3"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>minlevel</strong></td>
+            <td>
+<p>The minumum refinement level of the mesh</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxlevel~2"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxlevel</strong></td>
+            <td>
+<p>The maximum refinement level of the mesh</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

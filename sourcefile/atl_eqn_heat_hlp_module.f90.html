@@ -1,0 +1,1091 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_eqn_heat_hlp_module.f90 &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_eqn_heat_hlp_module.f90
+      <small>Source File</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for source files.">82 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_eqn_heat_hlp_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+            <li class="breadcrumb-item active" aria-current="page">atl_eqn_heat_hlp_module.f90</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#mods-0"
+         aria-expanded="false" aria-controls="mods-0">
+         <h4 class="card-header bg-primary text-white">Modules</h4>
+      </a>
+      <div id="mods-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_eqn_heat_hlp_module.html">atl_eqn_heat_hlp_module</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../sourcefile/atl_eqn_heat_hlp_module.f90.html#src">atl_eqn_heat_hlp_module.f90</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    <div class="col-md-9" id='text'>
+      
+      <br>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">This file depends on</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph Pages: 1 -->
+<svg id="sourcefileatl_eqn_heat_hlp_modulef90EfferentGraph" width="641pt" height="366pt"
+ viewBox="0.00 0.00 641.00 365.54" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph" class="graph" transform="scale(0.52 0.52) rotate(0) translate(4 698)">
+<title>sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-698 1227,-698 1227,4 -4,4"/>
+<!-- sourcefile~atl_eqn_heat_hlp_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node1" class="node">
+<title>sourcefile~atl_eqn_heat_hlp_module.f90</title>
+<polygon fill="none" stroke="black" points="1223,-380 1054,-380 1054,-356 1223,-356 1223,-380"/>
+<text text-anchor="middle" x="1138.5" y="-365.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_eqn_heat_hlp_module.f90</text>
+</g>
+<!-- sourcefile~atl_eqn_heat_1d_var_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node2" class="node">
+<title>sourcefile~atl_eqn_heat_1d_var_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node2"><a xlink:href="../sourcefile/atl_eqn_heat_1d_var_module.f90.html" xlink:title="atl_eqn_heat_1d_var_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1018,-422 830,-422 830,-398 1018,-398 1018,-422"/>
+<text text-anchor="middle" x="924" y="-407.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_heat_1d_var_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_eqn_heat_hlp_module.f90&#45;&gt;sourcefile~atl_eqn_heat_1d_var_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge1" class="edge">
+<title>sourcefile~atl_eqn_heat_hlp_module.f90&#45;&gt;sourcefile~atl_eqn_heat_1d_var_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1076.61,-380.04C1051.38,-385.02 1021.95,-390.84 995.76,-396.01"/>
+<polygon fill="#000000" stroke="#000000" points="995.03,-392.59 985.9,-397.96 996.39,-399.46 995.03,-392.59"/>
+</g>
+<!-- sourcefile~atl_eqn_heat_2d_var_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node3" class="node">
+<title>sourcefile~atl_eqn_heat_2d_var_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node3"><a xlink:href="../sourcefile/atl_eqn_heat_2d_var_module.f90.html" xlink:title="atl_eqn_heat_2d_var_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1018,-380 830,-380 830,-356 1018,-356 1018,-380"/>
+<text text-anchor="middle" x="924" y="-365.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_heat_2d_var_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_eqn_heat_hlp_module.f90&#45;&gt;sourcefile~atl_eqn_heat_2d_var_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge2" class="edge">
+<title>sourcefile~atl_eqn_heat_hlp_module.f90&#45;&gt;sourcefile~atl_eqn_heat_2d_var_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1053.82,-368C1045.39,-368 1036.76,-368 1028.16,-368"/>
+<polygon fill="#000000" stroke="#000000" points="1028.08,-364.5 1018.08,-368 1028.08,-371.5 1028.08,-364.5"/>
+</g>
+<!-- sourcefile~atl_eqn_heat_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node4" class="node">
+<title>sourcefile~atl_eqn_heat_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node4"><a xlink:href="../sourcefile/atl_eqn_heat_module.f90.html" xlink:title="atl_eqn_heat_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="367.5,-694 220.5,-694 220.5,-670 367.5,-670 367.5,-694"/>
+<text text-anchor="middle" x="294" y="-679.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_heat_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_eqn_heat_hlp_module.f90&#45;&gt;sourcefile~atl_eqn_heat_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge3" class="edge">
+<title>sourcefile~atl_eqn_heat_hlp_module.f90&#45;&gt;sourcefile~atl_eqn_heat_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M726.5,-556C570.85,-569.57 542.02,-620.93 391,-661 382.22,-663.33 372.94,-665.6 363.75,-667.73"/>
+<polygon fill="#000000" stroke="#000000" points="362.81,-664.36 353.83,-669.99 364.36,-671.18 362.81,-664.36"/>
+</g>
+<!-- sourcefile~atl_eqn_heat_var_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node5" class="node">
+<title>sourcefile~atl_eqn_heat_var_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node5"><a xlink:href="../sourcefile/atl_eqn_heat_var_module.f90.html" xlink:title="atl_eqn_heat_var_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1008.5,-338 839.5,-338 839.5,-314 1008.5,-314 1008.5,-338"/>
+<text text-anchor="middle" x="924" y="-323.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_heat_var_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_eqn_heat_hlp_module.f90&#45;&gt;sourcefile~atl_eqn_heat_var_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge4" class="edge">
+<title>sourcefile~atl_eqn_heat_hlp_module.f90&#45;&gt;sourcefile~atl_eqn_heat_var_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1076.61,-355.96C1051.38,-350.98 1021.95,-345.16 995.76,-339.99"/>
+<polygon fill="#000000" stroke="#000000" points="996.39,-336.54 985.9,-338.04 995.03,-343.41 996.39,-336.54"/>
+</g>
+<!-- sourcefile~atl_equation_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node6" class="node">
+<title>sourcefile~atl_equation_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node6"><a xlink:href="../sourcefile/atl_equation_module.f90.html" xlink:title="atl_equation_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="598.5,-528 453.5,-528 453.5,-504 598.5,-504 598.5,-528"/>
+<text text-anchor="middle" x="526" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_equation_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_eqn_heat_hlp_module.f90&#45;&gt;sourcefile~atl_equation_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge5" class="edge">
+<title>sourcefile~atl_eqn_heat_hlp_module.f90&#45;&gt;sourcefile~atl_equation_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1124.05,-380.05C1074.79,-422.82 898.27,-564.4 728.5,-556"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M726.5,-556C699.01,-558.4 630.77,-542.97 581.75,-530.58"/>
+<polygon fill="#000000" stroke="#000000" points="582.47,-527.15 571.92,-528.07 580.74,-533.94 582.47,-527.15"/>
+</g>
+<!-- sourcefile~atl_varsys_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node7" class="node">
+<title>sourcefile~atl_varsys_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node7"><a xlink:href="../sourcefile/atl_varsys_module.f90.html" xlink:title="atl_varSys_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="794,-318 661,-318 661,-294 794,-294 794,-318"/>
+<text text-anchor="middle" x="727.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_varSys_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_eqn_heat_hlp_module.f90&#45;&gt;sourcefile~atl_varsys_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge6" class="edge">
+<title>sourcefile~atl_eqn_heat_hlp_module.f90&#45;&gt;sourcefile~atl_varsys_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1120.77,-355.77C1098.58,-340.38 1057.61,-314.8 1018,-305 947.09,-287.45 863.38,-290.15 804.26,-295.76"/>
+<polygon fill="#000000" stroke="#000000" points="803.86,-292.29 794.26,-296.76 804.56,-299.25 803.86,-292.29"/>
+</g>
+<!-- sourcefile~atl_eqn_heat_1d_var_module.f90&#45;&gt;sourcefile~atl_equation_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge7" class="edge">
+<title>sourcefile~atl_eqn_heat_1d_var_module.f90&#45;&gt;sourcefile~atl_equation_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M863.43,-397.97C815.62,-389.34 752.64,-380.61 728.5,-389"/>
+</g>
+<!-- sourcefile~atl_eqn_heat_1d_var_module.f90&#45;&gt;sourcefile~atl_varsys_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge8" class="edge">
+<title>sourcefile~atl_eqn_heat_1d_var_module.f90&#45;&gt;sourcefile~atl_varsys_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M853.22,-397.99C845.2,-395.52 837.29,-392.56 830,-389 797.27,-373.04 765.82,-344.62 746.82,-325.54"/>
+<polygon fill="#000000" stroke="#000000" points="749.19,-322.96 739.71,-318.24 744.18,-327.85 749.19,-322.96"/>
+</g>
+<!-- sourcefile~atl_eqn_heat_2d_var_module.f90&#45;&gt;sourcefile~atl_equation_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge9" class="edge">
+<title>sourcefile~atl_eqn_heat_2d_var_module.f90&#45;&gt;sourcefile~atl_equation_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M829.6,-369.51C796.91,-372.27 760.42,-377.91 728.5,-389"/>
+</g>
+<!-- sourcefile~atl_eqn_heat_2d_var_module.f90&#45;&gt;sourcefile~atl_varsys_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge10" class="edge">
+<title>sourcefile~atl_eqn_heat_2d_var_module.f90&#45;&gt;sourcefile~atl_varsys_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M863.08,-355.97C852,-353.32 840.58,-350.31 830,-347 807.81,-340.06 783.65,-330.39 764.47,-322.19"/>
+<polygon fill="#000000" stroke="#000000" points="765.78,-318.94 755.21,-318.17 762.99,-325.36 765.78,-318.94"/>
+</g>
+<!-- sourcefile~atl_materialfun_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node19" class="node">
+<title>sourcefile~atl_materialfun_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node19"><a xlink:href="../sourcefile/atl_materialfun_module.f90.html" xlink:title="atl_materialFun_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="161,-611 0,-611 0,-587 161,-587 161,-611"/>
+<text text-anchor="middle" x="80.5" y="-596.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_materialFun_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_eqn_heat_module.f90&#45;&gt;sourcefile~atl_materialfun_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge11" class="edge">
+<title>sourcefile~atl_eqn_heat_module.f90&#45;&gt;sourcefile~atl_materialfun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M226.46,-669.97C216.46,-667.43 206.36,-664.46 197,-661 165.48,-649.35 131.9,-630.51 109.11,-616.66"/>
+<polygon fill="#000000" stroke="#000000" points="110.7,-613.52 100.35,-611.24 107.02,-619.47 110.7,-613.52"/>
+</g>
+<!-- sourcefile~atl_eqn_heat_var_module.f90&#45;&gt;sourcefile~atl_equation_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge12" class="edge">
+<title>sourcefile~atl_eqn_heat_var_module.f90&#45;&gt;sourcefile~atl_equation_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M862.56,-338.07C851.64,-340.7 840.41,-343.7 830,-347 783.47,-361.76 774.62,-372.98 728.5,-389"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M726.5,-389C664.89,-410.41 681.95,-463.21 625,-495 619.79,-497.91 614.22,-500.41 608.48,-502.57"/>
+<polygon fill="#000000" stroke="#000000" points="607.04,-499.36 598.69,-505.88 609.28,-505.99 607.04,-499.36"/>
+</g>
+<!-- sourcefile~atl_eqn_heat_var_module.f90&#45;&gt;sourcefile~atl_varsys_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge13" class="edge">
+<title>sourcefile~atl_eqn_heat_var_module.f90&#45;&gt;sourcefile~atl_varsys_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M839.39,-317.4C827.68,-316.2 815.7,-314.97 804.16,-313.78"/>
+<polygon fill="#000000" stroke="#000000" points="804.44,-310.29 794.14,-312.75 803.73,-317.25 804.44,-310.29"/>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_heat_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge18" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_heat_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M453.49,-525.67C443.7,-529.51 434.47,-534.78 427,-542 387.26,-580.39 431.57,-623.49 391,-661 386.85,-664.84 382.17,-668.03 377.16,-670.69"/>
+<polygon fill="#000000" stroke="#000000" points="375.5,-667.6 367.83,-674.91 378.39,-673.97 375.5,-667.6"/>
+</g>
+<!-- sourcefile~atl_eqn_acoustic_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node9" class="node">
+<title>sourcefile~atl_eqn_acoustic_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node9"><a xlink:href="../sourcefile/atl_eqn_acoustic_module.f90.html" xlink:title="atl_eqn_acoustic_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="377.5,-488 210.5,-488 210.5,-464 377.5,-464 377.5,-488"/>
+<text text-anchor="middle" x="294" y="-473.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_acoustic_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_acoustic_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge14" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_acoustic_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M455.99,-504C430.3,-499.53 400.93,-494.42 374.38,-489.81"/>
+<polygon fill="#000000" stroke="#000000" points="374.81,-486.33 364.36,-488.06 373.61,-493.22 374.81,-486.33"/>
+</g>
+<!-- sourcefile~atl_eqn_advection_1d_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node10" class="node">
+<title>sourcefile~atl_eqn_advection_1d_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node10"><a xlink:href="../sourcefile/atl_eqn_advection_1d_module.f90.html" xlink:title="atl_eqn_advection_1d_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="391,-446 197,-446 197,-422 391,-422 391,-446"/>
+<text text-anchor="middle" x="294" y="-431.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_advection_1d_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_advection_1d_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge15" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_advection_1d_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M453.43,-506.2C444.2,-503.36 435.13,-499.71 427,-495 406.3,-483.02 411.68,-467.02 391,-455 387.79,-453.13 384.43,-451.43 380.97,-449.88"/>
+<polygon fill="#000000" stroke="#000000" points="382.19,-446.6 371.61,-446.12 379.58,-453.09 382.19,-446.6"/>
+</g>
+<!-- sourcefile~atl_eqn_bbm_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node11" class="node">
+<title>sourcefile~atl_eqn_bbm_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node11"><a xlink:href="../sourcefile/atl_eqn_bbm_module.f90.html" xlink:title="atl_eqn_bbm_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="367.5,-404 220.5,-404 220.5,-380 367.5,-380 367.5,-404"/>
+<text text-anchor="middle" x="294" y="-389.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_bbm_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_bbm_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge16" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_bbm_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M453.35,-509.02C443.81,-505.79 434.69,-501.27 427,-495 396.15,-469.85 421.79,-438.22 391,-413 386.71,-409.49 381.96,-406.53 376.94,-404.04"/>
+<polygon fill="#000000" stroke="#000000" points="378.22,-400.78 367.65,-400.04 375.46,-407.21 378.22,-400.78"/>
+</g>
+<!-- sourcefile~atl_eqn_euler_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node12" class="node">
+<title>sourcefile~atl_eqn_euler_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node12"><a xlink:href="../sourcefile/atl_eqn_euler_module.f90.html" xlink:title="atl_eqn_euler_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="369.5,-362 218.5,-362 218.5,-338 369.5,-338 369.5,-362"/>
+<text text-anchor="middle" x="294" y="-347.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_euler_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_euler_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge17" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_euler_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M453.07,-510.09C443.46,-506.72 434.39,-501.88 427,-495 385,-455.9 432.92,-410.19 391,-371 387.37,-367.61 383.33,-364.72 379.02,-362.26"/>
+<polygon fill="#000000" stroke="#000000" points="380.34,-359.01 369.82,-357.79 377.28,-365.31 380.34,-359.01"/>
+</g>
+<!-- sourcefile~atl_eqn_lineareuler_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node13" class="node">
+<title>sourcefile~atl_eqn_lineareuler_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node13"><a xlink:href="../sourcefile/atl_eqn_lineareuler_module.f90.html" xlink:title="atl_eqn_linearEuler_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="384.5,-320 203.5,-320 203.5,-296 384.5,-296 384.5,-320"/>
+<text text-anchor="middle" x="294" y="-305.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_linearEuler_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_lineareuler_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge19" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_lineareuler_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M453.13,-510.71C443.39,-507.27 434.27,-502.25 427,-495 373.55,-441.68 444.33,-382.43 391,-329 390.05,-328.05 389.07,-327.14 388.06,-326.26"/>
+<polygon fill="#000000" stroke="#000000" points="389.93,-323.29 379.78,-320.26 385.82,-328.96 389.93,-323.29"/>
+</g>
+<!-- sourcefile~atl_eqn_maxwell_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node14" class="node">
+<title>sourcefile~atl_eqn_maxwell_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node14"><a xlink:href="../sourcefile/atl_eqn_maxwell_module.f90.html" xlink:title="atl_eqn_maxwell_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="377.5,-652 210.5,-652 210.5,-628 377.5,-628 377.5,-652"/>
+<text text-anchor="middle" x="294" y="-637.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_maxwell_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_maxwell_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge20" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_maxwell_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M453.37,-527.04C443.83,-530.71 434.7,-535.56 427,-542 398.02,-566.23 420.51,-595.41 391,-619 389.21,-620.43 387.35,-621.76 385.42,-623.01"/>
+<polygon fill="#000000" stroke="#000000" points="383.62,-620.01 376.62,-627.96 387.05,-626.12 383.62,-620.01"/>
+</g>
+<!-- sourcefile~atl_eqn_nerplanck_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node15" class="node">
+<title>sourcefile~atl_eqn_nerplanck_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node15"><a xlink:href="../sourcefile/atl_eqn_nerplanck_module.f90.html" xlink:title="atl_eqn_nerplanck_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="382,-610 206,-610 206,-586 382,-586 382,-610"/>
+<text text-anchor="middle" x="294" y="-595.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_nerplanck_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_nerplanck_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge21" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_nerplanck_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M460.66,-528.01C449.04,-531.57 437.34,-536.14 427,-542 407.58,-553 410.65,-566.43 391,-577 387.28,-579 383.38,-580.81 379.38,-582.45"/>
+<polygon fill="#000000" stroke="#000000" points="378.03,-579.21 369.86,-585.96 380.46,-585.78 378.03,-579.21"/>
+</g>
+<!-- sourcefile~atl_eqn_nvrstk_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node16" class="node">
+<title>sourcefile~atl_eqn_nvrstk_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node16"><a xlink:href="../sourcefile/atl_eqn_nvrstk_module.f90.html" xlink:title="atl_eqn_nvrstk_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="371.5,-568 216.5,-568 216.5,-544 371.5,-544 371.5,-568"/>
+<text text-anchor="middle" x="294" y="-553.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_nvrstk_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_nvrstk_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge22" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_nvrstk_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M455.99,-528C430.3,-532.47 400.93,-537.58 374.38,-542.19"/>
+<polygon fill="#000000" stroke="#000000" points="373.61,-538.78 364.36,-543.94 374.81,-545.67 373.61,-538.78"/>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_materialfun_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge23" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_materialfun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M453.4,-511.11C385.9,-508.6 282.61,-510.2 197,-535 163.18,-544.8 128.36,-565.88 105.92,-581.18"/>
+<polygon fill="#000000" stroke="#000000" points="103.87,-578.34 97.67,-586.92 107.87,-584.08 103.87,-578.34"/>
+</g>
+<!-- sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~atl_equation_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge25" class="edge">
+<title>sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~atl_equation_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M711.37,-318.19C696.53,-330.9 674.26,-352.14 661,-375 633.07,-423.17 665.92,-457.24 625,-495 620.02,-499.6 614.28,-503.28 608.13,-506.23"/>
+<polygon fill="#000000" stroke="#000000" points="606.8,-502.99 598.88,-510.03 609.46,-509.47 606.8,-502.99"/>
+</g>
+<!-- sourcefile~atl_cube_elem_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node8" class="node">
+<title>sourcefile~atl_cube_elem_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node8"><a xlink:href="../sourcefile/atl_cube_elem_module.f90.html" xlink:title="atl_cube_elem_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="604,-234 448,-234 448,-210 604,-210 604,-234"/>
+<text text-anchor="middle" x="526" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_cube_elem_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~atl_cube_elem_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge24" class="edge">
+<title>sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~atl_cube_elem_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M710.9,-293.91C691.73,-279.64 657.7,-256.19 625,-243 619.28,-240.69 613.27,-238.62 607.15,-236.77"/>
+<polygon fill="#000000" stroke="#000000" points="608.06,-233.39 597.48,-234.03 606.15,-240.12 608.06,-233.39"/>
+</g>
+<!-- sourcefile~atl_kerneldata_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node17" class="node">
+<title>sourcefile~atl_kerneldata_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node17"><a xlink:href="../sourcefile/atl_kerneldata_module.f90.html" xlink:title="atl_kerneldata_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="603.5,-192 448.5,-192 448.5,-168 603.5,-168 603.5,-192"/>
+<text text-anchor="middle" x="526" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_kerneldata_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~atl_kerneldata_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge26" class="edge">
+<title>sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~atl_kerneldata_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M718.38,-293.68C703,-271.38 667.34,-224.5 625,-201 621.23,-198.91 617.28,-197.03 613.21,-195.33"/>
+<polygon fill="#000000" stroke="#000000" points="614.13,-191.94 603.54,-191.71 611.67,-198.49 614.13,-191.94"/>
+</g>
+<!-- sourcefile~atl_legpolyvar_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node18" class="node">
+<title>sourcefile~atl_legpolyvar_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node18"><a xlink:href="../sourcefile/atl_legpolyvar_module.f90.html" xlink:title="atl_legpolyvar_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="603,-150 449,-150 449,-126 603,-126 603,-150"/>
+<text text-anchor="middle" x="526" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_legpolyvar_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~atl_legpolyvar_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge27" class="edge">
+<title>sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~atl_legpolyvar_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M721.81,-293.78C710.17,-265.2 677.1,-193.79 625,-159 621.15,-156.43 617.05,-154.17 612.78,-152.18"/>
+<polygon fill="#000000" stroke="#000000" points="613.79,-148.81 603.21,-148.24 611.12,-155.28 613.79,-148.81"/>
+</g>
+<!-- sourcefile~atl_modg_1d_basis_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node20" class="node">
+<title>sourcefile~atl_modg_1d_basis_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node20"><a xlink:href="../sourcefile/atl_modg_1d_basis_module.f90.html" xlink:title="atl_modg_1d_basis_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="615.5,-108 436.5,-108 436.5,-84 615.5,-84 615.5,-108"/>
+<text text-anchor="middle" x="526" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_1d_basis_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~atl_modg_1d_basis_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge28" class="edge">
+<title>sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~atl_modg_1d_basis_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M723.78,-293.96C715.5,-260.15 687.23,-163.77 625,-117 623.14,-115.6 621.2,-114.29 619.2,-113.06"/>
+<polygon fill="#000000" stroke="#000000" points="620.56,-109.81 610.09,-108.19 617.26,-115.99 620.56,-109.81"/>
+</g>
+<!-- sourcefile~atl_modg_2d_basis_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node21" class="node">
+<title>sourcefile~atl_modg_2d_basis_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node21"><a xlink:href="../sourcefile/atl_modg_2d_basis_module.f90.html" xlink:title="atl_modg_2d_basis_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="615.5,-66 436.5,-66 436.5,-42 615.5,-42 615.5,-66"/>
+<text text-anchor="middle" x="526" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_basis_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~atl_modg_2d_basis_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge29" class="edge">
+<title>sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~atl_modg_2d_basis_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M725.03,-293.9C719.66,-255.29 697.49,-134.09 625,-75 623.38,-73.68 621.7,-72.44 619.96,-71.27"/>
+<polygon fill="#000000" stroke="#000000" points="621.29,-67.99 610.88,-66.02 617.78,-74.05 621.29,-67.99"/>
+</g>
+<!-- sourcefile~atl_reference_element_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node22" class="node">
+<title>sourcefile~atl_reference_element_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node22"><a xlink:href="../sourcefile/atl_reference_element_module.f90.html" xlink:title="atl_reference_element_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="625,-24 427,-24 427,0 625,0 625,-24"/>
+<text text-anchor="middle" x="526" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_reference_element_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~atl_reference_element_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge30" class="edge">
+<title>sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~atl_reference_element_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M725.93,-293.92C723.22,-251.02 708,-104.77 625,-33 623.64,-31.83 622.24,-30.71 620.79,-29.66"/>
+<polygon fill="#000000" stroke="#000000" points="622.39,-26.53 612.05,-24.22 618.69,-32.47 622.39,-26.53"/>
+</g>
+<!-- sourcefile~atl_scheme_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node23" class="node">
+<title>sourcefile~atl_scheme_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node23"><a xlink:href="../sourcefile/atl_scheme_module.f90.html" xlink:title="atl_scheme_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="595.5,-486 456.5,-486 456.5,-462 595.5,-462 595.5,-486"/>
+<text text-anchor="middle" x="526" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_scheme_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~atl_scheme_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge31" class="edge">
+<title>sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~atl_scheme_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M712.57,-318.12C698.26,-331.11 676.02,-352.85 661,-375 639.57,-406.6 654.81,-429.15 625,-453 619.12,-457.71 612.42,-461.42 605.35,-464.35"/>
+<polygon fill="#000000" stroke="#000000" points="603.76,-461.2 595.52,-467.87 606.11,-467.79 603.76,-461.2"/>
+</g>
+<!-- sourcefile~atl_timer_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node24" class="node">
+<title>sourcefile~atl_timer_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node24"><a xlink:href="../sourcefile/atl_timer_module.f90.html" xlink:title="atl_timer_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="589,-444 463,-444 463,-420 589,-420 589,-444"/>
+<text text-anchor="middle" x="526" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_timer_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~atl_timer_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge32" class="edge">
+<title>sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~atl_timer_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M714.84,-318.24C688.77,-345.61 627.78,-409.45 625,-411 616.96,-415.47 608.05,-418.98 598.99,-421.75"/>
+<polygon fill="#000000" stroke="#000000" points="597.84,-418.44 589.13,-424.47 599.7,-425.19 597.84,-418.44"/>
+</g>
+<!-- sourcefile~ply_dof_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node25" class="node">
+<title>sourcefile~ply_dof_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node25"><a xlink:href="../sourcefile/ply_dof_module.f90.html" xlink:title="ply_dof_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="584.5,-402 467.5,-402 467.5,-378 584.5,-378 584.5,-402"/>
+<text text-anchor="middle" x="526" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_dof_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~ply_dof_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge33" class="edge">
+<title>sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~ply_dof_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M710.9,-318.09C691.73,-332.36 657.7,-355.81 625,-369 615.4,-372.87 604.97,-376.08 594.61,-378.72"/>
+<polygon fill="#000000" stroke="#000000" points="593.65,-375.35 584.74,-381.08 595.28,-382.16 593.65,-375.35"/>
+</g>
+<!-- sourcefile~ply_modg_basis_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node26" class="node">
+<title>sourcefile~ply_modg_basis_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node26"><a xlink:href="../sourcefile/ply_modg_basis_module.f90.html" xlink:title="ply_modg_basis_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="607.5,-360 444.5,-360 444.5,-336 607.5,-336 607.5,-360"/>
+<text text-anchor="middle" x="526" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_modg_basis_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~ply_modg_basis_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge34" class="edge">
+<title>sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~ply_modg_basis_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M669.33,-318.04C645.85,-322.98 618.5,-328.74 594.08,-333.88"/>
+<polygon fill="#000000" stroke="#000000" points="593.24,-330.48 584.18,-335.96 594.68,-337.33 593.24,-330.48"/>
+</g>
+<!-- sourcefile~ply_oversample_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node27" class="node">
+<title>sourcefile~ply_oversample_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node27"><a xlink:href="../sourcefile/ply_oversample_module.f90.html" xlink:title="ply_oversample_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="607.5,-318 444.5,-318 444.5,-294 607.5,-294 607.5,-318"/>
+<text text-anchor="middle" x="526" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_oversample_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~ply_oversample_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge35" class="edge">
+<title>sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~ply_oversample_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M660.9,-306C647.06,-306 632.22,-306 617.64,-306"/>
+<polygon fill="#000000" stroke="#000000" points="617.61,-302.5 607.61,-306 617.61,-309.5 617.61,-302.5"/>
+</g>
+<!-- sourcefile~ply_poly_project_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node28" class="node">
+<title>sourcefile~ply_poly_project_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_node28"><a xlink:href="../sourcefile/ply_poly_project_module.f90.html" xlink:title="ply_poly_project_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="608,-276 444,-276 444,-252 608,-252 608,-276"/>
+<text text-anchor="middle" x="526" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_poly_project_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~ply_poly_project_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~EfferentGraph_edge36" class="edge">
+<title>sourcefile~atl_varsys_module.f90&#45;&gt;sourcefile~ply_poly_project_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M669.33,-293.96C645.85,-289.02 618.5,-283.26 594.08,-278.12"/>
+<polygon fill="#000000" stroke="#000000" points="594.68,-274.67 584.18,-276.04 593.24,-281.52 594.68,-274.67"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var pansourcefileatl_eqn_heat_hlp_modulef90EfferentGraph = svgPanZoom('#sourcefileatl_eqn_heat_hlp_modulef90EfferentGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#EfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="EfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="202pt" height="32pt"
+ viewBox="0.00 0.00 201.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 197.5,-28 197.5,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="193.5,-24 88.5,-24 88.5,0 193.5,0 193.5,-24"/>
+<text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Files dependent on this one</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: sourcefile~~atl_eqn_heat_hlp_module.f90~~AfferentGraph Pages: 1 -->
+<svg id="sourcefileatl_eqn_heat_hlp_modulef90AfferentGraph" width="641pt" height="54pt"
+ viewBox="0.00 0.00 641.00 53.90" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~AfferentGraph" class="graph" transform="scale(0.73 0.73) rotate(0) translate(4 70)">
+<title>sourcefile~~atl_eqn_heat_hlp_module.f90~~AfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 876,-70 876,4 -4,4"/>
+<!-- sourcefile~atl_eqn_heat_hlp_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~AfferentGraph_node1" class="node">
+<title>sourcefile~atl_eqn_heat_hlp_module.f90</title>
+<polygon fill="none" stroke="black" points="169,-46 0,-46 0,-22 169,-22 169,-46"/>
+<text text-anchor="middle" x="84.5" y="-31.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_eqn_heat_hlp_module.f90</text>
+</g>
+<!-- sourcefile~atl_equation_init_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~AfferentGraph_node2" class="node">
+<title>sourcefile~atl_equation_init_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~AfferentGraph_node2"><a xlink:href="../sourcefile/atl_equation_init_module.f90.html" xlink:title="atl_equation_init_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="371,-46 205,-46 205,-22 371,-22 371,-46"/>
+<text text-anchor="middle" x="288" y="-31.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_equation_init_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_init_module.f90&#45;&gt;sourcefile~atl_eqn_heat_hlp_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~AfferentGraph_edge1" class="edge">
+<title>sourcefile~atl_equation_init_module.f90&#45;&gt;sourcefile~atl_eqn_heat_hlp_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M204.75,-34C196.4,-34 187.86,-34 179.4,-34"/>
+<polygon fill="#000000" stroke="#000000" points="179.12,-30.5 169.12,-34 179.12,-37.5 179.12,-30.5"/>
+</g>
+<!-- sourcefile~atl_initialize_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~AfferentGraph_node3" class="node">
+<title>sourcefile~atl_initialize_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~AfferentGraph_node3"><a xlink:href="../sourcefile/atl_initialize_module.f90.html" xlink:title="atl_initialize_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="549,-46 407,-46 407,-22 549,-22 549,-46"/>
+<text text-anchor="middle" x="478" y="-31.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_initialize_module.f90&#45;&gt;sourcefile~atl_equation_init_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~AfferentGraph_edge2" class="edge">
+<title>sourcefile~atl_initialize_module.f90&#45;&gt;sourcefile~atl_equation_init_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M407,-34C398.59,-34 389.91,-34 381.26,-34"/>
+<polygon fill="#000000" stroke="#000000" points="381.12,-30.5 371.12,-34 381.12,-37.5 381.12,-30.5"/>
+</g>
+<!-- sourcefile~atl_harvesting.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~AfferentGraph_node4" class="node">
+<title>sourcefile~atl_harvesting.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~AfferentGraph_node4"><a xlink:href="../sourcefile/atl_harvesting.f90.html" xlink:title="atl_harvesting.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="872,-66 764,-66 764,-42 872,-42 872,-66"/>
+<text text-anchor="middle" x="818" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_harvesting.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_harvesting.f90&#45;&gt;sourcefile~atl_initialize_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~AfferentGraph_edge3" class="edge">
+<title>sourcefile~atl_harvesting.f90&#45;&gt;sourcefile~atl_initialize_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M763.82,-50.85C708.96,-47.61 622.73,-42.5 559.52,-38.76"/>
+<polygon fill="#000000" stroke="#000000" points="559.37,-35.25 549.18,-38.15 558.96,-42.24 559.37,-35.25"/>
+</g>
+<!-- sourcefile~atl_program_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~AfferentGraph_node5" class="node">
+<title>sourcefile~atl_program_module.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~AfferentGraph_node5"><a xlink:href="../sourcefile/atl_program_module.f90.html" xlink:title="atl_program_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="728,-26 585,-26 585,-2 728,-2 728,-26"/>
+<text text-anchor="middle" x="656.5" y="-11.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_program_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_harvesting.f90&#45;&gt;sourcefile~atl_program_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~AfferentGraph_edge6" class="edge">
+<title>sourcefile~atl_harvesting.f90&#45;&gt;sourcefile~atl_program_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M769.14,-42C752.35,-37.79 733.29,-33.01 715.73,-28.6"/>
+<polygon fill="#000000" stroke="#000000" points="716.15,-25.1 705.6,-26.06 714.45,-31.89 716.15,-25.1"/>
+</g>
+<!-- sourcefile~atl_program_module.f90&#45;&gt;sourcefile~atl_initialize_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~AfferentGraph_edge4" class="edge">
+<title>sourcefile~atl_program_module.f90&#45;&gt;sourcefile~atl_initialize_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M584.98,-21.99C576.49,-22.95 567.78,-23.94 559.16,-24.92"/>
+<polygon fill="#000000" stroke="#000000" points="558.66,-21.45 549.12,-26.05 559.45,-28.41 558.66,-21.45"/>
+</g>
+<!-- sourcefile~ateles.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~AfferentGraph_node6" class="node">
+<title>sourcefile~ateles.f90</title>
+<g id="a_sourcefile~~atl_eqn_heat_hlp_module.f90~~AfferentGraph_node6"><a xlink:href="../sourcefile/ateles.f90.html" xlink:title="ateles.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="850.5,-24 785.5,-24 785.5,0 850.5,0 850.5,-24"/>
+<text text-anchor="middle" x="818" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ateles.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ateles.f90&#45;&gt;sourcefile~atl_program_module.f90 -->
+<g id="sourcefile~~atl_eqn_heat_hlp_module.f90~~AfferentGraph_edge5" class="edge">
+<title>sourcefile~ateles.f90&#45;&gt;sourcefile~atl_program_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M785.49,-12.4C771.88,-12.57 755.27,-12.77 738.58,-12.98"/>
+<polygon fill="#000000" stroke="#000000" points="738.16,-9.49 728.21,-13.11 738.25,-16.49 738.16,-9.49"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var pansourcefileatl_eqn_heat_hlp_modulef90AfferentGraph = svgPanZoom('#sourcefileatl_eqn_heat_hlp_modulef90AfferentGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#AfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="AfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="202pt" height="32pt"
+ viewBox="0.00 0.00 201.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 197.5,-28 197.5,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="193.5,-24 88.5,-24 88.5,0 193.5,0 193.5,-24"/>
+<text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+<br>
+      <section>
+        <h2><span class="anchor" id="src"></span>Source Code</h2>
+        <div class="hl codehilite"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="c">! Copyright (c) 2014 Nikhil Anand &lt;nikhil.anand@uni-siegen.de&gt;</span>
+<a id="ln-2" name="ln-2" href="#ln-2"></a><span class="c">! Copyright (c) 2014 Jens Zudrop &lt;j.zudrop@grs-sim.de&gt;</span>
+<a id="ln-3" name="ln-3" href="#ln-3"></a><span class="c">! Copyright (c) 2015 Harald Klimach &lt;harald.klimach@uni-siegen.de&gt;</span>
+<a id="ln-4" name="ln-4" href="#ln-4"></a><span class="c">! Copyright (c) 2015-2017 Peter Vitt &lt;peter.vitt2@uni-siegen.de&gt;</span>
+<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="c">! Copyright (c) 2015-2016 Verena Krupp &lt;verena.krupp@uni-siegen.de&gt;</span>
+<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="c">! Copyright (c) 2016 Kannan Masilamani &lt;kannan.masilamani@uni-siegen.de&gt;</span>
+<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="c">! Copyright (c) 2016 Tobias Girresser &lt;tobias.girresser@student.uni-siegen.de&gt;</span>
+<a id="ln-8" name="ln-8" href="#ln-8"></a><span class="c">! Copyright (c) 2017 Daniel Petró &lt;daniel.petro@student.uni-siegen.de&gt;</span>
+<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="c">!</span>
+<a id="ln-10" name="ln-10" href="#ln-10"></a><span class="c">! Permission to use, copy, modify, and distribute this software for any</span>
+<a id="ln-11" name="ln-11" href="#ln-11"></a><span class="c">! purpose with or without fee is hereby granted, provided that the above</span>
+<a id="ln-12" name="ln-12" href="#ln-12"></a><span class="c">! copyright notice and this permission notice appear in all copies.</span>
+<a id="ln-13" name="ln-13" href="#ln-13"></a><span class="c">!</span>
+<a id="ln-14" name="ln-14" href="#ln-14"></a><span class="c">! THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHORS DISCLAIM ALL WARRANTIES</span>
+<a id="ln-15" name="ln-15" href="#ln-15"></a><span class="c">! WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF</span>
+<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="c">! MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR</span>
+<a id="ln-17" name="ln-17" href="#ln-17"></a><span class="c">! ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES</span>
+<a id="ln-18" name="ln-18" href="#ln-18"></a><span class="c">! WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN</span>
+<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="c">! ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF</span>
+<a id="ln-20" name="ln-20" href="#ln-20"></a><span class="c">! OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
+<a id="ln-21" name="ln-21" href="#ln-21"></a><span class="c">! **************************************************************************** !</span>
+<a id="ln-22" name="ln-22" href="#ln-22"></a>
+<a id="ln-23" name="ln-23" href="#ln-23"></a><span class="c">!&gt; Helper routines for the Heat equation system.</span>
+<a id="ln-24" name="ln-24" href="#ln-24"></a><span class="k">module </span><span class="n">atl_eqn_heat_hlp_module</span>
+<a id="ln-25" name="ln-25" href="#ln-25"></a><span class="w">  </span><span class="k">use </span><span class="n">aotus_module</span><span class="p">,</span><span class="w">                   </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">flu_State</span>
+<a id="ln-26" name="ln-26" href="#ln-26"></a>
+<a id="ln-27" name="ln-27" href="#ln-27"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_aux_module</span><span class="p">,</span><span class="w">                 </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_abort</span>
+<a id="ln-28" name="ln-28" href="#ln-28"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_bc_module</span><span class="p">,</span><span class="w">                  </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_bc_state_type</span>
+<a id="ln-29" name="ln-29" href="#ln-29"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_logging_module</span><span class="p">,</span><span class="w">             </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">logUnit</span>
+<a id="ln-30" name="ln-30" href="#ln-30"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_stringKeyValuePair_module</span><span class="p">,</span><span class="w">  </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_stringKeyValuePair_type</span>
+<a id="ln-31" name="ln-31" href="#ln-31"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_stringKeyValuePair_module</span><span class="p">,</span><span class="w">  </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">grw_stringKeyValuePairArray_type</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-32" name="ln-32" href="#ln-32"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                       </span><span class="n">init</span><span class="p">,</span><span class="w"> </span><span class="n">truncate</span><span class="p">,</span><span class="w"> </span><span class="n">append</span>
+<a id="ln-33" name="ln-33" href="#ln-33"></a>
+<a id="ln-34" name="ln-34" href="#ln-34"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_equation_module</span><span class="p">,</span><span class="w">            </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_equations_type</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-35" name="ln-35" href="#ln-35"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                       </span><span class="n">atl_eqn_var_trafo_type</span>
+<a id="ln-36" name="ln-36" href="#ln-36"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_eqn_heat_module</span><span class="p">,</span><span class="w">            </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_load_heat</span>
+<a id="ln-37" name="ln-37" href="#ln-37"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_eqn_heat_1d_var_module</span><span class="p">,</span><span class="w">     </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_init_heat_1d_vars</span>
+<a id="ln-38" name="ln-38" href="#ln-38"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_eqn_heat_2d_var_module</span><span class="p">,</span><span class="w">     </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_init_heat_2d_vars</span>
+<a id="ln-39" name="ln-39" href="#ln-39"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_eqn_heat_var_module</span><span class="p">,</span><span class="w">        </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_init_heat_vars</span>
+<a id="ln-40" name="ln-40" href="#ln-40"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_varSys_module</span><span class="p">,</span><span class="w">              </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_varSys_solverData_type</span>
+<a id="ln-41" name="ln-41" href="#ln-41"></a>
+<a id="ln-42" name="ln-42" href="#ln-42"></a><span class="w">  </span><span class="k">implicit none</span>
+<a id="ln-43" name="ln-43" href="#ln-43"></a>
+<a id="ln-44" name="ln-44" href="#ln-44"></a><span class="k">  private</span>
+<a id="ln-45" name="ln-45" href="#ln-45"></a>
+<a id="ln-46" name="ln-46" href="#ln-46"></a><span class="k">  public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">atl_eqn_heat_load_bc</span>
+<a id="ln-47" name="ln-47" href="#ln-47"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">atl_eqn_heat_init</span>
+<a id="ln-48" name="ln-48" href="#ln-48"></a>
+<a id="ln-49" name="ln-49" href="#ln-49"></a>
+<a id="ln-50" name="ln-50" href="#ln-50"></a><span class="k">contains</span>
+<a id="ln-51" name="ln-51" href="#ln-51"></a>
+<a id="ln-52" name="ln-52" href="#ln-52"></a>
+<a id="ln-53" name="ln-53" href="#ln-53"></a><span class="w">  </span><span class="c">!&gt; Initialization of the Heat equation.</span>
+<a id="ln-54" name="ln-54" href="#ln-54"></a><span class="w">  </span><span class="c">!!</span>
+<a id="ln-55" name="ln-55" href="#ln-55"></a><span class="w">  </span><span class="c">!! This routine sets up the necessary infrastructure for the Heat</span>
+<a id="ln-56" name="ln-56" href="#ln-56"></a><span class="w">  </span><span class="c">!! equation.</span>
+<a id="ln-57" name="ln-57" href="#ln-57"></a><span class="w">  </span><span class="c">!! It reads the configuration from the given script in conf under the table</span>
+<a id="ln-58" name="ln-58" href="#ln-58"></a><span class="w">  </span><span class="c">!! provided in thandle and sets function pointers and variables accordingly.</span>
+<a id="ln-59" name="ln-59" href="#ln-59"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">atl_eqn_heat_init</span><span class="p">(</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w"> </span><span class="n">equation</span><span class="p">,</span><span class="w"> </span><span class="n">nDimensions</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-60" name="ln-60" href="#ln-60"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                           </span><span class="n">varSys_data</span><span class="w">                           </span><span class="p">)</span>
+<a id="ln-61" name="ln-61" href="#ln-61"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<a id="ln-62" name="ln-62" href="#ln-62"></a><span class="w">    </span><span class="c">!&gt; Handle to the Lua configuration</span>
+<a id="ln-63" name="ln-63" href="#ln-63"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">flu_State</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conf</span>
+<a id="ln-64" name="ln-64" href="#ln-64"></a>
+<a id="ln-65" name="ln-65" href="#ln-65"></a><span class="w">    </span><span class="c">!&gt; Handle to the equation table in the Lua script given in conf.</span>
+<a id="ln-66" name="ln-66" href="#ln-66"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">thandle</span>
+<a id="ln-67" name="ln-67" href="#ln-67"></a>
+<a id="ln-68" name="ln-68" href="#ln-68"></a><span class="w">    </span><span class="c">!&gt; Equation system to set with this routine.</span>
+<a id="ln-69" name="ln-69" href="#ln-69"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_equations_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">equation</span>
+<a id="ln-70" name="ln-70" href="#ln-70"></a>
+<a id="ln-71" name="ln-71" href="#ln-71"></a><span class="w">    </span><span class="c">!&gt; Number of spatial dimensions, the Euler equations should live on.</span>
+<a id="ln-72" name="ln-72" href="#ln-72"></a><span class="w">    </span><span class="c">!!</span>
+<a id="ln-73" name="ln-73" href="#ln-73"></a><span class="w">    </span><span class="c">!! Has to be 1, 2 or 3.</span>
+<a id="ln-74" name="ln-74" href="#ln-74"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nDimensions</span>
+<a id="ln-75" name="ln-75" href="#ln-75"></a>
+<a id="ln-76" name="ln-76" href="#ln-76"></a><span class="w">    </span><span class="c">!&gt; the pointer to the data required for the varsys</span>
+<a id="ln-77" name="ln-77" href="#ln-77"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_varSys_solverData_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varSys_data</span>
+<a id="ln-78" name="ln-78" href="#ln-78"></a><span class="w">    </span><span class="c">!&gt; The possible material properties.</span>
+<a id="ln-79" name="ln-79" href="#ln-79"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<a id="ln-80" name="ln-80" href="#ln-80"></a>
+<a id="ln-81" name="ln-81" href="#ln-81"></a><span class="w">    </span><span class="n">equation</span><span class="p">%</span><span class="n">isNonlinear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-82" name="ln-82" href="#ln-82"></a><span class="w">    </span><span class="n">equation</span><span class="p">%</span><span class="n">nDimensions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nDimensions</span>
+<a id="ln-83" name="ln-83" href="#ln-83"></a><span class="w">    </span><span class="c">! timesetp is static and not changing over simulationtime</span>
+<a id="ln-84" name="ln-84" href="#ln-84"></a><span class="w">    </span><span class="n">equation</span><span class="p">%</span><span class="n">adaptive_timestep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-85" name="ln-85" href="#ln-85"></a><span class="w">    </span><span class="c">! we need 1st spatial derivatives of all variables ...</span>
+<a id="ln-86" name="ln-86" href="#ln-86"></a><span class="w">    </span><span class="n">equation</span><span class="p">%</span><span class="n">nDerivatives</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<a id="ln-87" name="ln-87" href="#ln-87"></a>
+<a id="ln-88" name="ln-88" href="#ln-88"></a><span class="w">    </span><span class="n">equation</span><span class="p">%</span><span class="n">load_bc</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">atl_eqn_heat_load_bc</span>
+<a id="ln-89" name="ln-89" href="#ln-89"></a>
+<a id="ln-90" name="ln-90" href="#ln-90"></a><span class="w">    </span><span class="k">select case</span><span class="p">(</span><span class="n">nDimensions</span><span class="p">)</span>
+<a id="ln-91" name="ln-91" href="#ln-91"></a><span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<a id="ln-92" name="ln-92" href="#ln-92"></a><span class="w">      </span><span class="k">call </span><span class="n">atl_init_heat_1d_vars</span><span class="p">(</span><span class="w">             </span><span class="p">&amp;</span>
+<a id="ln-93" name="ln-93" href="#ln-93"></a><span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="n">equation</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="n">equation</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<a id="ln-94" name="ln-94" href="#ln-94"></a><span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="n">methodData</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="n">varSys_data</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-95" name="ln-95" href="#ln-95"></a><span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<a id="ln-96" name="ln-96" href="#ln-96"></a><span class="w">      </span><span class="k">call </span><span class="n">atl_init_heat_2d_vars</span><span class="p">(</span><span class="w">             </span><span class="p">&amp;</span>
+<a id="ln-97" name="ln-97" href="#ln-97"></a><span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="n">equation</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="n">equation</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<a id="ln-98" name="ln-98" href="#ln-98"></a><span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="n">methodData</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="n">varSys_data</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-99" name="ln-99" href="#ln-99"></a><span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<a id="ln-100" name="ln-100" href="#ln-100"></a><span class="w">      </span><span class="k">call </span><span class="n">atl_init_heat_vars</span><span class="p">(</span><span class="w">                </span><span class="p">&amp;</span>
+<a id="ln-101" name="ln-101" href="#ln-101"></a><span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="n">equation</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="n">equation</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<a id="ln-102" name="ln-102" href="#ln-102"></a><span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="n">methodData</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="n">varSys_data</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-103" name="ln-103" href="#ln-103"></a><span class="w">    </span><span class="k">end select</span>
+<a id="ln-104" name="ln-104" href="#ln-104"></a>
+<a id="ln-105" name="ln-105" href="#ln-105"></a><span class="k">    call </span><span class="n">atl_load_heat</span><span class="p">(</span><span class="w"> </span><span class="n">heat</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">equation</span><span class="p">%</span><span class="n">heat</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<a id="ln-106" name="ln-106" href="#ln-106"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">conf</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<a id="ln-107" name="ln-107" href="#ln-107"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">eq_table</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="w">          </span><span class="p">)</span>
+<a id="ln-108" name="ln-108" href="#ln-108"></a>
+<a id="ln-109" name="ln-109" href="#ln-109"></a><span class="w">  </span><span class="k">end subroutine </span><span class="n">atl_eqn_heat_init</span>
+<a id="ln-110" name="ln-110" href="#ln-110"></a>
+<a id="ln-111" name="ln-111" href="#ln-111"></a>
+<a id="ln-112" name="ln-112" href="#ln-112"></a><span class="w">  </span><span class="c">!&gt; Reading boundary conditions for the Heat equation.</span>
+<a id="ln-113" name="ln-113" href="#ln-113"></a><span class="w">  </span><span class="c">!!</span>
+<a id="ln-114" name="ln-114" href="#ln-114"></a><span class="w">  </span><span class="c">!! This routine has to conform to the interface definition</span>
+<a id="ln-115" name="ln-115" href="#ln-115"></a><span class="w">  </span><span class="c">!! atl_equation_module#eqn_load_bc.</span>
+<a id="ln-116" name="ln-116" href="#ln-116"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">atl_eqn_heat_load_bc</span><span class="p">(</span><span class="w"> </span><span class="n">equation</span><span class="p">,</span><span class="w">                              </span><span class="p">&amp;</span>
+<a id="ln-117" name="ln-117" href="#ln-117"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                              </span><span class="n">bc_state</span><span class="p">,</span><span class="w"> </span><span class="n">bc_state_gradient</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<a id="ln-118" name="ln-118" href="#ln-118"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                              </span><span class="n">bc_varDict</span><span class="p">,</span><span class="w"> </span><span class="n">bc_varDict_gradient</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<a id="ln-119" name="ln-119" href="#ln-119"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                              </span><span class="n">bc_normal_vec</span><span class="p">,</span><span class="w"> </span><span class="n">bc_normal_vec_gradient</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-120" name="ln-120" href="#ln-120"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                              </span><span class="n">bc_trafo</span><span class="p">,</span><span class="w"> </span><span class="n">bc_trafo_gradient</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<a id="ln-121" name="ln-121" href="#ln-121"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                              </span><span class="n">bc_label</span><span class="p">,</span><span class="w"> </span><span class="n">bc_kind</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="w">       </span><span class="p">)</span>
+<a id="ln-122" name="ln-122" href="#ln-122"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-123" name="ln-123" href="#ln-123"></a><span class="w">    </span><span class="k">class</span><span class="p">(</span><span class="n">atl_equations_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">equation</span>
+<a id="ln-124" name="ln-124" href="#ln-124"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_bc_state_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bc_state</span><span class="p">(:)</span>
+<a id="ln-125" name="ln-125" href="#ln-125"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_bc_state_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bc_state_gradient</span><span class="p">(:)</span>
+<a id="ln-126" name="ln-126" href="#ln-126"></a><span class="w">    </span><span class="c">!&gt; Dictionary of boundary variables in bc_state</span>
+<a id="ln-127" name="ln-127" href="#ln-127"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">grw_stringKeyValuePairArray_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bc_varDict</span>
+<a id="ln-128" name="ln-128" href="#ln-128"></a><span class="w">    </span><span class="c">!&gt; Dictionary of boundary variables in bc_state_gradient</span>
+<a id="ln-129" name="ln-129" href="#ln-129"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">grw_stringKeyValuePairArray_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bc_varDict_gradient</span>
+<a id="ln-130" name="ln-130" href="#ln-130"></a><span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bc_normal_vec</span>
+<a id="ln-131" name="ln-131" href="#ln-131"></a><span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bc_normal_vec_gradient</span>
+<a id="ln-132" name="ln-132" href="#ln-132"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bc_label</span>
+<a id="ln-133" name="ln-133" href="#ln-133"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bc_kind</span>
+<a id="ln-134" name="ln-134" href="#ln-134"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_eqn_var_trafo_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bc_trafo</span>
+<a id="ln-135" name="ln-135" href="#ln-135"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_eqn_var_trafo_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bc_trafo_gradient</span>
+<a id="ln-136" name="ln-136" href="#ln-136"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">thandle</span>
+<a id="ln-137" name="ln-137" href="#ln-137"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">flu_State</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conf</span>
+<a id="ln-138" name="ln-138" href="#ln-138"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-139" name="ln-139" href="#ln-139"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_stringKeyValuePair_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">kvp</span>
+<a id="ln-140" name="ln-140" href="#ln-140"></a>
+<a id="ln-141" name="ln-141" href="#ln-141"></a>
+<a id="ln-142" name="ln-142" href="#ln-142"></a><span class="w">    </span><span class="c">! By default we set the function pointer for a conversion,</span>
+<a id="ln-143" name="ln-143" href="#ln-143"></a><span class="w">    </span><span class="c">! even if the boundary conditions does not use them.</span>
+<a id="ln-144" name="ln-144" href="#ln-144"></a><span class="w">    </span><span class="n">bc_trafo</span><span class="p">%</span><span class="n">from</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">null</span><span class="p">()</span>
+<a id="ln-145" name="ln-145" href="#ln-145"></a><span class="w">    </span><span class="n">bc_trafo</span><span class="p">%</span><span class="n">to</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">null</span><span class="p">()</span>
+<a id="ln-146" name="ln-146" href="#ln-146"></a>
+<a id="ln-147" name="ln-147" href="#ln-147"></a><span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">bc_state</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<a id="ln-148" name="ln-148" href="#ln-148"></a><span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">bc_state_gradient</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<a id="ln-149" name="ln-149" href="#ln-149"></a><span class="c">!!VK    allocate(bc_trafo_gradient(0))</span>
+<a id="ln-150" name="ln-150" href="#ln-150"></a><span class="c">!!VK    allocate(bc_normal_vec_gradient(0))</span>
+<a id="ln-151" name="ln-151" href="#ln-151"></a>
+<a id="ln-152" name="ln-152" href="#ln-152"></a><span class="w">    </span><span class="c">! Initialize varDict for current boundary</span>
+<a id="ln-153" name="ln-153" href="#ln-153"></a><span class="w">    </span><span class="k">call </span><span class="n">init</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bc_varDict</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-154" name="ln-154" href="#ln-154"></a><span class="w">    </span><span class="k">call </span><span class="n">init</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bc_varDict_gradient</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-155" name="ln-155" href="#ln-155"></a><span class="w">    </span><span class="c">! Constant zero variable for non-configurable boundary variable</span>
+<a id="ln-156" name="ln-156" href="#ln-156"></a><span class="w">    </span><span class="n">kvp</span><span class="p">%</span><span class="k">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;zero_const&#39;</span>
+<a id="ln-157" name="ln-157" href="#ln-157"></a>
+<a id="ln-158" name="ln-158" href="#ln-158"></a><span class="w">    </span><span class="k">select case</span><span class="p">(</span><span class="n">bc_kind</span><span class="p">)</span>
+<a id="ln-159" name="ln-159" href="#ln-159"></a><span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;const&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;dirichlet&#39;</span><span class="p">)</span>
+<a id="ln-160" name="ln-160" href="#ln-160"></a><span class="w">      </span><span class="c">! Prescribe temperature</span>
+<a id="ln-161" name="ln-161" href="#ln-161"></a><span class="w">      </span><span class="n">bc_state</span><span class="p">(</span><span class="mi">1</span><span class="p">)%</span><span class="n">state_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;temp&#39;</span>
+<a id="ln-162" name="ln-162" href="#ln-162"></a><span class="w">      </span><span class="n">bc_state</span><span class="p">(</span><span class="mi">1</span><span class="p">)%</span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;dirichlet&#39;</span>
+<a id="ln-163" name="ln-163" href="#ln-163"></a><span class="w">      </span><span class="n">bc_state</span><span class="p">(</span><span class="mi">1</span><span class="p">)%</span><span class="n">isDefined</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<a id="ln-164" name="ln-164" href="#ln-164"></a><span class="w">      </span><span class="n">kvp</span><span class="p">%</span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">bc_state</span><span class="p">(</span><span class="mi">1</span><span class="p">)%</span><span class="n">state_name</span><span class="p">)</span>
+<a id="ln-165" name="ln-165" href="#ln-165"></a><span class="w">      </span><span class="k">call </span><span class="n">append</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bc_varDict</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kvp</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-166" name="ln-166" href="#ln-166"></a>
+<a id="ln-167" name="ln-167" href="#ln-167"></a><span class="w">    </span><span class="c">!&gt;@todo case(&#39;heat_flux&#39;, &#39;neumann&#39;)</span>
+<a id="ln-168" name="ln-168" href="#ln-168"></a>
+<a id="ln-169" name="ln-169" href="#ln-169"></a>
+<a id="ln-170" name="ln-170" href="#ln-170"></a><span class="w">    </span><span class="c">!&gt;@todo case(&#39;perfectly_insulated&#39;)</span>
+<a id="ln-171" name="ln-171" href="#ln-171"></a>
+<a id="ln-172" name="ln-172" href="#ln-172"></a><span class="w">    </span><span class="k">case </span><span class="n">default</span>
+<a id="ln-173" name="ln-173" href="#ln-173"></a><span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Unknown boundary kind &quot;&#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">bc_kind</span><span class="p">)</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39;&quot;&#39;</span>
+<a id="ln-174" name="ln-174" href="#ln-174"></a><span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;for boundary  &quot;&#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">bc_label</span><span class="p">)</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39;&quot;.&#39;</span>
+<a id="ln-175" name="ln-175" href="#ln-175"></a><span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Available boundary kinds for Heat equation:&#39;</span>
+<a id="ln-176" name="ln-176" href="#ln-176"></a><span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39; * temp&#39;</span>
+<a id="ln-177" name="ln-177" href="#ln-177"></a><span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39; * heat_flux&#39;</span>
+<a id="ln-178" name="ln-178" href="#ln-178"></a><span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39; * perfectly_insulated&#39;</span>
+<a id="ln-179" name="ln-179" href="#ln-179"></a><span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Do not know how to proceed, ABORTING...&#39;</span>
+<a id="ln-180" name="ln-180" href="#ln-180"></a><span class="w">      </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<a id="ln-181" name="ln-181" href="#ln-181"></a>
+<a id="ln-182" name="ln-182" href="#ln-182"></a><span class="w">    </span><span class="k">end select</span>
+<a id="ln-183" name="ln-183" href="#ln-183"></a>
+<a id="ln-184" name="ln-184" href="#ln-184"></a><span class="k">    call </span><span class="n">truncate</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bc_varDict</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-185" name="ln-185" href="#ln-185"></a><span class="w">    </span><span class="k">call </span><span class="n">truncate</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bc_varDict_gradient</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-186" name="ln-186" href="#ln-186"></a>
+<a id="ln-187" name="ln-187" href="#ln-187"></a><span class="w">  </span><span class="k">end subroutine </span><span class="n">atl_eqn_heat_load_bc</span>
+<a id="ln-188" name="ln-188" href="#ln-188"></a>
+<a id="ln-189" name="ln-189" href="#ln-189"></a><span class="k">end module </span><span class="n">atl_eqn_heat_hlp_module</span>
+</pre></div>
+
+      </section>
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

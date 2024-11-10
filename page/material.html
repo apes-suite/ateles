@@ -1,0 +1,433 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>Material &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>Material</h1>
+    <div class="container p-2 mb-4 bg-light border rounded-3">
+      <div class="row align-items-center justify-content-between">
+        <div class="col">
+          <ul class="list-inline" style="margin-bottom:0px; display:inline">
+          </ul>
+        </div>
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='index.html'>Documentation</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Material</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-3">
+        <div class="card card-body bg-light" id="sidebar-toc">
+          <ul class="nav flex-column align-items">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Documentation</a>
+            </li>
+          </ul>
+          <hr>
+          <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="apes_overview.html">APES Overview</a>
+              <a class="nav-link" href="build_and_run.html">Build and Run Ateles</a>
+              <a class="nav-link" href="examples/index.html">Example setups</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/acoustic/index.html">Acoustic Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/acoustic/gauss_densitypulse_2D/index.html">Gaussian Density Pulse Test Case</a>
+              <a class="nav-link" href="examples/acoustic/planar_wave_3D/index.html">Planar Wave</a>
+
+                </nav>
+              <a class="nav-link" href="examples/euler/index.html">Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/euler/1D/index.html">1D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/euler/1D/modalEstimate/index.html">Modal estimate for adaptive timesteps 1D</a>
+              <a class="nav-link" href="examples/euler/1D/piston/index.html">Formation of a shock wave ahead of a moving piston in 1D</a>
+              <a class="nav-link" href="examples/euler/1D/piston_modereduction/index.html">Formation of a shock wave ahead of a moving piston in 1D</a>
+              <a class="nav-link" href="examples/euler/1D/shock_stabilization_parallel/index.html">Shock Stabilization Test Case</a>
+              <a class="nav-link" href="examples/euler/1D/toro1_x/index.html">Toro Validation Test Case</a>
+
+                </nav>
+              <a class="nav-link" href="examples/euler/2D/index.html">2D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/euler/2D/gauss_densitypulse_spongelayer/index.html">Gaussian Density Pulse in 2D</a>
+              <a class="nav-link" href="examples/euler/2D/modalEstimate/index.html">Modal estimate for adaptive timesteps in 2D</a>
+              <a class="nav-link" href="examples/euler/2D/shock_stabilization_parallel/index.html">Shock Stabilization Test Case</a>
+              <a class="nav-link" href="examples/euler/2D/toro1_x/index.html">Toro1 Validation Test Case in X direction</a>
+              <a class="nav-link" href="examples/euler/2D/toro1_y/index.html">Toro1 Validation Test Case in Y direction</a>
+              <a class="nav-link" href="examples/euler/2D/toro2_x/index.html">Toro2 Setup along X for 2D Euler equations</a>
+              <a class="nav-link" href="examples/euler/2D/toro3_x/index.html">Toro3 Setup along X for 2D Euler equations</a>
+              <a class="nav-link" href="examples/euler/2D/toro4_x/index.html">Toro4 setup for 2D Euler equations with a positivity preserving filter</a>
+              <a class="nav-link" href="examples/euler/2D/vorticity/index.html">Vorticity Tracking</a>
+              <a class="nav-link" href="examples/euler/2D/wedge/index.html">Supersonic movement of a wedge</a>
+              <a class="nav-link" href="examples/euler/2D/wedge_modereduction/index.html">Supersonic movement of a wedge</a>
+
+                </nav>
+              <a class="nav-link" href="examples/euler/3D/index.html">3D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/euler/3D/gauss_densitypulse_deriv_quantity/index.html">Pulse in density with derived quantity</a>
+              <a class="nav-link" href="examples/euler/3D/gauss_densitypulse_fpt/index.html">Euler 3D pulse in density with FPT</a>
+              <a class="nav-link" href="examples/euler/3D/gauss_densitypulse_fxt/index.html">Euler 3D setup of Gaussian pulse in density with FXT</a>
+              <a class="nav-link" href="examples/euler/3D/gauss_densitypulse_l2p/index.html">Euler 3D setup with pulse in density and L2 projection</a>
+              <a class="nav-link" href="examples/euler/3D/gauss_densitypulse_spongelayer/index.html">Euler 3D pulse in density with sponge</a>
+              <a class="nav-link" href="examples/euler/3D/modalEstimate/index.html">Modal estimate in Euler 3D</a>
+              <a class="nav-link" href="examples/euler/3D/multilevel/index.html">Material with Multilevel in Euler 3D</a>
+              <a class="nav-link" href="examples/euler/3D/overview/index.html">Configuration overview for Euler 3D simulations</a>
+              <a class="nav-link" href="examples/euler/3D/p_polynomials/index.html">P-polynomial space</a>
+              <a class="nav-link" href="examples/euler/3D/qCriterion_deriv_quantity/index.html">Q-Criterion Tracking in Euler 3D</a>
+              <a class="nav-link" href="examples/euler/3D/shear_layer_Q4/index.html">Shear-Layer Q4</a>
+              <a class="nav-link" href="examples/euler/3D/shear_layer_Q4_parallel/index.html">Shear-Layer Q4</a>
+              <a class="nav-link" href="examples/euler/3D/shear_layer_Q8/index.html">Shear-Layer Q8</a>
+              <a class="nav-link" href="examples/euler/3D/shock_stabilization_localrefinement/index.html">Shock Stabilization in Euler 3D with local refinement</a>
+              <a class="nav-link" href="examples/euler/3D/shock_stabilization_parallel/index.html">Shock stabilization for 3D Euler equations with RK-Taylor</a>
+              <a class="nav-link" href="examples/euler/3D/shock_stabilization_periodic/index.html">Shock stabilization in periodic domain</a>
+              <a class="nav-link" href="examples/euler/3D/toro1_x/index.html">Toro1 Riemann problem in X direction</a>
+              <a class="nav-link" href="examples/euler/3D/toro1_y/index.html">Toro1 Riemann problem in Y direction</a>
+              <a class="nav-link" href="examples/euler/3D/toro1_z/index.html">Toro1 Riemann problem in Z direction</a>
+              <a class="nav-link" href="examples/euler/3D/vorticity/index.html">Vorticity Test Case</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="examples/heat/index.html">Heat Conduction</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/heat/1D/index.html">Heat Conduction in 1D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/heat/1D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+              <a class="nav-link" href="examples/heat/2D/index.html">Heat Conduction in 2D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/heat/2D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+              <a class="nav-link" href="examples/heat/3D/index.html">Heat Conduction in 3D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/heat/3D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="examples/lineareuler/index.html">Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/lineareuler/2D/index.html">2D Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/lineareuler/2D/gauss_pulse/index.html">Gaussian pulse in pressure with 2d linearized Euler equations</a>
+              <a class="nav-link" href="examples/lineareuler/2D/transientBackground/index.html">Transient background state in 2D linearized Euler</a>
+
+                </nav>
+              <a class="nav-link" href="examples/lineareuler/3D/index.html">3D Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/lineareuler/3D/gauss_pulse/index.html">Gaussian pulse in density for 3D linearized Euler equations</a>
+              <a class="nav-link" href="examples/lineareuler/3D/gradient/index.html">Tracking of gradients in 3D linearized Euler equations</a>
+              <a class="nav-link" href="examples/lineareuler/3D/transientBackground/index.html">Transient background state in 3D linearized Euler</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="examples/maxwell/index.html">Maxwell Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/maxwell/pec_scatter_inhomogenous_matFun_Q8_3D/index.html">Perfectly_scatter_Inhomogenous_Materia</a>
+              <a class="nav-link" href="examples/maxwell/pec_scatter_inhomogenous_matVar_Q8_3D/index.html">Perfectly_scatter_Inhomogenous_Materia</a>
+              <a class="nav-link" href="examples/maxwell/periodic_oscillator_P8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="examples/maxwell/periodic_oscillator_Q8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="examples/maxwell/rectangular_wave_Q8_3D/index.html">Rectangle Wave</a>
+
+                </nav>
+              <a class="nav-link" href="examples/maxwelldivcorr/index.html">Maxwell Equations With Divergence Correction</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/maxwelldivcorr/periodic_oscillator_P8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="examples/maxwelldivcorr/periodic_oscillator_Q8_3D/index.html">Periodic_Oscillator</a>
+
+                </nav>
+              <a class="nav-link" href="examples/maxwellpml/index.html">Maxwell Equations With Perfectly Matched Layers</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/maxwellpml/cylinder_scattering_Q8_2D/index.html">Perfectly matched Layer test case</a>
+
+                </nav>
+              <a class="nav-link" href="examples/navierstokes/index.html">Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/navierstokes/2D/index.html">2D Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/navierstokes/2D/constant_state/index.html">Constant State</a>
+              <a class="nav-link" href="examples/navierstokes/2D/shear_hat/index.html">Shear hat 2D</a>
+              <a class="nav-link" href="examples/navierstokes/2D/viscous_vortex/index.html">Viscous Vortex (TGV) 2D</a>
+
+                </nav>
+              <a class="nav-link" href="examples/navierstokes/3D/index.html">3D Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/navierstokes/3D/shear_hat/index.html">Shear hat 3D</a>
+              <a class="nav-link" href="examples/navierstokes/3D/shear_tube/index.html">Shear tube 3D</a>
+
+                </nav>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="init.html">Initialization</a>
+              <a class="nav-link active disabled" href="material.html">Material</a>
+              <a class="nav-link" href="neumann_boundaries.html">Neumann boundary conditions</a>
+              <a class="nav-link" href="new_eqn_system.html">Introducing a New Equation System</a>
+              <a class="nav-link" href="polynomials.html">Polynomials Library</a>
+              <a class="nav-link" href="postprocess_filtering.html">Postprocess Filtering</a>
+              <a class="nav-link" href="tutorial/index.html">Tutorial</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="tutorial/euler.html">Euler Testcase</a>
+              <a class="nav-link" href="tutorial/general.html">General Input File Information</a>
+              <a class="nav-link" href="tutorial/maxwell.html">Maxwell Testcase</a>
+              <a class="nav-link" href="tutorial/postprocessing.html">Postprocessing with atl_harvesting</a>
+              <a class="nav-link" href="tutorial/procedure.html">General Procedure for Running the Testcases</a>
+              <a class="nav-link" href="tutorial/source_term.html">Source Term</a>
+              <a class="nav-link" href="tutorial/tracking.html">Tracking</a>
+
+                </nav>
+          </nav>
+        </div>
+      </div>
+
+    <div class="col-9" id='text'>
+      <p>Material is a concept to assign different parameters to different areas of the
+domain.</p>
+<div class="alert alert-success">
+<p class="alert-title h4">Todo</p>
+<p>Extend the description</p>
+</div>
+<div class="toc">
+<ul>
+<li><a href="#initialization">Initialization</a></li>
+<li><a href="#data-structures">Data structures</a></li>
+<li><a href="#implementation">Implementation</a><ul>
+<li><a href="#reading-the-configuration-file">Reading the configuration file</a></li>
+<li><a href="#storing-the-data-in-the-global-variable-system">Storing the data in the global variable system</a></li>
+<li><a href="#preparing-the-data-structures-for-production">Preparing the data structures for production</a></li>
+<li><a href="#evaluating-material-parameters-during-runtime">Evaluating material parameters during runtime</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="initialization">Initialization</h2>
+<p>For the initialization of the material, please refer to
+<a href="./init.html#material">Initialization</a>.</p>
+<h2 id="data-structures">Data structures</h2>
+<p>Information about material are stored in two main data structures. One is
+<a href="../type/atl_material_type.html">atl_material_type</a>, the other is <a href="../type/atl_materialfun_type.html">atl_materialFun_type</a>.
+<a href="../type/atl_materialfun_type.html">atl_materialFun_type</a> is
+contained in equations_type and stores information about the lua variables the
+material consists of, their representation in the global variable system and
+the number of scalars of each variable. <a href="../type/atl_material_type.html">atl_material_type</a> is located in
+<a href="../type/atl_element_container_type.html">atl_element_container_type</a>%<a href="../type/atl_cube_container_type.html">atl_cube_container_type</a> and is stored as an
+levelwise array. This type knows about the elements, faces, boundaries affected
+by it and is used to evaluate the material during runtime.</p>
+<h2 id="implementation">Implementation</h2>
+<p>The variable table is read in <a href="../proc/atl_initialize.html">atl_initialize</a> by calling
+<a href="../https:/apes-suite.github.io/treelm/interface/tem_variable_load.html">tem_variable_load</a>. The variables are stored in the local array userVars of
+type <a href="../https:/apes-suite.github.io/treelm/type/tem_variable_type.html">tem_variable_type</a>. All variables in this array are then given to
+<a href="../https:/apes-suite.github.io/treelm/proc/tem_varsys_append_luavar.html">tem_varSys_append_luaVar</a>, where they are added to the global variable
+system. The space-time functions are added to the global list of space-time
+functions stored as <a href="../type/atl_equations_type.html">atl_Equations_type</a>%<a href="../type/atl_equations_type.html#variable-stfunlist~4">stFunList</a>.
+The variable's method_data is set to point to the corresponding space-time
+function. Doing his, the evaluation of a variable based on a space-time
+function can just dereference it's method_data to have the correct space-time
+function available. Right after that, the element lists for all space-time
+functions in <a href="../type/atl_equations_type.html">atl_Equations_type</a>%<a href="../type/atl_equations_type.html#variable-stfunlist~4">stFunList</a> are
+created. Based on these lists Ateles afterwards has to assign the latest valid
+material to the elements.</p>
+<h3 id="reading-the-configuration-file">Reading the configuration file</h3>
+<p>Each equation system expects a set of material and penalization parameters.
+Some of these parameters are constant in time and space, some may vary. The
+constant material parameters are explicitly defined in the equation table, e.g.
+the isentropic coefficient in navier stokes:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">equation</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;navier_stokes&#39;</span><span class="p">,</span>
+  <span class="p">...</span>
+  <span class="n">isen_coef</span> <span class="o">=</span> <span class="mf">1.4</span><span class="p">,</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>As long as there is no need to vary those parameter in time or space, they can
+stay as an equation global constant. But all other parameters that are not
+constant have to be defined using variables. As these variables are configured
+in the variable table, we need a connection between a user defined variable in
+the variable table and a material parameter. Therefore each equation system has
+to announce which materials it can make use of. During the equation
+initialization, an instance of <a href="../type/atl_init_material_type.html">atl_init_material_type</a> is filled. It
+contains a property <a href="../type/atl_init_material_type.html#variable-poss_materialvars">poss_materialVars</a> of type
+<a href="../https:/apes-suite.github.io/treelm/type/tem_possible_variable_type.html">tem_possible_variable_type</a>, where all material parameters the equation can
+use are stored in.</p>
+<p>This list is used in <a href="../https:/apes-suite.github.io/treelm/interface/tem_variable_loadmapping.html">tem_variable_loadMapping</a> to find the material
+parameters in the equation table. If they are found, the material parameter's
+name is stored along with the name of the corresponding variable in the
+variable table in a dictionary
+<a href="../type/atl_init_material_type.html">atl_init_material_type</a>%<a href="../type/atl_init_material_type.html#variable-materialdict">materialDict</a>.</p>
+<h3 id="storing-the-data-in-the-global-variable-system">Storing the data in the global variable system</h3>
+<p>After loading these mappings, the <a href="../type/atl_init_material_type.html">atl_init_material_type</a> is passed to
+<a href="../proc/atl_append_newmaterialvars.html">atl_append_newMaterialVars</a> to add a new variable to the global variable
+system for each configured material parameter. This variable gets the name of
+the material parameter prefixed with mat_. Following this naming scheme, the
+user is able to track the material parameter as well as the space-time function
+providing the data for this material parameter. The input variable for this new
+variable is the variable that was added for the space-time function. The
+position of the new material variable is stored along with the number of
+components this variable provides in an instance of <a href="../type/atl_materialfun_type.html">atl_materialFun_type</a>.
+This list is stored inside the <a href="../type/atl_equations_type.html">atl_Equations_type</a>, thus accessible during
+runtime for easy access to all material variables.</p>
+<p>That said, the sequence to get data for a material parameter looks like:</p>
+<ol>
+<li>call <code>varSys%method%val(&lt;position of mat_permeability&gt;)%get_point</code></li>
+<li>inside <code>mat_permeability%get_point</code>: call for the one and only input variable</li>
+<li>inside <code>input_variable%get_point</code>: Cast the <code>method_data</code> into a space-time
+   function and evaluate it for the requested point(s)</li>
+</ol>
+<p>Looking at the second step, one can see the reason why we need a special
+get_point and get_element routine for materials. Both routines
+(<a href="../proc/atl_getmaterialforpoint.html">atl_getMaterialForPoint</a> and <a href="../proc/atl_getmaterialforelement.html">atl_getMaterialForElement</a>) are defined in
+<a href="../module/atl_materialini_module.html">atl_materialIni_module</a> and only forward requests on the material variable
+to the variable representing the space-time function.</p>
+<h3 id="preparing-the-data-structures-for-production">Preparing the data structures for production</h3>
+<p>When all variables are added to the variable system, the initialization of the
+data structures used for production has to be done. Therefore the routine
+<a href="../proc/atl_assign_elem_varprop.html">atl_assign_elem_varProp</a> iterates over all material variables, gets the
+corresponding Lua variable, extracts the space-time functions and assigns it to
+each element in the space-time function's subtree. This is done by using a
+pointer to the space-time function. As we usually have more than one material
+parameter and thus don't have a single space-time function providing data for
+it, we end up with a small list of pointers to space-time functions with the
+length of the number of material parameters.</p>
+<h3 id="evaluating-material-parameters-during-runtime">Evaluating material parameters during runtime</h3>
+<p><strong>Material parameters are currently evaluated during runtime only for 2d
+kernels.</strong> This is done in
+<a href="../proc/atl_preprocess_modg_2d_kernel.html">atl_preprocess_modg_2d_kernel</a>, where
+<a href="../proc/atl_update_materialparams.html">atl_update_materialParams</a> is called. This routine calls the three steps of
+updating material parameters:</p>
+<ul>
+<li>The first step is performed in <a href="../proc/atl_evalelemmaterial.html">atl_evalElemMaterial</a>. There the material
+  for each element is updated by evaluating the space-time function-pointer
+  stored for each element and each material parameter. The new material data is
+  stored for each element and material parameter in
+  <a href="../type/atl_material_type.html">atl_material_type</a>%<a href="../type/atl_material_type.html#variable-material_dat">material_dat</a>.</li>
+<li>After this evaluation, the material is projected to the element's faces by
+  calling <a href="../proc/atl_evalfacematerial.html">atl_evalFaceMaterial</a>. The face material is also stored in
+  <a href="../type/atl_material_type.html">atl_material_type</a>%<a href="../type/atl_material_type.html#variable-material_dat">material_dat</a>.</li>
+<li>Now <a href="../proc/atl_create_materialboundarylist.html">atl_create_materialBoundaryList</a> is called. There the lists of
+  boundary elements with material is created and stored in
+  <a href="../type/atl_material_type.html">atl_material_type</a>%<a href="../type/atl_material_type.html#variable-material_desc">material_desc</a></li>
+</ul>
+    </div>
+  </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

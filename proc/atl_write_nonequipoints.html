@@ -1,0 +1,805 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_write_nonequiPoints &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_write_nonequiPoints
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for procedures.">69 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_writePrecice_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_writeprecice_module.f90.html'>atl_writePrecice_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/atl_writeprecice_module.html'>atl_writePrecice_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_write_nonequiPoints</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>private  subroutine atl_write_nonequiPoints(varSys, tree, stFun, preciceCpl)  
+</h2>
+    
+
+    <p>setup_indices for boundary variables are read_var in precice
+ space-time function we are not able to use 'idx' created here as input for
+ get_valOfIndex for write_vars.Therefore we have to do setup_indices for
+ write_vars once during initialization and then store the idx in
+ precice_coupling type. This is done for the non-equidistant points. We also
+ set the vertices and the edges as well as the triangles for the
+ Interpolation between the domains.</p>
+<p>Obtain the point coordinates to get values for
+ get the number of unquie points ( xyz should be same number)
+VK        write(<em>,</em>) 'number of Points to write to precice is 0, cycle &amp;
+VK          &amp; this spacetimefunction'
+ shift the points via the offset bit for the get_point routine
+ get the unquie list of points
+ get the unquie list of points serialize them since precice needs
+ a 1d array transform offet bit back
+ shift the points according to the offset bit * small fraction
+ of the boundingCubeLength hence it is mesh independent
+ loop over the variables to write to precice
+ get_point routine for unquie array of points of that variable
+ get the setup_indices for the shifted points</p>
+<p>Since we are sending 5 times the same idx, for the unique
+ Points and all of them have the same idx, we just need to
+ store it once
+ send the points to precice and get back the positionID
+ allocate posID array</p>
+<hr>
+<p>From here on the Nearest-Projection is introduced, which has to
+ be activated by the user in the ateles-config file.</p>
+<hr>
+<p>We assume here, that all points for a specific face are grouped
+ together in order to make use of the posIDs
+ Call to create the edges and triangles acoording to the
+ dimension</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varsys~52"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varSys</strong></td>
+            <td>
+                <p>Global variable system</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~59"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+                <p>information about the mesh</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-stfun~2"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_st_fun_listelem_type.html'>tem_st_fun_listElem_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>stFun</strong></td>
+            <td>
+                <p>contains the elements in spacetime-function</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-precicecpl~3"></span>
+              type(tem_precice_coupling_type),
+            </td>
+<td></td>
+              <td></td>            <td>
+              pointer
+            </td>
+            <td>::</td>
+            <td><strong>preciceCpl</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~atl_write_nonequipoints~~CallsGraph Pages: 1 -->
+<svg id="procatl_write_nonequipointsCallsGraph" width="550pt" height="364pt"
+ viewBox="0.00 0.00 550.00 364.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~atl_write_nonequipoints~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 360)">
+<title>proc~~atl_write_nonequipoints~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-360 546,-360 546,4 -4,4"/>
+<!-- proc~atl_write_nonequipoints -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_node1" class="node">
+<title>proc~atl_write_nonequipoints</title>
+<polygon fill="none" stroke="black" points="138,-192 0,-192 0,-168 138,-168 138,-192"/>
+<text text-anchor="middle" x="69" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_write_nonequiPoints</text>
+</g>
+<!-- append -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_node2" class="node">
+<title>append</title>
+<g id="a_proc~~atl_write_nonequipoints~~CallsGraph_node2"><a xlink:href="https://apes-suite.github.io/treelm/interface/append~26.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="286,-356 232,-356 232,-332 286,-332 286,-356"/>
+<text text-anchor="middle" x="259" y="-341.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_write_nonequipoints&#45;&gt;append -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_edge1" class="edge">
+<title>proc~atl_write_nonequipoints&#45;&gt;append</title>
+<path fill="none" stroke="#000000" d="M75.26,-192.19C87.91,-220.02 122.85,-288.49 174,-323 188.11,-332.52 206.16,-337.72 221.92,-340.57"/>
+<polygon fill="#000000" stroke="#000000" points="221.45,-344.04 231.87,-342.12 222.53,-337.12 221.45,-344.04"/>
+</g>
+<!-- indexlvl -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_node3" class="node">
+<title>indexlvl</title>
+<polygon fill="#777777" stroke="#777777" points="286,-314 232,-314 232,-290 286,-290 286,-314"/>
+<text text-anchor="middle" x="259" y="-299.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">indexlvl</text>
+</g>
+<!-- proc~atl_write_nonequipoints&#45;&gt;indexlvl -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_edge2" class="edge">
+<title>proc~atl_write_nonequipoints&#45;&gt;indexlvl</title>
+<path fill="none" stroke="#000000" d="M78.84,-192.04C95.17,-213.37 132.22,-257.74 174,-281 188.51,-289.08 206.15,-294.1 221.51,-297.19"/>
+<polygon fill="#000000" stroke="#000000" points="221.24,-300.7 231.71,-299.04 222.49,-293.81 221.24,-300.7"/>
+</g>
+<!-- pntlvl -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_node4" class="node">
+<title>pntlvl</title>
+<polygon fill="#777777" stroke="#777777" points="286,-272 232,-272 232,-248 286,-248 286,-272"/>
+<text text-anchor="middle" x="259" y="-257.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pntlvl</text>
+</g>
+<!-- proc~atl_write_nonequipoints&#45;&gt;pntlvl -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_edge3" class="edge">
+<title>proc~atl_write_nonequipoints&#45;&gt;pntlvl</title>
+<path fill="none" stroke="#000000" d="M90.59,-192.09C111.2,-203.86 144.08,-221.72 174,-234 189.38,-240.31 206.87,-245.96 221.89,-250.36"/>
+<polygon fill="#000000" stroke="#000000" points="221.27,-253.82 231.84,-253.21 223.19,-247.09 221.27,-253.82"/>
+</g>
+<!-- posids -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_node5" class="node">
+<title>posids</title>
+<polygon fill="#777777" stroke="#777777" points="488,-318 434,-318 434,-294 488,-294 488,-318"/>
+<text text-anchor="middle" x="461" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">posids</text>
+</g>
+<!-- proc~atl_write_nonequipoints&#45;&gt;posids -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_edge4" class="edge">
+<title>proc~atl_write_nonequipoints&#45;&gt;posids</title>
+<path fill="none" stroke="#000000" d="M128.2,-192.02C207.26,-208.42 339.39,-236.11 344,-239 366,-252.78 358.31,-270.74 380,-285 392.94,-293.51 409.17,-298.57 423.62,-301.59"/>
+<polygon fill="#000000" stroke="#000000" points="423.3,-305.09 433.76,-303.44 424.56,-298.2 423.3,-305.09"/>
+</g>
+<!-- proc~atl_nearest_projection -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_node6" class="node">
+<title>proc~atl_nearest_projection</title>
+<g id="a_proc~~atl_write_nonequipoints~~CallsGraph_node6"><a xlink:href="../proc/atl_nearest_projection.html" xlink:title="atl_nearest_projection">
+<polygon fill="#d9534f" stroke="#d9534f" points="324,-192 194,-192 194,-168 324,-168 324,-192"/>
+<text text-anchor="middle" x="259" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_nearest_projection</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_write_nonequipoints&#45;&gt;proc~atl_nearest_projection -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_edge5" class="edge">
+<title>proc~atl_write_nonequipoints&#45;&gt;proc~atl_nearest_projection</title>
+<path fill="none" stroke="#000000" d="M138.14,-180C152.91,-180 168.6,-180 183.6,-180"/>
+<polygon fill="#000000" stroke="#000000" points="183.85,-183.5 193.85,-180 183.85,-176.5 183.85,-183.5"/>
+</g>
+<!-- setup_indices -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_node7" class="node">
+<title>setup_indices</title>
+<polygon fill="#777777" stroke="#777777" points="301.5,-150 216.5,-150 216.5,-126 301.5,-126 301.5,-150"/>
+<text text-anchor="middle" x="259" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">setup_indices</text>
+</g>
+<!-- proc~atl_write_nonequipoints&#45;&gt;setup_indices -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_edge6" class="edge">
+<title>proc~atl_write_nonequipoints&#45;&gt;setup_indices</title>
+<path fill="none" stroke="#000000" d="M123.87,-167.96C149.83,-162.17 180.82,-155.24 206.46,-149.51"/>
+<polygon fill="#000000" stroke="#000000" points="207.37,-152.9 216.37,-147.3 205.85,-146.07 207.37,-152.9"/>
+</g>
+<!-- tem_precice_set_vertices_pos -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_node8" class="node">
+<title>tem_precice_set_vertices_pos</title>
+<polygon fill="#777777" stroke="#777777" points="344,-108 174,-108 174,-84 344,-84 344,-108"/>
+<text text-anchor="middle" x="259" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_precice_set_vertices_pos</text>
+</g>
+<!-- proc~atl_write_nonequipoints&#45;&gt;tem_precice_set_vertices_pos -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_edge7" class="edge">
+<title>proc~atl_write_nonequipoints&#45;&gt;tem_precice_set_vertices_pos</title>
+<path fill="none" stroke="#000000" d="M86.46,-167.87C106.29,-153.78 141.07,-130.72 174,-117 179.12,-114.87 184.5,-112.91 189.97,-111.13"/>
+<polygon fill="#000000" stroke="#000000" points="191.33,-114.38 199.87,-108.11 189.29,-107.68 191.33,-114.38"/>
+</g>
+<!-- val -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_node9" class="node">
+<title>val</title>
+<polygon fill="#777777" stroke="#777777" points="286,-66 232,-66 232,-42 286,-42 286,-66"/>
+<text text-anchor="middle" x="259" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">val</text>
+</g>
+<!-- proc~atl_write_nonequipoints&#45;&gt;val -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_edge8" class="edge">
+<title>proc~atl_write_nonequipoints&#45;&gt;val</title>
+<path fill="none" stroke="#000000" d="M78.47,-167.82C94.48,-145.76 131.41,-99.25 174,-75 188.43,-66.78 206.06,-61.75 221.43,-58.68"/>
+<polygon fill="#000000" stroke="#000000" points="222.42,-62.05 231.64,-56.85 221.18,-55.16 222.42,-62.05"/>
+</g>
+<!-- varpos -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_node10" class="node">
+<title>varpos</title>
+<polygon fill="#777777" stroke="#777777" points="286,-24 232,-24 232,0 286,0 286,-24"/>
+<text text-anchor="middle" x="259" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">varpos</text>
+</g>
+<!-- proc~atl_write_nonequipoints&#45;&gt;varpos -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_edge9" class="edge">
+<title>proc~atl_write_nonequipoints&#45;&gt;varpos</title>
+<path fill="none" stroke="#000000" d="M74.97,-167.9C87.26,-139.57 121.88,-68.66 174,-33 188.04,-23.39 206.09,-18.17 221.86,-15.34"/>
+<polygon fill="#000000" stroke="#000000" points="222.48,-18.79 231.82,-13.81 221.41,-11.87 222.48,-18.79"/>
+</g>
+<!-- proc~atl_nearest_projection&#45;&gt;posids -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_edge13" class="edge">
+<title>proc~atl_nearest_projection&#45;&gt;posids</title>
+<path fill="none" stroke="#000000" d="M321.09,-192.1C329.41,-195.62 337.35,-200.15 344,-206 372.97,-231.49 350.49,-260.14 380,-285 392.23,-295.3 408.94,-300.61 423.94,-303.33"/>
+<polygon fill="#000000" stroke="#000000" points="423.56,-306.81 433.97,-304.82 424.59,-299.88 423.56,-306.81"/>
+</g>
+<!-- edges -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_node11" class="node">
+<title>edges</title>
+<polygon fill="#777777" stroke="#777777" points="488,-276 434,-276 434,-252 488,-252 488,-276"/>
+<text text-anchor="middle" x="461" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">edges</text>
+</g>
+<!-- proc~atl_nearest_projection&#45;&gt;edges -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_edge10" class="edge">
+<title>proc~atl_nearest_projection&#45;&gt;edges</title>
+<path fill="none" stroke="#000000" d="M313.28,-192.09C323.88,-195.69 334.63,-200.26 344,-206 363.56,-217.99 360.18,-231.44 380,-243 393.28,-250.74 409.43,-255.68 423.74,-258.81"/>
+<polygon fill="#000000" stroke="#000000" points="423.28,-262.28 433.77,-260.78 424.63,-255.41 423.28,-262.28"/>
+</g>
+<!-- interpol_data -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_node12" class="node">
+<title>interpol_data</title>
+<polygon fill="#777777" stroke="#777777" points="502.5,-234 419.5,-234 419.5,-210 502.5,-210 502.5,-234"/>
+<text text-anchor="middle" x="461" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">interpol_data</text>
+</g>
+<!-- proc~atl_nearest_projection&#45;&gt;interpol_data -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_edge11" class="edge">
+<title>proc~atl_nearest_projection&#45;&gt;interpol_data</title>
+<path fill="none" stroke="#000000" d="M317.31,-192.04C346.3,-198.12 381.19,-205.45 409.2,-211.33"/>
+<polygon fill="#000000" stroke="#000000" points="408.69,-214.8 419.19,-213.43 410.13,-207.95 408.69,-214.8"/>
+</g>
+<!-- posidlvl -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_node13" class="node">
+<title>posidlvl</title>
+<polygon fill="#777777" stroke="#777777" points="488,-192 434,-192 434,-168 488,-168 488,-192"/>
+<text text-anchor="middle" x="461" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">posidlvl</text>
+</g>
+<!-- proc~atl_nearest_projection&#45;&gt;posidlvl -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_edge12" class="edge">
+<title>proc~atl_nearest_projection&#45;&gt;posidlvl</title>
+<path fill="none" stroke="#000000" d="M324.11,-180C357.13,-180 396.19,-180 423.93,-180"/>
+<polygon fill="#000000" stroke="#000000" points="423.97,-183.5 433.97,-180 423.97,-176.5 423.97,-183.5"/>
+</g>
+<!-- tem_create_edges_triangles -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_node14" class="node">
+<title>tem_create_edges_triangles</title>
+<polygon fill="#777777" stroke="#777777" points="542,-150 380,-150 380,-126 542,-126 542,-150"/>
+<text text-anchor="middle" x="461" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_edges_triangles</text>
+</g>
+<!-- proc~atl_nearest_projection&#45;&gt;tem_create_edges_triangles -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_edge14" class="edge">
+<title>proc~atl_nearest_projection&#45;&gt;tem_create_edges_triangles</title>
+<path fill="none" stroke="#000000" d="M317.31,-167.96C340.85,-163.02 368.27,-157.26 392.75,-152.12"/>
+<polygon fill="#000000" stroke="#000000" points="393.61,-155.52 402.68,-150.04 392.17,-148.67 393.61,-155.52"/>
+</g>
+<!-- tem_precice_set_edge -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_node15" class="node">
+<title>tem_precice_set_edge</title>
+<polygon fill="#777777" stroke="#777777" points="526.5,-108 395.5,-108 395.5,-84 526.5,-84 526.5,-108"/>
+<text text-anchor="middle" x="461" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_precice_set_edge</text>
+</g>
+<!-- proc~atl_nearest_projection&#45;&gt;tem_precice_set_edge -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_edge15" class="edge">
+<title>proc~atl_nearest_projection&#45;&gt;tem_precice_set_edge</title>
+<path fill="none" stroke="#000000" d="M324.09,-168.45C331.07,-165.9 337.86,-162.79 344,-159 364.91,-146.07 359.16,-130.05 380,-117 382.8,-115.25 385.74,-113.64 388.78,-112.17"/>
+<polygon fill="#000000" stroke="#000000" points="390.33,-115.31 398.12,-108.13 387.55,-108.88 390.33,-115.31"/>
+</g>
+<!-- tem_precice_set_triangle -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_node16" class="node">
+<title>tem_precice_set_triangle</title>
+<polygon fill="#777777" stroke="#777777" points="533.5,-66 388.5,-66 388.5,-42 533.5,-42 533.5,-66"/>
+<text text-anchor="middle" x="461" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_precice_set_triangle</text>
+</g>
+<!-- proc~atl_nearest_projection&#45;&gt;tem_precice_set_triangle -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_edge16" class="edge">
+<title>proc~atl_nearest_projection&#45;&gt;tem_precice_set_triangle</title>
+<path fill="none" stroke="#000000" d="M324.1,-170.73C331.32,-167.79 338.16,-163.97 344,-159 374.92,-132.66 349.23,-101.52 380,-75 381.51,-73.7 383.09,-72.48 384.73,-71.33"/>
+<polygon fill="#000000" stroke="#000000" points="386.56,-74.32 393.37,-66.2 382.98,-68.3 386.56,-74.32"/>
+</g>
+<!-- triangles -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_node17" class="node">
+<title>triangles</title>
+<polygon fill="#777777" stroke="#777777" points="490.5,-24 431.5,-24 431.5,0 490.5,0 490.5,-24"/>
+<text text-anchor="middle" x="461" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">triangles</text>
+</g>
+<!-- proc~atl_nearest_projection&#45;&gt;triangles -->
+<g id="proc~~atl_write_nonequipoints~~CallsGraph_edge17" class="edge">
+<title>proc~atl_nearest_projection&#45;&gt;triangles</title>
+<path fill="none" stroke="#000000" d="M324.31,-171.6C331.58,-168.53 338.38,-164.43 344,-159 385.86,-118.51 338.38,-73.74 380,-33 391.01,-22.23 406.83,-16.8 421.51,-14.12"/>
+<polygon fill="#000000" stroke="#000000" points="422.02,-17.58 431.41,-12.68 421.01,-10.66 422.02,-17.58"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~atl_write_nonequipoints~~CalledByGraph Pages: 1 -->
+<svg id="procatl_write_nonequipointsCalledByGraph" width="641pt" height="64pt"
+ viewBox="0.00 0.00 641.00 64.45" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~atl_write_nonequipoints~~CalledByGraph" class="graph" transform="scale(0.87 0.87) rotate(0) translate(4 70)">
+<title>proc~~atl_write_nonequipoints~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 732,-70 732,4 -4,4"/>
+<!-- proc~atl_write_nonequipoints -->
+<g id="proc~~atl_write_nonequipoints~~CalledByGraph_node1" class="node">
+<title>proc~atl_write_nonequipoints</title>
+<polygon fill="none" stroke="black" points="728,-45 590,-45 590,-21 728,-21 728,-45"/>
+<text text-anchor="middle" x="659" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_write_nonequiPoints</text>
+</g>
+<!-- proc~atl_write_precice_getpoint -->
+<g id="proc~~atl_write_nonequipoints~~CalledByGraph_node2" class="node">
+<title>proc~atl_write_precice_getpoint</title>
+<g id="a_proc~~atl_write_nonequipoints~~CalledByGraph_node2"><a xlink:href="../proc/atl_write_precice_getpoint.html" xlink:title="atl_write_precice_getPoint">
+<polygon fill="#d9534f" stroke="#d9534f" points="554,-45 403,-45 403,-21 554,-21 554,-45"/>
+<text text-anchor="middle" x="478.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_write_precice_getPoint</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_write_precice_getpoint&#45;&gt;proc~atl_write_nonequipoints -->
+<g id="proc~~atl_write_nonequipoints~~CalledByGraph_edge1" class="edge">
+<title>proc~atl_write_precice_getpoint&#45;&gt;proc~atl_write_nonequipoints</title>
+<path fill="none" stroke="#000000" d="M554.17,-33C562.59,-33 571.19,-33 579.65,-33"/>
+<polygon fill="#000000" stroke="#000000" points="579.9,-36.5 589.9,-33 579.9,-29.5 579.9,-36.5"/>
+</g>
+<!-- proc~atl_init_precice -->
+<g id="proc~~atl_write_nonequipoints~~CalledByGraph_node3" class="node">
+<title>proc~atl_init_precice</title>
+<g id="a_proc~~atl_write_nonequipoints~~CalledByGraph_node3"><a xlink:href="../proc/atl_init_precice.html" xlink:title="atl_init_precice">
+<polygon fill="#d9534f" stroke="#d9534f" points="367,-45 275,-45 275,-21 367,-21 367,-45"/>
+<text text-anchor="middle" x="321" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_init_precice</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_init_precice&#45;&gt;proc~atl_write_precice_getpoint -->
+<g id="proc~~atl_write_nonequipoints~~CalledByGraph_edge2" class="edge">
+<title>proc~atl_init_precice&#45;&gt;proc~atl_write_precice_getpoint</title>
+<path fill="none" stroke="#000000" d="M367.4,-33C375.38,-33 383.93,-33 392.59,-33"/>
+<polygon fill="#000000" stroke="#000000" points="392.79,-36.5 402.79,-33 392.79,-29.5 392.79,-36.5"/>
+</g>
+<!-- proc~atl_initialize -->
+<g id="proc~~atl_write_nonequipoints~~CalledByGraph_node4" class="node">
+<title>proc~atl_initialize</title>
+<g id="a_proc~~atl_write_nonequipoints~~CalledByGraph_node4"><a xlink:href="../proc/atl_initialize.html" xlink:title="atl_initialize">
+<polygon fill="#d9534f" stroke="#d9534f" points="239,-45 163,-45 163,-21 239,-21 239,-45"/>
+<text text-anchor="middle" x="201" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_initialize&#45;&gt;proc~atl_init_precice -->
+<g id="proc~~atl_write_nonequipoints~~CalledByGraph_edge3" class="edge">
+<title>proc~atl_initialize&#45;&gt;proc~atl_init_precice</title>
+<path fill="none" stroke="#000000" d="M239.01,-33C247.17,-33 255.99,-33 264.7,-33"/>
+<polygon fill="#000000" stroke="#000000" points="264.83,-36.5 274.83,-33 264.83,-29.5 264.83,-36.5"/>
+</g>
+<!-- proc~atl_initialize_program -->
+<g id="proc~~atl_write_nonequipoints~~CalledByGraph_node5" class="node">
+<title>proc~atl_initialize_program</title>
+<g id="a_proc~~atl_write_nonequipoints~~CalledByGraph_node5"><a xlink:href="../proc/atl_initialize_program.html" xlink:title="atl_initialize_program">
+<polygon fill="#d9534f" stroke="#d9534f" points="127,-66 0,-66 0,-42 127,-42 127,-66"/>
+<text text-anchor="middle" x="63.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize_program</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_initialize_program&#45;&gt;proc~atl_initialize -->
+<g id="proc~~atl_write_nonequipoints~~CalledByGraph_edge4" class="edge">
+<title>proc~atl_initialize_program&#45;&gt;proc~atl_initialize</title>
+<path fill="none" stroke="#000000" d="M127.09,-44.3C135.77,-42.95 144.56,-41.59 152.89,-40.3"/>
+<polygon fill="#000000" stroke="#000000" points="153.44,-43.76 162.78,-38.77 152.37,-36.84 153.44,-43.76"/>
+</g>
+<!-- program~atl_harvesting -->
+<g id="proc~~atl_write_nonequipoints~~CalledByGraph_node6" class="node">
+<title>program~atl_harvesting</title>
+<g id="a_proc~~atl_write_nonequipoints~~CalledByGraph_node6"><a xlink:href="../program/atl_harvesting.html" xlink:title="atl_harvesting">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="107.5,-24 19.5,-24 19.5,0 107.5,0 107.5,-24"/>
+<text text-anchor="middle" x="63.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_harvesting</text>
+</a>
+</g>
+</g>
+<!-- program~atl_harvesting&#45;&gt;proc~atl_initialize -->
+<g id="proc~~atl_write_nonequipoints~~CalledByGraph_edge5" class="edge">
+<title>program~atl_harvesting&#45;&gt;proc~atl_initialize</title>
+<path fill="none" stroke="#000000" d="M107.75,-18.7C121.96,-20.9 137.83,-23.36 152.35,-25.61"/>
+<polygon fill="#000000" stroke="#000000" points="152.22,-29.14 162.63,-27.21 153.29,-22.22 152.22,-29.14"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocatl_write_nonequipointsCalledByGraph = svgPanZoom('#procatl_write_nonequipointsCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

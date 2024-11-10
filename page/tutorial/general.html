@@ -1,0 +1,618 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../../favicon.png">
+
+    <title>General Input File Information &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../../css/pygments.css" rel="stylesheet">
+    <link href="../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/local.css" rel="stylesheet">
+      <link  href="../../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>General Input File Information</h1>
+    <div class="container p-2 mb-4 bg-light border rounded-3">
+      <div class="row align-items-center justify-content-between">
+        <div class="col">
+          <ul class="list-inline" style="margin-bottom:0px; display:inline">
+          </ul>
+        </div>
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../index.html'>Documentation</a></li>
+                <li class="breadcrumb-item"><a href='index.html'>Tutorial</a></li>
+              <li class="breadcrumb-item active" aria-current="page">General Input File Information</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-3">
+        <div class="card card-body bg-light" id="sidebar-toc">
+          <ul class="nav flex-column align-items">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Documentation</a>
+            </li>
+          </ul>
+          <hr>
+          <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="../apes_overview.html">APES Overview</a>
+              <a class="nav-link" href="../build_and_run.html">Build and Run Ateles</a>
+              <a class="nav-link" href="../examples/index.html">Example setups</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/acoustic/index.html">Acoustic Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/acoustic/gauss_densitypulse_2D/index.html">Gaussian Density Pulse Test Case</a>
+              <a class="nav-link" href="../examples/acoustic/planar_wave_3D/index.html">Planar Wave</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/euler/index.html">Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/euler/1D/index.html">1D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/euler/1D/modalEstimate/index.html">Modal estimate for adaptive timesteps 1D</a>
+              <a class="nav-link" href="../examples/euler/1D/piston/index.html">Formation of a shock wave ahead of a moving piston in 1D</a>
+              <a class="nav-link" href="../examples/euler/1D/piston_modereduction/index.html">Formation of a shock wave ahead of a moving piston in 1D</a>
+              <a class="nav-link" href="../examples/euler/1D/shock_stabilization_parallel/index.html">Shock Stabilization Test Case</a>
+              <a class="nav-link" href="../examples/euler/1D/toro1_x/index.html">Toro Validation Test Case</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/euler/2D/index.html">2D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/euler/2D/gauss_densitypulse_spongelayer/index.html">Gaussian Density Pulse in 2D</a>
+              <a class="nav-link" href="../examples/euler/2D/modalEstimate/index.html">Modal estimate for adaptive timesteps in 2D</a>
+              <a class="nav-link" href="../examples/euler/2D/shock_stabilization_parallel/index.html">Shock Stabilization Test Case</a>
+              <a class="nav-link" href="../examples/euler/2D/toro1_x/index.html">Toro1 Validation Test Case in X direction</a>
+              <a class="nav-link" href="../examples/euler/2D/toro1_y/index.html">Toro1 Validation Test Case in Y direction</a>
+              <a class="nav-link" href="../examples/euler/2D/toro2_x/index.html">Toro2 Setup along X for 2D Euler equations</a>
+              <a class="nav-link" href="../examples/euler/2D/toro3_x/index.html">Toro3 Setup along X for 2D Euler equations</a>
+              <a class="nav-link" href="../examples/euler/2D/toro4_x/index.html">Toro4 setup for 2D Euler equations with a positivity preserving filter</a>
+              <a class="nav-link" href="../examples/euler/2D/vorticity/index.html">Vorticity Tracking</a>
+              <a class="nav-link" href="../examples/euler/2D/wedge/index.html">Supersonic movement of a wedge</a>
+              <a class="nav-link" href="../examples/euler/2D/wedge_modereduction/index.html">Supersonic movement of a wedge</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/euler/3D/index.html">3D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/euler/3D/gauss_densitypulse_deriv_quantity/index.html">Pulse in density with derived quantity</a>
+              <a class="nav-link" href="../examples/euler/3D/gauss_densitypulse_fpt/index.html">Euler 3D pulse in density with FPT</a>
+              <a class="nav-link" href="../examples/euler/3D/gauss_densitypulse_fxt/index.html">Euler 3D setup of Gaussian pulse in density with FXT</a>
+              <a class="nav-link" href="../examples/euler/3D/gauss_densitypulse_l2p/index.html">Euler 3D setup with pulse in density and L2 projection</a>
+              <a class="nav-link" href="../examples/euler/3D/gauss_densitypulse_spongelayer/index.html">Euler 3D pulse in density with sponge</a>
+              <a class="nav-link" href="../examples/euler/3D/modalEstimate/index.html">Modal estimate in Euler 3D</a>
+              <a class="nav-link" href="../examples/euler/3D/multilevel/index.html">Material with Multilevel in Euler 3D</a>
+              <a class="nav-link" href="../examples/euler/3D/overview/index.html">Configuration overview for Euler 3D simulations</a>
+              <a class="nav-link" href="../examples/euler/3D/p_polynomials/index.html">P-polynomial space</a>
+              <a class="nav-link" href="../examples/euler/3D/qCriterion_deriv_quantity/index.html">Q-Criterion Tracking in Euler 3D</a>
+              <a class="nav-link" href="../examples/euler/3D/shear_layer_Q4/index.html">Shear-Layer Q4</a>
+              <a class="nav-link" href="../examples/euler/3D/shear_layer_Q4_parallel/index.html">Shear-Layer Q4</a>
+              <a class="nav-link" href="../examples/euler/3D/shear_layer_Q8/index.html">Shear-Layer Q8</a>
+              <a class="nav-link" href="../examples/euler/3D/shock_stabilization_localrefinement/index.html">Shock Stabilization in Euler 3D with local refinement</a>
+              <a class="nav-link" href="../examples/euler/3D/shock_stabilization_parallel/index.html">Shock stabilization for 3D Euler equations with RK-Taylor</a>
+              <a class="nav-link" href="../examples/euler/3D/shock_stabilization_periodic/index.html">Shock stabilization in periodic domain</a>
+              <a class="nav-link" href="../examples/euler/3D/toro1_x/index.html">Toro1 Riemann problem in X direction</a>
+              <a class="nav-link" href="../examples/euler/3D/toro1_y/index.html">Toro1 Riemann problem in Y direction</a>
+              <a class="nav-link" href="../examples/euler/3D/toro1_z/index.html">Toro1 Riemann problem in Z direction</a>
+              <a class="nav-link" href="../examples/euler/3D/vorticity/index.html">Vorticity Test Case</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../examples/heat/index.html">Heat Conduction</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/heat/1D/index.html">Heat Conduction in 1D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/heat/1D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/heat/2D/index.html">Heat Conduction in 2D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/heat/2D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/heat/3D/index.html">Heat Conduction in 3D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/heat/3D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../examples/lineareuler/index.html">Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/lineareuler/2D/index.html">2D Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/lineareuler/2D/gauss_pulse/index.html">Gaussian pulse in pressure with 2d linearized Euler equations</a>
+              <a class="nav-link" href="../examples/lineareuler/2D/transientBackground/index.html">Transient background state in 2D linearized Euler</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/lineareuler/3D/index.html">3D Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/lineareuler/3D/gauss_pulse/index.html">Gaussian pulse in density for 3D linearized Euler equations</a>
+              <a class="nav-link" href="../examples/lineareuler/3D/gradient/index.html">Tracking of gradients in 3D linearized Euler equations</a>
+              <a class="nav-link" href="../examples/lineareuler/3D/transientBackground/index.html">Transient background state in 3D linearized Euler</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../examples/maxwell/index.html">Maxwell Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/maxwell/pec_scatter_inhomogenous_matFun_Q8_3D/index.html">Perfectly_scatter_Inhomogenous_Materia</a>
+              <a class="nav-link" href="../examples/maxwell/pec_scatter_inhomogenous_matVar_Q8_3D/index.html">Perfectly_scatter_Inhomogenous_Materia</a>
+              <a class="nav-link" href="../examples/maxwell/periodic_oscillator_P8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="../examples/maxwell/periodic_oscillator_Q8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="../examples/maxwell/rectangular_wave_Q8_3D/index.html">Rectangle Wave</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/maxwelldivcorr/index.html">Maxwell Equations With Divergence Correction</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/maxwelldivcorr/periodic_oscillator_P8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="../examples/maxwelldivcorr/periodic_oscillator_Q8_3D/index.html">Periodic_Oscillator</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/maxwellpml/index.html">Maxwell Equations With Perfectly Matched Layers</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/maxwellpml/cylinder_scattering_Q8_2D/index.html">Perfectly matched Layer test case</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/navierstokes/index.html">Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/navierstokes/2D/index.html">2D Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/navierstokes/2D/constant_state/index.html">Constant State</a>
+              <a class="nav-link" href="../examples/navierstokes/2D/shear_hat/index.html">Shear hat 2D</a>
+              <a class="nav-link" href="../examples/navierstokes/2D/viscous_vortex/index.html">Viscous Vortex (TGV) 2D</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/navierstokes/3D/index.html">3D Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/navierstokes/3D/shear_hat/index.html">Shear hat 3D</a>
+              <a class="nav-link" href="../examples/navierstokes/3D/shear_tube/index.html">Shear tube 3D</a>
+
+                </nav>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../init.html">Initialization</a>
+              <a class="nav-link" href="../material.html">Material</a>
+              <a class="nav-link" href="../neumann_boundaries.html">Neumann boundary conditions</a>
+              <a class="nav-link" href="../new_eqn_system.html">Introducing a New Equation System</a>
+              <a class="nav-link" href="../polynomials.html">Polynomials Library</a>
+              <a class="nav-link" href="../postprocess_filtering.html">Postprocess Filtering</a>
+              <a class="nav-link" href="index.html">Tutorial</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="euler.html">Euler Testcase</a>
+              <a class="nav-link active disabled" href="general.html">General Input File Information</a>
+              <a class="nav-link" href="maxwell.html">Maxwell Testcase</a>
+              <a class="nav-link" href="postprocessing.html">Postprocessing with atl_harvesting</a>
+              <a class="nav-link" href="procedure.html">General Procedure for Running the Testcases</a>
+              <a class="nav-link" href="source_term.html">Source Term</a>
+              <a class="nav-link" href="tracking.html">Tracking</a>
+
+                </nav>
+          </nav>
+        </div>
+      </div>
+
+    <div class="col-9" id='text'>
+      <p>This section describes the general information on setting up
+your testcases with Ateles.</p>
+<div class="toc">
+<ul>
+<li><a href="#the-input-lua-file">The Input Lua file</a></li>
+<li><a href="#general-simulation-settings">General Simulation Settings</a></li>
+<li><a href="#geometry">Geometry</a></li>
+<li><a href="#scheme">Scheme</a></li>
+<li><a href="#defining-the-equations">Defining the Equations</a></li>
+<li><a href="#equation-specific-configuration">Equation specific configuration</a><ul>
+<li><a href="#initial-conditions">Initial Conditions</a></li>
+<li><a href="#material">Material</a></li>
+<li><a href="#source-terms">Source Terms</a></li>
+</ul>
+</li>
+<li><a href="#restart-settings">Restart Settings</a></li>
+</ul>
+</div>
+<h2 id="the-input-lua-file">The Input Lua file</h2>
+<p>The input file written in <a href="http://www.lua.org/">Lua</a> provides all simulation
+parameter like geometry, initional condition, scheme, etc. for the Ateles
+solver. Lua syntax is fairly easy to follow and we go on describing all the
+features we use in detail.
+Hint: "--" specifies a comment.
+It is also good to know that Lua is case sensitive.
+Additional, Lua executes the file in linear fashion,
+thus everything you want to use (like functions for initial condition)
+need to be defined before use.
+The general overall structure of the Lua input file for Ateles
+can be seen in the file <code>ateles.lua</code> present in the repository root
+which we assume you already checked out.
+This also is the default name for the input file,
+however different names can be used in case you want to use
+and keep multiple scripts.
+You would just need to pass those input file as a command line argument.
+If no input file is specified,
+the code checks and runs for the default input file if present.</p>
+<h2 id="general-simulation-settings">General Simulation Settings</h2>
+<p>Every simulation should have a name,
+which is specified by a variable called <code>simulation_name</code>.
+If you would like for example to set up a testcase for flow through a cube,
+it could be called 'flow_cube'.</p>
+<div class="codehilite"><pre><span></span><code>simulation_name = &#39;flow_cube&#39;
+</code></pre></div>
+
+<p>You can use just anything as a simulation name,
+just make it clear and descriptive,
+as it will help you to identify produced results from the simulation.
+The simulation name will appear in all output files,
+so if you use good and unique names,
+you always know where a particular output came from.</p>
+<p>The variable <code>sim_control</code> is used to define the stopping criteria or the time
+when you would like the simulation to finish.
+Currently there are three possible options:</p>
+<ol>
+<li>
+<p>Running simulation for certain specific steps in simulation time:</p>
+<div class="codehilite"><pre><span></span><code>sim_control = {
+  time_control = {
+    min = 0,
+    max = {sim = 5.0}
+  }
+}
+</code></pre></div>
+
+<p>Here <code>max</code> denotes the 'final simulation time'
+(amount of time we want to simulate in seconds).
+In this case it will end after 5 seconds.</p>
+</li>
+<li>
+<p>Running simulation for certain maximum iterations:</p>
+<div class="codehilite"><pre><span></span><code>sim_control = {
+  time_control = {
+    min = 0,
+    max = {iter = 1000}
+  }
+}
+</code></pre></div>
+
+<p>Here <code>max</code> denotes the 'maximum number of iterations'
+after which the simulation stops.
+In this case the simulation will end after 1000 iterations.</p>
+</li>
+<li>
+<p>Running simulation for a specific amount of computation time:</p>
+<div class="codehilite"><pre><span></span><code>sim_control = {
+  time_control = {
+    min = 0,
+    max = {clock = 3600}
+  }
+}
+</code></pre></div>
+
+<p>Here <code>max</code> denotes the 'maximum computation time' in seconds.
+In this case it is 1 hour (3600s).</p>
+</li>
+</ol>
+<p>Note that if <code>max</code> is not defined as a table, e.g. <code>max = 1.0</code>,
+it refers to the simulation time.</p>
+<p>You can also specify the frequency at which information about the current time
+is printed to the screen.
+For that you have to define a table called <code>interval</code> in <code>time_control</code>.
+Like <code>max</code> (and also <code>min</code>) this is a time setting
+and can be provided in terms of the prescribed definitions.</p>
+<h2 id="geometry">Geometry</h2>
+<p>Complicated geometries are created by Seeder,
+a preprocessing tool with which you can get familiar with by visiting its
+<a href="https://apes-suite.github.io/seeder/index.html">documentation</a>.
+For the moment, we will consider a simple pre-defined geometry
+(in our case a cube with periodic boundries and no obstacles).</p>
+<div class="codehilite"><pre><span></span><code><span class="n">mesh</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">predefined</span> <span class="o">=</span> <span class="s1">&#39;cube&#39;</span><span class="p">,</span>
+  <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="o">-</span><span class="mf">1.0</span>
+  <span class="p">},</span>
+  <span class="n">length</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="n">refinementLevel</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>We can specify the <code>length</code> and position (<code>origin</code>) of that cube.
+The position of the mesh is only relevant
+if you specify positions of other objects, too,
+such as initial conditions or <a href="tracking.html">trackers</a>.
+Next, the <code>refinementLevel</code> tells Ateles how fine the space is discretized.
+A refinement level of 4 means that the space is cut into 2^4 portions
+in each dimension.</p>
+<h2 id="scheme">Scheme</h2>
+<p>The scheme definitions can be given through the variable <code>scheme</code>.
+It further contains the variables <code>spatial</code> and <code>temporal</code>.
+It is possible to use predefined names such as 'modg'
+(for modal discontinuous Galerking scheme) in the <code>spatial</code> variable.
+The maximal polynomial degree for each spatial direction is given
+as input through the variable <code>m</code>.
+The <code>temporal</code> variable can also take predefined names as an input.</p>
+<h2 id="defining-the-equations">Defining the Equations</h2>
+<p>Next we define the equation system and the related parameters.
+The possible equations that are implemented in Ateles
+can be used following the below mentioned syntax.</p>
+<ul>
+<li>
+<p>Euler Equations:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">equation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;euler&#39;</span><span class="p">,</span><span class="w">              </span><span class="o">--</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">solve</span><span class="w"> </span><span class="n">euler</span><span class="w"> </span><span class="n">equations</span>
+<span class="w">  </span><span class="n">numflux</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;lax_friedrich&#39;</span><span class="p">,</span><span class="w">   </span><span class="o">--</span><span class="w"> </span><span class="n">numerical</span><span class="w"> </span><span class="n">flux</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">use</span>
+<span class="w">                               </span><span class="o">--</span><span class="w"> </span><span class="n">possible</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="s1">&#39;lax_friedrich&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;godunov&#39;</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="s1">&#39;hll&#39;</span>
+<span class="w">  </span><span class="n">isen_coef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.4</span><span class="p">,</span><span class="w">             </span><span class="o">--</span><span class="w"> </span><span class="n">isentropic</span><span class="w"> </span><span class="n">coefficient</span>
+<span class="w">  </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">                     </span><span class="o">--</span><span class="w"> </span><span class="n">ideal</span><span class="w"> </span><span class="n">gas</span><span class="w"> </span><span class="n">constant</span>
+<span class="w">  </span><span class="n">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">characteristic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;global_euler3D_characteristic&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">relax_velocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;global_euler3D_relax_velocity&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">relax_temperature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;global_euler3D_relax_temperature&#39;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="o">--</span><span class="w"> </span><span class="n">cv</span><span class="w"> </span><span class="n">heat</span><span class="w"> </span><span class="n">capacity</span>
+<span class="n">equation</span><span class="p">[</span><span class="s2">&quot;cv&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">equation</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">equation</span><span class="p">[</span><span class="s2">&quot;isen_coef&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Navier Stokes Equations:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">equation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;navier_stokes&#39;</span><span class="p">,</span><span class="w">      </span><span class="o">--</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">solve</span><span class="w"> </span><span class="n">navier</span><span class="w"> </span><span class="n">stokes</span><span class="w"> </span><span class="n">equations</span>
+<span class="w">  </span><span class="n">mu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.831e-05</span><span class="p">,</span><span class="w">              </span><span class="o">--</span><span class="w"> </span><span class="n">viscosity</span><span class="w">  </span><span class="p">(</span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.121996</span><span class="o">-</span><span class="mi">314</span><span class="p">)</span>
+<span class="w">  </span><span class="n">therm_cond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.55e-02</span><span class="p">,</span><span class="w">       </span><span class="o">--</span><span class="w"> </span><span class="n">thermal</span><span class="w"> </span><span class="n">conductivity</span><span class="w"> </span><span class="p">(</span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">6.953195</span><span class="o">-</span><span class="mi">310</span><span class="p">)</span>
+<span class="w">  </span><span class="n">isen_coef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.4</span><span class="p">,</span><span class="w">             </span><span class="o">--</span><span class="w"> </span><span class="n">isentropic</span><span class="w"> </span><span class="n">coefficient</span>
+<span class="w">  </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">296.0</span><span class="p">,</span><span class="w">                   </span><span class="o">--</span><span class="w"> </span><span class="n">ideal</span><span class="w"> </span><span class="n">gas</span><span class="w"> </span><span class="n">constant</span>
+<span class="w">  </span><span class="n">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">characteristic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;global_euler3D_characteristic&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">relax_velocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;global_euler3D_relax_velocity&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">relax_temperature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;global_euler3D_relax_temperature&#39;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="o">--</span><span class="p">(</span><span class="n">cv</span><span class="p">)</span><span class="w"> </span><span class="n">heat</span><span class="w"> </span><span class="n">capacity</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="n">ideal</span><span class="w"> </span><span class="n">gas</span><span class="w"> </span><span class="n">constant</span>
+<span class="n">equation</span><span class="p">[</span><span class="s2">&quot;cv&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">equation</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">equation</span><span class="p">[</span><span class="s2">&quot;isen_coef&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Maxwells Equations:</p>
+<div class="codehilite"><pre><span></span><code>equation = {
+  name = &#39;maxwell&#39;,-- we solve maxwell’s equations
+  material = {
+    permeability = &#39;global_maxwell_permeability&#39;,
+    permittivity = &#39;global_maxwell_permittivity&#39;,
+    conductivity = &#39;global_maxwell_conductivity&#39;
+  }
+}
+</code></pre></div>
+
+</li>
+<li>
+<p>Filtered Navier Stokes Equations:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">equation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;filtered_navier_stokes&#39;</span><span class="p">,</span><span class="w">  </span><span class="o">--</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">solve</span><span class="w"> </span><span class="n">filtered</span><span class="w"> </span><span class="n">navier</span><span class="w"> </span><span class="n">stokes</span><span class="w"> </span><span class="n">equations</span>
+<span class="w">  </span><span class="n">mu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.831e-05</span><span class="p">,</span><span class="w">                   </span><span class="o">--</span><span class="w"> </span><span class="n">viscosity</span>
+<span class="w">  </span><span class="n">therm_cond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.55e-02</span><span class="p">,</span><span class="w">            </span><span class="o">--</span><span class="w"> </span><span class="n">thermal</span><span class="w"> </span><span class="n">conductivity</span>
+<span class="w">  </span><span class="n">isen_coef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.4</span><span class="p">,</span><span class="w">                  </span><span class="o">--</span><span class="w"> </span><span class="n">isentropic</span><span class="w"> </span><span class="n">coefficient</span>
+<span class="w">  </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">296.0</span><span class="p">,</span><span class="w">                        </span><span class="o">--</span><span class="w"> </span><span class="n">ideal</span><span class="w"> </span><span class="n">gas</span><span class="w"> </span><span class="n">constant</span>
+<span class="w">  </span><span class="n">nvar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="o">--</span><span class="w"> </span><span class="n">Turbulence</span><span class="w"> </span><span class="n">parameter</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Smagorinsky</span><span class="w"> </span><span class="n">model</span>
+<span class="w">  </span><span class="n">turbulence_model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;smagorinsky&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="o">--</span><span class="w"> </span><span class="n">Germano</span><span class="o">-</span><span class="n">Lilli</span><span class="w"> </span><span class="n">model</span>
+<span class="w">  </span><span class="o">--</span><span class="n">turbulence_model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;germano&#39;</span>
+<span class="w">  </span><span class="n">Cs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.04</span><span class="p">,</span><span class="w">                        </span><span class="o">--</span><span class="w"> </span><span class="n">suggested</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="n">between</span><span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="mf">0.2</span>
+<span class="w">  </span><span class="n">Ci</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.005</span><span class="p">,</span><span class="w">                       </span><span class="o">--</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Yoshizawa</span><span class="w"> </span><span class="n">model</span>
+<span class="w">  </span><span class="n">prandtl_sgs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span><span class="w">                </span><span class="o">--</span><span class="w"> </span><span class="n">suggested</span><span class="w"> </span><span class="n">value</span>
+<span class="w">  </span><span class="n">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">characteristic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;global_euler3D_characteristic&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">relax_velocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;global_euler3D_relax_velocity&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">relax_temperature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;global_euler3D_relax_temperature&#39;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Maxwell Equations with divergence correction:</p>
+<div class="codehilite"><pre><span></span><code>equation = {
+  name = &#39;maxwellDivCorrection&#39;,    -- we solve maxwell’s equations with divergence correction
+  mu = perma,                       -- the magnetic permeability of vacuum
+  epsi = permit,                    -- the electric permitivity of vacuum
+  chi = 1.0,                        -- parameter for electric divergence cleaning
+  gam = 1.0,                        -- parameter for magnetic divergence cleaning
+  material = {
+    permeability = &#39;global_maxwell_permeability&#39;,
+    permittivity = &#39;global_maxwell_permittivity&#39;,
+    conductivity = &#39;global_maxwell_conductivity&#39;
+  }
+}
+</code></pre></div>
+
+</li>
+</ul>
+<h2 id="equation-specific-configuration">Equation specific configuration</h2>
+<p>Some of the configuration is equation specific, as different equation systems
+consist of different terms and variables and therefore need different
+configuration settings. Thus we are not going into detail about each and every
+setting here.</p>
+<p>All of these settings can be defined by constant values, functions in the
+Lua configuration file, or as predefined functions implemented in the solver.
+It is important to know that constants defined in the configuration file are
+stored in the 'solver environment' while initializing the simulation, whereas
+Lua functions need to be evaluated at every timestep. Taking this into
+consideration, constants or predefined values are handled within the solver,
+but Lua functions imply the change of the 'evaluation environment', i.e. we
+need to run Lua code, which is inherently slow.</p>
+<h3 id="initial-conditions">Initial Conditions</h3>
+<p>Initial conditions can be specified using the <code>initial_condition</code> variable.
+Through this all the initial condition
+for the state variables can be specified.
+These might be predefined functions, Lua functions or just constants.</p>
+<h3 id="material">Material</h3>
+<p>Material denotes parameters bound to specific reagions of the domain. With
+material, you can e.g. specify a sphere inside your flow domain with a given
+porosity. Material is also defined by either constants, Lua functions or
+predefined functions.</p>
+<h3 id="source-terms">Source Terms</h3>
+<div class="alert alert-success">
+<p class="alert-title h4">Todo</p>
+<p>Describe source terms in short words</p>
+</div>
+<h2 id="restart-settings">Restart Settings</h2>
+<p>Restart files are the main method for writing data during the simulation
+and can also used for post-processing e.g. visualization.
+For writing, the name of the restart folder
+needs to be specified in the variable <code>write</code>.
+The temporal definitions of the restart files
+can be given through the variable <code>time</code>.
+In the <code>time_control</code> table one can specify</p>
+<ul>
+<li>the point in time to start dumping restarts with the variable <code>min</code>,</li>
+<li>the point in time to stop dumping restarts with the variable <code>max</code>,</li>
+<li>and the time between dumping two restart files
+    within the timeframe given by <code>min</code> and <code>max</code> with the variable <code>interval</code>.</li>
+</ul>
+<p>Again <code>min</code>, <code>max</code> and <code>interval</code> are time settings
+and can be defined in the same way as described in
+<a href="#general-simulation-settings">General Simulation Settings</a>.</p>
+<p>As the name implies, restart files can also be used to restart a simulation
+with the state stored in it. To read a restart file, the variable <code>read</code> is
+used. It defines the file to read and restart the simulation from.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">restart</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">---- file to restart from</span>
+  <span class="c1">--read = &#39;./restart/simulation_header_1.892E-03.lua&#39;,</span>
+
+  <span class="c1">-- folder to write restart data to</span>
+  <span class="n">write</span> <span class="o">=</span> <span class="s1">&#39;./restart/&#39;</span><span class="p">,</span>
+
+  <span class="c1">-- temporal definition of restart write</span>
+  <span class="n">time_control</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">min</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">max</span> <span class="o">=</span> <span class="p">{</span><span class="n">clock</span> <span class="o">=</span> <span class="mi">3600</span><span class="p">},</span>
+    <span class="n">interval</span> <span class="o">=</span> <span class="p">{</span><span class="n">iter</span> <span class="o">=</span> <span class="mi">10</span><span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>In the above example the generation of the restart files
+starts when the simulation begins
+and ends at least after 3600 seconds (one hour) of computation time.
+In this timeframe every 10th iteration a restart file is being created.
+The variable <code>read</code> is commented out for this example.</p>
+<div class="alert alert-info">
+<p class="alert-title h4">Note</p>
+<p>You should make sure that you create the directory
+for storing the restart files in advance.
+This needs to be done manually.</p>
+</div>
+    </div>
+  </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

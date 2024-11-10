@@ -1,0 +1,439 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>Introducing a New Equation System &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>Introducing a New Equation System</h1>
+    <div class="container p-2 mb-4 bg-light border rounded-3">
+      <div class="row align-items-center justify-content-between">
+        <div class="col">
+          <ul class="list-inline" style="margin-bottom:0px; display:inline">
+          </ul>
+        </div>
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='index.html'>Documentation</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Introducing a New Equation System</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-3">
+        <div class="card card-body bg-light" id="sidebar-toc">
+          <ul class="nav flex-column align-items">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Documentation</a>
+            </li>
+          </ul>
+          <hr>
+          <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="apes_overview.html">APES Overview</a>
+              <a class="nav-link" href="build_and_run.html">Build and Run Ateles</a>
+              <a class="nav-link" href="examples/index.html">Example setups</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/acoustic/index.html">Acoustic Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/acoustic/gauss_densitypulse_2D/index.html">Gaussian Density Pulse Test Case</a>
+              <a class="nav-link" href="examples/acoustic/planar_wave_3D/index.html">Planar Wave</a>
+
+                </nav>
+              <a class="nav-link" href="examples/euler/index.html">Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/euler/1D/index.html">1D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/euler/1D/modalEstimate/index.html">Modal estimate for adaptive timesteps 1D</a>
+              <a class="nav-link" href="examples/euler/1D/piston/index.html">Formation of a shock wave ahead of a moving piston in 1D</a>
+              <a class="nav-link" href="examples/euler/1D/piston_modereduction/index.html">Formation of a shock wave ahead of a moving piston in 1D</a>
+              <a class="nav-link" href="examples/euler/1D/shock_stabilization_parallel/index.html">Shock Stabilization Test Case</a>
+              <a class="nav-link" href="examples/euler/1D/toro1_x/index.html">Toro Validation Test Case</a>
+
+                </nav>
+              <a class="nav-link" href="examples/euler/2D/index.html">2D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/euler/2D/gauss_densitypulse_spongelayer/index.html">Gaussian Density Pulse in 2D</a>
+              <a class="nav-link" href="examples/euler/2D/modalEstimate/index.html">Modal estimate for adaptive timesteps in 2D</a>
+              <a class="nav-link" href="examples/euler/2D/shock_stabilization_parallel/index.html">Shock Stabilization Test Case</a>
+              <a class="nav-link" href="examples/euler/2D/toro1_x/index.html">Toro1 Validation Test Case in X direction</a>
+              <a class="nav-link" href="examples/euler/2D/toro1_y/index.html">Toro1 Validation Test Case in Y direction</a>
+              <a class="nav-link" href="examples/euler/2D/toro2_x/index.html">Toro2 Setup along X for 2D Euler equations</a>
+              <a class="nav-link" href="examples/euler/2D/toro3_x/index.html">Toro3 Setup along X for 2D Euler equations</a>
+              <a class="nav-link" href="examples/euler/2D/toro4_x/index.html">Toro4 setup for 2D Euler equations with a positivity preserving filter</a>
+              <a class="nav-link" href="examples/euler/2D/vorticity/index.html">Vorticity Tracking</a>
+              <a class="nav-link" href="examples/euler/2D/wedge/index.html">Supersonic movement of a wedge</a>
+              <a class="nav-link" href="examples/euler/2D/wedge_modereduction/index.html">Supersonic movement of a wedge</a>
+
+                </nav>
+              <a class="nav-link" href="examples/euler/3D/index.html">3D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/euler/3D/gauss_densitypulse_deriv_quantity/index.html">Pulse in density with derived quantity</a>
+              <a class="nav-link" href="examples/euler/3D/gauss_densitypulse_fpt/index.html">Euler 3D pulse in density with FPT</a>
+              <a class="nav-link" href="examples/euler/3D/gauss_densitypulse_fxt/index.html">Euler 3D setup of Gaussian pulse in density with FXT</a>
+              <a class="nav-link" href="examples/euler/3D/gauss_densitypulse_l2p/index.html">Euler 3D setup with pulse in density and L2 projection</a>
+              <a class="nav-link" href="examples/euler/3D/gauss_densitypulse_spongelayer/index.html">Euler 3D pulse in density with sponge</a>
+              <a class="nav-link" href="examples/euler/3D/modalEstimate/index.html">Modal estimate in Euler 3D</a>
+              <a class="nav-link" href="examples/euler/3D/multilevel/index.html">Material with Multilevel in Euler 3D</a>
+              <a class="nav-link" href="examples/euler/3D/overview/index.html">Configuration overview for Euler 3D simulations</a>
+              <a class="nav-link" href="examples/euler/3D/p_polynomials/index.html">P-polynomial space</a>
+              <a class="nav-link" href="examples/euler/3D/qCriterion_deriv_quantity/index.html">Q-Criterion Tracking in Euler 3D</a>
+              <a class="nav-link" href="examples/euler/3D/shear_layer_Q4/index.html">Shear-Layer Q4</a>
+              <a class="nav-link" href="examples/euler/3D/shear_layer_Q4_parallel/index.html">Shear-Layer Q4</a>
+              <a class="nav-link" href="examples/euler/3D/shear_layer_Q8/index.html">Shear-Layer Q8</a>
+              <a class="nav-link" href="examples/euler/3D/shock_stabilization_localrefinement/index.html">Shock Stabilization in Euler 3D with local refinement</a>
+              <a class="nav-link" href="examples/euler/3D/shock_stabilization_parallel/index.html">Shock stabilization for 3D Euler equations with RK-Taylor</a>
+              <a class="nav-link" href="examples/euler/3D/shock_stabilization_periodic/index.html">Shock stabilization in periodic domain</a>
+              <a class="nav-link" href="examples/euler/3D/toro1_x/index.html">Toro1 Riemann problem in X direction</a>
+              <a class="nav-link" href="examples/euler/3D/toro1_y/index.html">Toro1 Riemann problem in Y direction</a>
+              <a class="nav-link" href="examples/euler/3D/toro1_z/index.html">Toro1 Riemann problem in Z direction</a>
+              <a class="nav-link" href="examples/euler/3D/vorticity/index.html">Vorticity Test Case</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="examples/heat/index.html">Heat Conduction</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/heat/1D/index.html">Heat Conduction in 1D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/heat/1D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+              <a class="nav-link" href="examples/heat/2D/index.html">Heat Conduction in 2D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/heat/2D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+              <a class="nav-link" href="examples/heat/3D/index.html">Heat Conduction in 3D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/heat/3D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="examples/lineareuler/index.html">Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/lineareuler/2D/index.html">2D Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/lineareuler/2D/gauss_pulse/index.html">Gaussian pulse in pressure with 2d linearized Euler equations</a>
+              <a class="nav-link" href="examples/lineareuler/2D/transientBackground/index.html">Transient background state in 2D linearized Euler</a>
+
+                </nav>
+              <a class="nav-link" href="examples/lineareuler/3D/index.html">3D Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/lineareuler/3D/gauss_pulse/index.html">Gaussian pulse in density for 3D linearized Euler equations</a>
+              <a class="nav-link" href="examples/lineareuler/3D/gradient/index.html">Tracking of gradients in 3D linearized Euler equations</a>
+              <a class="nav-link" href="examples/lineareuler/3D/transientBackground/index.html">Transient background state in 3D linearized Euler</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="examples/maxwell/index.html">Maxwell Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/maxwell/pec_scatter_inhomogenous_matFun_Q8_3D/index.html">Perfectly_scatter_Inhomogenous_Materia</a>
+              <a class="nav-link" href="examples/maxwell/pec_scatter_inhomogenous_matVar_Q8_3D/index.html">Perfectly_scatter_Inhomogenous_Materia</a>
+              <a class="nav-link" href="examples/maxwell/periodic_oscillator_P8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="examples/maxwell/periodic_oscillator_Q8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="examples/maxwell/rectangular_wave_Q8_3D/index.html">Rectangle Wave</a>
+
+                </nav>
+              <a class="nav-link" href="examples/maxwelldivcorr/index.html">Maxwell Equations With Divergence Correction</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/maxwelldivcorr/periodic_oscillator_P8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="examples/maxwelldivcorr/periodic_oscillator_Q8_3D/index.html">Periodic_Oscillator</a>
+
+                </nav>
+              <a class="nav-link" href="examples/maxwellpml/index.html">Maxwell Equations With Perfectly Matched Layers</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/maxwellpml/cylinder_scattering_Q8_2D/index.html">Perfectly matched Layer test case</a>
+
+                </nav>
+              <a class="nav-link" href="examples/navierstokes/index.html">Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/navierstokes/2D/index.html">2D Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/navierstokes/2D/constant_state/index.html">Constant State</a>
+              <a class="nav-link" href="examples/navierstokes/2D/shear_hat/index.html">Shear hat 2D</a>
+              <a class="nav-link" href="examples/navierstokes/2D/viscous_vortex/index.html">Viscous Vortex (TGV) 2D</a>
+
+                </nav>
+              <a class="nav-link" href="examples/navierstokes/3D/index.html">3D Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/navierstokes/3D/shear_hat/index.html">Shear hat 3D</a>
+              <a class="nav-link" href="examples/navierstokes/3D/shear_tube/index.html">Shear tube 3D</a>
+
+                </nav>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="init.html">Initialization</a>
+              <a class="nav-link" href="material.html">Material</a>
+              <a class="nav-link" href="neumann_boundaries.html">Neumann boundary conditions</a>
+              <a class="nav-link active disabled" href="new_eqn_system.html">Introducing a New Equation System</a>
+              <a class="nav-link" href="polynomials.html">Polynomials Library</a>
+              <a class="nav-link" href="postprocess_filtering.html">Postprocess Filtering</a>
+              <a class="nav-link" href="tutorial/index.html">Tutorial</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="tutorial/euler.html">Euler Testcase</a>
+              <a class="nav-link" href="tutorial/general.html">General Input File Information</a>
+              <a class="nav-link" href="tutorial/maxwell.html">Maxwell Testcase</a>
+              <a class="nav-link" href="tutorial/postprocessing.html">Postprocessing with atl_harvesting</a>
+              <a class="nav-link" href="tutorial/procedure.html">General Procedure for Running the Testcases</a>
+              <a class="nav-link" href="tutorial/source_term.html">Source Term</a>
+              <a class="nav-link" href="tutorial/tracking.html">Tracking</a>
+
+                </nav>
+          </nav>
+        </div>
+      </div>
+
+    <div class="col-9" id='text'>
+      <p>Here, we describe the way
+to introduce a new equation system into the Ateles framework.
+For this purpose we are going to describe the modules,
+which need to be created or extended to introduce the one dimensional
+<a href="https://en.wikipedia.org/wiki/Acoustic_wave_equation">Acoustic wave equation</a>.
+Hence this is a simple example,
+you will find comments wherever extension is required for more complex cases.</p>
+<div class="toc">
+<ul>
+<li><a href="#equation-specific">Equation Specific</a></li>
+<li><a href="#flux-calculation">Flux Calculation</a></li>
+<li><a href="#kernel-for-dg">Kernel for DG</a></li>
+<li><a href="#penalization-and-material-properties">Penalization and Material Properties</a></li>
+<li><a href="#computation">Computation</a></li>
+</ul>
+</div>
+<h2 id="equation-specific">Equation Specific</h2>
+<p>First we have to create a module to describe the acoustic equation system
+and in addition we also have to create some supporting helper modules.</p>
+<ul>
+<li><a href="../module/atl_eqn_acoustic_module.html">atl_eqn_acoustic_module</a>
+    - Module to describe the acoustic equation system<ul>
+<li><a href="../type/atl_acoustic_type.html">atl_acoustic_type</a>:
+    Datatype for the acoustic equation system.</li>
+<li><a href="../proc/atl_load_acoustic.html">atl_load_acoustic</a>:
+    Subroutine to get the required values as background velocity
+    from the lua configuration file.</li>
+</ul>
+</li>
+<li><a href="../module/atl_eqn_acoustic_var_module.html">atl_eqn_acoustic_var_module</a>
+    - Module to configure the variables of the acoustic equation<ul>
+<li><a href="../proc/atl_init_acoustic_vars.html">atl_init_acoustic_vars</a>:
+    Subroutine to initialize which variables has to be used
+    and how they are organized in memory.</li>
+<li><a href="../proc/atl_append_acoustic_vars.html">atl_append_acoustic_vars</a>:
+    Subroutine to append the variable system by the variables
+    for acoustic simulations using
+    <a href="../https:/apes-suite.github.io/treelm/proc/tem_varsys_append_statevar.html">tem_varSys_append_stateVar</a>.</li>
+<li><a href="../proc/atl_init_acoustic_sourceterms.html">atl_init_acoustic_sourceTerms</a>:
+    Subroutine to init source terms for flow simulations
+    to apply a source term like sponge layer.</li>
+</ul>
+</li>
+<li><a href="../module/atl_eqn_acoustic_hlp_module.html">atl_eqn_acoustic_hlp_module</a>
+    - Module to define some helper routines<ul>
+<li><a href="../proc/atl_eqn_acoustic_init.html">atl_eqn_acoustic_init</a>:
+    Subroutine to set up the necessary infrastructure.</li>
+<li><a href="../proc/atl_eqn_acoustic_load_bc.html">atl_eqn_acoustic_load_bc</a>:
+    Subroutine for reading the boundary conditions.</li>
+</ul>
+</li>
+</ul>
+<p>The location of the equation specific modules is 'source/equation'.
+As you may have noticed the name of the modules
+related to the specific eqaution system should have the prefix 'atl_eqn_'.
+The postfix '_var_module' indicates a module in which
+the variables of the different equation systems should be defined,
+the postfix '_hlp_module' indicates a module
+in which helping routines are defined
+and last but not least the postfix '_derive_module' indicates a module
+in which routines are defined to calculate derived quantities
+of the different equation systems.</p>
+<p>To use the subroutines and datatypes of the prescribed modules
+we have to extend the module <a href="../module/atl_equation_init_module.html">atl_equation_init_module</a>
+by the acoustic testcase to call for
+<a href="../proc/atl_eqn_acoustic_init.html">atl_eqn_acoustic_init</a>.
+Furthermore <a href="../type/atl_equations_type.html">atl_Equations_type</a> needs to be extended
+by the new defined datatype <a href="../type/atl_acoustic_type.html">atl_acoustic_type</a>.</p>
+<h2 id="flux-calculation">Flux Calculation</h2>
+<p>To calculate the physical and numerical flux in one dimension
+we create the modules <a href="../module/atl_acoustic_physflux_module.html">atl_acoustic_physflux_module</a>
+and <a href="../module/atl_acoustic_numflux_module.html">atl_acoustic_numflux_module</a> respectively in 'source/flux'.
+For the acoustic equation, the numerical flux can be calculated analytical.
+For nonlinear equation,
+the numerical flux is calculated by riemann problem solver
+like LaxFriedrich, HLL or Roe.</p>
+<h2 id="kernel-for-dg">Kernel for DG</h2>
+<p>For the routines and datatypes
+of the Modal Discontinuous Galerkin (MODG) scheme for the acoustic equation
+we create the module <a href="../module/atl_modg_acoustic_kernel_module.html">atl_modg_acoustic_kernel_module</a>
+in 'source/scheme/modg'.
+This is the main module where the 'numerics' happen.
+Hence, the calls to the one dimensional numerical
+and physical flux calculation are done.
+Take care about the correct rotation
+according to the corresponding direction of the flux.
+For nonlinear equation,
+the physical flux is calculated in the nodal space,
+though further projection (modal to nodal and vice versa) are required.</p>
+<h2 id="penalization-and-material-properties">Penalization and Material Properties</h2>
+<p>For the penealization and material properties we have to extend some modules.</p>
+<ul>
+<li><a href="../module/atl_eqn_acoustic_module.html">atl_eqn_acoustic_module</a>:
+    In <a href="../type/atl_acoustic_type.html">atl_acoustic_type</a>
+    we have to make sure to include
+    <a href="../type/atl_materialfun_type.html">atl_materialFun_type</a>
+    for the penalization functions.
+    This is very important for the penalization module
+    <a href="../module/atl_penalization_module.html">atl_penalization_module</a>
+    and the overall computation module <a href="../module/atl_compute_module.html">atl_compute_module</a>,
+    since the elements are split into elements
+    with const and non_const material properties
+    and these elements define the overall compututation loop.</li>
+<li><a href="../module/atl_materialini_module.html">atl_materialIni_module</a>:
+    In the subroutine <a href="../proc/atl_init_materialparams.html">atl_init_materialParams</a>
+    the case for the new equation need to be added.
+    In this routine the elements are sorted by their material properties
+    and the correct list for the later on compute module are created
+    (without these lists, the loops in the compute module are not iterated)</li>
+</ul>
+<p>Without material parameters,
+the computatation does not run into the physical flux calculation.
+The material and penalization specific modules are in 'source/material'.</p>
+<h2 id="computation">Computation</h2>
+<p>For the computation some modules needs to be extended.</p>
+<ul>
+<li><a href="../module/atl_compute_module.html">atl_compute_module</a>
+    - Module which controls the computation.</li>
+<li><a href="../module/atl_global_time_integration_module.html">atl_global_time_integration_module</a>:
+    - Module with routines to steer the time stepping mechanism in Ateles.</li>
+<li><a href="../module/atl_compute_local_module.html">atl_compute_local_module</a>
+    - Module with routines to to calculate element-local RHS.
+    The preprocess routine
+    <a href="../proc/preprocess_local_rhs_cubes.html">preprocess_local_rhs_cubes</a>
+    needs to be extended by the acoustic case.</li>
+<li><a href="../module/atl_calc_time_module.html">atl_calc_time_module</a>
+    - Module which provides the definition
+    and methods for time step computations.</li>
+<li><a href="../module/atl_physcheck_module.html">atl_physCheck_module</a>
+    - Module for checking physical values of a given state.
+    Need to be extended by checking for state variables
+    of the new variable system.</li>
+</ul>
+    </div>
+  </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

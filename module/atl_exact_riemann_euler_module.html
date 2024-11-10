@@ -1,0 +1,2030 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_exact_riemann_euler_module &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_exact_riemann_euler_module
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.9% of total for modules and submodules.">386 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_exact_riemann_euler_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_exact_riemann_euler_module.f90.html'>atl_exact_riemann_euler_module.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_exact_riemann_euler_module</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_exact_riemann_euler_module.html#variable-density~16">density</a>
+            <a class="list-group-item" href="../module/atl_exact_riemann_euler_module.html#variable-velocity~2">velocity</a>
+            <a class="list-group-item" href="../module/atl_exact_riemann_euler_module.html#variable-pressure~6">pressure</a>
+            <a class="list-group-item" href="../module/atl_exact_riemann_euler_module.html#variable-rarefication">rarefication</a>
+            <a class="list-group-item" href="../module/atl_exact_riemann_euler_module.html#variable-rare2cont">rare2cont</a>
+            <a class="list-group-item" href="../module/atl_exact_riemann_euler_module.html#variable-cont2shock">cont2shock</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#types-0"
+         aria-expanded="false" aria-controls="types-0">
+         <h4 class="card-header bg-primary text-white">Derived Types</h4>
+      </a>
+      <div id="types-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_exact_riemann_euler_module.html#type-atl_ere_solstate1d_type">atl_ere_solState1D_type</a>
+        </div>
+      </div>
+    </div>
+
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_exact_riemann_euler_module.html#proc-atl_ere_init">atl_ere_init</a>
+            <a class="list-group-item" href="../module/atl_exact_riemann_euler_module.html#proc-atl_ere_init_consts">atl_ere_init_consts</a>
+            <a class="list-group-item" href="../module/atl_exact_riemann_euler_module.html#proc-atl_ere_eval_onedge">atl_ere_eval_onEdge</a>
+            <a class="list-group-item" href="../module/atl_exact_riemann_euler_module.html#proc-atl_ere_sample">atl_ere_sample</a>
+            <a class="list-group-item" href="../module/atl_exact_riemann_euler_module.html#proc-atl_ere_dump_solstate">atl_ere_dump_solState</a>
+            <a class="list-group-item" href="../module/atl_exact_riemann_euler_module.html#proc-nr_start">nr_start</a>
+            <a class="list-group-item" href="../module/atl_exact_riemann_euler_module.html#proc-nr_1side">nr_1side</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      <p>Module to compute the exact solution for the Riemann Problem for
+the Euler equations.</p>
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/env_module.html'>env_module</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_exact_riemann_euler_module~~UsesGraph Pages: 1 -->
+<svg id="moduleatl_exact_riemann_euler_moduleUsesGraph" width="311pt" height="32pt"
+ viewBox="0.00 0.00 311.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_exact_riemann_euler_module~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>module~~atl_exact_riemann_euler_module~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 307,-28 307,4 -4,4"/>
+<!-- module~atl_exact_riemann_euler_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsesGraph_node1" class="node">
+<title>module~atl_exact_riemann_euler_module</title>
+<polygon fill="none" stroke="black" points="303,-24 114,-24 114,0 303,0 303,-24"/>
+<text text-anchor="middle" x="208.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_exact_riemann_euler_module</text>
+</g>
+<!-- env_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsesGraph_node2" class="node">
+<title>env_module</title>
+<g id="a_module~~atl_exact_riemann_euler_module~~UsesGraph_node2"><a xlink:href="https://apes-suite.github.io/treelm/module/env_module.html" xlink:title="env_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="78,-24 0,-24 0,0 78,0 78,-24"/>
+<text text-anchor="middle" x="39" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">env_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_exact_riemann_euler_module&#45;&gt;env_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsesGraph_edge1" class="edge">
+<title>module~atl_exact_riemann_euler_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M113.96,-12C105.1,-12 96.4,-12 88.25,-12"/>
+<polygon fill="#000000" stroke="#000000" points="88.24,-8.5 78.24,-12 88.24,-15.5 88.24,-8.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+          <div class="card">
+      <h3 class="card-header card-title bg-light">Used by</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_exact_riemann_euler_module~~UsedByGraph Pages: 1 -->
+<svg id="moduleatl_exact_riemann_euler_moduleUsedByGraph" width="641pt" height="70pt"
+ viewBox="0.00 0.00 641.00 70.45" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph" class="graph" transform="scale(0.46 0.46) rotate(0) translate(4 148)">
+<title>module~~atl_exact_riemann_euler_module~~UsedByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-148 1379,-148 1379,4 -4,4"/>
+<!-- module~atl_exact_riemann_euler_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_node1" class="node">
+<title>module~atl_exact_riemann_euler_module</title>
+<polygon fill="none" stroke="black" points="189,-105 0,-105 0,-81 189,-81 189,-105"/>
+<text text-anchor="middle" x="94.5" y="-90.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_exact_riemann_euler_module</text>
+</g>
+<!-- module~atl_godunovflux_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_node2" class="node">
+<title>module~atl_godunovflux_module</title>
+<g id="a_module~~atl_exact_riemann_euler_module~~UsedByGraph_node2"><a xlink:href="../module/atl_godunovflux_module.html" xlink:title="atl_GodunovFlux_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="372,-105 225,-105 225,-81 372,-81 372,-105"/>
+<text text-anchor="middle" x="298.5" y="-90.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_GodunovFlux_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_godunovflux_module&#45;&gt;module~atl_exact_riemann_euler_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_edge1" class="edge">
+<title>module~atl_godunovflux_module&#45;&gt;module~atl_exact_riemann_euler_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M224.86,-93C216.57,-93 208,-93 199.4,-93"/>
+<polygon fill="#000000" stroke="#000000" points="199.31,-89.5 189.31,-93 199.31,-96.5 199.31,-89.5"/>
+</g>
+<!-- module~atl_eqn_euler_hlp_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_node3" class="node">
+<title>module~atl_eqn_euler_hlp_module</title>
+<g id="a_module~~atl_exact_riemann_euler_module~~UsedByGraph_node3"><a xlink:href="../module/atl_eqn_euler_hlp_module.html" xlink:title="atl_eqn_euler_hlp_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="560,-85 408,-85 408,-61 560,-61 560,-85"/>
+<text text-anchor="middle" x="484" y="-70.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_euler_hlp_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_euler_hlp_module&#45;&gt;module~atl_godunovflux_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_edge2" class="edge">
+<title>module~atl_eqn_euler_hlp_module&#45;&gt;module~atl_godunovflux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M407.83,-81.19C399.37,-82.12 390.71,-83.06 382.15,-83.99"/>
+<polygon fill="#000000" stroke="#000000" points="381.74,-80.52 372.18,-85.08 382.5,-87.47 381.74,-80.52"/>
+</g>
+<!-- module~atl_initialize_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_node4" class="node">
+<title>module~atl_initialize_module</title>
+<g id="a_module~~atl_exact_riemann_euler_module~~UsedByGraph_node4"><a xlink:href="../module/atl_initialize_module.html" xlink:title="atl_initialize_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="1092,-124 971,-124 971,-100 1092,-100 1092,-124"/>
+<text text-anchor="middle" x="1031.5" y="-109.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_initialize_module&#45;&gt;module~atl_godunovflux_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_edge3" class="edge">
+<title>module~atl_initialize_module&#45;&gt;module~atl_godunovflux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M970.9,-112.72C959.01,-112.84 946.61,-112.94 935,-113 870.11,-113.34 853.88,-114.32 789,-113 645.89,-110.08 479.39,-102.35 382.1,-97.4"/>
+<polygon fill="#000000" stroke="#000000" points="382.21,-93.91 372.04,-96.89 381.85,-100.9 382.21,-93.91"/>
+</g>
+<!-- module~atl_equation_init_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_node6" class="node">
+<title>module~atl_equation_init_module</title>
+<g id="a_module~~atl_exact_riemann_euler_module~~UsedByGraph_node6"><a xlink:href="../module/atl_equation_init_module.html" xlink:title="atl_equation_init_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="935,-104 789,-104 789,-80 935,-80 935,-104"/>
+<text text-anchor="middle" x="862" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_equation_init_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_initialize_module&#45;&gt;module~atl_equation_init_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_edge10" class="edge">
+<title>module~atl_initialize_module&#45;&gt;module~atl_equation_init_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M970.97,-104.89C962.66,-103.9 954,-102.87 945.36,-101.83"/>
+<polygon fill="#000000" stroke="#000000" points="945.59,-98.34 935.24,-100.63 944.76,-105.29 945.59,-98.34"/>
+</g>
+<!-- module~atl_eqn_nvrstk_hlp_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_node5" class="node">
+<title>module~atl_eqn_nvrstk_hlp_module</title>
+<g id="a_module~~atl_exact_riemann_euler_module~~UsedByGraph_node5"><a xlink:href="../module/atl_eqn_nvrstk_hlp_module.html" xlink:title="atl_eqn_nvrstk_hlp_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="753,-66 596,-66 596,-42 753,-42 753,-66"/>
+<text text-anchor="middle" x="674.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_nvrstk_hlp_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_nvrstk_hlp_module&#45;&gt;module~atl_eqn_euler_hlp_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_edge4" class="edge">
+<title>module~atl_eqn_nvrstk_hlp_module&#45;&gt;module~atl_eqn_euler_hlp_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M595.74,-61.84C587.29,-62.69 578.65,-63.56 570.11,-64.42"/>
+<polygon fill="#000000" stroke="#000000" points="569.75,-60.94 560.15,-65.43 570.45,-67.9 569.75,-60.94"/>
+</g>
+<!-- module~atl_equation_init_module&#45;&gt;module~atl_eqn_euler_hlp_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_edge5" class="edge">
+<title>module~atl_equation_init_module&#45;&gt;module~atl_eqn_euler_hlp_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M788.95,-88.36C726.61,-85.21 636.36,-80.65 570.4,-77.32"/>
+<polygon fill="#000000" stroke="#000000" points="570.19,-73.8 560.03,-76.79 569.84,-80.79 570.19,-73.8"/>
+</g>
+<!-- module~atl_equation_init_module&#45;&gt;module~atl_eqn_nvrstk_hlp_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_edge9" class="edge">
+<title>module~atl_equation_init_module&#45;&gt;module~atl_eqn_nvrstk_hlp_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M802.31,-79.98C783.78,-76.18 763.14,-71.95 743.99,-68.03"/>
+<polygon fill="#000000" stroke="#000000" points="744.63,-64.59 734.13,-66.01 743.22,-71.45 744.63,-64.59"/>
+</g>
+<!-- module~atl_program_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_node7" class="node">
+<title>module~atl_program_module</title>
+<g id="a_module~~atl_exact_riemann_euler_module~~UsedByGraph_node7"><a xlink:href="../module/atl_program_module.html" xlink:title="atl_program_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="1251,-104 1128,-104 1128,-80 1251,-80 1251,-104"/>
+<text text-anchor="middle" x="1189.5" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_program_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_program_module&#45;&gt;module~atl_initialize_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_edge7" class="edge">
+<title>module~atl_program_module&#45;&gt;module~atl_initialize_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1127.74,-99.79C1119.32,-100.87 1110.61,-101.99 1102.04,-103.08"/>
+<polygon fill="#000000" stroke="#000000" points="1101.54,-99.62 1092.07,-104.36 1102.43,-106.56 1101.54,-99.62"/>
+</g>
+<!-- proc~implicit_update -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_node8" class="node">
+<title>proc~implicit_update</title>
+<g id="a_module~~atl_exact_riemann_euler_module~~UsedByGraph_node8"><a xlink:href="../proc/implicit_update.html" xlink:title="implicit_update">
+<polygon fill="#d9534f" stroke="#d9534f" points="721.5,-24 627.5,-24 627.5,0 721.5,0 721.5,-24"/>
+<text text-anchor="middle" x="674.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">implicit_update</text>
+</a>
+</g>
+</g>
+<!-- proc~implicit_update&#45;&gt;module~atl_eqn_euler_hlp_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_edge6" class="edge">
+<title>proc~implicit_update&#45;&gt;module~atl_eqn_euler_hlp_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M627.42,-23.82C617.04,-26.67 606.1,-29.82 596,-33 572.56,-40.39 546.7,-49.64 525.85,-57.38"/>
+<polygon fill="#000000" stroke="#000000" points="524.49,-54.15 516.35,-60.93 526.94,-60.71 524.49,-54.15"/>
+</g>
+<!-- program~atl_harvesting -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_node9" class="node">
+<title>program~atl_harvesting</title>
+<g id="a_module~~atl_exact_riemann_euler_module~~UsedByGraph_node9"><a xlink:href="../program/atl_harvesting.html" xlink:title="atl_harvesting">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1375,-144 1287,-144 1287,-120 1375,-120 1375,-144"/>
+<text text-anchor="middle" x="1331" y="-129.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_harvesting</text>
+</a>
+</g>
+</g>
+<!-- program~atl_harvesting&#45;&gt;module~atl_initialize_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_edge8" class="edge">
+<title>program~atl_harvesting&#45;&gt;module~atl_initialize_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1286.74,-129.09C1238.4,-125.84 1159.42,-120.53 1102.31,-116.69"/>
+<polygon fill="#000000" stroke="#000000" points="1102.48,-113.2 1092.27,-116.02 1102.01,-120.18 1102.48,-113.2"/>
+</g>
+<!-- program~atl_harvesting&#45;&gt;module~atl_program_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_edge12" class="edge">
+<title>program~atl_harvesting&#45;&gt;module~atl_program_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1288.15,-120C1273.79,-115.88 1257.56,-111.23 1242.5,-106.91"/>
+<polygon fill="#000000" stroke="#000000" points="1243.38,-103.52 1232.81,-104.13 1241.46,-110.25 1243.38,-103.52"/>
+</g>
+<!-- program~ateles -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_node10" class="node">
+<title>program~ateles</title>
+<g id="a_module~~atl_exact_riemann_euler_module~~UsedByGraph_node10"><a xlink:href="../program/ateles.html" xlink:title="ateles">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1358,-102 1304,-102 1304,-78 1358,-78 1358,-102"/>
+<text text-anchor="middle" x="1331" y="-87.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ateles</text>
+</a>
+</g>
+</g>
+<!-- program~ateles&#45;&gt;module~atl_program_module -->
+<g id="module~~atl_exact_riemann_euler_module~~UsedByGraph_edge11" class="edge">
+<title>program~ateles&#45;&gt;module~atl_program_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1303.76,-90.38C1291.52,-90.55 1276.31,-90.77 1261.05,-90.99"/>
+<polygon fill="#000000" stroke="#000000" points="1260.99,-87.49 1251.04,-91.13 1261.09,-94.49 1260.99,-87.49"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panmoduleatl_exact_riemann_euler_moduleUsedByGraph = svgPanZoom('#moduleatl_exact_riemann_euler_moduleUsedByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      <br>
+
+
+        <section>
+          <h2>Variables</h2>
+            <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-density~16"></span>
+              integer,
+            </td>
+              <td>private,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>density</strong></td>
+<td> =</td>
+                <td>1</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-velocity~2"></span>
+              integer,
+            </td>
+              <td>private,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>velocity</strong></td>
+<td> =</td>
+                <td>2</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-pressure~6"></span>
+              integer,
+            </td>
+              <td>private,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>pressure</strong></td>
+<td> =</td>
+                <td>3</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rarefication"></span>
+              integer,
+            </td>
+              <td>private,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>rarefication</strong></td>
+<td> =</td>
+                <td>1</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rare2cont"></span>
+              integer,
+            </td>
+              <td>private,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>rare2cont</strong></td>
+<td> =</td>
+                <td>2</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-cont2shock"></span>
+              integer,
+            </td>
+              <td>private,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>cont2shock</strong></td>
+<td> =</td>
+                <td>3</td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+        </section>
+        <br>
+
+
+
+
+        <section>
+          <h2>Derived Types</h2>
+              <div class="card">
+    <div class="card-header codesum">
+      <span class="anchor" id="type-atl_ere_solstate1d_type"></span>
+      <h3>
+        type, public&nbsp;::&nbsp;
+        <a href='../type/atl_ere_solstate1d_type.html'>atl_ere_solState1D_type</a>
+        
+      </h3>
+    </div>
+    <div class="card-body">
+      
+
+        <h4>Components</h4>
+          <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-g"></span>
+              real(kind=rk),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>G</strong>(9)</td>
+                <td></td>
+                <td></td>
+            <td>
+<p>Auxilary values describing the gas (given by the isentropic coefficient).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-gam~3"></span>
+              real(kind=rk),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>gam</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+<p>Isentropic coefficient</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tolerance~2"></span>
+              real(kind=rk),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tolerance</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+<p>Abort criterion for the Newton-Raphson scheme.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nmaxiter"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nMaxIter</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+<p>Maximum number of iterations for the Newton-Raphson scheme.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-niter"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nIter</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+<p>Number of actually made Newton-Raphson iterations.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-critical"></span>
+              logical,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>critical</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+<p>Flag if this is a critical state combination, that would result in a
+vacuum.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-prim_left"></span>
+              real(kind=rk),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>prim_left</strong>(3)</td>
+                <td></td>
+                <td></td>
+            <td>
+<p>Primitive variables left of discontinuity</p><a href="../type/atl_ere_solstate1d_type.html#variable-prim_left" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-prim_right"></span>
+              real(kind=rk),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>prim_right</strong>(3)</td>
+                <td></td>
+                <td></td>
+            <td>
+<p>Primitive variables right of discontinuity</p><a href="../type/atl_ere_solstate1d_type.html#variable-prim_right" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-prim_rare2cont"></span>
+              real(kind=rk),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>prim_rare2cont</strong>(3)</td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-prim_cont2shock"></span>
+              real(kind=rk),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>prim_cont2shock</strong>(3)</td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-prim_rare"></span>
+              real(kind=rk),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>prim_rare</strong>(3)</td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-p_mean"></span>
+              real(kind=rk),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>p_mean</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-u_mean~4"></span>
+              real(kind=rk),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>u_mean</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rare_c"></span>
+              real(kind=rk),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rare_c</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rare_c_fac"></span>
+              real(kind=rk),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rare_c_fac</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-cl~4"></span>
+              real(kind=rk),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>cl</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+<p>Speed of sound left</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-cr~4"></span>
+              real(kind=rk),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>cr</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+<p>Speed of sound right</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-charvel"></span>
+              real(kind=rk),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>charvel</strong>(4)</td>
+                <td></td>
+                <td></td>
+            <td>
+<p>Characteristic velocities</p><a href="../type/atl_ere_solstate1d_type.html#variable-charvel" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-charfield"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>charfield</strong>(3)</td>
+                <td></td>
+                <td></td>
+            <td>
+<p>Kind of state between the characteristic velocities.</p><a href="../type/atl_ere_solstate1d_type.html#variable-charfield" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+        <section>
+          <h2>Subroutines</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_ere_init"></span> <h3>public  subroutine <a href='../proc/atl_ere_init.html'>atl_ere_init</a>(me, prim_left, prim_right, gam, tolerance, nMaxIter)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Compute the exact solution of the Riemann problem for the Euler equation.</p><a href="../proc/atl_ere_init.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~32"></span>
+              type(<a href='../type/atl_ere_solstate1d_type.html'>atl_ere_solState1D_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+<p>Description of the Riemann solution.</p><a href="../proc/atl_ere_init.html#variable-me~32" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-prim_left~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>prim_left</strong>(3)</td>
+            <td>
+<p>Primitive variables left of discontinuity</p><a href="../proc/atl_ere_init.html#variable-prim_left~2" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-prim_right~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>prim_right</strong>(3)</td>
+            <td>
+<p>Primitive variables right of discontinuity</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-gam~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>gam</strong></td>
+            <td>
+<p>Isentropic expansion coefficient of the gas</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tolerance~3"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tolerance</strong></td>
+            <td>
+<p>Tolerated variation in the Newton-Raphson iterations, default: 8 epsilon</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nmaxiter~2"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nMaxIter</strong></td>
+            <td>
+<p>Maximal number of iterations to do, default: 100000</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_ere_init_consts"></span> <h3>public  subroutine <a href='../proc/atl_ere_init_consts.html'>atl_ere_init_consts</a>(me, gam, tolerance, nMaxIter)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Set the general constants for the exact riemann solver.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~33"></span>
+              type(<a href='../type/atl_ere_solstate1d_type.html'>atl_ere_solState1D_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+<p>Description of the Riemann solution to set the constants in</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-gam~5"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>gam</strong></td>
+            <td>
+<p>Isentropic expansion coefficient of the gas</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tolerance~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tolerance</strong></td>
+            <td>
+<p>Tolerated variation in the Newton-Raphson iterations, default: 8 epsilon</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nmaxiter~3"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nMaxIter</strong></td>
+            <td>
+<p>Maximal number of iterations to do, default: 100000</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_ere_eval_onedge"></span> <h3>public elemental subroutine <a href='../proc/atl_ere_eval_onedge.html'>atl_ere_eval_onEdge</a>(me, rho_left, vn_left, v1_left, v2_left, p_left, rho_right, vn_right, v1_right, v2_right, p_right, rho, vn, v1, v2, p)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Evaluate the state on the edge using the exact riemann solver</p><a href="../proc/atl_ere_eval_onedge.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~34"></span>
+              type(<a href='../type/atl_ere_solstate1d_type.html'>atl_ere_solState1D_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+<p>Description of the general constants for the Riemann solver.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rho_left"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rho_left</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-vn_left"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>vn_left</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-v1_left"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>v1_left</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-v2_left"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>v2_left</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-p_left"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>p_left</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rho_right"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rho_right</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-vn_right"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>vn_right</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-v1_right"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>v1_right</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-v2_right"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>v2_right</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-p_right"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>p_right</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rho"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rho</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-vn~5"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>vn</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-v1"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>v1</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-v2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>v2</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-p~9"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>p</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_ere_sample"></span> <h3>public elemental subroutine <a href='../proc/atl_ere_sample.html'>atl_ere_sample</a>(me, s, rho, v, p)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Evaluate the solution to the 1D Riemann problem for a given sample point s.</p><a href="../proc/atl_ere_sample.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~35"></span>
+              type(<a href='../type/atl_ere_solstate1d_type.html'>atl_ere_solState1D_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+<p>Description of the solution.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-s~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>s</strong></td>
+            <td>
+<p>Velocity along which to find the state.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rho~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rho</strong></td>
+            <td>
+<p>Density at s.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-v~6"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>v</strong></td>
+            <td>
+<p>Velocity at s.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-p~10"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>p</strong></td>
+            <td>
+<p>Pressure at s.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_ere_dump_solstate"></span> <h3>public  subroutine <a href='../proc/atl_ere_dump_solstate.html'>atl_ere_dump_solState</a>(me, outunit)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~36"></span>
+              type(<a href='../type/atl_ere_solstate1d_type.html'>atl_ere_solState1D_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-outunit"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>outunit</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-nr_start"></span> <h3>private elemental subroutine <a href='../proc/nr_start.html'>nr_start</a>(p, rhol, rhor, ul, ur, pl, pr, al, ar, me)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Initial setup for the iterative computation of the solution to the
+Riemann problem.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-p~11"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>p</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rhol"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rhol</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rhor"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rhor</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ul"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ul</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ur"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ur</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-pl"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pl</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-pr"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pr</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-al~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>al</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ar"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ar</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~37"></span>
+              type(<a href='../type/atl_ere_solstate1d_type.html'>atl_ere_solState1D_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-nr_1side"></span> <h3>private elemental subroutine <a href='../proc/nr_1side.html'>nr_1side</a>(f, fd, p, rhok, pk, ck, me)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Compute one-sided iteration</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-f~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>f</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fd"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fd</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-p~12"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>p</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rhok"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rhok</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-pk"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pk</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ck"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ck</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~38"></span>
+              type(<a href='../type/atl_ere_solstate1d_type.html'>atl_ere_solState1D_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

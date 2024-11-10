@@ -1,0 +1,534 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>maxwell_flux_cube &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>maxwell_flux_cube
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">23 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_maxwell_flux_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_maxwell_flux_module.f90.html'>atl_maxwell_flux_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/atl_maxwell_flux_module.html'>atl_maxwell_flux_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">maxwell_flux_cube</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>private  subroutine maxwell_flux_cube(left, right, left_mu, left_epsi, right_mu, right_epsi, flux)  
+</h2>
+    
+
+    <p>Subroutine to calculate the flux for pure Maxwell equations without
+any divergence cleaning on the reference cubic face.</p>
+<p>This subroutine calculates the flux of the Maxwell equation on the
+reference cubic face. This implementation is based on the this article:
+A three-dimensional finite-volume solver for Maxwell equations with
+divergence cleaning on unstructured meshes, C.D. Munz, P. Ommes,
+R. Schneider, Computer Physiscs communications 130, 83-117, 1999.
+Additionally we splitted the correction technique from the Maxwell fluxes
+themself to be able to use the fluxes for Maxwell in combination with an
+arbitrary divergence correction technique. Please notice that this flux
+function assumes constant material parameters in both cells.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-left~54"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>left</strong>(6)</td>
+            <td>
+                <p>Left state vector (as conservative variables). The order of this vector
+has to be \f$ (D_x, D_y, D_z, B_1, B_2, B_3) \f$ where E and B denoted
+electric field vetor and magnetic field (also called magnetic induction)
+vector.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-right~54"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>right</strong>(6)</td>
+            <td>
+                <p>Right state vector (as conservative variables). The order of this vector
+has to be (D_x, D_y, D_z, B_1, B_2, B_3) where E and B denoted the
+electric field vetor and magnetic field (also called magnetic induction)
+vector.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-left_mu~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>left_mu</strong></td>
+            <td>
+                <p>The magnetic permeability of the left element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-left_epsi~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>left_epsi</strong></td>
+            <td>
+                <p>The electric permitivity of the left element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-right_mu~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>right_mu</strong></td>
+            <td>
+                <p>The magnetic permeability of the right element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-right_epsi~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>right_epsi</strong></td>
+            <td>
+                <p>The electric permitivity of the right element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-flux~26"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>flux</strong>(6)</td>
+            <td>
+                <p>The flux between left and right cell. The order of this vector is the
+same as the input arguments.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~maxwell_flux_cube~~CalledByGraph Pages: 1 -->
+<svg id="procmaxwell_flux_cubeCalledByGraph" width="641pt" height="32pt"
+ viewBox="0.00 0.00 641.00 32.46" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~maxwell_flux_cube~~CalledByGraph" class="graph" transform="scale(0.62 0.62) rotate(0) translate(4 48)">
+<title>proc~~maxwell_flux_cube~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-48 1023,-48 1023,4 -4,4"/>
+<!-- proc~maxwell_flux_cube -->
+<g id="proc~~maxwell_flux_cube~~CalledByGraph_node1" class="node">
+<title>proc~maxwell_flux_cube</title>
+<polygon fill="none" stroke="black" points="1019,-44 906,-44 906,-20 1019,-20 1019,-44"/>
+<text text-anchor="middle" x="962.5" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50">maxwell_flux_cube</text>
+</g>
+<!-- interface~atl_maxwell_flux -->
+<g id="proc~~maxwell_flux_cube~~CalledByGraph_node2" class="node">
+<title>interface~atl_maxwell_flux</title>
+<g id="a_proc~~maxwell_flux_cube~~CalledByGraph_node2"><a xlink:href="../interface/atl_maxwell_flux.html" xlink:title="atl_maxwell_flux">
+<polygon fill="#a7506f" stroke="#a7506f" points="643,-44 543,-44 543,-20 643,-20 643,-44"/>
+<text text-anchor="middle" x="593" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_maxwell_flux</text>
+</a>
+</g>
+</g>
+<!-- interface~atl_maxwell_flux&#45;&gt;proc~maxwell_flux_cube -->
+<g id="proc~~maxwell_flux_cube~~CalledByGraph_edge2" class="edge">
+<title>interface~atl_maxwell_flux&#45;&gt;proc~maxwell_flux_cube</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M643.44,-32.68C655.1,-32.81 667.49,-32.93 679,-33 763.89,-33.5 785.11,-33.46 870,-33 878.34,-32.95 887.1,-32.89 895.76,-32.8"/>
+<polygon fill="#000000" stroke="#000000" points="895.89,-36.3 905.86,-32.71 895.82,-29.3 895.89,-36.3"/>
+</g>
+<!-- proc~maxwell_flux_nonconst_cube_vec -->
+<g id="proc~~maxwell_flux_cube~~CalledByGraph_node3" class="node">
+<title>proc~maxwell_flux_nonconst_cube_vec</title>
+<g id="a_proc~~maxwell_flux_cube~~CalledByGraph_node3"><a xlink:href="../proc/maxwell_flux_nonconst_cube_vec.html" xlink:title="maxwell_flux_nonconst_cube_vec">
+<polygon fill="#d9534f" stroke="#d9534f" points="870,-24 679,-24 679,0 870,0 870,-24"/>
+<text text-anchor="middle" x="774.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">maxwell_flux_nonconst_cube_vec</text>
+</a>
+</g>
+</g>
+<!-- interface~atl_maxwell_flux&#45;&gt;proc~maxwell_flux_nonconst_cube_vec -->
+<g id="proc~~maxwell_flux_cube~~CalledByGraph_edge4" class="edge">
+<title>interface~atl_maxwell_flux&#45;&gt;proc~maxwell_flux_nonconst_cube_vec</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M643.05,-26.53C651.19,-25.63 659.91,-24.66 668.82,-23.66"/>
+<polygon fill="#000000" stroke="#000000" points="669.4,-27.12 678.95,-22.53 668.63,-20.16 669.4,-27.12"/>
+</g>
+<!-- proc~maxwell_flux_nonconst_cube_vec&#45;&gt;proc~maxwell_flux_cube -->
+<g id="proc~~maxwell_flux_cube~~CalledByGraph_edge1" class="edge">
+<title>proc~maxwell_flux_nonconst_cube_vec&#45;&gt;proc~maxwell_flux_cube</title>
+<path fill="none" stroke="#000000" d="M870.13,-22.18C878.81,-23.11 887.47,-24.04 895.81,-24.94"/>
+<polygon fill="#000000" stroke="#000000" points="895.48,-28.42 905.8,-26.01 896.23,-21.46 895.48,-28.42"/>
+</g>
+<!-- proc~atl_modg_maxwell_numflux -->
+<g id="proc~~maxwell_flux_cube~~CalledByGraph_node4" class="node">
+<title>proc~atl_modg_maxwell_numflux</title>
+<g id="a_proc~~maxwell_flux_cube~~CalledByGraph_node4"><a xlink:href="../proc/atl_modg_maxwell_numflux.html" xlink:title="atl_modg_maxwell_numFlux">
+<polygon fill="#d9534f" stroke="#d9534f" points="507,-44 344,-44 344,-20 507,-20 507,-44"/>
+<text text-anchor="middle" x="425.5" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_maxwell_numFlux</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_modg_maxwell_numflux&#45;&gt;interface~atl_maxwell_flux -->
+<g id="proc~~maxwell_flux_cube~~CalledByGraph_edge3" class="edge">
+<title>proc~atl_modg_maxwell_numflux&#45;&gt;interface~atl_maxwell_flux</title>
+<path fill="none" stroke="#000000" d="M507.31,-32C515.85,-32 524.42,-32 532.65,-32"/>
+<polygon fill="#000000" stroke="#000000" points="532.86,-35.5 542.86,-32 532.86,-28.5 532.86,-35.5"/>
+</g>
+<!-- proc~compute_rhs_cubes_modg -->
+<g id="proc~~maxwell_flux_cube~~CalledByGraph_node5" class="node">
+<title>proc~compute_rhs_cubes_modg</title>
+<g id="a_proc~~maxwell_flux_cube~~CalledByGraph_node5"><a xlink:href="../proc/compute_rhs_cubes_modg.html" xlink:title="compute_rhs_cubes_modg">
+<polygon fill="#d9534f" stroke="#d9534f" points="308,-44 154,-44 154,-20 308,-20 308,-44"/>
+<text text-anchor="middle" x="231" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">compute_rhs_cubes_modg</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg&#45;&gt;proc~atl_modg_maxwell_numflux -->
+<g id="proc~~maxwell_flux_cube~~CalledByGraph_edge5" class="edge">
+<title>proc~compute_rhs_cubes_modg&#45;&gt;proc~atl_modg_maxwell_numflux</title>
+<path fill="none" stroke="#000000" d="M308.08,-32C316.54,-32 325.22,-32 333.84,-32"/>
+<polygon fill="#000000" stroke="#000000" points="333.91,-35.5 343.91,-32 333.91,-28.5 333.91,-35.5"/>
+</g>
+<!-- proc~compute_rhs_cubes -->
+<g id="proc~~maxwell_flux_cube~~CalledByGraph_node6" class="node">
+<title>proc~compute_rhs_cubes</title>
+<g id="a_proc~~maxwell_flux_cube~~CalledByGraph_node6"><a xlink:href="../proc/compute_rhs_cubes.html" xlink:title="compute_rhs_cubes">
+<polygon fill="#d9534f" stroke="#d9534f" points="118,-44 0,-44 0,-20 118,-20 118,-44"/>
+<text text-anchor="middle" x="59" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">compute_rhs_cubes</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes&#45;&gt;proc~compute_rhs_cubes_modg -->
+<g id="proc~~maxwell_flux_cube~~CalledByGraph_edge6" class="edge">
+<title>proc~compute_rhs_cubes&#45;&gt;proc~compute_rhs_cubes_modg</title>
+<path fill="none" stroke="#000000" d="M118.03,-32C126.33,-32 135,-32 143.7,-32"/>
+<polygon fill="#000000" stroke="#000000" points="143.9,-35.5 153.9,-32 143.9,-28.5 143.9,-35.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocmaxwell_flux_cubeCalledByGraph = svgPanZoom('#procmaxwell_flux_cubeCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

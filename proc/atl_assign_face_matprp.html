@@ -1,0 +1,729 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_assign_face_matPrp &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_assign_face_matPrp
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">60 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_materialIni_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_materialini_module.f90.html'>atl_materialIni_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/atl_materialini_module.html'>atl_materialIni_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_assign_face_matPrp</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>private  subroutine atl_assign_face_matPrp(minLevel, maxLevel, mesh_list, currentLevel, spatial_dim, material_list, materialFun)  
+</h2>
+    
+
+    <p>Define material properties for the faces of all fluid elements and inherit
+the face material property to all ghost elements on the finer level.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-minlevel~41"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>minLevel</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxlevel~45"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxLevel</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh_list~19"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh_list</strong>(minlevel:maxlevel)</td>
+            <td>
+                <p>List of  mesh for different kernels</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-currentlevel~47"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>currentLevel</strong></td>
+            <td>
+                <p>currentLevel</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-spatial_dim~4"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>spatial_dim</strong></td>
+            <td>
+                <p>The spatial dimension</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_list~14"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_list</strong>(minlevel:maxlevel)</td>
+            <td>
+                <p>The description of the material properties on the element basis.
+The indices of variables in the global varSys that are used as
+material's, penalization's or whatever's data sources.</p>
+<p>This data is needed to calculate the number of total material components.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-materialfun~9"></span>
+              type(<a href='../type/atl_materialfun_type.html'>atl_materialFun_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>materialFun</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~atl_assign_face_matprp~~CallsGraph Pages: 1 -->
+<svg id="procatl_assign_face_matprpCallsGraph" width="266pt" height="368pt"
+ viewBox="0.00 0.00 266.00 368.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~atl_assign_face_matprp~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 364)">
+<title>proc~~atl_assign_face_matprp~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-364 262,-364 262,4 -4,4"/>
+<!-- proc~atl_assign_face_matprp -->
+<g id="proc~~atl_assign_face_matprp~~CallsGraph_node1" class="node">
+<title>proc~atl_assign_face_matprp</title>
+<polygon fill="none" stroke="black" points="137,-192 0,-192 0,-168 137,-168 137,-192"/>
+<text text-anchor="middle" x="68.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_assign_face_matPrp</text>
+</g>
+<!-- childfacepos -->
+<g id="proc~~atl_assign_face_matprp~~CallsGraph_node2" class="node">
+<title>childfacepos</title>
+<polygon fill="#777777" stroke="#777777" points="255.5,-360 175.5,-360 175.5,-336 255.5,-336 255.5,-360"/>
+<text text-anchor="middle" x="215.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">childfacepos</text>
+</g>
+<!-- proc~atl_assign_face_matprp&#45;&gt;childfacepos -->
+<g id="proc~~atl_assign_face_matprp~~CallsGraph_edge1" class="edge">
+<title>proc~atl_assign_face_matprp&#45;&gt;childfacepos</title>
+<path fill="none" stroke="#000000" d="M75.41,-192.16C89.17,-219.42 125.78,-286.17 173,-327 174.34,-328.16 175.76,-329.28 177.24,-330.35"/>
+<polygon fill="#000000" stroke="#000000" points="175.77,-333.57 186.08,-335.98 179.53,-327.66 175.77,-333.57"/>
+</g>
+<!-- elemposop -->
+<g id="proc~~atl_assign_face_matprp~~CallsGraph_node3" class="node">
+<title>elemposop</title>
+<polygon fill="#777777" stroke="#777777" points="251.5,-318 179.5,-318 179.5,-294 251.5,-294 251.5,-318"/>
+<text text-anchor="middle" x="215.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">elemposop</text>
+</g>
+<!-- proc~atl_assign_face_matprp&#45;&gt;elemposop -->
+<g id="proc~~atl_assign_face_matprp~~CallsGraph_edge2" class="edge">
+<title>proc~atl_assign_face_matprp&#45;&gt;elemposop</title>
+<path fill="none" stroke="#000000" d="M79.3,-192.28C96.53,-213.3 134.13,-256.63 173,-285 174.8,-286.32 176.7,-287.59 178.65,-288.82"/>
+<polygon fill="#000000" stroke="#000000" points="177,-291.91 187.4,-293.9 180.51,-285.85 177,-291.91"/>
+</g>
+<!-- facepos -->
+<g id="proc~~atl_assign_face_matprp~~CallsGraph_node4" class="node">
+<title>facepos</title>
+<polygon fill="#777777" stroke="#777777" points="243,-276 188,-276 188,-252 243,-252 243,-276"/>
+<text text-anchor="middle" x="215.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">facepos</text>
+</g>
+<!-- proc~atl_assign_face_matprp&#45;&gt;facepos -->
+<g id="proc~~atl_assign_face_matprp~~CallsGraph_edge3" class="edge">
+<title>proc~atl_assign_face_matprp&#45;&gt;facepos</title>
+<path fill="none" stroke="#000000" d="M88.31,-192.06C108.85,-205.09 142.85,-226.23 173,-243 175.51,-244.4 178.13,-245.81 180.78,-247.22"/>
+<polygon fill="#000000" stroke="#000000" points="179.27,-250.38 189.76,-251.88 182.49,-244.16 179.27,-250.38"/>
+</g>
+<!-- faces -->
+<g id="proc~~atl_assign_face_matprp~~CallsGraph_node5" class="node">
+<title>faces</title>
+<polygon fill="#777777" stroke="#777777" points="242.5,-234 188.5,-234 188.5,-210 242.5,-210 242.5,-234"/>
+<text text-anchor="middle" x="215.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">faces</text>
+</g>
+<!-- proc~atl_assign_face_matprp&#45;&gt;faces -->
+<g id="proc~~atl_assign_face_matprp~~CallsGraph_edge4" class="edge">
+<title>proc~atl_assign_face_matprp&#45;&gt;faces</title>
+<path fill="none" stroke="#000000" d="M111.05,-192.04C132.39,-198.22 158.12,-205.67 178.59,-211.6"/>
+<polygon fill="#000000" stroke="#000000" points="177.88,-215.04 188.46,-214.46 179.83,-208.31 177.88,-215.04"/>
+</g>
+<!-- fromfinerface -->
+<g id="proc~~atl_assign_face_matprp~~CallsGraph_node6" class="node">
+<title>fromfinerface</title>
+<polygon fill="#777777" stroke="#777777" points="258,-192 173,-192 173,-168 258,-168 258,-192"/>
+<text text-anchor="middle" x="215.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">fromfinerface</text>
+</g>
+<!-- proc~atl_assign_face_matprp&#45;&gt;fromfinerface -->
+<g id="proc~~atl_assign_face_matprp~~CallsGraph_edge5" class="edge">
+<title>proc~atl_assign_face_matprp&#45;&gt;fromfinerface</title>
+<path fill="none" stroke="#000000" d="M137.33,-180C145.83,-180 154.41,-180 162.62,-180"/>
+<polygon fill="#000000" stroke="#000000" points="162.76,-183.5 172.76,-180 162.76,-176.5 162.76,-183.5"/>
+</g>
+<!-- leftpos -->
+<g id="proc~~atl_assign_face_matprp~~CallsGraph_node7" class="node">
+<title>leftpos</title>
+<polygon fill="#777777" stroke="#777777" points="242.5,-150 188.5,-150 188.5,-126 242.5,-126 242.5,-150"/>
+<text text-anchor="middle" x="215.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">leftpos</text>
+</g>
+<!-- proc~atl_assign_face_matprp&#45;&gt;leftpos -->
+<g id="proc~~atl_assign_face_matprp~~CallsGraph_edge6" class="edge">
+<title>proc~atl_assign_face_matprp&#45;&gt;leftpos</title>
+<path fill="none" stroke="#000000" d="M111.05,-167.96C132.39,-161.78 158.12,-154.33 178.59,-148.4"/>
+<polygon fill="#000000" stroke="#000000" points="179.83,-151.69 188.46,-145.54 177.88,-144.96 179.83,-151.69"/>
+</g>
+<!-- nelems -->
+<g id="proc~~atl_assign_face_matprp~~CallsGraph_node8" class="node">
+<title>nelems</title>
+<polygon fill="#777777" stroke="#777777" points="242.5,-108 188.5,-108 188.5,-84 242.5,-84 242.5,-108"/>
+<text text-anchor="middle" x="215.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">nelems</text>
+</g>
+<!-- proc~atl_assign_face_matprp&#45;&gt;nelems -->
+<g id="proc~~atl_assign_face_matprp~~CallsGraph_edge7" class="edge">
+<title>proc~atl_assign_face_matprp&#45;&gt;nelems</title>
+<path fill="none" stroke="#000000" d="M88.31,-167.94C108.85,-154.91 142.85,-133.77 173,-117 175.51,-115.6 178.13,-114.19 180.78,-112.78"/>
+<polygon fill="#000000" stroke="#000000" points="182.49,-115.84 189.76,-108.12 179.27,-109.62 182.49,-115.84"/>
+</g>
+<!-- rightpos -->
+<g id="proc~~atl_assign_face_matprp~~CallsGraph_node9" class="node">
+<title>rightpos</title>
+<polygon fill="#777777" stroke="#777777" points="243.5,-66 187.5,-66 187.5,-42 243.5,-42 243.5,-66"/>
+<text text-anchor="middle" x="215.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">rightpos</text>
+</g>
+<!-- proc~atl_assign_face_matprp&#45;&gt;rightpos -->
+<g id="proc~~atl_assign_face_matprp~~CallsGraph_edge8" class="edge">
+<title>proc~atl_assign_face_matprp&#45;&gt;rightpos</title>
+<path fill="none" stroke="#000000" d="M79.3,-167.72C96.53,-146.7 134.13,-103.37 173,-75 174.8,-73.68 176.7,-72.41 178.65,-71.18"/>
+<polygon fill="#000000" stroke="#000000" points="180.51,-74.15 187.4,-66.1 177,-68.09 180.51,-74.15"/>
+</g>
+<!-- tem_abort -->
+<g id="proc~~atl_assign_face_matprp~~CallsGraph_node10" class="node">
+<title>tem_abort</title>
+<g id="a_proc~~atl_assign_face_matprp~~CallsGraph_node10"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="249,-24 182,-24 182,0 249,0 249,-24"/>
+<text text-anchor="middle" x="215.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_assign_face_matprp&#45;&gt;tem_abort -->
+<g id="proc~~atl_assign_face_matprp~~CallsGraph_edge9" class="edge">
+<title>proc~atl_assign_face_matprp&#45;&gt;tem_abort</title>
+<path fill="none" stroke="#000000" d="M75.41,-167.84C89.17,-140.58 125.78,-73.83 173,-33 174.34,-31.84 175.76,-30.72 177.24,-29.65"/>
+<polygon fill="#000000" stroke="#000000" points="179.53,-32.34 186.08,-24.02 175.77,-26.43 179.53,-32.34"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~atl_assign_face_matprp~~CalledByGraph Pages: 1 -->
+<svg id="procatl_assign_face_matprpCalledByGraph" width="641pt" height="69pt"
+ viewBox="0.00 0.00 641.00 69.35" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~atl_assign_face_matprp~~CalledByGraph" class="graph" transform="scale(0.94 0.94) rotate(0) translate(4 70)">
+<title>proc~~atl_assign_face_matprp~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 680,-70 680,4 -4,4"/>
+<!-- proc~atl_assign_face_matprp -->
+<g id="proc~~atl_assign_face_matprp~~CalledByGraph_node1" class="node">
+<title>proc~atl_assign_face_matprp</title>
+<polygon fill="none" stroke="black" points="676,-45 539,-45 539,-21 676,-21 676,-45"/>
+<text text-anchor="middle" x="607.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_assign_face_matPrp</text>
+</g>
+<!-- proc~atl_init_materialparams -->
+<g id="proc~~atl_assign_face_matprp~~CalledByGraph_node2" class="node">
+<title>proc~atl_init_materialparams</title>
+<g id="a_proc~~atl_assign_face_matprp~~CalledByGraph_node2"><a xlink:href="../proc/atl_init_materialparams.html" xlink:title="atl_init_materialParams">
+<polygon fill="#d9534f" stroke="#d9534f" points="503,-45 365,-45 365,-21 503,-21 503,-45"/>
+<text text-anchor="middle" x="434" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_init_materialParams</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_init_materialparams&#45;&gt;proc~atl_assign_face_matprp -->
+<g id="proc~~atl_assign_face_matprp~~CalledByGraph_edge1" class="edge">
+<title>proc~atl_init_materialparams&#45;&gt;proc~atl_assign_face_matprp</title>
+<path fill="none" stroke="#000000" d="M503.27,-33C511.58,-33 520.1,-33 528.53,-33"/>
+<polygon fill="#000000" stroke="#000000" points="528.74,-36.5 538.74,-33 528.74,-29.5 528.74,-36.5"/>
+</g>
+<!-- proc~atl_initialize -->
+<g id="proc~~atl_assign_face_matprp~~CalledByGraph_node3" class="node">
+<title>proc~atl_initialize</title>
+<g id="a_proc~~atl_assign_face_matprp~~CalledByGraph_node3"><a xlink:href="../proc/atl_initialize.html" xlink:title="atl_initialize">
+<polygon fill="#d9534f" stroke="#d9534f" points="329,-45 253,-45 253,-21 329,-21 329,-45"/>
+<text text-anchor="middle" x="291" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_initialize&#45;&gt;proc~atl_init_materialparams -->
+<g id="proc~~atl_assign_face_matprp~~CalledByGraph_edge2" class="edge">
+<title>proc~atl_initialize&#45;&gt;proc~atl_init_materialparams</title>
+<path fill="none" stroke="#000000" d="M329.05,-33C337.05,-33 345.8,-33 354.72,-33"/>
+<polygon fill="#000000" stroke="#000000" points="354.83,-36.5 364.83,-33 354.83,-29.5 354.83,-36.5"/>
+</g>
+<!-- proc~atl_initialize_program -->
+<g id="proc~~atl_assign_face_matprp~~CalledByGraph_node4" class="node">
+<title>proc~atl_initialize_program</title>
+<g id="a_proc~~atl_assign_face_matprp~~CalledByGraph_node4"><a xlink:href="../proc/atl_initialize_program.html" xlink:title="atl_initialize_program">
+<polygon fill="#d9534f" stroke="#d9534f" points="217,-66 90,-66 90,-42 217,-42 217,-66"/>
+<text text-anchor="middle" x="153.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize_program</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_initialize_program&#45;&gt;proc~atl_initialize -->
+<g id="proc~~atl_assign_face_matprp~~CalledByGraph_edge3" class="edge">
+<title>proc~atl_initialize_program&#45;&gt;proc~atl_initialize</title>
+<path fill="none" stroke="#000000" d="M217.09,-44.3C225.77,-42.95 234.56,-41.59 242.89,-40.3"/>
+<polygon fill="#000000" stroke="#000000" points="243.44,-43.76 252.78,-38.77 242.37,-36.84 243.44,-43.76"/>
+</g>
+<!-- program~atl_harvesting -->
+<g id="proc~~atl_assign_face_matprp~~CalledByGraph_node5" class="node">
+<title>program~atl_harvesting</title>
+<g id="a_proc~~atl_assign_face_matprp~~CalledByGraph_node5"><a xlink:href="../program/atl_harvesting.html" xlink:title="atl_harvesting">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="197.5,-24 109.5,-24 109.5,0 197.5,0 197.5,-24"/>
+<text text-anchor="middle" x="153.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_harvesting</text>
+</a>
+</g>
+</g>
+<!-- program~atl_harvesting&#45;&gt;proc~atl_initialize -->
+<g id="proc~~atl_assign_face_matprp~~CalledByGraph_edge4" class="edge">
+<title>program~atl_harvesting&#45;&gt;proc~atl_initialize</title>
+<path fill="none" stroke="#000000" d="M197.75,-18.7C211.96,-20.9 227.83,-23.36 242.35,-25.61"/>
+<polygon fill="#000000" stroke="#000000" points="242.22,-29.14 252.63,-27.21 243.29,-22.22 242.22,-29.14"/>
+</g>
+<!-- program~ateles -->
+<g id="proc~~atl_assign_face_matprp~~CalledByGraph_node6" class="node">
+<title>program~ateles</title>
+<g id="a_proc~~atl_assign_face_matprp~~CalledByGraph_node6"><a xlink:href="../program/ateles.html" xlink:title="ateles">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="54,-66 0,-66 0,-42 54,-42 54,-66"/>
+<text text-anchor="middle" x="27" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ateles</text>
+</a>
+</g>
+</g>
+<!-- program~ateles&#45;&gt;proc~atl_initialize_program -->
+<g id="proc~~atl_assign_face_matprp~~CalledByGraph_edge5" class="edge">
+<title>program~ateles&#45;&gt;proc~atl_initialize_program</title>
+<path fill="none" stroke="#000000" d="M54.1,-54C61.71,-54 70.44,-54 79.47,-54"/>
+<polygon fill="#000000" stroke="#000000" points="79.76,-57.5 89.76,-54 79.76,-50.5 79.76,-57.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocatl_assign_face_matprpCalledByGraph = svgPanZoom('#procatl_assign_face_matprpCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

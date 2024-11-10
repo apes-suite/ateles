@@ -1,0 +1,658 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_modg_scheme_load_polyDegree &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_modg_scheme_load_polyDegree
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for procedures.">90 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_modg_scheme_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_modg_scheme_module.f90.html'>atl_modg_scheme_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/atl_modg_scheme_module.html'>atl_modg_scheme_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_modg_scheme_load_polyDegree</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>private  subroutine atl_modg_scheme_load_polyDegree(degree, conf, thandle, currentLevel, maxLevel)  
+</h2>
+    
+
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-degree~5"></span>
+              integer,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>degree</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-conf~18"></span>
+              type(<a href='https://apes-suite.github.io/aotus/type/flu_state.html'>flu_State</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>conf</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-thandle~11"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>thandle</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-currentlevel~21"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>currentLevel</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxlevel~21"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxLevel</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~atl_modg_scheme_load_polydegree~~CallsGraph Pages: 1 -->
+<svg id="procatl_modg_scheme_load_polydegreeCallsGraph" width="350pt" height="242pt"
+ viewBox="0.00 0.00 350.00 242.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~atl_modg_scheme_load_polydegree~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 238)">
+<title>proc~~atl_modg_scheme_load_polydegree~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-238 346,-238 346,4 -4,4"/>
+<!-- proc~atl_modg_scheme_load_polydegree -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CallsGraph_node1" class="node">
+<title>proc~atl_modg_scheme_load_polydegree</title>
+<polygon fill="none" stroke="black" points="205,-129 0,-129 0,-105 205,-105 205,-129"/>
+<text text-anchor="middle" x="102.5" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_modg_scheme_load_polyDegree</text>
+</g>
+<!-- aot_get_val -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CallsGraph_node2" class="node">
+<title>aot_get_val</title>
+<g id="a_proc~~atl_modg_scheme_load_polydegree~~CallsGraph_node2"><a xlink:href="https://apes-suite.github.io/aotus/interface/aot_get_val~8.html" xlink:title="aot_get_val">
+<polygon fill="#a7506f" stroke="#a7506f" points="328,-234 255,-234 255,-210 328,-210 328,-234"/>
+<text text-anchor="middle" x="291.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_get_val</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_modg_scheme_load_polydegree&#45;&gt;aot_get_val -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CallsGraph_edge1" class="edge">
+<title>proc~atl_modg_scheme_load_polydegree&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M121.25,-129.01C146.99,-146.16 196.47,-178.11 241,-201 244.13,-202.61 247.4,-204.19 250.72,-205.73"/>
+<polygon fill="#000000" stroke="#000000" points="249.51,-209.03 260.07,-209.92 252.38,-202.64 249.51,-209.03"/>
+</g>
+<!-- aot_table_close -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CallsGraph_node3" class="node">
+<title>aot_table_close</title>
+<g id="a_proc~~atl_modg_scheme_load_polydegree~~CallsGraph_node3"><a xlink:href="https://apes-suite.github.io/aotus/proc/aot_table_close.html" xlink:title="aot_table_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="339,-192 244,-192 244,-168 339,-168 339,-192"/>
+<text text-anchor="middle" x="291.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_close</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_modg_scheme_load_polydegree&#45;&gt;aot_table_close -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CallsGraph_edge2" class="edge">
+<title>proc~atl_modg_scheme_load_polydegree&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M139.56,-129.15C169.66,-139.29 212.74,-153.8 245.17,-164.73"/>
+<polygon fill="#000000" stroke="#000000" points="244.28,-168.12 254.87,-168 246.51,-161.49 244.28,-168.12"/>
+</g>
+<!-- aot_table_length -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CallsGraph_node4" class="node">
+<title>aot_table_length</title>
+<g id="a_proc~~atl_modg_scheme_load_polydegree~~CallsGraph_node4"><a xlink:href="https://apes-suite.github.io/aotus/proc/aot_table_length.html" xlink:title="aot_table_length">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="342,-150 241,-150 241,-126 342,-126 342,-150"/>
+<text text-anchor="middle" x="291.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_length</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_modg_scheme_load_polydegree&#45;&gt;aot_table_length -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CallsGraph_edge3" class="edge">
+<title>proc~atl_modg_scheme_load_polydegree&#45;&gt;aot_table_length</title>
+<path fill="none" stroke="#000000" d="M205.21,-128.42C213.88,-129.4 222.46,-130.36 230.64,-131.28"/>
+<polygon fill="#000000" stroke="#000000" points="230.44,-134.78 240.77,-132.42 231.22,-127.82 230.44,-134.78"/>
+</g>
+<!-- aot_table_open -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CallsGraph_node5" class="node">
+<title>aot_table_open</title>
+<g id="a_proc~~atl_modg_scheme_load_polydegree~~CallsGraph_node5"><a xlink:href="https://apes-suite.github.io/aotus/proc/aot_table_open.html" xlink:title="aot_table_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="338.5,-108 244.5,-108 244.5,-84 338.5,-84 338.5,-108"/>
+<text text-anchor="middle" x="291.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_open</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_modg_scheme_load_polydegree&#45;&gt;aot_table_open -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CallsGraph_edge4" class="edge">
+<title>proc~atl_modg_scheme_load_polydegree&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M205.21,-105.58C215.17,-104.46 225,-103.36 234.25,-102.32"/>
+<polygon fill="#000000" stroke="#000000" points="234.88,-105.77 244.43,-101.17 234.1,-98.81 234.88,-105.77"/>
+</g>
+<!-- tem_abort -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CallsGraph_node6" class="node">
+<title>tem_abort</title>
+<g id="a_proc~~atl_modg_scheme_load_polydegree~~CallsGraph_node6"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="325,-66 258,-66 258,-42 325,-42 325,-66"/>
+<text text-anchor="middle" x="291.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_modg_scheme_load_polydegree&#45;&gt;tem_abort -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CallsGraph_edge5" class="edge">
+<title>proc~atl_modg_scheme_load_polydegree&#45;&gt;tem_abort</title>
+<path fill="none" stroke="#000000" d="M139.56,-104.85C170.62,-94.39 215.5,-79.27 248.25,-68.23"/>
+<polygon fill="#000000" stroke="#000000" points="249.63,-71.46 257.99,-64.95 247.4,-64.83 249.63,-71.46"/>
+</g>
+<!-- upper_to_lower -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CallsGraph_node7" class="node">
+<title>upper_to_lower</title>
+<g id="a_proc~~atl_modg_scheme_load_polydegree~~CallsGraph_node7"><a xlink:href="https://apes-suite.github.io/treelm/proc/upper_to_lower.html" xlink:title="upper_to_lower">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="338.5,-24 244.5,-24 244.5,0 338.5,0 338.5,-24"/>
+<text text-anchor="middle" x="291.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">upper_to_lower</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_modg_scheme_load_polydegree&#45;&gt;upper_to_lower -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CallsGraph_edge6" class="edge">
+<title>proc~atl_modg_scheme_load_polydegree&#45;&gt;upper_to_lower</title>
+<path fill="none" stroke="#000000" d="M121.25,-104.99C146.99,-87.84 196.47,-55.89 241,-33 244.13,-31.39 247.4,-29.81 250.72,-28.27"/>
+<polygon fill="#000000" stroke="#000000" points="252.38,-31.36 260.07,-24.08 249.51,-24.97 252.38,-31.36"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~atl_modg_scheme_load_polydegree~~CalledByGraph Pages: 1 -->
+<svg id="procatl_modg_scheme_load_polydegreeCalledByGraph" width="641pt" height="26pt"
+ viewBox="0.00 0.00 641.00 25.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~atl_modg_scheme_load_polydegree~~CalledByGraph" class="graph" transform="scale(0.81 0.81) rotate(0) translate(4 28)">
+<title>proc~~atl_modg_scheme_load_polydegree~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 791,-28 791,4 -4,4"/>
+<!-- proc~atl_modg_scheme_load_polydegree -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CalledByGraph_node1" class="node">
+<title>proc~atl_modg_scheme_load_polydegree</title>
+<polygon fill="none" stroke="black" points="787,-24 582,-24 582,0 787,0 787,-24"/>
+<text text-anchor="middle" x="684.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_modg_scheme_load_polyDegree</text>
+</g>
+<!-- proc~atl_modg_scheme_init -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CalledByGraph_node2" class="node">
+<title>proc~atl_modg_scheme_init</title>
+<g id="a_proc~~atl_modg_scheme_load_polydegree~~CalledByGraph_node2"><a xlink:href="../proc/atl_modg_scheme_init.html" xlink:title="atl_modg_scheme_init">
+<polygon fill="#d9534f" stroke="#d9534f" points="546,-24 415,-24 415,0 546,0 546,-24"/>
+<text text-anchor="middle" x="480.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_scheme_init</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_modg_scheme_init&#45;&gt;proc~atl_modg_scheme_load_polydegree -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CalledByGraph_edge1" class="edge">
+<title>proc~atl_modg_scheme_init&#45;&gt;proc~atl_modg_scheme_load_polydegree</title>
+<path fill="none" stroke="#000000" d="M546.25,-12C554.46,-12 563.04,-12 571.73,-12"/>
+<polygon fill="#000000" stroke="#000000" points="571.96,-15.5 581.96,-12 571.96,-8.5 571.96,-15.5"/>
+</g>
+<!-- proc~atl_init_scheme -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CalledByGraph_node3" class="node">
+<title>proc~atl_init_scheme</title>
+<g id="a_proc~~atl_modg_scheme_load_polydegree~~CalledByGraph_node3"><a xlink:href="../proc/atl_init_scheme.html" xlink:title="atl_init_scheme">
+<polygon fill="#d9534f" stroke="#d9534f" points="379,-24 284,-24 284,0 379,0 379,-24"/>
+<text text-anchor="middle" x="331.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_init_scheme</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_init_scheme&#45;&gt;proc~atl_modg_scheme_init -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CalledByGraph_edge2" class="edge">
+<title>proc~atl_init_scheme&#45;&gt;proc~atl_modg_scheme_init</title>
+<path fill="none" stroke="#000000" d="M379.01,-12C387.17,-12 395.85,-12 404.56,-12"/>
+<polygon fill="#000000" stroke="#000000" points="404.76,-15.5 414.76,-12 404.76,-8.5 404.76,-15.5"/>
+</g>
+<!-- proc~atl_init_elem_container -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CalledByGraph_node4" class="node">
+<title>proc~atl_init_elem_container</title>
+<g id="a_proc~~atl_modg_scheme_load_polydegree~~CalledByGraph_node4"><a xlink:href="../proc/atl_init_elem_container.html" xlink:title="atl_init_elem_container">
+<polygon fill="#d9534f" stroke="#d9534f" points="248,-24 112,-24 112,0 248,0 248,-24"/>
+<text text-anchor="middle" x="180" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_init_elem_container</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_init_elem_container&#45;&gt;proc~atl_init_scheme -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CalledByGraph_edge3" class="edge">
+<title>proc~atl_init_elem_container&#45;&gt;proc~atl_init_scheme</title>
+<path fill="none" stroke="#000000" d="M248.32,-12C256.71,-12 265.23,-12 273.44,-12"/>
+<polygon fill="#000000" stroke="#000000" points="273.65,-15.5 283.65,-12 273.65,-8.5 273.65,-15.5"/>
+</g>
+<!-- proc~atl_initialize -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CalledByGraph_node5" class="node">
+<title>proc~atl_initialize</title>
+<g id="a_proc~~atl_modg_scheme_load_polydegree~~CalledByGraph_node5"><a xlink:href="../proc/atl_initialize.html" xlink:title="atl_initialize">
+<polygon fill="#d9534f" stroke="#d9534f" points="76,-24 0,-24 0,0 76,0 76,-24"/>
+<text text-anchor="middle" x="38" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_initialize&#45;&gt;proc~atl_init_elem_container -->
+<g id="proc~~atl_modg_scheme_load_polydegree~~CalledByGraph_edge4" class="edge">
+<title>proc~atl_initialize&#45;&gt;proc~atl_init_elem_container</title>
+<path fill="none" stroke="#000000" d="M76.15,-12C84.15,-12 92.9,-12 101.8,-12"/>
+<polygon fill="#000000" stroke="#000000" points="101.89,-15.5 111.89,-12 101.89,-8.5 101.89,-15.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocatl_modg_scheme_load_polydegreeCalledByGraph = svgPanZoom('#procatl_modg_scheme_load_polydegreeCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

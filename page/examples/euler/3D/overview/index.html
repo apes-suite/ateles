@@ -1,0 +1,927 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../../../../../favicon.png">
+
+    <title>Configuration overview for Euler 3D simulations &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../../../../../css/pygments.css" rel="stylesheet">
+    <link href="../../../../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../../../css/local.css" rel="stylesheet">
+      <link  href="../../../../../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../../../../../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../../../../../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../../../../index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../../../../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../../../../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../../../../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../../../../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../../../../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../../../../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../../../../../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>Configuration overview for Euler 3D simulations</h1>
+    <div class="container p-2 mb-4 bg-light border rounded-3">
+      <div class="row align-items-center justify-content-between">
+        <div class="col">
+          <ul class="list-inline" style="margin-bottom:0px; display:inline">
+          </ul>
+        </div>
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../../../../index.html'>Documentation</a></li>
+                <li class="breadcrumb-item"><a href='../../../index.html'>Example setups</a></li>
+                <li class="breadcrumb-item"><a href='../../index.html'>Euler Equations</a></li>
+                <li class="breadcrumb-item"><a href='../index.html'>3D Euler Equations</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Configuration overview for Euler 3D simulations</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-3">
+        <div class="card card-body bg-light" id="sidebar-toc">
+          <ul class="nav flex-column align-items">
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../index.html">Documentation</a>
+            </li>
+          </ul>
+          <hr>
+          <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="../../../../apes_overview.html">APES Overview</a>
+              <a class="nav-link" href="../../../../build_and_run.html">Build and Run Ateles</a>
+              <a class="nav-link" href="../../../index.html">Example setups</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../acoustic/index.html">Acoustic Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../acoustic/gauss_densitypulse_2D/index.html">Gaussian Density Pulse Test Case</a>
+              <a class="nav-link" href="../../../acoustic/planar_wave_3D/index.html">Planar Wave</a>
+
+                </nav>
+              <a class="nav-link" href="../../index.html">Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../1D/index.html">1D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../1D/modalEstimate/index.html">Modal estimate for adaptive timesteps 1D</a>
+              <a class="nav-link" href="../../1D/piston/index.html">Formation of a shock wave ahead of a moving piston in 1D</a>
+              <a class="nav-link" href="../../1D/piston_modereduction/index.html">Formation of a shock wave ahead of a moving piston in 1D</a>
+              <a class="nav-link" href="../../1D/shock_stabilization_parallel/index.html">Shock Stabilization Test Case</a>
+              <a class="nav-link" href="../../1D/toro1_x/index.html">Toro Validation Test Case</a>
+
+                </nav>
+              <a class="nav-link" href="../../2D/index.html">2D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../2D/gauss_densitypulse_spongelayer/index.html">Gaussian Density Pulse in 2D</a>
+              <a class="nav-link" href="../../2D/modalEstimate/index.html">Modal estimate for adaptive timesteps in 2D</a>
+              <a class="nav-link" href="../../2D/shock_stabilization_parallel/index.html">Shock Stabilization Test Case</a>
+              <a class="nav-link" href="../../2D/toro1_x/index.html">Toro1 Validation Test Case in X direction</a>
+              <a class="nav-link" href="../../2D/toro1_y/index.html">Toro1 Validation Test Case in Y direction</a>
+              <a class="nav-link" href="../../2D/toro2_x/index.html">Toro2 Setup along X for 2D Euler equations</a>
+              <a class="nav-link" href="../../2D/toro3_x/index.html">Toro3 Setup along X for 2D Euler equations</a>
+              <a class="nav-link" href="../../2D/toro4_x/index.html">Toro4 setup for 2D Euler equations with a positivity preserving filter</a>
+              <a class="nav-link" href="../../2D/vorticity/index.html">Vorticity Tracking</a>
+              <a class="nav-link" href="../../2D/wedge/index.html">Supersonic movement of a wedge</a>
+              <a class="nav-link" href="../../2D/wedge_modereduction/index.html">Supersonic movement of a wedge</a>
+
+                </nav>
+              <a class="nav-link" href="../index.html">3D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../gauss_densitypulse_deriv_quantity/index.html">Pulse in density with derived quantity</a>
+              <a class="nav-link" href="../gauss_densitypulse_fpt/index.html">Euler 3D pulse in density with FPT</a>
+              <a class="nav-link" href="../gauss_densitypulse_fxt/index.html">Euler 3D setup of Gaussian pulse in density with FXT</a>
+              <a class="nav-link" href="../gauss_densitypulse_l2p/index.html">Euler 3D setup with pulse in density and L2 projection</a>
+              <a class="nav-link" href="../gauss_densitypulse_spongelayer/index.html">Euler 3D pulse in density with sponge</a>
+              <a class="nav-link" href="../modalEstimate/index.html">Modal estimate in Euler 3D</a>
+              <a class="nav-link" href="../multilevel/index.html">Material with Multilevel in Euler 3D</a>
+              <a class="nav-link active disabled" href="index.html">Configuration overview for Euler 3D simulations</a>
+              <a class="nav-link" href="../p_polynomials/index.html">P-polynomial space</a>
+              <a class="nav-link" href="../qCriterion_deriv_quantity/index.html">Q-Criterion Tracking in Euler 3D</a>
+              <a class="nav-link" href="../shear_layer_Q4/index.html">Shear-Layer Q4</a>
+              <a class="nav-link" href="../shear_layer_Q4_parallel/index.html">Shear-Layer Q4</a>
+              <a class="nav-link" href="../shear_layer_Q8/index.html">Shear-Layer Q8</a>
+              <a class="nav-link" href="../shock_stabilization_localrefinement/index.html">Shock Stabilization in Euler 3D with local refinement</a>
+              <a class="nav-link" href="../shock_stabilization_parallel/index.html">Shock stabilization for 3D Euler equations with RK-Taylor</a>
+              <a class="nav-link" href="../shock_stabilization_periodic/index.html">Shock stabilization in periodic domain</a>
+              <a class="nav-link" href="../toro1_x/index.html">Toro1 Riemann problem in X direction</a>
+              <a class="nav-link" href="../toro1_y/index.html">Toro1 Riemann problem in Y direction</a>
+              <a class="nav-link" href="../toro1_z/index.html">Toro1 Riemann problem in Z direction</a>
+              <a class="nav-link" href="../vorticity/index.html">Vorticity Test Case</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../../../heat/index.html">Heat Conduction</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../heat/1D/index.html">Heat Conduction in 1D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../heat/1D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+              <a class="nav-link" href="../../../heat/2D/index.html">Heat Conduction in 2D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../heat/2D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+              <a class="nav-link" href="../../../heat/3D/index.html">Heat Conduction in 3D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../heat/3D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../../../lineareuler/index.html">Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../lineareuler/2D/index.html">2D Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../lineareuler/2D/gauss_pulse/index.html">Gaussian pulse in pressure with 2d linearized Euler equations</a>
+              <a class="nav-link" href="../../../lineareuler/2D/transientBackground/index.html">Transient background state in 2D linearized Euler</a>
+
+                </nav>
+              <a class="nav-link" href="../../../lineareuler/3D/index.html">3D Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../lineareuler/3D/gauss_pulse/index.html">Gaussian pulse in density for 3D linearized Euler equations</a>
+              <a class="nav-link" href="../../../lineareuler/3D/gradient/index.html">Tracking of gradients in 3D linearized Euler equations</a>
+              <a class="nav-link" href="../../../lineareuler/3D/transientBackground/index.html">Transient background state in 3D linearized Euler</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../../../maxwell/index.html">Maxwell Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../maxwell/pec_scatter_inhomogenous_matFun_Q8_3D/index.html">Perfectly_scatter_Inhomogenous_Materia</a>
+              <a class="nav-link" href="../../../maxwell/pec_scatter_inhomogenous_matVar_Q8_3D/index.html">Perfectly_scatter_Inhomogenous_Materia</a>
+              <a class="nav-link" href="../../../maxwell/periodic_oscillator_P8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="../../../maxwell/periodic_oscillator_Q8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="../../../maxwell/rectangular_wave_Q8_3D/index.html">Rectangle Wave</a>
+
+                </nav>
+              <a class="nav-link" href="../../../maxwelldivcorr/index.html">Maxwell Equations With Divergence Correction</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../maxwelldivcorr/periodic_oscillator_P8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="../../../maxwelldivcorr/periodic_oscillator_Q8_3D/index.html">Periodic_Oscillator</a>
+
+                </nav>
+              <a class="nav-link" href="../../../maxwellpml/index.html">Maxwell Equations With Perfectly Matched Layers</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../maxwellpml/cylinder_scattering_Q8_2D/index.html">Perfectly matched Layer test case</a>
+
+                </nav>
+              <a class="nav-link" href="../../../navierstokes/index.html">Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../navierstokes/2D/index.html">2D Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../navierstokes/2D/constant_state/index.html">Constant State</a>
+              <a class="nav-link" href="../../../navierstokes/2D/shear_hat/index.html">Shear hat 2D</a>
+              <a class="nav-link" href="../../../navierstokes/2D/viscous_vortex/index.html">Viscous Vortex (TGV) 2D</a>
+
+                </nav>
+              <a class="nav-link" href="../../../navierstokes/3D/index.html">3D Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../navierstokes/3D/shear_hat/index.html">Shear hat 3D</a>
+              <a class="nav-link" href="../../../navierstokes/3D/shear_tube/index.html">Shear tube 3D</a>
+
+                </nav>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../../../../init.html">Initialization</a>
+              <a class="nav-link" href="../../../../material.html">Material</a>
+              <a class="nav-link" href="../../../../neumann_boundaries.html">Neumann boundary conditions</a>
+              <a class="nav-link" href="../../../../new_eqn_system.html">Introducing a New Equation System</a>
+              <a class="nav-link" href="../../../../polynomials.html">Polynomials Library</a>
+              <a class="nav-link" href="../../../../postprocess_filtering.html">Postprocess Filtering</a>
+              <a class="nav-link" href="../../../../tutorial/index.html">Tutorial</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../../tutorial/euler.html">Euler Testcase</a>
+              <a class="nav-link" href="../../../../tutorial/general.html">General Input File Information</a>
+              <a class="nav-link" href="../../../../tutorial/maxwell.html">Maxwell Testcase</a>
+              <a class="nav-link" href="../../../../tutorial/postprocessing.html">Postprocessing with atl_harvesting</a>
+              <a class="nav-link" href="../../../../tutorial/procedure.html">General Procedure for Running the Testcases</a>
+              <a class="nav-link" href="../../../../tutorial/source_term.html">Source Term</a>
+              <a class="nav-link" href="../../../../tutorial/tracking.html">Tracking</a>
+
+                </nav>
+          </nav>
+        </div>
+      </div>
+
+    <div class="col-9" id='text'>
+      <p>This setup provides an overview to the various configuration options for Euler
+3D simulations.
+The domain is a simple cube with periodic boundary conditions in all directions
+and a Gaussian pulse is transported through the domain by a constant velocity.</p>
+<p>The <code>ateles.lua</code> that may also be used as a template for your own
+configuration:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- Example Ateles configuration for simulation of Euler3D equations --</span>
+<span class="c1">--</span>
+<span class="c1">-- This configuration file illustrates the various settings and     --</span>
+<span class="c1">-- options relevant for Euler 3D simulations.                       --</span>
+<span class="c1">-- You may want to use it as a template for your configurations.    --</span>
+
+<span class="c1">-- NOTE: This run is configured to run only 2 iterations, for       --</span>
+<span class="c1">--       use you&#39;ll want to change that. See sim_control!           --</span>
+
+<span class="c1">-- -------------------------------------------------------------------------- --</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="mf">1.4</span> <span class="c1">-- isentropic expansion coefficient</span>
+<span class="n">R</span>     <span class="o">=</span> <span class="mf">1.0</span> <span class="c1">-- gas constant</span>
+
+<span class="n">equation</span> <span class="o">=</span> <span class="p">{</span> <span class="c1">-- &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span>
+  <span class="n">name</span>              <span class="o">=</span> <span class="s1">&#39;euler&#39;</span><span class="p">,</span>
+  <span class="n">isen_coef</span>         <span class="o">=</span> <span class="n">gamma</span><span class="p">,</span>
+  <span class="n">r</span>                 <span class="o">=</span> <span class="n">R</span><span class="p">,</span>
+  <span class="n">cv</span>                <span class="o">=</span> <span class="n">R</span><span class="o">/</span><span class="p">(</span><span class="n">gamma</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+
+  <span class="n">numflux</span>           <span class="o">=</span> <span class="s1">&#39;hll&#39;</span><span class="p">,</span> <span class="c1">-- Numerical flux to use between elements.</span>
+                             <span class="c1">-- Available are &#39;hll&#39;, &#39;godunov&#39; and</span>
+                             <span class="c1">-- &#39;lax_friedrich&#39;. &#39;lax_friedrich&#39; is not</span>
+                             <span class="c1">-- recommended, as it may cause instabilities,</span>
+                             <span class="c1">-- especially at boundaries.</span>
+
+  <span class="n">linear_limit</span>      <span class="o">=</span> <span class="mf">0.001</span><span class="p">,</span> <span class="c1">-- Linearization limit, if this is larger than 0</span>
+                             <span class="c1">-- elements, where the indicator is smaller than</span>
+                             <span class="c1">-- this limit will be computed with a linearized</span>
+                             <span class="c1">-- flux.</span>
+  <span class="n">linearization_indicator</span> <span class="o">=</span> <span class="s1">&#39;error&#39;</span><span class="p">,</span>
+                             <span class="c1">-- The estimator to use to decide, whether</span>
+                             <span class="c1">-- linearization should be used. Only relevant if</span>
+                             <span class="c1">-- linear_limit&gt;0.</span>
+                             <span class="c1">-- Available options are:</span>
+                             <span class="c1">-- &#39;error&#39;: An estimation for the terms neglected</span>
+                             <span class="c1">--          by linearization, involves all</span>
+                             <span class="c1">--          variables. This is the default.</span>
+                             <span class="c1">-- &#39;energy&#39;: Use deviation of energy from its</span>
+                             <span class="c1">--           mean value to decide the</span>
+                             <span class="c1">--           linearization.</span>
+                             <span class="c1">-- &#39;density&#39;: Use deviation of density from its</span>
+                             <span class="c1">--            mean to decide the linearization.</span>
+
+  <span class="n">ensure_positivity</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">-- Ensure that density and energy remain positive</span>
+                             <span class="c1">-- by only considering higher modes up to the point</span>
+                             <span class="c1">-- where positivity is guaranteed.</span>
+
+  <span class="n">porosity</span>          <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>   <span class="c1">-- Porosity to use in material modelling for</span>
+                             <span class="c1">-- wall representation in elements.</span>
+  <span class="n">viscous_permeability</span> <span class="o">=</span> <span class="mf">1.0e-6</span><span class="p">,</span> <span class="c1">-- Viscous permeability for the porous medium</span>
+                                 <span class="c1">-- to represent wall geometries in elements.</span>
+  <span class="n">thermal_permeability</span> <span class="o">=</span> <span class="mf">1.0e-3</span><span class="p">,</span> <span class="c1">-- Thermal permeability for the material to</span>
+                                 <span class="c1">-- represent walls.</span>
+  <span class="n">material</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">-- Description of the material distribution to define obstacles inside the</span>
+    <span class="c1">-- domain.</span>
+    <span class="n">characteristic</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="c1">-- Masking function (may be a variable) that describes</span>
+                          <span class="c1">-- where Material is to be found (Chi(x,y,z)), should</span>
+                          <span class="c1">-- be 1 inside material and 0 everywhere else.</span>
+    <span class="n">relax_velocity</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span> <span class="c1">-- Velocity of the obstacle.</span>
+    <span class="n">relax_temperature</span> <span class="o">=</span> <span class="mf">0.0</span>     <span class="c1">-- Temperature of the obstacle.</span>
+  <span class="p">}</span>
+<span class="p">}</span> <span class="c1">-- equation &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="c1">-- -------------------------------------------------------------------------- --</span>
+
+
+<span class="c1">-- -------------------------------------------------------------------------- --</span>
+<span class="n">hours</span> <span class="o">=</span> <span class="mi">3600</span>
+<span class="n">jobtime</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">hours</span> <span class="c1">-- Time available for the computation.</span>
+                    <span class="c1">-- This variable is not a setting for Ateles, but</span>
+                    <span class="c1">-- used below. You might want to get this from an</span>
+                    <span class="c1">-- environment variable in your job script.</span>
+                    <span class="c1">-- use os.getenv(&#39;varname&#39;) to get environment variables.</span>
+
+<span class="n">sim_control</span> <span class="o">=</span> <span class="p">{</span> <span class="c1">-- &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span>
+  <span class="c1">-- Controlling the execution of the simulation.</span>
+  <span class="n">time_control</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">-- Time definitions are provided in terms of:</span>
+    <span class="c1">-- * sim:   simulation time, this is the time measurement for the</span>
+    <span class="c1">--          transient phenomenon that is simulated.</span>
+    <span class="c1">-- * iter:  the number of iterations that were done</span>
+    <span class="c1">-- * clock: the real time that has passed since the beginning of</span>
+    <span class="c1">--          the simulation in seconds.</span>
+    <span class="c1">-- All three measures might be set, whatever is encountered first,</span>
+    <span class="c1">-- will trigger the setting:</span>
+    <span class="c1">-- {sim = 1.23, iter = 123, clock=12.3}</span>
+    <span class="c1">-- If instead of a table a single number is provided, this is</span>
+    <span class="c1">-- interpreted as the setting for sim.</span>
+    <span class="c1">-- All not-given times are set to never.</span>
+    <span class="n">max</span> <span class="o">=</span> <span class="p">{</span> <span class="c1">-- Point in time when to stop the simulation.</span>
+     <span class="n">sim</span>   <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+     <span class="n">clock</span> <span class="o">=</span> <span class="n">jobtime</span> <span class="o">-</span> <span class="mi">5</span><span class="o">*</span><span class="mi">60</span><span class="p">,</span>
+     <span class="n">iter</span>  <span class="o">=</span> <span class="mi">2</span>  <span class="c1">-- This is just for a quick check that the setup works</span>
+                <span class="c1">-- for real runs, you&#39;d take this away.</span>
+    <span class="p">},</span>
+    <span class="c1">-- Providing a clock setting for the max time allows you to ensure that</span>
+    <span class="c1">-- a restart file is written before the computation is ended by the</span>
+    <span class="c1">-- scheduler. We stop here five minutes early to allow for the restart to</span>
+    <span class="c1">-- be written. This also implies that single iterations should take less</span>
+    <span class="c1">-- than 5 minutes. If they take longer, you might run into the end without</span>
+    <span class="c1">-- writing a restart.</span>
+    <span class="n">min</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">interval</span> <span class="o">=</span> <span class="p">{</span><span class="n">iter</span> <span class="o">=</span> <span class="mi">10</span><span class="p">},</span> <span class="c1">-- This controls the output frequency to</span>
+                            <span class="c1">-- report the current time step.</span>
+  <span class="p">},</span>
+
+  <span class="n">abort_criteria</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">-- Criteria upon which the simulation should be stopped.</span>
+    <span class="n">stop_file</span> <span class="o">=</span> <span class="s1">&#39;STOP&#39;</span> <span class="c1">-- Stop file, can be used to signal the simulation to</span>
+                       <span class="c1">-- gracefully end.</span>
+                       <span class="c1">-- If this is empty (the default), this is disabled.</span>
+                       <span class="c1">-- Non-empty settings here, will cause the simulation to</span>
+                       <span class="c1">-- come to an end when a file of this name exists in the</span>
+                       <span class="c1">-- working directory.</span>
+                       <span class="c1">-- Thus, with stop_file = &#39;STOP&#39;, you can cause the</span>
+                       <span class="c1">-- simulation to stop and write a restart by doing</span>
+                       <span class="c1">-- &quot;touch STOP&quot; in the working directory of the run.</span>
+                       <span class="c1">-- Empty files like the one created by touch, will be</span>
+                       <span class="c1">-- deleted by Ateles. If you want to keep the file, it</span>
+                       <span class="c1">-- needs to have some content. You can achieve this for</span>
+                       <span class="c1">-- example by &quot;echo keep &gt; STOP&quot;.</span>
+  <span class="p">}</span>
+
+<span class="p">}</span> <span class="c1">-- sim_control &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="c1">-- -------------------------------------------------------------------------- --</span>
+
+
+<span class="c1">-- -------------------------------------------------------------------------- --</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="p">{</span> <span class="c1">-- &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span>
+  <span class="c1">-- Simple predefined cubical mesh, periodic in all directions.</span>
+  <span class="n">predefined</span> <span class="o">=</span> <span class="s1">&#39;cube&#39;</span><span class="p">,</span>
+  <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">length</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="n">refinementLevel</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="p">}</span> <span class="c1">-- mesh &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="c1">-- Alternatively, for meshes from seeder you set the prefix (may be a path), to</span>
+<span class="c1">-- where the mesh is found:</span>
+<span class="c1">-- mesh = &#39;mesh/&#39;</span>
+<span class="c1">-- -------------------------------------------------------------------------- --</span>
+
+
+<span class="c1">-- -------------------------------------------------------------------------- --</span>
+<span class="n">scheme</span> <span class="o">=</span> <span class="p">{</span> <span class="c1">-- &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span>
+  <span class="n">spatial</span> <span class="o">=</span>  <span class="p">{</span>
+    <span class="c1">-- the spatial discretization scheme (needs to match dimensionality of</span>
+    <span class="c1">-- equation)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;modg&#39;</span><span class="p">,</span>
+    <span class="n">modg_space</span> <span class="o">=</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="c1">-- How to build multidimensional polynomials.</span>
+    <span class="c1">-- &#39;Q&#39; means we include all modes up to the maximal polynomial degree</span>
+    <span class="c1">-- in each direction, no matter the others, resulting in modes with</span>
+    <span class="c1">-- three times the maximal polynomial degree.</span>
+    <span class="c1">-- &#39;P&#39; means that only modes are considered for which the sum of</span>
+    <span class="c1">-- the polynomial degree in each direction does not exceed the maximal</span>
+    <span class="c1">-- polynomial degree.</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="mi">11</span>  <span class="c1">-- the maximal polynomial degree for each spatial direction</span>
+  <span class="p">},</span>
+  <span class="n">temporal</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">-- the temporal discretization scheme</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;explicitRungeKutta&#39;</span><span class="p">,</span>
+    <span class="n">steps</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="c1">-- Strong stability preserving explicit Runge Kutta:</span>
+    <span class="c1">-- For stability preserving filters</span>
+    <span class="c1">-- name = &#39;explicitSSPRungeKutta&#39;,</span>
+    <span class="c1">-- steps = 2,</span>
+    <span class="c1">-- Implicit-Explicit Runge Kutta (DIRK)</span>
+    <span class="c1">-- If Material is used, this time scheme should be employed!</span>
+    <span class="c1">-- name = &#39;imexRungeKutta&#39;,</span>
+    <span class="c1">-- steps = 4,</span>
+    <span class="c1">-- Explicit Taylor expanded Runge Kutta</span>
+    <span class="c1">-- Higher order for linear autonomous equations.</span>
+    <span class="c1">-- name = &#39;explicitRungeKuttaTaylor&#39;</span>
+    <span class="c1">-- steps = 10, -- arbitrary number of steps</span>
+    <span class="c1">-- Explicit Euler (unstable for higher spatial orders):</span>
+    <span class="c1">-- only for testing!</span>
+    <span class="c1">-- name = &#39;explicitEuler&#39;,</span>
+    <span class="n">control</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="c1">-- Choice of time step width.</span>
+      <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;cfl&#39;</span><span class="p">,</span>  <span class="c1">-- the name of the timestep control mechanism</span>
+                     <span class="c1">-- (alternatively a fixed timestep may be used).</span>
+      <span class="n">cfl</span>  <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span>    <span class="c1">-- Courant-Friedrichs-Lewy number</span>
+      <span class="c1">-- Modal to nodal conversion for the timestep width can be avoided</span>
+      <span class="c1">-- by using a modal estimate. This is especially relevant when using</span>
+      <span class="c1">-- linearization.</span>
+      <span class="c1">-- Less accurate (may result in smaller time steps).</span>
+      <span class="n">use_modal_estimate</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="c1">-- Alternatively a fixed time step may be configured:</span>
+      <span class="c1">-- name = &#39;fixed&#39;,</span>
+      <span class="c1">-- dt = 0.123</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span> <span class="c1">-- scheme &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="c1">-- -------------------------------------------------------------------------- --</span>
+
+
+<span class="c1">-- -------------------------------------------------------------------------- --</span>
+<span class="n">initial_condition</span> <span class="o">=</span> <span class="p">{</span> <span class="c1">-- &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span>
+  <span class="c1">-- As initial conditions all primitive variables (density, velocity and</span>
+  <span class="c1">-- pressure) must be provided as spatial functions (f(x,y,z)).</span>
+  <span class="c1">-- There are some predefined spatial functions, like the gaussian pulse that</span>
+  <span class="c1">-- may be used. Constants and Lua functions are also fine.</span>
+  <span class="n">density</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">predefined</span> <span class="o">=</span> <span class="s1">&#39;gausspulse&#39;</span><span class="p">,</span>
+    <span class="n">center</span> <span class="o">=</span> <span class="p">{</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span> <span class="p">},</span>
+    <span class="n">halfwidth</span> <span class="o">=</span> <span class="mf">0.20</span><span class="p">,</span>
+    <span class="n">amplitude</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span>
+    <span class="n">background</span> <span class="o">=</span> <span class="mf">1.225</span>
+  <span class="p">},</span>
+  <span class="n">pressure</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="n">velocityX</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="n">velocityY</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+  <span class="n">velocityZ</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="p">}</span> <span class="c1">-- initial_condition &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="c1">-- -------------------------------------------------------------------------- --</span>
+
+
+<span class="c1">-- -------------------------------------------------------------------------- --</span>
+<span class="n">boundary_condition</span> <span class="o">=</span> <span class="p">{</span> <span class="c1">-- &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span>
+  <span class="c1">-- This minimal example is completely periodic and has no boundary conditions.</span>
+  <span class="c1">-- Each boundary condition is described by a kind, and space-time functions</span>
+  <span class="c1">-- for all required variables in the that boundary.</span>
+  <span class="c1">-- Space time functions are either predefined functions, Lua functions,</span>
+  <span class="c1">-- constants or combined functions, where temporal and spatial parts are</span>
+  <span class="c1">-- superimposed.</span>
+  <span class="c1">-- If there are values that are to be extrapolated (Neumann boundary</span>
+  <span class="c1">-- condition), you can set enforce_zero_grad to true, to use an extrapolation</span>
+  <span class="c1">-- of a polynomial with zero gradient at the boundary.</span>
+  <span class="c1">-- This is achieved by computing the last mode to fulfill this condition.</span>
+  <span class="c1">-- If you set neumann_mode_fraction to a smaller value than 1, then only</span>
+  <span class="c1">-- this fraction of lower modes will be used in the enforce_zero_grad</span>
+  <span class="c1">-- procedure and higher modes will be set to 0.</span>
+
+  <span class="c1">--  { -- SLIPWALL</span>
+  <span class="c1">--    --   Velocity in normal direction 0, other values extrapolated.</span>
+  <span class="c1">--    label = &#39;cylinder&#39;,</span>
+  <span class="c1">--    kind  = &#39;slipwall&#39;, -- or &#39;wall&#39;</span>
+  <span class="c1">--    enforce_zero_grad = true,</span>
+  <span class="c1">--    neumann_mode_fraction = 1.0</span>
+  <span class="c1">--  },</span>
+
+  <span class="c1">--  { -- PRIMITIVES</span>
+  <span class="c1">--    --   Prescribe all primitive variables.</span>
+  <span class="c1">--    label = &#39;outside&#39;,</span>
+  <span class="c1">--    kind = &#39;primitives&#39;,</span>
+  <span class="c1">--    density = 1.23,</span>
+  <span class="c1">--    velocityX = 0.2,</span>
+  <span class="c1">--    velocityY = 0.3,</span>
+  <span class="c1">--    velocityZ = 0.4,</span>
+  <span class="c1">--    pressure = 1</span>
+  <span class="c1">--  },</span>
+
+  <span class="c1">--  { -- CONSERVATIVES</span>
+  <span class="c1">--    --   Prescribe all conservative variables.</span>
+  <span class="c1">--    label = &#39;left&#39;,</span>
+  <span class="c1">--    kind = &#39;conservatives&#39;,</span>
+  <span class="c1">--    density = 1.23,</span>
+  <span class="c1">--    momentumX = 0.2,</span>
+  <span class="c1">--    momentumY = 0.3,</span>
+  <span class="c1">--    momentumZ = 0.4,</span>
+  <span class="c1">--    energy = 4</span>
+  <span class="c1">--  },</span>
+
+  <span class="c1">--  { -- INFLOW</span>
+  <span class="c1">--    --   Prescribe density and velocity, extrapolate pressure.</span>
+  <span class="c1">--    label = &#39;outside&#39;,</span>
+  <span class="c1">--    kind = &#39;conservatives&#39;,</span>
+  <span class="c1">--    density = 1.23,</span>
+  <span class="c1">--    velocityX = 0.2,</span>
+  <span class="c1">--    velocityY = 0.3,</span>
+  <span class="c1">--    velocityZ = 0.4</span>
+  <span class="c1">--    enforce_zero_grad = true,</span>
+  <span class="c1">--    neumann_mode_fraction = 1.0</span>
+  <span class="c1">--  },</span>
+
+  <span class="c1">--  { -- INFLOW_NORMAL</span>
+  <span class="c1">--    --   Prescribe density and velocity normal to boundary,</span>
+  <span class="c1">--    --   extrapolate pressure.</span>
+  <span class="c1">--    label = &#39;inlet&#39;,</span>
+  <span class="c1">--    kind = &#39;inflow_normal&#39;,</span>
+  <span class="c1">--    density = 1.23,</span>
+  <span class="c1">--    v_norm = 0.5,</span>
+  <span class="c1">--    enforce_zero_grad = true,</span>
+  <span class="c1">--    neumann_mode_fraction = 1.0</span>
+  <span class="c1">--  },</span>
+
+  <span class="c1">--  { -- SUPERSONIC_INFLOW_NORMAL</span>
+  <span class="c1">--    --   Prescribe all primitive variables with velocity normal to boundary.</span>
+  <span class="c1">--    label = &#39;superin&#39;,</span>
+  <span class="c1">--    kind = &#39;inflow_normal&#39;,</span>
+  <span class="c1">--    density = 1.23,</span>
+  <span class="c1">--    v_norm = 2.5,</span>
+  <span class="c1">--    pressure = 1</span>
+  <span class="c1">--  },</span>
+
+  <span class="c1">--  { -- OUTFLOW</span>
+  <span class="c1">--    --   Prescribe pressure, extrapolate all other variables.</span>
+  <span class="c1">--    label = &#39;east&#39;,</span>
+  <span class="c1">--    kind = &#39;outflow&#39;,</span>
+  <span class="c1">--    pressure = 1</span>
+  <span class="c1">--    enforce_zero_grad = true,</span>
+  <span class="c1">--    neumann_mode_fraction = 1.0</span>
+  <span class="c1">--  },</span>
+
+  <span class="c1">--  { -- SUPERSONIC_OUTFLOW</span>
+  <span class="c1">--    --   Extrapolate all variables.</span>
+  <span class="c1">--    label = &#39;superout&#39;,</span>
+  <span class="c1">--    kind = &#39;supersonic_outflow&#39;,</span>
+  <span class="c1">--    enforce_zero_grad = true,</span>
+  <span class="c1">--    neumann_mode_fraction = 1.0</span>
+  <span class="c1">--  },</span>
+
+<span class="p">}</span> <span class="c1">-- boundary_condition &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="c1">-- -------------------------------------------------------------------------- --</span>
+
+
+<span class="c1">-- -------------------------------------------------------------------------- --</span>
+<span class="n">restart</span> <span class="o">=</span> <span class="p">{</span> <span class="c1">-- &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span>
+  <span class="c1">-- Header of restart, to start simulation from.</span>
+  <span class="c1">-- example:</span>
+  <span class="n">read</span> <span class="o">=</span> <span class="s1">&#39;./restart_simulation_lastHeader.lua&#39;</span><span class="p">,</span>
+
+  <span class="c1">-- If an initialization should be done, when the file given in the</span>
+  <span class="c1">-- read setting above is missing, set the init_on_missing to true.</span>
+  <span class="c1">-- With an init_on_missing = false, the computation will stop, if</span>
+  <span class="c1">-- the file in read is not found. This option has no meaning when no</span>
+  <span class="c1">-- read is provided.</span>
+  <span class="c1">-- default: false</span>
+  <span class="n">init_on_missing</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+
+  <span class="c1">-- Prefix for the files, that are to be written during the</span>
+  <span class="c1">-- simulation. If this ends with a path separator, the restart files</span>
+  <span class="c1">-- will be written into the specified directory and that directory</span>
+  <span class="c1">-- has to exist</span>
+  <span class="n">write</span> <span class="o">=</span> <span class="s1">&#39;restart_&#39;</span><span class="p">,</span> <span class="c1">-- &#39;restart/&#39; for a directory</span>
+
+  <span class="n">time_control</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">-- Starting point after which restart files should</span>
+    <span class="c1">-- be written.</span>
+    <span class="c1">-- Setting iter to 0 here, results in restart files</span>
+    <span class="c1">-- being written from the initial condition onwards.</span>
+    <span class="n">min</span> <span class="o">=</span> <span class="p">{</span><span class="n">iter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">},</span>
+
+    <span class="c1">-- The maximal point in time, up to which, restarts</span>
+    <span class="c1">-- should be written.</span>
+    <span class="c1">-- Note, that if this is not defined at all, it will</span>
+    <span class="c1">-- be set to never, resulting in doing restarts for</span>
+    <span class="c1">-- all times, including a final restart after</span>
+    <span class="c1">-- reaching the termination of the time loop.</span>
+    <span class="n">max</span>      <span class="o">=</span> <span class="n">sim_control</span><span class="p">.</span><span class="n">time_control</span><span class="p">.</span><span class="n">max</span><span class="p">.</span><span class="n">sim</span><span class="p">,</span>
+
+    <span class="c1">-- Frequency at which restart files are to be</span>
+    <span class="c1">-- written between min and max.</span>
+    <span class="n">interval</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+
+    <span class="c1">-- If a restart is read, it may be that the restart</span>
+    <span class="c1">-- writing did not happen at the desired interval,</span>
+    <span class="c1">-- nevertheless you might want to write the next</span>
+    <span class="c1">-- restart file according to the original interval</span>
+    <span class="c1">-- rythm. To achieve this you can tell the restart</span>
+    <span class="c1">-- to align the trigger to last interval before</span>
+    <span class="c1">-- the restart time with the align_trigger option:</span>
+    <span class="n">align_trigger</span> <span class="o">=</span> <span class="p">{</span> <span class="n">sim</span> <span class="o">=</span> <span class="kc">true</span> <span class="p">},</span>
+    <span class="c1">-- For each time component you can define whether</span>
+    <span class="c1">-- an alignment should be done or not.</span>
+    <span class="c1">-- If you only set one flag like:</span>
+    <span class="c1">-- align_trigger = false</span>
+    <span class="c1">-- It will be applied to the simtime, the others</span>
+    <span class="c1">-- will be set to false.</span>
+    <span class="c1">-- Default is false.</span>
+
+    <span class="c1">-- Controlling if a restart file should be written</span>
+    <span class="c1">-- or not involves communication, if a clock setting</span>
+    <span class="c1">-- is used.</span>
+    <span class="c1">-- This might have a negative impact on the</span>
+    <span class="c1">-- performance, if it is done every iteration and</span>
+    <span class="c1">-- a single iteration is too short.</span>
+    <span class="c1">-- By setting check_iter the interval at which</span>
+    <span class="c1">-- these checks are done, can be increased, and</span>
+    <span class="c1">-- thus performance impacts reduced.</span>
+    <span class="c1">-- CAUTION: be aware that increasing this to values</span>
+    <span class="c1">--          larger than 1, decreases the accuracy</span>
+    <span class="c1">--          of the points in time at which restarts</span>
+    <span class="c1">--          are written!</span>
+    <span class="c1">-- default:</span>
+    <span class="c1">-- check_iter = 1</span>
+  <span class="p">}</span>
+<span class="p">}</span> <span class="c1">-- restart &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="c1">-- -------------------------------------------------------------------------- --</span>
+
+<span class="c1">-- -------------------------------------------------------------------------- --</span>
+<span class="n">tracking</span> <span class="o">=</span> <span class="p">{</span> <span class="c1">-- &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span>
+  <span class="p">{</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;QuantityOfInterest&#39;</span><span class="p">,</span>
+    <span class="n">variable</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;density&#39;</span> <span class="p">},</span>
+    <span class="c1">-- Available variables in Euler:</span>
+    <span class="c1">-- * density</span>
+    <span class="c1">-- * momentum</span>
+    <span class="c1">-- * energy</span>
+    <span class="c1">-- * pressure</span>
+    <span class="c1">-- * velocity</span>
+    <span class="c1">-- * speedOfsound:   local speed of sound</span>
+    <span class="c1">-- * temperature:    temperature of the fluid</span>
+    <span class="c1">-- * mach_number:    local Mach number</span>
+    <span class="c1">-- * mach_vector:    local velocity vector scaled by the speed of sound</span>
+    <span class="c1">-- * kinetic_energy: the kinetic energy of the fluid</span>
+    <span class="c1">-- * gradv:          gradient of the velocity field</span>
+    <span class="c1">-- * vorticity:      vorticity of the flow field</span>
+    <span class="c1">-- * q_criterion:    Q-Criterion (positive second invariant of velocity</span>
+    <span class="c1">--                                gradient tensor)</span>
+    <span class="c1">-- * lambda2:        Lambda 2 criterion: largest eigenvalue of shear and</span>
+    <span class="c1">--                   rotational contributions to the velocity gradient</span>
+    <span class="c1">--                   tensor.</span>
+    <span class="c1">-- * linindicator:   Indicator that is used to decide whether to just</span>
+    <span class="c1">--                   compute the linearized Euler flux in the element.</span>
+    <span class="c1">--                   This depends on the chosen linearization_indicator.</span>
+    <span class="c1">--                   It will be 1 in elements that are computed nonlinearly</span>
+    <span class="c1">--                   and 0 in elements where the linearized flux is used.</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;global&#39;</span> <span class="p">},</span>
+    <span class="n">time_control</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">min</span> <span class="o">=</span> <span class="p">{</span> <span class="n">iter</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">},</span>
+      <span class="n">max</span> <span class="o">=</span> <span class="n">sim_control</span><span class="p">.</span><span class="n">time_control</span><span class="p">.</span><span class="n">max</span><span class="p">.</span><span class="n">sim</span><span class="p">,</span>
+      <span class="n">interval</span> <span class="o">=</span> <span class="n">sim_control</span><span class="p">.</span><span class="n">time_control</span><span class="p">.</span><span class="n">max</span><span class="p">.</span><span class="n">sim</span><span class="o">/</span><span class="mi">10</span>
+    <span class="p">},</span>
+    <span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;track_&#39;</span><span class="p">,</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="p">{</span> <span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;vtk&#39;</span> <span class="p">}</span>
+    <span class="c1">--  output = { format = &#39;asciispatial&#39;,</span>
+    <span class="c1">--             -- All degrees of freedom will be written, specify,</span>
+    <span class="c1">--             -- ndofs = 1 for dumping the average</span>
+    <span class="c1">--             ndofs=1 }</span>
+    <span class="c1">--  -- output = {format = &#39;harvester&#39;} -- write restart files</span>
+    <span class="c1">-- Trackings can be reduced in space to single values:</span>
+    <span class="c1">-- reduction = {&#39;sum&#39;,&#39;average&#39;},  -- (default = &#39;none&#39;)</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;PointProbe&#39;</span><span class="p">,</span>
+    <span class="n">variable</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;pressure&#39;</span> <span class="p">},</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;canoND&#39;</span><span class="p">,</span> <span class="n">object</span> <span class="o">=</span> <span class="p">{</span><span class="n">origin</span><span class="o">=</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">}}</span> <span class="p">},</span>
+    <span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;pp_&#39;</span><span class="p">,</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="p">{</span> <span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;ascii&#39;</span><span class="p">,</span>
+               <span class="c1">-- track the value exactly at the given point (instead of</span>
+               <span class="c1">-- getting the complete element):</span>
+               <span class="n">use_get_point</span> <span class="o">=</span> <span class="kc">true</span> <span class="p">},</span>
+    <span class="n">time_control</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">min</span> <span class="o">=</span> <span class="p">{</span> <span class="n">iter</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">},</span>
+      <span class="n">max</span> <span class="o">=</span> <span class="n">sim_control</span><span class="p">.</span><span class="n">time_control</span><span class="p">.</span><span class="n">max</span><span class="p">.</span><span class="n">sim</span><span class="p">,</span>
+      <span class="n">interval</span> <span class="o">=</span> <span class="p">{</span><span class="n">iter</span> <span class="o">=</span> <span class="mi">1</span><span class="p">}</span>
+    <span class="p">},</span>
+  <span class="p">}</span>
+<span class="p">}</span> <span class="c1">-- tracking &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="c1">-- -------------------------------------------------------------------------- --</span>
+
+<span class="c1">-- -------------------------------------------------------------------------- --</span>
+<span class="n">ply_sampling</span> <span class="o">=</span> <span class="p">{</span> <span class="c1">-- &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span>
+  <span class="c1">-- Subsampling for tracking, define a ply_sampling table to activate</span>
+  <span class="c1">-- subsampling for all tracking objects (except those with use_get_point).</span>
+  <span class="n">nlevels</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>    <span class="c1">-- maximal level to use in subsampling</span>
+                  <span class="c1">-- defaults to 0, which deactivates subsampling</span>
+
+  <span class="c1">--method  = &#39;fixed&#39;, -- method to use for subsampling</span>
+                       <span class="c1">-- &#39;adaptive&#39;: (recommended default) adaptive refinement</span>
+                       <span class="c1">--             of the mesh based on solution</span>
+                       <span class="c1">-- &#39;fixed&#39;: will refine all elements by nlevels and</span>
+                       <span class="c1">--          evaluate the polynomials at the barycenter of</span>
+                       <span class="c1">--          each fine element</span>
+
+  <span class="c1">-- Parameters for adaptive sampling:</span>
+  <span class="c1">--tolerance = 0,                -- threshold for ignoring higher modes,</span>
+                                  <span class="c1">-- if the sum of absolute values of higher</span>
+                                  <span class="c1">-- modes in relation to the first mode is</span>
+                                  <span class="c1">-- below the tolerance, they will be cut off.</span>
+                                  <span class="c1">-- Default: 0 (never ignore modes).</span>
+                                  <span class="c1">-- Recommended: 0.01 - 0.05</span>
+  <span class="c1">--dof_reduction = 0.5,          -- Factor to multiply the 1D number of degrees</span>
+                                  <span class="c1">-- of freedom with in each refinement.</span>
+                                  <span class="c1">-- (0.5 implies to only keep half the degrees</span>
+                                  <span class="c1">-- of freedom after the refinement).</span>
+                                  <span class="c1">-- Values smaller 0.5 are not useful here and</span>
+                                  <span class="c1">-- 0.5 already yields quite poor polynomial</span>
+                                  <span class="c1">-- representations in the sampling.</span>
+                                  <span class="c1">-- Default: 0.5</span>
+                                  <span class="c1">-- Recommended: 2/3 - 3/4, 0.7 generally looks</span>
+                                  <span class="c1">-- quite good.</span>
+  <span class="c1">--adaptiveDofReduction = false, -- Increase the number of modes to keep after</span>
+                                  <span class="c1">-- refinement above the configured</span>
+                                  <span class="c1">-- dof_reduction factor if no more than the</span>
+                                  <span class="c1">-- original memory will be used.</span>
+                                  <span class="c1">-- Default: false</span>
+                                  <span class="c1">-- Recommended: true (generally advisable, no</span>
+                                  <span class="c1">--                    big drawbacks)</span>
+  <span class="c1">--absUpperBoundLevel = 0        -- Maximal absolute level to refine to.</span>
+                                  <span class="c1">-- 0 means no absolute level, all elements</span>
+                                  <span class="c1">-- will be limited in the refinement by the</span>
+                                  <span class="c1">-- nlevels set above</span>
+                                  <span class="c1">-- This is useful for multilevel meshes, where</span>
+                                  <span class="c1">-- each element might start out on a different</span>
+                                  <span class="c1">-- level.</span>
+                                  <span class="c1">-- For a complete mesh overview you might want</span>
+                                  <span class="c1">-- to use a very high nlevels setting but</span>
+                                  <span class="c1">-- limit the refinement by absUpperBoundLevel</span>
+                                  <span class="c1">-- to allow for a more uniform resolution in</span>
+                                  <span class="c1">-- the sampled data.</span>
+                                  <span class="c1">-- Default: 0 (no absolute upper bound)</span>
+<span class="p">}</span> <span class="c1">-- ply_sampling &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="c1">-- -------------------------------------------------------------------------- --</span>
+
+<span class="c1">-- -------------------------------------------------------------------------- --</span>
+<span class="n">projection</span> <span class="o">=</span> <span class="p">{</span> <span class="c1">-- &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span>
+  <span class="c1">-- Projection between modal to nodal space</span>
+  <span class="c1">-- for BC, IC and non-linear problems is given</span>
+  <span class="c1">-- kind = &#39;l2p&#39;,  -- &#39;fpt&#39;, &#39;fxt&#39; or &#39;l2p&#39;,</span>
+  <span class="c1">--                --  default: &#39;l2p&#39;</span>
+
+  <span class="c1">-- for l2p the nodes are by default &#39;gauss-legendre&#39;,</span>
+  <span class="c1">-- can be changed by setting the nodes_kind:</span>
+  <span class="c1">-- nodes_kind = &#39;chebyshev&#39;,</span>
+
+  <span class="c1">-- for fpt the nodes are automatically &#39;chebyshev&#39;</span>
+  <span class="c1">-- for fxt the nodes are automatically &#39;gauss-legendre&#39;</span>
+
+  <span class="c1">-- lobattoPoints = false, -- if lobatto points should be used,</span>
+                            <span class="c1">-- default = false,</span>
+                            <span class="c1">-- only working for Chebyshev points!</span>
+
+  <span class="n">factor</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>             <span class="c1">-- dealising factor for fpt</span>
+                            <span class="c1">-- oversampling factor to remove aliasing</span>
+                            <span class="c1">-- effects by padding, default: 1</span>
+                            <span class="c1">-- Note that for FXT an evenly oversampled</span>
+                            <span class="c1">-- order is required, if this is not the</span>
+                            <span class="c1">-- case, the next higher even order will be</span>
+                            <span class="c1">-- used and the actual factor might</span>
+                            <span class="c1">-- accordingly be higher.</span>
+
+  <span class="c1">-- FXT settings:</span>
+  <span class="c1">-- prec = 1.5e-8,         -- precision to use for the fast multipole</span>
+                            <span class="c1">-- computation during initialization.</span>
+                            <span class="c1">-- Defaults to sqrt of epsilon for double</span>
+                            <span class="c1">-- precision numbers (1.5e-8).</span>
+
+  <span class="c1">-- FPT settings:</span>
+  <span class="c1">-- approx_terms = 18,     -- Number of terms used to approximate the</span>
+                            <span class="c1">-- matrix multiplication for blocks, that</span>
+                            <span class="c1">-- are detached from the diagonal.</span>
+                            <span class="c1">-- The default of 18 is recommended for</span>
+                            <span class="c1">-- double precision.</span>
+  <span class="c1">-- blocksize = 64,        -- for FPT, default 64. The blocksize</span>
+                            <span class="c1">-- defines how big the minimal block</span>
+                            <span class="c1">-- should be that is approximated in</span>
+                            <span class="c1">-- fast algorithm.</span>
+                            <span class="c1">-- The smaller it is, the more operations</span>
+                            <span class="c1">-- are merely approximated.</span>
+                            <span class="c1">-- Recommended for double precision is a</span>
+                            <span class="c1">-- setting of 64.</span>
+                            <span class="c1">-- The fast algorithm will only be used</span>
+                            <span class="c1">-- for m &gt;= blocksize.</span>
+                            <span class="c1">-- Note, that this has to be larger than</span>
+                            <span class="c1">-- 2*approx_terms to provide any</span>
+                            <span class="c1">-- reduction in operation counts.</span>
+  <span class="c1">-- striplen = 256,        -- This provides the length for arrays to</span>
+                            <span class="c1">-- apply the matrix operation to</span>
+                            <span class="c1">-- simultaneously.</span>
+                            <span class="c1">-- Default is the vlen from the</span>
+                            <span class="c1">-- tem_compileconf_module.</span>
+  <span class="c1">-- subblockingWidth = 8,  -- The subblockingWidth is used during the</span>
+                            <span class="c1">-- unrolling of the diagonal multiplication</span>
+                            <span class="c1">-- during the projection. By setting this</span>
+                            <span class="c1">-- value to an appropriate value a better</span>
+                            <span class="c1">-- cache usage can be achieved.</span>
+                            <span class="c1">-- Default is 8</span>
+  <span class="c1">-- adapt_factor_pow2 = true, -- for FPT, default false. Should the</span>
+                               <span class="c1">-- oversampling factor be adjusted to</span>
+                               <span class="c1">-- obtain a power of 2 in the</span>
+                               <span class="c1">-- oversampled order?</span>
+  <span class="c1">-- fftMultiThread = false -- for FPT, default false. Should nested</span>
+                            <span class="c1">-- multithreading be activated for FFTW?</span>
+
+  <span class="c1">-- There can be individual projection settings for various parts</span>
+  <span class="c1">-- of the computation.</span>
+  <span class="c1">-- These are useful to allow for a higher oversampling in specific</span>
+  <span class="c1">-- parts.</span>
+
+  <span class="c1">-- individual projection methods for source terms</span>
+  <span class="c1">-- if none is provided, the general projection method is used</span>
+  <span class="n">source_terms</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">-- the configuration parameter are similar to the</span>
+    <span class="c1">-- general projection method</span>
+    <span class="c1">-- kind = &#39;fpt&#39;,</span>
+    <span class="n">factor</span> <span class="o">=</span> <span class="mf">1.0</span>
+  <span class="p">},</span>
+  <span class="c1">-- individual projection methods for initial condition</span>
+  <span class="c1">-- if none is provided the general projection method is used</span>
+  <span class="n">initial_condition</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">-- the configuration parameter are similar to the</span>
+    <span class="c1">-- general projection method</span>
+    <span class="n">factor</span> <span class="o">=</span> <span class="mf">2.0</span>
+  <span class="p">},</span>
+  <span class="c1">-- individual projection methods for boundary condition</span>
+  <span class="c1">-- if none is provided the general projection method is used</span>
+  <span class="n">boundary_condition</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">-- the configuration parameter are similar to the</span>
+    <span class="c1">-- general projection method</span>
+    <span class="c1">-- kind = &#39;fpt&#39;,</span>
+    <span class="n">factor</span> <span class="o">=</span> <span class="mf">2.0</span>
+  <span class="p">},</span>
+  <span class="c1">-- individual projection methods for boundary condition</span>
+  <span class="c1">-- if none is provided the general projection method is used</span>
+  <span class="c1">--material= {</span>
+  <span class="c1">--  -- the configuration parameter are similar to the</span>
+  <span class="c1">--  -- general projection method</span>
+  <span class="c1">--  -- kind = &#39;fpt&#39;,</span>
+  <span class="c1">--  factor = 2.0</span>
+  <span class="c1">--}</span>
+<span class="p">}</span> <span class="c1">-- projection &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+</code></pre></div>
+    </div>
+  </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../../../../../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../../../../../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../../../../../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

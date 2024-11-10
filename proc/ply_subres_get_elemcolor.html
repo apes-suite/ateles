@@ -1,0 +1,544 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>ply_subres_get_elemcolor &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>ply_subres_get_elemcolor
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for procedures.">79 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/ply_subresolution_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/ply_subresolution_module.f90.html'>ply_subresolution_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/ply_subresolution_module.html'>ply_subresolution_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">ply_subres_get_elemcolor</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine ply_subres_get_elemcolor(fun, varSys, elempos, time, tree, nElems, nDofs, res)  
+</h2>
+    
+
+    <p>Get the color of an element.</p>
+<p>This routine provides the get_element for the variable definition.
+ It returns the coloring value for the elements in elempos with the given
+ number of degrees of freedom.</p>
+<p>The header of this subroutine must be same as tem_varSys_proc_element</p>
+<p>end dummy code to touch unused arguments</p>
+<p>\todo HK: we could do a binary search on the colpos, to find the next
+          colored element equal or greater to the current element.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fun~58"></span>
+              class(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fun</strong></td>
+            <td>
+                <p>Description of the method to obtain the variables, here some preset
+values might be stored, like the space time function to use or the
+required variables.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varsys~74"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varSys</strong></td>
+            <td>
+                <p>The variable system to obtain the variable from.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elempos~34"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>elempos</strong>(:)</td>
+            <td>
+                <p>TreeID of the element to get the variable for.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-time~58"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>time</strong></td>
+            <td>
+                <p>Point in time at which to evaluate the variable.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~96"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+                <p>global treelm mesh info</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nelems~71"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nElems</strong></td>
+            <td>
+                <p>Number of elements to obtain for this variable (vectorized access).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ndofs~79"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nDofs</strong></td>
+            <td>
+                <p>Number of degrees of freedom within an element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-res~82"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>res</strong>(:)</td>
+            <td>
+                <p>Resulting values for the requested variable.</p>
+<p>Linearized array dimension:
+(nComponents of resulting variable) x (nDegrees of freedom) x (nElems)
+Access: (iElem-1)<em>fun%nComponents</em>nDofs +
+        (iDof-1)*fun%nComponents + iComp</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~ply_subres_get_elemcolor~~CallsGraph Pages: 1 -->
+<svg id="procply_subres_get_elemcolorCallsGraph" width="308pt" height="284pt"
+ viewBox="0.00 0.00 308.00 284.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~ply_subres_get_elemcolor~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 280)">
+<title>proc~~ply_subres_get_elemcolor~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-280 304,-280 304,4 -4,4"/>
+<!-- proc~ply_subres_get_elemcolor -->
+<g id="proc~~ply_subres_get_elemcolor~~CallsGraph_node1" class="node">
+<title>proc~ply_subres_get_elemcolor</title>
+<polygon fill="none" stroke="black" points="150,-150 0,-150 0,-126 150,-126 150,-150"/>
+<text text-anchor="middle" x="75" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50">ply_subres_get_elemcolor</text>
+</g>
+<!-- color_fill -->
+<g id="proc~~ply_subres_get_elemcolor~~CallsGraph_node2" class="node">
+<title>color_fill</title>
+<polygon fill="#777777" stroke="#777777" points="272,-276 214,-276 214,-252 272,-252 272,-276"/>
+<text text-anchor="middle" x="243" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">color_fill</text>
+</g>
+<!-- proc~ply_subres_get_elemcolor&#45;&gt;color_fill -->
+<g id="proc~~ply_subres_get_elemcolor~~CallsGraph_edge1" class="edge">
+<title>proc~ply_subres_get_elemcolor&#45;&gt;color_fill</title>
+<path fill="none" stroke="#000000" d="M85.69,-150.02C103.5,-171.41 143.51,-216.34 186,-243 191.6,-246.51 197.88,-249.58 204.15,-252.2"/>
+<polygon fill="#000000" stroke="#000000" points="203.31,-255.63 213.9,-255.96 205.83,-249.1 203.31,-255.63"/>
+</g>
+<!-- color_void -->
+<g id="proc~~ply_subres_get_elemcolor~~CallsGraph_node3" class="node">
+<title>color_void</title>
+<polygon fill="#777777" stroke="#777777" points="276.5,-234 209.5,-234 209.5,-210 276.5,-210 276.5,-234"/>
+<text text-anchor="middle" x="243" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">color_void</text>
+</g>
+<!-- proc~ply_subres_get_elemcolor&#45;&gt;color_void -->
+<g id="proc~~ply_subres_get_elemcolor~~CallsGraph_edge2" class="edge">
+<title>proc~ply_subres_get_elemcolor&#45;&gt;color_void</title>
+<path fill="none" stroke="#000000" d="M94.97,-150.12C116.5,-163.58 152.94,-185.46 186,-201 190.41,-203.07 195.08,-205.09 199.77,-207"/>
+<polygon fill="#000000" stroke="#000000" points="198.77,-210.37 209.35,-210.77 201.33,-203.85 198.77,-210.37"/>
+</g>
+<!-- colored_bit -->
+<g id="proc~~ply_subres_get_elemcolor~~CallsGraph_node4" class="node">
+<title>colored_bit</title>
+<polygon fill="#777777" stroke="#777777" points="278.5,-192 207.5,-192 207.5,-168 278.5,-168 278.5,-192"/>
+<text text-anchor="middle" x="243" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">colored_bit</text>
+</g>
+<!-- proc~ply_subres_get_elemcolor&#45;&gt;colored_bit -->
+<g id="proc~~ply_subres_get_elemcolor~~CallsGraph_edge3" class="edge">
+<title>proc~ply_subres_get_elemcolor&#45;&gt;colored_bit</title>
+<path fill="none" stroke="#000000" d="M123.57,-150.04C146.85,-155.93 174.72,-162.98 197.57,-168.76"/>
+<polygon fill="#000000" stroke="#000000" points="196.8,-172.17 207.35,-171.23 198.51,-165.39 196.8,-172.17"/>
+</g>
+<!-- elemid -->
+<g id="proc~~ply_subres_get_elemcolor~~CallsGraph_node5" class="node">
+<title>elemid</title>
+<polygon fill="#777777" stroke="#777777" points="270,-150 216,-150 216,-126 270,-126 270,-150"/>
+<text text-anchor="middle" x="243" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">elemid</text>
+</g>
+<!-- proc~ply_subres_get_elemcolor&#45;&gt;elemid -->
+<g id="proc~~ply_subres_get_elemcolor~~CallsGraph_edge4" class="edge">
+<title>proc~ply_subres_get_elemcolor&#45;&gt;elemid</title>
+<path fill="none" stroke="#000000" d="M150.26,-138C169.52,-138 189.42,-138 205.74,-138"/>
+<polygon fill="#000000" stroke="#000000" points="205.9,-141.5 215.9,-138 205.9,-134.5 205.9,-141.5"/>
+</g>
+<!-- id -->
+<g id="proc~~ply_subres_get_elemcolor~~CallsGraph_node6" class="node">
+<title>id</title>
+<polygon fill="#777777" stroke="#777777" points="270,-108 216,-108 216,-84 270,-84 270,-108"/>
+<text text-anchor="middle" x="243" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">id</text>
+</g>
+<!-- proc~ply_subres_get_elemcolor&#45;&gt;id -->
+<g id="proc~~ply_subres_get_elemcolor~~CallsGraph_edge5" class="edge">
+<title>proc~ply_subres_get_elemcolor&#45;&gt;id</title>
+<path fill="none" stroke="#000000" d="M123.57,-125.96C149.72,-119.35 181.66,-111.27 205.77,-105.17"/>
+<polygon fill="#000000" stroke="#000000" points="206.75,-108.53 215.59,-102.68 205.03,-101.74 206.75,-108.53"/>
+</g>
+<!-- nelems -->
+<g id="proc~~ply_subres_get_elemcolor~~CallsGraph_node7" class="node">
+<title>nelems</title>
+<polygon fill="#777777" stroke="#777777" points="270,-66 216,-66 216,-42 270,-42 270,-66"/>
+<text text-anchor="middle" x="243" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">nelems</text>
+</g>
+<!-- proc~ply_subres_get_elemcolor&#45;&gt;nelems -->
+<g id="proc~~ply_subres_get_elemcolor~~CallsGraph_edge6" class="edge">
+<title>proc~ply_subres_get_elemcolor&#45;&gt;nelems</title>
+<path fill="none" stroke="#000000" d="M94.97,-125.88C116.5,-112.42 152.94,-90.54 186,-75 192.44,-71.97 199.44,-69.06 206.25,-66.42"/>
+<polygon fill="#000000" stroke="#000000" points="207.86,-69.56 215.99,-62.76 205.4,-63 207.86,-69.56"/>
+</g>
+<!-- subresolved_colors -->
+<g id="proc~~ply_subres_get_elemcolor~~CallsGraph_node8" class="node">
+<title>subresolved_colors</title>
+<polygon fill="#777777" stroke="#777777" points="300,-24 186,-24 186,0 300,0 300,-24"/>
+<text text-anchor="middle" x="243" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">subresolved_colors</text>
+</g>
+<!-- proc~ply_subres_get_elemcolor&#45;&gt;subresolved_colors -->
+<g id="proc~~ply_subres_get_elemcolor~~CallsGraph_edge7" class="edge">
+<title>proc~ply_subres_get_elemcolor&#45;&gt;subresolved_colors</title>
+<path fill="none" stroke="#000000" d="M85.69,-125.98C103.5,-104.59 143.51,-59.66 186,-33 188.64,-31.34 191.43,-29.78 194.3,-28.33"/>
+<polygon fill="#000000" stroke="#000000" points="196.05,-31.38 203.66,-24.01 193.11,-25.02 196.05,-31.38"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

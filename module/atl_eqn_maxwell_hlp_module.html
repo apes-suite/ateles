@@ -1,0 +1,1729 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_eqn_maxwell_hlp_module &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_eqn_maxwell_hlp_module
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.9% of total for modules and submodules.">395 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_eqn_maxwell_hlp_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_eqn_maxwell_hlp_module.f90.html'>atl_eqn_maxwell_hlp_module.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_eqn_maxwell_hlp_module</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_eqn_maxwell_hlp_module.html#proc-atl_eqn_maxwell_init">atl_eqn_maxwell_init</a>
+            <a class="list-group-item" href="../module/atl_eqn_maxwell_hlp_module.html#proc-atl_eqn_maxwell_load_bc">atl_eqn_maxwell_load_bc</a>
+            <a class="list-group-item" href="../module/atl_eqn_maxwell_hlp_module.html#proc-atl_eqn_maxwelldivcor_load_bc">atl_eqn_maxwellDivCor_load_bc</a>
+            <a class="list-group-item" href="../module/atl_eqn_maxwell_hlp_module.html#proc-atl_eqn_maxwell_implicit_pen">atl_eqn_maxwell_implicit_pen</a>
+            <a class="list-group-item" href="../module/atl_eqn_maxwell_hlp_module.html#proc-eqn_maxwell_2d_load_bc">eqn_maxwell_2d_load_bc</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/env_module.html'>env_module</a></li>
+                  <li class="list-inline-item"><a href='atl_eqn_maxwell_derive_module.html'>atl_eqn_maxwell_derive_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aotus_module.html'>aotus_module</a></li>
+                  <li class="list-inline-item"><a href='atl_eqn_maxwell_var_module.html'>atl_eqn_maxwell_var_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_stringkeyvaluepair_module.html'>tem_stringKeyValuePair_module</a></li>
+                  <li class="list-inline-item"><a href='ply_oversample_module.html'>ply_oversample_module</a></li>
+                  <li class="list-inline-item"><a href='atl_eqn_maxwelldivcorr_derive_module.html'>atl_eqn_maxwelldivcorr_derive_module</a></li>
+                  <li class="list-inline-item"><a href='atl_eqn_maxwelldivcorr_var_module.html'>atl_eqn_maxwelldivcorr_var_module</a></li>
+                  <li class="list-inline-item"><a href='atl_equation_module.html'>atl_equation_module</a></li>
+                  <li class="list-inline-item"><a href='atl_eqn_maxwell_2d_derive_module.html'>atl_eqn_maxwell_2d_derive_module</a></li>
+                  <li class="list-inline-item"><a href='ply_poly_project_module.html'>ply_poly_project_module</a></li>
+                  <li class="list-inline-item"><a href='atl_source_types_module.html'>atl_source_types_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_logging_module.html'>tem_logging_module</a></li>
+                  <li class="list-inline-item"><a href='atl_materialprp_module.html'>atl_materialPrp_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_bc_module.html'>tem_bc_module</a></li>
+                  <li class="list-inline-item"><a href='atl_bc_state_module.html'>atl_bc_state_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_aux_module.html'>tem_aux_module</a></li>
+                  <li class="list-inline-item"><a href='atl_eqn_maxwell_2d_var_module.html'>atl_eqn_maxwell_2d_var_module</a></li>
+                  <li class="list-inline-item"><a href='atl_varsys_module.html'>atl_varSys_module</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_eqn_maxwell_hlp_module~~UsesGraph Pages: 1 -->
+<svg id="moduleatl_eqn_maxwell_hlp_moduleUsesGraph" width="436pt" height="788pt"
+ viewBox="0.00 0.00 436.00 788.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 784)">
+<title>module~~atl_eqn_maxwell_hlp_module~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-784 432,-784 432,4 -4,4"/>
+<!-- module~atl_eqn_maxwell_hlp_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node1" class="node">
+<title>module~atl_eqn_maxwell_hlp_module</title>
+<polygon fill="none" stroke="black" points="428,-402 259,-402 259,-378 428,-378 428,-402"/>
+<text text-anchor="middle" x="343.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_eqn_maxwell_hlp_module</text>
+</g>
+<!-- aotus_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node2" class="node">
+<title>aotus_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node2"><a xlink:href="https://apes-suite.github.io/aotus/module/aotus_module.html" xlink:title="aotus_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="155.5,-780 67.5,-780 67.5,-756 155.5,-756 155.5,-780"/>
+<text text-anchor="middle" x="111.5" y="-765.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aotus_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_maxwell_hlp_module&#45;&gt;aotus_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_edge1" class="edge">
+<title>module~atl_eqn_maxwell_hlp_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M342.52,-402.17C341.9,-453.18 332.3,-651.57 223,-747 207.33,-760.68 185.58,-766.61 165.51,-768.87"/>
+<polygon fill="#000000" stroke="#000000" points="165.19,-765.39 155.52,-769.73 165.78,-772.36 165.19,-765.39"/>
+</g>
+<!-- env_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node3" class="node">
+<title>env_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node3"><a xlink:href="https://apes-suite.github.io/treelm/module/env_module.html" xlink:title="env_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="150.5,-738 72.5,-738 72.5,-714 150.5,-714 150.5,-738"/>
+<text text-anchor="middle" x="111.5" y="-723.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">env_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_maxwell_hlp_module&#45;&gt;env_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_edge2" class="edge">
+<title>module~atl_eqn_maxwell_hlp_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M341.92,-402.03C338.98,-449.1 321.58,-622.3 223,-705 205.9,-719.34 182.04,-725.07 160.87,-727.01"/>
+<polygon fill="#000000" stroke="#000000" points="160.48,-723.52 150.73,-727.67 160.94,-730.51 160.48,-723.52"/>
+</g>
+<!-- module~atl_bc_state_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node4" class="node">
+<title>module~atl_bc_state_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node4"><a xlink:href="../module/atl_bc_state_module.html" xlink:title="atl_bc_state_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="172,-696 51,-696 51,-672 172,-672 172,-696"/>
+<text text-anchor="middle" x="111.5" y="-681.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_bc_state_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_bc_state_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_edge3" class="edge">
+<title>module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_bc_state_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M341.14,-402.2C335.61,-445.52 310.79,-593.02 223,-663 211.34,-672.3 196.8,-677.92 182.14,-681.22"/>
+<polygon fill="#000000" stroke="#000000" points="181.17,-677.84 172,-683.16 182.48,-684.72 181.17,-677.84"/>
+</g>
+<!-- module~atl_eqn_maxwell_2d_derive_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node5" class="node">
+<title>module~atl_eqn_maxwell_2d_derive_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node5"><a xlink:href="../module/atl_eqn_maxwell_2d_derive_module.html" xlink:title="atl_eqn_maxwell_2d_derive_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="214,-654 9,-654 9,-630 214,-630 214,-654"/>
+<text text-anchor="middle" x="111.5" y="-639.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_maxwell_2d_derive_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_eqn_maxwell_2d_derive_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_edge4" class="edge">
+<title>module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_eqn_maxwell_2d_derive_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M340.1,-402.22C331.78,-441.2 300.29,-563.38 223,-621 221.09,-622.42 219.12,-623.76 217.08,-625.01"/>
+<polygon fill="#000000" stroke="#000000" points="214.97,-622.17 207.82,-629.98 218.29,-628.33 214.97,-622.17"/>
+</g>
+<!-- module~atl_eqn_maxwell_2d_var_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node6" class="node">
+<title>module~atl_eqn_maxwell_2d_var_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node6"><a xlink:href="../module/atl_eqn_maxwell_2d_var_module.html" xlink:title="atl_eqn_maxwell_2d_var_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="205.5,-612 17.5,-612 17.5,-588 205.5,-588 205.5,-612"/>
+<text text-anchor="middle" x="111.5" y="-597.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_maxwell_2d_var_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_eqn_maxwell_2d_var_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_edge5" class="edge">
+<title>module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_eqn_maxwell_2d_var_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M338.68,-402.16C327.28,-436.27 290.08,-533.36 223,-579 220.38,-580.78 217.65,-582.42 214.83,-583.93"/>
+<polygon fill="#000000" stroke="#000000" points="213.1,-580.88 205.56,-588.32 216.1,-587.21 213.1,-580.88"/>
+</g>
+<!-- module~atl_eqn_maxwell_derive_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node7" class="node">
+<title>module~atl_eqn_maxwell_derive_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node7"><a xlink:href="../module/atl_eqn_maxwell_derive_module.html" xlink:title="atl_eqn_maxwell_derive_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="204.5,-570 18.5,-570 18.5,-546 204.5,-546 204.5,-570"/>
+<text text-anchor="middle" x="111.5" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_maxwell_derive_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_eqn_maxwell_derive_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_edge6" class="edge">
+<title>module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_eqn_maxwell_derive_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M336.41,-402.32C321.47,-431.11 280.05,-502.96 223,-537 219.97,-538.81 216.83,-540.46 213.59,-541.98"/>
+<polygon fill="#000000" stroke="#000000" points="212.11,-538.8 204.25,-545.9 214.82,-545.26 212.11,-538.8"/>
+</g>
+<!-- module~atl_eqn_maxwell_var_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node8" class="node">
+<title>module~atl_eqn_maxwell_var_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node8"><a xlink:href="../module/atl_eqn_maxwell_var_module.html" xlink:title="atl_eqn_maxwell_var_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="196,-528 27,-528 27,-504 196,-504 196,-528"/>
+<text text-anchor="middle" x="111.5" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_maxwell_var_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_eqn_maxwell_var_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_edge7" class="edge">
+<title>module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_eqn_maxwell_var_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M332.76,-402.04C314.04,-424.3 270.65,-471.73 223,-495 217.6,-497.64 211.91,-499.94 206.07,-501.96"/>
+<polygon fill="#000000" stroke="#000000" points="204.61,-498.75 196.12,-505.09 206.71,-505.42 204.61,-498.75"/>
+</g>
+<!-- module~atl_eqn_maxwelldivcorr_derive_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node9" class="node">
+<title>module~atl_eqn_maxwelldivcorr_derive_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node9"><a xlink:href="../module/atl_eqn_maxwelldivcorr_derive_module.html" xlink:title="atl_eqn_maxwelldivcorr_derive_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="223,-486 0,-486 0,-462 223,-462 223,-486"/>
+<text text-anchor="middle" x="111.5" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_maxwelldivcorr_derive_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_eqn_maxwelldivcorr_derive_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_edge8" class="edge">
+<title>module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_eqn_maxwelldivcorr_derive_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M323.84,-402.1C300.98,-416.37 260.63,-439.84 223,-453 216.02,-455.44 208.68,-457.62 201.24,-459.56"/>
+<polygon fill="#000000" stroke="#000000" points="200.31,-456.19 191.44,-461.98 201.98,-462.99 200.31,-456.19"/>
+</g>
+<!-- module~atl_eqn_maxwelldivcorr_var_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node10" class="node">
+<title>module~atl_eqn_maxwelldivcorr_var_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node10"><a xlink:href="../module/atl_eqn_maxwelldivcorr_var_module.html" xlink:title="atl_eqn_maxwelldivcorr_var_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="215,-444 8,-444 8,-420 215,-420 215,-444"/>
+<text text-anchor="middle" x="111.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_maxwelldivcorr_var_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_eqn_maxwelldivcorr_var_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_edge9" class="edge">
+<title>module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_eqn_maxwelldivcorr_var_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M276.59,-402.04C249.04,-407.07 216.87,-412.94 188.34,-418.15"/>
+<polygon fill="#000000" stroke="#000000" points="187.63,-414.72 178.42,-419.96 188.88,-421.61 187.63,-414.72"/>
+</g>
+<!-- module~atl_equation_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node11" class="node">
+<title>module~atl_equation_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node11"><a xlink:href="../module/atl_equation_module.html" xlink:title="atl_equation_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="173.5,-402 49.5,-402 49.5,-378 173.5,-378 173.5,-402"/>
+<text text-anchor="middle" x="111.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_equation_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_equation_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_edge10" class="edge">
+<title>module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_equation_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.81,-390C234.31,-390 207.76,-390 184.08,-390"/>
+<polygon fill="#000000" stroke="#000000" points="183.77,-386.5 173.77,-390 183.77,-393.5 183.77,-386.5"/>
+</g>
+<!-- module~atl_materialprp_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node12" class="node">
+<title>module~atl_materialprp_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node12"><a xlink:href="../module/atl_materialprp_module.html" xlink:title="atl_materialPrp_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="181,-360 42,-360 42,-336 181,-336 181,-360"/>
+<text text-anchor="middle" x="111.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_materialPrp_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_materialprp_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_edge11" class="edge">
+<title>module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_materialprp_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M276.59,-377.96C249.04,-372.93 216.87,-367.06 188.34,-361.85"/>
+<polygon fill="#000000" stroke="#000000" points="188.88,-358.39 178.42,-360.04 187.63,-365.28 188.88,-358.39"/>
+</g>
+<!-- module~atl_source_types_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node13" class="node">
+<title>module~atl_source_types_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node13"><a xlink:href="../module/atl_source_types_module.html" xlink:title="atl_source_types_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="184.5,-318 38.5,-318 38.5,-294 184.5,-294 184.5,-318"/>
+<text text-anchor="middle" x="111.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_source_types_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_source_types_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_edge12" class="edge">
+<title>module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_source_types_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M323.84,-377.9C300.98,-363.63 260.63,-340.16 223,-327 213.97,-323.84 204.35,-321.12 194.7,-318.79"/>
+<polygon fill="#000000" stroke="#000000" points="195.18,-315.31 184.65,-316.5 193.62,-322.14 195.18,-315.31"/>
+</g>
+<!-- module~atl_varsys_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node14" class="node">
+<title>module~atl_varsys_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node14"><a xlink:href="../module/atl_varsys_module.html" xlink:title="atl_varSys_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="167.5,-276 55.5,-276 55.5,-252 167.5,-252 167.5,-276"/>
+<text text-anchor="middle" x="111.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_varSys_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_varsys_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_edge13" class="edge">
+<title>module~atl_eqn_maxwell_hlp_module&#45;&gt;module~atl_varsys_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M332.76,-377.96C314.04,-355.7 270.65,-308.27 223,-285 209.04,-278.18 193.08,-273.57 177.72,-270.46"/>
+<polygon fill="#000000" stroke="#000000" points="178.2,-266.99 167.73,-268.62 176.93,-273.87 178.2,-266.99"/>
+</g>
+<!-- module~ply_oversample_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node15" class="node">
+<title>module~ply_oversample_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node15"><a xlink:href="../module/ply_oversample_module.html" xlink:title="ply_oversample_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="182.5,-234 40.5,-234 40.5,-210 182.5,-210 182.5,-234"/>
+<text text-anchor="middle" x="111.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_oversample_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_maxwell_hlp_module&#45;&gt;module~ply_oversample_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_edge14" class="edge">
+<title>module~atl_eqn_maxwell_hlp_module&#45;&gt;module~ply_oversample_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M336.41,-377.68C321.47,-348.89 280.05,-277.04 223,-243 213.69,-237.45 203.23,-233.31 192.54,-230.25"/>
+<polygon fill="#000000" stroke="#000000" points="193.25,-226.81 182.69,-227.72 191.51,-233.59 193.25,-226.81"/>
+</g>
+<!-- module~ply_poly_project_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node16" class="node">
+<title>module~ply_poly_project_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node16"><a xlink:href="../module/ply_poly_project_module.html" xlink:title="ply_poly_project_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="183.5,-192 39.5,-192 39.5,-168 183.5,-168 183.5,-192"/>
+<text text-anchor="middle" x="111.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_poly_project_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_maxwell_hlp_module&#45;&gt;module~ply_poly_project_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_edge15" class="edge">
+<title>module~atl_eqn_maxwell_hlp_module&#45;&gt;module~ply_poly_project_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M338.68,-377.84C327.28,-343.73 290.08,-246.64 223,-201 214.1,-194.95 203.91,-190.52 193.4,-187.31"/>
+<polygon fill="#000000" stroke="#000000" points="194.24,-183.92 183.68,-184.69 192.42,-190.68 194.24,-183.92"/>
+</g>
+<!-- tem_aux_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node17" class="node">
+<title>tem_aux_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node17"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_aux_module.html" xlink:title="tem_aux_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="163.5,-150 59.5,-150 59.5,-126 163.5,-126 163.5,-150"/>
+<text text-anchor="middle" x="111.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_aux_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_maxwell_hlp_module&#45;&gt;tem_aux_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_edge16" class="edge">
+<title>module~atl_eqn_maxwell_hlp_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M340.1,-377.78C331.78,-338.8 300.29,-216.62 223,-159 208.87,-148.46 190.96,-142.75 173.7,-139.76"/>
+<polygon fill="#000000" stroke="#000000" points="174.04,-136.27 163.64,-138.3 173.03,-143.2 174.04,-136.27"/>
+</g>
+<!-- tem_bc_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node18" class="node">
+<title>tem_bc_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node18"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_bc_module.html" xlink:title="tem_bc_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="160,-108 63,-108 63,-84 160,-84 160,-108"/>
+<text text-anchor="middle" x="111.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_bc_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_maxwell_hlp_module&#45;&gt;tem_bc_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_edge17" class="edge">
+<title>module~atl_eqn_maxwell_hlp_module&#45;&gt;tem_bc_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M341.14,-377.8C335.61,-334.48 310.79,-186.98 223,-117 208.18,-105.19 188.72,-99.31 170.27,-96.57"/>
+<polygon fill="#000000" stroke="#000000" points="170.5,-93.08 160.16,-95.35 169.67,-100.03 170.5,-93.08"/>
+</g>
+<!-- tem_logging_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node19" class="node">
+<title>tem_logging_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node19"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_logging_module.html" xlink:title="tem_logging_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="173.5,-66 49.5,-66 49.5,-42 173.5,-42 173.5,-66"/>
+<text text-anchor="middle" x="111.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_maxwell_hlp_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_edge18" class="edge">
+<title>module~atl_eqn_maxwell_hlp_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M341.92,-377.97C338.98,-330.9 321.58,-157.7 223,-75 211.88,-65.67 197.9,-59.99 183.65,-56.62"/>
+<polygon fill="#000000" stroke="#000000" points="184.28,-53.18 173.79,-54.64 182.9,-60.04 184.28,-53.18"/>
+</g>
+<!-- tem_stringKeyValuePair_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node20" class="node">
+<title>tem_stringKeyValuePair_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsesGraph_node20"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_stringkeyvaluepair_module.html" xlink:title="tem_stringKeyValuePair_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="203,-24 20,-24 20,0 203,0 203,-24"/>
+<text text-anchor="middle" x="111.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_stringKeyValuePair_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_maxwell_hlp_module&#45;&gt;tem_stringKeyValuePair_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsesGraph_edge19" class="edge">
+<title>module~atl_eqn_maxwell_hlp_module&#45;&gt;tem_stringKeyValuePair_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M342.52,-377.83C341.9,-326.82 332.3,-128.43 223,-33 219.69,-30.11 216.11,-27.57 212.33,-25.33"/>
+<polygon fill="#000000" stroke="#000000" points="213.68,-22.09 203.18,-20.65 210.49,-28.32 213.68,-22.09"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+          <div class="card">
+      <h3 class="card-header card-title bg-light">Used by</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_eqn_maxwell_hlp_module~~UsedByGraph Pages: 1 -->
+<svg id="moduleatl_eqn_maxwell_hlp_moduleUsedByGraph" width="641pt" height="75pt"
+ viewBox="0.00 0.00 641.00 75.41" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsedByGraph" class="graph" transform="scale(0.8 0.8) rotate(0) translate(4 90)">
+<title>module~~atl_eqn_maxwell_hlp_module~~UsedByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-90 795,-90 795,4 -4,4"/>
+<!-- module~atl_eqn_maxwell_hlp_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsedByGraph_node1" class="node">
+<title>module~atl_eqn_maxwell_hlp_module</title>
+<polygon fill="none" stroke="black" points="169,-45 0,-45 0,-21 169,-21 169,-45"/>
+<text text-anchor="middle" x="84.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_eqn_maxwell_hlp_module</text>
+</g>
+<!-- module~atl_equation_init_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsedByGraph_node2" class="node">
+<title>module~atl_equation_init_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsedByGraph_node2"><a xlink:href="../module/atl_equation_init_module.html" xlink:title="atl_equation_init_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="351,-66 205,-66 205,-42 351,-42 351,-66"/>
+<text text-anchor="middle" x="278" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_equation_init_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_equation_init_module&#45;&gt;module~atl_eqn_maxwell_hlp_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsedByGraph_edge1" class="edge">
+<title>module~atl_equation_init_module&#45;&gt;module~atl_eqn_maxwell_hlp_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M204.87,-46.09C196.49,-45.17 187.85,-44.22 179.23,-43.28"/>
+<polygon fill="#000000" stroke="#000000" points="179.47,-39.78 169.14,-42.17 178.7,-46.74 179.47,-39.78"/>
+</g>
+<!-- proc~implicit_update -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsedByGraph_node3" class="node">
+<title>proc~implicit_update</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsedByGraph_node3"><a xlink:href="../proc/implicit_update.html" xlink:title="implicit_update">
+<polygon fill="#d9534f" stroke="#d9534f" points="325,-24 231,-24 231,0 325,0 325,-24"/>
+<text text-anchor="middle" x="278" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">implicit_update</text>
+</a>
+</g>
+</g>
+<!-- proc~implicit_update&#45;&gt;module~atl_eqn_maxwell_hlp_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsedByGraph_edge2" class="edge">
+<title>proc~implicit_update&#45;&gt;module~atl_eqn_maxwell_hlp_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M230.64,-17.08C215.19,-18.78 197.37,-20.73 179.63,-22.68"/>
+<polygon fill="#000000" stroke="#000000" points="178.77,-19.25 169.21,-23.82 179.53,-26.21 178.77,-19.25"/>
+</g>
+<!-- module~atl_initialize_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsedByGraph_node4" class="node">
+<title>module~atl_initialize_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsedByGraph_node4"><a xlink:href="../module/atl_initialize_module.html" xlink:title="atl_initialize_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="508,-66 387,-66 387,-42 508,-42 508,-66"/>
+<text text-anchor="middle" x="447.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_initialize_module&#45;&gt;module~atl_equation_init_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsedByGraph_edge3" class="edge">
+<title>module~atl_initialize_module&#45;&gt;module~atl_equation_init_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M386.97,-54C378.66,-54 370,-54 361.36,-54"/>
+<polygon fill="#000000" stroke="#000000" points="361.24,-50.5 351.24,-54 361.24,-57.5 361.24,-50.5"/>
+</g>
+<!-- module~atl_program_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsedByGraph_node5" class="node">
+<title>module~atl_program_module</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsedByGraph_node5"><a xlink:href="../module/atl_program_module.html" xlink:title="atl_program_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="667,-46 544,-46 544,-22 667,-22 667,-46"/>
+<text text-anchor="middle" x="605.5" y="-31.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_program_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_program_module&#45;&gt;module~atl_initialize_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsedByGraph_edge4" class="edge">
+<title>module~atl_program_module&#45;&gt;module~atl_initialize_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M543.74,-41.79C535.32,-42.87 526.61,-43.99 518.04,-45.08"/>
+<polygon fill="#000000" stroke="#000000" points="517.54,-41.62 508.07,-46.36 518.43,-48.56 517.54,-41.62"/>
+</g>
+<!-- program~atl_harvesting -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsedByGraph_node6" class="node">
+<title>program~atl_harvesting</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsedByGraph_node6"><a xlink:href="../program/atl_harvesting.html" xlink:title="atl_harvesting">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="791,-86 703,-86 703,-62 791,-62 791,-86"/>
+<text text-anchor="middle" x="747" y="-71.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_harvesting</text>
+</a>
+</g>
+</g>
+<!-- program~atl_harvesting&#45;&gt;module~atl_initialize_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsedByGraph_edge5" class="edge">
+<title>program~atl_harvesting&#45;&gt;module~atl_initialize_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M702.74,-71.09C654.4,-67.84 575.42,-62.53 518.31,-58.69"/>
+<polygon fill="#000000" stroke="#000000" points="518.48,-55.2 508.27,-58.02 518.01,-62.18 518.48,-55.2"/>
+</g>
+<!-- program~atl_harvesting&#45;&gt;module~atl_program_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsedByGraph_edge7" class="edge">
+<title>program~atl_harvesting&#45;&gt;module~atl_program_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M704.15,-62C689.79,-57.88 673.56,-53.23 658.5,-48.91"/>
+<polygon fill="#000000" stroke="#000000" points="659.38,-45.52 648.81,-46.13 657.46,-52.25 659.38,-45.52"/>
+</g>
+<!-- program~ateles -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsedByGraph_node7" class="node">
+<title>program~ateles</title>
+<g id="a_module~~atl_eqn_maxwell_hlp_module~~UsedByGraph_node7"><a xlink:href="../program/ateles.html" xlink:title="ateles">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="774,-44 720,-44 720,-20 774,-20 774,-44"/>
+<text text-anchor="middle" x="747" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ateles</text>
+</a>
+</g>
+</g>
+<!-- program~ateles&#45;&gt;module~atl_program_module -->
+<g id="module~~atl_eqn_maxwell_hlp_module~~UsedByGraph_edge6" class="edge">
+<title>program~ateles&#45;&gt;module~atl_program_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M719.76,-32.38C707.52,-32.55 692.31,-32.77 677.05,-32.99"/>
+<polygon fill="#000000" stroke="#000000" points="676.99,-29.49 667.04,-33.13 677.09,-36.49 676.99,-29.49"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panmoduleatl_eqn_maxwell_hlp_moduleUsedByGraph = svgPanZoom('#moduleatl_eqn_maxwell_hlp_moduleUsedByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      <br>
+
+
+
+
+
+
+
+
+        <section>
+          <h2>Subroutines</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_eqn_maxwell_init"></span> <h3>public  subroutine <a href='../proc/atl_eqn_maxwell_init.html'>atl_eqn_maxwell_init</a>(equation, nDimensions, divCorr, initSource, initMaterial, varSys_data)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Initialization of the Maxwell equations.</p><a href="../proc/atl_eqn_maxwell_init.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~25"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>Equation system to set with this routine.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ndimensions~2"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nDimensions</strong></td>
+            <td>
+<p>Number of spatial dimensions, the Maxwell equations should live on.</p><a href="../proc/atl_eqn_maxwell_init.html#variable-ndimensions~2" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-divcorr"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>divCorr</strong></td>
+            <td>
+<p>Use divergence correction?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-initsource~2"></span>
+              type(<a href='../type/atl_init_source_type.html'>atl_init_source_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>initSource</strong></td>
+            <td>
+<p>Type to be filled with the possible source variables for the equation
+system. These source variables are later on used to extract the
+corresponding information from the configuration file.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-initmaterial~2"></span>
+              type(<a href='../type/atl_init_material_type.html'>atl_init_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>initMaterial</strong></td>
+            <td>
+<p>Type to be filled with the possible material variables for the equation
+system. These material variables are later on used to extract the
+corresponding information from the configuration file.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varsys_data~2"></span>
+              type(<a href='../type/atl_varsys_solverdata_type.html'>atl_varSys_solverData_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varSys_data</strong></td>
+            <td>
+<p>the pointer to the data required for the varsys</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_eqn_maxwell_load_bc"></span> <h3>public  subroutine <a href='../proc/atl_eqn_maxwell_load_bc.html'>atl_eqn_maxwell_load_bc</a>(equation, bc_state, bc_state_gradient, bc_varDict, bc_varDict_gradient, bc_normal_vec, bc_normal_vec_gradient, bc_trafo, bc_trafo_gradient, bc_label, bc_kind, thandle, conf)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Subroutine to load boundary conditions for Maxwell equations from
+ a Lua configuration file.</p><a href="../proc/atl_eqn_maxwell_load_bc.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~26"></span>
+              class(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_state~2"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_bc_state_type.html'>tem_bc_state_type</a>),
+            </td>
+<td>intent(out),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>bc_state</strong>(:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_state_gradient~2"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_bc_state_type.html'>tem_bc_state_type</a>),
+            </td>
+<td>intent(out),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>bc_state_gradient</strong>(:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_vardict~2"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/grw_stringkeyvaluepairarray_type.html'>grw_stringkeyvaluepairarray_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_varDict</strong></td>
+            <td>
+<p>Dictionary of boundary variables in bc_state</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_vardict_gradient~2"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/grw_stringkeyvaluepairarray_type.html'>grw_stringkeyvaluepairarray_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_varDict_gradient</strong></td>
+            <td>
+<p>Dictionary of boundary variables in bc_state_gradient</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_normal_vec~2"></span>
+              logical,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_normal_vec</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_normal_vec_gradient~2"></span>
+              logical,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_normal_vec_gradient</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_trafo~2"></span>
+              type(<a href='../type/atl_eqn_var_trafo_type.html'>atl_eqn_var_trafo_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_trafo</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_trafo_gradient~2"></span>
+              type(<a href='../type/atl_eqn_var_trafo_type.html'>atl_eqn_var_trafo_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_trafo_gradient</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_label~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_label</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_kind~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_kind</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-thandle~4"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>thandle</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-conf~8"></span>
+              type(<a href='https://apes-suite.github.io/aotus/type/flu_state.html'>flu_State</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>conf</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_eqn_maxwelldivcor_load_bc"></span> <h3>public  subroutine <a href='../proc/atl_eqn_maxwelldivcor_load_bc.html'>atl_eqn_maxwellDivCor_load_bc</a>(equation, bc_state, bc_state_gradient, bc_varDict, bc_varDict_gradient, bc_normal_vec, bc_normal_vec_gradient, bc_trafo, bc_trafo_gradient, bc_label, bc_kind, thandle, conf)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Subroutine to load boundary conditions for Maxwell equations with divergence correction from
+ a Lua configuration file. For the correction in E-field dirichlet bc and for correction in B-field
+ neumann bc are defined.</p><a href="../proc/atl_eqn_maxwelldivcor_load_bc.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~28"></span>
+              class(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_state~4"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_bc_state_type.html'>tem_bc_state_type</a>),
+            </td>
+<td>intent(out),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>bc_state</strong>(:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_state_gradient~4"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_bc_state_type.html'>tem_bc_state_type</a>),
+            </td>
+<td>intent(out),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>bc_state_gradient</strong>(:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_vardict~4"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/grw_stringkeyvaluepairarray_type.html'>grw_stringkeyvaluepairarray_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_varDict</strong></td>
+            <td>
+<p>Dictionary of boundary variables in bc_state</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_vardict_gradient~4"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/grw_stringkeyvaluepairarray_type.html'>grw_stringkeyvaluepairarray_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_varDict_gradient</strong></td>
+            <td>
+<p>Dictionary of boundary variables in bc_state_gradient</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_normal_vec~4"></span>
+              logical,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_normal_vec</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_normal_vec_gradient~4"></span>
+              logical,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_normal_vec_gradient</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_trafo~4"></span>
+              type(<a href='../type/atl_eqn_var_trafo_type.html'>atl_eqn_var_trafo_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_trafo</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_trafo_gradient~4"></span>
+              type(<a href='../type/atl_eqn_var_trafo_type.html'>atl_eqn_var_trafo_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_trafo_gradient</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_label~4"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_label</strong></td>
+            <td>
+<p>Unused variable, Needed for interface compatibility in module
+atl_equation_init_module.f90.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_kind~4"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_kind</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-thandle~6"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>thandle</strong></td>
+            <td>
+<p>Unused variable, Needed for interface compatibility in module
+atl_equation_init_module.f90.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-conf~10"></span>
+              type(<a href='https://apes-suite.github.io/aotus/type/flu_state.html'>flu_State</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>conf</strong></td>
+            <td>
+<p>Unused variable, Needed for interface compatibility in module
+atl_equation_init_module.f90.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_eqn_maxwell_implicit_pen"></span> <h3>public  subroutine <a href='../proc/atl_eqn_maxwell_implicit_pen.html'>atl_eqn_maxwell_implicit_pen</a>(material, weighted_dt, ndims, poly_proj, state, timestep_rhs)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Solve the equation system with just the penalization terms to find an
+implicit update for the IMEX timestepping procedure.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~15"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong></td>
+            <td>
+<p>Definition of the material, which directly describes the penalization.</p><a href="../proc/atl_eqn_maxwell_implicit_pen.html#variable-material~15" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-weighted_dt"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>weighted_dt</strong></td>
+            <td>
+<p>Timestep which is already weighted by the time integration scheme.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ndims"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ndims</strong></td>
+            <td>
+<p>Number of dimensions, the equation system is computed in (2 or 3).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~16"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Description of the projection for the material.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state~21"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state</strong>(:,:,:)</td>
+            <td>
+<p>The state variables of the equation system, they will be updated to
+the solution of the implicit computation for penalization.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-timestep_rhs"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>timestep_rhs</strong>(:,:,:)</td>
+            <td>
+<p>Right hand side contribution by the implicit calculation.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-eqn_maxwell_2d_load_bc"></span> <h3>private  subroutine <a href='../proc/eqn_maxwell_2d_load_bc.html'>eqn_maxwell_2d_load_bc</a>(equation, bc_state, bc_state_gradient, bc_varDict, bc_varDict_gradient, bc_normal_vec, bc_normal_vec_gradient, bc_trafo, bc_trafo_gradient, bc_label, bc_kind, thandle, conf)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Subroutine to load boundary conditions for 2D Maxwell equations from
+ a Lua configuration file.</p><a href="../proc/eqn_maxwell_2d_load_bc.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~27"></span>
+              class(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_state~3"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_bc_state_type.html'>tem_bc_state_type</a>),
+            </td>
+<td>intent(out),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>bc_state</strong>(:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_state_gradient~3"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_bc_state_type.html'>tem_bc_state_type</a>),
+            </td>
+<td>intent(out),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>bc_state_gradient</strong>(:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_vardict~3"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/grw_stringkeyvaluepairarray_type.html'>grw_stringkeyvaluepairarray_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_varDict</strong></td>
+            <td>
+<p>Dictionary of boundary variables in bc_state</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_vardict_gradient~3"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/grw_stringkeyvaluepairarray_type.html'>grw_stringkeyvaluepairarray_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_varDict_gradient</strong></td>
+            <td>
+<p>Dictionary of boundary variables in bc_state_gradient</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_normal_vec~3"></span>
+              logical,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_normal_vec</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_normal_vec_gradient~3"></span>
+              logical,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_normal_vec_gradient</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_trafo~3"></span>
+              type(<a href='../type/atl_eqn_var_trafo_type.html'>atl_eqn_var_trafo_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_trafo</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_trafo_gradient~3"></span>
+              type(<a href='../type/atl_eqn_var_trafo_type.html'>atl_eqn_var_trafo_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_trafo_gradient</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_label~3"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_label</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_kind~3"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_kind</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-thandle~5"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>thandle</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-conf~9"></span>
+              type(<a href='https://apes-suite.github.io/aotus/type/flu_state.html'>flu_State</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>conf</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

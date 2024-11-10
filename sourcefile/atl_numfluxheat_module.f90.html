@@ -1,0 +1,1068 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_numFluxHeat_module.f90 &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_numFluxHeat_module.f90
+      <small>Source File</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for source files.">63 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_numFluxHeat_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+            <li class="breadcrumb-item active" aria-current="page">atl_numFluxHeat_module.f90</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#mods-0"
+         aria-expanded="false" aria-controls="mods-0">
+         <h4 class="card-header bg-primary text-white">Modules</h4>
+      </a>
+      <div id="mods-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_numfluxheat_module.html">atl_numFluxHeat_module</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../sourcefile/atl_numfluxheat_module.f90.html#src">atl_numFluxHeat_module.f90</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    <div class="col-md-9" id='text'>
+      
+      <br>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">This file depends on</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph Pages: 1 -->
+<svg id="sourcefileatl_numfluxheat_modulef90EfferentGraph" width="607pt" height="872pt"
+ viewBox="0.00 0.00 607.00 872.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 868)">
+<title>sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-868 603,-868 603,4 -4,4"/>
+<!-- sourcefile~atl_numfluxheat_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node1" class="node">
+<title>sourcefile~atl_numfluxheat_module.f90</title>
+<polygon fill="none" stroke="black" points="599,-444 430,-444 430,-420 599,-420 599,-444"/>
+<text text-anchor="middle" x="514.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_numFluxHeat_module.f90</text>
+</g>
+<!-- sourcefile~atl_equation_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node2" class="node">
+<title>sourcefile~atl_equation_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node2"><a xlink:href="../sourcefile/atl_equation_module.f90.html" xlink:title="atl_equation_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="384.5,-654 239.5,-654 239.5,-630 384.5,-630 384.5,-654"/>
+<text text-anchor="middle" x="312" y="-639.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_equation_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_numfluxheat_module.f90&#45;&gt;sourcefile~atl_equation_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge1" class="edge">
+<title>sourcefile~atl_numfluxheat_module.f90&#45;&gt;sourcefile~atl_equation_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M501.85,-444.2C468.49,-479.14 372.37,-579.82 331.62,-622.5"/>
+<polygon fill="#000000" stroke="#000000" points="329.05,-620.12 324.68,-629.77 334.12,-624.95 329.05,-620.12"/>
+</g>
+<!-- sourcefile~atl_facedata_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node3" class="node">
+<title>sourcefile~atl_facedata_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node3"><a xlink:href="../sourcefile/atl_facedata_module.f90.html" xlink:title="atl_facedata_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="384.5,-444 239.5,-444 239.5,-420 384.5,-420 384.5,-444"/>
+<text text-anchor="middle" x="312" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_facedata_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_numfluxheat_module.f90&#45;&gt;sourcefile~atl_facedata_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge2" class="edge">
+<title>sourcefile~atl_numfluxheat_module.f90&#45;&gt;sourcefile~atl_facedata_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M429.92,-432C418.29,-432 406.34,-432 394.74,-432"/>
+<polygon fill="#000000" stroke="#000000" points="394.65,-428.5 384.65,-432 394.65,-435.5 394.65,-428.5"/>
+</g>
+<!-- sourcefile~ply_poly_project_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node4" class="node">
+<title>sourcefile~ply_poly_project_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node4"><a xlink:href="../sourcefile/ply_poly_project_module.f90.html" xlink:title="ply_poly_project_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="394,-234 230,-234 230,-210 394,-210 394,-234"/>
+<text text-anchor="middle" x="312" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_poly_project_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_numfluxheat_module.f90&#45;&gt;sourcefile~ply_poly_project_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge3" class="edge">
+<title>sourcefile~atl_numfluxheat_module.f90&#45;&gt;sourcefile~ply_poly_project_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M501.85,-419.8C468.49,-384.86 372.37,-284.18 331.62,-241.5"/>
+<polygon fill="#000000" stroke="#000000" points="334.12,-239.05 324.68,-234.23 329.05,-243.88 334.12,-239.05"/>
+</g>
+<!-- sourcefile~atl_eqn_acoustic_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node6" class="node">
+<title>sourcefile~atl_eqn_acoustic_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node6"><a xlink:href="../sourcefile/atl_eqn_acoustic_module.f90.html" xlink:title="atl_eqn_acoustic_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="180.5,-864 13.5,-864 13.5,-840 180.5,-840 180.5,-864"/>
+<text text-anchor="middle" x="97" y="-849.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_acoustic_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_acoustic_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge4" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_acoustic_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M307.27,-654.06C296.16,-687.92 259.83,-784.4 194,-831 191.73,-832.61 189.36,-834.1 186.91,-835.47"/>
+<polygon fill="#000000" stroke="#000000" points="185.16,-832.43 177.73,-839.99 188.25,-838.71 185.16,-832.43"/>
+</g>
+<!-- sourcefile~atl_eqn_advection_1d_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node7" class="node">
+<title>sourcefile~atl_eqn_advection_1d_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node7"><a xlink:href="../sourcefile/atl_eqn_advection_1d_module.f90.html" xlink:title="atl_eqn_advection_1d_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="194,-822 0,-822 0,-798 194,-798 194,-822"/>
+<text text-anchor="middle" x="97" y="-807.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_advection_1d_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_advection_1d_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge5" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_advection_1d_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M305.04,-654.21C290.44,-682.78 249.93,-754.17 194,-789 191.18,-790.76 188.23,-792.37 185.18,-793.85"/>
+<polygon fill="#000000" stroke="#000000" points="183.61,-790.72 175.82,-797.9 186.39,-797.14 183.61,-790.72"/>
+</g>
+<!-- sourcefile~atl_eqn_bbm_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node8" class="node">
+<title>sourcefile~atl_eqn_bbm_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node8"><a xlink:href="../sourcefile/atl_eqn_bbm_module.f90.html" xlink:title="atl_eqn_bbm_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="170.5,-780 23.5,-780 23.5,-756 170.5,-756 170.5,-780"/>
+<text text-anchor="middle" x="97" y="-765.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_bbm_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_bbm_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge6" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_bbm_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M301.18,-654.27C282.69,-676.48 240.4,-723.23 194,-747 189.67,-749.22 185.12,-751.2 180.44,-752.97"/>
+<polygon fill="#000000" stroke="#000000" points="179.02,-749.76 170.71,-756.33 181.3,-756.38 179.02,-749.76"/>
+</g>
+<!-- sourcefile~atl_eqn_euler_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node9" class="node">
+<title>sourcefile~atl_eqn_euler_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node9"><a xlink:href="../sourcefile/atl_eqn_euler_module.f90.html" xlink:title="atl_eqn_euler_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="172.5,-738 21.5,-738 21.5,-714 172.5,-714 172.5,-738"/>
+<text text-anchor="middle" x="97" y="-723.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_euler_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_euler_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge7" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_euler_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M292.31,-654.19C269.84,-668.34 230.56,-691.46 194,-705 187.71,-707.33 181.09,-709.44 174.39,-711.34"/>
+<polygon fill="#000000" stroke="#000000" points="173.29,-708.01 164.54,-713.98 175.11,-714.77 173.29,-708.01"/>
+</g>
+<!-- sourcefile~atl_eqn_heat_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node10" class="node">
+<title>sourcefile~atl_eqn_heat_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node10"><a xlink:href="../sourcefile/atl_eqn_heat_module.f90.html" xlink:title="atl_eqn_heat_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="170.5,-696 23.5,-696 23.5,-672 170.5,-672 170.5,-696"/>
+<text text-anchor="middle" x="97" y="-681.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_heat_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_heat_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge8" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_heat_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M249.96,-654.04C224.67,-659.02 195.17,-664.84 168.93,-670.01"/>
+<polygon fill="#000000" stroke="#000000" points="168.18,-666.59 159.05,-671.96 169.53,-673.46 168.18,-666.59"/>
+</g>
+<!-- sourcefile~atl_eqn_lineareuler_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node11" class="node">
+<title>sourcefile~atl_eqn_lineareuler_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node11"><a xlink:href="../sourcefile/atl_eqn_lineareuler_module.f90.html" xlink:title="atl_eqn_linearEuler_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="187.5,-654 6.5,-654 6.5,-630 187.5,-630 187.5,-654"/>
+<text text-anchor="middle" x="97" y="-639.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_linearEuler_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_lineareuler_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge9" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_lineareuler_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M239.48,-642C226.16,-642 212.01,-642 198.02,-642"/>
+<polygon fill="#000000" stroke="#000000" points="197.87,-638.5 187.87,-642 197.87,-645.5 197.87,-638.5"/>
+</g>
+<!-- sourcefile~atl_eqn_maxwell_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node12" class="node">
+<title>sourcefile~atl_eqn_maxwell_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node12"><a xlink:href="../sourcefile/atl_eqn_maxwell_module.f90.html" xlink:title="atl_eqn_maxwell_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="180.5,-612 13.5,-612 13.5,-588 180.5,-588 180.5,-612"/>
+<text text-anchor="middle" x="97" y="-597.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_maxwell_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_maxwell_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge10" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_maxwell_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M249.96,-629.96C224.67,-624.98 195.17,-619.16 168.93,-613.99"/>
+<polygon fill="#000000" stroke="#000000" points="169.53,-610.54 159.05,-612.04 168.18,-617.41 169.53,-610.54"/>
+</g>
+<!-- sourcefile~atl_eqn_nerplanck_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node13" class="node">
+<title>sourcefile~atl_eqn_nerplanck_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node13"><a xlink:href="../sourcefile/atl_eqn_nerplanck_module.f90.html" xlink:title="atl_eqn_nerplanck_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="185,-570 9,-570 9,-546 185,-546 185,-570"/>
+<text text-anchor="middle" x="97" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_nerplanck_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_nerplanck_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge11" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_nerplanck_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M292.31,-629.81C269.84,-615.66 230.56,-592.54 194,-579 187.71,-576.67 181.09,-574.56 174.39,-572.66"/>
+<polygon fill="#000000" stroke="#000000" points="175.11,-569.23 164.54,-570.02 173.29,-575.99 175.11,-569.23"/>
+</g>
+<!-- sourcefile~atl_eqn_nvrstk_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node14" class="node">
+<title>sourcefile~atl_eqn_nvrstk_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node14"><a xlink:href="../sourcefile/atl_eqn_nvrstk_module.f90.html" xlink:title="atl_eqn_nvrstk_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="174.5,-528 19.5,-528 19.5,-504 174.5,-504 174.5,-528"/>
+<text text-anchor="middle" x="97" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_nvrstk_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_nvrstk_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge12" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_nvrstk_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M301.18,-629.73C282.69,-607.52 240.4,-560.77 194,-537 190.01,-534.95 185.82,-533.11 181.52,-531.44"/>
+<polygon fill="#000000" stroke="#000000" points="182.56,-528.09 171.97,-528.07 180.23,-534.7 182.56,-528.09"/>
+</g>
+<!-- sourcefile~atl_materialfun_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node15" class="node">
+<title>sourcefile~atl_materialfun_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node15"><a xlink:href="../sourcefile/atl_materialfun_module.f90.html" xlink:title="atl_materialFun_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="177.5,-486 16.5,-486 16.5,-462 177.5,-462 177.5,-486"/>
+<text text-anchor="middle" x="97" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_materialFun_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_materialfun_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge13" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_materialfun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M305.04,-629.79C290.44,-601.22 249.93,-529.83 194,-495 191.18,-493.24 188.23,-491.63 185.18,-490.15"/>
+<polygon fill="#000000" stroke="#000000" points="186.39,-486.86 175.82,-486.1 183.61,-493.28 186.39,-486.86"/>
+</g>
+<!-- sourcefile~atl_boundary_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node5" class="node">
+<title>sourcefile~atl_boundary_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node5"><a xlink:href="../sourcefile/atl_boundary_module.f90.html" xlink:title="atl_boundary_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="171,-444 23,-444 23,-420 171,-420 171,-444"/>
+<text text-anchor="middle" x="97" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_boundary_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_facedata_module.f90&#45;&gt;sourcefile~atl_boundary_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge14" class="edge">
+<title>sourcefile~atl_facedata_module.f90&#45;&gt;sourcefile~atl_boundary_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M239.48,-432C220.84,-432 200.58,-432 181.38,-432"/>
+<polygon fill="#000000" stroke="#000000" points="181.15,-428.5 171.15,-432 181.15,-435.5 181.15,-428.5"/>
+</g>
+<!-- sourcefile~ply_dof_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node16" class="node">
+<title>sourcefile~ply_dof_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node16"><a xlink:href="../sourcefile/ply_dof_module.f90.html" xlink:title="ply_dof_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="155.5,-402 38.5,-402 38.5,-378 155.5,-378 155.5,-402"/>
+<text text-anchor="middle" x="97" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_dof_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ply_poly_project_module.f90&#45;&gt;sourcefile~ply_dof_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge15" class="edge">
+<title>sourcefile~ply_poly_project_module.f90&#45;&gt;sourcefile~ply_dof_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M305.04,-234.21C290.44,-262.78 249.93,-334.17 194,-369 185.27,-374.43 175.34,-378.47 165.25,-381.47"/>
+<polygon fill="#000000" stroke="#000000" points="164.33,-378.1 155.56,-384.04 166.12,-384.86 164.33,-378.1"/>
+</g>
+<!-- sourcefile~ply_dynarray_project_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node17" class="node">
+<title>sourcefile~ply_dynarray_project_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node17"><a xlink:href="../sourcefile/ply_dynarray_project_module.f90.html" xlink:title="ply_dynArray_project_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="192,-360 2,-360 2,-336 192,-336 192,-360"/>
+<text text-anchor="middle" x="97" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_dynArray_project_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ply_poly_project_module.f90&#45;&gt;sourcefile~ply_dynarray_project_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge16" class="edge">
+<title>sourcefile~ply_poly_project_module.f90&#45;&gt;sourcefile~ply_dynarray_project_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M301.18,-234.27C282.69,-256.48 240.4,-303.23 194,-327 190.01,-329.05 185.82,-330.89 181.52,-332.56"/>
+<polygon fill="#000000" stroke="#000000" points="180.23,-329.3 171.97,-335.93 182.56,-335.91 180.23,-329.3"/>
+</g>
+<!-- sourcefile~ply_fxt_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node18" class="node">
+<title>sourcefile~ply_fxt_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node18"><a xlink:href="../sourcefile/ply_fxt_module.f90.html" xlink:title="ply_fxt_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="153.5,-318 40.5,-318 40.5,-294 153.5,-294 153.5,-318"/>
+<text text-anchor="middle" x="97" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fxt_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ply_poly_project_module.f90&#45;&gt;sourcefile~ply_fxt_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge17" class="edge">
+<title>sourcefile~ply_poly_project_module.f90&#45;&gt;sourcefile~ply_fxt_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M292.31,-234.19C269.84,-248.34 230.56,-271.46 194,-285 184.3,-288.59 173.81,-291.66 163.45,-294.25"/>
+<polygon fill="#000000" stroke="#000000" points="162.51,-290.88 153.59,-296.59 164.12,-297.69 162.51,-290.88"/>
+</g>
+<!-- sourcefile~ply_l2p_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node19" class="node">
+<title>sourcefile~ply_l2p_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node19"><a xlink:href="../sourcefile/ply_l2p_module.f90.html" xlink:title="ply_l2p_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="155,-276 39,-276 39,-252 155,-252 155,-276"/>
+<text text-anchor="middle" x="97" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_l2p_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ply_poly_project_module.f90&#45;&gt;sourcefile~ply_l2p_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge18" class="edge">
+<title>sourcefile~ply_poly_project_module.f90&#45;&gt;sourcefile~ply_l2p_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M249.96,-234.04C223.36,-239.28 192.09,-245.45 164.86,-250.82"/>
+<polygon fill="#000000" stroke="#000000" points="164.16,-247.39 155.03,-252.76 165.51,-254.25 164.16,-247.39"/>
+</g>
+<!-- sourcefile~ply_legfpt_2d_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node20" class="node">
+<title>sourcefile~ply_legfpt_2d_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node20"><a xlink:href="../sourcefile/ply_legfpt_2d_module.f90.html" xlink:title="ply_legFpt_2D_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="173.5,-234 20.5,-234 20.5,-210 173.5,-210 173.5,-234"/>
+<text text-anchor="middle" x="97" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_legFpt_2D_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ply_poly_project_module.f90&#45;&gt;sourcefile~ply_legfpt_2d_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge19" class="edge">
+<title>sourcefile~ply_poly_project_module.f90&#45;&gt;sourcefile~ply_legfpt_2d_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M229.87,-222C214.87,-222 199.16,-222 184.02,-222"/>
+<polygon fill="#000000" stroke="#000000" points="183.65,-218.5 173.65,-222 183.65,-225.5 183.65,-218.5"/>
+</g>
+<!-- sourcefile~ply_legfpt_3d_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node21" class="node">
+<title>sourcefile~ply_legfpt_3d_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node21"><a xlink:href="../sourcefile/ply_legfpt_3d_module.f90.html" xlink:title="ply_legFpt_3D_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="173.5,-192 20.5,-192 20.5,-168 173.5,-168 173.5,-192"/>
+<text text-anchor="middle" x="97" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_legFpt_3D_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ply_poly_project_module.f90&#45;&gt;sourcefile~ply_legfpt_3d_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge20" class="edge">
+<title>sourcefile~ply_poly_project_module.f90&#45;&gt;sourcefile~ply_legfpt_3d_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M249.96,-209.96C224.67,-204.98 195.17,-199.16 168.93,-193.99"/>
+<polygon fill="#000000" stroke="#000000" points="169.53,-190.54 159.05,-192.04 168.18,-197.41 169.53,-190.54"/>
+</g>
+<!-- sourcefile~ply_legfpt_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node22" class="node">
+<title>sourcefile~ply_legfpt_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node22"><a xlink:href="../sourcefile/ply_legfpt_module.f90.html" xlink:title="ply_legFpt_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="163.5,-150 30.5,-150 30.5,-126 163.5,-126 163.5,-150"/>
+<text text-anchor="middle" x="97" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_legFpt_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ply_poly_project_module.f90&#45;&gt;sourcefile~ply_legfpt_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge21" class="edge">
+<title>sourcefile~ply_poly_project_module.f90&#45;&gt;sourcefile~ply_legfpt_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M292.31,-209.81C269.84,-195.66 230.56,-172.54 194,-159 187.35,-156.54 180.32,-154.32 173.22,-152.33"/>
+<polygon fill="#000000" stroke="#000000" points="174.08,-148.94 163.51,-149.76 172.29,-155.71 174.08,-148.94"/>
+</g>
+<!-- sourcefile~ply_nodes_header_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node23" class="node">
+<title>sourcefile~ply_nodes_header_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node23"><a xlink:href="../sourcefile/ply_nodes_header_module.f90.html" xlink:title="ply_nodes_header_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="184.5,-108 9.5,-108 9.5,-84 184.5,-84 184.5,-108"/>
+<text text-anchor="middle" x="97" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_nodes_header_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ply_poly_project_module.f90&#45;&gt;sourcefile~ply_nodes_header_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge22" class="edge">
+<title>sourcefile~ply_poly_project_module.f90&#45;&gt;sourcefile~ply_nodes_header_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M301.18,-209.73C282.69,-187.52 240.4,-140.77 194,-117 190.01,-114.95 185.82,-113.11 181.52,-111.44"/>
+<polygon fill="#000000" stroke="#000000" points="182.56,-108.09 171.97,-108.07 180.23,-114.7 182.56,-108.09"/>
+</g>
+<!-- sourcefile~ply_nodes_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node24" class="node">
+<title>sourcefile~ply_nodes_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node24"><a xlink:href="../sourcefile/ply_nodes_module.f90.html" xlink:title="ply_nodes_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="163,-66 31,-66 31,-42 163,-42 163,-66"/>
+<text text-anchor="middle" x="97" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_nodes_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ply_poly_project_module.f90&#45;&gt;sourcefile~ply_nodes_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge23" class="edge">
+<title>sourcefile~ply_poly_project_module.f90&#45;&gt;sourcefile~ply_nodes_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M305.04,-209.79C290.44,-181.22 249.93,-109.83 194,-75 187.43,-70.91 180.18,-67.61 172.69,-64.95"/>
+<polygon fill="#000000" stroke="#000000" points="173.7,-61.6 163.11,-61.91 171.58,-68.27 173.7,-61.6"/>
+</g>
+<!-- sourcefile~ply_prj_header_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node25" class="node">
+<title>sourcefile~ply_prj_header_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_node25"><a xlink:href="../sourcefile/ply_prj_header_module.f90.html" xlink:title="ply_prj_header_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="175.5,-24 18.5,-24 18.5,0 175.5,0 175.5,-24"/>
+<text text-anchor="middle" x="97" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_prj_header_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ply_poly_project_module.f90&#45;&gt;sourcefile~ply_prj_header_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~EfferentGraph_edge24" class="edge">
+<title>sourcefile~ply_poly_project_module.f90&#45;&gt;sourcefile~ply_prj_header_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M307.27,-209.94C296.16,-176.08 259.83,-79.6 194,-33 191.13,-30.97 188.1,-29.13 184.95,-27.46"/>
+<polygon fill="#000000" stroke="#000000" points="186.35,-24.25 175.8,-23.2 183.39,-30.6 186.35,-24.25"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#EfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="EfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="202pt" height="32pt"
+ viewBox="0.00 0.00 201.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 197.5,-28 197.5,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="193.5,-24 88.5,-24 88.5,0 193.5,0 193.5,-24"/>
+<text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Files dependent on this one</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph Pages: 1 -->
+<svg id="sourcefileatl_numfluxheat_modulef90AfferentGraph" width="641pt" height="144pt"
+ viewBox="0.00 0.00 641.00 143.90" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph" class="graph" transform="scale(0.59 0.59) rotate(0) translate(4 238)">
+<title>sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-238 1074,-238 1074,4 -4,4"/>
+<!-- sourcefile~atl_numfluxheat_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node1" class="node">
+<title>sourcefile~atl_numfluxheat_module.f90</title>
+<polygon fill="none" stroke="black" points="169,-129 0,-129 0,-105 169,-105 169,-129"/>
+<text text-anchor="middle" x="84.5" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_numFluxHeat_module.f90</text>
+</g>
+<!-- sourcefile~atl_modg_2d_heat_kernel_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node2" class="node">
+<title>sourcefile~atl_modg_2d_heat_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node2"><a xlink:href="../sourcefile/atl_modg_2d_heat_kernel_module.f90.html" xlink:title="atl_modg_2d_heat_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="420,-150 205,-150 205,-126 420,-126 420,-150"/>
+<text text-anchor="middle" x="312.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_heat_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_2d_heat_kernel_module.f90&#45;&gt;sourcefile~atl_numfluxheat_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_edge1" class="edge">
+<title>sourcefile~atl_modg_2d_heat_kernel_module.f90&#45;&gt;sourcefile~atl_numfluxheat_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M204.79,-128.08C196.26,-127.29 187.68,-126.49 179.24,-125.71"/>
+<polygon fill="#000000" stroke="#000000" points="179.33,-122.2 169.05,-124.76 178.68,-129.17 179.33,-122.2"/>
+</g>
+<!-- sourcefile~atl_modg_heat_kernel_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node3" class="node">
+<title>sourcefile~atl_modg_heat_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node3"><a xlink:href="../sourcefile/atl_modg_heat_kernel_module.f90.html" xlink:title="atl_modg_heat_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="410.5,-108 214.5,-108 214.5,-84 410.5,-84 410.5,-108"/>
+<text text-anchor="middle" x="312.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_heat_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_heat_kernel_module.f90&#45;&gt;sourcefile~atl_numfluxheat_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_edge2" class="edge">
+<title>sourcefile~atl_modg_heat_kernel_module.f90&#45;&gt;sourcefile~atl_numfluxheat_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M214.34,-105.03C202.69,-106.11 190.8,-107.22 179.19,-108.29"/>
+<polygon fill="#000000" stroke="#000000" points="178.71,-104.82 169.07,-109.23 179.35,-111.79 178.71,-104.82"/>
+</g>
+<!-- sourcefile~atl_compute_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node4" class="node">
+<title>sourcefile~atl_compute_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node4"><a xlink:href="../sourcefile/atl_compute_module.f90.html" xlink:title="atl_compute_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="601,-129 456,-129 456,-105 601,-105 601,-129"/>
+<text text-anchor="middle" x="528.5" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_compute_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_compute_module.f90&#45;&gt;sourcefile~atl_modg_2d_heat_kernel_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_edge3" class="edge">
+<title>sourcefile~atl_compute_module.f90&#45;&gt;sourcefile~atl_modg_2d_heat_kernel_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M455.94,-124.02C447.56,-124.84 438.84,-125.7 430.04,-126.56"/>
+<polygon fill="#000000" stroke="#000000" points="429.69,-123.08 420.08,-127.54 430.37,-130.05 429.69,-123.08"/>
+</g>
+<!-- sourcefile~atl_compute_module.f90&#45;&gt;sourcefile~atl_modg_heat_kernel_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_edge4" class="edge">
+<title>sourcefile~atl_compute_module.f90&#45;&gt;sourcefile~atl_modg_heat_kernel_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M455.94,-109.98C444.65,-108.87 432.76,-107.7 420.86,-106.54"/>
+<polygon fill="#000000" stroke="#000000" points="421.17,-103.05 410.88,-105.56 420.49,-110.02 421.17,-103.05"/>
+</g>
+<!-- sourcefile~atl_fwdeuler_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node5" class="node">
+<title>sourcefile~atl_fwdeuler_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node5"><a xlink:href="../sourcefile/atl_fwdeuler_module.f90.html" xlink:title="atl_fwdEuler_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="796,-234 652,-234 652,-210 796,-210 796,-234"/>
+<text text-anchor="middle" x="724" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_fwdEuler_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_fwdeuler_module.f90&#45;&gt;sourcefile~atl_compute_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_edge5" class="edge">
+<title>sourcefile~atl_fwdeuler_module.f90&#45;&gt;sourcefile~atl_compute_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M659.9,-209.89C652.01,-207.42 644.19,-204.49 637,-201 602.76,-184.4 569.15,-155.55 548.87,-136.36"/>
+<polygon fill="#000000" stroke="#000000" points="551.16,-133.71 541.53,-129.28 546.3,-138.75 551.16,-133.71"/>
+</g>
+<!-- sourcefile~atl_imexrk_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node6" class="node">
+<title>sourcefile~atl_imexrk_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node6"><a xlink:href="../sourcefile/atl_imexrk_module.f90.html" xlink:title="atl_imexrk_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="790.5,-192 657.5,-192 657.5,-168 790.5,-168 790.5,-192"/>
+<text text-anchor="middle" x="724" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_imexrk_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_imexrk_module.f90&#45;&gt;sourcefile~atl_compute_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_edge6" class="edge">
+<title>sourcefile~atl_imexrk_module.f90&#45;&gt;sourcefile~atl_compute_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M669.02,-167.98C658.34,-165.28 647.26,-162.24 637,-159 613.25,-151.5 587.22,-141.38 566.72,-132.95"/>
+<polygon fill="#000000" stroke="#000000" points="568,-129.7 557.43,-129.09 565.32,-136.16 568,-129.7"/>
+</g>
+<!-- sourcefile~atl_predcor_cerk4_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node7" class="node">
+<title>sourcefile~atl_predcor_cerk4_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node7"><a xlink:href="../sourcefile/atl_predcor_cerk4_module.f90.html" xlink:title="atl_predcor_cerk4_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="811,-150 637,-150 637,-126 811,-126 811,-150"/>
+<text text-anchor="middle" x="724" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_predcor_cerk4_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_predcor_cerk4_module.f90&#45;&gt;sourcefile~atl_compute_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_edge7" class="edge">
+<title>sourcefile~atl_predcor_cerk4_module.f90&#45;&gt;sourcefile~atl_compute_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M636.72,-128.64C628.26,-127.72 619.7,-126.79 611.29,-125.88"/>
+<polygon fill="#000000" stroke="#000000" points="611.45,-122.37 601.13,-124.77 610.7,-129.33 611.45,-122.37"/>
+</g>
+<!-- sourcefile~atl_rk4_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node8" class="node">
+<title>sourcefile~atl_rk4_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node8"><a xlink:href="../sourcefile/atl_rk4_module.f90.html" xlink:title="atl_rk4_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="781.5,-108 666.5,-108 666.5,-84 781.5,-84 781.5,-108"/>
+<text text-anchor="middle" x="724" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_rk4_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_rk4_module.f90&#45;&gt;sourcefile~atl_compute_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_edge8" class="edge">
+<title>sourcefile~atl_rk4_module.f90&#45;&gt;sourcefile~atl_compute_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M666.25,-102.16C649.03,-104.03 629.76,-106.12 611.24,-108.13"/>
+<polygon fill="#000000" stroke="#000000" points="610.61,-104.68 601.05,-109.23 611.37,-111.64 610.61,-104.68"/>
+</g>
+<!-- sourcefile~atl_rktaylor_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node9" class="node">
+<title>sourcefile~atl_rktaylor_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node9"><a xlink:href="../sourcefile/atl_rktaylor_module.f90.html" xlink:title="atl_rktaylor_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="793.5,-66 654.5,-66 654.5,-42 793.5,-42 793.5,-66"/>
+<text text-anchor="middle" x="724" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_rktaylor_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_rktaylor_module.f90&#45;&gt;sourcefile~atl_compute_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_edge9" class="edge">
+<title>sourcefile~atl_rktaylor_module.f90&#45;&gt;sourcefile~atl_compute_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M669.02,-66.02C658.34,-68.72 647.26,-71.76 637,-75 613.25,-82.5 587.22,-92.62 566.72,-101.05"/>
+<polygon fill="#000000" stroke="#000000" points="565.32,-97.84 557.43,-104.91 568,-104.3 565.32,-97.84"/>
+</g>
+<!-- sourcefile~atl_ssprk2_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node10" class="node">
+<title>sourcefile~atl_ssprk2_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node10"><a xlink:href="../sourcefile/atl_ssprk2_module.f90.html" xlink:title="atl_ssprk2_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="790,-24 658,-24 658,0 790,0 790,-24"/>
+<text text-anchor="middle" x="724" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_ssprk2_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_ssprk2_module.f90&#45;&gt;sourcefile~atl_compute_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_edge10" class="edge">
+<title>sourcefile~atl_ssprk2_module.f90&#45;&gt;sourcefile~atl_compute_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M659.9,-24.11C652.01,-26.58 644.19,-29.51 637,-33 602.76,-49.6 569.15,-78.45 548.87,-97.64"/>
+<polygon fill="#000000" stroke="#000000" points="546.3,-95.25 541.53,-104.72 551.16,-100.29 546.3,-95.25"/>
+</g>
+<!-- sourcefile~atl_global_time_integration_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node11" class="node">
+<title>sourcefile~atl_global_time_integration_module.f90</title>
+<g id="a_sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_node11"><a xlink:href="../sourcefile/atl_global_time_integration_module.f90.html" xlink:title="atl_global_time_integration_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1070,-129 847,-129 847,-105 1070,-105 1070,-129"/>
+<text text-anchor="middle" x="958.5" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_global_time_integration_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_fwdeuler_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_edge11" class="edge">
+<title>sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_fwdeuler_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M940.27,-129.04C913.69,-147.1 860.55,-181.21 811,-201 805.51,-203.19 799.74,-205.2 793.88,-207.03"/>
+<polygon fill="#000000" stroke="#000000" points="792.59,-203.76 783.98,-209.94 794.56,-210.47 792.59,-203.76"/>
+</g>
+<!-- sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_imexrk_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_edge12" class="edge">
+<title>sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_imexrk_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M917.2,-129.02C887.84,-137.66 847.06,-149.43 811,-159 802.89,-161.15 794.32,-163.34 785.86,-165.46"/>
+<polygon fill="#000000" stroke="#000000" points="784.88,-162.09 776.02,-167.9 786.57,-168.89 784.88,-162.09"/>
+</g>
+<!-- sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_predcor_cerk4_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_edge13" class="edge">
+<title>sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_predcor_cerk4_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M846.7,-127.01C838.22,-127.77 829.7,-128.54 821.32,-129.3"/>
+<polygon fill="#000000" stroke="#000000" points="820.83,-125.83 811.18,-130.22 821.46,-132.8 820.83,-125.83"/>
+</g>
+<!-- sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_rk4_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_edge14" class="edge">
+<title>sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_rk4_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M846.7,-106.99C828,-105.3 809.12,-103.6 791.99,-102.05"/>
+<polygon fill="#000000" stroke="#000000" points="791.84,-98.52 781.57,-101.11 791.21,-105.49 791.84,-98.52"/>
+</g>
+<!-- sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_rktaylor_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_edge15" class="edge">
+<title>sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_rktaylor_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M917.2,-104.98C887.84,-96.34 847.06,-84.57 811,-75 802.89,-72.85 794.32,-70.66 785.86,-68.54"/>
+<polygon fill="#000000" stroke="#000000" points="786.57,-65.11 776.02,-66.1 784.88,-71.91 786.57,-65.11"/>
+</g>
+<!-- sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_ssprk2_module.f90 -->
+<g id="sourcefile~~atl_numfluxheat_module.f90~~AfferentGraph_edge16" class="edge">
+<title>sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_ssprk2_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M940.27,-104.96C913.69,-86.9 860.55,-52.79 811,-33 805.51,-30.81 799.74,-28.8 793.88,-26.97"/>
+<polygon fill="#000000" stroke="#000000" points="794.56,-23.53 783.98,-24.06 792.59,-30.24 794.56,-23.53"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var pansourcefileatl_numfluxheat_modulef90AfferentGraph = svgPanZoom('#sourcefileatl_numfluxheat_modulef90AfferentGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#AfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="AfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="202pt" height="32pt"
+ viewBox="0.00 0.00 201.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 197.5,-28 197.5,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="193.5,-24 88.5,-24 88.5,0 193.5,0 193.5,-24"/>
+<text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+<br>
+      <section>
+        <h2><span class="anchor" id="src"></span>Source Code</h2>
+        <div class="hl codehilite"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="c">! Copyright (c) 2014 Nikhil Anand &lt;nikhil.anand@uni-siegen.de&gt;</span>
+<a id="ln-2" name="ln-2" href="#ln-2"></a><span class="c">! Copyright (c) 2014 Jens Zudrop &lt;j.zudrop@grs-sim.de&gt;</span>
+<a id="ln-3" name="ln-3" href="#ln-3"></a><span class="c">! Copyright (c) 2014 Timo Stentenbach</span>
+<a id="ln-4" name="ln-4" href="#ln-4"></a><span class="c">! Copyright (c) 2014, 2018 Harald Klimach &lt;harald.klimach@uni-siegen.de&gt;</span>
+<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="c">! Copyright (c) 2016-2017 Peter Vitt &lt;peter.vitt2@uni-siegen.de&gt;</span>
+<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="c">! Copyright (c) 2016 Tobias Girresser &lt;tobias.girresser@student.uni-siegen.de&gt;</span>
+<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="c">! Copyright (c) 2017 Daniel Petró &lt;daniel.petro@student.uni-siegen.de&gt;</span>
+<a id="ln-8" name="ln-8" href="#ln-8"></a><span class="c">!</span>
+<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="c">! Permission to use, copy, modify, and distribute this software for any</span>
+<a id="ln-10" name="ln-10" href="#ln-10"></a><span class="c">! purpose with or without fee is hereby granted, provided that the above</span>
+<a id="ln-11" name="ln-11" href="#ln-11"></a><span class="c">! copyright notice and this permission notice appear in all copies.</span>
+<a id="ln-12" name="ln-12" href="#ln-12"></a><span class="c">!</span>
+<a id="ln-13" name="ln-13" href="#ln-13"></a><span class="c">! THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHORS DISCLAIM ALL WARRANTIES</span>
+<a id="ln-14" name="ln-14" href="#ln-14"></a><span class="c">! WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF</span>
+<a id="ln-15" name="ln-15" href="#ln-15"></a><span class="c">! MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR</span>
+<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="c">! ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES</span>
+<a id="ln-17" name="ln-17" href="#ln-17"></a><span class="c">! WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN</span>
+<a id="ln-18" name="ln-18" href="#ln-18"></a><span class="c">! ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF</span>
+<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="c">! OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
+<a id="ln-20" name="ln-20" href="#ln-20"></a><span class="c">! **************************************************************************** !</span>
+<a id="ln-21" name="ln-21" href="#ln-21"></a>
+<a id="ln-22" name="ln-22" href="#ln-22"></a><span class="c">!&gt; Module for routines and datatypes of MOdal Discontinuous Galerkin (MODG)</span>
+<a id="ln-23" name="ln-23" href="#ln-23"></a><span class="c">!! scheme for the Heat equation. This scheme is a spectral scheme for linear, purley hyperbolic</span>
+<a id="ln-24" name="ln-24" href="#ln-24"></a><span class="c">!! partial differential equation systems.</span>
+<a id="ln-25" name="ln-25" href="#ln-25"></a><span class="k">module </span><span class="n">atl_numFluxHeat_module</span>
+<a id="ln-26" name="ln-26" href="#ln-26"></a><span class="w">  </span><span class="k">use </span><span class="n">env_module</span><span class="p">,</span><span class="w">               </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">rk</span>
+<a id="ln-27" name="ln-27" href="#ln-27"></a>
+<a id="ln-28" name="ln-28" href="#ln-28"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_faceData_module</span><span class="p">,</span><span class="w">      </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_left</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<a id="ln-29" name="ln-29" href="#ln-29"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                 </span><span class="n">tem_right</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-30" name="ln-30" href="#ln-30"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                 </span><span class="n">tem_faceIterator_type</span>
+<a id="ln-31" name="ln-31" href="#ln-31"></a>
+<a id="ln-32" name="ln-32" href="#ln-32"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_equation_module</span><span class="p">,</span><span class="w">      </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_equations_type</span>
+<a id="ln-33" name="ln-33" href="#ln-33"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_facedata_module</span><span class="p">,</span><span class="w">      </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_facedata_type</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-34" name="ln-34" href="#ln-34"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                 </span><span class="n">atl_elemfaceToNormal_prp</span>
+<a id="ln-35" name="ln-35" href="#ln-35"></a>
+<a id="ln-36" name="ln-36" href="#ln-36"></a><span class="w">  </span><span class="k">use </span><span class="n">ply_poly_project_module</span><span class="p">,</span><span class="w">  </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">assignment</span><span class="p">(</span><span class="o">=</span><span class="p">)</span>
+<a id="ln-37" name="ln-37" href="#ln-37"></a>
+<a id="ln-38" name="ln-38" href="#ln-38"></a>
+<a id="ln-39" name="ln-39" href="#ln-39"></a><span class="w">  </span><span class="k">implicit none</span>
+<a id="ln-40" name="ln-40" href="#ln-40"></a>
+<a id="ln-41" name="ln-41" href="#ln-41"></a><span class="k">  private</span>
+<a id="ln-42" name="ln-42" href="#ln-42"></a>
+<a id="ln-43" name="ln-43" href="#ln-43"></a><span class="k">  public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">atl_modg_heat_numFlux_sipg</span>
+<a id="ln-44" name="ln-44" href="#ln-44"></a>
+<a id="ln-45" name="ln-45" href="#ln-45"></a><span class="k">contains</span>
+<a id="ln-46" name="ln-46" href="#ln-46"></a>
+<a id="ln-47" name="ln-47" href="#ln-47"></a><span class="w">  </span><span class="c">!&gt; Numerical flux calculation for Heat equation across the faces in a single</span>
+<a id="ln-48" name="ln-48" href="#ln-48"></a><span class="w">  </span><span class="c">!! spatial direction.</span>
+<a id="ln-49" name="ln-49" href="#ln-49"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">atl_modg_heat_numFlux_sipg</span><span class="p">(</span><span class="w"> </span><span class="n">equation</span><span class="p">,</span><span class="w"> </span><span class="n">facedata</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="p">,</span><span class="w"> </span><span class="n">faceDir</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-50" name="ln-50" href="#ln-50"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                    </span><span class="n">dofs</span><span class="p">,</span><span class="w"> </span><span class="n">elem_len</span><span class="p">,</span><span class="w"> </span><span class="n">maxPolyDeg</span><span class="w">          </span><span class="p">)</span>
+<a id="ln-51" name="ln-51" href="#ln-51"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<a id="ln-52" name="ln-52" href="#ln-52"></a><span class="w">    </span><span class="c">!&gt; The equation you solve.</span>
+<a id="ln-53" name="ln-53" href="#ln-53"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_equations_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">equation</span>
+<a id="ln-54" name="ln-54" href="#ln-54"></a><span class="w">    </span><span class="c">!&gt; The face state if the equation</span>
+<a id="ln-55" name="ln-55" href="#ln-55"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_facedata_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">facedata</span>
+<a id="ln-56" name="ln-56" href="#ln-56"></a><span class="w">    </span><span class="c">!&gt; The faces to calculate the fluxes for.</span>
+<a id="ln-57" name="ln-57" href="#ln-57"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_faceIterator_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">faces</span>
+<a id="ln-58" name="ln-58" href="#ln-58"></a><span class="w">    </span><span class="c">!&gt; The spatial direction of the faces you calc the fluxes for, use the following:</span>
+<a id="ln-59" name="ln-59" href="#ln-59"></a><span class="w">    </span><span class="c">!! 1 --&gt; x direction. \n</span>
+<a id="ln-60" name="ln-60" href="#ln-60"></a><span class="w">    </span><span class="c">!! 2 --&gt; y direction. \n</span>
+<a id="ln-61" name="ln-61" href="#ln-61"></a><span class="w">    </span><span class="c">!! 3 --&gt; z direction.</span>
+<a id="ln-62" name="ln-62" href="#ln-62"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">faceDir</span>
+<a id="ln-63" name="ln-63" href="#ln-63"></a><span class="w">    </span><span class="c">!&gt; Parameter for used projection</span>
+<a id="ln-64" name="ln-64" href="#ln-64"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dofs</span>
+<a id="ln-65" name="ln-65" href="#ln-65"></a><span class="w">    </span><span class="c">!&gt; Length of the element</span>
+<a id="ln-66" name="ln-66" href="#ln-66"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">elem_len</span>
+<a id="ln-67" name="ln-67" href="#ln-67"></a><span class="w">    </span><span class="c">!&gt; Max polynomial degree</span>
+<a id="ln-68" name="ln-68" href="#ln-68"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">maxPolyDeg</span>
+<a id="ln-69" name="ln-69" href="#ln-69"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------!</span>
+<a id="ln-70" name="ln-70" href="#ln-70"></a><span class="w">    </span><span class="c">! Modal coefficients for elements left and right of the face:</span>
+<a id="ln-71" name="ln-71" href="#ln-71"></a><span class="w">    </span><span class="c">! First dimension is the number of modal coefficients on the face, second</span>
+<a id="ln-72" name="ln-72" href="#ln-72"></a><span class="w">    </span><span class="c">! is the number of variables.</span>
+<a id="ln-73" name="ln-73" href="#ln-73"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">leftModalCoeffs</span><span class="p">(:,:),</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-74" name="ln-74" href="#ln-74"></a><span class="w">                               </span><span class="p">&amp;</span><span class="w">  </span><span class="n">rightModalCoeffs</span><span class="p">(:,:)</span>
+<a id="ln-75" name="ln-75" href="#ln-75"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">leftModalCoeffsDiff</span><span class="p">(:,:</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-76" name="ln-76" href="#ln-76"></a><span class="w">                   </span><span class="p">&amp;</span><span class="w"> </span><span class="n">rightModalCoeffsDiff</span><span class="p">(:,:)</span>
+<a id="ln-77" name="ln-77" href="#ln-77"></a><span class="w">    </span><span class="c">! Loop var for the faces.</span>
+<a id="ln-78" name="ln-78" href="#ln-78"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iside</span><span class="p">,</span><span class="w"> </span><span class="n">iVar</span>
+<a id="ln-79" name="ln-79" href="#ln-79"></a><span class="w">    </span><span class="c">! Element positions of the left and right element of the face.</span>
+<a id="ln-80" name="ln-80" href="#ln-80"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">left_neighbor</span><span class="p">,</span><span class="w"> </span><span class="n">right_neighbor</span>
+<a id="ln-81" name="ln-81" href="#ln-81"></a><span class="w">    </span><span class="c">! Loop over variables (due to single variable FPTs)</span>
+<a id="ln-82" name="ln-82" href="#ln-82"></a><span class="w">    </span><span class="c">!integer :: nquadpoints, oversamp_dofs</span>
+<a id="ln-83" name="ln-83" href="#ln-83"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">outerNormalLeft</span><span class="p">,</span><span class="w"> </span><span class="n">outerNormalRight</span><span class="p">,</span><span class="w"> </span><span class="n">Const</span><span class="p">,</span><span class="w"> </span><span class="n">C_IP</span>
+<a id="ln-84" name="ln-84" href="#ln-84"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w">  </span><span class="n">therm_diff</span>
+<a id="ln-85" name="ln-85" href="#ln-85"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Numflux1</span><span class="p">(:,:)</span>
+<a id="ln-86" name="ln-86" href="#ln-86"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Numflux2</span><span class="p">(:,:)</span>
+<a id="ln-87" name="ln-87" href="#ln-87"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<a id="ln-88" name="ln-88" href="#ln-88"></a><span class="w">    </span><span class="n">outerNormalLeft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atl_elemfaceToNormal_prp</span><span class="p">(</span><span class="n">tem_left</span><span class="p">)</span>
+<a id="ln-89" name="ln-89" href="#ln-89"></a><span class="w">    </span><span class="n">outerNormalRight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atl_elemfaceToNormal_prp</span><span class="p">(</span><span class="n">tem_right</span><span class="p">)</span>
+<a id="ln-90" name="ln-90" href="#ln-90"></a><span class="w">    </span><span class="n">therm_diff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">equation</span><span class="p">%</span><span class="n">heat</span><span class="p">%</span><span class="n">k</span>
+<a id="ln-91" name="ln-91" href="#ln-91"></a><span class="w">    </span><span class="n">C_IP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="mf">0.0</span>
+<a id="ln-92" name="ln-92" href="#ln-92"></a>
+<a id="ln-93" name="ln-93" href="#ln-93"></a><span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="w"> </span><span class="n">leftModalCoeffs</span><span class="p">(</span><span class="n">dofs</span><span class="p">,</span><span class="n">equation</span><span class="p">%</span><span class="n">varSys</span><span class="p">%</span><span class="n">nScalars</span><span class="w">       </span><span class="p">))</span>
+<a id="ln-94" name="ln-94" href="#ln-94"></a><span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="w"> </span><span class="n">rightModalCoeffs</span><span class="p">(</span><span class="n">dofs</span><span class="p">,</span><span class="n">equation</span><span class="p">%</span><span class="n">varSys</span><span class="p">%</span><span class="n">nScalars</span><span class="w">      </span><span class="p">))</span>
+<a id="ln-95" name="ln-95" href="#ln-95"></a><span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="w"> </span><span class="n">leftModalCoeffsDiff</span><span class="p">(</span><span class="n">dofs</span><span class="p">,</span><span class="n">equation</span><span class="p">%</span><span class="n">varSys</span><span class="p">%</span><span class="n">nScalars</span><span class="w">   </span><span class="p">))</span>
+<a id="ln-96" name="ln-96" href="#ln-96"></a><span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="w"> </span><span class="n">rightModalCoeffsDiff</span><span class="p">(</span><span class="n">dofs</span><span class="p">,</span><span class="n">equation</span><span class="p">%</span><span class="n">varSys</span><span class="p">%</span><span class="n">nScalars</span><span class="w">  </span><span class="p">))</span>
+<a id="ln-97" name="ln-97" href="#ln-97"></a><span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="w"> </span><span class="n">Numflux1</span><span class="p">(</span><span class="n">dofs</span><span class="p">,</span><span class="n">equation</span><span class="p">%</span><span class="n">varSys</span><span class="p">%</span><span class="n">nScalars</span><span class="w">              </span><span class="p">))</span>
+<a id="ln-98" name="ln-98" href="#ln-98"></a><span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="w"> </span><span class="n">Numflux2</span><span class="p">(</span><span class="n">dofs</span><span class="p">,</span><span class="n">equation</span><span class="p">%</span><span class="n">varSys</span><span class="p">%</span><span class="n">nScalars</span><span class="w">              </span><span class="p">))</span>
+<a id="ln-99" name="ln-99" href="#ln-99"></a>
+<a id="ln-100" name="ln-100" href="#ln-100"></a>
+<a id="ln-101" name="ln-101" href="#ln-101"></a><span class="w">    </span><span class="c">! Loop over all fluid the faces in x direction</span>
+<a id="ln-102" name="ln-102" href="#ln-102"></a><span class="w">    </span><span class="n">FaceLoop</span><span class="p">:</span><span class="w"> </span><span class="k">do </span><span class="n">iside</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">faces</span><span class="p">%</span><span class="n">leftPos</span><span class="p">)</span>
+<a id="ln-103" name="ln-103" href="#ln-103"></a>
+<a id="ln-104" name="ln-104" href="#ln-104"></a><span class="w">      </span><span class="c">! Get the fluid neighbors for this face.</span>
+<a id="ln-105" name="ln-105" href="#ln-105"></a>
+<a id="ln-106" name="ln-106" href="#ln-106"></a><span class="w">      </span><span class="n">left_neighbor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">faces</span><span class="p">%</span><span class="n">leftPos</span><span class="p">(</span><span class="n">iside</span><span class="p">)</span>
+<a id="ln-107" name="ln-107" href="#ln-107"></a><span class="w">      </span><span class="n">right_neighbor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">faces</span><span class="p">%</span><span class="n">rightPos</span><span class="p">(</span><span class="n">iside</span><span class="p">)</span>
+<a id="ln-108" name="ln-108" href="#ln-108"></a>
+<a id="ln-109" name="ln-109" href="#ln-109"></a><span class="w">      </span><span class="n">leftModalCoeffs</span><span class="p">(:,:)</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span>
+<a id="ln-110" name="ln-110" href="#ln-110"></a><span class="w">      </span><span class="n">rightModalCoeffs</span><span class="p">(:,:)</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span>
+<a id="ln-111" name="ln-111" href="#ln-111"></a><span class="w">      </span><span class="n">leftModalCoeffsDiff</span><span class="p">(:,:)</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span>
+<a id="ln-112" name="ln-112" href="#ln-112"></a><span class="w">      </span><span class="n">rightModalCoeffsDiff</span><span class="p">(:,:)</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span>
+<a id="ln-113" name="ln-113" href="#ln-113"></a>
+<a id="ln-114" name="ln-114" href="#ln-114"></a>
+<a id="ln-115" name="ln-115" href="#ln-115"></a><span class="w">      </span><span class="n">leftModalCoeffs</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w">         </span><span class="p">&amp;</span>
+<a id="ln-116" name="ln-116" href="#ln-116"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">           </span><span class="n">facedata</span><span class="p">%</span><span class="n">faceRep</span><span class="p">(</span><span class="n">faceDir</span><span class="p">)%</span><span class="n">dat</span><span class="p">(</span><span class="n">left_neighbor</span><span class="p">,:,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<a id="ln-117" name="ln-117" href="#ln-117"></a><span class="w">      </span><span class="n">RightModalCoeffs</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w">        </span><span class="p">&amp;</span>
+<a id="ln-118" name="ln-118" href="#ln-118"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">           </span><span class="n">facedata</span><span class="p">%</span><span class="n">faceRep</span><span class="p">(</span><span class="n">faceDir</span><span class="p">)%</span><span class="n">dat</span><span class="p">(</span><span class="n">right_neighbor</span><span class="p">,:,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<a id="ln-119" name="ln-119" href="#ln-119"></a>
+<a id="ln-120" name="ln-120" href="#ln-120"></a><span class="w">      </span><span class="n">leftModalCoeffsDiff</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w">               </span><span class="p">&amp;</span>
+<a id="ln-121" name="ln-121" href="#ln-121"></a><span class="w">         </span><span class="n">facedata</span><span class="p">%</span><span class="n">faceRep</span><span class="p">(</span><span class="n">faceDir</span><span class="p">)%</span><span class="n">dat</span><span class="p">(</span><span class="n">left_neighbor</span><span class="p">,:,</span><span class="mi">1</span><span class="o">+</span><span class="n">faceDir</span><span class="o">*</span><span class="n">equation</span><span class="p">%</span><span class="n">varSys</span><span class="p">%</span><span class="n">nScalars</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<a id="ln-122" name="ln-122" href="#ln-122"></a><span class="w">      </span><span class="n">RightModalCoeffsDiff</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w">              </span><span class="p">&amp;</span>
+<a id="ln-123" name="ln-123" href="#ln-123"></a><span class="w">         </span><span class="n">facedata</span><span class="p">%</span><span class="n">faceRep</span><span class="p">(</span><span class="n">faceDir</span><span class="p">)%</span><span class="n">dat</span><span class="p">(</span><span class="n">right_neighbor</span><span class="p">,:,</span><span class="mi">1</span><span class="o">+</span><span class="n">faceDir</span><span class="o">*</span><span class="n">equation</span><span class="p">%</span><span class="n">varSys</span><span class="p">%</span><span class="n">nScalars</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<a id="ln-124" name="ln-124" href="#ln-124"></a>
+<a id="ln-125" name="ln-125" href="#ln-125"></a>
+<a id="ln-126" name="ln-126" href="#ln-126"></a><span class="w">      </span><span class="k">do </span><span class="n">iVar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">equation</span><span class="p">%</span><span class="n">varSys</span><span class="p">%</span><span class="n">nScalars</span>
+<a id="ln-127" name="ln-127" href="#ln-127"></a><span class="w">        </span><span class="n">numFlux1</span><span class="p">(:,</span><span class="n">iVar</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w">   </span><span class="n">LeftmodalCoeffsDiff</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span><span class="w">   </span><span class="o">+</span><span class="w">          </span><span class="p">&amp;</span>
+<a id="ln-128" name="ln-128" href="#ln-128"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">RightmodalCoeffsDiff</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>
+<a id="ln-129" name="ln-129" href="#ln-129"></a>
+<a id="ln-130" name="ln-130" href="#ln-130"></a><span class="w">        </span><span class="n">facedata</span><span class="p">%</span><span class="n">faceFlux</span><span class="p">(</span><span class="n">faceDir</span><span class="p">)%</span><span class="n">dat</span><span class="p">(</span><span class="n">left_neighbor</span><span class="p">,:,</span><span class="n">iVar</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w">      </span><span class="p">&amp;</span>
+<a id="ln-131" name="ln-131" href="#ln-131"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                             </span><span class="o">-</span><span class="n">numFlux1</span><span class="p">(:,</span><span class="n">iVar</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="n">therm_diff</span>
+<a id="ln-132" name="ln-132" href="#ln-132"></a><span class="w">        </span><span class="n">facedata</span><span class="p">%</span><span class="n">faceFlux</span><span class="p">(</span><span class="n">faceDir</span><span class="p">)%</span><span class="n">dat</span><span class="p">(</span><span class="n">right_neighbor</span><span class="p">,:,</span><span class="n">iVar</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w">     </span><span class="p">&amp;</span>
+<a id="ln-133" name="ln-133" href="#ln-133"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                             </span><span class="o">-</span><span class="n">numFlux1</span><span class="p">(:,</span><span class="n">iVar</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="n">therm_diff</span>
+<a id="ln-134" name="ln-134" href="#ln-134"></a><span class="w">      </span><span class="k">end do</span>
+<a id="ln-135" name="ln-135" href="#ln-135"></a>
+<a id="ln-136" name="ln-136" href="#ln-136"></a><span class="w">      </span><span class="c">!term 2 &amp; 3!</span>
+<a id="ln-137" name="ln-137" href="#ln-137"></a><span class="w">      </span><span class="c">! for the term \int \delta \jump{u_h} \cdot \jump{v} ds</span>
+<a id="ln-138" name="ln-138" href="#ln-138"></a><span class="w">      </span><span class="n">Const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">C_IP</span><span class="o">*</span><span class="p">(</span><span class="n">maxPolyDeg</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="w"> </span><span class="n">elem_len</span>
+<a id="ln-139" name="ln-139" href="#ln-139"></a>
+<a id="ln-140" name="ln-140" href="#ln-140"></a><span class="w">     </span><span class="c">! const = 1.0</span>
+<a id="ln-141" name="ln-141" href="#ln-141"></a><span class="w">      </span><span class="k">do </span><span class="n">iVar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">equation</span><span class="p">%</span><span class="n">varSys</span><span class="p">%</span><span class="n">nScalars</span>
+<a id="ln-142" name="ln-142" href="#ln-142"></a>
+<a id="ln-143" name="ln-143" href="#ln-143"></a><span class="w">        </span><span class="n">numFlux2</span><span class="p">(:,</span><span class="n">iVar</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">LeftmodalCoeffs</span><span class="p">(:,</span><span class="n">iVar</span><span class="p">)</span><span class="o">*</span><span class="w"> </span><span class="n">outerNormalRight</span><span class="w">   </span><span class="o">+</span><span class="w">     </span><span class="p">&amp;</span>
+<a id="ln-144" name="ln-144" href="#ln-144"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">RightmodalCoeffs</span><span class="p">(:,</span><span class="n">iVar</span><span class="p">)</span><span class="o">*</span><span class="w"> </span><span class="n">outerNormalLeft</span>
+<a id="ln-145" name="ln-145" href="#ln-145"></a>
+<a id="ln-146" name="ln-146" href="#ln-146"></a>
+<a id="ln-147" name="ln-147" href="#ln-147"></a><span class="w">        </span><span class="n">facedata</span><span class="p">%</span><span class="n">faceFlux</span><span class="p">(</span><span class="n">faceDir</span><span class="p">)%</span><span class="n">dat</span><span class="p">(</span><span class="n">left_neighbor</span><span class="p">,:,</span><span class="n">iVar</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">  </span><span class="o">=</span><span class="w">     </span><span class="p">&amp;</span>
+<a id="ln-148" name="ln-148" href="#ln-148"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">const</span><span class="o">*</span><span class="n">numFlux2</span><span class="p">(:,</span><span class="n">iVar</span><span class="p">)</span><span class="o">*</span><span class="n">therm_diff</span>
+<a id="ln-149" name="ln-149" href="#ln-149"></a><span class="w">        </span><span class="n">facedata</span><span class="p">%</span><span class="n">faceFlux</span><span class="p">(</span><span class="n">faceDir</span><span class="p">)%</span><span class="n">dat</span><span class="p">(</span><span class="n">right_neighbor</span><span class="p">,:,</span><span class="n">iVar</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w">     </span><span class="p">&amp;</span>
+<a id="ln-150" name="ln-150" href="#ln-150"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">const</span><span class="o">*</span><span class="n">numFlux2</span><span class="p">(:,</span><span class="n">iVar</span><span class="p">)</span><span class="o">*</span><span class="n">therm_diff</span>
+<a id="ln-151" name="ln-151" href="#ln-151"></a>
+<a id="ln-152" name="ln-152" href="#ln-152"></a>
+<a id="ln-153" name="ln-153" href="#ln-153"></a><span class="w">         </span><span class="n">facedata</span><span class="p">%</span><span class="n">faceFlux</span><span class="p">(</span><span class="n">faceDir</span><span class="p">)%</span><span class="n">dat</span><span class="p">(</span><span class="n">left_neighbor</span><span class="p">,:,</span><span class="w">  </span><span class="p">&amp;</span>
+<a id="ln-154" name="ln-154" href="#ln-154"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">  </span><span class="n">iVar</span><span class="o">+</span><span class="n">equation</span><span class="p">%</span><span class="n">varSys</span><span class="p">%</span><span class="n">nScalars</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w">          </span><span class="p">&amp;</span>
+<a id="ln-155" name="ln-155" href="#ln-155"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="o">-</span><span class="n">numFlux2</span><span class="p">(:,</span><span class="n">iVar</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="n">therm_diff</span>
+<a id="ln-156" name="ln-156" href="#ln-156"></a><span class="w">         </span><span class="n">facedata</span><span class="p">%</span><span class="n">faceFlux</span><span class="p">(</span><span class="n">faceDir</span><span class="p">)%</span><span class="n">dat</span><span class="p">(</span><span class="n">right_neighbor</span><span class="p">,:,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-157" name="ln-157" href="#ln-157"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">  </span><span class="n">iVar</span><span class="o">+</span><span class="n">equation</span><span class="p">%</span><span class="n">varSys</span><span class="p">%</span><span class="n">nScalars</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w">          </span><span class="p">&amp;</span>
+<a id="ln-158" name="ln-158" href="#ln-158"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="o">-</span><span class="n">numFlux2</span><span class="p">(:,</span><span class="n">iVar</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="n">therm_diff</span>
+<a id="ln-159" name="ln-159" href="#ln-159"></a>
+<a id="ln-160" name="ln-160" href="#ln-160"></a><span class="w">      </span><span class="k">end do</span>
+<a id="ln-161" name="ln-161" href="#ln-161"></a><span class="k">    end do </span><span class="n">FaceLoop</span>
+<a id="ln-162" name="ln-162" href="#ln-162"></a><span class="w">  </span><span class="k">end subroutine </span><span class="n">atl_modg_heat_numFlux_sipg</span>
+<a id="ln-163" name="ln-163" href="#ln-163"></a>
+<a id="ln-164" name="ln-164" href="#ln-164"></a><span class="k">end module </span><span class="n">atl_numFluxHeat_module</span>
+</pre></div>
+
+      </section>
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

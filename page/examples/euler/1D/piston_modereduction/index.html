@@ -1,0 +1,678 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../../../../../favicon.png">
+
+    <title>Formation of a shock wave ahead of a moving piston in 1D &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../../../../../css/pygments.css" rel="stylesheet">
+    <link href="../../../../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../../../css/local.css" rel="stylesheet">
+      <link  href="../../../../../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../../../../../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../../../../../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../../../../index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../../../../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../../../../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../../../../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../../../../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../../../../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../../../../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../../../../../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>Formation of a shock wave ahead of a moving piston in 1D</h1>
+    <div class="container p-2 mb-4 bg-light border rounded-3">
+      <div class="row align-items-center justify-content-between">
+        <div class="col">
+          <ul class="list-inline" style="margin-bottom:0px; display:inline">
+          </ul>
+        </div>
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../../../../index.html'>Documentation</a></li>
+                <li class="breadcrumb-item"><a href='../../../index.html'>Example setups</a></li>
+                <li class="breadcrumb-item"><a href='../../index.html'>Euler Equations</a></li>
+                <li class="breadcrumb-item"><a href='../index.html'>1D Euler Equations</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Formation of a shock wave ahead of a moving piston in 1D</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-3">
+        <div class="card card-body bg-light" id="sidebar-toc">
+          <ul class="nav flex-column align-items">
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../index.html">Documentation</a>
+            </li>
+          </ul>
+          <hr>
+          <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="../../../../apes_overview.html">APES Overview</a>
+              <a class="nav-link" href="../../../../build_and_run.html">Build and Run Ateles</a>
+              <a class="nav-link" href="../../../index.html">Example setups</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../acoustic/index.html">Acoustic Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../acoustic/gauss_densitypulse_2D/index.html">Gaussian Density Pulse Test Case</a>
+              <a class="nav-link" href="../../../acoustic/planar_wave_3D/index.html">Planar Wave</a>
+
+                </nav>
+              <a class="nav-link" href="../../index.html">Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../index.html">1D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../modalEstimate/index.html">Modal estimate for adaptive timesteps 1D</a>
+              <a class="nav-link" href="../piston/index.html">Formation of a shock wave ahead of a moving piston in 1D</a>
+              <a class="nav-link active disabled" href="index.html">Formation of a shock wave ahead of a moving piston in 1D</a>
+              <a class="nav-link" href="../shock_stabilization_parallel/index.html">Shock Stabilization Test Case</a>
+              <a class="nav-link" href="../toro1_x/index.html">Toro Validation Test Case</a>
+
+                </nav>
+              <a class="nav-link" href="../../2D/index.html">2D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../2D/gauss_densitypulse_spongelayer/index.html">Gaussian Density Pulse in 2D</a>
+              <a class="nav-link" href="../../2D/modalEstimate/index.html">Modal estimate for adaptive timesteps in 2D</a>
+              <a class="nav-link" href="../../2D/shock_stabilization_parallel/index.html">Shock Stabilization Test Case</a>
+              <a class="nav-link" href="../../2D/toro1_x/index.html">Toro1 Validation Test Case in X direction</a>
+              <a class="nav-link" href="../../2D/toro1_y/index.html">Toro1 Validation Test Case in Y direction</a>
+              <a class="nav-link" href="../../2D/toro2_x/index.html">Toro2 Setup along X for 2D Euler equations</a>
+              <a class="nav-link" href="../../2D/toro3_x/index.html">Toro3 Setup along X for 2D Euler equations</a>
+              <a class="nav-link" href="../../2D/toro4_x/index.html">Toro4 setup for 2D Euler equations with a positivity preserving filter</a>
+              <a class="nav-link" href="../../2D/vorticity/index.html">Vorticity Tracking</a>
+              <a class="nav-link" href="../../2D/wedge/index.html">Supersonic movement of a wedge</a>
+              <a class="nav-link" href="../../2D/wedge_modereduction/index.html">Supersonic movement of a wedge</a>
+
+                </nav>
+              <a class="nav-link" href="../../3D/index.html">3D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../3D/gauss_densitypulse_deriv_quantity/index.html">Pulse in density with derived quantity</a>
+              <a class="nav-link" href="../../3D/gauss_densitypulse_fpt/index.html">Euler 3D pulse in density with FPT</a>
+              <a class="nav-link" href="../../3D/gauss_densitypulse_fxt/index.html">Euler 3D setup of Gaussian pulse in density with FXT</a>
+              <a class="nav-link" href="../../3D/gauss_densitypulse_l2p/index.html">Euler 3D setup with pulse in density and L2 projection</a>
+              <a class="nav-link" href="../../3D/gauss_densitypulse_spongelayer/index.html">Euler 3D pulse in density with sponge</a>
+              <a class="nav-link" href="../../3D/modalEstimate/index.html">Modal estimate in Euler 3D</a>
+              <a class="nav-link" href="../../3D/multilevel/index.html">Material with Multilevel in Euler 3D</a>
+              <a class="nav-link" href="../../3D/overview/index.html">Configuration overview for Euler 3D simulations</a>
+              <a class="nav-link" href="../../3D/p_polynomials/index.html">P-polynomial space</a>
+              <a class="nav-link" href="../../3D/qCriterion_deriv_quantity/index.html">Q-Criterion Tracking in Euler 3D</a>
+              <a class="nav-link" href="../../3D/shear_layer_Q4/index.html">Shear-Layer Q4</a>
+              <a class="nav-link" href="../../3D/shear_layer_Q4_parallel/index.html">Shear-Layer Q4</a>
+              <a class="nav-link" href="../../3D/shear_layer_Q8/index.html">Shear-Layer Q8</a>
+              <a class="nav-link" href="../../3D/shock_stabilization_localrefinement/index.html">Shock Stabilization in Euler 3D with local refinement</a>
+              <a class="nav-link" href="../../3D/shock_stabilization_parallel/index.html">Shock stabilization for 3D Euler equations with RK-Taylor</a>
+              <a class="nav-link" href="../../3D/shock_stabilization_periodic/index.html">Shock stabilization in periodic domain</a>
+              <a class="nav-link" href="../../3D/toro1_x/index.html">Toro1 Riemann problem in X direction</a>
+              <a class="nav-link" href="../../3D/toro1_y/index.html">Toro1 Riemann problem in Y direction</a>
+              <a class="nav-link" href="../../3D/toro1_z/index.html">Toro1 Riemann problem in Z direction</a>
+              <a class="nav-link" href="../../3D/vorticity/index.html">Vorticity Test Case</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../../../heat/index.html">Heat Conduction</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../heat/1D/index.html">Heat Conduction in 1D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../heat/1D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+              <a class="nav-link" href="../../../heat/2D/index.html">Heat Conduction in 2D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../heat/2D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+              <a class="nav-link" href="../../../heat/3D/index.html">Heat Conduction in 3D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../heat/3D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../../../lineareuler/index.html">Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../lineareuler/2D/index.html">2D Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../lineareuler/2D/gauss_pulse/index.html">Gaussian pulse in pressure with 2d linearized Euler equations</a>
+              <a class="nav-link" href="../../../lineareuler/2D/transientBackground/index.html">Transient background state in 2D linearized Euler</a>
+
+                </nav>
+              <a class="nav-link" href="../../../lineareuler/3D/index.html">3D Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../lineareuler/3D/gauss_pulse/index.html">Gaussian pulse in density for 3D linearized Euler equations</a>
+              <a class="nav-link" href="../../../lineareuler/3D/gradient/index.html">Tracking of gradients in 3D linearized Euler equations</a>
+              <a class="nav-link" href="../../../lineareuler/3D/transientBackground/index.html">Transient background state in 3D linearized Euler</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../../../maxwell/index.html">Maxwell Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../maxwell/pec_scatter_inhomogenous_matFun_Q8_3D/index.html">Perfectly_scatter_Inhomogenous_Materia</a>
+              <a class="nav-link" href="../../../maxwell/pec_scatter_inhomogenous_matVar_Q8_3D/index.html">Perfectly_scatter_Inhomogenous_Materia</a>
+              <a class="nav-link" href="../../../maxwell/periodic_oscillator_P8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="../../../maxwell/periodic_oscillator_Q8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="../../../maxwell/rectangular_wave_Q8_3D/index.html">Rectangle Wave</a>
+
+                </nav>
+              <a class="nav-link" href="../../../maxwelldivcorr/index.html">Maxwell Equations With Divergence Correction</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../maxwelldivcorr/periodic_oscillator_P8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="../../../maxwelldivcorr/periodic_oscillator_Q8_3D/index.html">Periodic_Oscillator</a>
+
+                </nav>
+              <a class="nav-link" href="../../../maxwellpml/index.html">Maxwell Equations With Perfectly Matched Layers</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../maxwellpml/cylinder_scattering_Q8_2D/index.html">Perfectly matched Layer test case</a>
+
+                </nav>
+              <a class="nav-link" href="../../../navierstokes/index.html">Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../navierstokes/2D/index.html">2D Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../navierstokes/2D/constant_state/index.html">Constant State</a>
+              <a class="nav-link" href="../../../navierstokes/2D/shear_hat/index.html">Shear hat 2D</a>
+              <a class="nav-link" href="../../../navierstokes/2D/viscous_vortex/index.html">Viscous Vortex (TGV) 2D</a>
+
+                </nav>
+              <a class="nav-link" href="../../../navierstokes/3D/index.html">3D Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../navierstokes/3D/shear_hat/index.html">Shear hat 3D</a>
+              <a class="nav-link" href="../../../navierstokes/3D/shear_tube/index.html">Shear tube 3D</a>
+
+                </nav>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../../../../init.html">Initialization</a>
+              <a class="nav-link" href="../../../../material.html">Material</a>
+              <a class="nav-link" href="../../../../neumann_boundaries.html">Neumann boundary conditions</a>
+              <a class="nav-link" href="../../../../new_eqn_system.html">Introducing a New Equation System</a>
+              <a class="nav-link" href="../../../../polynomials.html">Polynomials Library</a>
+              <a class="nav-link" href="../../../../postprocess_filtering.html">Postprocess Filtering</a>
+              <a class="nav-link" href="../../../../tutorial/index.html">Tutorial</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../../../../tutorial/euler.html">Euler Testcase</a>
+              <a class="nav-link" href="../../../../tutorial/general.html">General Input File Information</a>
+              <a class="nav-link" href="../../../../tutorial/maxwell.html">Maxwell Testcase</a>
+              <a class="nav-link" href="../../../../tutorial/postprocessing.html">Postprocessing with atl_harvesting</a>
+              <a class="nav-link" href="../../../../tutorial/procedure.html">General Procedure for Running the Testcases</a>
+              <a class="nav-link" href="../../../../tutorial/source_term.html">Source Term</a>
+              <a class="nav-link" href="../../../../tutorial/tracking.html">Tracking</a>
+
+                </nav>
+          </nav>
+        </div>
+      </div>
+
+    <div class="col-9" id='text'>
+      <p>This setup illustrates a small example on the setup of a moving geometry.
+The fluid is initially in rest. A piston (geometry) is located in the middle
+area of the domain that has a length of 1.0. The piston moves with Mach 0.4 towards
+the right boundaty, due to the sudden movement, a shock is formed ahead of the piston.
+Behind the piston rarefaction can be observed. The piston is modelled
+as a porous medium. An exact solution can be found in literature for this test
+case e.g. in Toro. This test case is used to ensure conservation of mass, momentum
+and energy. If a shock is not formed ahead of the piston or it has a wronge velocity,
+conservation is not maintained.</p>
+<p>In this test case we reduce the computational cost inside the geometry, where the
+solution is not of interest by means of the modereduction feature. Elements covered
+by the geometry with neighbouring elements covered by the geometry as well, compute
+only the zero mode for the physical flux. The the zero mode is the integral mean of
+the Legandre polynomials.</p>
+<p>The complete configuration is provided in <code>ateles.lua</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">logging</span> <span class="o">=</span> <span class="p">{</span><span class="n">level</span> <span class="o">=</span> <span class="mi">10</span><span class="p">}</span>
+<span class="c1">--debug = {logging = {level=10}}</span>
+<span class="c1">-------------------------------------------</span>
+
+<span class="n">order</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">degree</span> <span class="o">=</span> <span class="n">order</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">nElems</span> <span class="o">=</span> <span class="mi">128</span>
+<span class="c1">------------------------------------------</span>
+<span class="n">tmax</span><span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="mf">1e-06</span>
+<span class="c1">-- global simulation options</span>
+<span class="n">simulation_name</span><span class="o">=</span><span class="s1">&#39;ateles&#39;</span>
+<span class="c1">--wallclock = 2*60*60 - 4*60</span>
+<span class="n">sim_control</span> <span class="o">=</span> <span class="p">{</span>
+             <span class="n">time_control</span> <span class="o">=</span> <span class="p">{</span>
+                  <span class="n">min</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                  <span class="n">max</span> <span class="o">=</span> <span class="n">tmax</span><span class="p">,</span>
+                  <span class="c1">--max = {sim=tmax, clock = wallclock},</span>
+                  <span class="n">interval</span> <span class="o">=</span> <span class="p">{</span><span class="n">iter</span> <span class="o">=</span> <span class="mi">1</span><span class="p">},</span>
+                <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">check</span> <span class="o">=</span> <span class="p">{</span><span class="n">interval</span> <span class="o">=</span> <span class="mi">1</span><span class="p">}</span>
+<span class="c1">---- Restart settings</span>
+<span class="n">NOrestart</span> <span class="o">=</span> <span class="p">{</span>
+ <span class="c1">-- read = &#39;./restart/ateles_lastHeader.lua&#39;,</span>
+  <span class="n">write</span> <span class="o">=</span> <span class="s1">&#39;./restart/&#39;</span><span class="p">,</span>
+  <span class="n">time_control</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">min</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">max</span> <span class="o">=</span> <span class="n">tmax</span><span class="p">,</span>
+    <span class="n">interval</span> <span class="o">=</span> <span class="n">tmax</span><span class="o">/</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">align_trigger</span> <span class="o">=</span> <span class="p">{</span><span class="n">sim</span> <span class="o">=</span> <span class="kc">true</span><span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="c1">-- Mesh definition --</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">predefined</span> <span class="o">=</span> <span class="s1">&#39;line_bounded&#39;</span><span class="p">,</span>
+  <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.0</span><span class="p">},</span>
+  <span class="n">length</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+  <span class="n">element_count</span> <span class="o">=</span> <span class="n">nElems</span>
+<span class="p">}</span>
+
+<span class="c1">-- Segments for tracking--</span>
+<span class="n">segments</span> <span class="o">=</span> <span class="nb">math.ceil</span><span class="p">(</span><span class="n">mesh</span><span class="p">.</span><span class="n">length</span><span class="o">*</span><span class="n">nElems</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">degree</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="n">mesh</span><span class="p">.</span><span class="n">length</span> <span class="o">/</span> <span class="n">segments</span> <span class="o">*</span> <span class="mf">1.e-6</span>
+
+<span class="c1">-- tracking --</span>
+<span class="n">tracking</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;line&#39;</span><span class="p">,</span>
+    <span class="n">variable</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;density&#39;</span><span class="p">,</span> <span class="s1">&#39;pressure&#39;</span><span class="p">,</span> <span class="s1">&#39;velocity&#39;</span><span class="p">},</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+    <span class="n">object</span> <span class="o">=</span> <span class="p">{</span> <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.0</span><span class="o">+</span><span class="n">eps</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
+               <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span><span class="mf">1.0</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">eps</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
+               <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span><span class="n">segments</span><span class="p">}},</span>
+     <span class="p">},</span>
+   <span class="n">time_control</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="n">min</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+   <span class="n">max</span> <span class="o">=</span> <span class="n">tmax</span><span class="p">,</span>
+   <span class="n">interval</span> <span class="o">=</span> <span class="n">tmax</span>
+  <span class="p">},</span>
+    <span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;./&#39;</span><span class="p">,</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="p">{</span><span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;asciiSpatial&#39;</span><span class="p">,</span> <span class="n">use_get_point</span> <span class="o">=</span> <span class="kc">true</span><span class="p">}</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="c1">--physical data</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="mf">1.4</span>
+<span class="n">velocityX</span> <span class="o">=</span> <span class="mf">150.0</span>
+<span class="n">dens</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">press</span> <span class="o">=</span> <span class="mf">1.0e5</span>
+<span class="c1">-- Define a piston inside the domain --</span>
+<span class="n">xmin</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="n">xmax</span> <span class="o">=</span> <span class="mf">0.44</span>
+
+<span class="n">temp</span> <span class="o">=</span> <span class="n">press</span><span class="o">/</span><span class="p">(</span><span class="n">dens</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">1.4</span><span class="p">))</span>
+<span class="n">vel_init</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">c</span> <span class="o">=</span> <span class="nb">math.sqrt</span><span class="p">((</span><span class="n">press</span><span class="o">*</span><span class="n">gamma</span><span class="p">)</span><span class="o">/</span><span class="n">dens</span><span class="p">)</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">velocityX</span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span> <span class="p">(</span><span class="n">gamma</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">c</span><span class="o">^</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="p">((</span><span class="mi">4</span><span class="o">*</span><span class="n">c</span><span class="o">^</span><span class="mi">2</span><span class="o">/</span><span class="n">gamma</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">gamma</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">gamma</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">c</span><span class="o">^</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span> <span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">c</span><span class="o">^</span><span class="mi">2</span><span class="o">/</span><span class="n">gamma</span><span class="p">)</span> <span class="o">-</span> <span class="n">u</span><span class="o">^</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">gamma</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">p_ratio1</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="nb">math.sqrt</span><span class="p">((</span><span class="n">a</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">p_ratio2</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="nb">math.sqrt</span><span class="p">((</span><span class="n">a</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">density_ratio</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">((</span><span class="n">gamma</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">gamma</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">))</span><span class="o">*</span>
+  <span class="nb">math.max</span><span class="p">(</span><span class="n">p_ratio1</span><span class="p">,</span><span class="n">p_ratio2</span><span class="p">))</span><span class="o">/</span><span class="p">(((</span><span class="n">gamma</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">gamma</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">+</span>
+  <span class="nb">math.max</span><span class="p">(</span><span class="n">p_ratio1</span><span class="p">,</span><span class="n">p_ratio2</span><span class="p">))</span>
+
+<span class="n">densL</span> <span class="o">=</span> <span class="n">density_ratio</span> <span class="o">*</span> <span class="n">dens</span>
+<span class="n">pressL</span> <span class="o">=</span> <span class="nb">math.max</span><span class="p">(</span><span class="n">p_ratio1</span><span class="p">,</span><span class="n">p_ratio2</span><span class="p">)</span> <span class="o">*</span> <span class="n">press</span>
+
+<span class="n">temperature_ratio</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span><span class="p">(</span><span class="n">pressL</span> <span class="o">-</span> <span class="n">press</span><span class="p">)</span><span class="o">/</span><span class="n">press</span> <span class="p">)</span> <span class="o">*</span>
+  <span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">gamma</span> <span class="o">+</span> <span class="p">(</span><span class="n">gamma</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="n">pressL</span><span class="o">-</span><span class="n">press</span><span class="p">)</span><span class="o">/</span><span class="n">press</span><span class="p">))</span><span class="o">/</span>
+  <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">gamma</span> <span class="o">+</span> <span class="p">(</span><span class="n">gamma</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="n">pressL</span> <span class="o">-</span> <span class="n">press</span><span class="p">)</span><span class="o">/</span><span class="n">press</span><span class="p">)))</span>
+<span class="n">tempL</span> <span class="o">=</span> <span class="n">temperature_ratio</span> <span class="o">*</span> <span class="n">temp</span>
+
+<span class="kr">function</span> <span class="nf">inside_piston</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+  <span class="n">xa</span> <span class="o">=</span> <span class="n">xmin</span> <span class="o">+</span> <span class="n">velocityX</span> <span class="o">*</span> <span class="n">t</span>
+  <span class="n">xb</span> <span class="o">=</span> <span class="n">xmax</span> <span class="o">+</span> <span class="n">velocityX</span> <span class="o">*</span> <span class="n">t</span>
+  <span class="kr">if</span> <span class="p">(</span><span class="n">xa</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">xb</span> <span class="p">)</span> <span class="kr">then</span>
+    <span class="kr">return</span> <span class="kc">true</span>
+  <span class="kr">else</span>
+    <span class="kr">return</span> <span class="kc">false</span>
+  <span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">velocityRelax</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+    <span class="kr">return</span> <span class="n">velocityX</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">temperature</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+  <span class="n">xa</span> <span class="o">=</span> <span class="n">xmin</span> <span class="o">+</span> <span class="n">velocityX</span> <span class="o">*</span> <span class="n">t</span>
+  <span class="n">xb</span> <span class="o">=</span> <span class="n">xmax</span> <span class="o">+</span> <span class="n">velocityX</span> <span class="o">*</span> <span class="n">t</span>
+  <span class="n">diff_half</span> <span class="o">=</span> <span class="p">(</span><span class="n">xb</span> <span class="o">-</span><span class="n">xa</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+  <span class="kr">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">xa</span> <span class="ow">and</span>  <span class="n">x</span> <span class="o">&lt;=</span><span class="p">(</span><span class="n">xa</span> <span class="o">+</span> <span class="n">diff_half</span><span class="p">))</span> <span class="kr">then</span>
+    <span class="kr">return</span> <span class="n">temp</span>
+  <span class="kr">elseif</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span><span class="p">(</span><span class="n">xa</span> <span class="o">+</span> <span class="n">diff_half</span><span class="p">)</span> <span class="ow">and</span> <span class="n">x</span><span class="o">&lt;=</span><span class="n">xb</span><span class="p">)</span> <span class="kr">then</span>
+    <span class="kr">return</span> <span class="n">tempL</span>
+  <span class="kr">else</span>
+    <span class="kr">return</span> <span class="n">temp</span>
+  <span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">characteristic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+  <span class="kr">if</span> <span class="n">inside_piston</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">t</span><span class="p">)</span> <span class="kr">then</span>
+    <span class="kr">return</span> <span class="mf">1.0</span>
+  <span class="kr">else</span>
+    <span class="kr">return</span> <span class="mf">0.0</span>
+  <span class="kr">end</span>
+<span class="kr">end</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="mf">0.00000001</span>
+<span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Xi&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;st_fun&quot;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="p">{</span> <span class="n">const</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="p">},</span>
+      <span class="p">{</span>
+         <span class="n">fun</span>   <span class="o">=</span> <span class="n">characteristic</span><span class="p">,</span>
+         <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+           <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+           <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+             <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.3</span> <span class="p">,</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
+             <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span>
+               <span class="p">{</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span> <span class="p">},</span>
+               <span class="p">{</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="mf">0.0</span> <span class="p">},</span>
+               <span class="p">{</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">dx</span> <span class="p">},</span>
+             <span class="p">},</span>
+           <span class="p">}</span>
+         <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;relax_velocity&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;st_fun&quot;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="p">{</span> <span class="n">const</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="p">},</span>
+      <span class="p">{</span>
+         <span class="n">fun</span>   <span class="o">=</span> <span class="n">velocityRelax</span><span class="p">,</span>
+         <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+           <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+           <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+             <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.3</span> <span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">},</span>
+             <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span>
+               <span class="p">{</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span> <span class="p">},</span>
+               <span class="p">{</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="mf">0.0</span> <span class="p">},</span>
+               <span class="p">{</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">dx</span> <span class="p">},</span>
+             <span class="p">},</span>
+           <span class="p">}</span>
+         <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;relax_temperatur&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;st_fun&quot;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="p">{</span> <span class="n">const</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="p">},</span>
+      <span class="p">{</span>
+         <span class="n">fun</span>   <span class="o">=</span> <span class="n">temperature</span><span class="p">,</span>
+         <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+           <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+           <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+             <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.3</span> <span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">},</span>
+             <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span>
+               <span class="p">{</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span> <span class="p">},</span>
+               <span class="p">{</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="mf">0.0</span> <span class="p">},</span>
+               <span class="p">{</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">dx</span> <span class="p">},</span>
+             <span class="p">},</span>
+           <span class="p">}</span>
+         <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+<span class="c1">-- timing settings (i.e. output for performance measurements, this table is otional)</span>
+<span class="n">timing_file</span> <span class="o">=</span> <span class="s1">&#39;timing.res&#39;</span>         <span class="c1">-- the filename of the timing results</span>
+
+<span class="n">phi</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mf">1e-6</span>
+<span class="n">eta_v</span> <span class="o">=</span> <span class="n">phi</span><span class="o">^</span><span class="mi">2</span> <span class="o">*</span> <span class="n">beta</span><span class="o">^</span><span class="mi">2</span>
+<span class="n">eta_t</span> <span class="o">=</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">phi</span> <span class="o">*</span> <span class="n">beta</span>
+<span class="c1">-- Equation definitions --</span>
+<span class="n">equation</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;euler_1d&#39;</span><span class="p">,</span>
+  <span class="n">numflux</span> <span class="o">=</span> <span class="s1">&#39;hll&#39;</span><span class="p">,</span>
+  <span class="n">isen_coef</span> <span class="o">=</span> <span class="mf">1.4</span><span class="p">,</span>
+  <span class="n">r</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="mf">1.4</span><span class="p">,</span>
+  <span class="n">porosity</span>             <span class="o">=</span> <span class="n">phi</span><span class="p">,</span>
+  <span class="n">viscous_permeability</span> <span class="o">=</span> <span class="n">eta_v</span><span class="p">,</span>
+  <span class="n">thermal_permeability</span> <span class="o">=</span> <span class="n">eta_t</span><span class="p">,</span>
+  <span class="n">material</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">characteristic</span> <span class="o">=</span> <span class="s1">&#39;Xi&#39;</span><span class="p">,</span>
+    <span class="n">relax_velocity</span> <span class="o">=</span> <span class="s1">&#39;relax_velocity&#39;</span><span class="p">,</span>
+    <span class="n">relax_temperature</span> <span class="o">=</span> <span class="s1">&#39;relax_temperatur&#39;</span><span class="p">,</span>
+    <span class="n">mode_reduction</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">-- (cv) heat capacity and (r) ideal gas constant</span>
+<span class="n">equation</span><span class="p">[</span><span class="s2">&quot;cv&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">equation</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">equation</span><span class="p">[</span><span class="s2">&quot;isen_coef&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1">-- Scheme definitions --</span>
+<span class="n">scheme</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">-- the spatial discretization scheme</span>
+  <span class="n">spatial</span> <span class="o">=</span>  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;modg_1d&#39;</span><span class="p">,</span>
+    <span class="n">modg_space</span> <span class="o">=</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">degree</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="n">stabilization</span> <span class="o">=</span> <span class="p">{</span>
+
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;spectral_viscosity&#39;</span><span class="p">,</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="mi">36</span><span class="p">,</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="n">isAdaptive</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="c1">--recovery_order = 1.0e-4,</span>
+    <span class="n">recovery_density</span> <span class="o">=</span> <span class="mf">1.0e-1</span><span class="p">,</span>
+    <span class="n">recovery_pressure</span> <span class="o">=</span> <span class="mf">1.0e-1</span>
+  <span class="p">},</span>
+  <span class="c1">--{</span>
+  <span class="c1">--   name = &#39;covolume&#39;,</span>
+  <span class="c1">--   alpha = 36,</span>
+  <span class="c1">--   order = 24,</span>
+  <span class="c1">--   beta = 1.0 - 2.0/degree,</span>
+  <span class="c1">-- },</span>
+<span class="p">},</span>
+  <span class="c1">-- the temporal discretization scheme</span>
+  <span class="n">temporal</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;imexRungeKutta&#39;</span><span class="p">,</span>
+    <span class="n">steps</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">control</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;cfl&#39;</span><span class="p">,</span>
+      <span class="n">cfl</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+<span class="c1">-- ...the general projection table</span>
+<span class="n">projection</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;l2p&#39;</span><span class="p">,</span>
+  <span class="n">material</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">factor</span> <span class="o">=</span> <span class="mf">3.0</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+<span class="n">vel_init</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">c</span> <span class="o">=</span> <span class="nb">math.sqrt</span><span class="p">((</span><span class="n">press</span><span class="o">*</span><span class="n">gamma</span><span class="p">)</span><span class="o">/</span><span class="n">dens</span><span class="p">)</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">velocityX</span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span> <span class="p">(</span><span class="n">gamma</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">c</span><span class="o">^</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="p">((</span><span class="mi">4</span><span class="o">*</span><span class="n">c</span><span class="o">^</span><span class="mi">2</span><span class="o">/</span><span class="n">gamma</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">gamma</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">gamma</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">c</span><span class="o">^</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span> <span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">c</span><span class="o">^</span><span class="mi">2</span><span class="o">/</span><span class="n">gamma</span><span class="p">)</span> <span class="o">-</span> <span class="n">u</span><span class="o">^</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">gamma</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">p_ratio1</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="nb">math.sqrt</span><span class="p">((</span><span class="n">a</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">p_ratio2</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="nb">math.sqrt</span><span class="p">((</span><span class="n">a</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">density_ratio</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">((</span><span class="n">gamma</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">gamma</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">))</span><span class="o">*</span> <span class="nb">math.max</span><span class="p">(</span><span class="n">p_ratio1</span><span class="p">,</span><span class="n">p_ratio2</span><span class="p">))</span><span class="o">/</span>
+                 <span class="p">(((</span><span class="n">gamma</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">gamma</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">+</span> <span class="nb">math.max</span><span class="p">(</span><span class="n">p_ratio1</span><span class="p">,</span><span class="n">p_ratio2</span><span class="p">))</span>
+
+<span class="n">densL</span> <span class="o">=</span> <span class="n">density_ratio</span> <span class="o">*</span> <span class="n">dens</span>
+<span class="n">pressL</span> <span class="o">=</span> <span class="nb">math.max</span><span class="p">(</span><span class="n">p_ratio1</span><span class="p">,</span><span class="n">p_ratio2</span><span class="p">)</span> <span class="o">*</span> <span class="n">press</span>
+<span class="n">ushock</span><span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="o">/</span><span class="n">c</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">density_ratio</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span> <span class="n">c</span>
+<span class="n">velocity_2</span> <span class="o">=</span> <span class="n">ushock</span> <span class="o">-</span> <span class="n">u</span>
+<span class="n">velocity_1</span> <span class="o">=</span> <span class="n">ushock</span>
+<span class="n">x_position</span> <span class="o">=</span> <span class="mf">0.44</span> <span class="o">+</span> <span class="n">ushock</span><span class="o">*</span><span class="n">tmax</span>
+
+<span class="c1">-- Initial condition</span>
+<span class="kr">function</span> <span class="nf">iniVel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+  <span class="kr">if</span> <span class="n">inside_piston</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span> <span class="kr">then</span>
+    <span class="kr">return</span> <span class="n">velocityX</span>
+  <span class="kr">else</span>
+    <span class="kr">return</span> <span class="mf">0.0</span>
+  <span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">inipress</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+  <span class="kr">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.42</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.44</span><span class="p">)</span> <span class="kr">then</span>
+    <span class="kr">return</span> <span class="n">pressL</span>
+  <span class="kr">else</span>
+    <span class="kr">return</span> <span class="n">press</span>
+  <span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">inidens</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+  <span class="kr">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.42</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.44</span><span class="p">)</span> <span class="kr">then</span>
+    <span class="kr">return</span> <span class="n">densL</span>
+  <span class="kr">else</span>
+    <span class="kr">return</span> <span class="n">dens</span>
+  <span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="n">initial_condition</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">density</span> <span class="o">=</span> <span class="n">inidens</span><span class="p">,</span>
+  <span class="n">pressure</span> <span class="o">=</span> <span class="n">inipress</span><span class="p">,</span>
+  <span class="n">velocity</span> <span class="o">=</span> <span class="n">iniVel</span><span class="p">,</span>
+<span class="p">}</span>
+
+ <span class="c1">-- Boundary definitions</span>
+<span class="n">boundary_condition</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;west&#39;</span><span class="p">,</span>
+    <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;outflow&#39;</span><span class="p">,</span>
+    <span class="n">pressure</span> <span class="o">=</span> <span class="n">press</span><span class="p">,</span>
+  <span class="p">}</span>
+  <span class="p">,</span>
+  <span class="p">{</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;east&#39;</span><span class="p">,</span>
+    <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;outflow&#39;</span><span class="p">,</span>
+    <span class="n">pressure</span> <span class="o">=</span> <span class="n">press</span><span class="p">,</span>
+  <span class="p">}</span>
+  <span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ol>
+<li>
+<p>Projection: l2p</p>
+</li>
+<li>
+<p>Polynomial representation: Q</p>
+</li>
+<li>
+<p>Filtering: spectral_viscosity</p>
+</li>
+<li>
+<p>Timestepping: imexRungeKutta, 4 steps</p>
+</li>
+<li>
+<p>Boundary conditions: outflow</p>
+</li>
+<li>
+<p>Others: - porous material (geometry),
+           - over-integration for the geometry (Piston),
+           - modereduction
+           - lua function for geometry definition</p>
+</li>
+</ol>
+    </div>
+  </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../../../../../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../../../../../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../../../../../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

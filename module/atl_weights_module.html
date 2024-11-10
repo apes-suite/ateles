@@ -1,0 +1,846 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_weights_module &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_weights_module
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for modules and submodules.">77 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_weights_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_weights_module.f90.html'>atl_weights_module.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_weights_module</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_weights_module.html#proc-atl_initweights">atl_initWeights</a>
+            <a class="list-group-item" href="../module/atl_weights_module.html#proc-atl_dumpweights">atl_dumpWeights</a>
+            <a class="list-group-item" href="../module/atl_weights_module.html#proc-atl_getweights">atl_getWeights</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      <p>This module include the routine required for element wie dumping weight
+for better load balancing
+This is intialize when add 'write_weights = 'weight' ' to the config file
+and are based on element wise time measurements</p>
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='http://www.mpi-forum.org/docs/mpi-3.1/mpi31-report/node410.htm'>mpi</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/treelmesh_module.html'>treelmesh_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/env_module.html'>env_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aotus_module.html'>aotus_module</a></li>
+                  <li class="list-inline-item"><a href='atl_timer_module.html'>atl_timer_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_timer_module.html'>tem_timer_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_logging_module.html'>tem_logging_module</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_weights_module~~UsesGraph Pages: 1 -->
+<svg id="moduleatl_weights_moduleUsesGraph" width="430pt" height="242pt"
+ viewBox="0.00 0.00 430.00 242.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_weights_module~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 238)">
+<title>module~~atl_weights_module~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-238 426,-238 426,4 -4,4"/>
+<!-- module~atl_weights_module -->
+<g id="module~~atl_weights_module~~UsesGraph_node1" class="node">
+<title>module~atl_weights_module</title>
+<polygon fill="none" stroke="black" points="422,-129 304,-129 304,-105 422,-105 422,-129"/>
+<text text-anchor="middle" x="363" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_weights_module</text>
+</g>
+<!-- aotus_module -->
+<g id="module~~atl_weights_module~~UsesGraph_node2" class="node">
+<title>aotus_module</title>
+<g id="a_module~~atl_weights_module~~UsesGraph_node2"><a xlink:href="https://apes-suite.github.io/aotus/module/aotus_module.html" xlink:title="aotus_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="259,-232 171,-232 171,-208 259,-208 259,-232"/>
+<text text-anchor="middle" x="215" y="-217.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aotus_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_weights_module&#45;&gt;aotus_module -->
+<g id="module~~atl_weights_module~~UsesGraph_edge1" class="edge">
+<title>module~atl_weights_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M349.03,-129.22C331.53,-145.31 298.98,-173.92 268,-194 263.01,-197.24 257.56,-200.36 252.13,-203.25"/>
+<polygon fill="#000000" stroke="#000000" points="250.39,-200.21 243.09,-207.88 253.58,-206.44 250.39,-200.21"/>
+</g>
+<!-- env_module -->
+<g id="module~~atl_weights_module~~UsesGraph_node3" class="node">
+<title>env_module</title>
+<g id="a_module~~atl_weights_module~~UsesGraph_node3"><a xlink:href="https://apes-suite.github.io/treelm/module/env_module.html" xlink:title="env_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="102,-234 24,-234 24,-210 102,-210 102,-234"/>
+<text text-anchor="middle" x="63" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">env_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_weights_module&#45;&gt;env_module -->
+<g id="module~~atl_weights_module~~UsesGraph_edge2" class="edge">
+<title>module~atl_weights_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M214,-180C179.96,-189.42 141.61,-200.16 112.21,-208.42"/>
+<polygon fill="#000000" stroke="#000000" points="110.89,-205.15 102.21,-211.23 112.78,-211.89 110.89,-205.15"/>
+</g>
+<!-- module~atl_timer_module -->
+<g id="module~~atl_weights_module~~UsesGraph_node4" class="node">
+<title>module~atl_timer_module</title>
+<g id="a_module~~atl_weights_module~~UsesGraph_node4"><a xlink:href="../module/atl_timer_module.html" xlink:title="atl_timer_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="268,-129 162,-129 162,-105 268,-105 268,-129"/>
+<text text-anchor="middle" x="215" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_timer_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_weights_module&#45;&gt;module~atl_timer_module -->
+<g id="module~~atl_weights_module~~UsesGraph_edge3" class="edge">
+<title>module~atl_weights_module&#45;&gt;module~atl_timer_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M303.88,-117C295.51,-117 286.87,-117 278.42,-117"/>
+<polygon fill="#000000" stroke="#000000" points="278.25,-113.5 268.25,-117 278.25,-120.5 278.25,-113.5"/>
+</g>
+<!-- mpi -->
+<g id="module~~atl_weights_module~~UsesGraph_node5" class="node">
+<title>mpi</title>
+<g id="a_module~~atl_weights_module~~UsesGraph_node5"><a xlink:href="http://www.mpi-forum.org/docs/mpi-3.1/mpi31-report/node410.htm" xlink:title="mpi">
+<polygon fill="#337ab7" stroke="#337ab7" points="242,-26 188,-26 188,-2 242,-2 242,-26"/>
+<text text-anchor="middle" x="215" y="-11.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi</text>
+</a>
+</g>
+</g>
+<!-- module~atl_weights_module&#45;&gt;mpi -->
+<g id="module~~atl_weights_module~~UsesGraph_edge4" class="edge">
+<title>module~atl_weights_module&#45;&gt;mpi</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M349.03,-104.78C331.53,-88.69 298.98,-60.08 268,-40 262.66,-36.54 256.8,-33.21 251,-30.15"/>
+<polygon fill="#000000" stroke="#000000" points="252.52,-27 242.02,-25.6 249.35,-33.24 252.52,-27"/>
+</g>
+<!-- tem_logging_module -->
+<g id="module~~atl_weights_module~~UsesGraph_node6" class="node">
+<title>tem_logging_module</title>
+<g id="a_module~~atl_weights_module~~UsesGraph_node6"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_logging_module.html" xlink:title="tem_logging_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="125,-192 1,-192 1,-168 125,-168 125,-192"/>
+<text text-anchor="middle" x="63" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_weights_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_weights_module~~UsesGraph_edge5" class="edge">
+<title>module~atl_weights_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M339.45,-129.06C311.36,-143.53 261.5,-167.41 216,-180"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M214,-180C188.96,-186.93 160.66,-188.45 135.44,-187.74"/>
+<polygon fill="#000000" stroke="#000000" points="135.34,-184.23 125.21,-187.32 135.06,-191.23 135.34,-184.23"/>
+</g>
+<!-- tem_timer_module -->
+<g id="module~~atl_weights_module~~UsesGraph_node7" class="node">
+<title>tem_timer_module</title>
+<g id="a_module~~atl_weights_module~~UsesGraph_node7"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_timer_module.html" xlink:title="tem_timer_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="119.5,-66 6.5,-66 6.5,-42 119.5,-42 119.5,-66"/>
+<text text-anchor="middle" x="63" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timer_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_weights_module&#45;&gt;tem_timer_module -->
+<g id="module~~atl_weights_module~~UsesGraph_edge6" class="edge">
+<title>module~atl_weights_module&#45;&gt;tem_timer_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M214,-54C187.19,-46.58 156.64,-45.36 130.13,-46.44"/>
+<polygon fill="#000000" stroke="#000000" points="129.61,-42.97 119.81,-46.99 129.98,-49.96 129.61,-42.97"/>
+</g>
+<!-- treelmesh_module -->
+<g id="module~~atl_weights_module~~UsesGraph_node8" class="node">
+<title>treelmesh_module</title>
+<g id="a_module~~atl_weights_module~~UsesGraph_node8"><a xlink:href="https://apes-suite.github.io/treelm/module/treelmesh_module.html" xlink:title="treelmesh_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="119,-24 7,-24 7,0 119,0 119,-24"/>
+<text text-anchor="middle" x="63" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">treelmesh_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_weights_module&#45;&gt;treelmesh_module -->
+<g id="module~~atl_weights_module~~UsesGraph_edge7" class="edge">
+<title>module~atl_weights_module&#45;&gt;treelmesh_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M339.45,-104.94C311.36,-90.47 261.5,-66.59 216,-54"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M214,-54C181.59,-45.04 145.28,-34.87 116.5,-26.79"/>
+<polygon fill="#000000" stroke="#000000" points="117.23,-23.36 106.65,-24.02 115.33,-30.09 117.23,-23.36"/>
+</g>
+<!-- module~atl_timer_module&#45;&gt;env_module -->
+<g id="module~~atl_weights_module~~UsesGraph_edge8" class="edge">
+<title>module~atl_timer_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M201.13,-129.03C190.57,-138.91 175.26,-153.31 162,-166 145.88,-181.43 145.04,-189.36 126,-201 121.57,-203.71 116.74,-206.12 111.81,-208.26"/>
+<polygon fill="#000000" stroke="#000000" points="110.27,-205.1 102.25,-212.02 112.84,-211.61 110.27,-205.1"/>
+</g>
+<!-- module~atl_timer_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_weights_module~~UsesGraph_edge11" class="edge">
+<title>module~atl_timer_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M190.44,-129.19C172.91,-138.02 148.27,-149.95 126,-159 121.32,-160.9 116.39,-162.78 111.44,-164.58"/>
+<polygon fill="#000000" stroke="#000000" points="110.23,-161.3 101.97,-167.94 112.56,-167.9 110.23,-161.3"/>
+</g>
+<!-- module~atl_timer_module&#45;&gt;tem_timer_module -->
+<g id="module~~atl_weights_module~~UsesGraph_edge12" class="edge">
+<title>module~atl_timer_module&#45;&gt;tem_timer_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M190.44,-104.81C172.91,-95.98 148.27,-84.05 126,-75 121.32,-73.1 116.39,-71.22 111.44,-69.42"/>
+<polygon fill="#000000" stroke="#000000" points="112.56,-66.1 101.97,-66.06 110.23,-72.7 112.56,-66.1"/>
+</g>
+<!-- module~atl_timer_module&#45;&gt;treelmesh_module -->
+<g id="module~~atl_weights_module~~UsesGraph_edge13" class="edge">
+<title>module~atl_timer_module&#45;&gt;treelmesh_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M201.13,-104.97C190.57,-95.09 175.26,-80.69 162,-68 145.88,-52.57 145.04,-44.64 126,-33 123.19,-31.28 120.22,-29.68 117.16,-28.2"/>
+<polygon fill="#000000" stroke="#000000" points="118.37,-24.9 107.8,-24.08 115.55,-31.31 118.37,-24.9"/>
+</g>
+<!-- soi_revision_module -->
+<g id="module~~atl_weights_module~~UsesGraph_node9" class="node">
+<title>soi_revision_module</title>
+<g id="a_module~~atl_weights_module~~UsesGraph_node9"><a xlink:href="https://apes-suite.github.io/treelm/module/soi_revision_module.html" xlink:title="soi_revision_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="123,-150 3,-150 3,-126 123,-126 123,-150"/>
+<text text-anchor="middle" x="63" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">soi_revision_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_timer_module&#45;&gt;soi_revision_module -->
+<g id="module~~atl_weights_module~~UsesGraph_edge9" class="edge">
+<title>module~atl_timer_module&#45;&gt;soi_revision_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M161.96,-124.29C152.66,-125.59 142.85,-126.96 133.16,-128.32"/>
+<polygon fill="#000000" stroke="#000000" points="132.56,-124.87 123.15,-129.72 133.53,-131.8 132.56,-124.87"/>
+</g>
+<!-- tem_general_module -->
+<g id="module~~atl_weights_module~~UsesGraph_node10" class="node">
+<title>tem_general_module</title>
+<g id="a_module~~atl_weights_module~~UsesGraph_node10"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_general_module.html" xlink:title="tem_general_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="126,-108 0,-108 0,-84 126,-84 126,-108"/>
+<text text-anchor="middle" x="63" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_general_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_timer_module&#45;&gt;tem_general_module -->
+<g id="module~~atl_weights_module~~UsesGraph_edge10" class="edge">
+<title>module~atl_timer_module&#45;&gt;tem_general_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M161.96,-109.71C153.63,-108.55 144.88,-107.32 136.18,-106.1"/>
+<polygon fill="#000000" stroke="#000000" points="136.4,-102.6 126.01,-104.68 135.43,-109.53 136.4,-102.6"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+          <div class="card">
+      <h3 class="card-header card-title bg-light">Used by</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_weights_module~~UsedByGraph Pages: 1 -->
+<svg id="moduleatl_weights_moduleUsedByGraph" width="566pt" height="74pt"
+ viewBox="0.00 0.00 566.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_weights_module~~UsedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
+<title>module~~atl_weights_module~~UsedByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 562,-70 562,4 -4,4"/>
+<!-- module~atl_weights_module -->
+<g id="module~~atl_weights_module~~UsedByGraph_node1" class="node">
+<title>module~atl_weights_module</title>
+<polygon fill="none" stroke="black" points="118,-44 0,-44 0,-20 118,-20 118,-44"/>
+<text text-anchor="middle" x="59" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_weights_module</text>
+</g>
+<!-- module~atl_initialize_module -->
+<g id="module~~atl_weights_module~~UsedByGraph_node2" class="node">
+<title>module~atl_initialize_module</title>
+<g id="a_module~~atl_weights_module~~UsedByGraph_node2"><a xlink:href="../module/atl_initialize_module.html" xlink:title="atl_initialize_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="275,-24 154,-24 154,0 275,0 275,-24"/>
+<text text-anchor="middle" x="214.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_initialize_module&#45;&gt;module~atl_weights_module -->
+<g id="module~~atl_weights_module~~UsedByGraph_edge1" class="edge">
+<title>module~atl_initialize_module&#45;&gt;module~atl_weights_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M153.71,-19.79C145.3,-20.89 136.61,-22.02 128.06,-23.13"/>
+<polygon fill="#000000" stroke="#000000" points="127.58,-19.67 118.11,-24.43 128.48,-26.61 127.58,-19.67"/>
+</g>
+<!-- module~atl_program_module -->
+<g id="module~~atl_weights_module~~UsedByGraph_node3" class="node">
+<title>module~atl_program_module</title>
+<g id="a_module~~atl_weights_module~~UsedByGraph_node3"><a xlink:href="../module/atl_program_module.html" xlink:title="atl_program_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="434,-64 311,-64 311,-40 434,-40 434,-64"/>
+<text text-anchor="middle" x="372.5" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_program_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_program_module&#45;&gt;module~atl_weights_module -->
+<g id="module~~atl_weights_module~~UsedByGraph_edge2" class="edge">
+<title>module~atl_program_module&#45;&gt;module~atl_weights_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M310.7,-48.1C258.3,-44.73 182.73,-39.88 128.27,-36.38"/>
+<polygon fill="#000000" stroke="#000000" points="128.22,-32.87 118.01,-35.72 127.77,-39.86 128.22,-32.87"/>
+</g>
+<!-- module~atl_program_module&#45;&gt;module~atl_initialize_module -->
+<g id="module~~atl_weights_module~~UsedByGraph_edge3" class="edge">
+<title>module~atl_program_module&#45;&gt;module~atl_initialize_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M324.69,-40C308.26,-35.79 289.62,-31.01 272.45,-26.6"/>
+<polygon fill="#000000" stroke="#000000" points="273.1,-23.16 262.54,-24.06 271.36,-29.94 273.1,-23.16"/>
+</g>
+<!-- program~ateles -->
+<g id="module~~atl_weights_module~~UsedByGraph_node4" class="node">
+<title>program~ateles</title>
+<g id="a_module~~atl_weights_module~~UsedByGraph_node4"><a xlink:href="../program/ateles.html" xlink:title="ateles">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="541,-66 487,-66 487,-42 541,-42 541,-66"/>
+<text text-anchor="middle" x="514" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ateles</text>
+</a>
+</g>
+</g>
+<!-- program~ateles&#45;&gt;module~atl_program_module -->
+<g id="module~~atl_weights_module~~UsedByGraph_edge5" class="edge">
+<title>program~ateles&#45;&gt;module~atl_program_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M486.76,-53.62C474.52,-53.45 459.31,-53.23 444.05,-53.01"/>
+<polygon fill="#000000" stroke="#000000" points="444.09,-49.51 434.04,-52.87 443.99,-56.51 444.09,-49.51"/>
+</g>
+<!-- program~atl_harvesting -->
+<g id="module~~atl_weights_module~~UsedByGraph_node5" class="node">
+<title>program~atl_harvesting</title>
+<g id="a_module~~atl_weights_module~~UsedByGraph_node5"><a xlink:href="../program/atl_harvesting.html" xlink:title="atl_harvesting">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="558,-24 470,-24 470,0 558,0 558,-24"/>
+<text text-anchor="middle" x="514" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_harvesting</text>
+</a>
+</g>
+</g>
+<!-- program~atl_harvesting&#45;&gt;module~atl_initialize_module -->
+<g id="module~~atl_weights_module~~UsedByGraph_edge4" class="edge">
+<title>program~atl_harvesting&#45;&gt;module~atl_initialize_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M469.74,-12C421.4,-12 342.42,-12 285.31,-12"/>
+<polygon fill="#000000" stroke="#000000" points="285.27,-8.5 275.27,-12 285.27,-15.5 285.27,-8.5"/>
+</g>
+<!-- program~atl_harvesting&#45;&gt;module~atl_program_module -->
+<g id="module~~atl_weights_module~~UsedByGraph_edge6" class="edge">
+<title>program~atl_harvesting&#45;&gt;module~atl_program_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M471.15,-24C456.79,-28.12 440.56,-32.77 425.5,-37.09"/>
+<polygon fill="#000000" stroke="#000000" points="424.46,-33.75 415.81,-39.87 426.38,-40.48 424.46,-33.75"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      <br>
+
+
+
+
+
+
+
+
+        <section>
+          <h2>Subroutines</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_initweights"></span> <h3>public  subroutine <a href='../proc/atl_initweights.html'>atl_initWeights</a>(tree)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~155"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+<p>Handle to the configuration script, to load the parameters from.
+Mesh data in treelmesh format.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_dumpweights"></span> <h3>public  subroutine <a href='../proc/atl_dumpweights.html'>atl_dumpWeights</a>(tree)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Dump weights to a file.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~157"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_getweights"></span> <h3>private  subroutine <a href='../proc/atl_getweights.html'>atl_getWeights</a>(tree, weights, comp_weights, multiLevel_weights, cpl_weights)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>boundary timer should only be measured for boundary elements
+VK    setBnd = tem_getTimerVal( timerHandle = atl_timerHandles%setBnd)
+VK    readBC = tem_getTimerVal( timerHandle = atl_timerHandles%readBC)</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~156"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-weights~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>weights</strong>(:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-comp_weights"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>comp_weights</strong>(:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-multilevel_weights"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>multiLevel_weights</strong>(:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-cpl_weights"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>cpl_weights</strong>(:)</td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

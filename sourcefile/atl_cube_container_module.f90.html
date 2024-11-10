@@ -1,0 +1,1594 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_cube_container_module.f90 &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_cube_container_module.f90
+      <small>Source File</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for source files.">101 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_cube_container_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+            <li class="breadcrumb-item active" aria-current="page">atl_cube_container_module.f90</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#mods-0"
+         aria-expanded="false" aria-controls="mods-0">
+         <h4 class="card-header bg-primary text-white">Modules</h4>
+      </a>
+      <div id="mods-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_cube_container_module.html">atl_cube_container_module</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../sourcefile/atl_cube_container_module.f90.html#src">atl_cube_container_module.f90</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    <div class="col-md-9" id='text'>
+      
+      <br>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">This file depends on</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: sourcefile~~atl_cube_container_module.f90~~EfferentGraph Pages: 1 -->
+<svg id="sourcefileatl_cube_container_modulef90EfferentGraph" width="641pt" height="254pt"
+ viewBox="0.00 0.00 641.00 253.90" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph" class="graph" transform="scale(0.5 0.5) rotate(0) translate(4 503)">
+<title>sourcefile~~atl_cube_container_module.f90~~EfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-503 1276,-503 1276,4 -4,4"/>
+<!-- sourcefile~atl_cube_container_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node1" class="node">
+<title>sourcefile~atl_cube_container_module.f90</title>
+<polygon fill="none" stroke="black" points="1272,-289 1092,-289 1092,-265 1272,-265 1272,-289"/>
+<text text-anchor="middle" x="1182" y="-274.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_cube_container_module.f90</text>
+</g>
+<!-- sourcefile~atl_bc_header_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node2" class="node">
+<title>sourcefile~atl_bc_header_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node2"><a xlink:href="../sourcefile/atl_bc_header_module.f90.html" xlink:title="atl_bc_header_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="636,-390 482,-390 482,-366 636,-366 636,-390"/>
+<text text-anchor="middle" x="559" y="-375.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_bc_header_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_bc_header_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge1" class="edge">
+<title>sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_bc_header_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M975,-379C862.06,-393.71 730.37,-389.87 646.14,-384.78"/>
+<polygon fill="#000000" stroke="#000000" points="646.31,-381.29 636.11,-384.16 645.87,-388.27 646.31,-381.29"/>
+</g>
+<!-- sourcefile~atl_boundary_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node3" class="node">
+<title>sourcefile~atl_boundary_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node3"><a xlink:href="../sourcefile/atl_boundary_module.f90.html" xlink:title="atl_boundary_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="851,-310 703,-310 703,-286 851,-286 851,-310"/>
+<text text-anchor="middle" x="777" y="-295.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_boundary_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_boundary_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge2" class="edge">
+<title>sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_boundary_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1166.6,-289.05C1144.3,-307.1 1099.46,-341.05 1056,-360 1022.9,-374.43 1012.81,-374.34 977,-379"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M975,-379C908.07,-387.72 836.43,-342.82 800.82,-316.34"/>
+<polygon fill="#000000" stroke="#000000" points="802.65,-313.33 792.57,-310.05 798.4,-318.89 802.65,-313.33"/>
+</g>
+<!-- sourcefile~atl_cube_elem_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node4" class="node">
+<title>sourcefile~atl_cube_elem_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node4"><a xlink:href="../sourcefile/atl_cube_elem_module.f90.html" xlink:title="atl_cube_elem_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="637,-188 481,-188 481,-164 637,-164 637,-188"/>
+<text text-anchor="middle" x="559" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_cube_elem_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_cube_elem_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge3" class="edge">
+<title>sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_cube_elem_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M975,-116C943.68,-103.42 739.93,-140.56 630.03,-161.98"/>
+<polygon fill="#000000" stroke="#000000" points="629.16,-158.58 620.02,-163.94 630.5,-165.45 629.16,-158.58"/>
+</g>
+<!-- sourcefile~atl_equation_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node5" class="node">
+<title>sourcefile~atl_equation_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node5"><a xlink:href="../sourcefile/atl_equation_module.f90.html" xlink:title="atl_equation_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="399.5,-310 254.5,-310 254.5,-286 399.5,-286 399.5,-310"/>
+<text text-anchor="middle" x="327" y="-295.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_equation_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_equation_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge4" class="edge">
+<title>sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_equation_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M975,-257C746.99,-235.05 687.96,-254.52 460,-277 441.68,-278.81 422.05,-281.51 403.67,-284.38"/>
+<polygon fill="#000000" stroke="#000000" points="402.92,-280.95 393.6,-285.99 404.03,-287.87 402.92,-280.95"/>
+</g>
+<!-- sourcefile~atl_facedata_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node6" class="node">
+<title>sourcefile~atl_facedata_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node6"><a xlink:href="../sourcefile/atl_facedata_module.f90.html" xlink:title="atl_facedata_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1048.5,-351 903.5,-351 903.5,-327 1048.5,-327 1048.5,-351"/>
+<text text-anchor="middle" x="976" y="-336.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_facedata_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_facedata_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge5" class="edge">
+<title>sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_facedata_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1146.15,-289.02C1121.16,-297.5 1086.65,-308.91 1056,-318 1048.98,-320.08 1041.59,-322.18 1034.25,-324.19"/>
+<polygon fill="#000000" stroke="#000000" points="1033.06,-320.89 1024.33,-326.89 1034.9,-327.65 1033.06,-320.89"/>
+</g>
+<!-- sourcefile~atl_kerneldata_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node7" class="node">
+<title>sourcefile~atl_kerneldata_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node7"><a xlink:href="../sourcefile/atl_kerneldata_module.f90.html" xlink:title="atl_kerneldata_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1053.5,-209 898.5,-209 898.5,-185 1053.5,-185 1053.5,-209"/>
+<text text-anchor="middle" x="976" y="-194.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_kerneldata_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_kerneldata_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge6" class="edge">
+<title>sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_kerneldata_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1150.02,-264.85C1114.46,-250.91 1056.06,-228 1017.07,-212.72"/>
+<polygon fill="#000000" stroke="#000000" points="1018.19,-209.4 1007.61,-209 1015.64,-215.91 1018.19,-209.4"/>
+</g>
+<!-- sourcefile~atl_materialprp_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node8" class="node">
+<title>sourcefile~atl_materialprp_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node8"><a xlink:href="../sourcefile/atl_materialprp_module.f90.html" xlink:title="atl_materialPrp_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1056,-309 896,-309 896,-285 1056,-285 1056,-309"/>
+<text text-anchor="middle" x="976" y="-294.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_materialPrp_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_materialprp_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge7" class="edge">
+<title>sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_materialprp_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1091.82,-285.74C1083.27,-286.58 1074.59,-287.43 1066.04,-288.27"/>
+<polygon fill="#000000" stroke="#000000" points="1065.68,-284.79 1056.07,-289.25 1066.36,-291.76 1065.68,-284.79"/>
+</g>
+<!-- sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node9" class="node">
+<title>sourcefile~atl_penalization_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node9"><a xlink:href="../sourcefile/atl_penalization_module.f90.html" xlink:title="atl_penalization_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="858.5,-108 695.5,-108 695.5,-84 858.5,-84 858.5,-108"/>
+<text text-anchor="middle" x="777" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_penalization_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge8" class="edge">
+<title>sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M975,-116C941.75,-102.65 902.93,-96.86 868.58,-94.68"/>
+<polygon fill="#000000" stroke="#000000" points="868.72,-91.18 858.55,-94.13 868.34,-98.17 868.72,-91.18"/>
+</g>
+<!-- sourcefile~atl_scheme_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node10" class="node">
+<title>sourcefile~atl_scheme_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node10"><a xlink:href="../sourcefile/atl_scheme_module.f90.html" xlink:title="atl_scheme_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="628.5,-108 489.5,-108 489.5,-84 628.5,-84 628.5,-108"/>
+<text text-anchor="middle" x="559" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_scheme_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_scheme_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge9" class="edge">
+<title>sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_scheme_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1170.56,-264.94C1142.79,-233.78 1063.25,-150.63 977,-116"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M975,-116C924.64,-95.78 913.47,-84.25 860,-75 787.3,-62.43 767.56,-69.27 694,-75 674.31,-76.53 653.13,-79.32 633.56,-82.37"/>
+<polygon fill="#000000" stroke="#000000" points="632.81,-78.94 623.49,-83.98 633.92,-85.85 632.81,-78.94"/>
+</g>
+<!-- sourcefile~atl_source_types_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node11" class="node">
+<title>sourcefile~atl_source_types_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node11"><a xlink:href="../sourcefile/atl_source_types_module.f90.html" xlink:title="atl_source_types_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="860,-230 694,-230 694,-206 860,-206 860,-230"/>
+<text text-anchor="middle" x="777" y="-215.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_source_types_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_source_types_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge10" class="edge">
+<title>sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_source_types_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1091.89,-268.2C1056.17,-264.68 1014.64,-260.62 977,-257"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M975,-257C927.37,-252.41 874.2,-241.54 835.11,-232.43"/>
+<polygon fill="#000000" stroke="#000000" points="835.51,-228.93 824.98,-230.04 833.91,-235.74 835.51,-228.93"/>
+</g>
+<!-- sourcefile~atl_bc_header_module.f90&#45;&gt;sourcefile~atl_equation_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge11" class="edge">
+<title>sourcefile~atl_bc_header_module.f90&#45;&gt;sourcefile~atl_equation_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M507.52,-365.94C492.14,-361.91 475.27,-357.12 460,-352 426.97,-340.91 390.37,-325.7 364.1,-314.24"/>
+<polygon fill="#000000" stroke="#000000" points="365.48,-311.03 354.92,-310.21 362.66,-317.44 365.48,-311.03"/>
+</g>
+<!-- sourcefile~atl_boundary_module.f90&#45;&gt;sourcefile~atl_bc_header_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge12" class="edge">
+<title>sourcefile~atl_boundary_module.f90&#45;&gt;sourcefile~atl_bc_header_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M752.54,-310.18C729.07,-322.01 691.72,-339.91 658,-352 646.36,-356.17 633.74,-360.01 621.54,-363.39"/>
+<polygon fill="#000000" stroke="#000000" points="620.62,-360.01 611.87,-365.99 622.44,-366.77 620.62,-360.01"/>
+</g>
+<!-- sourcefile~atl_boundary_module.f90&#45;&gt;sourcefile~atl_cube_elem_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge13" class="edge">
+<title>sourcefile~atl_boundary_module.f90&#45;&gt;sourcefile~atl_cube_elem_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M756.46,-285.85C739.19,-274.68 713.76,-257.15 694,-239 675.89,-222.37 679.13,-209.57 658,-197 654.34,-194.82 650.49,-192.87 646.51,-191.12"/>
+<polygon fill="#000000" stroke="#000000" points="647.61,-187.79 637.03,-187.39 645.05,-194.31 647.61,-187.79"/>
+</g>
+<!-- sourcefile~atl_boundary_module.f90&#45;&gt;sourcefile~atl_equation_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge14" class="edge">
+<title>sourcefile~atl_boundary_module.f90&#45;&gt;sourcefile~atl_equation_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M720.15,-310.02C700.59,-313.67 678.42,-317.2 658,-319 570.34,-326.74 547.73,-325.93 460,-319 440.6,-317.47 419.74,-314.68 400.46,-311.63"/>
+<polygon fill="#000000" stroke="#000000" points="400.97,-308.17 390.54,-310.02 399.85,-315.08 400.97,-308.17"/>
+</g>
+<!-- sourcefile~atl_boundary_module.f90&#45;&gt;sourcefile~atl_scheme_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge16" class="edge">
+<title>sourcefile~atl_boundary_module.f90&#45;&gt;sourcefile~atl_scheme_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M752.83,-285.96C734.77,-275.58 710.13,-259.11 694,-239 668.59,-207.31 684.69,-185.62 658,-155 642,-136.65 618.86,-122.34 599.07,-112.42"/>
+<polygon fill="#000000" stroke="#000000" points="600.5,-109.22 589.97,-108.03 597.46,-115.53 600.5,-109.22"/>
+</g>
+<!-- sourcefile~atl_reference_element_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node25" class="node">
+<title>sourcefile~atl_reference_element_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node25"><a xlink:href="../sourcefile/atl_reference_element_module.f90.html" xlink:title="atl_reference_element_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="658,-310 460,-310 460,-286 658,-286 658,-310"/>
+<text text-anchor="middle" x="559" y="-295.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_reference_element_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_boundary_module.f90&#45;&gt;sourcefile~atl_reference_element_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge15" class="edge">
+<title>sourcefile~atl_boundary_module.f90&#45;&gt;sourcefile~atl_reference_element_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M702.87,-298C691.8,-298 680.17,-298 668.54,-298"/>
+<polygon fill="#000000" stroke="#000000" points="668.33,-294.5 658.33,-298 668.33,-301.5 668.33,-294.5"/>
+</g>
+<!-- sourcefile~ply_poly_project_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node29" class="node">
+<title>sourcefile~ply_poly_project_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node29"><a xlink:href="../sourcefile/ply_poly_project_module.f90.html" xlink:title="ply_poly_project_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="641,-230 477,-230 477,-206 641,-206 641,-230"/>
+<text text-anchor="middle" x="559" y="-215.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_poly_project_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_boundary_module.f90&#45;&gt;sourcefile~ply_poly_project_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge17" class="edge">
+<title>sourcefile~atl_boundary_module.f90&#45;&gt;sourcefile~ply_poly_project_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M743.19,-285.85C705.39,-271.85 643.19,-248.81 601.91,-233.52"/>
+<polygon fill="#000000" stroke="#000000" points="603,-230.19 592.41,-230 600.57,-236.76 603,-230.19"/>
+</g>
+<!-- sourcefile~atl_eqn_acoustic_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node12" class="node">
+<title>sourcefile~atl_eqn_acoustic_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node12"><a xlink:href="../sourcefile/atl_eqn_acoustic_module.f90.html" xlink:title="atl_eqn_acoustic_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="180.5,-499 13.5,-499 13.5,-475 180.5,-475 180.5,-499"/>
+<text text-anchor="middle" x="97" y="-484.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_acoustic_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_acoustic_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge18" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_acoustic_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M320.27,-310.08C304.76,-341.36 258.74,-425.41 194,-466 191.18,-467.77 188.24,-469.39 185.2,-470.87"/>
+<polygon fill="#000000" stroke="#000000" points="183.62,-467.74 175.84,-474.93 186.41,-474.16 183.62,-467.74"/>
+</g>
+<!-- sourcefile~atl_eqn_advection_1d_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node13" class="node">
+<title>sourcefile~atl_eqn_advection_1d_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node13"><a xlink:href="../sourcefile/atl_eqn_advection_1d_module.f90.html" xlink:title="atl_eqn_advection_1d_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="194,-457 0,-457 0,-433 194,-433 194,-457"/>
+<text text-anchor="middle" x="97" y="-442.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_advection_1d_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_advection_1d_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge19" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_advection_1d_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M316.98,-310.32C297.57,-335.88 249.1,-394.7 194,-424 190.23,-426.01 186.28,-427.82 182.22,-429.46"/>
+<polygon fill="#000000" stroke="#000000" points="180.77,-426.26 172.58,-432.98 183.17,-432.84 180.77,-426.26"/>
+</g>
+<!-- sourcefile~atl_eqn_bbm_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node14" class="node">
+<title>sourcefile~atl_eqn_bbm_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node14"><a xlink:href="../sourcefile/atl_eqn_bbm_module.f90.html" xlink:title="atl_eqn_bbm_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="170.5,-415 23.5,-415 23.5,-391 170.5,-391 170.5,-415"/>
+<text text-anchor="middle" x="97" y="-400.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_bbm_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_bbm_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge20" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_bbm_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M310.74,-310.28C287.14,-328.65 239.71,-363.16 194,-382 188.54,-384.25 182.81,-386.27 176.97,-388.09"/>
+<polygon fill="#000000" stroke="#000000" points="175.71,-384.82 167.08,-390.97 177.66,-391.54 175.71,-384.82"/>
+</g>
+<!-- sourcefile~atl_eqn_euler_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node15" class="node">
+<title>sourcefile~atl_eqn_euler_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node15"><a xlink:href="../sourcefile/atl_eqn_euler_module.f90.html" xlink:title="atl_eqn_euler_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="172.5,-373 21.5,-373 21.5,-349 172.5,-349 172.5,-373"/>
+<text text-anchor="middle" x="97" y="-358.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_euler_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_euler_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge21" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_euler_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M291.24,-310.03C264.77,-318.96 227.33,-331.07 194,-340 185.29,-342.33 176.08,-344.6 166.95,-346.73"/>
+<polygon fill="#000000" stroke="#000000" points="166.07,-343.34 157.1,-348.97 167.63,-350.16 166.07,-343.34"/>
+</g>
+<!-- sourcefile~atl_eqn_heat_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node16" class="node">
+<title>sourcefile~atl_eqn_heat_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node16"><a xlink:href="../sourcefile/atl_eqn_heat_module.f90.html" xlink:title="atl_eqn_heat_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="170.5,-331 23.5,-331 23.5,-307 170.5,-307 170.5,-331"/>
+<text text-anchor="middle" x="97" y="-316.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_heat_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_heat_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge22" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_heat_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M254.48,-304.59C231.17,-306.73 205.1,-309.14 181.02,-311.35"/>
+<polygon fill="#000000" stroke="#000000" points="180.47,-307.89 170.83,-312.29 181.11,-314.86 180.47,-307.89"/>
+</g>
+<!-- sourcefile~atl_eqn_lineareuler_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node17" class="node">
+<title>sourcefile~atl_eqn_lineareuler_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node17"><a xlink:href="../sourcefile/atl_eqn_lineareuler_module.f90.html" xlink:title="atl_eqn_linearEuler_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="187.5,-289 6.5,-289 6.5,-265 187.5,-265 187.5,-289"/>
+<text text-anchor="middle" x="97" y="-274.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_linearEuler_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_lineareuler_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge23" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_lineareuler_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M254.48,-291.41C236.55,-289.76 216.98,-287.96 197.94,-286.21"/>
+<polygon fill="#000000" stroke="#000000" points="198.02,-282.7 187.74,-285.27 197.38,-289.67 198.02,-282.7"/>
+</g>
+<!-- sourcefile~atl_eqn_maxwell_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node18" class="node">
+<title>sourcefile~atl_eqn_maxwell_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node18"><a xlink:href="../sourcefile/atl_eqn_maxwell_module.f90.html" xlink:title="atl_eqn_maxwell_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="180.5,-247 13.5,-247 13.5,-223 180.5,-223 180.5,-247"/>
+<text text-anchor="middle" x="97" y="-232.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_maxwell_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_maxwell_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge24" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_maxwell_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M291.24,-285.97C264.77,-277.04 227.33,-264.93 194,-256 185.29,-253.67 176.08,-251.4 166.95,-249.27"/>
+<polygon fill="#000000" stroke="#000000" points="167.63,-245.84 157.1,-247.03 166.07,-252.66 167.63,-245.84"/>
+</g>
+<!-- sourcefile~atl_eqn_nerplanck_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node19" class="node">
+<title>sourcefile~atl_eqn_nerplanck_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node19"><a xlink:href="../sourcefile/atl_eqn_nerplanck_module.f90.html" xlink:title="atl_eqn_nerplanck_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="185,-205 9,-205 9,-181 185,-181 185,-205"/>
+<text text-anchor="middle" x="97" y="-190.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_nerplanck_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_nerplanck_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge25" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_nerplanck_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M310.74,-285.72C287.14,-267.35 239.71,-232.84 194,-214 188.54,-211.75 182.81,-209.73 176.97,-207.91"/>
+<polygon fill="#000000" stroke="#000000" points="177.66,-204.46 167.08,-205.03 175.71,-211.18 177.66,-204.46"/>
+</g>
+<!-- sourcefile~atl_eqn_nvrstk_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node20" class="node">
+<title>sourcefile~atl_eqn_nvrstk_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node20"><a xlink:href="../sourcefile/atl_eqn_nvrstk_module.f90.html" xlink:title="atl_eqn_nvrstk_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="174.5,-163 19.5,-163 19.5,-139 174.5,-139 174.5,-163"/>
+<text text-anchor="middle" x="97" y="-148.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_nvrstk_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_nvrstk_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge26" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_nvrstk_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M314.08,-285.9C284.36,-255.84 208.34,-179.62 194,-172 190.23,-169.99 186.28,-168.18 182.22,-166.54"/>
+<polygon fill="#000000" stroke="#000000" points="183.17,-163.16 172.58,-163.02 180.77,-169.74 183.17,-163.16"/>
+</g>
+<!-- sourcefile~atl_materialfun_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node21" class="node">
+<title>sourcefile~atl_materialfun_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node21"><a xlink:href="../sourcefile/atl_materialfun_module.f90.html" xlink:title="atl_materialFun_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="177.5,-121 16.5,-121 16.5,-97 177.5,-97 177.5,-121"/>
+<text text-anchor="middle" x="97" y="-106.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_materialFun_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_materialfun_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge27" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_materialfun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M311.56,-286C291.44,-268.74 254.67,-235.21 230,-201 209.31,-172.3 221.98,-151.65 194,-130 191.66,-128.19 189.2,-126.53 186.64,-125"/>
+<polygon fill="#000000" stroke="#000000" points="188.09,-121.82 177.6,-120.33 184.88,-128.03 188.09,-121.82"/>
+</g>
+<!-- sourcefile~atl_facedata_module.f90&#45;&gt;sourcefile~atl_boundary_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge28" class="edge">
+<title>sourcefile~atl_facedata_module.f90&#45;&gt;sourcefile~atl_boundary_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M917.22,-326.98C894.77,-322.3 868.9,-316.92 845.59,-312.07"/>
+<polygon fill="#000000" stroke="#000000" points="846.28,-308.64 835.77,-310.02 844.85,-315.49 846.28,-308.64"/>
+</g>
+<!-- sourcefile~ply_dof_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node27" class="node">
+<title>sourcefile~ply_dof_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node27"><a xlink:href="../sourcefile/ply_dof_module.f90.html" xlink:title="ply_dof_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="835.5,-188 718.5,-188 718.5,-164 835.5,-164 835.5,-188"/>
+<text text-anchor="middle" x="777" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_dof_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_kerneldata_module.f90&#45;&gt;sourcefile~ply_dof_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge29" class="edge">
+<title>sourcefile~atl_kerneldata_module.f90&#45;&gt;sourcefile~ply_dof_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M898.27,-188.82C881,-186.98 862.8,-185.04 845.92,-183.24"/>
+<polygon fill="#000000" stroke="#000000" points="845.92,-179.72 835.6,-182.14 845.18,-186.68 845.92,-179.72"/>
+</g>
+<!-- sourcefile~atl_materialprp_module.f90&#45;&gt;sourcefile~atl_boundary_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge30" class="edge">
+<title>sourcefile~atl_materialprp_module.f90&#45;&gt;sourcefile~atl_boundary_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M895.72,-297.4C884.31,-297.46 872.54,-297.52 861.06,-297.58"/>
+<polygon fill="#000000" stroke="#000000" points="861.04,-294.08 851.06,-297.63 861.08,-301.08 861.04,-294.08"/>
+</g>
+<!-- sourcefile~atl_penalization_module.f90&#45;&gt;sourcefile~atl_cube_elem_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge31" class="edge">
+<title>sourcefile~atl_penalization_module.f90&#45;&gt;sourcefile~atl_cube_elem_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M728.01,-108.09C716.55,-111.82 704.58,-116.44 694,-122 676.06,-131.43 676.16,-141 658,-150 649.4,-154.26 640.01,-157.89 630.56,-160.96"/>
+<polygon fill="#000000" stroke="#000000" points="629.27,-157.69 620.73,-163.96 631.32,-164.39 629.27,-157.69"/>
+</g>
+<!-- sourcefile~atl_penalization_module.f90&#45;&gt;sourcefile~atl_equation_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge32" class="edge">
+<title>sourcefile~atl_penalization_module.f90&#45;&gt;sourcefile~atl_equation_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M708.12,-108.06C616.86,-124.36 465.32,-151.77 460,-155 437.81,-168.47 441.16,-181.52 424,-201 399.11,-229.25 368.13,-259.81 348.21,-278.92"/>
+<polygon fill="#000000" stroke="#000000" points="345.72,-276.45 340.91,-285.89 350.56,-281.52 345.72,-276.45"/>
+</g>
+<!-- sourcefile~atl_penalization_module.f90&#45;&gt;sourcefile~atl_scheme_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge33" class="edge">
+<title>sourcefile~atl_penalization_module.f90&#45;&gt;sourcefile~atl_scheme_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M695.26,-96C676.76,-96 657.12,-96 638.7,-96"/>
+<polygon fill="#000000" stroke="#000000" points="638.61,-92.5 628.61,-96 638.61,-99.5 638.61,-92.5"/>
+</g>
+<!-- sourcefile~atl_modg_1d_scheme_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node22" class="node">
+<title>sourcefile~atl_modg_1d_scheme_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node22"><a xlink:href="../sourcefile/atl_modg_1d_scheme_module.f90.html" xlink:title="atl_modg_1d_scheme_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="424,-66 230,-66 230,-42 424,-42 424,-66"/>
+<text text-anchor="middle" x="327" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_1d_scheme_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_modg_1d_scheme_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge34" class="edge">
+<title>sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_modg_1d_scheme_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M492.09,-83.96C464.54,-78.93 432.37,-73.06 403.84,-67.85"/>
+<polygon fill="#000000" stroke="#000000" points="404.38,-64.39 393.92,-66.04 403.13,-71.28 404.38,-64.39"/>
+</g>
+<!-- sourcefile~atl_modg_2d_scheme_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node23" class="node">
+<title>sourcefile~atl_modg_2d_scheme_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node23"><a xlink:href="../sourcefile/atl_modg_2d_scheme_module.f90.html" xlink:title="atl_modg_2d_scheme_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="424,-24 230,-24 230,0 424,0 424,-24"/>
+<text text-anchor="middle" x="327" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_scheme_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_modg_2d_scheme_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge35" class="edge">
+<title>sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_modg_2d_scheme_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M536.34,-83.96C510.36,-69.95 465.14,-46.97 424,-33 417.11,-30.66 409.86,-28.52 402.55,-26.57"/>
+<polygon fill="#000000" stroke="#000000" points="403.13,-23.11 392.58,-24.04 401.41,-29.89 403.13,-23.11"/>
+</g>
+<!-- sourcefile~atl_modg_scheme_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node24" class="node">
+<title>sourcefile~atl_modg_scheme_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node24"><a xlink:href="../sourcefile/atl_modg_scheme_module.f90.html" xlink:title="atl_modg_scheme_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="414.5,-192 239.5,-192 239.5,-168 414.5,-168 414.5,-192"/>
+<text text-anchor="middle" x="327" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_scheme_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_modg_scheme_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge36" class="edge">
+<title>sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_modg_scheme_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M492.75,-108.01C481.4,-111.57 470.03,-116.13 460,-122 440.19,-133.58 444.06,-147.85 424,-159 420.49,-160.95 416.82,-162.72 413.04,-164.32"/>
+<polygon fill="#000000" stroke="#000000" points="411.56,-161.14 403.47,-167.98 414.06,-167.68 411.56,-161.14"/>
+</g>
+<!-- sourcefile~atl_stabilization_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node26" class="node">
+<title>sourcefile~atl_stabilization_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node26"><a xlink:href="../sourcefile/atl_stabilization_module.f90.html" xlink:title="atl_stabilization_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="407.5,-150 246.5,-150 246.5,-126 407.5,-126 407.5,-150"/>
+<text text-anchor="middle" x="327" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_stabilization_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_stabilization_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge37" class="edge">
+<title>sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_stabilization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M492.09,-108.04C464.54,-113.07 432.37,-118.94 403.84,-124.15"/>
+<polygon fill="#000000" stroke="#000000" points="403.13,-120.72 393.92,-125.96 404.38,-127.61 403.13,-120.72"/>
+</g>
+<!-- sourcefile~ply_modg_basis_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node28" class="node">
+<title>sourcefile~ply_modg_basis_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~EfferentGraph_node28"><a xlink:href="../sourcefile/ply_modg_basis_module.f90.html" xlink:title="ply_modg_basis_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="408.5,-108 245.5,-108 245.5,-84 408.5,-84 408.5,-108"/>
+<text text-anchor="middle" x="327" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_modg_basis_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~ply_modg_basis_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge38" class="edge">
+<title>sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~ply_modg_basis_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M489.3,-96C467.28,-96 442.54,-96 419.17,-96"/>
+<polygon fill="#000000" stroke="#000000" points="418.9,-92.5 408.9,-96 418.9,-99.5 418.9,-92.5"/>
+</g>
+<!-- sourcefile~atl_source_types_module.f90&#45;&gt;sourcefile~atl_cube_elem_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge39" class="edge">
+<title>sourcefile~atl_source_types_module.f90&#45;&gt;sourcefile~atl_cube_elem_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M714.1,-205.96C688.46,-200.98 658.54,-195.16 631.93,-189.99"/>
+<polygon fill="#000000" stroke="#000000" points="632.39,-186.51 621.91,-188.04 631.05,-193.38 632.39,-186.51"/>
+</g>
+<!-- sourcefile~atl_source_types_module.f90&#45;&gt;sourcefile~ply_poly_project_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~EfferentGraph_edge40" class="edge">
+<title>sourcefile~atl_source_types_module.f90&#45;&gt;sourcefile~ply_poly_project_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M693.72,-218C679.91,-218 665.5,-218 651.47,-218"/>
+<polygon fill="#000000" stroke="#000000" points="651.33,-214.5 641.33,-218 651.33,-221.5 651.33,-214.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var pansourcefileatl_cube_container_modulef90EfferentGraph = svgPanZoom('#sourcefileatl_cube_container_modulef90EfferentGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#EfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="EfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="202pt" height="32pt"
+ viewBox="0.00 0.00 201.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 197.5,-28 197.5,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="193.5,-24 88.5,-24 88.5,0 193.5,0 193.5,-24"/>
+<text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Files dependent on this one</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: sourcefile~~atl_cube_container_module.f90~~AfferentGraph Pages: 1 -->
+<svg id="sourcefileatl_cube_container_modulef90AfferentGraph" width="641pt" height="171pt"
+ viewBox="0.00 0.00 641.00 171.35" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph" class="graph" transform="scale(0.41 0.41) rotate(0) translate(4 413.81)">
+<title>sourcefile~~atl_cube_container_module.f90~~AfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-413.81 1559,-413.81 1559,4 -4,4"/>
+<!-- sourcefile~atl_cube_container_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node1" class="node">
+<title>sourcefile~atl_cube_container_module.f90</title>
+<polygon fill="none" stroke="black" points="180,-290 0,-290 0,-266 180,-266 180,-290"/>
+<text text-anchor="middle" x="90" y="-275.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_cube_container_module.f90</text>
+</g>
+<!-- sourcefile~atl_container_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node2" class="node">
+<title>sourcefile~atl_container_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node2"><a xlink:href="../sourcefile/atl_container_module.f90.html" xlink:title="atl_container_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1054,-310 906,-310 906,-286 1054,-286 1054,-310"/>
+<text text-anchor="middle" x="980" y="-295.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_container_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_container_module.f90&#45;&gt;sourcefile~atl_cube_container_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge1" class="edge">
+<title>sourcefile~atl_container_module.f90&#45;&gt;sourcefile~atl_cube_container_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M523,-338C429.16,-323.96 404.3,-342.01 309.5,-338"/>
+</g>
+<!-- sourcefile~atl_time_integration_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node11" class="node">
+<title>sourcefile~atl_time_integration_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node11"><a xlink:href="../sourcefile/atl_time_integration_module.f90.html" xlink:title="atl_time_integration_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="401,-210 216,-210 216,-186 401,-186 401,-210"/>
+<text text-anchor="middle" x="308.5" y="-195.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_time_integration_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_container_module.f90&#45;&gt;sourcefile~atl_time_integration_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge26" class="edge">
+<title>sourcefile~atl_container_module.f90&#45;&gt;sourcefile~atl_time_integration_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M930.35,-310.04C846.96,-328.96 671.53,-361.2 525,-338"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M523,-338C482.82,-331.99 472.12,-327.42 437,-307 393.8,-281.88 351.23,-241.46 327.85,-217.54"/>
+<polygon fill="#000000" stroke="#000000" points="330.14,-214.88 320.69,-210.11 325.1,-219.73 330.14,-214.88"/>
+</g>
+<!-- sourcefile~atl_global_time_integration_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node14" class="node">
+<title>sourcefile~atl_global_time_integration_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node14"><a xlink:href="../sourcefile/atl_global_time_integration_module.f90.html" xlink:title="atl_global_time_integration_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="870,-150 647,-150 647,-126 870,-126 870,-150"/>
+<text text-anchor="middle" x="758.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_global_time_integration_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_container_module.f90&#45;&gt;sourcefile~atl_global_time_integration_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge36" class="edge">
+<title>sourcefile~atl_container_module.f90&#45;&gt;sourcefile~atl_global_time_integration_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M962.5,-285.97C924.29,-258.12 829.52,-189.04 784.29,-156.07"/>
+<polygon fill="#000000" stroke="#000000" points="786.33,-153.23 776.19,-150.17 782.21,-158.88 786.33,-153.23"/>
+</g>
+<!-- sourcefile~atl_physcheck_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node17" class="node">
+<title>sourcefile~atl_physcheck_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node17"><a xlink:href="../sourcefile/atl_physcheck_module.f90.html" xlink:title="atl_physCheck_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="836,-310 681,-310 681,-286 836,-286 836,-310"/>
+<text text-anchor="middle" x="758.5" y="-295.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_physCheck_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_container_module.f90&#45;&gt;sourcefile~atl_physcheck_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge40" class="edge">
+<title>sourcefile~atl_container_module.f90&#45;&gt;sourcefile~atl_physcheck_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M905.91,-298C886.79,-298 866,-298 846.25,-298"/>
+<polygon fill="#000000" stroke="#000000" points="846.03,-294.5 836.03,-298 846.03,-301.5 846.03,-294.5"/>
+</g>
+<!-- sourcefile~atl_fwdeuler_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node3" class="node">
+<title>sourcefile~atl_fwdeuler_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node3"><a xlink:href="../sourcefile/atl_fwdeuler_module.f90.html" xlink:title="atl_fwdEuler_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="596,-150 452,-150 452,-126 596,-126 596,-150"/>
+<text text-anchor="middle" x="524" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_fwdEuler_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_fwdeuler_module.f90&#45;&gt;sourcefile~atl_cube_container_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge2" class="edge">
+<title>sourcefile~atl_fwdeuler_module.f90&#45;&gt;sourcefile~atl_cube_container_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M469.68,-125.98C408.9,-112.5 316.92,-92.9 309.5,-96"/>
+</g>
+<!-- sourcefile~atl_fwdeuler_module.f90&#45;&gt;sourcefile~atl_time_integration_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge27" class="edge">
+<title>sourcefile~atl_fwdeuler_module.f90&#45;&gt;sourcefile~atl_time_integration_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M480.05,-150.07C446.1,-159.61 398.56,-172.97 362.29,-183.16"/>
+<polygon fill="#000000" stroke="#000000" points="361.06,-179.87 352.38,-185.95 362.95,-186.61 361.06,-179.87"/>
+</g>
+<!-- sourcefile~atl_imexrk_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node4" class="node">
+<title>sourcefile~atl_imexrk_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node4"><a xlink:href="../sourcefile/atl_imexrk_module.f90.html" xlink:title="atl_imexrk_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="590.5,-108 457.5,-108 457.5,-84 590.5,-84 590.5,-108"/>
+<text text-anchor="middle" x="524" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_imexrk_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_imexrk_module.f90&#45;&gt;sourcefile~atl_cube_container_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge3" class="edge">
+<title>sourcefile~atl_imexrk_module.f90&#45;&gt;sourcefile~atl_cube_container_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M463.05,-83.99C418.87,-77.94 358.23,-75.63 309.5,-96"/>
+</g>
+<!-- sourcefile~atl_imexrk_module.f90&#45;&gt;sourcefile~atl_time_integration_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge29" class="edge">
+<title>sourcefile~atl_imexrk_module.f90&#45;&gt;sourcefile~atl_time_integration_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M462.5,-108.12C453.79,-110.62 445.06,-113.57 437,-117 398.15,-133.55 357.73,-161.32 333.09,-179.66"/>
+<polygon fill="#000000" stroke="#000000" points="330.93,-176.9 325.06,-185.71 335.15,-182.49 330.93,-176.9"/>
+</g>
+<!-- sourcefile~atl_initial_condition_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node5" class="node">
+<title>sourcefile~atl_initial_condition_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node5"><a xlink:href="../sourcefile/atl_initial_condition_module.f90.html" xlink:title="atl_initial_condition_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="399,-408 218,-408 218,-384 399,-384 399,-408"/>
+<text text-anchor="middle" x="308.5" y="-393.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initial_condition_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_initial_condition_module.f90&#45;&gt;sourcefile~atl_cube_container_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge4" class="edge">
+<title>sourcefile~atl_initial_condition_module.f90&#45;&gt;sourcefile~atl_cube_container_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M280.77,-383.89C262.36,-375.37 237.45,-363.48 216,-352 181.94,-333.77 143.88,-310.86 118.81,-295.4"/>
+<polygon fill="#000000" stroke="#000000" points="120.53,-292.35 110.19,-290.06 116.85,-298.3 120.53,-292.35"/>
+</g>
+<!-- sourcefile~atl_predcor_cerk4_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node6" class="node">
+<title>sourcefile~atl_predcor_cerk4_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node6"><a xlink:href="../sourcefile/atl_predcor_cerk4_module.f90.html" xlink:title="atl_predcor_cerk4_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="611,-66 437,-66 437,-42 611,-42 611,-66"/>
+<text text-anchor="middle" x="524" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_predcor_cerk4_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_predcor_cerk4_module.f90&#45;&gt;sourcefile~atl_cube_container_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge5" class="edge">
+<title>sourcefile~atl_predcor_cerk4_module.f90&#45;&gt;sourcefile~atl_cube_container_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M436.78,-62.9C396.94,-69.03 349.67,-79.21 309.5,-96"/>
+</g>
+<!-- sourcefile~atl_predcor_cerk4_module.f90&#45;&gt;sourcefile~atl_time_integration_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge31" class="edge">
+<title>sourcefile~atl_predcor_cerk4_module.f90&#45;&gt;sourcefile~atl_time_integration_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M457.27,-66.14C450.22,-68.58 443.32,-71.5 437,-75 417.47,-85.8 417.04,-94.49 401,-110 376.46,-133.73 348.12,-160.95 329.57,-178.76"/>
+<polygon fill="#000000" stroke="#000000" points="327.04,-176.33 322.25,-185.78 331.89,-181.38 327.04,-176.33"/>
+</g>
+<!-- sourcefile~atl_restart_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node7" class="node">
+<title>sourcefile~atl_restart_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node7"><a xlink:href="../sourcefile/atl_restart_module.f90.html" xlink:title="atl_restart_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1046,-386 914,-386 914,-362 1046,-362 1046,-386"/>
+<text text-anchor="middle" x="980" y="-371.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_restart_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_restart_module.f90&#45;&gt;sourcefile~atl_cube_container_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge6" class="edge">
+<title>sourcefile~atl_restart_module.f90&#45;&gt;sourcefile~atl_cube_container_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M913.84,-372.8C811.97,-370.6 608.86,-364.91 437,-352 380.15,-347.73 366.46,-340.41 309.5,-338"/>
+</g>
+<!-- sourcefile~atl_rk4_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node8" class="node">
+<title>sourcefile~atl_rk4_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node8"><a xlink:href="../sourcefile/atl_rk4_module.f90.html" xlink:title="atl_rk4_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="581.5,-24 466.5,-24 466.5,0 581.5,0 581.5,-24"/>
+<text text-anchor="middle" x="524" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_rk4_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_rk4_module.f90&#45;&gt;sourcefile~atl_cube_container_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge7" class="edge">
+<title>sourcefile~atl_rk4_module.f90&#45;&gt;sourcefile~atl_cube_container_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M466.49,-23.92C456.55,-26.55 446.39,-29.58 437,-33 377.61,-54.63 367.82,-71.63 309.5,-96"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M307.5,-96C219.47,-132.79 140.35,-218.58 107.32,-257.79"/>
+<polygon fill="#000000" stroke="#000000" points="104.33,-255.92 100.64,-265.85 109.72,-260.39 104.33,-255.92"/>
+</g>
+<!-- sourcefile~atl_rk4_module.f90&#45;&gt;sourcefile~atl_time_integration_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge32" class="edge">
+<title>sourcefile~atl_rk4_module.f90&#45;&gt;sourcefile~atl_time_integration_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M466.4,-18.21C455.81,-21.39 445.44,-26.08 437,-33 407.78,-56.94 422.98,-79.28 401,-110 381.7,-136.97 353.47,-162.65 333.48,-179.23"/>
+<polygon fill="#000000" stroke="#000000" points="331.01,-176.72 325.46,-185.75 335.43,-182.15 331.01,-176.72"/>
+</g>
+<!-- sourcefile~atl_rktaylor_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node9" class="node">
+<title>sourcefile~atl_rktaylor_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node9"><a xlink:href="../sourcefile/atl_rktaylor_module.f90.html" xlink:title="atl_rktaylor_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="593.5,-272 454.5,-272 454.5,-248 593.5,-248 593.5,-272"/>
+<text text-anchor="middle" x="524" y="-257.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_rktaylor_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_rktaylor_module.f90&#45;&gt;sourcefile~atl_cube_container_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge8" class="edge">
+<title>sourcefile~atl_rktaylor_module.f90&#45;&gt;sourcefile~atl_cube_container_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M504.96,-272.08C469.16,-294.77 385.99,-341.23 309.5,-338"/>
+</g>
+<!-- sourcefile~atl_rktaylor_module.f90&#45;&gt;sourcefile~atl_time_integration_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge33" class="edge">
+<title>sourcefile~atl_rktaylor_module.f90&#45;&gt;sourcefile~atl_time_integration_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M471,-247.94C459.75,-245.15 447.94,-242.09 437,-239 409.37,-231.19 378.73,-221.38 354.41,-213.31"/>
+<polygon fill="#000000" stroke="#000000" points="355.34,-209.93 344.74,-210.08 353.12,-216.57 355.34,-209.93"/>
+</g>
+<!-- sourcefile~atl_ssprk2_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node10" class="node">
+<title>sourcefile~atl_ssprk2_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node10"><a xlink:href="../sourcefile/atl_ssprk2_module.f90.html" xlink:title="atl_ssprk2_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="590,-230 458,-230 458,-206 590,-206 590,-230"/>
+<text text-anchor="middle" x="524" y="-215.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_ssprk2_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_ssprk2_module.f90&#45;&gt;sourcefile~atl_cube_container_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge9" class="edge">
+<title>sourcefile~atl_ssprk2_module.f90&#45;&gt;sourcefile~atl_cube_container_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M459.91,-230.13C452.02,-232.59 444.2,-235.52 437,-239 372.39,-270.2 381.18,-341.03 309.5,-338"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M307.5,-338C242.61,-335.26 170.53,-310.69 128.07,-293.86"/>
+<polygon fill="#000000" stroke="#000000" points="129.29,-290.58 118.71,-290.08 126.67,-297.07 129.29,-290.58"/>
+</g>
+<!-- sourcefile~atl_ssprk2_module.f90&#45;&gt;sourcefile~atl_time_integration_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge34" class="edge">
+<title>sourcefile~atl_ssprk2_module.f90&#45;&gt;sourcefile~atl_time_integration_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M457.78,-211.89C443.1,-210.51 427.17,-209.02 411.38,-207.54"/>
+<polygon fill="#000000" stroke="#000000" points="411.32,-204.02 401.04,-206.58 410.67,-210.99 411.32,-204.02"/>
+</g>
+<!-- sourcefile~atl_time_integration_module.f90&#45;&gt;sourcefile~atl_cube_container_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge10" class="edge">
+<title>sourcefile~atl_time_integration_module.f90&#45;&gt;sourcefile~atl_cube_container_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M274.62,-210.15C236.73,-224.15 174.38,-247.19 133,-262.48"/>
+<polygon fill="#000000" stroke="#000000" points="131.65,-259.25 123.48,-266 134.08,-265.81 131.65,-259.25"/>
+</g>
+<!-- sourcefile~ateles.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node12" class="node">
+<title>sourcefile~ateles.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node12"><a xlink:href="../sourcefile/ateles.f90.html" xlink:title="ateles.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1533.5,-239 1468.5,-239 1468.5,-215 1533.5,-215 1533.5,-239"/>
+<text text-anchor="middle" x="1501" y="-224.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ateles.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ateles.f90&#45;&gt;sourcefile~atl_container_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge11" class="edge">
+<title>sourcefile~ateles.f90&#45;&gt;sourcefile~atl_container_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1468.27,-215.67C1397.51,-192.28 1222.56,-145.03 1090,-197 1048.71,-213.19 1013.73,-253.17 995.2,-277.7"/>
+<polygon fill="#000000" stroke="#000000" points="992.23,-275.83 989.13,-285.96 997.87,-279.97 992.23,-275.83"/>
+</g>
+<!-- sourcefile~atl_program_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node18" class="node">
+<title>sourcefile~atl_program_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node18"><a xlink:href="../sourcefile/atl_program_module.f90.html" xlink:title="atl_program_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1411,-270 1268,-270 1268,-246 1411,-246 1411,-270"/>
+<text text-anchor="middle" x="1339.5" y="-255.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_program_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ateles.f90&#45;&gt;sourcefile~atl_program_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge42" class="edge">
+<title>sourcefile~ateles.f90&#45;&gt;sourcefile~atl_program_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1468.49,-233.12C1452.33,-236.26 1431.95,-240.23 1412.23,-244.06"/>
+<polygon fill="#000000" stroke="#000000" points="1411.46,-240.64 1402.31,-245.99 1412.79,-247.51 1411.46,-240.64"/>
+</g>
+<!-- sourcefile~atl_calc_time.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node13" class="node">
+<title>sourcefile~atl_calc_time.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node13"><a xlink:href="../sourcefile/atl_calc_time.f90.html" xlink:title="atl_calc_time.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1212.5,-230 1109.5,-230 1109.5,-206 1212.5,-206 1212.5,-230"/>
+<text text-anchor="middle" x="1161" y="-215.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_calc_time.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_calc_time.f90&#45;&gt;sourcefile~atl_time_integration_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge25" class="edge">
+<title>sourcefile~atl_calc_time.f90&#45;&gt;sourcefile~atl_time_integration_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1109.31,-209.59C1001.6,-192.88 742.03,-158.67 525,-178"/>
+</g>
+<!-- sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_fwdeuler_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge15" class="edge">
+<title>sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_fwdeuler_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M646.7,-138C633.13,-138 619.47,-138 606.44,-138"/>
+<polygon fill="#000000" stroke="#000000" points="606.15,-134.5 596.15,-138 606.15,-141.5 606.15,-134.5"/>
+</g>
+<!-- sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_imexrk_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge16" class="edge">
+<title>sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_imexrk_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M690.87,-125.96C662.79,-120.89 629.94,-114.96 600.92,-109.71"/>
+<polygon fill="#000000" stroke="#000000" points="601.29,-106.23 590.83,-107.89 600.05,-113.11 601.29,-106.23"/>
+</g>
+<!-- sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_predcor_cerk4_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge18" class="edge">
+<title>sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_predcor_cerk4_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M732.85,-125.89C704.12,-112.14 654.98,-89.71 611,-75 604.44,-72.81 597.53,-70.73 590.59,-68.81"/>
+<polygon fill="#000000" stroke="#000000" points="591.01,-65.3 580.44,-66.1 589.2,-72.06 591.01,-65.3"/>
+</g>
+<!-- sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_rk4_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge22" class="edge">
+<title>sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_rk4_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M744.47,-125.96C720.13,-104.12 665.31,-57.95 611,-33 604.81,-30.15 598.18,-27.66 591.45,-25.49"/>
+<polygon fill="#000000" stroke="#000000" points="592.15,-22.05 581.57,-22.53 590.14,-28.75 592.15,-22.05"/>
+</g>
+<!-- sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_rktaylor_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge23" class="edge">
+<title>sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_rktaylor_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M743.6,-150.22C718.74,-171.44 664.28,-215.11 611,-239 606.3,-241.11 601.36,-243.02 596.31,-244.76"/>
+<polygon fill="#000000" stroke="#000000" points="594.99,-241.51 586.53,-247.89 597.12,-248.18 594.99,-241.51"/>
+</g>
+<!-- sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_ssprk2_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge24" class="edge">
+<title>sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_ssprk2_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M726.54,-150.02C697.02,-161.34 651.22,-178.52 611,-192 599.9,-195.72 587.93,-199.49 576.54,-202.97"/>
+<polygon fill="#000000" stroke="#000000" points="575.27,-199.69 566.71,-205.93 577.3,-206.39 575.27,-199.69"/>
+</g>
+<!-- sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_time_integration_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge28" class="edge">
+<title>sourcefile~atl_global_time_integration_module.f90&#45;&gt;sourcefile~atl_time_integration_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M702.4,-150.09C655.5,-159.75 586.19,-172.55 525,-178"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M523,-178C486.63,-181.24 446.8,-184.93 411.49,-188.25"/>
+<polygon fill="#000000" stroke="#000000" points="410.8,-184.8 401.17,-189.23 411.46,-191.77 410.8,-184.8"/>
+</g>
+<!-- sourcefile~atl_harvesting.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node15" class="node">
+<title>sourcefile~atl_harvesting.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node15"><a xlink:href="../sourcefile/atl_harvesting.f90.html" xlink:title="atl_harvesting.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1555,-300 1447,-300 1447,-276 1555,-276 1555,-300"/>
+<text text-anchor="middle" x="1501" y="-285.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_harvesting.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_harvesting.f90&#45;&gt;sourcefile~atl_container_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge12" class="edge">
+<title>sourcefile~atl_harvesting.f90&#45;&gt;sourcefile~atl_container_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1484.89,-300.05C1457.88,-320.66 1398.66,-361.65 1340.5,-374"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1338.5,-374C1334.9,-374.77 1148.18,-334.38 1046.07,-312.18"/>
+<polygon fill="#000000" stroke="#000000" points="1046.68,-308.73 1036.16,-310.02 1045.19,-315.57 1046.68,-308.73"/>
+</g>
+<!-- sourcefile~atl_harvesting.f90&#45;&gt;sourcefile~atl_restart_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge19" class="edge">
+<title>sourcefile~atl_harvesting.f90&#45;&gt;sourcefile~atl_restart_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1338.5,-374C1231.04,-401.15 1200.34,-405.53 1090,-395 1074.5,-393.52 1057.92,-390.88 1042.5,-387.97"/>
+<polygon fill="#000000" stroke="#000000" points="1043.04,-384.5 1032.55,-386.02 1041.69,-391.37 1043.04,-384.5"/>
+</g>
+<!-- sourcefile~atl_initialize_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node16" class="node">
+<title>sourcefile~atl_initialize_module.f90</title>
+<g id="a_sourcefile~~atl_cube_container_module.f90~~AfferentGraph_node16"><a xlink:href="../sourcefile/atl_initialize_module.f90.html" xlink:title="atl_initialize_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1232,-386 1090,-386 1090,-362 1232,-362 1232,-386"/>
+<text text-anchor="middle" x="1161" y="-371.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_harvesting.f90&#45;&gt;sourcefile~atl_initialize_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge38" class="edge">
+<title>sourcefile~atl_harvesting.f90&#45;&gt;sourcefile~atl_initialize_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1338.5,-374C1307.53,-380.58 1272.81,-381.84 1242.41,-381.02"/>
+<polygon fill="#000000" stroke="#000000" points="1242.39,-377.51 1232.28,-380.66 1242.15,-384.51 1242.39,-377.51"/>
+</g>
+<!-- sourcefile~atl_harvesting.f90&#45;&gt;sourcefile~atl_program_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge43" class="edge">
+<title>sourcefile~atl_harvesting.f90&#45;&gt;sourcefile~atl_program_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1446.89,-278.01C1436.48,-276.05 1425.39,-273.97 1414.45,-271.91"/>
+<polygon fill="#000000" stroke="#000000" points="1414.93,-268.44 1404.46,-270.03 1413.64,-275.32 1414.93,-268.44"/>
+</g>
+<!-- sourcefile~atl_initialize_module.f90&#45;&gt;sourcefile~atl_container_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge13" class="edge">
+<title>sourcefile~atl_initialize_module.f90&#45;&gt;sourcefile~atl_container_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1131.64,-361.96C1101.22,-349.04 1052.76,-328.47 1019.05,-314.15"/>
+<polygon fill="#000000" stroke="#000000" points="1020.1,-310.8 1009.53,-310.11 1017.36,-317.24 1020.1,-310.8"/>
+</g>
+<!-- sourcefile~atl_initialize_module.f90&#45;&gt;sourcefile~atl_initial_condition_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge17" class="edge">
+<title>sourcefile~atl_initialize_module.f90&#45;&gt;sourcefile~atl_initial_condition_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1109.88,-386C1092.32,-389.66 1072.39,-393.18 1054,-395 824.13,-417.71 552.38,-409.2 409.25,-401.99"/>
+<polygon fill="#000000" stroke="#000000" points="409.33,-398.49 399.17,-401.47 408.98,-405.48 409.33,-398.49"/>
+</g>
+<!-- sourcefile~atl_initialize_module.f90&#45;&gt;sourcefile~atl_restart_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge20" class="edge">
+<title>sourcefile~atl_initialize_module.f90&#45;&gt;sourcefile~atl_restart_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1089.77,-374C1078.74,-374 1067.31,-374 1056.18,-374"/>
+<polygon fill="#000000" stroke="#000000" points="1056.07,-370.5 1046.07,-374 1056.07,-377.5 1056.07,-370.5"/>
+</g>
+<!-- sourcefile~atl_physcheck_module.f90&#45;&gt;sourcefile~atl_time_integration_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge30" class="edge">
+<title>sourcefile~atl_physcheck_module.f90&#45;&gt;sourcefile~atl_time_integration_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M680.68,-304.91C614.45,-308.3 517.13,-307.11 437,-281 395.44,-267.46 354.33,-236.74 330.46,-216.71"/>
+<polygon fill="#000000" stroke="#000000" points="332.63,-213.96 322.76,-210.12 328.08,-219.28 332.63,-213.96"/>
+</g>
+<!-- sourcefile~atl_program_module.f90&#45;&gt;sourcefile~atl_container_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge14" class="edge">
+<title>sourcefile~atl_program_module.f90&#45;&gt;sourcefile~atl_container_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1160,-258C1114.37,-260.51 1063.65,-272.78 1027.88,-283.07"/>
+<polygon fill="#000000" stroke="#000000" points="1026.82,-279.74 1018.21,-285.91 1028.79,-286.45 1026.82,-279.74"/>
+</g>
+<!-- sourcefile~atl_program_module.f90&#45;&gt;sourcefile~atl_restart_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge21" class="edge">
+<title>sourcefile~atl_program_module.f90&#45;&gt;sourcefile~atl_restart_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1301.25,-270.09C1235.66,-291.37 1099.72,-335.48 1027.86,-358.79"/>
+<polygon fill="#000000" stroke="#000000" points="1026.59,-355.53 1018.16,-361.94 1028.76,-362.18 1026.59,-355.53"/>
+</g>
+<!-- sourcefile~atl_program_module.f90&#45;&gt;sourcefile~atl_calc_time.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge35" class="edge">
+<title>sourcefile~atl_program_module.f90&#45;&gt;sourcefile~atl_calc_time.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1285.54,-246C1265.74,-241.51 1243.09,-236.38 1222.64,-231.74"/>
+<polygon fill="#000000" stroke="#000000" points="1223.32,-228.31 1212.8,-229.51 1221.78,-235.14 1223.32,-228.31"/>
+</g>
+<!-- sourcefile~atl_program_module.f90&#45;&gt;sourcefile~atl_global_time_integration_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge37" class="edge">
+<title>sourcefile~atl_program_module.f90&#45;&gt;sourcefile~atl_global_time_integration_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1321.67,-245.95C1301.39,-232.02 1265.81,-209.41 1232,-197 1117.51,-154.98 978.06,-141.8 880.44,-138.17"/>
+<polygon fill="#000000" stroke="#000000" points="880.35,-134.66 870.23,-137.82 880.11,-141.66 880.35,-134.66"/>
+</g>
+<!-- sourcefile~atl_program_module.f90&#45;&gt;sourcefile~atl_initialize_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge39" class="edge">
+<title>sourcefile~atl_program_module.f90&#45;&gt;sourcefile~atl_initialize_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1327.09,-270.02C1308.65,-288.87 1270.46,-325.54 1232,-348 1225.54,-351.78 1218.42,-355.17 1211.29,-358.17"/>
+<polygon fill="#000000" stroke="#000000" points="1209.61,-355.07 1201.6,-362 1212.19,-361.57 1209.61,-355.07"/>
+</g>
+<!-- sourcefile~atl_program_module.f90&#45;&gt;sourcefile~atl_physcheck_module.f90 -->
+<g id="sourcefile~~atl_cube_container_module.f90~~AfferentGraph_edge41" class="edge">
+<title>sourcefile~atl_program_module.f90&#45;&gt;sourcefile~atl_physcheck_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1267.6,-256.22C1235.35,-255.87 1196.73,-256.09 1162,-258"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1160,-258C1046.97,-264.23 1018.54,-264.74 906,-277 886.64,-279.11 865.9,-281.81 846.3,-284.57"/>
+<polygon fill="#000000" stroke="#000000" points="845.58,-281.14 836.17,-286.01 846.56,-288.07 845.58,-281.14"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var pansourcefileatl_cube_container_modulef90AfferentGraph = svgPanZoom('#sourcefileatl_cube_container_modulef90AfferentGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#AfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="AfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="202pt" height="32pt"
+ viewBox="0.00 0.00 201.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 197.5,-28 197.5,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="193.5,-24 88.5,-24 88.5,0 193.5,0 193.5,-24"/>
+<text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+<br>
+      <section>
+        <h2><span class="anchor" id="src"></span>Source Code</h2>
+        <div class="hl codehilite"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="c">! Copyright (c) 2014-2016 Verena Krupp &lt;verena.krupp@uni-siegen.de&gt;</span>
+<a id="ln-2" name="ln-2" href="#ln-2"></a><span class="c">! Copyright (c) 2014-2019 Peter Vitt &lt;peter.vitt2@uni-siegen.de&gt;</span>
+<a id="ln-3" name="ln-3" href="#ln-3"></a><span class="c">! Copyright (c) 2014-2015 Nikhil Anand &lt;nikhil.anand@uni-siegen.de&gt;</span>
+<a id="ln-4" name="ln-4" href="#ln-4"></a><span class="c">! Copyright (c) 2014-2016, 2018-2019 Harald Klimach &lt;harald.klimach@uni-siegen.de&gt;</span>
+<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="c">! Copyright (c) 2014 Jens Zudrop &lt;j.zudrop@grs-sim.de&gt;</span>
+<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="c">! Copyright (c) 2016 Kannan Masilamani &lt;kannan.masilamani@uni-siegen.de&gt;</span>
+<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="c">! Copyright (c) 2016 Tobias Girresser &lt;tobias.girresser@student.uni-siegen.de&gt;</span>
+<a id="ln-8" name="ln-8" href="#ln-8"></a><span class="c">! Copyright (c) 2017 Neda Ebrahimi Pour &lt;neda.epour@uni-siegen.de&gt;</span>
+<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="c">! Copyright (c) 2017 Daniel Petró &lt;daniel.petro@student.uni-siegen.de&gt;</span>
+<a id="ln-10" name="ln-10" href="#ln-10"></a><span class="c">!</span>
+<a id="ln-11" name="ln-11" href="#ln-11"></a><span class="c">! Permission to use, copy, modify, and distribute this software for any</span>
+<a id="ln-12" name="ln-12" href="#ln-12"></a><span class="c">! purpose with or without fee is hereby granted, provided that the above</span>
+<a id="ln-13" name="ln-13" href="#ln-13"></a><span class="c">! copyright notice and this permission notice appear in all copies.</span>
+<a id="ln-14" name="ln-14" href="#ln-14"></a><span class="c">!</span>
+<a id="ln-15" name="ln-15" href="#ln-15"></a><span class="c">! THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHORS DISCLAIM ALL WARRANTIES</span>
+<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="c">! WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF</span>
+<a id="ln-17" name="ln-17" href="#ln-17"></a><span class="c">! MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR</span>
+<a id="ln-18" name="ln-18" href="#ln-18"></a><span class="c">! ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES</span>
+<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="c">! WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN</span>
+<a id="ln-20" name="ln-20" href="#ln-20"></a><span class="c">! ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF</span>
+<a id="ln-21" name="ln-21" href="#ln-21"></a><span class="c">! OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
+<a id="ln-22" name="ln-22" href="#ln-22"></a><span class="c">! **************************************************************************** !</span>
+<a id="ln-23" name="ln-23" href="#ln-23"></a>
+<a id="ln-24" name="ln-24" href="#ln-24"></a><span class="c">!&gt; author: Jens Zudrop</span>
+<a id="ln-25" name="ln-25" href="#ln-25"></a><span class="c">!! This module provides central Ateles data type, containing the various data</span>
+<a id="ln-26" name="ln-26" href="#ln-26"></a><span class="c">!! of the simulation.</span>
+<a id="ln-27" name="ln-27" href="#ln-27"></a><span class="c">!!</span>
+<a id="ln-28" name="ln-28" href="#ln-28"></a><span class="c">!! The idea is to support different element types in the mesh, and collect</span>
+<a id="ln-29" name="ln-29" href="#ln-29"></a><span class="c">!! them in the container_module#element_container_type.</span>
+<a id="ln-30" name="ln-30" href="#ln-30"></a><span class="k">module </span><span class="n">atl_cube_container_module</span>
+<a id="ln-31" name="ln-31" href="#ln-31"></a>
+<a id="ln-32" name="ln-32" href="#ln-32"></a><span class="w">  </span><span class="k">use </span><span class="n">flu_binding</span><span class="p">,</span><span class="w">                  </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">flu_state</span>
+<a id="ln-33" name="ln-33" href="#ln-33"></a>
+<a id="ln-34" name="ln-34" href="#ln-34"></a><span class="w">  </span><span class="k">use </span><span class="n">treelmesh_module</span><span class="p">,</span><span class="w">             </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">treelmesh_type</span>
+<a id="ln-35" name="ln-35" href="#ln-35"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_tools_module</span><span class="p">,</span><span class="w">             </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_horizontalSpacer</span>
+<a id="ln-36" name="ln-36" href="#ln-36"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_logging_module</span><span class="p">,</span><span class="w">           </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">logUnit</span>
+<a id="ln-37" name="ln-37" href="#ln-37"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_bc_prop_module</span><span class="p">,</span><span class="w">           </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_bc_prop_type</span>
+<a id="ln-38" name="ln-38" href="#ln-38"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_construction_module</span><span class="p">,</span><span class="w">      </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_find_allElements</span><span class="p">,</span><span class="w">             </span><span class="p">&amp;</span>
+<a id="ln-39" name="ln-39" href="#ln-39"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                     </span><span class="n">tem_init_elemLevels</span><span class="p">,</span><span class="w">              </span><span class="p">&amp;</span>
+<a id="ln-40" name="ln-40" href="#ln-40"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                     </span><span class="n">tem_build_VerticalDependencies</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<a id="ln-41" name="ln-41" href="#ln-41"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                     </span><span class="n">tem_build_HorizontalDependencies</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-42" name="ln-42" href="#ln-42"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                     </span><span class="n">tem_cleanupDependencyArrays</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<a id="ln-43" name="ln-43" href="#ln-43"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                     </span><span class="n">tem_levelDesc_type</span>
+<a id="ln-44" name="ln-44" href="#ln-44"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_stencil_module</span><span class="p">,</span><span class="w">           </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_stencilHeader_type</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-45" name="ln-45" href="#ln-45"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                     </span><span class="n">tem_stencil_dump</span>
+<a id="ln-46" name="ln-46" href="#ln-46"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_faceData_module</span><span class="p">,</span><span class="w">          </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_face_type</span>
+<a id="ln-47" name="ln-47" href="#ln-47"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_face_module</span><span class="p">,</span><span class="w">              </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_build_face_info</span>
+<a id="ln-48" name="ln-48" href="#ln-48"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_comm_module</span><span class="p">,</span><span class="w">              </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_commPattern_type</span>
+<a id="ln-49" name="ln-49" href="#ln-49"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_comm_env_module</span><span class="p">,</span><span class="w">          </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_comm_env_type</span>
+<a id="ln-50" name="ln-50" href="#ln-50"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_bc_header_module</span><span class="p">,</span><span class="w">         </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_bc_header_type</span>
+<a id="ln-51" name="ln-51" href="#ln-51"></a>
+<a id="ln-52" name="ln-52" href="#ln-52"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_boundary_module</span><span class="p">,</span><span class="w">          </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_init_bndList</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<a id="ln-53" name="ln-53" href="#ln-53"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                     </span><span class="n">atl_init_elem_bnd</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-54" name="ln-54" href="#ln-54"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                     </span><span class="n">atl_level_boundary_type</span>
+<a id="ln-55" name="ln-55" href="#ln-55"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_source_types_module</span><span class="p">,</span><span class="w">      </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_source_type</span>
+<a id="ln-56" name="ln-56" href="#ln-56"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_cube_elem_module</span><span class="p">,</span><span class="w">         </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_cube_elem_type</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-57" name="ln-57" href="#ln-57"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                     </span><span class="n">atl_init_cube_elem</span>
+<a id="ln-58" name="ln-58" href="#ln-58"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_equation_module</span><span class="p">,</span><span class="w">          </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_equations_type</span>
+<a id="ln-59" name="ln-59" href="#ln-59"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_facedata_module</span><span class="p">,</span><span class="w">          </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_facedata_type</span>
+<a id="ln-60" name="ln-60" href="#ln-60"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_kerneldata_module</span><span class="p">,</span><span class="w">        </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_kerneldata_type</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-61" name="ln-61" href="#ln-61"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                     </span><span class="n">atl_statedata_type</span>
+<a id="ln-62" name="ln-62" href="#ln-62"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_scheme_module</span><span class="p">,</span><span class="w">            </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_scheme_type</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-63" name="ln-63" href="#ln-63"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                     </span><span class="n">atl_define_SchemeStencil</span>
+<a id="ln-64" name="ln-64" href="#ln-64"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_bc_header_module</span><span class="p">,</span><span class="w">         </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_boundary_type</span>
+<a id="ln-65" name="ln-65" href="#ln-65"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_materialPrp_module</span><span class="p">,</span><span class="w">       </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_material_type</span>
+<a id="ln-66" name="ln-66" href="#ln-66"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_penalization_module</span><span class="p">,</span><span class="w">      </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_penalizationData_type</span>
+<a id="ln-67" name="ln-67" href="#ln-67"></a>
+<a id="ln-68" name="ln-68" href="#ln-68"></a><span class="w">  </span><span class="k">implicit none</span>
+<a id="ln-69" name="ln-69" href="#ln-69"></a>
+<a id="ln-70" name="ln-70" href="#ln-70"></a><span class="k">  private</span>
+<a id="ln-71" name="ln-71" href="#ln-71"></a>
+<a id="ln-72" name="ln-72" href="#ln-72"></a><span class="w">  </span><span class="c">!&gt; Container type collecting all the data of the simulation domain which</span>
+<a id="ln-73" name="ln-73" href="#ln-73"></a><span class="w">  </span><span class="c">!! have cubic cells.</span>
+<a id="ln-74" name="ln-74" href="#ln-74"></a><span class="w">  </span><span class="c">!!</span>
+<a id="ln-75" name="ln-75" href="#ln-75"></a><span class="w">  </span><span class="c">!! It stores informations related to the mesh as well as the states of the</span>
+<a id="ln-76" name="ln-76" href="#ln-76"></a><span class="w">  </span><span class="c">!! kernels like state variables, scheme type on each part, etc. Please</span>
+<a id="ln-77" name="ln-77" href="#ln-77"></a><span class="w">  </span><span class="c">!! notice that you can have different schemes in different parts of the cubic</span>
+<a id="ln-78" name="ln-78" href="#ln-78"></a><span class="w">  </span><span class="c">!! mesh.</span>
+<a id="ln-79" name="ln-79" href="#ln-79"></a><span class="w">  </span><span class="k">type </span><span class="n">atl_cube_container_type</span>
+<a id="ln-80" name="ln-80" href="#ln-80"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">minLevel</span><span class="w"> </span><span class="c">!&lt; Minimal level in tree</span>
+<a id="ln-81" name="ln-81" href="#ln-81"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">maxLevel</span><span class="w"> </span><span class="c">!&lt; Maximal level in tree</span>
+<a id="ln-82" name="ln-82" href="#ln-82"></a><span class="w">    </span><span class="c">!&gt; the number of list we have in this container. This is the number of</span>
+<a id="ln-83" name="ln-83" href="#ln-83"></a><span class="w">    </span><span class="c">!! levels with nonzero number of elements (i.e. maxLevel - minLevel)</span>
+<a id="ln-84" name="ln-84" href="#ln-84"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nlists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<a id="ln-85" name="ln-85" href="#ln-85"></a>
+<a id="ln-86" name="ln-86" href="#ln-86"></a><span class="w">    </span><span class="c">!&gt; List of the solver state. This includes information about the timepoints</span>
+<a id="ln-87" name="ln-87" href="#ln-87"></a><span class="w">    </span><span class="c">!! and the description of the equation state (e.g. in model representation).</span>
+<a id="ln-88" name="ln-88" href="#ln-88"></a><span class="w">    </span><span class="c">!! Indices are running from minLevel to maxLevel.</span>
+<a id="ln-89" name="ln-89" href="#ln-89"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_statedata_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">statedata_list</span><span class="p">(:)</span>
+<a id="ln-90" name="ln-90" href="#ln-90"></a>
+<a id="ln-91" name="ln-91" href="#ln-91"></a><span class="w">    </span><span class="c">!&gt; List of solver state on the faces. Indices are running from minLevel to</span>
+<a id="ln-92" name="ln-92" href="#ln-92"></a><span class="w">    </span><span class="c">!! maxLevel.</span>
+<a id="ln-93" name="ln-93" href="#ln-93"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_facedata_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">facedata_list</span><span class="p">(:)</span>
+<a id="ln-94" name="ln-94" href="#ln-94"></a>
+<a id="ln-95" name="ln-95" href="#ln-95"></a><span class="w">    </span><span class="c">!&gt; List of boundaries for the current part of the cubic mesh its</span>
+<a id="ln-96" name="ln-96" href="#ln-96"></a><span class="w">    </span><span class="c">!! stabilization. The boundary informations are stored for each refinement</span>
+<a id="ln-97" name="ln-97" href="#ln-97"></a><span class="w">    </span><span class="c">!! level seperately. Therefore the dimension of this array is nlists.</span>
+<a id="ln-98" name="ln-98" href="#ln-98"></a><span class="w">    </span><span class="c">!! Indices are running from minLevel to maxLevel.</span>
+<a id="ln-99" name="ln-99" href="#ln-99"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_level_boundary_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">boundary_stab_list</span><span class="p">(:)</span>
+<a id="ln-100" name="ln-100" href="#ln-100"></a><span class="w">    </span><span class="c">!&gt; Statedata of the stabilization.</span>
+<a id="ln-101" name="ln-101" href="#ln-101"></a><span class="w">    </span><span class="c">!! Indices are running from minLevel to maxLevel.</span>
+<a id="ln-102" name="ln-102" href="#ln-102"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_statedata_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">statedata_stab_list</span><span class="p">(:,:)</span>
+<a id="ln-103" name="ln-103" href="#ln-103"></a>
+<a id="ln-104" name="ln-104" href="#ln-104"></a><span class="w">    </span><span class="c">!&gt; List of the states of the kernels. This includes data that is used in the</span>
+<a id="ln-105" name="ln-105" href="#ln-105"></a><span class="w">    </span><span class="c">!! kernel itself (e.g. for reconstruction, etc.). It might be necessary</span>
+<a id="ln-106" name="ln-106" href="#ln-106"></a><span class="w">    </span><span class="c">!! to transfer the data during each computation of the right hand side.</span>
+<a id="ln-107" name="ln-107" href="#ln-107"></a><span class="w">    </span><span class="c">!! Indices are running from minLevel to maxLevel.</span>
+<a id="ln-108" name="ln-108" href="#ln-108"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_kerneldata_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">kerneldata_list</span><span class="p">(:)</span>
+<a id="ln-109" name="ln-109" href="#ln-109"></a>
+<a id="ln-110" name="ln-110" href="#ln-110"></a><span class="w">    </span><span class="c">!&gt; List of penalization data. This includes all data that is used for</span>
+<a id="ln-111" name="ln-111" href="#ln-111"></a><span class="w">    </span><span class="c">!! penalizations (e.g. Brinkmann penalizations of the Navier-Stokes</span>
+<a id="ln-112" name="ln-112" href="#ln-112"></a><span class="w">    </span><span class="c">!! equations). Indices are running from minLevel to maxLevel.</span>
+<a id="ln-113" name="ln-113" href="#ln-113"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_penalizationData_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">penalizationdata_list</span><span class="p">(:)</span>
+<a id="ln-114" name="ln-114" href="#ln-114"></a>
+<a id="ln-115" name="ln-115" href="#ln-115"></a><span class="w">    </span><span class="c">!&gt; List of meshes of the different kernels. We can have multiple kernels</span>
+<a id="ln-116" name="ln-116" href="#ln-116"></a><span class="w">    </span><span class="c">!! e.g. for each refinement level, polynomial degree, etc. . The states</span>
+<a id="ln-117" name="ln-117" href="#ln-117"></a><span class="w">    </span><span class="c">!! of the kernels of mesh_list(index) are located inside</span>
+<a id="ln-118" name="ln-118" href="#ln-118"></a><span class="w">    </span><span class="c">!! kerneldata_list(index). This separation was done to enable a generic</span>
+<a id="ln-119" name="ln-119" href="#ln-119"></a><span class="w">    </span><span class="c">!! kernel interface. Indices are running from minLevel to maxLevel.</span>
+<a id="ln-120" name="ln-120" href="#ln-120"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_cube_elem_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">mesh_list</span><span class="p">(:)</span>
+<a id="ln-121" name="ln-121" href="#ln-121"></a>
+<a id="ln-122" name="ln-122" href="#ln-122"></a><span class="w">    </span><span class="c">!&gt; List of boundaries for the current part of the cubic mesh. The boundary</span>
+<a id="ln-123" name="ln-123" href="#ln-123"></a><span class="w">    </span><span class="c">!! informations are stored for each refinement level seperately. Therefore</span>
+<a id="ln-124" name="ln-124" href="#ln-124"></a><span class="w">    </span><span class="c">!! the dimension of this array is nlists. Indices are running from minLevel</span>
+<a id="ln-125" name="ln-125" href="#ln-125"></a><span class="w">    </span><span class="c">!! to maxLevel.</span>
+<a id="ln-126" name="ln-126" href="#ln-126"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_level_boundary_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">boundary_list</span><span class="p">(:)</span>
+<a id="ln-127" name="ln-127" href="#ln-127"></a><span class="w">    </span><span class="c">!&gt; Global description of the boundary conditions. Size is the number of</span>
+<a id="ln-128" name="ln-128" href="#ln-128"></a><span class="w">    </span><span class="c">!! boundary conditions.</span>
+<a id="ln-129" name="ln-129" href="#ln-129"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_boundary_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bc</span><span class="p">(:)</span>
+<a id="ln-130" name="ln-130" href="#ln-130"></a>
+<a id="ln-131" name="ln-131" href="#ln-131"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_source_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">source</span>
+<a id="ln-132" name="ln-132" href="#ln-132"></a>
+<a id="ln-133" name="ln-133" href="#ln-133"></a><span class="w">    </span><span class="c">!&gt; List of material parameter information for the mesh. One entry for</span>
+<a id="ln-134" name="ln-134" href="#ln-134"></a><span class="w">    </span><span class="c">!! level, running from minlevel to maxlevel.</span>
+<a id="ln-135" name="ln-135" href="#ln-135"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_material_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">material_list</span><span class="p">(:)</span>
+<a id="ln-136" name="ln-136" href="#ln-136"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_material_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">penalization_list</span><span class="p">(:)</span>
+<a id="ln-137" name="ln-137" href="#ln-137"></a>
+<a id="ln-138" name="ln-138" href="#ln-138"></a><span class="w">    </span><span class="c">!&gt; Pointer from treeIDlist entry to level-wise fluid part of total list.</span>
+<a id="ln-139" name="ln-139" href="#ln-139"></a><span class="w">    </span><span class="c">!! The length of this vector is the total number of cubic elements.</span>
+<a id="ln-140" name="ln-140" href="#ln-140"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">levelPointer</span><span class="p">(:)</span>
+<a id="ln-141" name="ln-141" href="#ln-141"></a>
+<a id="ln-142" name="ln-142" href="#ln-142"></a><span class="w">    </span><span class="c">!&gt; All informations about the scheme for each level, e.g. for PNPM we store</span>
+<a id="ln-143" name="ln-143" href="#ln-143"></a><span class="w">    </span><span class="c">!! in this variable n and m and many others.... For a detailed</span>
+<a id="ln-144" name="ln-144" href="#ln-144"></a><span class="w">    </span><span class="c">!! description you should have a look at</span>
+<a id="ln-145" name="ln-145" href="#ln-145"></a><span class="w">    </span><span class="c">!! the documentation of the atl_scheme_type. Indices are runnging from</span>
+<a id="ln-146" name="ln-146" href="#ln-146"></a><span class="w">    </span><span class="c">!! minLevel to maxLevel.</span>
+<a id="ln-147" name="ln-147" href="#ln-147"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_scheme_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">scheme_list</span><span class="p">(:)</span>
+<a id="ln-148" name="ln-148" href="#ln-148"></a>
+<a id="ln-149" name="ln-149" href="#ln-149"></a><span class="w">    </span><span class="c">!&gt; Gives the position of the levelwise projection method in the unique list</span>
+<a id="ln-150" name="ln-150" href="#ln-150"></a><span class="w">    </span><span class="c">!! of projections.</span>
+<a id="ln-151" name="ln-151" href="#ln-151"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">poly_proj_pos</span><span class="p">(:)</span>
+<a id="ln-152" name="ln-152" href="#ln-152"></a>
+<a id="ln-153" name="ln-153" href="#ln-153"></a><span class="w">    </span><span class="c">!&gt; Indication whether to compute the maximal deviation in the</span>
+<a id="ln-154" name="ln-154" href="#ln-154"></a><span class="w">    </span><span class="c">!! polynomials of each element.</span>
+<a id="ln-155" name="ln-155" href="#ln-155"></a><span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">need_element_deviations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-156" name="ln-156" href="#ln-156"></a>
+<a id="ln-157" name="ln-157" href="#ln-157"></a><span class="w">  </span><span class="k">end type </span><span class="n">atl_cube_container_type</span>
+<a id="ln-158" name="ln-158" href="#ln-158"></a>
+<a id="ln-159" name="ln-159" href="#ln-159"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">atl_cube_container_type</span><span class="p">,</span><span class="w"> </span><span class="n">atl_init_cube_container</span>
+<a id="ln-160" name="ln-160" href="#ln-160"></a>
+<a id="ln-161" name="ln-161" href="#ln-161"></a><span class="k">contains</span>
+<a id="ln-162" name="ln-162" href="#ln-162"></a>
+<a id="ln-163" name="ln-163" href="#ln-163"></a>
+<a id="ln-164" name="ln-164" href="#ln-164"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-165" name="ln-165" href="#ln-165"></a><span class="w">  </span><span class="c">!&gt; Method to initialize a cube mesh by tree and boundary</span>
+<a id="ln-166" name="ln-166" href="#ln-166"></a><span class="w">  </span><span class="c">!! definitions obtained by treelm.</span>
+<a id="ln-167" name="ln-167" href="#ln-167"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">atl_init_cube_container</span><span class="p">(</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">boundary</span><span class="p">,</span><span class="w"> </span><span class="n">cube_container</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-168" name="ln-168" href="#ln-168"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                 </span><span class="n">equation</span><span class="p">,</span><span class="w"> </span><span class="n">proc</span><span class="p">,</span><span class="w"> </span><span class="n">commPattern</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<a id="ln-169" name="ln-169" href="#ln-169"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                 </span><span class="n">need_element_deviations</span><span class="w">               </span><span class="p">)</span>
+<a id="ln-170" name="ln-170" href="#ln-170"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<a id="ln-171" name="ln-171" href="#ln-171"></a><span class="w">    </span><span class="c">!&gt; The container with all cubic elements, generated with this routine.</span>
+<a id="ln-172" name="ln-172" href="#ln-172"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_cube_container_type</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">cube_container</span>
+<a id="ln-173" name="ln-173" href="#ln-173"></a>
+<a id="ln-174" name="ln-174" href="#ln-174"></a><span class="w">    </span><span class="c">!&gt; The tree representation of your mesh.</span>
+<a id="ln-175" name="ln-175" href="#ln-175"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tree</span>
+<a id="ln-176" name="ln-176" href="#ln-176"></a>
+<a id="ln-177" name="ln-177" href="#ln-177"></a><span class="w">    </span><span class="c">!&gt; The boundaries of your simulation domain</span>
+<a id="ln-178" name="ln-178" href="#ln-178"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_bc_prop_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">boundary</span>
+<a id="ln-179" name="ln-179" href="#ln-179"></a>
+<a id="ln-180" name="ln-180" href="#ln-180"></a><span class="w">    </span><span class="c">!&gt; Handle for the Lua config file</span>
+<a id="ln-181" name="ln-181" href="#ln-181"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">flu_State</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conf</span>
+<a id="ln-182" name="ln-182" href="#ln-182"></a>
+<a id="ln-183" name="ln-183" href="#ln-183"></a><span class="w">    </span><span class="c">!&gt; The equation you are simulating.</span>
+<a id="ln-184" name="ln-184" href="#ln-184"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_equations_type</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">equation</span>
+<a id="ln-185" name="ln-185" href="#ln-185"></a>
+<a id="ln-186" name="ln-186" href="#ln-186"></a><span class="w">    </span><span class="c">!&gt; mpi communication environment with mpi communicator</span>
+<a id="ln-187" name="ln-187" href="#ln-187"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_comm_env_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">proc</span>
+<a id="ln-188" name="ln-188" href="#ln-188"></a>
+<a id="ln-189" name="ln-189" href="#ln-189"></a><span class="w">    </span><span class="c">!&gt; mpi communication pattern type</span>
+<a id="ln-190" name="ln-190" href="#ln-190"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_commPattern_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">commPattern</span>
+<a id="ln-191" name="ln-191" href="#ln-191"></a>
+<a id="ln-192" name="ln-192" href="#ln-192"></a><span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">need_element_deviations</span>
+<a id="ln-193" name="ln-193" href="#ln-193"></a>
+<a id="ln-194" name="ln-194" href="#ln-194"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<a id="ln-195" name="ln-195" href="#ln-195"></a><span class="w">    </span><span class="kt">integer</span><span class="w">                               </span><span class="kd">::</span><span class="w"> </span><span class="n">iLevel</span>
+<a id="ln-196" name="ln-196" href="#ln-196"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_levelDesc_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">levelDesc</span><span class="p">(:)</span>
+<a id="ln-197" name="ln-197" href="#ln-197"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_face_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w">      </span><span class="kd">::</span><span class="w"> </span><span class="n">faces</span><span class="p">(:),</span><span class="w"> </span><span class="n">faces_stab</span><span class="p">(:)</span>
+<a id="ln-198" name="ln-198" href="#ln-198"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_bc_header_type</span><span class="p">)</span><span class="w">              </span><span class="kd">::</span><span class="w"> </span><span class="n">bc_header</span>
+<a id="ln-199" name="ln-199" href="#ln-199"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_stencilHeader_type</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">stencil</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<a id="ln-200" name="ln-200" href="#ln-200"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<a id="ln-201" name="ln-201" href="#ln-201"></a>
+<a id="ln-202" name="ln-202" href="#ln-202"></a><span class="w">    </span><span class="n">cube_container</span><span class="p">%</span><span class="n">need_element_deviations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">need_element_deviations</span>
+<a id="ln-203" name="ln-203" href="#ln-203"></a>
+<a id="ln-204" name="ln-204" href="#ln-204"></a><span class="w">    </span><span class="c">! Now we can build the list of neighbors.</span>
+<a id="ln-205" name="ln-205" href="#ln-205"></a><span class="w">    </span><span class="c">! Then we use the generic tem_construction_module</span>
+<a id="ln-206" name="ln-206" href="#ln-206"></a><span class="w">    </span><span class="c">! of treelm to get the right connections and ghost and halos.</span>
+<a id="ln-207" name="ln-207" href="#ln-207"></a>
+<a id="ln-208" name="ln-208" href="#ln-208"></a><span class="w">    </span><span class="c">!&gt; now we build the face information of our mesh.</span>
+<a id="ln-209" name="ln-209" href="#ln-209"></a><span class="w">    </span><span class="k">call </span><span class="n">tem_horizontalSpacer</span><span class="p">(</span><span class="n">fUnit</span><span class="o">=</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<a id="ln-210" name="ln-210" href="#ln-210"></a><span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Creating face description ... &#39;</span>
+<a id="ln-211" name="ln-211" href="#ln-211"></a><span class="w">    </span><span class="k">call </span><span class="n">tem_build_face_info</span><span class="p">(</span><span class="w"> </span><span class="n">tree</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<a id="ln-212" name="ln-212" href="#ln-212"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                       </span><span class="n">boundary</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">boundary</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<a id="ln-213" name="ln-213" href="#ln-213"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                       </span><span class="n">commPattern</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">commPattern</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-214" name="ln-214" href="#ln-214"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                       </span><span class="n">proc</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="n">proc</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<a id="ln-215" name="ln-215" href="#ln-215"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                       </span><span class="n">faces</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="n">faces</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<a id="ln-216" name="ln-216" href="#ln-216"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                       </span><span class="n">nEligibleChildren</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w">            </span><span class="p">)</span>
+<a id="ln-217" name="ln-217" href="#ln-217"></a><span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Creating face description (for stabilization)... &#39;</span>
+<a id="ln-218" name="ln-218" href="#ln-218"></a><span class="w">    </span><span class="k">call </span><span class="n">tem_build_face_info</span><span class="p">(</span><span class="w"> </span><span class="n">tree</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<a id="ln-219" name="ln-219" href="#ln-219"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                       </span><span class="n">boundary</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">boundary</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<a id="ln-220" name="ln-220" href="#ln-220"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                       </span><span class="n">commPattern</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">commPattern</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-221" name="ln-221" href="#ln-221"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                       </span><span class="n">proc</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="n">proc</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<a id="ln-222" name="ln-222" href="#ln-222"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                       </span><span class="n">faces</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="n">faces_stab</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<a id="ln-223" name="ln-223" href="#ln-223"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                       </span><span class="n">nEligibleChildren</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w">            </span><span class="p">)</span>
+<a id="ln-224" name="ln-224" href="#ln-224"></a>
+<a id="ln-225" name="ln-225" href="#ln-225"></a><span class="w">    </span><span class="c">! Additional elements that might be required by the scheme.</span>
+<a id="ln-226" name="ln-226" href="#ln-226"></a><span class="w">    </span><span class="c">!!VK stencil is not required for modg, but for tracking</span>
+<a id="ln-227" name="ln-227" href="#ln-227"></a><span class="w">    </span><span class="k">call </span><span class="n">atl_define_schemeStencil</span><span class="p">(</span><span class="w"> </span><span class="n">nDims</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">equation</span><span class="p">%</span><span class="n">nDimensions</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-228" name="ln-228" href="#ln-228"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">me</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">stencil</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w">            </span><span class="p">)</span>
+<a id="ln-229" name="ln-229" href="#ln-229"></a><span class="w">    </span><span class="k">call </span><span class="n">tem_stencil_dump</span><span class="p">(</span><span class="n">stencil</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<a id="ln-230" name="ln-230" href="#ln-230"></a>
+<a id="ln-231" name="ln-231" href="#ln-231"></a><span class="w">    </span><span class="c">! Find the treeIDs for all offsets (stencil elements) for all</span>
+<a id="ln-232" name="ln-232" href="#ln-232"></a><span class="w">    </span><span class="c">! elements. Direct neighbors, always required.</span>
+<a id="ln-233" name="ln-233" href="#ln-233"></a><span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;tem_init_elemLevels&#39;</span>
+<a id="ln-234" name="ln-234" href="#ln-234"></a><span class="w">    </span><span class="k">call </span><span class="n">tem_init_elemLevels</span><span class="p">(</span><span class="w">  </span><span class="n">me</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">levelDesc</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-235" name="ln-235" href="#ln-235"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">boundary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boundary</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<a id="ln-236" name="ln-236" href="#ln-236"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">tree</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<a id="ln-237" name="ln-237" href="#ln-237"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">stencils</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stencil</span><span class="w">    </span><span class="p">)</span>
+<a id="ln-238" name="ln-238" href="#ln-238"></a>
+<a id="ln-239" name="ln-239" href="#ln-239"></a><span class="w">    </span><span class="k">call </span><span class="n">tem_find_allElements</span><span class="p">(</span><span class="w"> </span><span class="n">tree</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w">                        </span><span class="p">&amp;</span>
+<a id="ln-240" name="ln-240" href="#ln-240"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">levelDesc</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">levelDesc</span><span class="p">,</span><span class="w">                   </span><span class="p">&amp;</span>
+<a id="ln-241" name="ln-241" href="#ln-241"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">levelPointer</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">cube_container</span><span class="p">%</span><span class="n">levelPointer</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-242" name="ln-242" href="#ln-242"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">computeStencil</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stencil</span><span class="p">,</span><span class="w">                     </span><span class="p">&amp;</span>
+<a id="ln-243" name="ln-243" href="#ln-243"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">commpattern</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">commpattern</span><span class="p">,</span><span class="w">                 </span><span class="p">&amp;</span>
+<a id="ln-244" name="ln-244" href="#ln-244"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">proc</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="n">proc</span><span class="w">                         </span><span class="p">)</span>
+<a id="ln-245" name="ln-245" href="#ln-245"></a>
+<a id="ln-246" name="ln-246" href="#ln-246"></a><span class="w">    </span><span class="c">! For each of the neighbor lists create the horizontal relations</span>
+<a id="ln-247" name="ln-247" href="#ln-247"></a><span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;tem_build_HorizontalDependencies&#39;</span>
+<a id="ln-248" name="ln-248" href="#ln-248"></a><span class="w">    </span><span class="k">call </span><span class="n">tem_build_HorizontalDependencies</span><span class="p">(</span><span class="w"> </span><span class="n">iStencil</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<a id="ln-249" name="ln-249" href="#ln-249"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                                    </span><span class="n">levelDesc</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">levelDesc</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-250" name="ln-250" href="#ln-250"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                                    </span><span class="n">tree</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<a id="ln-251" name="ln-251" href="#ln-251"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                                    </span><span class="n">computeStencil</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stencil</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-252" name="ln-252" href="#ln-252"></a><span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;tem_build_VerticalDependencies&#39;</span>
+<a id="ln-253" name="ln-253" href="#ln-253"></a><span class="w">    </span><span class="k">call </span><span class="n">tem_build_VerticalDependencies</span><span class="p">(</span><span class="w"> </span><span class="n">levelDesc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">levelDesc</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<a id="ln-254" name="ln-254" href="#ln-254"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                                  </span><span class="n">minLevel</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-255" name="ln-255" href="#ln-255"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                                  </span><span class="n">maxLevel</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span><span class="w">  </span><span class="p">)</span>
+<a id="ln-256" name="ln-256" href="#ln-256"></a>
+<a id="ln-257" name="ln-257" href="#ln-257"></a><span class="w">    </span><span class="c">! The dependencay arrays are used in buildFaceInformation subroutine</span>
+<a id="ln-258" name="ln-258" href="#ln-258"></a><span class="w">    </span><span class="c">! so, cleaning up the arrays must be done after buildFaceInformation!</span>
+<a id="ln-259" name="ln-259" href="#ln-259"></a><span class="w">    </span><span class="k">call </span><span class="n">tem_cleanupDependencyArrays</span><span class="p">(</span><span class="w"> </span><span class="n">levelDesc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">levelDesc</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-260" name="ln-260" href="#ln-260"></a>
+<a id="ln-261" name="ln-261" href="#ln-261"></a><span class="w">    </span><span class="c">! Allocate memory for cubical elements.</span>
+<a id="ln-262" name="ln-262" href="#ln-262"></a><span class="w">    </span><span class="n">cube_container</span><span class="p">%</span><span class="n">minLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span>
+<a id="ln-263" name="ln-263" href="#ln-263"></a><span class="w">    </span><span class="n">cube_container</span><span class="p">%</span><span class="n">maxLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span>
+<a id="ln-264" name="ln-264" href="#ln-264"></a><span class="w">    </span><span class="n">cube_container</span><span class="p">%</span><span class="n">nLists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<a id="ln-265" name="ln-265" href="#ln-265"></a>
+<a id="ln-266" name="ln-266" href="#ln-266"></a><span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">cube_container</span><span class="p">%</span><span class="n">mesh_list</span><span class="p">(</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-267" name="ln-267" href="#ln-267"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">:</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span><span class="p">))</span>
+<a id="ln-268" name="ln-268" href="#ln-268"></a><span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">cube_container</span><span class="p">%</span><span class="n">boundary_list</span><span class="p">(</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-269" name="ln-269" href="#ln-269"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">:</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span><span class="p">))</span>
+<a id="ln-270" name="ln-270" href="#ln-270"></a><span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">cube_container</span><span class="p">%</span><span class="n">boundary_stab_list</span><span class="p">(</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-271" name="ln-271" href="#ln-271"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">:</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span><span class="p">))</span>
+<a id="ln-272" name="ln-272" href="#ln-272"></a><span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">cube_container</span><span class="p">%</span><span class="n">kerneldata_list</span><span class="p">(</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-273" name="ln-273" href="#ln-273"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">:</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span><span class="p">))</span>
+<a id="ln-274" name="ln-274" href="#ln-274"></a><span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">cube_container</span><span class="p">%</span><span class="n">statedata_list</span><span class="p">(</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-275" name="ln-275" href="#ln-275"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">:</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span><span class="p">))</span>
+<a id="ln-276" name="ln-276" href="#ln-276"></a><span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">cube_container</span><span class="p">%</span><span class="n">statedata_stab_list</span><span class="p">(</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-277" name="ln-277" href="#ln-277"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">:</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<a id="ln-278" name="ln-278" href="#ln-278"></a><span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">cube_container</span><span class="p">%</span><span class="n">material_list</span><span class="p">(</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-279" name="ln-279" href="#ln-279"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">:</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span><span class="p">))</span>
+<a id="ln-280" name="ln-280" href="#ln-280"></a><span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">cube_container</span><span class="p">%</span><span class="n">penalizationdata_list</span><span class="p">(</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-281" name="ln-281" href="#ln-281"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">:</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span><span class="p">))</span>
+<a id="ln-282" name="ln-282" href="#ln-282"></a>
+<a id="ln-283" name="ln-283" href="#ln-283"></a><span class="w">    </span><span class="c">! Allocate the source data type depending on levels</span>
+<a id="ln-284" name="ln-284" href="#ln-284"></a><span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">cube_container</span><span class="p">%</span><span class="n">source</span><span class="p">%</span><span class="n">poly_proj_pos</span><span class="p">(</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-285" name="ln-285" href="#ln-285"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">:</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span><span class="p">))</span>
+<a id="ln-286" name="ln-286" href="#ln-286"></a>
+<a id="ln-287" name="ln-287" href="#ln-287"></a><span class="w">    </span><span class="c">! Iterate over all levels and initialize the container for it.</span>
+<a id="ln-288" name="ln-288" href="#ln-288"></a><span class="w">    </span><span class="k">do </span><span class="n">iLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span>
+<a id="ln-289" name="ln-289" href="#ln-289"></a><span class="w">      </span><span class="k">call </span><span class="n">atl_init_cube_elem</span><span class="p">(</span><span class="w"> </span><span class="n">element</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">cube_container</span><span class="p">%</span><span class="n">mesh_list</span><span class="p">(</span><span class="n">iLevel</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-290" name="ln-290" href="#ln-290"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">descriptor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">levelDesc</span><span class="p">(</span><span class="n">iLevel</span><span class="p">),</span><span class="w">                </span><span class="p">&amp;</span>
+<a id="ln-291" name="ln-291" href="#ln-291"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">level</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">iLevel</span><span class="p">,</span><span class="w">                           </span><span class="p">&amp;</span>
+<a id="ln-292" name="ln-292" href="#ln-292"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">tree</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="w">                              </span><span class="p">)</span>
+<a id="ln-293" name="ln-293" href="#ln-293"></a><span class="w">    </span><span class="k">end do</span>
+<a id="ln-294" name="ln-294" href="#ln-294"></a>
+<a id="ln-295" name="ln-295" href="#ln-295"></a><span class="w">    </span><span class="c">! Create the levelwise list of boundaries.</span>
+<a id="ln-296" name="ln-296" href="#ln-296"></a><span class="w">    </span><span class="k">call </span><span class="n">atl_init_bndList</span><span class="p">(</span><span class="w">                            </span><span class="p">&amp;</span>
+<a id="ln-297" name="ln-297" href="#ln-297"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">conf</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                         </span><span class="p">&amp;</span>
+<a id="ln-298" name="ln-298" href="#ln-298"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">tree</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w">                         </span><span class="p">&amp;</span>
+<a id="ln-299" name="ln-299" href="#ln-299"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">equation</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">equation</span><span class="p">,</span><span class="w">                     </span><span class="p">&amp;</span>
+<a id="ln-300" name="ln-300" href="#ln-300"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">bc_prop</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">boundary</span><span class="p">,</span><span class="w">                     </span><span class="p">&amp;</span>
+<a id="ln-301" name="ln-301" href="#ln-301"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">face_list</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">faces</span><span class="p">,</span><span class="w">                        </span><span class="p">&amp;</span>
+<a id="ln-302" name="ln-302" href="#ln-302"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">boundary_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cube_container</span><span class="p">%</span><span class="n">boundary_list</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-303" name="ln-303" href="#ln-303"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">bc</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="n">cube_container</span><span class="p">%</span><span class="n">bc</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<a id="ln-304" name="ln-304" href="#ln-304"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">bc_header</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">bc_header</span><span class="p">,</span><span class="w">                    </span><span class="p">&amp;</span>
+<a id="ln-305" name="ln-305" href="#ln-305"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">scheme_list</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">cube_container</span><span class="p">%</span><span class="n">scheme_list</span><span class="w">    </span><span class="p">)</span>
+<a id="ln-306" name="ln-306" href="#ln-306"></a>
+<a id="ln-307" name="ln-307" href="#ln-307"></a><span class="w">    </span><span class="c">! create the boundary informations for the dim-by-dim description</span>
+<a id="ln-308" name="ln-308" href="#ln-308"></a><span class="w">    </span><span class="c">! for co-volume</span>
+<a id="ln-309" name="ln-309" href="#ln-309"></a><span class="w">    </span><span class="k">call </span><span class="n">atl_init_elem_bnd</span><span class="p">(</span><span class="w"> </span><span class="n">minLevel</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">,</span><span class="w">              </span><span class="p">&amp;</span>
+<a id="ln-310" name="ln-310" href="#ln-310"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">maxLevel</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span><span class="p">,</span><span class="w">              </span><span class="p">&amp;</span>
+<a id="ln-311" name="ln-311" href="#ln-311"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">bc_header</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">bc_header</span><span class="p">,</span><span class="w">                         </span><span class="p">&amp;</span>
+<a id="ln-312" name="ln-312" href="#ln-312"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">face_list</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">faces_stab</span><span class="p">,</span><span class="w">                        </span><span class="p">&amp;</span>
+<a id="ln-313" name="ln-313" href="#ln-313"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">boundary_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cube_container</span><span class="p">%</span><span class="n">boundary_stab_list</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-314" name="ln-314" href="#ln-314"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">scheme_list</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">cube_container</span><span class="p">%</span><span class="n">scheme_list</span><span class="w">         </span><span class="p">)</span>
+<a id="ln-315" name="ln-315" href="#ln-315"></a>
+<a id="ln-316" name="ln-316" href="#ln-316"></a><span class="w">    </span><span class="k">do </span><span class="n">iLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span>
+<a id="ln-317" name="ln-317" href="#ln-317"></a><span class="w">      </span><span class="c">! This component needs to be explicitely copied as a workaround for</span>
+<a id="ln-318" name="ln-318" href="#ln-318"></a><span class="w">      </span><span class="c">! the cray compiler</span>
+<a id="ln-319" name="ln-319" href="#ln-319"></a><span class="w">      </span><span class="n">cube_container</span><span class="p">%</span><span class="n">mesh_list</span><span class="p">(</span><span class="n">ilevel</span><span class="p">)%</span><span class="n">faces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">faces</span><span class="p">(</span><span class="n">ilevel</span><span class="p">)</span>
+<a id="ln-320" name="ln-320" href="#ln-320"></a><span class="w">      </span><span class="n">cube_container</span><span class="p">%</span><span class="n">mesh_list</span><span class="p">(</span><span class="n">ilevel</span><span class="p">)%</span><span class="n">faces_stab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">faces_stab</span><span class="p">(</span><span class="n">ilevel</span><span class="p">)</span>
+<a id="ln-321" name="ln-321" href="#ln-321"></a><span class="w">    </span><span class="k">end do</span>
+<a id="ln-322" name="ln-322" href="#ln-322"></a>
+<a id="ln-323" name="ln-323" href="#ln-323"></a><span class="k">  end subroutine </span><span class="n">atl_init_cube_container</span>
+<a id="ln-324" name="ln-324" href="#ln-324"></a><span class="c">! ******************************************************************************!</span>
+<a id="ln-325" name="ln-325" href="#ln-325"></a>
+<a id="ln-326" name="ln-326" href="#ln-326"></a>
+<a id="ln-327" name="ln-327" href="#ln-327"></a><span class="k">end module </span><span class="n">atl_cube_container_module</span>
+</pre></div>
+
+      </section>
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

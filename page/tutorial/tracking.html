@@ -1,0 +1,561 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../../favicon.png">
+
+    <title>Tracking &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../../css/pygments.css" rel="stylesheet">
+    <link href="../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/local.css" rel="stylesheet">
+      <link  href="../../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>Tracking</h1>
+    <div class="container p-2 mb-4 bg-light border rounded-3">
+      <div class="row align-items-center justify-content-between">
+        <div class="col">
+          <ul class="list-inline" style="margin-bottom:0px; display:inline">
+          </ul>
+        </div>
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../index.html'>Documentation</a></li>
+                <li class="breadcrumb-item"><a href='index.html'>Tutorial</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Tracking</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-3">
+        <div class="card card-body bg-light" id="sidebar-toc">
+          <ul class="nav flex-column align-items">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Documentation</a>
+            </li>
+          </ul>
+          <hr>
+          <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="../apes_overview.html">APES Overview</a>
+              <a class="nav-link" href="../build_and_run.html">Build and Run Ateles</a>
+              <a class="nav-link" href="../examples/index.html">Example setups</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/acoustic/index.html">Acoustic Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/acoustic/gauss_densitypulse_2D/index.html">Gaussian Density Pulse Test Case</a>
+              <a class="nav-link" href="../examples/acoustic/planar_wave_3D/index.html">Planar Wave</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/euler/index.html">Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/euler/1D/index.html">1D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/euler/1D/modalEstimate/index.html">Modal estimate for adaptive timesteps 1D</a>
+              <a class="nav-link" href="../examples/euler/1D/piston/index.html">Formation of a shock wave ahead of a moving piston in 1D</a>
+              <a class="nav-link" href="../examples/euler/1D/piston_modereduction/index.html">Formation of a shock wave ahead of a moving piston in 1D</a>
+              <a class="nav-link" href="../examples/euler/1D/shock_stabilization_parallel/index.html">Shock Stabilization Test Case</a>
+              <a class="nav-link" href="../examples/euler/1D/toro1_x/index.html">Toro Validation Test Case</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/euler/2D/index.html">2D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/euler/2D/gauss_densitypulse_spongelayer/index.html">Gaussian Density Pulse in 2D</a>
+              <a class="nav-link" href="../examples/euler/2D/modalEstimate/index.html">Modal estimate for adaptive timesteps in 2D</a>
+              <a class="nav-link" href="../examples/euler/2D/shock_stabilization_parallel/index.html">Shock Stabilization Test Case</a>
+              <a class="nav-link" href="../examples/euler/2D/toro1_x/index.html">Toro1 Validation Test Case in X direction</a>
+              <a class="nav-link" href="../examples/euler/2D/toro1_y/index.html">Toro1 Validation Test Case in Y direction</a>
+              <a class="nav-link" href="../examples/euler/2D/toro2_x/index.html">Toro2 Setup along X for 2D Euler equations</a>
+              <a class="nav-link" href="../examples/euler/2D/toro3_x/index.html">Toro3 Setup along X for 2D Euler equations</a>
+              <a class="nav-link" href="../examples/euler/2D/toro4_x/index.html">Toro4 setup for 2D Euler equations with a positivity preserving filter</a>
+              <a class="nav-link" href="../examples/euler/2D/vorticity/index.html">Vorticity Tracking</a>
+              <a class="nav-link" href="../examples/euler/2D/wedge/index.html">Supersonic movement of a wedge</a>
+              <a class="nav-link" href="../examples/euler/2D/wedge_modereduction/index.html">Supersonic movement of a wedge</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/euler/3D/index.html">3D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/euler/3D/gauss_densitypulse_deriv_quantity/index.html">Pulse in density with derived quantity</a>
+              <a class="nav-link" href="../examples/euler/3D/gauss_densitypulse_fpt/index.html">Euler 3D pulse in density with FPT</a>
+              <a class="nav-link" href="../examples/euler/3D/gauss_densitypulse_fxt/index.html">Euler 3D setup of Gaussian pulse in density with FXT</a>
+              <a class="nav-link" href="../examples/euler/3D/gauss_densitypulse_l2p/index.html">Euler 3D setup with pulse in density and L2 projection</a>
+              <a class="nav-link" href="../examples/euler/3D/gauss_densitypulse_spongelayer/index.html">Euler 3D pulse in density with sponge</a>
+              <a class="nav-link" href="../examples/euler/3D/modalEstimate/index.html">Modal estimate in Euler 3D</a>
+              <a class="nav-link" href="../examples/euler/3D/multilevel/index.html">Material with Multilevel in Euler 3D</a>
+              <a class="nav-link" href="../examples/euler/3D/overview/index.html">Configuration overview for Euler 3D simulations</a>
+              <a class="nav-link" href="../examples/euler/3D/p_polynomials/index.html">P-polynomial space</a>
+              <a class="nav-link" href="../examples/euler/3D/qCriterion_deriv_quantity/index.html">Q-Criterion Tracking in Euler 3D</a>
+              <a class="nav-link" href="../examples/euler/3D/shear_layer_Q4/index.html">Shear-Layer Q4</a>
+              <a class="nav-link" href="../examples/euler/3D/shear_layer_Q4_parallel/index.html">Shear-Layer Q4</a>
+              <a class="nav-link" href="../examples/euler/3D/shear_layer_Q8/index.html">Shear-Layer Q8</a>
+              <a class="nav-link" href="../examples/euler/3D/shock_stabilization_localrefinement/index.html">Shock Stabilization in Euler 3D with local refinement</a>
+              <a class="nav-link" href="../examples/euler/3D/shock_stabilization_parallel/index.html">Shock stabilization for 3D Euler equations with RK-Taylor</a>
+              <a class="nav-link" href="../examples/euler/3D/shock_stabilization_periodic/index.html">Shock stabilization in periodic domain</a>
+              <a class="nav-link" href="../examples/euler/3D/toro1_x/index.html">Toro1 Riemann problem in X direction</a>
+              <a class="nav-link" href="../examples/euler/3D/toro1_y/index.html">Toro1 Riemann problem in Y direction</a>
+              <a class="nav-link" href="../examples/euler/3D/toro1_z/index.html">Toro1 Riemann problem in Z direction</a>
+              <a class="nav-link" href="../examples/euler/3D/vorticity/index.html">Vorticity Test Case</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../examples/heat/index.html">Heat Conduction</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/heat/1D/index.html">Heat Conduction in 1D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/heat/1D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/heat/2D/index.html">Heat Conduction in 2D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/heat/2D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/heat/3D/index.html">Heat Conduction in 3D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/heat/3D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../examples/lineareuler/index.html">Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/lineareuler/2D/index.html">2D Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/lineareuler/2D/gauss_pulse/index.html">Gaussian pulse in pressure with 2d linearized Euler equations</a>
+              <a class="nav-link" href="../examples/lineareuler/2D/transientBackground/index.html">Transient background state in 2D linearized Euler</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/lineareuler/3D/index.html">3D Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/lineareuler/3D/gauss_pulse/index.html">Gaussian pulse in density for 3D linearized Euler equations</a>
+              <a class="nav-link" href="../examples/lineareuler/3D/gradient/index.html">Tracking of gradients in 3D linearized Euler equations</a>
+              <a class="nav-link" href="../examples/lineareuler/3D/transientBackground/index.html">Transient background state in 3D linearized Euler</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../examples/maxwell/index.html">Maxwell Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/maxwell/pec_scatter_inhomogenous_matFun_Q8_3D/index.html">Perfectly_scatter_Inhomogenous_Materia</a>
+              <a class="nav-link" href="../examples/maxwell/pec_scatter_inhomogenous_matVar_Q8_3D/index.html">Perfectly_scatter_Inhomogenous_Materia</a>
+              <a class="nav-link" href="../examples/maxwell/periodic_oscillator_P8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="../examples/maxwell/periodic_oscillator_Q8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="../examples/maxwell/rectangular_wave_Q8_3D/index.html">Rectangle Wave</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/maxwelldivcorr/index.html">Maxwell Equations With Divergence Correction</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/maxwelldivcorr/periodic_oscillator_P8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="../examples/maxwelldivcorr/periodic_oscillator_Q8_3D/index.html">Periodic_Oscillator</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/maxwellpml/index.html">Maxwell Equations With Perfectly Matched Layers</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/maxwellpml/cylinder_scattering_Q8_2D/index.html">Perfectly matched Layer test case</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/navierstokes/index.html">Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/navierstokes/2D/index.html">2D Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/navierstokes/2D/constant_state/index.html">Constant State</a>
+              <a class="nav-link" href="../examples/navierstokes/2D/shear_hat/index.html">Shear hat 2D</a>
+              <a class="nav-link" href="../examples/navierstokes/2D/viscous_vortex/index.html">Viscous Vortex (TGV) 2D</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/navierstokes/3D/index.html">3D Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/navierstokes/3D/shear_hat/index.html">Shear hat 3D</a>
+              <a class="nav-link" href="../examples/navierstokes/3D/shear_tube/index.html">Shear tube 3D</a>
+
+                </nav>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../init.html">Initialization</a>
+              <a class="nav-link" href="../material.html">Material</a>
+              <a class="nav-link" href="../neumann_boundaries.html">Neumann boundary conditions</a>
+              <a class="nav-link" href="../new_eqn_system.html">Introducing a New Equation System</a>
+              <a class="nav-link" href="../polynomials.html">Polynomials Library</a>
+              <a class="nav-link" href="../postprocess_filtering.html">Postprocess Filtering</a>
+              <a class="nav-link" href="index.html">Tutorial</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="euler.html">Euler Testcase</a>
+              <a class="nav-link" href="general.html">General Input File Information</a>
+              <a class="nav-link" href="maxwell.html">Maxwell Testcase</a>
+              <a class="nav-link" href="postprocessing.html">Postprocessing with atl_harvesting</a>
+              <a class="nav-link" href="procedure.html">General Procedure for Running the Testcases</a>
+              <a class="nav-link" href="source_term.html">Source Term</a>
+              <a class="nav-link active disabled" href="tracking.html">Tracking</a>
+
+                </nav>
+          </nav>
+        </div>
+      </div>
+
+    <div class="col-9" id='text'>
+      <p>During the runtime of a simulation
+sometimes the user is interested in some state variables
+but does not want to write down the complete domain (i.e. a restart file)
+information on disk.
+Therefore the tracking module is implemented to give the opportunity
+to evaluate only a certain state variable.</p>
+<div class="toc">
+<ul>
+<li><a href="#general-structure">General Structure</a></li>
+<li><a href="#tracking-variable">Tracking Variable</a></li>
+<li><a href="#tracking-interval">Tracking Interval</a></li>
+<li><a href="#tracking-format">Tracking Format</a></li>
+<li><a href="#tracking-shape">Tracking Shape</a><ul>
+<li><a href="#point-tracking">Point Tracking</a></li>
+<li><a href="#line-tracking">Line Tracking</a></li>
+<li><a href="#plane-tracking">Plane Tracking</a></li>
+<li><a href="#global-mesh-tracking">Global Mesh Tracking</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="general-structure">General Structure</h2>
+<p>To track a specific variable you need to modify the Lua input file and define</p>
+<ul>
+<li>the variable <code>label</code> and the <code>folder</code> where the date should be stored,</li>
+<li>the <code>shape</code>,</li>
+<li>the <code>interval</code> for gathering the values and</li>
+<li>the <code>output</code> with at least the <code>format</code> defined in it.</li>
+</ul>
+<p>These important variables will be explained further
+in the following paragraphs.</p>
+<h2 id="tracking-variable">Tracking Variable</h2>
+<p>Possible variables available for tracking are:</p>
+<ul>
+<li>All conservative variables defined in the global variable system,
+    depending on the equation system to solve.</li>
+<li>Variables derived from the conservative variables. Can be predefined by
+    the equation system, but the user can also define derived variables in
+    the configuration's variable table
+    (see <a href="../treelm/page/features/variables/index.html">Variable System</a>).</li>
+<li>Eductions like difference, sum or average of defined variables.</li>
+<li>Space-time-functions as an analytical result, can be defined in the Lua file.</li>
+</ul>
+<p>As an example for the Maxwell equation,
+you can track <code>displacement_field</code> and <code>magnetic_field</code>,
+For the Euler equation there is, besides others, <code>density</code>, <code>momentum</code> and
+<code>energy</code>, which you can track.
+And another example: For the heat equation (nernst-planck equation)
+the variables <code>concentration</code> and <code>diffusiveFlux</code> are, among others, trackable.</p>
+<h2 id="tracking-interval">Tracking Interval</h2>
+<p>Similar to
+<a href="general.html#general-simulation-settings">configuring the time settings</a>
+for the restart output,
+you specify when to start (<code>min</code>)
+and when to stop (<code>max</code>),
+plus the <code>interval</code> for writing the tracking output.</p>
+<h2 id="tracking-format">Tracking Format</h2>
+<p>Ateles supports five formats for writing the tracked data.</p>
+<ul>
+<li><code>ascii</code>: Transient data - simple gnuplot-style.
+    A simple ascii file which creates a small header
+    and then writes a column wise representation of all variables
+    and points at each defined time step.
+    This is not efficient and can only be used
+    for simple point-tracking objects.
+    Each process writes its own file.</li>
+<li><code>asciiSpatial</code>: Spatial Data -
+    This format stores solution data along
+    with coordinates in single data file for every timestep.
+    Therefore, there would be multiple files
+    depending on the total number of time-steps.
+    It is ideal for tracking line and plane.</li>
+<li><code>harvester</code>:
+    Harvester format writes all participating elements to a TreElm mesh
+    and creates a restart file for each required time step containing only the
+    tracking data.
+    This is a scalable tracking object
+    which works regardless of the number of processes.</li>
+<li><code>vtk</code>:
+    <a href="https://en.wikipedia.org/wiki/VTK">Visualization Toolkit</a></li>
+<li><code>precice</code>:
+    <a href="http://www.precice.org">Precise Code Interaction Coupling Environment</a></li>
+</ul>
+<h2 id="tracking-shape">Tracking Shape</h2>
+<p>The tracking is realized using a simple shape.
+The shape is defined as a canonical object.
+The different shapes are basically derivatives of a simple cube.
+A cube with no length in any direction is a point,
+a cube with length along only one axis is a line
+whereas a cube with length along two axes
+is simply treated as plane by the underlying code.
+Thus, the following shapes are implemented:</p>
+<ul>
+<li>zero-dimensional: point</li>
+<li>one-dimensional: line</li>
+<li>two-dimensional: plane</li>
+</ul>
+<p>For all these shapes we set the parameter <code>kind</code>
+to the predefined name <code>canoND</code>
+and configure the different shapes with the parameter <code>object</code>.
+The following passages contain examples for each shape.
+You can find these examples commented out in the configuration file
+of the <a href="maxwell.html">Maxwell testcase</a>,
+where we track the
+<a href="https://en.wikipedia.org/wiki/Electric_displacement_field">Electric displacement field</a>
+(<code>variable = {'displacement_field'}</code>).
+The result of the tracking will be stored in a folder called <code>tracking</code>
+(<code>folder = 'tracking/'</code>).
+So make sure to create this folder before running the simulation with tracking.</p>
+<h3 id="point-tracking">Point Tracking</h3>
+<p>The most common thing is
+to just track the values of a defined point in the computational domain.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">tracking</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;point_probe&#39;</span><span class="p">,</span>
+  <span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;tracking/&#39;</span><span class="p">,</span>
+  <span class="n">variable</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;displacement_field&#39;</span><span class="p">},</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+    <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="n">time_control</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">min</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">max</span> <span class="o">=</span> <span class="n">sim_control</span><span class="p">.</span><span class="n">time_control</span><span class="p">.</span><span class="n">max</span><span class="p">,</span>
+    <span class="n">interval</span> <span class="o">=</span> <span class="n">sim_control</span><span class="p">.</span><span class="n">time_control</span><span class="p">.</span><span class="n">max</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="n">output</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;ascii&#39;</span><span class="p">,</span>
+    <span class="n">use_get_point</span> <span class="o">=</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>This part in the ateles.lua input file specifies the point tracking,
+since only one point in <code>origin</code> is definded.
+Ateles now generates an ascii file in the defined folder (<code>tracking</code>)
+where you can find the results.
+With the <code>use_get_point</code> option set to <code>true</code>
+we will get the exact point values at the specified point.</p>
+<h3 id="line-tracking">Line Tracking</h3>
+<p>For line tracking we need to define a starting point (<code>origin</code>)
+and one direction vector (<code>vec</code>) in the parameter <code>object</code>.
+The line is represented as a list of points in the tracking facility.
+The number (<code>segments</code>)
+and the <code>distribution</code> of the points on the line needs to be set.
+Make sure to specify enough segments
+to take into account all the required elements on the line.
+Elements are added only once,
+so it might be beneficial to specify much more segments than actually needed
+to consider elements on the highest levels as well.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">tracking</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;line_probe&#39;</span><span class="p">,</span>
+  <span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;tracking/&#39;</span><span class="p">,</span>
+  <span class="n">variable</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;displacement_field&#39;</span><span class="p">},</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+    <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
+      <span class="n">vec</span> <span class="o">=</span> <span class="p">{{</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">}},</span>
+      <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span><span class="mi">4</span><span class="p">},</span>
+      <span class="n">distribution</span> <span class="o">=</span> <span class="s1">&#39;equal&#39;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="n">time_control</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">min</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">max</span> <span class="o">=</span> <span class="n">sim_control</span><span class="p">.</span><span class="n">time_control</span><span class="p">.</span><span class="n">max</span><span class="p">,</span>
+    <span class="n">interval</span> <span class="o">=</span> <span class="n">sim_control</span><span class="p">.</span><span class="n">time_control</span><span class="p">.</span><span class="n">max</span> <span class="o">/</span> <span class="mf">2.0</span>
+  <span class="p">},</span>
+  <span class="n">output</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;asciiSpatial&#39;</span><span class="p">,</span>
+    <span class="n">ndofs</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>After, the above tracking is executed,
+the output is stored inside the defined folder (in this case: <code>tracking</code>).
+The output gives the results for the elements lying on the defined line.
+In the .res file only the integral mean value of the element is stored
+(<code>ndofs = 1</code>).
+Actually for line tracking it is convenient to use the harvester format,
+since all degrees of freedom are stored
+and you can produce visualization files.</p>
+<h3 id="plane-tracking">Plane Tracking</h3>
+<p>For a plane,
+we need to define an origin and the two direction vectors.
+The plane is, just as the line,
+represented as a list of points in the tracking facility.
+The number of subdivisions in each direction
+and its distribution of the points on the plane needs to be set.
+Make sure to specify enough segments
+to take into account all the required elements on the plane.
+Elements are added only once,
+so it might be beneficial to specify much more segments
+than actually needed to consider elements on the highest levels as well.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">tracking</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;line_probe&#39;</span><span class="p">,</span>
+  <span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;tracking/&#39;</span><span class="p">,</span>
+  <span class="n">variable</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;displacement_field&#39;</span><span class="p">},</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+    <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">},</span>
+      <span class="n">vec</span> <span class="o">=</span> <span class="p">{{</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span> <span class="p">{</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">}},</span>
+      <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span><span class="mi">500</span><span class="p">,</span> <span class="mi">300</span><span class="p">},</span>
+      <span class="n">distribution</span> <span class="o">=</span> <span class="s1">&#39;equal&#39;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="n">time_control</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">min</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">max</span> <span class="o">=</span> <span class="n">sim_control</span><span class="p">.</span><span class="n">time_control</span><span class="p">.</span><span class="n">max</span><span class="p">,</span>
+    <span class="n">interval</span> <span class="o">=</span> <span class="n">sim_control</span><span class="p">.</span><span class="n">time_control</span><span class="p">.</span><span class="n">max</span> <span class="o">/</span> <span class="mf">2.0</span>
+  <span class="p">},</span>
+  <span class="n">output</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;harvester&#39;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Also for plane tracking, the harvester format is the most convenient one.
+Similar to the line tracking,
+an ascii-file would only give you the mean integral values for the element
+which are lying in this plane.
+In the harvester format all degrees of freedom are stored
+and can be used in the visualization.</p>
+<h3 id="global-mesh-tracking">Global Mesh Tracking</h3>
+<p>The global mesh tracking is defined
+by assinging the predefined name <code>global</code> to the parameter <code>shape</code>.
+This is an easy way to track only one variable in the whole domain
+without writing a bunch of restart files.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">tracking</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;global_probe&#39;</span><span class="p">,</span>
+  <span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;tracking/&#39;</span><span class="p">,</span>
+  <span class="n">variable</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;displacement_field&#39;</span><span class="p">},</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;global&#39;</span>
+  <span class="p">},</span>
+  <span class="n">time_control</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">min</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">iter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="n">max</span> <span class="o">=</span> <span class="n">sim_control</span><span class="p">.</span><span class="n">time_control</span><span class="p">.</span><span class="n">max</span><span class="p">,</span>
+    <span class="n">interval</span> <span class="o">=</span> <span class="n">sim_control</span><span class="p">.</span><span class="n">time_control</span><span class="p">.</span><span class="n">max</span> <span class="o">/</span> <span class="mf">2.0</span>
+  <span class="p">},</span>
+  <span class="n">output</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;vtk&#39;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Here we choose the Visualization Toolkit format (<code>format = 'vtk'</code>),
+so that we can directly visualize the results with
+<a href="http://www.paraview.org">Paraview</a>.</p>
+    </div>
+  </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

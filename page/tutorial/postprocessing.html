@@ -1,0 +1,569 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../../favicon.png">
+
+    <title>Postprocessing with atl_harvesting &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../../css/pygments.css" rel="stylesheet">
+    <link href="../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/local.css" rel="stylesheet">
+      <link  href="../../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>Postprocessing with atl_harvesting</h1>
+    <div class="container p-2 mb-4 bg-light border rounded-3">
+      <div class="row align-items-center justify-content-between">
+        <div class="col">
+          <ul class="list-inline" style="margin-bottom:0px; display:inline">
+          </ul>
+        </div>
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../index.html'>Documentation</a></li>
+                <li class="breadcrumb-item"><a href='index.html'>Tutorial</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Postprocessing with atl_harvesting</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-3">
+        <div class="card card-body bg-light" id="sidebar-toc">
+          <ul class="nav flex-column align-items">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Documentation</a>
+            </li>
+          </ul>
+          <hr>
+          <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="../apes_overview.html">APES Overview</a>
+              <a class="nav-link" href="../build_and_run.html">Build and Run Ateles</a>
+              <a class="nav-link" href="../examples/index.html">Example setups</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/acoustic/index.html">Acoustic Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/acoustic/gauss_densitypulse_2D/index.html">Gaussian Density Pulse Test Case</a>
+              <a class="nav-link" href="../examples/acoustic/planar_wave_3D/index.html">Planar Wave</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/euler/index.html">Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/euler/1D/index.html">1D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/euler/1D/modalEstimate/index.html">Modal estimate for adaptive timesteps 1D</a>
+              <a class="nav-link" href="../examples/euler/1D/piston/index.html">Formation of a shock wave ahead of a moving piston in 1D</a>
+              <a class="nav-link" href="../examples/euler/1D/piston_modereduction/index.html">Formation of a shock wave ahead of a moving piston in 1D</a>
+              <a class="nav-link" href="../examples/euler/1D/shock_stabilization_parallel/index.html">Shock Stabilization Test Case</a>
+              <a class="nav-link" href="../examples/euler/1D/toro1_x/index.html">Toro Validation Test Case</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/euler/2D/index.html">2D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/euler/2D/gauss_densitypulse_spongelayer/index.html">Gaussian Density Pulse in 2D</a>
+              <a class="nav-link" href="../examples/euler/2D/modalEstimate/index.html">Modal estimate for adaptive timesteps in 2D</a>
+              <a class="nav-link" href="../examples/euler/2D/shock_stabilization_parallel/index.html">Shock Stabilization Test Case</a>
+              <a class="nav-link" href="../examples/euler/2D/toro1_x/index.html">Toro1 Validation Test Case in X direction</a>
+              <a class="nav-link" href="../examples/euler/2D/toro1_y/index.html">Toro1 Validation Test Case in Y direction</a>
+              <a class="nav-link" href="../examples/euler/2D/toro2_x/index.html">Toro2 Setup along X for 2D Euler equations</a>
+              <a class="nav-link" href="../examples/euler/2D/toro3_x/index.html">Toro3 Setup along X for 2D Euler equations</a>
+              <a class="nav-link" href="../examples/euler/2D/toro4_x/index.html">Toro4 setup for 2D Euler equations with a positivity preserving filter</a>
+              <a class="nav-link" href="../examples/euler/2D/vorticity/index.html">Vorticity Tracking</a>
+              <a class="nav-link" href="../examples/euler/2D/wedge/index.html">Supersonic movement of a wedge</a>
+              <a class="nav-link" href="../examples/euler/2D/wedge_modereduction/index.html">Supersonic movement of a wedge</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/euler/3D/index.html">3D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/euler/3D/gauss_densitypulse_deriv_quantity/index.html">Pulse in density with derived quantity</a>
+              <a class="nav-link" href="../examples/euler/3D/gauss_densitypulse_fpt/index.html">Euler 3D pulse in density with FPT</a>
+              <a class="nav-link" href="../examples/euler/3D/gauss_densitypulse_fxt/index.html">Euler 3D setup of Gaussian pulse in density with FXT</a>
+              <a class="nav-link" href="../examples/euler/3D/gauss_densitypulse_l2p/index.html">Euler 3D setup with pulse in density and L2 projection</a>
+              <a class="nav-link" href="../examples/euler/3D/gauss_densitypulse_spongelayer/index.html">Euler 3D pulse in density with sponge</a>
+              <a class="nav-link" href="../examples/euler/3D/modalEstimate/index.html">Modal estimate in Euler 3D</a>
+              <a class="nav-link" href="../examples/euler/3D/multilevel/index.html">Material with Multilevel in Euler 3D</a>
+              <a class="nav-link" href="../examples/euler/3D/overview/index.html">Configuration overview for Euler 3D simulations</a>
+              <a class="nav-link" href="../examples/euler/3D/p_polynomials/index.html">P-polynomial space</a>
+              <a class="nav-link" href="../examples/euler/3D/qCriterion_deriv_quantity/index.html">Q-Criterion Tracking in Euler 3D</a>
+              <a class="nav-link" href="../examples/euler/3D/shear_layer_Q4/index.html">Shear-Layer Q4</a>
+              <a class="nav-link" href="../examples/euler/3D/shear_layer_Q4_parallel/index.html">Shear-Layer Q4</a>
+              <a class="nav-link" href="../examples/euler/3D/shear_layer_Q8/index.html">Shear-Layer Q8</a>
+              <a class="nav-link" href="../examples/euler/3D/shock_stabilization_localrefinement/index.html">Shock Stabilization in Euler 3D with local refinement</a>
+              <a class="nav-link" href="../examples/euler/3D/shock_stabilization_parallel/index.html">Shock stabilization for 3D Euler equations with RK-Taylor</a>
+              <a class="nav-link" href="../examples/euler/3D/shock_stabilization_periodic/index.html">Shock stabilization in periodic domain</a>
+              <a class="nav-link" href="../examples/euler/3D/toro1_x/index.html">Toro1 Riemann problem in X direction</a>
+              <a class="nav-link" href="../examples/euler/3D/toro1_y/index.html">Toro1 Riemann problem in Y direction</a>
+              <a class="nav-link" href="../examples/euler/3D/toro1_z/index.html">Toro1 Riemann problem in Z direction</a>
+              <a class="nav-link" href="../examples/euler/3D/vorticity/index.html">Vorticity Test Case</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../examples/heat/index.html">Heat Conduction</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/heat/1D/index.html">Heat Conduction in 1D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/heat/1D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/heat/2D/index.html">Heat Conduction in 2D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/heat/2D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/heat/3D/index.html">Heat Conduction in 3D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/heat/3D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../examples/lineareuler/index.html">Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/lineareuler/2D/index.html">2D Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/lineareuler/2D/gauss_pulse/index.html">Gaussian pulse in pressure with 2d linearized Euler equations</a>
+              <a class="nav-link" href="../examples/lineareuler/2D/transientBackground/index.html">Transient background state in 2D linearized Euler</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/lineareuler/3D/index.html">3D Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/lineareuler/3D/gauss_pulse/index.html">Gaussian pulse in density for 3D linearized Euler equations</a>
+              <a class="nav-link" href="../examples/lineareuler/3D/gradient/index.html">Tracking of gradients in 3D linearized Euler equations</a>
+              <a class="nav-link" href="../examples/lineareuler/3D/transientBackground/index.html">Transient background state in 3D linearized Euler</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../examples/maxwell/index.html">Maxwell Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/maxwell/pec_scatter_inhomogenous_matFun_Q8_3D/index.html">Perfectly_scatter_Inhomogenous_Materia</a>
+              <a class="nav-link" href="../examples/maxwell/pec_scatter_inhomogenous_matVar_Q8_3D/index.html">Perfectly_scatter_Inhomogenous_Materia</a>
+              <a class="nav-link" href="../examples/maxwell/periodic_oscillator_P8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="../examples/maxwell/periodic_oscillator_Q8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="../examples/maxwell/rectangular_wave_Q8_3D/index.html">Rectangle Wave</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/maxwelldivcorr/index.html">Maxwell Equations With Divergence Correction</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/maxwelldivcorr/periodic_oscillator_P8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="../examples/maxwelldivcorr/periodic_oscillator_Q8_3D/index.html">Periodic_Oscillator</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/maxwellpml/index.html">Maxwell Equations With Perfectly Matched Layers</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/maxwellpml/cylinder_scattering_Q8_2D/index.html">Perfectly matched Layer test case</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/navierstokes/index.html">Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/navierstokes/2D/index.html">2D Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/navierstokes/2D/constant_state/index.html">Constant State</a>
+              <a class="nav-link" href="../examples/navierstokes/2D/shear_hat/index.html">Shear hat 2D</a>
+              <a class="nav-link" href="../examples/navierstokes/2D/viscous_vortex/index.html">Viscous Vortex (TGV) 2D</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/navierstokes/3D/index.html">3D Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/navierstokes/3D/shear_hat/index.html">Shear hat 3D</a>
+              <a class="nav-link" href="../examples/navierstokes/3D/shear_tube/index.html">Shear tube 3D</a>
+
+                </nav>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../init.html">Initialization</a>
+              <a class="nav-link" href="../material.html">Material</a>
+              <a class="nav-link" href="../neumann_boundaries.html">Neumann boundary conditions</a>
+              <a class="nav-link" href="../new_eqn_system.html">Introducing a New Equation System</a>
+              <a class="nav-link" href="../polynomials.html">Polynomials Library</a>
+              <a class="nav-link" href="../postprocess_filtering.html">Postprocess Filtering</a>
+              <a class="nav-link" href="index.html">Tutorial</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="euler.html">Euler Testcase</a>
+              <a class="nav-link" href="general.html">General Input File Information</a>
+              <a class="nav-link" href="maxwell.html">Maxwell Testcase</a>
+              <a class="nav-link active disabled" href="postprocessing.html">Postprocessing with atl_harvesting</a>
+              <a class="nav-link" href="procedure.html">General Procedure for Running the Testcases</a>
+              <a class="nav-link" href="source_term.html">Source Term</a>
+              <a class="nav-link" href="tracking.html">Tracking</a>
+
+                </nav>
+          </nav>
+        </div>
+      </div>
+
+    <div class="col-9" id='text'>
+      <p>After creating some restart files, we want to postprocess those using
+our postprocessing tool called atl_harvesting. It is tightly coupled with the
+solver to share as much code as possible, which enables us to use some
+sophisticated postprocessing features.</p>
+<p>First we desribe the general procedure for running it.
+Next we show an example to postprocess the
+<a href="maxwell.html">Maxwell Testcase</a> with atl_harvesting.
+In the end we show how to run atl_harvesting in series
+and generate a visualization file where all the timesteps are combined
+and can easily be visualized in <a href="http://www.paraview.org">Paraview</a>.</p>
+<div class="toc">
+<ul>
+<li><a href="#run-atl_harvesting">Run atl_harvesting</a></li>
+<li><a href="#example-maxwell-testcase">Example: Maxwell Testcase</a><ul>
+<li><a href="#load-configuration-of-simulation">Load Configuration of Simulation</a></li>
+<li><a href="#set-data-to-process">Set Data to Process</a></li>
+<li><a href="#subsampling">Subsampling</a></li>
+<li><a href="#output">Output</a></li>
+</ul>
+</li>
+<li><a href="#run-in-series">Run in Series</a><ul>
+<li><a href="#set-up-template">Set up Template</a></li>
+<li><a href="#set-up-variables">Set up Variables</a></li>
+<li><a href="#run-harvest_seriespy">Run harvest_series.py</a></li>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="run-atl_harvesting">Run atl_harvesting</h2>
+<p>atl_harvesting is a postprocessing tool specific for the Ateles solver.
+It is build along Ateles into the same build directory <code>ateles/build/</code>.
+So make sure you successfully compiled Ateles.
+To run atl_harvesting from the ateles main directory, type</p>
+<div class="codehilite"><pre><span></span><code>build/atl_harvesting<span class="w"> </span>harvester.lua
+</code></pre></div>
+
+<p>where <code>build/</code> is the relative path
+from the current working directory to the executable <code>atl_harvesting</code>
+and <code>harvester.lua</code> is the name of the input file
+(the default file name atl_harvesting is looking for is <code>harvester.lua</code>).
+Similar to Ateles, the input file for atl_harvesting is written in Lua
+and defines the data to process, optional subsampling and the output format.
+In the main <code>ateles</code> directory
+there is an example configuration file named <code>harvester.lua</code>.</p>
+<h2 id="example-maxwell-testcase">Example: Maxwell Testcase</h2>
+<p>Now we desrcibe an example for postprocessing the Maxwell Testcase.
+For this purpose we describe
+the atl_harvesting input file <code>harvester.lua</code>
+located in the directory <code>tutorial/testcase/maxwell</code> in the Ateles main
+directory.
+We stored the simulation result from the previous step in this folder, and we
+are going to refer to the configuration files within this folder, so it makes
+life pretty easy when we just change to this folder. The only thing we have to
+keep in mind is that we now need to refer to atl_harvesting with the relativ
+path <code>../../../build/atl_harvesting</code>.</p>
+<h3 id="load-configuration-of-simulation">Load Configuration of Simulation</h3>
+<p>First we load the configuration of the original simulation
+defined in the Ateles input file <code>ateles.lua</code> in the same directory.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- Use the configuration of the original simulation run.</span>
+<span class="nb">require</span> <span class="s1">&#39;ateles&#39;</span>
+</code></pre></div>
+
+<p>This enables us to use the variables defined in there.</p>
+<h3 id="set-data-to-process">Set Data to Process</h3>
+<p>We define the restart data
+which we want to process in the parameter <code>restart.read</code>.
+The correct path and name to the restart files should be defined there.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- Set the restart data to harvest.</span>
+<span class="n">restart</span><span class="p">.</span><span class="n">read</span> <span class="o">=</span> <span class="s1">&#39;restart/&#39;</span> <span class="o">..</span> <span class="n">simulation_name</span> <span class="o">..</span> <span class="s1">&#39;_lastHeader.lua&#39;</span>
+</code></pre></div>
+
+<p>Here we are going to use the last timestemp stored in the <code>restart</code> folder. The
+variable simulation_name is defined in <code>ateles.lua</code>.</p>
+<h3 id="subsampling">Subsampling</h3>
+<p>Subsampling is a procedure to get more visualizations points
+and thus a better picture of the domain.
+The variable <code>nlevels</code> defined in the table <code>ply_sampling</code>
+specifies the maximum number of subsampling steps
+(maximum number of elements for visualization should be increased).</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- Subsampling (for subresoloved color information):</span>
+<span class="n">ply_sampling</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">nlevels</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>  <span class="c1">-- maximal level to use in subsampling</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>In our example we increase the number of levels by 3 at most, which results in
+<script type="math/tex">2^3</script> more elements per direction.</p>
+<h3 id="output">Output</h3>
+<p>With the parameter <code>label</code> 
+one can define the beginning of the output files' name.
+The table <code>variable</code> defines which parameters of the simulation to process.
+For our Maxwell testcase we choose <code>displacement_field</code> and <code>magnetic_filed</code>.
+Which variables are available depends on the solved equation system. See
+the description of the equation systems for more information about available
+variables.
+The parameter <code>folder</code> refers to the folder where the output files should be
+stored. It is important that this folder needs to be created in advance
+(similar to the restart folder).
+If the folder does not exist, the program will fail with an error.
+The variable <code>format</code> defines the format for the output files.
+It can be
+'<a href="http://www.vtk.org">vtk</a>',
+'<a href="https://en.wikipedia.org/wiki/ASCII">ascii</a>',
+'asciiSpatial', 'harvester' or '<a href="http://www.precice.org">precice</a>'.
+We want to visualize our data and set it to 'vtk'.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- Example tracking to generate vtk files:</span>
+<span class="n">tracking</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;visu&#39;</span><span class="p">,</span>
+    <span class="n">variable</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;displacement_field&#39;</span><span class="p">,</span> <span class="s1">&#39;magnetic_field&#39;</span><span class="p">},</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;global&#39;</span>
+    <span class="p">},</span>
+    <span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;harvest/&#39;</span><span class="p">,</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;vtk&#39;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>After running atl_harvesting with the <code>harvester.lua</code> input file
+we get a .vtu file in the <code>harvest</code> folder.
+This file can be visualized with Paraview.</p>
+<h2 id="run-in-series">Run in Series</h2>
+<p>In this section we describe
+how to run atl_harvesting in series for multiple restart files
+and create one visualization file for all timesteps
+using the harvest_series.py script.
+The harvest_series.py script is part of
+<a href="../../../../doxy/treelm/index.html">TreElm</a>
+and located in <code>&lt;ateles&gt;/treelm/peons</code>.</p>
+<h3 id="set-up-template">Set up Template</h3>
+<p>First harvest_series.py needs a template file to construct
+the configuration for atl_harvesting.
+Thus, it should resemble the <code>harvester.lua</code> configuration
+described above, but may use some replacement markers that
+will be filled in by harvest_series.py</p>
+<p>Typically it may look like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- Use the configuration of the original simulation run.</span>
+<span class="nb">require</span> <span class="s1">&#39;ateles&#39;</span>
+
+<span class="c1">-- Set the restart data to harvest.</span>
+<span class="n">restart</span><span class="p">.</span><span class="n">read</span> <span class="o">=</span> <span class="s1">&#39;$!file!$&#39;</span>
+
+
+<span class="c1">-- Subsampling for tracking, define a ply_sampling table to activate subsampling</span>
+<span class="c1">-- for all tracking objects (except those with use_get_point).</span>
+<span class="c1">-- Subsampling (for subresoloved color information):</span>
+<span class="n">ply_sampling</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">nlevels</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>    <span class="c1">-- maximal level to use in subsampling</span>
+                  <span class="c1">-- defaults to 0, which deactivates subsampling</span>
+  <span class="c1">--method  = &#39;fixed&#39; -- method to use for subsampling</span>
+                      <span class="c1">-- currently only &#39;fixed&#39; is implemented,</span>
+                      <span class="c1">-- which will refine all elements by</span>
+                      <span class="c1">-- nlevels</span>
+                      <span class="c1">-- &#39;fixed&#39; is also the default, thus it</span>
+                      <span class="c1">-- is sufficient to only provide nlevels</span>
+<span class="p">}</span>
+
+<span class="c1">-- Example tracking to generate vtk files:</span>
+<span class="n">tracking</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;visu&#39;</span><span class="p">,</span>
+    <span class="n">variable</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;displacement_field&#39;</span><span class="p">,</span> <span class="s1">&#39;magnetic_field&#39;</span><span class="p">},</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;global&#39;</span>
+    <span class="p">},</span>
+<span class="c1">--    time_control = {</span>
+<span class="c1">--      min = {</span>
+<span class="c1">--        iter = 0</span>
+<span class="c1">--      },</span>
+<span class="c1">--      max = sim_control.time_control.max,</span>
+<span class="c1">--      interval = sim_control.time_control.max</span>
+<span class="c1">--    },</span>
+    <span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;$!out!$&#39;</span><span class="p">,</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;vtk&#39;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Above is the <code>harvester.template</code> located in <code>series_example</code> in the Ateles
+main folder.
+The strings with <code>$!</code>at the beginning and <code>!$</code> at the ending
+are placeholders for variables defined by the harvest_series.py script.</p>
+<h3 id="set-up-variables">Set up Variables</h3>
+<p>The main arguments to the harvest_series.py are the restart files to process.
+However, several other options can be provided as command line arguments.
+These options can also be put into a configuration script, so they do not
+have to be stated explicitly every time.
+Per default the script will look for this configuration in <code>series.config</code>,
+but this can be changed via the <code>-c</code> option.
+A description of all options is available in the help provided by the
+<code>-h</code> option. Here are some of the major settings:</p>
+<ul>
+<li><code>template</code>:
+    name and path of the template</li>
+<li><code>files</code>:
+    name and path of the input restart files (replaces <code>'$!filename!$'</code>)</li>
+<li><code>out</code>:
+    folder for dumping the output (replaces <code>'$!folder!$</code>)</li>
+<li><code>harvester</code>:
+    path to the atl_harvesting executable</li>
+<li><code>run</code>:
+    command to run in parallel</li>
+</ul>
+<p>An example can be found in <code>series_example/series.config</code> which is:</p>
+<div class="codehilite"><pre><span></span><code><span class="c"># Example series configuration to be used after running the</span>
+<span class="c"># default ateles.lua.</span>
+<span class="c"># Run in the ateles directory like:</span>
+<span class="c"># ateles$ treelm/peons/harvest_series.py -c series_example/series.config</span>
+
+<span class="n">files: restart_sample_header_*.lua</span>
+<span class="n">lua: build/debug/treelm/aotus/lua</span>
+<span class="n">harvester: build/debug/atl_harvesting</span>
+<span class="n">template: series_example/harvester.template</span>
+</code></pre></div>
+
+<p>Lines starting with a <code>#</code> are ignored.</p>
+<h3 id="run-harvest_seriespy">Run harvest_series.py</h3>
+<p>You can run the <code>harvest_series.py</code> from main the <code>ateles</code> directory with</p>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>treelm/peons/harvest_series.py
+</code></pre></div>
+
+<p>where <code>treelm/peons/</code> is the relative path to the <code>harvest_series.py</code> script
+from the main <code>ateles</code> directory.</p>
+<p>Thus, if you want to postprocess the default <code>ateles.lua</code> testcase in the
+ateles dirctory you can run:</p>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>treelm/peons/harvest_series.py<span class="w"> </span>-c<span class="w"> </span>series_example/series.config
+</code></pre></div>
+
+<p>in the ateles directory.
+The output will be stored for that example in the directory <code>t_series</code>, which
+is the default for the <code>out</code> option.
+In this directory you will then find all <code>.vtu</code> files for each timestep
+and one <code>.pvd</code> file (visu.pvd), where all timesteps are collected.
+You can open the <code>.pvd</code> file in Paraview
+to visualize the simulation as a timeseries.
+In the .pvd file there is just a linking to the .vtu files,
+where the information about the timestep is stored.
+So make sure the .pvd and the collected .vtu files are in the same folder.</p>
+<h3 id="example">Example</h3>
+<p>Assume we want to postprocess the restart files from the
+<a href="maxwell.html">Maxwell tutorial</a>. The restart files are stored in
+<code>&lt;ateles&gt;/tutorial/testcase/maxwell/restart</code>. When we want to run harvest_series
+from the folder <code>&lt;ateles&gt;/tutorial/testcase/maxwell</code>, we need to change the
+paths in series.config to point to the correct files:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">files</span><span class="o">:</span><span class="w"> </span><span class="n">restart</span><span class="o">/</span><span class="n">posci_modg_header_</span><span class="o">*.</span><span class="n">lua</span>
+<span class="n">lua</span><span class="o">:</span><span class="w"> </span><span class="o">../../../</span><span class="n">build</span><span class="sr">/debug/treelm/aotus/</span><span class="n">lua</span>
+<span class="n">harvester</span><span class="o">:</span><span class="w"> </span><span class="o">../../../</span><span class="n">build</span><span class="sr">/debug/</span><span class="n">atl_harvesting</span>
+<span class="n">template</span><span class="o">:</span><span class="w"> </span><span class="o">../../../</span><span class="n">series_example</span><span class="o">/</span><span class="n">harvester</span><span class="o">.</span><span class="na">template</span>
+</code></pre></div>
+
+<p>The harvester.template doesn't need any modifications. To run it, some more
+relativ paths are used:</p>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>../../../treelm/peons/harvest_series.py<span class="w"> </span>-c<span class="w"> </span>../../../series_example/series.config
+</code></pre></div>
+
+<p>The result is stored in <code>&lt;ateles&gt;/tutorial/testcase/maxwell/t_series</code>.</p>
+    </div>
+  </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

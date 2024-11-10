@@ -1,0 +1,1371 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_penalization_module.f90 &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_penalization_module.f90
+      <small>Source File</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for source files.">58 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_penalization_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+            <li class="breadcrumb-item active" aria-current="page">atl_penalization_module.f90</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#mods-0"
+         aria-expanded="false" aria-controls="mods-0">
+         <h4 class="card-header bg-primary text-white">Modules</h4>
+      </a>
+      <div id="mods-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_penalization_module.html">atl_penalization_module</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../sourcefile/atl_penalization_module.f90.html#src">atl_penalization_module.f90</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    <div class="col-md-9" id='text'>
+      
+      <br>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">This file depends on</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: sourcefile~~atl_penalization_module.f90~~EfferentGraph Pages: 1 -->
+<svg id="sourcefileatl_penalization_modulef90EfferentGraph" width="641pt" height="421pt"
+ viewBox="0.00 0.00 641.00 420.77" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph" class="graph" transform="scale(0.6 0.6) rotate(0) translate(4 701.66)">
+<title>sourcefile~~atl_penalization_module.f90~~EfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-701.66 1071,-701.66 1071,4 -4,4"/>
+<!-- sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node1" class="node">
+<title>sourcefile~atl_penalization_module.f90</title>
+<polygon fill="none" stroke="black" points="1067,-491.66 904,-491.66 904,-467.66 1067,-467.66 1067,-491.66"/>
+<text text-anchor="middle" x="985.5" y="-477.26" font-family="Helvetica,sans-Serif" font-size="10.50">atl_penalization_module.f90</text>
+</g>
+<!-- sourcefile~atl_cube_elem_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node2" class="node">
+<title>sourcefile~atl_cube_elem_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node2"><a xlink:href="../sourcefile/atl_cube_elem_module.f90.html" xlink:title="atl_cube_elem_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="868,-533.66 712,-533.66 712,-509.66 868,-509.66 868,-533.66"/>
+<text text-anchor="middle" x="790" y="-519.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_cube_elem_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_penalization_module.f90&#45;&gt;sourcefile~atl_cube_elem_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge1" class="edge">
+<title>sourcefile~atl_penalization_module.f90&#45;&gt;sourcefile~atl_cube_elem_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M929.05,-491.69C906.38,-496.62 879.99,-502.34 856.38,-507.47"/>
+<polygon fill="#000000" stroke="#000000" points="855.49,-504.08 846.46,-509.62 856.97,-510.92 855.49,-504.08"/>
+</g>
+<!-- sourcefile~atl_equation_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node3" class="node">
+<title>sourcefile~atl_equation_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node3"><a xlink:href="../sourcefile/atl_equation_module.f90.html" xlink:title="atl_equation_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="862.5,-491.66 717.5,-491.66 717.5,-467.66 862.5,-467.66 862.5,-491.66"/>
+<text text-anchor="middle" x="790" y="-477.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_equation_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_penalization_module.f90&#45;&gt;sourcefile~atl_equation_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge2" class="edge">
+<title>sourcefile~atl_penalization_module.f90&#45;&gt;sourcefile~atl_equation_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M903.84,-479.66C893.57,-479.66 883.06,-479.66 872.77,-479.66"/>
+<polygon fill="#000000" stroke="#000000" points="872.59,-476.16 862.59,-479.66 872.59,-483.16 872.59,-476.16"/>
+</g>
+<!-- sourcefile~atl_scheme_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node4" class="node">
+<title>sourcefile~atl_scheme_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node4"><a xlink:href="../sourcefile/atl_scheme_module.f90.html" xlink:title="atl_scheme_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="859.5,-222.66 720.5,-222.66 720.5,-198.66 859.5,-198.66 859.5,-222.66"/>
+<text text-anchor="middle" x="790" y="-208.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_scheme_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_penalization_module.f90&#45;&gt;sourcefile~atl_scheme_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge3" class="edge">
+<title>sourcefile~atl_penalization_module.f90&#45;&gt;sourcefile~atl_scheme_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M975.68,-467.4C945.14,-424.94 843.66,-283.86 805.59,-230.94"/>
+<polygon fill="#000000" stroke="#000000" points="808.33,-228.75 799.65,-222.68 802.65,-232.84 808.33,-228.75"/>
+</g>
+<!-- sourcefile~atl_eqn_acoustic_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node5" class="node">
+<title>sourcefile~atl_eqn_acoustic_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node5"><a xlink:href="../sourcefile/atl_eqn_acoustic_module.f90.html" xlink:title="atl_eqn_acoustic_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="662.5,-533.66 495.5,-533.66 495.5,-509.66 662.5,-509.66 662.5,-533.66"/>
+<text text-anchor="middle" x="579" y="-519.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_acoustic_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_acoustic_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge4" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_acoustic_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M729.11,-491.69C704.4,-496.66 675.6,-502.45 649.94,-507.6"/>
+<polygon fill="#000000" stroke="#000000" points="649.01,-504.22 639.9,-509.62 650.39,-511.08 649.01,-504.22"/>
+</g>
+<!-- sourcefile~atl_eqn_advection_1d_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node6" class="node">
+<title>sourcefile~atl_eqn_advection_1d_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node6"><a xlink:href="../sourcefile/atl_eqn_advection_1d_module.f90.html" xlink:title="atl_eqn_advection_1d_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="676,-449.66 482,-449.66 482,-425.66 676,-425.66 676,-449.66"/>
+<text text-anchor="middle" x="579" y="-435.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_advection_1d_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_advection_1d_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge5" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_advection_1d_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M729.11,-467.62C704.4,-462.66 675.6,-456.87 649.94,-451.71"/>
+<polygon fill="#000000" stroke="#000000" points="650.39,-448.24 639.9,-449.7 649.01,-455.1 650.39,-448.24"/>
+</g>
+<!-- sourcefile~atl_eqn_bbm_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node7" class="node">
+<title>sourcefile~atl_eqn_bbm_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node7"><a xlink:href="../sourcefile/atl_eqn_bbm_module.f90.html" xlink:title="atl_eqn_bbm_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="652.5,-407.66 505.5,-407.66 505.5,-383.66 652.5,-383.66 652.5,-407.66"/>
+<text text-anchor="middle" x="579" y="-393.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_bbm_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_bbm_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge6" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_bbm_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M771.02,-467.43C749.37,-453.25 711.5,-430.1 676,-416.66 669.84,-414.32 663.35,-412.22 656.77,-410.32"/>
+<polygon fill="#000000" stroke="#000000" points="657.67,-406.94 647.1,-407.69 655.83,-413.69 657.67,-406.94"/>
+</g>
+<!-- sourcefile~atl_eqn_euler_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node8" class="node">
+<title>sourcefile~atl_eqn_euler_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node8"><a xlink:href="../sourcefile/atl_eqn_euler_module.f90.html" xlink:title="atl_eqn_euler_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="411.5,-635.66 260.5,-635.66 260.5,-611.66 411.5,-611.66 411.5,-635.66"/>
+<text text-anchor="middle" x="336" y="-621.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_euler_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_euler_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge7" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_euler_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M730.24,-491.68C723.84,-494.14 717.62,-497.1 712,-500.66 691.23,-513.81 697.24,-530.28 676,-542.66 600.1,-586.91 567.32,-559.7 482,-580.66 448.81,-588.81 411.89,-599.79 383.61,-608.61"/>
+<polygon fill="#000000" stroke="#000000" points="382.48,-605.3 373.99,-611.63 384.58,-611.98 382.48,-605.3"/>
+</g>
+<!-- sourcefile~atl_eqn_heat_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node9" class="node">
+<title>sourcefile~atl_eqn_heat_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node9"><a xlink:href="../sourcefile/atl_eqn_heat_module.f90.html" xlink:title="atl_eqn_heat_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="652.5,-491.66 505.5,-491.66 505.5,-467.66 652.5,-467.66 652.5,-491.66"/>
+<text text-anchor="middle" x="579" y="-477.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_heat_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_heat_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge8" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_heat_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M717.37,-479.66C699.8,-479.66 680.86,-479.66 662.81,-479.66"/>
+<polygon fill="#000000" stroke="#000000" points="662.6,-476.16 652.6,-479.66 662.6,-483.16 662.6,-476.16"/>
+</g>
+<!-- sourcefile~atl_eqn_lineareuler_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node10" class="node">
+<title>sourcefile~atl_eqn_lineareuler_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node10"><a xlink:href="../sourcefile/atl_eqn_lineareuler_module.f90.html" xlink:title="atl_eqn_linearEuler_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="669.5,-365.66 488.5,-365.66 488.5,-341.66 669.5,-341.66 669.5,-365.66"/>
+<text text-anchor="middle" x="579" y="-351.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_linearEuler_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_lineareuler_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge9" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_lineareuler_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M779.61,-467.37C761.92,-445.15 721.32,-398.37 676,-374.66 672.07,-372.6 667.94,-370.75 663.71,-369.07"/>
+<polygon fill="#000000" stroke="#000000" points="664.87,-365.77 654.28,-365.69 662.51,-372.36 664.87,-365.77"/>
+</g>
+<!-- sourcefile~atl_eqn_maxwell_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node11" class="node">
+<title>sourcefile~atl_eqn_maxwell_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node11"><a xlink:href="../sourcefile/atl_eqn_maxwell_module.f90.html" xlink:title="atl_eqn_maxwell_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="662.5,-655.66 495.5,-655.66 495.5,-631.66 662.5,-631.66 662.5,-655.66"/>
+<text text-anchor="middle" x="579" y="-641.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_maxwell_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_maxwell_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge10" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_maxwell_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M724.04,-491.8C719.65,-494.24 715.56,-497.17 712,-500.66 671.61,-540.22 717.38,-584.14 676,-622.66 674.5,-624.05 672.93,-625.36 671.3,-626.59"/>
+<polygon fill="#000000" stroke="#000000" points="669.23,-623.77 662.7,-632.11 673.01,-629.66 669.23,-623.77"/>
+</g>
+<!-- sourcefile~atl_eqn_nerplanck_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node12" class="node">
+<title>sourcefile~atl_eqn_nerplanck_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node12"><a xlink:href="../sourcefile/atl_eqn_nerplanck_module.f90.html" xlink:title="atl_eqn_nerplanck_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="667,-613.66 491,-613.66 491,-589.66 667,-589.66 667,-613.66"/>
+<text text-anchor="middle" x="579" y="-599.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_nerplanck_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_nerplanck_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge11" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_nerplanck_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M726.15,-491.7C721.06,-494.16 716.26,-497.11 712,-500.66 683.6,-524.33 704.42,-552.01 676,-575.66 671.49,-579.41 666.49,-582.62 661.21,-585.37"/>
+<polygon fill="#000000" stroke="#000000" points="659.7,-582.21 652.09,-589.58 662.63,-588.57 659.7,-582.21"/>
+</g>
+<!-- sourcefile~atl_eqn_nvrstk_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node13" class="node">
+<title>sourcefile~atl_eqn_nvrstk_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node13"><a xlink:href="../sourcefile/atl_eqn_nvrstk_module.f90.html" xlink:title="atl_eqn_nvrstk_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="656.5,-697.66 501.5,-697.66 501.5,-673.66 656.5,-673.66 656.5,-697.66"/>
+<text text-anchor="middle" x="579" y="-683.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_nvrstk_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_nvrstk_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge12" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_eqn_nvrstk_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M723.4,-491.73C719.21,-494.2 715.34,-497.14 712,-500.66 660.57,-554.73 728.79,-611.91 676,-664.66 672.88,-667.78 669.41,-670.48 665.69,-672.82"/>
+<polygon fill="#000000" stroke="#000000" points="663.8,-669.86 656.61,-677.65 667.08,-676.05 663.8,-669.86"/>
+</g>
+<!-- sourcefile~atl_materialfun_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node14" class="node">
+<title>sourcefile~atl_materialfun_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node14"><a xlink:href="../sourcefile/atl_materialfun_module.f90.html" xlink:title="atl_materialFun_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="416.5,-428.66 255.5,-428.66 255.5,-404.66 416.5,-404.66 416.5,-428.66"/>
+<text text-anchor="middle" x="336" y="-414.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_materialFun_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_materialfun_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge13" class="edge">
+<title>sourcefile~atl_equation_module.f90&#45;&gt;sourcefile~atl_materialfun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M784.2,-467.52C771.69,-437.79 734.91,-361.68 676,-332.66 598.65,-294.56 565.27,-310.28 482,-332.66 434.85,-345.33 387.2,-377.49 359.97,-398.14"/>
+<polygon fill="#000000" stroke="#000000" points="357.64,-395.52 351.87,-404.4 361.93,-401.05 357.64,-395.52"/>
+</g>
+<!-- sourcefile~atl_modg_1d_scheme_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node15" class="node">
+<title>sourcefile~atl_modg_1d_scheme_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node15"><a xlink:href="../sourcefile/atl_modg_1d_scheme_module.f90.html" xlink:title="atl_modg_1d_scheme_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="676,-285.66 482,-285.66 482,-261.66 676,-261.66 676,-285.66"/>
+<text text-anchor="middle" x="579" y="-271.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_1d_scheme_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_modg_1d_scheme_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge14" class="edge">
+<title>sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_modg_1d_scheme_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M760.11,-222.68C737.5,-231.77 705.12,-244.11 676,-252.66 668,-255.01 659.55,-257.23 651.13,-259.28"/>
+<polygon fill="#000000" stroke="#000000" points="650.2,-255.9 641.27,-261.61 651.81,-262.71 650.2,-255.9"/>
+</g>
+<!-- sourcefile~atl_modg_2d_scheme_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node16" class="node">
+<title>sourcefile~atl_modg_2d_scheme_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node16"><a xlink:href="../sourcefile/atl_modg_2d_scheme_module.f90.html" xlink:title="atl_modg_2d_scheme_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="676,-243.66 482,-243.66 482,-219.66 676,-219.66 676,-243.66"/>
+<text text-anchor="middle" x="579" y="-229.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_scheme_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_modg_2d_scheme_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge15" class="edge">
+<title>sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_modg_2d_scheme_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M720.28,-217.56C709.33,-218.66 697.78,-219.82 686.2,-220.99"/>
+<polygon fill="#000000" stroke="#000000" points="685.64,-217.53 676.04,-222.01 686.34,-224.49 685.64,-217.53"/>
+</g>
+<!-- sourcefile~atl_modg_scheme_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node17" class="node">
+<title>sourcefile~atl_modg_scheme_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node17"><a xlink:href="../sourcefile/atl_modg_scheme_module.f90.html" xlink:title="atl_modg_scheme_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="666.5,-201.66 491.5,-201.66 491.5,-177.66 666.5,-177.66 666.5,-201.66"/>
+<text text-anchor="middle" x="579" y="-187.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_scheme_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_modg_scheme_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge16" class="edge">
+<title>sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_modg_scheme_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M720.28,-203.75C706.36,-202.35 691.47,-200.86 676.79,-199.38"/>
+<polygon fill="#000000" stroke="#000000" points="676.98,-195.89 666.68,-198.37 676.28,-202.85 676.98,-195.89"/>
+</g>
+<!-- sourcefile~atl_stabilization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node18" class="node">
+<title>sourcefile~atl_stabilization_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node18"><a xlink:href="../sourcefile/atl_stabilization_module.f90.html" xlink:title="atl_stabilization_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="659.5,-86.66 498.5,-86.66 498.5,-62.66 659.5,-62.66 659.5,-86.66"/>
+<text text-anchor="middle" x="579" y="-72.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_stabilization_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_stabilization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge17" class="edge">
+<title>sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_stabilization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M774.14,-198.53C752.98,-181.53 712.68,-150.06 676,-126.66 655.9,-113.84 632.39,-101.07 613.66,-91.39"/>
+<polygon fill="#000000" stroke="#000000" points="615.11,-88.2 604.62,-86.76 611.92,-94.43 615.11,-88.2"/>
+</g>
+<!-- sourcefile~ply_modg_basis_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node19" class="node">
+<title>sourcefile~ply_modg_basis_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node19"><a xlink:href="../sourcefile/ply_modg_basis_module.f90.html" xlink:title="ply_modg_basis_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="660.5,-159.66 497.5,-159.66 497.5,-135.66 660.5,-135.66 660.5,-159.66"/>
+<text text-anchor="middle" x="579" y="-145.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_modg_basis_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~ply_modg_basis_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge18" class="edge">
+<title>sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~ply_modg_basis_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M760.11,-198.64C737.5,-189.55 705.12,-177.21 676,-168.66 668,-166.31 659.55,-164.09 651.13,-162.04"/>
+<polygon fill="#000000" stroke="#000000" points="651.81,-158.61 641.27,-159.71 650.2,-165.42 651.81,-158.61"/>
+</g>
+<!-- sourcefile~atl_eqn_acoustic_module.f90&#45;&gt;sourcefile~atl_materialfun_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge19" class="edge">
+<title>sourcefile~atl_eqn_acoustic_module.f90&#45;&gt;sourcefile~atl_materialfun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M510.34,-509.63C500.68,-507.12 490.99,-504.15 482,-500.66 437.46,-483.37 390.39,-453.7 362.37,-434.64"/>
+<polygon fill="#000000" stroke="#000000" points="364.19,-431.64 353.97,-428.86 360.22,-437.41 364.19,-431.64"/>
+</g>
+<!-- sourcefile~atl_eqn_heat_module.f90&#45;&gt;sourcefile~atl_materialfun_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge20" class="edge">
+<title>sourcefile~atl_eqn_heat_module.f90&#45;&gt;sourcefile~atl_materialfun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M519.98,-467.62C507.42,-464.83 494.24,-461.77 482,-458.66 449.62,-450.44 413.53,-439.99 385.46,-431.57"/>
+<polygon fill="#000000" stroke="#000000" points="386.47,-428.22 375.89,-428.69 384.45,-434.92 386.47,-428.22"/>
+</g>
+<!-- sourcefile~atl_eqn_lineareuler_module.f90&#45;&gt;sourcefile~atl_materialfun_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge21" class="edge">
+<title>sourcefile~atl_eqn_lineareuler_module.f90&#45;&gt;sourcefile~atl_materialfun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M519.98,-365.7C507.42,-368.49 494.24,-371.55 482,-374.66 449.62,-382.88 413.53,-393.33 385.46,-401.75"/>
+<polygon fill="#000000" stroke="#000000" points="384.45,-398.4 375.89,-404.63 386.47,-405.1 384.45,-398.4"/>
+</g>
+<!-- sourcefile~atl_eqn_nvrstk_module.f90&#45;&gt;sourcefile~atl_eqn_euler_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge22" class="edge">
+<title>sourcefile~atl_eqn_nvrstk_module.f90&#45;&gt;sourcefile~atl_eqn_euler_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M520.25,-673.62C507.61,-670.82 494.33,-667.75 482,-664.66 450.25,-656.7 414.89,-646.73 387.04,-638.61"/>
+<polygon fill="#000000" stroke="#000000" points="387.72,-635.16 377.14,-635.71 385.75,-641.88 387.72,-635.16"/>
+</g>
+<!-- sourcefile~ply_dof_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node24" class="node">
+<title>sourcefile~ply_dof_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node24"><a xlink:href="../sourcefile/ply_dof_module.f90.html" xlink:title="ply_dof_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="394.5,-222.66 277.5,-222.66 277.5,-198.66 394.5,-198.66 394.5,-222.66"/>
+<text text-anchor="middle" x="336" y="-208.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_dof_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_1d_scheme_module.f90&#45;&gt;sourcefile~ply_dof_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge23" class="edge">
+<title>sourcefile~atl_modg_1d_scheme_module.f90&#45;&gt;sourcefile~ply_dof_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M519.98,-261.62C507.42,-258.83 494.24,-255.77 482,-252.66 449.62,-244.44 413.53,-233.99 385.46,-225.57"/>
+<polygon fill="#000000" stroke="#000000" points="386.47,-222.22 375.89,-222.69 384.45,-228.92 386.47,-222.22"/>
+</g>
+<!-- sourcefile~atl_modg_2d_scheme_module.f90&#45;&gt;sourcefile~ply_dof_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge24" class="edge">
+<title>sourcefile~atl_modg_2d_scheme_module.f90&#45;&gt;sourcefile~ply_dof_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M481.71,-223.27C455.9,-221.02 428.54,-218.64 404.64,-216.55"/>
+<polygon fill="#000000" stroke="#000000" points="404.89,-213.06 394.63,-215.68 404.29,-220.04 404.89,-213.06"/>
+</g>
+<!-- sourcefile~atl_modg_scheme_module.f90&#45;&gt;sourcefile~ply_dof_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge25" class="edge">
+<title>sourcefile~atl_modg_scheme_module.f90&#45;&gt;sourcefile~ply_dof_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M491.33,-197.21C462.86,-199.69 431.63,-202.41 404.77,-204.75"/>
+<polygon fill="#000000" stroke="#000000" points="404.36,-201.28 394.7,-205.63 404.96,-208.25 404.36,-201.28"/>
+</g>
+<!-- sourcefile~atl_cons_positivity_preserv_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node20" class="node">
+<title>sourcefile~atl_cons_positivity_preserv_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node20"><a xlink:href="../sourcefile/atl_cons_positivity_preserv_module.f90.html" xlink:title="atl_cons_positivity_preserv_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="446,-128.66 226,-128.66 226,-104.66 446,-104.66 446,-128.66"/>
+<text text-anchor="middle" x="336" y="-114.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_cons_positivity_preserv_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_stabilization_module.f90&#45;&gt;sourcefile~atl_cons_positivity_preserv_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge26" class="edge">
+<title>sourcefile~atl_stabilization_module.f90&#45;&gt;sourcefile~atl_cons_positivity_preserv_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M508.94,-86.69C479.95,-91.75 446.06,-97.65 416.08,-102.88"/>
+<polygon fill="#000000" stroke="#000000" points="415.32,-99.46 406.07,-104.62 416.52,-106.35 415.32,-99.46"/>
+</g>
+<!-- sourcefile~atl_covolume_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node21" class="node">
+<title>sourcefile~atl_covolume_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node21"><a xlink:href="../sourcefile/atl_covolume_module.f90.html" xlink:title="atl_covolume_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="411,-86.66 261,-86.66 261,-62.66 411,-62.66 411,-86.66"/>
+<text text-anchor="middle" x="336" y="-72.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_covolume_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_stabilization_module.f90&#45;&gt;sourcefile~atl_covolume_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge27" class="edge">
+<title>sourcefile~atl_stabilization_module.f90&#45;&gt;sourcefile~atl_covolume_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M498.42,-74.66C473.72,-74.66 446.41,-74.66 421.39,-74.66"/>
+<polygon fill="#000000" stroke="#000000" points="421.19,-71.16 411.19,-74.66 421.19,-78.16 421.19,-71.16"/>
+</g>
+<!-- sourcefile~atl_positivity_preserv_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node22" class="node">
+<title>sourcefile~atl_positivity_preserv_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node22"><a xlink:href="../sourcefile/atl_positivity_preserv_module.f90.html" xlink:title="atl_positivity_preserv_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="431,-44.66 241,-44.66 241,-20.66 431,-20.66 431,-44.66"/>
+<text text-anchor="middle" x="336" y="-30.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_positivity_preserv_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_stabilization_module.f90&#45;&gt;sourcefile~atl_positivity_preserv_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge28" class="edge">
+<title>sourcefile~atl_stabilization_module.f90&#45;&gt;sourcefile~atl_positivity_preserv_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M508.94,-62.62C479.95,-57.57 446.06,-51.67 416.08,-46.44"/>
+<polygon fill="#000000" stroke="#000000" points="416.52,-42.97 406.07,-44.7 415.32,-49.86 416.52,-42.97"/>
+</g>
+<!-- sourcefile~atl_spectral_viscosity_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node23" class="node">
+<title>sourcefile~atl_spectral_viscosity_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node23"><a xlink:href="../sourcefile/atl_spectral_viscosity_module.f90.html" xlink:title="atl_spectral_viscosity_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="190,-45.66 0,-45.66 0,-21.66 190,-21.66 190,-45.66"/>
+<text text-anchor="middle" x="95" y="-31.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_spectral_viscosity_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_stabilization_module.f90&#45;&gt;sourcefile~atl_spectral_viscosity_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge29" class="edge">
+<title>sourcefile~atl_stabilization_module.f90&#45;&gt;sourcefile~atl_spectral_viscosity_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M559.31,-62.41C534.59,-47.01 489.09,-21.42 446,-11.66 346.39,10.89 227.04,-5.56 156.59,-19.58"/>
+<polygon fill="#000000" stroke="#000000" points="155.66,-16.2 146.56,-21.62 157.06,-23.05 155.66,-16.2"/>
+</g>
+<!-- sourcefile~ply_modg_basis_module.f90&#45;&gt;sourcefile~ply_dof_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge30" class="edge">
+<title>sourcefile~ply_modg_basis_module.f90&#45;&gt;sourcefile~ply_dof_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M519.44,-159.68C507.03,-162.44 494.05,-165.51 482,-168.66 465.81,-172.89 462.05,-174.93 446,-179.66 427.69,-185.06 407.6,-190.82 389.71,-195.89"/>
+<polygon fill="#000000" stroke="#000000" points="388.69,-192.54 380.02,-198.63 390.6,-199.28 388.69,-192.54"/>
+</g>
+<!-- sourcefile~ply_space_integration_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_node25" class="node">
+<title>sourcefile~ply_space_integration_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~EfferentGraph_node25"><a xlink:href="../sourcefile/ply_space_integration_module.f90.html" xlink:title="ply_space_integration_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="433.5,-170.66 238.5,-170.66 238.5,-146.66 433.5,-146.66 433.5,-170.66"/>
+<text text-anchor="middle" x="336" y="-156.26" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_space_integration_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ply_modg_basis_module.f90&#45;&gt;sourcefile~ply_space_integration_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge31" class="edge">
+<title>sourcefile~ply_modg_basis_module.f90&#45;&gt;sourcefile~ply_space_integration_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M497.42,-151.34C480.29,-152.12 461.96,-152.96 444.02,-153.77"/>
+<polygon fill="#000000" stroke="#000000" points="443.65,-150.29 433.82,-154.24 443.97,-157.28 443.65,-150.29"/>
+</g>
+<!-- sourcefile~atl_covolume_module.f90&#45;&gt;sourcefile~atl_spectral_viscosity_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~EfferentGraph_edge32" class="edge">
+<title>sourcefile~atl_covolume_module.f90&#45;&gt;sourcefile~atl_spectral_viscosity_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M264.91,-62.63C237.06,-57.86 204.87,-52.34 176.11,-47.4"/>
+<polygon fill="#000000" stroke="#000000" points="176.54,-43.92 166.09,-45.68 175.36,-50.82 176.54,-43.92"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var pansourcefileatl_penalization_modulef90EfferentGraph = svgPanZoom('#sourcefileatl_penalization_modulef90EfferentGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#EfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="EfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="202pt" height="32pt"
+ viewBox="0.00 0.00 201.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 197.5,-28 197.5,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="193.5,-24 88.5,-24 88.5,0 193.5,0 193.5,-24"/>
+<text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Files dependent on this one</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: sourcefile~~atl_penalization_module.f90~~AfferentGraph Pages: 1 -->
+<svg id="sourcefileatl_penalization_modulef90AfferentGraph" width="466pt" height="1250pt"
+ viewBox="0.00 0.00 466.00 1250.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 1246)">
+<title>sourcefile~~atl_penalization_module.f90~~AfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-1246 462,-1246 462,4 -4,4"/>
+<!-- sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node1" class="node">
+<title>sourcefile~atl_penalization_module.f90</title>
+<polygon fill="none" stroke="black" points="163,-633 0,-633 0,-609 163,-609 163,-633"/>
+<text text-anchor="middle" x="81.5" y="-618.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_penalization_module.f90</text>
+</g>
+<!-- sourcefile~atl_compute_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node2" class="node">
+<title>sourcefile~atl_compute_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node2"><a xlink:href="../sourcefile/atl_compute_module.f90.html" xlink:title="atl_compute_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="401,-1242 256,-1242 256,-1218 401,-1218 401,-1242"/>
+<text text-anchor="middle" x="328.5" y="-1227.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_compute_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_compute_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge1" class="edge">
+<title>sourcefile~atl_compute_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M255.94,-1233.07C235.2,-1230.38 214.11,-1223.61 199,-1209 115.52,-1128.28 89.05,-741.46 83.64,-643.56"/>
+<polygon fill="#000000" stroke="#000000" points="87.12,-643.12 83.09,-633.32 80.13,-643.49 87.12,-643.12"/>
+</g>
+<!-- sourcefile~atl_cube_container_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node3" class="node">
+<title>sourcefile~atl_cube_container_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node3"><a xlink:href="../sourcefile/atl_cube_container_module.f90.html" xlink:title="atl_cube_container_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="418.5,-1200 238.5,-1200 238.5,-1176 418.5,-1176 418.5,-1200"/>
+<text text-anchor="middle" x="328.5" y="-1185.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_cube_container_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge2" class="edge">
+<title>sourcefile~atl_cube_container_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M238.4,-1187.56C223.78,-1183.77 209.88,-1177.37 199,-1167 121.12,-1092.79 90.71,-736.76 84,-643.44"/>
+<polygon fill="#000000" stroke="#000000" points="87.49,-643.13 83.3,-633.39 80.5,-643.61 87.49,-643.13"/>
+</g>
+<!-- sourcefile~atl_imexrk_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node4" class="node">
+<title>sourcefile~atl_imexrk_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node4"><a xlink:href="../sourcefile/atl_imexrk_module.f90.html" xlink:title="atl_imexrk_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="395,-1158 262,-1158 262,-1134 395,-1134 395,-1158"/>
+<text text-anchor="middle" x="328.5" y="-1143.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_imexrk_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_imexrk_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge3" class="edge">
+<title>sourcefile~atl_imexrk_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M261.88,-1149.43C239.41,-1147.24 215.74,-1140.69 199,-1125 126.72,-1057.29 92.51,-732.12 84.42,-643.4"/>
+<polygon fill="#000000" stroke="#000000" points="87.9,-643.01 83.53,-633.36 80.93,-643.63 87.9,-643.01"/>
+</g>
+<!-- sourcefile~atl_initialize_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node5" class="node">
+<title>sourcefile~atl_initialize_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node5"><a xlink:href="../sourcefile/atl_initialize_module.f90.html" xlink:title="atl_initialize_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="399.5,-1116 257.5,-1116 257.5,-1092 399.5,-1092 399.5,-1116"/>
+<text text-anchor="middle" x="328.5" y="-1101.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_initialize_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge4" class="edge">
+<title>sourcefile~atl_initialize_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M257.39,-1106.72C236.36,-1104.09 214.73,-1097.45 199,-1083 132.24,-1021.69 94.4,-726.75 84.9,-643.14"/>
+<polygon fill="#000000" stroke="#000000" points="88.37,-642.75 83.79,-633.2 81.42,-643.52 88.37,-642.75"/>
+</g>
+<!-- sourcefile~atl_modg_1d_euler_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node6" class="node">
+<title>sourcefile~atl_modg_1d_euler_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node6"><a xlink:href="../sourcefile/atl_modg_1d_euler_kernel_module.f90.html" xlink:title="atl_modg_1d_euler_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="438,-1074 219,-1074 219,-1050 438,-1050 438,-1074"/>
+<text text-anchor="middle" x="328.5" y="-1059.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_1d_euler_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_1d_euler_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge5" class="edge">
+<title>sourcefile~atl_modg_1d_euler_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M218.72,-1053.88C211.57,-1050.51 204.89,-1046.28 199,-1041 137.93,-986.22 96.73,-722.92 85.56,-643.64"/>
+<polygon fill="#000000" stroke="#000000" points="88.97,-642.75 84.13,-633.32 82.03,-643.71 88.97,-642.75"/>
+</g>
+<!-- sourcefile~atl_modg_1d_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node7" class="node">
+<title>sourcefile~atl_modg_1d_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node7"><a xlink:href="../sourcefile/atl_modg_1d_kernel_module.f90.html" xlink:title="atl_modg_1d_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="421.5,-1032 235.5,-1032 235.5,-1008 421.5,-1008 421.5,-1032"/>
+<text text-anchor="middle" x="328.5" y="-1017.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_1d_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_1d_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge6" class="edge">
+<title>sourcefile~atl_modg_1d_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M235.18,-1017.69C221.92,-1013.9 209.31,-1007.99 199,-999 89.87,-903.88 81.47,-709.1 81.91,-643.29"/>
+<polygon fill="#000000" stroke="#000000" points="85.41,-643.26 82.05,-633.21 78.41,-643.16 85.41,-643.26"/>
+</g>
+<!-- sourcefile~atl_modg_2d_acoustic_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node8" class="node">
+<title>sourcefile~atl_modg_2d_acoustic_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node8"><a xlink:href="../sourcefile/atl_modg_2d_acoustic_kernel_module.f90.html" xlink:title="atl_modg_2d_acoustic_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="446,-990 211,-990 211,-966 446,-966 446,-990"/>
+<text text-anchor="middle" x="328.5" y="-975.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_acoustic_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_2d_acoustic_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge7" class="edge">
+<title>sourcefile~atl_modg_2d_acoustic_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M212.11,-965.96C207.47,-963.39 203.06,-960.42 199,-957 100.72,-874.3 85.24,-704.1 82.89,-643.24"/>
+<polygon fill="#000000" stroke="#000000" points="86.38,-643.09 82.58,-633.2 79.39,-643.3 86.38,-643.09"/>
+</g>
+<!-- sourcefile~atl_modg_2d_euler_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node9" class="node">
+<title>sourcefile~atl_modg_2d_euler_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node9"><a xlink:href="../sourcefile/atl_modg_2d_euler_kernel_module.f90.html" xlink:title="atl_modg_2d_euler_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="438,-948 219,-948 219,-924 438,-924 438,-948"/>
+<text text-anchor="middle" x="328.5" y="-933.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_euler_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_2d_euler_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge8" class="edge">
+<title>sourcefile~atl_modg_2d_euler_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M218.7,-926.89C211.65,-923.73 204.99,-919.82 199,-915 111.57,-844.63 89.49,-699.18 84.14,-643.43"/>
+<polygon fill="#000000" stroke="#000000" points="87.6,-642.9 83.25,-633.24 80.63,-643.5 87.6,-642.9"/>
+</g>
+<!-- sourcefile~atl_modg_2d_filnvrstk_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node10" class="node">
+<title>sourcefile~atl_modg_2d_filnvrstk_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node10"><a xlink:href="../sourcefile/atl_modg_2d_filnvrstk_kernel_module.f90.html" xlink:title="atl_modg_2d_filNvrStk_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="446,-906 211,-906 211,-882 446,-882 446,-906"/>
+<text text-anchor="middle" x="328.5" y="-891.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_filNvrStk_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_2d_filnvrstk_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge9" class="edge">
+<title>sourcefile~atl_modg_2d_filnvrstk_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M213.43,-881.91C208.35,-879.37 203.5,-876.42 199,-873 122.12,-814.57 94.22,-693.25 85.72,-643.27"/>
+<polygon fill="#000000" stroke="#000000" points="89.15,-642.53 84.12,-633.21 82.24,-643.63 89.15,-642.53"/>
+</g>
+<!-- sourcefile~atl_modg_2d_heat_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node11" class="node">
+<title>sourcefile~atl_modg_2d_heat_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node11"><a xlink:href="../sourcefile/atl_modg_2d_heat_kernel_module.f90.html" xlink:title="atl_modg_2d_heat_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="436,-864 221,-864 221,-840 436,-840 436,-864"/>
+<text text-anchor="middle" x="328.5" y="-849.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_heat_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_2d_heat_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge10" class="edge">
+<title>sourcefile~atl_modg_2d_heat_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M220.97,-842.63C213.18,-839.57 205.75,-835.75 199,-831 132.52,-784.22 99.73,-686.88 87.87,-643.13"/>
+<polygon fill="#000000" stroke="#000000" points="91.2,-642.03 85.3,-633.23 84.42,-643.79 91.2,-642.03"/>
+</g>
+<!-- sourcefile~atl_modg_2d_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node12" class="node">
+<title>sourcefile~atl_modg_2d_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node12"><a xlink:href="../sourcefile/atl_modg_2d_kernel_module.f90.html" xlink:title="atl_modg_2d_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="421.5,-822 235.5,-822 235.5,-798 421.5,-798 421.5,-822"/>
+<text text-anchor="middle" x="328.5" y="-807.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_2d_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge11" class="edge">
+<title>sourcefile~atl_modg_2d_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M235.36,-804.22C222.53,-800.82 209.99,-795.94 199,-789 142.49,-753.32 106.08,-679.24 90.78,-642.55"/>
+<polygon fill="#000000" stroke="#000000" points="94.01,-641.21 87.02,-633.26 87.52,-643.84 94.01,-641.21"/>
+</g>
+<!-- sourcefile~atl_modg_2d_lineareuler_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node13" class="node">
+<title>sourcefile~atl_modg_2d_lineareuler_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node13"><a xlink:href="../sourcefile/atl_modg_2d_lineareuler_kernel_module.f90.html" xlink:title="atl_modg_2d_linearEuler_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="453.5,-780 203.5,-780 203.5,-756 453.5,-756 453.5,-780"/>
+<text text-anchor="middle" x="328.5" y="-765.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_linearEuler_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_2d_lineareuler_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge12" class="edge">
+<title>sourcefile~atl_modg_2d_lineareuler_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M219.81,-756C212.58,-753.5 205.57,-750.53 199,-747 152.12,-721.8 113.93,-670.4 95.14,-641.65"/>
+<polygon fill="#000000" stroke="#000000" points="98.06,-639.72 89.73,-633.17 92.16,-643.48 98.06,-639.72"/>
+</g>
+<!-- sourcefile~atl_modg_2d_loclineuler_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node14" class="node">
+<title>sourcefile~atl_modg_2d_loclineuler_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node14"><a xlink:href="../sourcefile/atl_modg_2d_loclineuler_kernel_module.f90.html" xlink:title="atl_modg_2d_LoclinEuler_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="453.5,-738 203.5,-738 203.5,-714 453.5,-714 453.5,-738"/>
+<text text-anchor="middle" x="328.5" y="-723.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_LoclinEuler_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_2d_loclineuler_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge13" class="edge">
+<title>sourcefile~atl_modg_2d_loclineuler_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M225.95,-713.96C216.67,-711.51 207.56,-708.55 199,-705 161.42,-689.41 124.42,-659.57 102.53,-639.98"/>
+<polygon fill="#000000" stroke="#000000" points="104.65,-637.18 94.91,-633.02 99.93,-642.35 104.65,-637.18"/>
+</g>
+<!-- sourcefile~atl_modg_2d_maxwell_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node15" class="node">
+<title>sourcefile~atl_modg_2d_maxwell_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node15"><a xlink:href="../sourcefile/atl_modg_2d_maxwell_kernel_module.f90.html" xlink:title="atl_modg_2d_maxwell_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="446,-696 211,-696 211,-672 446,-672 446,-696"/>
+<text text-anchor="middle" x="328.5" y="-681.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_maxwell_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_2d_maxwell_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge14" class="edge">
+<title>sourcefile~atl_modg_2d_maxwell_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M240.3,-671.98C226.39,-669.42 212.24,-666.44 199,-663 172.35,-656.08 143.21,-645.58 120.75,-636.8"/>
+<polygon fill="#000000" stroke="#000000" points="121.82,-633.47 111.24,-633.04 119.25,-639.97 121.82,-633.47"/>
+</g>
+<!-- sourcefile~atl_modg_2d_navierstokes_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node16" class="node">
+<title>sourcefile~atl_modg_2d_navierstokes_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node16"><a xlink:href="../sourcefile/atl_modg_2d_navierstokes_kernel_module.f90.html" xlink:title="atl_modg_2d_navierstokes_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="458,-654 199,-654 199,-630 458,-630 458,-654"/>
+<text text-anchor="middle" x="328.5" y="-639.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_navierstokes_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_2d_navierstokes_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge15" class="edge">
+<title>sourcefile~atl_modg_2d_navierstokes_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M198.9,-630.98C190.28,-630.24 181.69,-629.5 173.32,-628.78"/>
+<polygon fill="#000000" stroke="#000000" points="173.49,-625.29 163.23,-627.92 172.89,-632.26 173.49,-625.29"/>
+</g>
+<!-- sourcefile~atl_modg_acoustic_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node17" class="node">
+<title>sourcefile~atl_modg_acoustic_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node17"><a xlink:href="../sourcefile/atl_modg_acoustic_kernel_module.f90.html" xlink:title="atl_modg_acoustic_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="437,-612 220,-612 220,-588 437,-588 437,-612"/>
+<text text-anchor="middle" x="328.5" y="-597.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_acoustic_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_acoustic_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge16" class="edge">
+<title>sourcefile~atl_modg_acoustic_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M219.68,-609.24C204.25,-610.56 188.49,-611.91 173.42,-613.21"/>
+<polygon fill="#000000" stroke="#000000" points="172.78,-609.75 163.11,-614.09 173.37,-616.72 172.78,-609.75"/>
+</g>
+<!-- sourcefile~atl_modg_euler_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node18" class="node">
+<title>sourcefile~atl_modg_euler_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node18"><a xlink:href="../sourcefile/atl_modg_euler_kernel_module.f90.html" xlink:title="atl_modg_euler_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="428.5,-570 228.5,-570 228.5,-546 428.5,-546 428.5,-570"/>
+<text text-anchor="middle" x="328.5" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_euler_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_euler_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge17" class="edge">
+<title>sourcefile~atl_modg_euler_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M240.3,-570.02C226.39,-572.58 212.24,-575.56 199,-579 172.35,-585.92 143.21,-596.42 120.75,-605.2"/>
+<polygon fill="#000000" stroke="#000000" points="119.25,-602.03 111.24,-608.96 121.82,-608.53 119.25,-602.03"/>
+</g>
+<!-- sourcefile~atl_modg_filnvrstk_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node19" class="node">
+<title>sourcefile~atl_modg_filnvrstk_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node19"><a xlink:href="../sourcefile/atl_modg_filnvrstk_kernel_module.f90.html" xlink:title="atl_modg_filNvrStk_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="437,-528 220,-528 220,-504 437,-504 437,-528"/>
+<text text-anchor="middle" x="328.5" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_filNvrStk_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_filnvrstk_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge18" class="edge">
+<title>sourcefile~atl_modg_filnvrstk_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M225.95,-528.04C216.67,-530.49 207.56,-533.45 199,-537 161.42,-552.59 124.42,-582.43 102.53,-602.02"/>
+<polygon fill="#000000" stroke="#000000" points="99.93,-599.65 94.91,-608.98 104.65,-604.82 99.93,-599.65"/>
+</g>
+<!-- sourcefile~atl_modg_heat_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node20" class="node">
+<title>sourcefile~atl_modg_heat_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node20"><a xlink:href="../sourcefile/atl_modg_heat_kernel_module.f90.html" xlink:title="atl_modg_heat_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="426.5,-486 230.5,-486 230.5,-462 426.5,-462 426.5,-486"/>
+<text text-anchor="middle" x="328.5" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_heat_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_heat_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge19" class="edge">
+<title>sourcefile~atl_modg_heat_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M230.46,-482.7C219.49,-485.75 208.76,-489.76 199,-495 152.12,-520.2 113.93,-571.6 95.14,-600.35"/>
+<polygon fill="#000000" stroke="#000000" points="92.16,-598.52 89.73,-608.83 98.06,-602.28 92.16,-598.52"/>
+</g>
+<!-- sourcefile~atl_modg_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node21" class="node">
+<title>sourcefile~atl_modg_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node21"><a xlink:href="../sourcefile/atl_modg_kernel_module.f90.html" xlink:title="atl_modg_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="412,-444 245,-444 245,-420 412,-420 412,-444"/>
+<text text-anchor="middle" x="328.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge20" class="edge">
+<title>sourcefile~atl_modg_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M244.77,-435.55C228.72,-438.92 212.67,-444.37 199,-453 142.49,-488.68 106.08,-562.76 90.78,-599.45"/>
+<polygon fill="#000000" stroke="#000000" points="87.52,-598.16 87.02,-608.74 94.01,-600.79 87.52,-598.16"/>
+</g>
+<!-- sourcefile~atl_modg_lineareuler_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node22" class="node">
+<title>sourcefile~atl_modg_lineareuler_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node22"><a xlink:href="../sourcefile/atl_modg_lineareuler_kernel_module.f90.html" xlink:title="atl_modg_linearEuler_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="444,-402 213,-402 213,-378 444,-378 444,-402"/>
+<text text-anchor="middle" x="328.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_linearEuler_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_lineareuler_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge21" class="edge">
+<title>sourcefile~atl_modg_lineareuler_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M214.66,-402.06C209.16,-404.59 203.9,-407.55 199,-411 132.52,-457.78 99.73,-555.12 87.87,-598.87"/>
+<polygon fill="#000000" stroke="#000000" points="84.42,-598.21 85.3,-608.77 91.2,-599.97 84.42,-598.21"/>
+</g>
+<!-- sourcefile~atl_modg_loclineuler_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node23" class="node">
+<title>sourcefile~atl_modg_loclineuler_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node23"><a xlink:href="../sourcefile/atl_modg_loclineuler_kernel_module.f90.html" xlink:title="atl_modg_LoclinEuler_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="444.5,-360 212.5,-360 212.5,-336 444.5,-336 444.5,-360"/>
+<text text-anchor="middle" x="328.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_LoclinEuler_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_loclineuler_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge22" class="edge">
+<title>sourcefile~atl_modg_loclineuler_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M213.43,-360.09C208.35,-362.63 203.5,-365.58 199,-369 122.12,-427.43 94.22,-548.75 85.72,-598.73"/>
+<polygon fill="#000000" stroke="#000000" points="82.24,-598.37 84.12,-608.79 89.15,-599.47 82.24,-598.37"/>
+</g>
+<!-- sourcefile~atl_modg_maxwell_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node24" class="node">
+<title>sourcefile~atl_modg_maxwell_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node24"><a xlink:href="../sourcefile/atl_modg_maxwell_kernel_module.f90.html" xlink:title="atl_modg_maxwell_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="437,-318 220,-318 220,-294 437,-294 437,-318"/>
+<text text-anchor="middle" x="328.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_maxwell_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_maxwell_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge23" class="edge">
+<title>sourcefile~atl_modg_maxwell_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M219.95,-314.57C212.44,-317.81 205.34,-321.9 199,-327 111.57,-397.37 89.49,-542.82 84.14,-598.57"/>
+<polygon fill="#000000" stroke="#000000" points="80.63,-598.5 83.25,-608.76 87.6,-599.1 80.63,-598.5"/>
+</g>
+<!-- sourcefile~atl_modg_maxwelldivcor_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node25" class="node">
+<title>sourcefile~atl_modg_maxwelldivcor_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node25"><a xlink:href="../sourcefile/atl_modg_maxwelldivcor_kernel_module.f90.html" xlink:title="atl_modg_maxwellDivCor_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="455,-276 202,-276 202,-252 455,-252 455,-276"/>
+<text text-anchor="middle" x="328.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_maxwellDivCor_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_maxwelldivcor_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge24" class="edge">
+<title>sourcefile~atl_modg_maxwelldivcor_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M212.11,-276.04C207.47,-278.61 203.06,-281.58 199,-285 100.72,-367.7 85.24,-537.9 82.89,-598.76"/>
+<polygon fill="#000000" stroke="#000000" points="79.39,-598.7 82.58,-608.8 86.38,-598.91 79.39,-598.7"/>
+</g>
+<!-- sourcefile~atl_modg_navierstokes_kernel_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node26" class="node">
+<title>sourcefile~atl_modg_navierstokes_kernel_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node26"><a xlink:href="../sourcefile/atl_modg_navierstokes_kernel_module.f90.html" xlink:title="atl_modg_navierstokes_kernel_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="448.5,-234 208.5,-234 208.5,-210 448.5,-210 448.5,-234"/>
+<text text-anchor="middle" x="328.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_navierstokes_kernel_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_modg_navierstokes_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge25" class="edge">
+<title>sourcefile~atl_modg_navierstokes_kernel_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M211.67,-234.03C207.17,-236.61 202.92,-239.58 199,-243 89.87,-338.12 81.47,-532.9 81.91,-598.71"/>
+<polygon fill="#000000" stroke="#000000" points="78.41,-598.84 82.05,-608.79 85.41,-598.74 78.41,-598.84"/>
+</g>
+<!-- sourcefile~atl_physflux_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node27" class="node">
+<title>sourcefile~atl_physflux_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node27"><a xlink:href="../sourcefile/atl_physflux_module.f90.html" xlink:title="atl_physFlux_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="400.5,-192 256.5,-192 256.5,-168 400.5,-168 400.5,-192"/>
+<text text-anchor="middle" x="328.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_physFlux_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_physflux_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge26" class="edge">
+<title>sourcefile~atl_physflux_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M256.25,-177.67C235.66,-180.43 214.57,-187.04 199,-201 137.93,-255.78 96.73,-519.08 85.56,-598.36"/>
+<polygon fill="#000000" stroke="#000000" points="82.03,-598.29 84.13,-608.68 88.97,-599.25 82.03,-598.29"/>
+</g>
+<!-- sourcefile~atl_predcor_cerk4_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node28" class="node">
+<title>sourcefile~atl_predcor_cerk4_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node28"><a xlink:href="../sourcefile/atl_predcor_cerk4_module.f90.html" xlink:title="atl_predcor_cerk4_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="415.5,-150 241.5,-150 241.5,-126 415.5,-126 415.5,-150"/>
+<text text-anchor="middle" x="328.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_predcor_cerk4_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_predcor_cerk4_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge27" class="edge">
+<title>sourcefile~atl_predcor_cerk4_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M241.36,-138.12C225.76,-141.79 210.74,-148.22 199,-159 132.24,-220.31 94.4,-515.25 84.9,-598.86"/>
+<polygon fill="#000000" stroke="#000000" points="81.42,-598.48 83.79,-608.8 88.37,-599.25 81.42,-598.48"/>
+</g>
+<!-- sourcefile~atl_rk4_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node29" class="node">
+<title>sourcefile~atl_rk4_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node29"><a xlink:href="../sourcefile/atl_rk4_module.f90.html" xlink:title="atl_rk4_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-108 271,-108 271,-84 386,-84 386,-108"/>
+<text text-anchor="middle" x="328.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_rk4_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_rk4_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge28" class="edge">
+<title>sourcefile~atl_rk4_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M270.76,-91.92C245.83,-93.18 217.97,-99.23 199,-117 126.72,-184.71 92.51,-509.88 84.42,-598.6"/>
+<polygon fill="#000000" stroke="#000000" points="80.93,-598.37 83.53,-608.64 87.9,-598.99 80.93,-598.37"/>
+</g>
+<!-- sourcefile~atl_rktaylor_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node30" class="node">
+<title>sourcefile~atl_rktaylor_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node30"><a xlink:href="../sourcefile/atl_rktaylor_module.f90.html" xlink:title="atl_rktaylor_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="398,-66 259,-66 259,-42 398,-42 398,-66"/>
+<text text-anchor="middle" x="328.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_rktaylor_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_rktaylor_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge29" class="edge">
+<title>sourcefile~atl_rktaylor_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.74,-50.73C237.17,-53.2 214.87,-59.87 199,-75 121.12,-149.21 90.71,-505.24 84,-598.56"/>
+<polygon fill="#000000" stroke="#000000" points="80.5,-598.39 83.3,-608.61 87.49,-598.87 80.5,-598.39"/>
+</g>
+<!-- sourcefile~atl_ssprk2_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_node31" class="node">
+<title>sourcefile~atl_ssprk2_module.f90</title>
+<g id="a_sourcefile~~atl_penalization_module.f90~~AfferentGraph_node31"><a xlink:href="../sourcefile/atl_ssprk2_module.f90.html" xlink:title="atl_ssprk2_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="394.5,-24 262.5,-24 262.5,0 394.5,0 394.5,-24"/>
+<text text-anchor="middle" x="328.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_ssprk2_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_ssprk2_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90 -->
+<g id="sourcefile~~atl_penalization_module.f90~~AfferentGraph_edge30" class="edge">
+<title>sourcefile~atl_ssprk2_module.f90&#45;&gt;sourcefile~atl_penalization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M262.27,-8.22C239.58,-10.32 215.66,-16.89 199,-33 115.52,-113.72 89.05,-500.54 83.64,-598.44"/>
+<polygon fill="#000000" stroke="#000000" points="80.13,-598.51 83.09,-608.68 87.12,-598.88 80.13,-598.51"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#AfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="AfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="202pt" height="32pt"
+ viewBox="0.00 0.00 201.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 197.5,-28 197.5,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="193.5,-24 88.5,-24 88.5,0 193.5,0 193.5,-24"/>
+<text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+<br>
+      <section>
+        <h2><span class="anchor" id="src"></span>Source Code</h2>
+        <div class="hl codehilite"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="c">! Copyright (c) 2014-2015 Jens Zudrop &lt;j.zudrop@grs-sim.de&gt;</span>
+<a id="ln-2" name="ln-2" href="#ln-2"></a><span class="c">! Copyright (c) 2014-2016 Nikhil Anand &lt;nikhil.anand@uni-siegen.de&gt;</span>
+<a id="ln-3" name="ln-3" href="#ln-3"></a><span class="c">! Copyright (c) 2015-2018 Peter Vitt &lt;peter.vitt2@uni-siegen.de&gt;</span>
+<a id="ln-4" name="ln-4" href="#ln-4"></a><span class="c">! Copyright (c) 2015-2016 Harald Klimach &lt;harald.klimach@uni-siegen.de&gt;</span>
+<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="c">! Copyright (c) 2016 Tobias Girresser &lt;tobias.girresser@student.uni-siegen.de&gt;</span>
+<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="c">! Copyright (c) 2016 Kannan Masilamani &lt;kannan.masilamani@uni-siegen.de&gt;</span>
+<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="c">!</span>
+<a id="ln-8" name="ln-8" href="#ln-8"></a><span class="c">! Permission to use, copy, modify, and distribute this software for any</span>
+<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="c">! purpose with or without fee is hereby granted, provided that the above</span>
+<a id="ln-10" name="ln-10" href="#ln-10"></a><span class="c">! copyright notice and this permission notice appear in all copies.</span>
+<a id="ln-11" name="ln-11" href="#ln-11"></a><span class="c">!</span>
+<a id="ln-12" name="ln-12" href="#ln-12"></a><span class="c">! THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHORS DISCLAIM ALL WARRANTIES</span>
+<a id="ln-13" name="ln-13" href="#ln-13"></a><span class="c">! WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF</span>
+<a id="ln-14" name="ln-14" href="#ln-14"></a><span class="c">! MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR</span>
+<a id="ln-15" name="ln-15" href="#ln-15"></a><span class="c">! ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES</span>
+<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="c">! WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN</span>
+<a id="ln-17" name="ln-17" href="#ln-17"></a><span class="c">! ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF</span>
+<a id="ln-18" name="ln-18" href="#ln-18"></a><span class="c">! OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
+<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="c">! **************************************************************************** !</span>
+<a id="ln-20" name="ln-20" href="#ln-20"></a>
+<a id="ln-21" name="ln-21" href="#ln-21"></a><span class="c">!&gt; author: Jens Zudrop</span>
+<a id="ln-22" name="ln-22" href="#ln-22"></a><span class="c">!! Module for datatypes and routines related to</span>
+<a id="ln-23" name="ln-23" href="#ln-23"></a><span class="c">!! penalization procedures.</span>
+<a id="ln-24" name="ln-24" href="#ln-24"></a><span class="k">module </span><span class="n">atl_penalization_module</span>
+<a id="ln-25" name="ln-25" href="#ln-25"></a><span class="w">  </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="nb">iso_c_binding</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="nb">c_f_pointer</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-26" name="ln-26" href="#ln-26"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                    </span><span class="nb">c_loc</span>
+<a id="ln-27" name="ln-27" href="#ln-27"></a><span class="nb">  </span><span class="k">use </span><span class="n">env_module</span><span class="p">,</span><span class="w">                  </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">rk</span>
+<a id="ln-28" name="ln-28" href="#ln-28"></a>
+<a id="ln-29" name="ln-29" href="#ln-29"></a><span class="w">  </span><span class="c">! Aotus modules</span>
+<a id="ln-30" name="ln-30" href="#ln-30"></a><span class="c">!PV!  use aotus_module,                only: flu_State</span>
+<a id="ln-31" name="ln-31" href="#ln-31"></a>
+<a id="ln-32" name="ln-32" href="#ln-32"></a><span class="w">  </span><span class="c">! Treelm modules</span>
+<a id="ln-33" name="ln-33" href="#ln-33"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_element_module</span><span class="p">,</span><span class="w">          </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">eT_fluid</span>
+<a id="ln-34" name="ln-34" href="#ln-34"></a><span class="w">  </span><span class="k">use </span><span class="n">treelmesh_module</span><span class="p">,</span><span class="w">            </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">treelmesh_type</span>
+<a id="ln-35" name="ln-35" href="#ln-35"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_element_module</span><span class="p">,</span><span class="w">          </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">eT_fluid</span>
+<a id="ln-36" name="ln-36" href="#ln-36"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_dyn_array_module</span><span class="p">,</span><span class="w">        </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">positionOfVal</span>
+<a id="ln-37" name="ln-37" href="#ln-37"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_spacetime_fun_module</span><span class="p">,</span><span class="w">    </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_st_fun_listElem_type</span>
+<a id="ln-38" name="ln-38" href="#ln-38"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_dyn_array_module</span><span class="p">,</span><span class="w">        </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">PositionOfVal</span>
+<a id="ln-39" name="ln-39" href="#ln-39"></a>
+<a id="ln-40" name="ln-40" href="#ln-40"></a><span class="w">  </span><span class="c">! ATELES modules</span>
+<a id="ln-41" name="ln-41" href="#ln-41"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_scheme_module</span><span class="p">,</span><span class="w">           </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_scheme_type</span>
+<a id="ln-42" name="ln-42" href="#ln-42"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_equation_module</span><span class="p">,</span><span class="w">         </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_equations_type</span>
+<a id="ln-43" name="ln-43" href="#ln-43"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_cube_elem_module</span><span class="p">,</span><span class="w">        </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_cube_elem_type</span>
+<a id="ln-44" name="ln-44" href="#ln-44"></a><span class="c">!PV!  use atl_materialPrp_module,      only: atl_material_type</span>
+<a id="ln-45" name="ln-45" href="#ln-45"></a>
+<a id="ln-46" name="ln-46" href="#ln-46"></a><span class="w">  </span><span class="k">implicit none</span>
+<a id="ln-47" name="ln-47" href="#ln-47"></a><span class="k">  private</span>
+<a id="ln-48" name="ln-48" href="#ln-48"></a>
+<a id="ln-49" name="ln-49" href="#ln-49"></a>
+<a id="ln-50" name="ln-50" href="#ln-50"></a><span class="w">  </span><span class="c">!&gt; Datatype collects all volumetric penalization information.</span>
+<a id="ln-51" name="ln-51" href="#ln-51"></a><span class="w">  </span><span class="k">type </span><span class="n">atl_penalizationData_type</span>
+<a id="ln-52" name="ln-52" href="#ln-52"></a>
+<a id="ln-53" name="ln-53" href="#ln-53"></a><span class="w">    </span><span class="c">!&gt; Logical indicating if this datatype is filled with</span>
+<a id="ln-54" name="ln-54" href="#ln-54"></a><span class="w">    </span><span class="c">!! valueable data.</span>
+<a id="ln-55" name="ln-55" href="#ln-55"></a><span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">isActive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-56" name="ln-56" href="#ln-56"></a>
+<a id="ln-57" name="ln-57" href="#ln-57"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">penalization_data</span><span class="p">(:,:,:)</span>
+<a id="ln-58" name="ln-58" href="#ln-58"></a>
+<a id="ln-59" name="ln-59" href="#ln-59"></a><span class="w">  </span><span class="k">end type </span><span class="n">atl_penalizationData_type</span>
+<a id="ln-60" name="ln-60" href="#ln-60"></a>
+<a id="ln-61" name="ln-61" href="#ln-61"></a>
+<a id="ln-62" name="ln-62" href="#ln-62"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">atl_penalizationData_type</span><span class="p">,</span><span class="w"> </span><span class="n">atl_init_penalization</span>
+<a id="ln-63" name="ln-63" href="#ln-63"></a>
+<a id="ln-64" name="ln-64" href="#ln-64"></a><span class="k">contains</span>
+<a id="ln-65" name="ln-65" href="#ln-65"></a>
+<a id="ln-66" name="ln-66" href="#ln-66"></a><span class="w">  </span><span class="c">!&gt; Routine to init container for penalization data.</span>
+<a id="ln-67" name="ln-67" href="#ln-67"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">atl_init_penalization</span><span class="p">(</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">penalizationdata_list</span><span class="p">,</span><span class="w"> </span><span class="n">scheme_list</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-68" name="ln-68" href="#ln-68"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                               </span><span class="n">equation</span><span class="p">,</span><span class="w"> </span><span class="n">mesh_list</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-69" name="ln-69" href="#ln-69"></a><span class="c">!PV!    , penalization_list,   &amp;</span>
+<a id="ln-70" name="ln-70" href="#ln-70"></a><span class="c">!PV!    &amp;                               conf, levelPointer                        )</span>
+<a id="ln-71" name="ln-71" href="#ln-71"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-72" name="ln-72" href="#ln-72"></a><span class="w">    </span><span class="c">!&gt; Mesh data in treelmesh format.</span>
+<a id="ln-73" name="ln-73" href="#ln-73"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tree</span>
+<a id="ln-74" name="ln-74" href="#ln-74"></a><span class="w">    </span><span class="c">!&gt; The penalization data to be initialized.</span>
+<a id="ln-75" name="ln-75" href="#ln-75"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_penalizationData_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-76" name="ln-76" href="#ln-76"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">penalizationdata_list</span><span class="p">(</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minlevel</span><span class="p">:</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxlevel</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-77" name="ln-77" href="#ln-77"></a><span class="w">    </span><span class="c">!&gt; The list of schemes. One for each level.</span>
+<a id="ln-78" name="ln-78" href="#ln-78"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_scheme_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-79" name="ln-79" href="#ln-79"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">scheme_list</span><span class="p">(</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minlevel</span><span class="p">:</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxlevel</span><span class="p">)</span>
+<a id="ln-80" name="ln-80" href="#ln-80"></a><span class="w">    </span><span class="c">!&gt; The equation to be solved.</span>
+<a id="ln-81" name="ln-81" href="#ln-81"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_equations_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">equation</span>
+<a id="ln-82" name="ln-82" href="#ln-82"></a><span class="w">    </span><span class="c">!&gt; The mesh description for each level</span>
+<a id="ln-83" name="ln-83" href="#ln-83"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_cube_elem_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-84" name="ln-84" href="#ln-84"></a><span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="n">mesh_list</span><span class="p">(</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minlevel</span><span class="p">:</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxlevel</span><span class="p">)</span>
+<a id="ln-85" name="ln-85" href="#ln-85"></a><span class="c">!PV!    !&gt; The description of the material properties on the element basis.</span>
+<a id="ln-86" name="ln-86" href="#ln-86"></a><span class="c">!PV!    type(atl_material_type), intent(inout) :: &amp;</span>
+<a id="ln-87" name="ln-87" href="#ln-87"></a><span class="c">!PV!      &amp; penalization_list(tree%global%minlevel:tree%global%maxlevel)</span>
+<a id="ln-88" name="ln-88" href="#ln-88"></a><span class="c">!PV!    !&gt; Flu binding to configuration file.</span>
+<a id="ln-89" name="ln-89" href="#ln-89"></a><span class="c">!PV!    type(flu_State), intent(inout) :: conf</span>
+<a id="ln-90" name="ln-90" href="#ln-90"></a><span class="c">!PV!    !&gt; Pointer from treeIDlist entry to level-wise fluid part of total list.</span>
+<a id="ln-91" name="ln-91" href="#ln-91"></a><span class="c">!PV!    !! The length of this vector is the total number of cubic elements.</span>
+<a id="ln-92" name="ln-92" href="#ln-92"></a><span class="c">!PV!    integer, intent(in)  :: levelPointer(:)</span>
+<a id="ln-93" name="ln-93" href="#ln-93"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-94" name="ln-94" href="#ln-94"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iLevel</span><span class="p">,</span><span class="w"> </span><span class="n">matVarPos</span>
+<a id="ln-95" name="ln-95" href="#ln-95"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_st_fun_listElem_type</span><span class="p">),</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">stFunList</span>
+<a id="ln-96" name="ln-96" href="#ln-96"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-97" name="ln-97" href="#ln-97"></a>
+<a id="ln-98" name="ln-98" href="#ln-98"></a><span class="w">    </span><span class="c">! Check if the equation can be penalized ...</span>
+<a id="ln-99" name="ln-99" href="#ln-99"></a><span class="w">    </span><span class="k">select case</span><span class="p">(</span><span class="n">equation</span><span class="p">%</span><span class="n">eq_kind</span><span class="p">)</span>
+<a id="ln-100" name="ln-100" href="#ln-100"></a><span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;euler&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;navier_stokes&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;filtered_navier_stokes&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;euler_2d&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-101" name="ln-101" href="#ln-101"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">   </span><span class="s1">&#39;navier_stokes_2d&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;euler_1d&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;filtered_navier_stokes_2d&#39;</span><span class="w">    </span><span class="p">)</span>
+<a id="ln-102" name="ln-102" href="#ln-102"></a>
+<a id="ln-103" name="ln-103" href="#ln-103"></a><span class="w">      </span><span class="c">! Check if a variable penalization is present. The presence of this</span>
+<a id="ln-104" name="ln-104" href="#ln-104"></a><span class="w">      </span><span class="c">! variable activates the penalization.</span>
+<a id="ln-105" name="ln-105" href="#ln-105"></a><span class="w">      </span><span class="n">matVarPos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">positionOfVal</span><span class="p">(</span><span class="w"> </span><span class="n">equation</span><span class="p">%</span><span class="n">varSys</span><span class="p">%</span><span class="n">varname</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;characteristic&#39;</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-106" name="ln-106" href="#ln-106"></a>
+<a id="ln-107" name="ln-107" href="#ln-107"></a><span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">matVarPos</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-108" name="ln-108" href="#ln-108"></a><span class="k">        call </span><span class="nb">c_f_pointer</span><span class="p">(</span><span class="n">equation</span><span class="p">%</span><span class="n">varSys</span><span class="p">%</span><span class="n">method</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">matVarPos</span><span class="p">)%</span><span class="n">method_data</span><span class="p">,</span><span class="w"> </span><span class="n">stFunList</span><span class="p">)</span>
+<a id="ln-109" name="ln-109" href="#ln-109"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="nb">any</span><span class="p">(</span><span class="n">stFunList</span><span class="p">%</span><span class="n">val</span><span class="p">(:)%</span><span class="n">fun_kind</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39;const&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-110" name="ln-110" href="#ln-110"></a><span class="k">          do </span><span class="n">iLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minlevel</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxlevel</span>
+<a id="ln-111" name="ln-111" href="#ln-111"></a><span class="w">            </span><span class="n">penalizationdata_list</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)%</span><span class="n">isActive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<a id="ln-112" name="ln-112" href="#ln-112"></a><span class="w">            </span><span class="c">! Allocate the penalization arraz with the same number of components</span>
+<a id="ln-113" name="ln-113" href="#ln-113"></a><span class="w">            </span><span class="c">! the state has to later on use array operations to apply penalization</span>
+<a id="ln-114" name="ln-114" href="#ln-114"></a><span class="w">            </span><span class="c">! to the state.</span>
+<a id="ln-115" name="ln-115" href="#ln-115"></a><span class="w">            </span><span class="k">allocate</span><span class="p">(</span><span class="n">penalizationdata_list</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)%</span><span class="n">penalization_data</span><span class="p">(</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-116" name="ln-116" href="#ln-116"></a><span class="w">              </span><span class="p">&amp;</span><span class="w"> </span><span class="n">mesh_list</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)%</span><span class="n">descriptor</span><span class="p">%</span><span class="n">elem</span><span class="p">%</span><span class="n">nElems</span><span class="p">(</span><span class="n">eT_fluid</span><span class="p">),</span><span class="w">   </span><span class="p">&amp;</span>
+<a id="ln-117" name="ln-117" href="#ln-117"></a><span class="w">              </span><span class="p">&amp;</span><span class="w"> </span><span class="n">scheme_list</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)%</span><span class="n">nDofs</span><span class="p">,</span><span class="w">                            </span><span class="p">&amp;</span>
+<a id="ln-118" name="ln-118" href="#ln-118"></a><span class="w">              </span><span class="p">&amp;</span><span class="w"> </span><span class="n">equation</span><span class="p">%</span><span class="n">varSys</span><span class="p">%</span><span class="n">nScalars</span><span class="w">                            </span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-119" name="ln-119" href="#ln-119"></a><span class="w">            </span><span class="n">penalizationdata_list</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)%</span><span class="n">penalization_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span>
+<a id="ln-120" name="ln-120" href="#ln-120"></a><span class="w">          </span><span class="k">end do</span>
+<a id="ln-121" name="ln-121" href="#ln-121"></a><span class="k">        endif</span>
+<a id="ln-122" name="ln-122" href="#ln-122"></a><span class="k">      else</span>
+<a id="ln-123" name="ln-123" href="#ln-123"></a><span class="k">        </span><span class="n">penalizationdata_list</span><span class="p">(:)%</span><span class="n">isActive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-124" name="ln-124" href="#ln-124"></a><span class="w">      </span><span class="k">end if</span>
+<a id="ln-125" name="ln-125" href="#ln-125"></a>
+<a id="ln-126" name="ln-126" href="#ln-126"></a><span class="w">    </span><span class="c">!NA! Is it implemented for maxwell ?</span>
+<a id="ln-127" name="ln-127" href="#ln-127"></a><span class="w">    </span><span class="c">!case(&#39;maxwell&#39;, &#39;maxwell_2d&#39;)</span>
+<a id="ln-128" name="ln-128" href="#ln-128"></a><span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="w"> </span><span class="s1">&#39;maxwell_2d&#39;</span><span class="p">)</span>
+<a id="ln-129" name="ln-129" href="#ln-129"></a>
+<a id="ln-130" name="ln-130" href="#ln-130"></a><span class="w">      </span><span class="c">! Check if a variable conductivity is present. The presence of this</span>
+<a id="ln-131" name="ln-131" href="#ln-131"></a><span class="w">      </span><span class="c">! variable activates the penalization.</span>
+<a id="ln-132" name="ln-132" href="#ln-132"></a><span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">positionOfVal</span><span class="p">(</span><span class="w"> </span><span class="n">equation</span><span class="p">%</span><span class="n">varSys</span><span class="p">%</span><span class="n">varname</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;conductivity&#39;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-133" name="ln-133" href="#ln-133"></a><span class="k">        do </span><span class="n">iLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minlevel</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxlevel</span>
+<a id="ln-134" name="ln-134" href="#ln-134"></a><span class="w">          </span><span class="n">penalizationdata_list</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)%</span><span class="n">isActive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<a id="ln-135" name="ln-135" href="#ln-135"></a><span class="w">          </span><span class="c">! Allocate the penalization arraz with the same number of components</span>
+<a id="ln-136" name="ln-136" href="#ln-136"></a><span class="w">          </span><span class="c">! the state has to later on use array operations to apply penalization</span>
+<a id="ln-137" name="ln-137" href="#ln-137"></a><span class="w">          </span><span class="c">! to the state.</span>
+<a id="ln-138" name="ln-138" href="#ln-138"></a><span class="w">          </span><span class="k">allocate</span><span class="p">(</span><span class="n">penalizationdata_list</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)%</span><span class="n">penalization_data</span><span class="p">(</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-139" name="ln-139" href="#ln-139"></a><span class="w">            </span><span class="p">&amp;</span><span class="w"> </span><span class="n">mesh_list</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)%</span><span class="n">descriptor</span><span class="p">%</span><span class="n">elem</span><span class="p">%</span><span class="n">nElems</span><span class="p">(</span><span class="n">eT_fluid</span><span class="p">),</span><span class="w">   </span><span class="p">&amp;</span>
+<a id="ln-140" name="ln-140" href="#ln-140"></a><span class="w">            </span><span class="p">&amp;</span><span class="w"> </span><span class="n">scheme_list</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)%</span><span class="n">nDofs</span><span class="p">,</span><span class="w">                            </span><span class="p">&amp;</span>
+<a id="ln-141" name="ln-141" href="#ln-141"></a><span class="w">            </span><span class="p">&amp;</span><span class="w"> </span><span class="n">equation</span><span class="p">%</span><span class="n">varSys</span><span class="p">%</span><span class="n">nScalars</span><span class="w">                            </span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-142" name="ln-142" href="#ln-142"></a><span class="w">          </span><span class="n">penalizationdata_list</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)%</span><span class="n">penalization_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span>
+<a id="ln-143" name="ln-143" href="#ln-143"></a><span class="w">        </span><span class="k">end do</span>
+<a id="ln-144" name="ln-144" href="#ln-144"></a><span class="k">      else</span>
+<a id="ln-145" name="ln-145" href="#ln-145"></a><span class="k">        </span><span class="n">penalizationdata_list</span><span class="p">(:)%</span><span class="n">isActive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-146" name="ln-146" href="#ln-146"></a><span class="w">      </span><span class="k">end if</span>
+<a id="ln-147" name="ln-147" href="#ln-147"></a>
+<a id="ln-148" name="ln-148" href="#ln-148"></a><span class="k">    case </span><span class="n">default</span>
+<a id="ln-149" name="ln-149" href="#ln-149"></a><span class="w">      </span><span class="n">penalizationdata_list</span><span class="p">(:)%</span><span class="n">isActive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-150" name="ln-150" href="#ln-150"></a><span class="w">    </span><span class="k">end select</span>
+<a id="ln-151" name="ln-151" href="#ln-151"></a>
+<a id="ln-152" name="ln-152" href="#ln-152"></a><span class="k">  end subroutine </span><span class="n">atl_init_penalization</span>
+<a id="ln-153" name="ln-153" href="#ln-153"></a>
+<a id="ln-154" name="ln-154" href="#ln-154"></a>
+<a id="ln-155" name="ln-155" href="#ln-155"></a><span class="k">end module </span><span class="n">atl_penalization_module</span>
+</pre></div>
+
+      </section>
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

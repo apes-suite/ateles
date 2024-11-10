@@ -1,0 +1,2374 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>approximate_1D_jump &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>approximate_1D_jump      <small>Program</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title="10.1% of total for programs.">229 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/approximate_1D_jump.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/approximate_1d_jump.f90.html'>approximate_1D_jump.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">approximate_1D_jump</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-argstring">argstring</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-jota">jota</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-level~10">level</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-polydegree">polydegree</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-ibis">ibis</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-ival">ival</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-ipoint">ipoint</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-imode">imode</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-icoarse">iCoarse</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-ifine">iFine</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-intmode">intmode</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-bis_lb">bis_lb</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-current">current</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-last">last</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-lastside">lastside</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-bpos">bpos</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-interval_jump">interval_jump</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-ofact">ofact</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-bis_half">bis_half</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-x_point">x_point</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-cur_lb">cur_lb</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-ivldistance">ivldistance</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-l2err">l2err</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-optierr">optierr</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-voldiff">voldiff</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-bisect">bisect</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-nodal_data~15">nodal_data</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-modal_data~5">modal_data</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-legmodes~2">legmodes</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-exact">exact</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-const1_left">const1_left</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-const1_right">const1_right</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-integral~2">integral</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-intatjota">intatjota</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-ivcolor">ivcolor</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-project">project</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-polypro">polypro</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-refine">refine</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-ivlen">ivlen</a>
+            <a class="list-group-item" href="../program/approximate_1d_jump.html#variable-method~2">method</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+        <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_dyn_array_module.html'>tem_dyn_array_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/env_module.html'>env_module</a></li>
+                  <li class="list-inline-item"><a href='../module/ply_modg_basis_module.html'>ply_modg_basis_module</a></li>
+                  <li class="list-inline-item"><a href='../module/ply_dof_module.html'>ply_dof_module</a></li>
+                  <li class="list-inline-item"><a href='../module/ply_poly_project_module.html'>ply_poly_project_module</a></li>
+                  <li class="list-inline-item"><a href='../module/ply_dynarray_project_module.html'>ply_dynarray_project_module</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: program~~approximate_1d_jump~~UsesGraph Pages: 1 -->
+<svg id="programapproximate_1d_jumpUsesGraph" width="641pt" height="678pt"
+ viewBox="0.00 0.00 641.00 677.52" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="program~~approximate_1d_jump~~UsesGraph" class="graph" transform="scale(0.6 0.6) rotate(0) translate(4 1126.96)">
+<title>program~~approximate_1d_jump~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-1126.96 1066,-1126.96 1066,4 -4,4"/>
+<!-- program~approximate_1d_jump -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node1" class="node">
+<title>program~approximate_1d_jump</title>
+<polygon fill="none" stroke="black" points="1062,-679.78 930,-679.78 930,-655.78 1062,-655.78 1062,-679.78"/>
+<text text-anchor="middle" x="996" y="-665.38" font-family="Helvetica,sans-Serif" font-size="10.50">approximate_1D_jump</text>
+</g>
+<!-- env_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node2" class="node">
+<title>env_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node2"><a xlink:href="https://apes-suite.github.io/treelm/module/env_module.html" xlink:title="env_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="99,-742.78 21,-742.78 21,-718.78 99,-718.78 99,-742.78"/>
+<text text-anchor="middle" x="60" y="-728.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">env_module</text>
+</a>
+</g>
+</g>
+<!-- program~approximate_1d_jump&#45;&gt;env_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge1" class="edge">
+<title>program~approximate_1d_jump&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M628.5,-1012.78C570.25,-1014.7 565.72,-1053.39 509,-1066.78 356.28,-1102.84 280.89,-1168.78 156,-1073.78 103.59,-1033.91 72.6,-822.68 63.69,-753.06"/>
+<polygon fill="#000000" stroke="#000000" points="67.12,-752.29 62.41,-742.8 60.18,-753.16 67.12,-752.29"/>
+</g>
+<!-- module~ply_dof_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node3" class="node">
+<title>module~ply_dof_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node3"><a xlink:href="../module/ply_dof_module.html" xlink:title="ply_dof_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="292,-984.78 195,-984.78 195,-960.78 292,-960.78 292,-984.78"/>
+<text text-anchor="middle" x="243.5" y="-970.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_dof_module</text>
+</a>
+</g>
+</g>
+<!-- program~approximate_1d_jump&#45;&gt;module~ply_dof_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge2" class="edge">
+<title>program~approximate_1d_jump&#45;&gt;module~ply_dof_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M821,-1012.78C744.74,-1049.56 715.12,-1009.98 630.5,-1012.78"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M628.5,-1012.78C542.47,-1015.62 524.96,-977.37 439,-972.78"/>
+</g>
+<!-- module~ply_dynarray_project_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node4" class="node">
+<title>module~ply_dynarray_project_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node4"><a xlink:href="../module/ply_dynarray_project_module.html" xlink:title="ply_dynarray_project_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="714,-944.78 545,-944.78 545,-920.78 714,-920.78 714,-944.78"/>
+<text text-anchor="middle" x="629.5" y="-930.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_dynarray_project_module</text>
+</a>
+</g>
+</g>
+<!-- program~approximate_1d_jump&#45;&gt;module~ply_dynarray_project_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge3" class="edge">
+<title>program~approximate_1d_jump&#45;&gt;module~ply_dynarray_project_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M993.9,-679.91C988.31,-733.32 957.73,-947.8 823,-1012.78"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M821,-1012.78C790.77,-1027.36 702.96,-977.89 657.89,-950.21"/>
+<polygon fill="#000000" stroke="#000000" points="659.56,-947.13 649.22,-944.83 655.87,-953.07 659.56,-947.13"/>
+</g>
+<!-- module~ply_modg_basis_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node5" class="node">
+<title>module~ply_modg_basis_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node5"><a xlink:href="../module/ply_modg_basis_module.html" xlink:title="ply_modg_basis_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="509,-1024.78 367,-1024.78 367,-1000.78 509,-1000.78 509,-1024.78"/>
+<text text-anchor="middle" x="438" y="-1010.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_modg_basis_module</text>
+</a>
+</g>
+</g>
+<!-- program~approximate_1d_jump&#45;&gt;module~ply_modg_basis_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge4" class="edge">
+<title>program~approximate_1d_jump&#45;&gt;module~ply_modg_basis_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M628.5,-1012.78C592.74,-1013.96 553.17,-1014.14 519.47,-1013.95"/>
+<polygon fill="#000000" stroke="#000000" points="519.24,-1010.45 509.21,-1013.88 519.19,-1017.45 519.24,-1010.45"/>
+</g>
+<!-- module~ply_poly_project_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node6" class="node">
+<title>module~ply_poly_project_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node6"><a xlink:href="../module/ply_poly_project_module.html" xlink:title="ply_poly_project_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="894,-679.78 750,-679.78 750,-655.78 894,-655.78 894,-679.78"/>
+<text text-anchor="middle" x="822" y="-665.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_poly_project_module</text>
+</a>
+</g>
+</g>
+<!-- program~approximate_1d_jump&#45;&gt;module~ply_poly_project_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge5" class="edge">
+<title>program~approximate_1d_jump&#45;&gt;module~ply_poly_project_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M929.97,-667.78C921.56,-667.78 912.87,-667.78 904.24,-667.78"/>
+<polygon fill="#000000" stroke="#000000" points="904.16,-664.28 894.16,-667.78 904.16,-671.28 904.16,-664.28"/>
+</g>
+<!-- tem_dyn_array_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node7" class="node">
+<title>tem_dyn_array_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node7"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_dyn_array_module.html" xlink:title="tem_dyn_array_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="891,-637.78 753,-637.78 753,-613.78 891,-613.78 891,-637.78"/>
+<text text-anchor="middle" x="822" y="-623.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_dyn_array_module</text>
+</a>
+</g>
+</g>
+<!-- program~approximate_1d_jump&#45;&gt;tem_dyn_array_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge6" class="edge">
+<title>program~approximate_1d_jump&#45;&gt;tem_dyn_array_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M945.71,-655.74C925.92,-650.91 902.93,-645.3 882.24,-640.25"/>
+<polygon fill="#000000" stroke="#000000" points="882.84,-636.79 872.3,-637.82 881.18,-643.59 882.84,-636.79"/>
+</g>
+<!-- module~ply_dof_module&#45;&gt;env_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge7" class="edge">
+<title>module~ply_dof_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M194.79,-966.21C181.02,-962.39 166.81,-956.34 156,-946.78 96.3,-893.97 72.47,-796.67 64.47,-753.01"/>
+<polygon fill="#000000" stroke="#000000" points="67.88,-752.15 62.73,-742.89 60.98,-753.34 67.88,-752.15"/>
+</g>
+<!-- module~ply_dynarray_project_module&#45;&gt;env_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge9" class="edge">
+<title>module~ply_dynarray_project_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M437,-932.78C314.98,-904.84 260.72,-982.35 156,-913.78 98.79,-876.32 74.06,-792.86 65.2,-752.91"/>
+<polygon fill="#000000" stroke="#000000" points="68.57,-751.95 63.1,-742.88 61.72,-753.38 68.57,-751.95"/>
+</g>
+<!-- aotus_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node8" class="node">
+<title>aotus_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node8"><a xlink:href="https://apes-suite.github.io/aotus/module/aotus_module.html" xlink:title="aotus_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="287.5,-702.78 199.5,-702.78 199.5,-678.78 287.5,-678.78 287.5,-702.78"/>
+<text text-anchor="middle" x="243.5" y="-688.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aotus_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_dynarray_project_module&#45;&gt;aotus_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge8" class="edge">
+<title>module~ply_dynarray_project_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M544.58,-940.8C511.33,-941.9 472.99,-940.56 439,-932.78"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M437,-932.78C395.32,-923.24 389.59,-903.08 367,-866.78 338.25,-820.59 363.29,-793.57 331,-749.78 317.86,-731.96 297.65,-717.75 280.07,-707.74"/>
+<polygon fill="#000000" stroke="#000000" points="281.62,-704.6 271.17,-702.89 278.27,-710.75 281.62,-704.6"/>
+</g>
+<!-- module~ply_prj_header_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node16" class="node">
+<title>module~ply_prj_header_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node16"><a xlink:href="../module/ply_prj_header_module.html" xlink:title="ply_prj_header_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="506.5,-660.78 369.5,-660.78 369.5,-636.78 506.5,-636.78 506.5,-660.78"/>
+<text text-anchor="middle" x="438" y="-646.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_prj_header_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_dynarray_project_module&#45;&gt;module~ply_prj_header_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge10" class="edge">
+<title>module~ply_dynarray_project_module&#45;&gt;module~ply_prj_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M620.78,-920.71C601.95,-891.31 552,-813.69 509,-749.78 490.01,-721.56 467.53,-689.33 453.27,-669.01"/>
+<polygon fill="#000000" stroke="#000000" points="456.13,-667 447.51,-660.83 450.4,-671.03 456.13,-667"/>
+</g>
+<!-- tem_logging_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node19" class="node">
+<title>tem_logging_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node19"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_logging_module.html" xlink:title="tem_logging_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="305.5,-904.78 181.5,-904.78 181.5,-880.78 305.5,-880.78 305.5,-904.78"/>
+<text text-anchor="middle" x="243.5" y="-890.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_dynarray_project_module&#45;&gt;tem_logging_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge11" class="edge">
+<title>module~ply_dynarray_project_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M437,-932.78C397.01,-923.62 352.13,-914.25 315.78,-906.88"/>
+<polygon fill="#000000" stroke="#000000" points="316.25,-903.4 305.76,-904.85 314.87,-910.26 316.25,-903.4"/>
+</g>
+<!-- module~ply_modg_basis_module&#45;&gt;env_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge12" class="edge">
+<title>module~ply_modg_basis_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M366.95,-1016.52C294.66,-1018.93 188.07,-1017.95 156,-993.78 77.62,-934.71 63.79,-804.92 61.44,-752.94"/>
+<polygon fill="#000000" stroke="#000000" points="64.93,-752.69 61.09,-742.82 57.94,-752.93 64.93,-752.69"/>
+</g>
+<!-- module~ply_modg_basis_module&#45;&gt;module~ply_dof_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge13" class="edge">
+<title>module~ply_modg_basis_module&#45;&gt;module~ply_dof_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M379.24,-1000.78C354.81,-995.7 326.42,-989.8 302.01,-984.73"/>
+<polygon fill="#000000" stroke="#000000" points="302.68,-981.29 292.18,-982.69 301.25,-988.15 302.68,-981.29"/>
+</g>
+<!-- module~ply_space_integration_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node17" class="node">
+<title>module~ply_space_integration_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node17"><a xlink:href="../module/ply_space_integration_module.html" xlink:title="ply_space_integration_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="331,-1064.78 156,-1064.78 156,-1040.78 331,-1040.78 331,-1064.78"/>
+<text text-anchor="middle" x="243.5" y="-1050.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_space_integration_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_modg_basis_module&#45;&gt;module~ply_space_integration_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge14" class="edge">
+<title>module~ply_modg_basis_module&#45;&gt;module~ply_space_integration_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M379.24,-1024.78C358.21,-1029.15 334.24,-1034.13 312.41,-1038.67"/>
+<polygon fill="#000000" stroke="#000000" points="311.63,-1035.26 302.55,-1040.72 313.05,-1042.11 311.63,-1035.26"/>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;env_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge15" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M628.5,-563.78C541.03,-526.93 591.92,-432.96 509,-386.78 440.45,-348.61 218.31,-332.1 156,-379.78 102.46,-420.75 72.13,-637.66 63.55,-708.43"/>
+<polygon fill="#000000" stroke="#000000" points="60.06,-708.14 62.36,-718.48 67.01,-708.97 60.06,-708.14"/>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_dof_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge16" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_dof_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M820.76,-679.93C819.15,-725.14 806.85,-884.52 714,-953.78 615.8,-1027.03 561.35,-979.15 439,-972.78"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M437,-972.78C391.85,-970.37 340.67,-970.51 302.43,-971.17"/>
+<polygon fill="#000000" stroke="#000000" points="301.93,-967.68 292,-971.37 302.07,-974.68 301.93,-967.68"/>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_dynarray_project_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge17" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_dynarray_project_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M819.09,-679.94C812.34,-718.82 786.04,-841.24 714,-905.78 709.49,-909.82 704.37,-913.25 698.94,-916.17"/>
+<polygon fill="#000000" stroke="#000000" points="697.09,-913.18 689.56,-920.62 700.09,-919.5 697.09,-913.18"/>
+</g>
+<!-- module~ply_fxt_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node9" class="node">
+<title>module~ply_fxt_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node9"><a xlink:href="../module/ply_fxt_module.html" xlink:title="ply_fxt_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="484.5,-535.78 391.5,-535.78 391.5,-511.78 484.5,-511.78 484.5,-535.78"/>
+<text text-anchor="middle" x="438" y="-521.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fxt_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_fxt_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge18" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_fxt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M628.5,-563.78C585.56,-545.65 533.57,-535.43 494.91,-529.86"/>
+<polygon fill="#000000" stroke="#000000" points="495.26,-526.38 484.88,-528.48 494.31,-533.31 495.26,-526.38"/>
+</g>
+<!-- module~ply_l2p_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node10" class="node">
+<title>module~ply_l2p_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node10"><a xlink:href="../module/ply_l2p_module.html" xlink:title="ply_l2p_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="677.5,-742.78 581.5,-742.78 581.5,-718.78 677.5,-718.78 677.5,-742.78"/>
+<text text-anchor="middle" x="629.5" y="-728.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_l2p_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_l2p_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge19" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_l2p_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M784.27,-679.93C753.6,-690.07 709.72,-704.58 676.67,-715.51"/>
+<polygon fill="#000000" stroke="#000000" points="675.19,-712.31 666.79,-718.78 677.39,-718.96 675.19,-712.31"/>
+</g>
+<!-- module~ply_legfpt_2d_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node11" class="node">
+<title>module~ply_legfpt_2d_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node11"><a xlink:href="../module/ply_legfpt_2d_module.html" xlink:title="ply_legFpt_2D_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="696,-212.78 563,-212.78 563,-188.78 696,-188.78 696,-212.78"/>
+<text text-anchor="middle" x="629.5" y="-198.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_legFpt_2D_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_legfpt_2d_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge20" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_legfpt_2d_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M759.98,-655.64C756.24,-653.19 752.84,-650.27 750,-646.78 690.78,-574.2 772.7,-299.78 714,-226.78 711.27,-223.39 708.1,-220.43 704.63,-217.85"/>
+<polygon fill="#000000" stroke="#000000" points="706.38,-214.81 696.04,-212.49 702.68,-220.75 706.38,-214.81"/>
+</g>
+<!-- module~ply_legfpt_3d_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node12" class="node">
+<title>module~ply_legfpt_3d_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node12"><a xlink:href="../module/ply_legfpt_3d_module.html" xlink:title="ply_legFpt_3D_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="696,-292.78 563,-292.78 563,-268.78 696,-268.78 696,-292.78"/>
+<text text-anchor="middle" x="629.5" y="-278.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_legFpt_3D_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_legfpt_3d_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge21" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_legfpt_3d_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M762.19,-655.63C757.74,-653.19 753.59,-650.28 750,-646.78 743.49,-640.45 661.95,-381.21 637.43,-302.93"/>
+<polygon fill="#000000" stroke="#000000" points="640.69,-301.63 634.36,-293.13 634.01,-303.72 640.69,-301.63"/>
+</g>
+<!-- module~ply_legfpt_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node13" class="node">
+<title>module~ply_legfpt_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node13"><a xlink:href="../module/ply_legfpt_module.html" xlink:title="ply_legFpt_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="494,-252.78 382,-252.78 382,-228.78 494,-228.78 494,-252.78"/>
+<text text-anchor="middle" x="438" y="-238.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_legFpt_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_legfpt_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge22" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M760.01,-655.62C756.26,-653.17 752.86,-650.26 750,-646.78 695.16,-580.06 775.8,-320.12 714,-259.78 685.32,-231.78 576.43,-232.29 504.58,-235.98"/>
+<polygon fill="#000000" stroke="#000000" points="504.05,-232.51 494.26,-236.55 504.43,-239.5 504.05,-232.51"/>
+</g>
+<!-- module~ply_nodes_header_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node14" class="node">
+<title>module~ply_nodes_header_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node14"><a xlink:href="../module/ply_nodes_header_module.html" xlink:title="ply_nodes_header_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="321,-168.78 166,-168.78 166,-144.78 321,-144.78 321,-168.78"/>
+<text text-anchor="middle" x="243.5" y="-154.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_nodes_header_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_nodes_header_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge23" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_nodes_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M759.94,-655.67C756.21,-653.21 752.83,-650.28 750,-646.78 684.55,-565.85 788.62,-252.34 714,-179.78 598.98,-67.94 383.75,-114.3 290.04,-141.85"/>
+<polygon fill="#000000" stroke="#000000" points="288.86,-138.55 280.29,-144.78 290.88,-145.25 288.86,-138.55"/>
+</g>
+<!-- module~ply_nodes_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node15" class="node">
+<title>module~ply_nodes_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node15"><a xlink:href="../module/ply_nodes_module.html" xlink:title="ply_nodes_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="494,-333.78 382,-333.78 382,-309.78 494,-309.78 494,-333.78"/>
+<text text-anchor="middle" x="438" y="-319.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_nodes_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_nodes_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge24" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_nodes_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M772.48,-655.69C764.8,-653.14 757.07,-650.17 750,-646.78 691.7,-618.81 690.07,-588.93 630.5,-563.78"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M628.5,-563.78C527.78,-521.26 591.49,-420.52 509,-348.78 504.29,-344.69 498.89,-341.18 493.23,-338.18"/>
+<polygon fill="#000000" stroke="#000000" points="494.71,-335.01 484.17,-333.88 491.7,-341.33 494.71,-335.01"/>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_prj_header_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge25" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_prj_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M628.5,-563.78C624.66,-562.16 527.51,-607.22 473.85,-632.38"/>
+<polygon fill="#000000" stroke="#000000" points="472.24,-629.26 464.68,-636.68 475.22,-635.6 472.24,-629.26"/>
+</g>
+<!-- tem_aux_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node18" class="node">
+<title>tem_aux_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node18"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_aux_module.html" xlink:title="tem_aux_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="295.5,-576.78 191.5,-576.78 191.5,-552.78 295.5,-552.78 295.5,-576.78"/>
+<text text-anchor="middle" x="243.5" y="-562.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_aux_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;tem_aux_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge26" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M628.5,-563.78C550.88,-531.08 521.49,-580.76 439,-563.78"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M437,-563.78C393.91,-554.91 344.24,-555.43 306.15,-558.02"/>
+<polygon fill="#000000" stroke="#000000" points="305.44,-554.56 295.73,-558.8 305.96,-561.54 305.44,-554.56"/>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;tem_logging_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge27" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M807.75,-680.03C767.02,-716.78 638.63,-826.03 509,-866.78 445.63,-886.7 369.88,-892.44 315.72,-893.65"/>
+<polygon fill="#000000" stroke="#000000" points="315.46,-890.15 305.52,-893.83 315.58,-897.15 315.46,-890.15"/>
+</g>
+<!-- tem_tools_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node20" class="node">
+<title>tem_tools_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node20"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_tools_module.html" xlink:title="tem_tools_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="298.5,-660.78 188.5,-660.78 188.5,-636.78 298.5,-636.78 298.5,-660.78"/>
+<text text-anchor="middle" x="243.5" y="-646.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tools_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;tem_tools_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge28" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;tem_tools_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M628.5,-563.78C621.01,-560.62 411.81,-609.28 305.41,-634.35"/>
+<polygon fill="#000000" stroke="#000000" points="304.37,-631 295.44,-636.7 305.98,-637.81 304.37,-631"/>
+</g>
+<!-- module~ply_fxt_module&#45;&gt;env_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge29" class="edge">
+<title>module~ply_fxt_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M410.67,-511.77C357.48,-489.5 235.56,-448.65 156,-501.78 84.92,-549.25 66.95,-660.87 62.47,-708.55"/>
+<polygon fill="#000000" stroke="#000000" points="58.96,-708.47 61.63,-718.72 65.94,-709.04 58.96,-708.47"/>
+</g>
+<!-- module~fxt_fwrap -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node24" class="node">
+<title>module~fxt_fwrap</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node24"><a xlink:href="../module/fxt_fwrap.html" xlink:title="fxt_fwrap">
+<polygon fill="#337ab7" stroke="#337ab7" points="274,-534.78 213,-534.78 213,-510.78 274,-510.78 274,-534.78"/>
+<text text-anchor="middle" x="243.5" y="-520.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">fxt_fwrap</text>
+</a>
+</g>
+</g>
+<!-- module~ply_fxt_module&#45;&gt;module~fxt_fwrap -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge30" class="edge">
+<title>module~ply_fxt_module&#45;&gt;module~fxt_fwrap</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M391.38,-523.54C358.82,-523.37 315.44,-523.15 284.28,-522.99"/>
+<polygon fill="#000000" stroke="#000000" points="284.24,-519.49 274.22,-522.93 284.2,-526.49 284.24,-519.49"/>
+</g>
+<!-- module~ply_fxt_header_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node26" class="node">
+<title>module~ply_fxt_header_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node26"><a xlink:href="../module/ply_fxt_header_module.html" xlink:title="ply_fxt_header_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="311.5,-618.78 175.5,-618.78 175.5,-594.78 311.5,-594.78 311.5,-618.78"/>
+<text text-anchor="middle" x="243.5" y="-604.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fxt_header_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_fxt_module&#45;&gt;module~ply_fxt_header_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge31" class="edge">
+<title>module~ply_fxt_module&#45;&gt;module~ply_fxt_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M419.81,-535.97C399.48,-549.86 364.21,-572.37 331,-585.78 325.58,-587.97 319.88,-589.97 314.1,-591.78"/>
+<polygon fill="#000000" stroke="#000000" points="312.91,-588.48 304.31,-594.68 314.9,-595.2 312.91,-588.48"/>
+</g>
+<!-- module~ply_l2p_module&#45;&gt;env_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge32" class="edge">
+<title>module~ply_l2p_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M614.99,-742.81C585.52,-768.26 512.17,-827.32 439,-852.78"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M437,-852.78C377.89,-873.35 212.45,-860.81 156,-833.78 118.65,-815.89 88.96,-776.24 73.26,-751.69"/>
+<polygon fill="#000000" stroke="#000000" points="76.18,-749.75 67.95,-743.09 70.23,-753.44 76.18,-749.75"/>
+</g>
+<!-- module~ply_l2p_module&#45;&gt;module~ply_modg_basis_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge35" class="edge">
+<title>module~ply_l2p_module&#45;&gt;module~ply_modg_basis_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M622.87,-743.01C599.53,-793.65 511.5,-984.47 509,-986.78 505.17,-990.31 500.81,-993.38 496.19,-996.04"/>
+<polygon fill="#000000" stroke="#000000" points="494.39,-993.02 487.05,-1000.66 497.55,-999.27 494.39,-993.02"/>
+</g>
+<!-- module~ply_l2p_module&#45;&gt;module~ply_space_integration_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge37" class="edge">
+<title>module~ply_l2p_module&#45;&gt;module~ply_space_integration_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M622.2,-742.81C607.37,-771.48 569.6,-846.35 545,-911.78 525.11,-964.7 553.04,-998.33 509,-1033.78 452.05,-1079.63 363.96,-1075.9 305.29,-1066.47"/>
+<polygon fill="#000000" stroke="#000000" points="305.86,-1063.02 295.42,-1064.78 304.69,-1069.92 305.86,-1063.02"/>
+</g>
+<!-- module~ply_l2p_module&#45;&gt;tem_aux_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge38" class="edge">
+<title>module~ply_l2p_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M621.24,-718.59C599.26,-683.31 529.41,-582.39 439,-563.78"/>
+</g>
+<!-- module~ply_l2p_module&#45;&gt;tem_logging_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge40" class="edge">
+<title>module~ply_l2p_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M437,-852.78C397.96,-866.37 352.77,-876.05 315.99,-882.48"/>
+<polygon fill="#000000" stroke="#000000" points="315.12,-879.08 305.85,-884.21 316.3,-885.98 315.12,-879.08"/>
+</g>
+<!-- module~ply_l2p_header_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node27" class="node">
+<title>module~ply_l2p_header_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node27"><a xlink:href="../module/ply_l2p_header_module.html" xlink:title="ply_l2p_header_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="313,-824.78 174,-824.78 174,-800.78 313,-800.78 313,-824.78"/>
+<text text-anchor="middle" x="243.5" y="-810.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_l2p_header_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_l2p_module&#45;&gt;module~ply_l2p_header_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge33" class="edge">
+<title>module~ply_l2p_module&#45;&gt;module~ply_l2p_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M581.25,-723.76C526.56,-717.91 435.27,-715.33 367,-749.78 345.05,-760.86 351.96,-778.93 331,-791.78 328.01,-793.61 324.87,-795.29 321.64,-796.81"/>
+<polygon fill="#000000" stroke="#000000" points="320.15,-793.64 312.29,-800.74 322.86,-800.09 320.15,-793.64"/>
+</g>
+<!-- module~ply_lagrange_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node28" class="node">
+<title>module~ply_lagrange_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node28"><a xlink:href="../module/ply_lagrange_module.html" xlink:title="ply_lagrange_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="501.5,-782.78 374.5,-782.78 374.5,-758.78 501.5,-758.78 501.5,-782.78"/>
+<text text-anchor="middle" x="438" y="-768.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_lagrange_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_l2p_module&#45;&gt;module~ply_lagrange_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge34" class="edge">
+<title>module~ply_l2p_module&#45;&gt;module~ply_lagrange_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M581.17,-740.77C558.53,-745.55 531.02,-751.36 506.25,-756.59"/>
+<polygon fill="#000000" stroke="#000000" points="505.25,-753.22 496.19,-758.71 506.7,-760.07 505.25,-753.22"/>
+</g>
+<!-- module~ply_nodeset_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node29" class="node">
+<title>module~ply_nodeset_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node29"><a xlink:href="../module/ply_nodeset_module.html" xlink:title="ply_nodeset_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="304.5,-412.78 182.5,-412.78 182.5,-388.78 304.5,-388.78 304.5,-412.78"/>
+<text text-anchor="middle" x="243.5" y="-398.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_nodeset_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_l2p_module&#45;&gt;module~ply_nodeset_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge36" class="edge">
+<title>module~ply_l2p_module&#45;&gt;module~ply_nodeset_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M437,-400.78C395.32,-370.78 334.31,-376.8 292.2,-386.4"/>
+<polygon fill="#000000" stroke="#000000" points="291.35,-383.01 282.45,-388.76 293,-389.81 291.35,-383.01"/>
+</g>
+<!-- tem_compileconf_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node31" class="node">
+<title>tem_compileconf_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node31"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_compileconf_module.html" xlink:title="tem_compileconf_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="319,-332.78 168,-332.78 168,-308.78 319,-308.78 319,-332.78"/>
+<text text-anchor="middle" x="243.5" y="-318.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_compileconf_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_l2p_module&#45;&gt;tem_compileconf_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge39" class="edge">
+<title>module~ply_l2p_module&#45;&gt;tem_compileconf_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M621.57,-718.6C606.98,-692.84 572.19,-630.83 545,-577.78 503.18,-496.18 513.42,-454.35 439,-400.78"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M437,-400.78C394.8,-370.41 339.35,-348.93 298.8,-335.93"/>
+<polygon fill="#000000" stroke="#000000" points="299.68,-332.54 289.09,-332.89 297.59,-339.22 299.68,-332.54"/>
+</g>
+<!-- module~ply_legfpt_2d_module&#45;&gt;env_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge41" class="edge">
+<title>module~ply_legfpt_2d_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M620.12,-188.49C596.49,-155.17 525.38,-63.77 439,-36.78"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M437,-36.78C317.52,0.55 247.65,29.47 156,-55.78 58.18,-146.77 59.01,-602.28 60.57,-708.58"/>
+<polygon fill="#000000" stroke="#000000" points="57.07,-708.83 60.74,-718.77 64.07,-708.71 57.07,-708.83"/>
+</g>
+<!-- module~ply_legfpt_2d_module&#45;&gt;module~ply_legfpt_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge44" class="edge">
+<title>module~ply_legfpt_2d_module&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M571.64,-212.78C550.37,-217.27 526.05,-222.41 504.09,-227.04"/>
+<polygon fill="#000000" stroke="#000000" points="503.25,-223.64 494.19,-229.13 504.69,-230.49 503.25,-223.64"/>
+</g>
+<!-- iso_c_binding -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node22" class="node">
+<title>iso_c_binding</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node22"><a xlink:href="http://fortranwiki.org/fortran/show/iso_c_binding" xlink:title="iso_c_binding">
+<polygon fill="#337ab7" stroke="#337ab7" points="285.5,-88.78 201.5,-88.78 201.5,-64.78 285.5,-64.78 285.5,-88.78"/>
+<text text-anchor="middle" x="243.5" y="-74.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_c_binding</text>
+</a>
+</g>
+</g>
+<!-- module~ply_legfpt_2d_module&#45;&gt;iso_c_binding -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge42" class="edge">
+<title>module~ply_legfpt_2d_module&#45;&gt;iso_c_binding</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M437,-36.78C423.61,-32.6 348.03,-50.28 295.65,-63.48"/>
+<polygon fill="#000000" stroke="#000000" points="294.67,-60.11 285.84,-65.96 296.39,-66.9 294.67,-60.11"/>
+</g>
+<!-- module~fftw_wrap -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node23" class="node">
+<title>module~fftw_wrap</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node23"><a xlink:href="../module/fftw_wrap.html" xlink:title="fftw_wrap">
+<polygon fill="#337ab7" stroke="#337ab7" points="275.5,-252.78 211.5,-252.78 211.5,-228.78 275.5,-228.78 275.5,-252.78"/>
+<text text-anchor="middle" x="243.5" y="-238.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">fftw_wrap</text>
+</a>
+</g>
+</g>
+<!-- module~ply_legfpt_2d_module&#45;&gt;module~fftw_wrap -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge43" class="edge">
+<title>module~ply_legfpt_2d_module&#45;&gt;module~fftw_wrap</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M562.77,-203.78C509.79,-206.63 433.42,-211.69 367,-219.78 339.76,-223.1 309.35,-228.3 285.65,-232.7"/>
+<polygon fill="#000000" stroke="#000000" points="284.77,-229.3 275.59,-234.59 286.07,-236.18 284.77,-229.3"/>
+</g>
+<!-- module~ply_legfpt_3d_module&#45;&gt;env_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge45" class="edge">
+<title>module~ply_legfpt_3d_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M437,-280.78C394.28,-278.59 281.21,-258.81 244.5,-280.78"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M242.5,-280.78C208.73,-300.99 183.84,-271.96 156,-299.78 97.11,-358.63 69.74,-628.14 62.82,-708.26"/>
+<polygon fill="#000000" stroke="#000000" points="59.29,-708.4 61.94,-718.66 66.27,-708.98 59.29,-708.4"/>
+</g>
+<!-- module~ply_legfpt_3d_module&#45;&gt;module~ply_legfpt_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge48" class="edge">
+<title>module~ply_legfpt_3d_module&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M571.64,-268.78C550.37,-264.29 526.05,-259.16 504.09,-254.52"/>
+<polygon fill="#000000" stroke="#000000" points="504.69,-251.07 494.19,-252.43 503.25,-257.92 504.69,-251.07"/>
+</g>
+<!-- module~ply_legfpt_3d_module&#45;&gt;iso_c_binding -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge46" class="edge">
+<title>module~ply_legfpt_3d_module&#45;&gt;iso_c_binding</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M611.55,-268.56C567.35,-237.18 444.16,-152.72 331,-102.78 319.79,-97.83 307.37,-93.49 295.52,-89.83"/>
+<polygon fill="#000000" stroke="#000000" points="296.32,-86.42 285.73,-86.93 294.32,-93.13 296.32,-86.42"/>
+</g>
+<!-- module~ply_legfpt_3d_module&#45;&gt;module~fftw_wrap -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge47" class="edge">
+<title>module~ply_legfpt_3d_module&#45;&gt;module~fftw_wrap</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M562.68,-282.43C526.21,-282.94 480.07,-282.89 439,-280.78"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M437,-280.78C383.96,-278.06 324.28,-263.87 285.63,-253.16"/>
+<polygon fill="#000000" stroke="#000000" points="286.37,-249.73 275.79,-250.38 284.46,-256.47 286.37,-249.73"/>
+</g>
+<!-- module~ply_legfpt_module&#45;&gt;env_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge49" class="edge">
+<title>module~ply_legfpt_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M423.58,-228.64C409.29,-215.6 386.15,-194.13 367,-174.78 350.41,-158.01 352.61,-145.24 331,-135.78 259.75,-104.59 215.17,-85.3 156,-135.78 66.91,-211.77 60.99,-609.88 60.9,-708.61"/>
+<polygon fill="#000000" stroke="#000000" points="57.4,-708.66 60.92,-718.65 64.4,-708.65 57.4,-708.66"/>
+</g>
+<!-- module~ply_legfpt_module&#45;&gt;iso_c_binding -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge50" class="edge">
+<title>module~ply_legfpt_module&#45;&gt;iso_c_binding</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M420.63,-228.76C405.29,-216.87 382.47,-197.49 367,-176.78 345.12,-147.48 358.86,-126.48 331,-102.78 321.01,-94.28 308.32,-88.56 295.75,-84.71"/>
+<polygon fill="#000000" stroke="#000000" points="296.32,-81.24 285.75,-82 294.49,-87.99 296.32,-81.24"/>
+</g>
+<!-- module~ply_legfpt_module&#45;&gt;module~fftw_wrap -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge51" class="edge">
+<title>module~ply_legfpt_module&#45;&gt;module~fftw_wrap</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M381.84,-240.78C351.3,-240.78 313.96,-240.78 285.93,-240.78"/>
+<polygon fill="#000000" stroke="#000000" points="285.68,-237.28 275.68,-240.78 285.68,-244.28 285.68,-237.28"/>
+</g>
+<!-- module~ply_fpt_header_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node25" class="node">
+<title>module~ply_fpt_header_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node25"><a xlink:href="../module/ply_fpt_header_module.html" xlink:title="ply_fpt_header_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="312,-454.78 175,-454.78 175,-430.78 312,-430.78 312,-454.78"/>
+<text text-anchor="middle" x="243.5" y="-440.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_header_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_legfpt_module&#45;&gt;module~ply_fpt_header_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge52" class="edge">
+<title>module~ply_legfpt_module&#45;&gt;module~ply_fpt_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M385.77,-252.9C378.71,-256.41 372.14,-260.94 367,-266.78 320.28,-319.87 380.76,-371.52 331,-421.78 328.09,-424.72 324.84,-427.28 321.35,-429.5"/>
+<polygon fill="#000000" stroke="#000000" points="319.43,-426.55 312.26,-434.35 322.73,-432.73 319.43,-426.55"/>
+</g>
+<!-- module~ply_polybaseexc_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node30" class="node">
+<title>module~ply_polybaseexc_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node30"><a xlink:href="../module/ply_polybaseexc_module.html" xlink:title="ply_polyBaseExc_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="317,-210.78 170,-210.78 170,-186.78 317,-186.78 317,-210.78"/>
+<text text-anchor="middle" x="243.5" y="-196.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_polyBaseExc_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_legfpt_module&#45;&gt;module~ply_polybaseexc_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge53" class="edge">
+<title>module~ply_legfpt_module&#45;&gt;module~ply_polybaseexc_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M381.84,-228.74C359.28,-223.82 333.03,-218.1 309.54,-212.97"/>
+<polygon fill="#000000" stroke="#000000" points="310.19,-209.53 299.67,-210.82 308.69,-216.37 310.19,-209.53"/>
+</g>
+<!-- module~ply_legfpt_module&#45;&gt;tem_compileconf_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge54" class="edge">
+<title>module~ply_legfpt_module&#45;&gt;tem_compileconf_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M397.91,-252.91C387.58,-256.75 376.63,-261.42 367,-266.78 349.29,-276.65 349.01,-285.48 331,-294.78 323.1,-298.86 314.46,-302.4 305.8,-305.45"/>
+<polygon fill="#000000" stroke="#000000" points="304.43,-302.22 296.04,-308.69 306.63,-308.86 304.43,-302.22"/>
+</g>
+<!-- module~ply_nodes_header_module&#45;&gt;env_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge55" class="edge">
+<title>module~ply_nodes_header_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M167.08,-168.82C163.02,-171.32 159.27,-174.28 156,-177.78 82.19,-256.79 64.96,-614.56 61.68,-708.26"/>
+<polygon fill="#000000" stroke="#000000" points="58.18,-708.23 61.34,-718.34 65.17,-708.46 58.18,-708.23"/>
+</g>
+<!-- module~ply_nodes_module&#45;&gt;env_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge57" class="edge">
+<title>module~ply_nodes_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M405.51,-309.76C358.17,-292.57 271.33,-264.72 244.5,-280.78"/>
+</g>
+<!-- module~ply_nodes_module&#45;&gt;aotus_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge56" class="edge">
+<title>module~ply_nodes_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M417.75,-333.92C401.33,-345.4 378.59,-364.21 367,-386.78 309.07,-499.57 415.51,-575.26 331,-669.78 322.38,-679.42 310.17,-685 297.62,-688.14"/>
+<polygon fill="#000000" stroke="#000000" points="296.65,-684.77 287.54,-690.18 298.04,-691.63 296.65,-684.77"/>
+</g>
+<!-- module~ply_nodes_module&#45;&gt;module~ply_nodes_header_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge59" class="edge">
+<title>module~ply_nodes_module&#45;&gt;module~ply_nodes_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M388.25,-309.63C380.36,-305.91 372.86,-301.07 367,-294.78 329.89,-254.99 370.61,-215.07 331,-177.78 329.72,-176.58 328.39,-175.44 327.01,-174.37"/>
+<polygon fill="#000000" stroke="#000000" points="328.89,-171.42 318.61,-168.87 325.05,-177.27 328.89,-171.42"/>
+</g>
+<!-- module~ply_nodes_module&#45;&gt;tem_aux_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge61" class="edge">
+<title>module~ply_nodes_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M418.6,-333.98C402.51,-345.64 379.78,-364.67 367,-386.78 331.19,-448.77 381.3,-492.84 331,-543.78 324,-550.87 315.03,-555.73 305.54,-559.02"/>
+<polygon fill="#000000" stroke="#000000" points="304.55,-555.66 295.92,-561.81 306.5,-562.38 304.55,-555.66"/>
+</g>
+<!-- module~ply_nodes_module&#45;&gt;module~fftw_wrap -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge58" class="edge">
+<title>module~ply_nodes_module&#45;&gt;module~fftw_wrap</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M399.74,-309.72C388.89,-305.6 377.2,-300.55 367,-294.78 349.36,-284.8 349.01,-276.08 331,-266.78 316.85,-259.48 300.31,-253.87 285.51,-249.78"/>
+<polygon fill="#000000" stroke="#000000" points="286.15,-246.32 275.59,-247.17 284.37,-253.1 286.15,-246.32"/>
+</g>
+<!-- module~ply_nodes_module&#45;&gt;module~ply_nodeset_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge60" class="edge">
+<title>module~ply_nodes_module&#45;&gt;module~ply_nodeset_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M407.34,-333.95C374.04,-347.62 319.87,-369.85 283.25,-384.88"/>
+<polygon fill="#000000" stroke="#000000" points="281.8,-381.69 273.87,-388.73 284.45,-388.17 281.8,-381.69"/>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;env_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge64" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M421.94,-660.87C402.33,-675.84 366.35,-700.72 331,-711.78 256.22,-735.18 164.3,-736.16 109.3,-733.99"/>
+<polygon fill="#000000" stroke="#000000" points="109.28,-730.49 99.14,-733.54 108.97,-737.48 109.28,-730.49"/>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;aotus_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge63" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M381.84,-660.82C355.45,-666.57 324,-673.44 297.85,-679.14"/>
+<polygon fill="#000000" stroke="#000000" points="296.77,-675.79 287.75,-681.34 298.26,-682.63 296.77,-675.79"/>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;tem_aux_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge69" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M420.2,-636.63C399.97,-622.52 364.5,-599.44 331,-585.78 322.89,-582.47 314.13,-579.6 305.41,-577.13"/>
+<polygon fill="#000000" stroke="#000000" points="306.18,-573.72 295.61,-574.52 304.37,-580.48 306.18,-573.72"/>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;tem_logging_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge70" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M427.31,-661.01C412.95,-679.49 385.7,-715.99 367,-749.78 347.33,-785.32 356.81,-802.42 331,-833.78 316.74,-851.11 296.11,-865.45 278.58,-875.65"/>
+<polygon fill="#000000" stroke="#000000" points="276.75,-872.66 269.74,-880.6 280.17,-878.77 276.75,-872.66"/>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;tem_tools_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge71" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;tem_tools_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M369.4,-648.78C349.66,-648.78 328.15,-648.78 308.63,-648.78"/>
+<polygon fill="#000000" stroke="#000000" points="308.62,-645.28 298.62,-648.78 308.62,-652.28 308.62,-645.28"/>
+</g>
+<!-- aot_out_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node21" class="node">
+<title>aot_out_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node21"><a xlink:href="https://apes-suite.github.io/aotus/module/aot_out_module.html" xlink:title="aot_out_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="292.5,-782.78 194.5,-782.78 194.5,-758.78 292.5,-758.78 292.5,-782.78"/>
+<text text-anchor="middle" x="243.5" y="-768.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_out_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;aot_out_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge62" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;aot_out_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M425.05,-660.86C402.03,-683.91 351.97,-732.94 331,-744.78 322.19,-749.75 312.33,-753.87 302.51,-757.25"/>
+<polygon fill="#000000" stroke="#000000" points="301.19,-753.99 292.74,-760.38 303.33,-760.66 301.19,-753.99"/>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;module~fftw_wrap -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge65" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;module~fftw_wrap</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M426.08,-636.72C410.14,-618.37 380.9,-581.64 367,-544.78 323.04,-428.21 411.62,-361.76 331,-266.78 319.82,-253.61 302.25,-246.96 285.86,-243.66"/>
+<polygon fill="#000000" stroke="#000000" points="286.31,-240.19 275.87,-242.01 285.16,-247.09 286.31,-240.19"/>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;module~ply_fpt_header_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge66" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;module~ply_fpt_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M429.11,-636.74C408.71,-605.8 354.21,-524.39 331,-501.78 314.37,-485.58 292.8,-470.86 275.36,-460.17"/>
+<polygon fill="#000000" stroke="#000000" points="277.04,-457.1 266.66,-454.96 273.45,-463.1 277.04,-457.1"/>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;module~ply_fxt_header_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge67" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;module~ply_fxt_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M381.84,-636.74C359.28,-631.82 333.03,-626.1 309.54,-620.97"/>
+<polygon fill="#000000" stroke="#000000" points="310.19,-617.53 299.67,-618.82 308.69,-624.37 310.19,-617.53"/>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;module~ply_l2p_header_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge68" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;module~ply_l2p_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M421.53,-661.01C406.22,-673.71 382.83,-694.78 367,-716.78 345.41,-746.79 359.73,-768.51 331,-791.78 328.28,-793.99 325.35,-795.97 322.29,-797.74"/>
+<polygon fill="#000000" stroke="#000000" points="320.71,-794.62 313.34,-802.23 323.85,-800.88 320.71,-794.62"/>
+</g>
+<!-- module~ply_space_integration_module&#45;&gt;env_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge72" class="edge">
+<title>module~ply_space_integration_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M176.78,-1040.64C169.11,-1037.13 161.93,-1032.6 156,-1026.78 77.61,-949.83 63.82,-808.15 61.46,-753.29"/>
+<polygon fill="#000000" stroke="#000000" points="64.94,-752.84 61.11,-742.96 57.95,-753.07 64.94,-752.84"/>
+</g>
+<!-- tem_param_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_node32" class="node">
+<title>tem_param_module</title>
+<g id="a_program~~approximate_1d_jump~~UsesGraph_node32"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_param_module.html" xlink:title="tem_param_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="120,-1064.78 0,-1064.78 0,-1040.78 120,-1040.78 120,-1064.78"/>
+<text text-anchor="middle" x="60" y="-1050.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_param_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_space_integration_module&#45;&gt;tem_param_module -->
+<g id="program~~approximate_1d_jump~~UsesGraph_edge73" class="edge">
+<title>module~ply_space_integration_module&#45;&gt;tem_param_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M155.74,-1052.78C147.18,-1052.78 138.58,-1052.78 130.24,-1052.78"/>
+<polygon fill="#000000" stroke="#000000" points="130.21,-1049.28 120.21,-1052.78 130.21,-1056.28 130.21,-1049.28"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprogramapproximate_1d_jumpUsesGraph = svgPanZoom('#programapproximate_1d_jumpUsesGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+    <p>This is a small utility to approximate a discontinuity at a given
+location in the interval [-1,1].</p>
+<p>The jump is located at a given point jota, and the target function is
+0 for x &lt;= jota and 1 for x &gt; jota.
+The interval is subdivided by level bisections towards jota.
+Intervals for which the lower bound is smaller than jota are assumed to
+be 0, all others are 1.
+This interval values are used to determine the values at Chebyshev nodes
+and a FPT is done to find the Legendre modes.</p>
+<p>Required settings are therefore:
+- jota (location of the jump)
+- level (number of bisections towards jota)
+- target polynomial degree
+- oversampling factor</p>
+<p>These have to be provided as command line parameters in this order.</p>
+<p>Resulting output is:
+- Interval subdivision
+- Approximated jump location
+- Chebyshev nodes
+- Legendre modes
+- L2-Error
+sqnorm = 2.0_rk / (2.0_rk<em>iCoarse - 1.0_rk)
+jacobidetfinetocoarse = 0.5
+const = anz_anzShift * jacobidetfinetocoarse / sqnorm
+sqnorm = 2.0_rk / (2.0_rk</em>iCoarse - 1.0_rk)
+jacobidetfinetocoarse = 0.5
+const = anz_anzShift * jacobidetfinetocoarse / sqnorm</p>
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: program~~approximate_1d_jump~~CallsGraph Pages: 1 -->
+<svg id="programapproximate_1d_jumpCallsGraph" width="641pt" height="739pt"
+ viewBox="0.00 0.00 641.00 738.93" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="program~~approximate_1d_jump~~CallsGraph" class="graph" transform="scale(0.89 0.89) rotate(0) translate(4 826)">
+<title>program~~approximate_1d_jump~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-826 716,-826 716,4 -4,4"/>
+<!-- program~approximate_1d_jump -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node1" class="node">
+<title>program~approximate_1d_jump</title>
+<polygon fill="none" stroke="black" points="132,-464 0,-464 0,-440 132,-440 132,-464"/>
+<text text-anchor="middle" x="66" y="-449.6" font-family="Helvetica,sans-Serif" font-size="10.50">approximate_1D_jump</text>
+</g>
+<!-- append -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node2" class="node">
+<title>append</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node2"><a xlink:href="https://apes-suite.github.io/treelm/interface/append~10.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="266,-608 212,-608 212,-584 266,-584 266,-608"/>
+<text text-anchor="middle" x="239" y="-593.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- program~approximate_1d_jump&#45;&gt;append -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge1" class="edge">
+<title>program~approximate_1d_jump&#45;&gt;append</title>
+<path fill="none" stroke="#000000" d="M73.61,-464.16C87.66,-488.83 122.92,-544.99 168,-575 178.13,-581.74 190.49,-586.38 202,-589.55"/>
+<polygon fill="#000000" stroke="#000000" points="201.26,-592.97 211.81,-591.96 202.93,-586.17 201.26,-592.97"/>
+</g>
+<!-- init -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node3" class="node">
+<title>init</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node3"><a xlink:href="https://apes-suite.github.io/treelm/interface/init~10.html" xlink:title="init">
+<polygon fill="#a7506f" stroke="#a7506f" points="266,-566 212,-566 212,-542 266,-542 266,-566"/>
+<text text-anchor="middle" x="239" y="-551.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">init</text>
+</a>
+</g>
+</g>
+<!-- program~approximate_1d_jump&#45;&gt;init -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge2" class="edge">
+<title>program~approximate_1d_jump&#45;&gt;init</title>
+<path fill="none" stroke="#000000" d="M78.95,-464.2C96.8,-481.78 132.18,-514.18 168,-533 178.49,-538.51 190.65,-542.8 201.85,-546.02"/>
+<polygon fill="#000000" stroke="#000000" points="201.24,-549.48 211.8,-548.68 203.05,-542.71 201.24,-549.48"/>
+</g>
+<!-- interface~ply_poly_project_n2m -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node4" class="node">
+<title>interface~ply_poly_project_n2m</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node4"><a xlink:href="../interface/ply_poly_project_n2m.html" xlink:title="ply_poly_project_n2m">
+<polygon fill="#a7506f" stroke="#a7506f" points="302.5,-524 175.5,-524 175.5,-500 302.5,-500 302.5,-524"/>
+<text text-anchor="middle" x="239" y="-509.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_poly_project_n2m</text>
+</a>
+</g>
+</g>
+<!-- program~approximate_1d_jump&#45;&gt;interface~ply_poly_project_n2m -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge3" class="edge">
+<title>program~approximate_1d_jump&#45;&gt;interface~ply_poly_project_n2m</title>
+<path fill="none" stroke="#000000" d="M101.6,-464.14C128.23,-473.48 165.21,-486.46 193.95,-496.54"/>
+<polygon fill="#000000" stroke="#000000" points="193.14,-499.97 203.74,-499.98 195.46,-493.37 193.14,-499.97"/>
+</g>
+<!-- proc~ply_init_modg_multilevelcoeffs -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node5" class="node">
+<title>proc~ply_init_modg_multilevelcoeffs</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node5"><a xlink:href="../proc/ply_init_modg_multilevelcoeffs.html" xlink:title="ply_init_modg_multilevelCoeffs">
+<polygon fill="#d9534f" stroke="#d9534f" points="524,-444 346,-444 346,-420 524,-420 524,-444"/>
+<text text-anchor="middle" x="435" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_init_modg_multilevelCoeffs</text>
+</a>
+</g>
+</g>
+<!-- program~approximate_1d_jump&#45;&gt;proc~ply_init_modg_multilevelcoeffs -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge4" class="edge">
+<title>program~approximate_1d_jump&#45;&gt;proc~ply_init_modg_multilevelcoeffs</title>
+<path fill="none" stroke="#000000" d="M132.19,-448.45C188.69,-445.37 271.29,-440.87 335.8,-437.35"/>
+<polygon fill="#000000" stroke="#000000" points="336.19,-440.84 345.99,-436.8 335.81,-433.85 336.19,-440.84"/>
+</g>
+<!-- proc~ply_integrateleg -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node6" class="node">
+<title>proc~ply_integrateleg</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node6"><a xlink:href="../proc/ply_integrateleg.html" xlink:title="ply_integrateLeg">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="290,-234 188,-234 188,-210 290,-210 290,-234"/>
+<text text-anchor="middle" x="239" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_integrateLeg</text>
+</a>
+</g>
+</g>
+<!-- program~approximate_1d_jump&#45;&gt;proc~ply_integrateleg -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge5" class="edge">
+<title>program~approximate_1d_jump&#45;&gt;proc~ply_integrateleg</title>
+<path fill="none" stroke="#000000" d="M69.32,-439.76C76.77,-403.87 103.45,-298.04 168,-243 171.26,-240.22 174.87,-237.81 178.7,-235.72"/>
+<polygon fill="#000000" stroke="#000000" points="180.35,-238.81 187.92,-231.39 177.38,-232.47 180.35,-238.81"/>
+</g>
+<!-- proc~ply_legendre_1d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node7" class="node">
+<title>proc~ply_legendre_1d</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node7"><a xlink:href="../proc/ply_legendre_1d.html" xlink:title="ply_legendre_1D">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="686.5,-486 585.5,-486 585.5,-462 686.5,-462 686.5,-486"/>
+<text text-anchor="middle" x="636" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_legendre_1D</text>
+</a>
+</g>
+</g>
+<!-- program~approximate_1d_jump&#45;&gt;proc~ply_legendre_1d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge6" class="edge">
+<title>program~approximate_1d_jump&#45;&gt;proc~ply_legendre_1d</title>
+<path fill="none" stroke="#000000" d="M132.2,-454.59C144.11,-455.06 156.43,-455.55 168,-456 314.23,-461.71 486.21,-468.31 575.08,-471.71"/>
+<polygon fill="#000000" stroke="#000000" points="575.11,-475.21 585.24,-472.1 575.38,-468.22 575.11,-475.21"/>
+</g>
+<!-- proc~ply_poly_project_fillbody -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node8" class="node">
+<title>proc~ply_poly_project_fillbody</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node8"><a xlink:href="../proc/ply_poly_project_fillbody.html" xlink:title="ply_poly_project_fillbody">
+<polygon fill="#d9534f" stroke="#d9534f" points="310,-276 168,-276 168,-252 310,-252 310,-276"/>
+<text text-anchor="middle" x="239" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_poly_project_fillbody</text>
+</a>
+</g>
+</g>
+<!-- program~approximate_1d_jump&#45;&gt;proc~ply_poly_project_fillbody -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge7" class="edge">
+<title>program~approximate_1d_jump&#45;&gt;proc~ply_poly_project_fillbody</title>
+<path fill="none" stroke="#000000" d="M77.96,-439.95C106.72,-408.33 184.61,-322.69 220.03,-283.75"/>
+<polygon fill="#000000" stroke="#000000" points="222.77,-285.94 226.91,-276.19 217.6,-281.23 222.77,-285.94"/>
+</g>
+<!-- proc~ply_scalprodleg -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node9" class="node">
+<title>proc~ply_scalprodleg</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node9"><a xlink:href="../proc/ply_scalprodleg.html" xlink:title="ply_scalProdLeg">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="684.5,-402 587.5,-402 587.5,-378 684.5,-378 684.5,-402"/>
+<text text-anchor="middle" x="636" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_scalProdLeg</text>
+</a>
+</g>
+</g>
+<!-- program~approximate_1d_jump&#45;&gt;proc~ply_scalprodleg -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge8" class="edge">
+<title>program~approximate_1d_jump&#45;&gt;proc~ply_scalprodleg</title>
+<path fill="none" stroke="#000000" d="M132.15,-440.71C144.06,-438.74 156.4,-436.76 168,-435 246.93,-423.04 266.6,-419.23 346,-411 426.01,-402.71 518.82,-396.58 577.22,-393.15"/>
+<polygon fill="#000000" stroke="#000000" points="577.58,-396.64 587.36,-392.56 577.18,-389.65 577.58,-396.64"/>
+</g>
+<!-- proc~ply_poly_project_n2m_multivar -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node15" class="node">
+<title>proc~ply_poly_project_n2m_multivar</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node15"><a xlink:href="../proc/ply_poly_project_n2m_multivar.html" xlink:title="ply_poly_project_n2m_multiVar">
+<polygon fill="#d9534f" stroke="#d9534f" points="523.5,-654 346.5,-654 346.5,-630 523.5,-630 523.5,-654"/>
+<text text-anchor="middle" x="435" y="-639.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_poly_project_n2m_multiVar</text>
+</a>
+</g>
+</g>
+<!-- interface~ply_poly_project_n2m&#45;&gt;proc~ply_poly_project_n2m_multivar -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge9" class="edge">
+<title>interface~ply_poly_project_n2m&#45;&gt;proc~ply_poly_project_n2m_multivar</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M290.04,-524.12C296.94,-526.61 303.79,-529.55 310,-533 353.24,-556.98 394.51,-598.13 416.83,-622.43"/>
+<polygon fill="#000000" stroke="#000000" points="414.35,-624.9 423.65,-629.97 419.54,-620.21 414.35,-624.9"/>
+</g>
+<!-- proc~ply_init_modg_multilevelcoeffs&#45;&gt;proc~ply_legendre_1d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge11" class="edge">
+<title>proc~ply_init_modg_multilevelcoeffs&#45;&gt;proc~ply_legendre_1d</title>
+<path fill="none" stroke="#000000" d="M493.03,-444.04C518.78,-449.47 549.21,-455.89 575.27,-461.39"/>
+<polygon fill="#000000" stroke="#000000" points="574.9,-464.89 585.4,-463.53 576.34,-458.04 574.9,-464.89"/>
+</g>
+<!-- proc~ply_gausslegpoints -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node10" class="node">
+<title>proc~ply_gausslegpoints</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node10"><a xlink:href="../proc/ply_gausslegpoints.html" xlink:title="ply_gaussLegPoints">
+<polygon fill="#d9534f" stroke="#d9534f" points="693.5,-444 578.5,-444 578.5,-420 693.5,-420 693.5,-444"/>
+<text text-anchor="middle" x="636" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_gaussLegPoints</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_init_modg_multilevelcoeffs&#45;&gt;proc~ply_gausslegpoints -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge10" class="edge">
+<title>proc~ply_init_modg_multilevelcoeffs&#45;&gt;proc~ply_gausslegpoints</title>
+<path fill="none" stroke="#000000" d="M524.15,-432C538.96,-432 554.11,-432 568.26,-432"/>
+<polygon fill="#000000" stroke="#000000" points="568.37,-435.5 578.37,-432 568.37,-428.5 568.37,-435.5"/>
+</g>
+<!-- proc~ply_init_fxt -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node11" class="node">
+<title>proc~ply_init_fxt</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node11"><a xlink:href="../proc/ply_init_fxt.html" xlink:title="ply_init_fxt">
+<polygon fill="#d9534f" stroke="#d9534f" points="469.5,-45 400.5,-45 400.5,-21 469.5,-21 469.5,-45"/>
+<text text-anchor="middle" x="435" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_init_fxt</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_poly_project_fillbody&#45;&gt;proc~ply_init_fxt -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge12" class="edge">
+<title>proc~ply_poly_project_fillbody&#45;&gt;proc~ply_init_fxt</title>
+<path fill="none" stroke="#000000" d="M298.72,-251.96C302.89,-249.5 306.73,-246.54 310,-243 361.78,-186.88 298.68,-134.93 346,-75 357.22,-60.78 374.44,-51.11 390.68,-44.67"/>
+<polygon fill="#000000" stroke="#000000" points="391.88,-47.96 400.07,-41.24 389.48,-41.39 391.88,-47.96"/>
+</g>
+<!-- proc~ply_init_l2p -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node12" class="node">
+<title>proc~ply_init_l2p</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node12"><a xlink:href="../proc/ply_init_l2p.html" xlink:title="ply_init_l2p">
+<polygon fill="#d9534f" stroke="#d9534f" points="471,-360 399,-360 399,-336 471,-336 471,-360"/>
+<text text-anchor="middle" x="435" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_init_l2p</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_poly_project_fillbody&#45;&gt;proc~ply_init_l2p -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge13" class="edge">
+<title>proc~ply_poly_project_fillbody&#45;&gt;proc~ply_init_l2p</title>
+<path fill="none" stroke="#000000" d="M267.8,-276.04C301.65,-290.69 358.97,-315.51 396.65,-331.83"/>
+<polygon fill="#000000" stroke="#000000" points="395.69,-335.23 406.26,-335.99 398.47,-328.8 395.69,-335.23"/>
+</g>
+<!-- proc~ply_init_legfpt -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node13" class="node">
+<title>proc~ply_init_legfpt</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node13"><a xlink:href="../proc/ply_init_legfpt.html" xlink:title="ply_init_legFpt">
+<polygon fill="#d9534f" stroke="#d9534f" points="479,-213 391,-213 391,-189 479,-189 479,-213"/>
+<text text-anchor="middle" x="435" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_init_legFpt</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_poly_project_fillbody&#45;&gt;proc~ply_init_legfpt -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge14" class="edge">
+<title>proc~ply_poly_project_fillbody&#45;&gt;proc~ply_init_legfpt</title>
+<path fill="none" stroke="#000000" d="M281.16,-251.91C290.65,-249.05 300.69,-245.97 310,-243 336.62,-234.5 366.27,-224.48 389.9,-216.36"/>
+<polygon fill="#000000" stroke="#000000" points="391.32,-219.57 399.63,-213 389.04,-212.95 391.32,-219.57"/>
+</g>
+<!-- proc~ply_nodes_create -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node14" class="node">
+<title>proc~ply_nodes_create</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node14"><a xlink:href="../proc/ply_nodes_create.html" xlink:title="ply_nodes_create">
+<polygon fill="#d9534f" stroke="#d9534f" points="487.5,-108 382.5,-108 382.5,-84 487.5,-84 487.5,-108"/>
+<text text-anchor="middle" x="435" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_nodes_create</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_poly_project_fillbody&#45;&gt;proc~ply_nodes_create -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge15" class="edge">
+<title>proc~ply_poly_project_fillbody&#45;&gt;proc~ply_nodes_create</title>
+<path fill="none" stroke="#000000" d="M295.16,-251.96C300.47,-249.5 305.53,-246.55 310,-243 335.25,-222.93 326.13,-205.4 346,-180 365.39,-155.22 392.01,-130.84 410.88,-114.78"/>
+<polygon fill="#000000" stroke="#000000" points="413.28,-117.33 418.7,-108.22 408.79,-111.97 413.28,-117.33"/>
+</g>
+<!-- tem_abort -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node16" class="node">
+<title>tem_abort</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node16"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="669.5,-276 602.5,-276 602.5,-252 669.5,-252 669.5,-276"/>
+<text text-anchor="middle" x="636" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_poly_project_fillbody&#45;&gt;tem_abort -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge16" class="edge">
+<title>proc~ply_poly_project_fillbody&#45;&gt;tem_abort</title>
+<path fill="none" stroke="#000000" d="M310.16,-264C391.81,-264 524.08,-264 591.89,-264"/>
+<polygon fill="#000000" stroke="#000000" points="592.21,-267.5 602.21,-264 592.21,-260.5 592.21,-267.5"/>
+</g>
+<!-- proc~fxtf_flptld_init -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node21" class="node">
+<title>proc~fxtf_flptld_init</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node21"><a xlink:href="../proc/fxtf_flptld_init.html" xlink:title="fxtf_flptld_init">
+<polygon fill="#d9534f" stroke="#d9534f" points="678,-24 594,-24 594,0 678,0 678,-24"/>
+<text text-anchor="middle" x="636" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">fxtf_flptld_init</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_init_fxt&#45;&gt;proc~fxtf_flptld_init -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge17" class="edge">
+<title>proc~ply_init_fxt&#45;&gt;proc~fxtf_flptld_init</title>
+<path fill="none" stroke="#000000" d="M469.76,-29.44C500.94,-26.15 547.73,-21.21 583.56,-17.43"/>
+<polygon fill="#000000" stroke="#000000" points="584.25,-20.87 593.83,-16.34 583.52,-13.91 584.25,-20.87"/>
+</g>
+<!-- proc~ply_init_l2p&#45;&gt;proc~ply_legendre_1d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge21" class="edge">
+<title>proc~ply_init_l2p&#45;&gt;proc~ply_legendre_1d</title>
+<path fill="none" stroke="#000000" d="M455.54,-360.04C474.08,-371.89 502.25,-391.07 524,-411 542.13,-427.61 539.27,-439.78 560,-453 564.89,-456.12 570.25,-458.78 575.79,-461.06"/>
+<polygon fill="#000000" stroke="#000000" points="574.62,-464.36 585.21,-464.53 577.04,-457.79 574.62,-464.36"/>
+</g>
+<!-- proc~ply_init_l2p&#45;&gt;proc~ply_scalprodleg -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge22" class="edge">
+<title>proc~ply_init_l2p&#45;&gt;proc~ply_scalprodleg</title>
+<path fill="none" stroke="#000000" d="M471.12,-355.41C500.47,-361.61 542.92,-370.56 577.26,-377.81"/>
+<polygon fill="#000000" stroke="#000000" points="576.66,-381.26 587.17,-379.9 578.11,-374.41 576.66,-381.26"/>
+</g>
+<!-- proc~ply_init_l2p&#45;&gt;proc~ply_gausslegpoints -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge18" class="edge">
+<title>proc~ply_init_l2p&#45;&gt;proc~ply_gausslegpoints</title>
+<path fill="none" stroke="#000000" d="M456.92,-360.24C481.11,-374.01 522.43,-396.36 560,-411 565.41,-413.11 571.11,-415.1 576.86,-416.95"/>
+<polygon fill="#000000" stroke="#000000" points="575.94,-420.33 586.53,-419.94 578.01,-413.64 575.94,-420.33"/>
+</g>
+<!-- proc~ply_init_l2p&#45;&gt;tem_abort -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge23" class="edge">
+<title>proc~ply_init_l2p&#45;&gt;tem_abort</title>
+<path fill="none" stroke="#000000" d="M456.92,-335.76C481.11,-321.99 522.43,-299.64 560,-285 570.42,-280.94 581.93,-277.31 592.74,-274.26"/>
+<polygon fill="#000000" stroke="#000000" points="593.7,-277.63 602.43,-271.62 591.86,-270.88 593.7,-277.63"/>
+</g>
+<!-- proc~ply_lagrange_1d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node29" class="node">
+<title>proc~ply_lagrange_1d</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node29"><a xlink:href="../proc/ply_lagrange_1d.html" xlink:title="ply_lagrange_1D">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="687,-318 585,-318 585,-294 687,-294 687,-318"/>
+<text text-anchor="middle" x="636" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_lagrange_1D</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_init_l2p&#45;&gt;proc~ply_lagrange_1d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge19" class="edge">
+<title>proc~ply_init_l2p&#45;&gt;proc~ply_lagrange_1d</title>
+<path fill="none" stroke="#000000" d="M471.12,-340.59C499.86,-334.52 541.16,-325.81 575.11,-318.64"/>
+<polygon fill="#000000" stroke="#000000" points="575.86,-322.06 584.93,-316.57 574.42,-315.21 575.86,-322.06"/>
+</g>
+<!-- proc~ply_lagrange_define -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node30" class="node">
+<title>proc~ply_lagrange_define</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node30"><a xlink:href="../proc/ply_lagrange_define.html" xlink:title="ply_lagrange_define">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="696.5,-360 575.5,-360 575.5,-336 696.5,-336 696.5,-360"/>
+<text text-anchor="middle" x="636" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_lagrange_define</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_init_l2p&#45;&gt;proc~ply_lagrange_define -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge20" class="edge">
+<title>proc~ply_init_l2p&#45;&gt;proc~ply_lagrange_define</title>
+<path fill="none" stroke="#000000" d="M471.12,-348C497.1,-348 533.33,-348 565.13,-348"/>
+<polygon fill="#000000" stroke="#000000" points="565.27,-351.5 575.27,-348 565.27,-344.5 565.27,-351.5"/>
+</g>
+<!-- proc~fftw_plan_many_r2r -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node19" class="node">
+<title>proc~fftw_plan_many_r2r</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node19"><a xlink:href="../proc/fftw_plan_many_r2r.html" xlink:title="fftw_plan_many_r2r">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="694.5,-234 577.5,-234 577.5,-210 694.5,-210 694.5,-234"/>
+<text text-anchor="middle" x="636" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">fftw_plan_many_r2r</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_init_legfpt&#45;&gt;proc~fftw_plan_many_r2r -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge24" class="edge">
+<title>proc~ply_init_legfpt&#45;&gt;proc~fftw_plan_many_r2r</title>
+<path fill="none" stroke="#000000" d="M479.18,-205.56C504.85,-208.27 537.97,-211.76 567.07,-214.83"/>
+<polygon fill="#000000" stroke="#000000" points="566.86,-218.33 577.18,-215.9 567.6,-211.37 566.86,-218.33"/>
+</g>
+<!-- proc~fftw_plan_r2r_1d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node20" class="node">
+<title>proc~fftw_plan_r2r_1d</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node20"><a xlink:href="../proc/fftw_plan_r2r_1d.html" xlink:title="fftw_plan_r2r_1d">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="686,-192 586,-192 586,-168 686,-168 686,-192"/>
+<text text-anchor="middle" x="636" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">fftw_plan_r2r_1d</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_init_legfpt&#45;&gt;proc~fftw_plan_r2r_1d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge25" class="edge">
+<title>proc~ply_init_legfpt&#45;&gt;proc~fftw_plan_r2r_1d</title>
+<path fill="none" stroke="#000000" d="M479.18,-196.44C507.42,-193.46 544.69,-189.53 575.7,-186.26"/>
+<polygon fill="#000000" stroke="#000000" points="576.38,-189.71 585.95,-185.18 575.64,-182.74 576.38,-189.71"/>
+</g>
+<!-- proc~ply_fpt_init -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node22" class="node">
+<title>proc~ply_fpt_init</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node22"><a xlink:href="../proc/ply_fpt_init.html" xlink:title="ply_fpt_init">
+<polygon fill="#d9534f" stroke="#d9534f" points="671,-150 601,-150 601,-126 671,-126 671,-150"/>
+<text text-anchor="middle" x="636" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_init</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_init_legfpt&#45;&gt;proc~ply_fpt_init -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge26" class="edge">
+<title>proc~ply_init_legfpt&#45;&gt;proc~ply_fpt_init</title>
+<path fill="none" stroke="#000000" d="M470.05,-188.92C494.87,-180.24 529.38,-168.46 560,-159 569.98,-155.92 580.77,-152.78 590.96,-149.91"/>
+<polygon fill="#000000" stroke="#000000" points="592.22,-153.19 600.91,-147.13 590.34,-146.45 592.22,-153.19"/>
+</g>
+<!-- proc~ply_nodes_surface_coords -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node31" class="node">
+<title>proc~ply_nodes_surface_coords</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node31"><a xlink:href="../proc/ply_nodes_surface_coords.html" xlink:title="ply_nodes_surface_coords">
+<polygon fill="#d9534f" stroke="#d9534f" points="712,-108 560,-108 560,-84 712,-84 712,-108"/>
+<text text-anchor="middle" x="636" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_nodes_surface_coords</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_nodes_create&#45;&gt;proc~ply_nodes_surface_coords -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge27" class="edge">
+<title>proc~ply_nodes_create&#45;&gt;proc~ply_nodes_surface_coords</title>
+<path fill="none" stroke="#000000" d="M487.51,-96C506.41,-96 528.35,-96 549.44,-96"/>
+<polygon fill="#000000" stroke="#000000" points="549.71,-99.5 559.71,-96 549.71,-92.5 549.71,-99.5"/>
+</g>
+<!-- proc~ply_nodes_volume_coords -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node32" class="node">
+<title>proc~ply_nodes_volume_coords</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node32"><a xlink:href="../proc/ply_nodes_volume_coords.html" xlink:title="ply_nodes_volume_coords">
+<polygon fill="#d9534f" stroke="#d9534f" points="712,-66 560,-66 560,-42 712,-42 712,-66"/>
+<text text-anchor="middle" x="636" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_nodes_volume_coords</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_nodes_create&#45;&gt;proc~ply_nodes_volume_coords -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge28" class="edge">
+<title>proc~ply_nodes_create&#45;&gt;proc~ply_nodes_volume_coords</title>
+<path fill="none" stroke="#000000" d="M487.51,-85.13C512.12,-79.94 541.88,-73.65 568.2,-68.1"/>
+<polygon fill="#000000" stroke="#000000" points="569.04,-71.5 578.11,-66.01 567.6,-64.65 569.04,-71.5"/>
+</g>
+<!-- interface~ply_pnttoleg_2d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node17" class="node">
+<title>interface~ply_pnttoleg_2d</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node17"><a xlink:href="../interface/ply_pnttoleg_2d.html" xlink:title="ply_pntToLeg_2D">
+<polygon fill="#a7506f" stroke="#a7506f" points="687,-822 585,-822 585,-798 687,-798 687,-822"/>
+<text text-anchor="middle" x="636" y="-807.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_pntToLeg_2D</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_poly_project_n2m_multivar&#45;&gt;interface~ply_pnttoleg_2d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge29" class="edge">
+<title>proc~ply_poly_project_n2m_multivar&#45;&gt;interface~ply_pnttoleg_2d</title>
+<path fill="none" stroke="#000000" d="M442.9,-654.41C459.3,-682.78 503.56,-752.7 560,-789 564.69,-792.02 569.82,-794.61 575.12,-796.83"/>
+<polygon fill="#000000" stroke="#000000" points="574.2,-800.22 584.79,-800.45 576.65,-793.66 574.2,-800.22"/>
+</g>
+<!-- interface~ply_pnttoleg_3d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node18" class="node">
+<title>interface~ply_pnttoleg_3d</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node18"><a xlink:href="../interface/ply_pnttoleg_3d.html" xlink:title="ply_pntToLeg_3D">
+<polygon fill="#a7506f" stroke="#a7506f" points="687,-780 585,-780 585,-756 687,-756 687,-780"/>
+<text text-anchor="middle" x="636" y="-765.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_pntToLeg_3D</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_poly_project_n2m_multivar&#45;&gt;interface~ply_pnttoleg_3d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge30" class="edge">
+<title>proc~ply_poly_project_n2m_multivar&#45;&gt;interface~ply_pnttoleg_3d</title>
+<path fill="none" stroke="#000000" d="M447.04,-654.33C467.28,-676.21 512.65,-721.88 560,-747 564.78,-749.54 569.89,-751.79 575.13,-753.79"/>
+<polygon fill="#000000" stroke="#000000" points="574.02,-757.11 584.62,-757.13 576.34,-750.51 574.02,-757.11"/>
+</g>
+<!-- proc~ply_fxt_n2m_1d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node23" class="node">
+<title>proc~ply_fxt_n2m_1d</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node23"><a xlink:href="../proc/ply_fxt_n2m_1d.html" xlink:title="ply_fxt_n2m_1D">
+<polygon fill="#d9534f" stroke="#d9534f" points="684.5,-738 587.5,-738 587.5,-714 684.5,-714 684.5,-738"/>
+<text text-anchor="middle" x="636" y="-723.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fxt_n2m_1D</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_poly_project_n2m_multivar&#45;&gt;proc~ply_fxt_n2m_1d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge31" class="edge">
+<title>proc~ply_poly_project_n2m_multivar&#45;&gt;proc~ply_fxt_n2m_1d</title>
+<path fill="none" stroke="#000000" d="M456.92,-654.24C481.11,-668.01 522.43,-690.36 560,-705 565.57,-707.17 571.45,-709.22 577.37,-711.12"/>
+<polygon fill="#000000" stroke="#000000" points="576.74,-714.58 587.32,-714.18 578.79,-707.89 576.74,-714.58"/>
+</g>
+<!-- proc~ply_fxt_n2m_2d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node24" class="node">
+<title>proc~ply_fxt_n2m_2d</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node24"><a xlink:href="../proc/ply_fxt_n2m_2d.html" xlink:title="ply_fxt_n2m_2D">
+<polygon fill="#d9534f" stroke="#d9534f" points="684.5,-696 587.5,-696 587.5,-672 684.5,-672 684.5,-696"/>
+<text text-anchor="middle" x="636" y="-681.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fxt_n2m_2D</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_poly_project_n2m_multivar&#45;&gt;proc~ply_fxt_n2m_2d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge32" class="edge">
+<title>proc~ply_poly_project_n2m_multivar&#45;&gt;proc~ply_fxt_n2m_2d</title>
+<path fill="none" stroke="#000000" d="M493.03,-654.04C519.5,-659.62 550.92,-666.26 577.46,-671.86"/>
+<polygon fill="#000000" stroke="#000000" points="576.87,-675.31 587.38,-673.95 578.32,-668.46 576.87,-675.31"/>
+</g>
+<!-- proc~ply_fxt_n2m_3d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node25" class="node">
+<title>proc~ply_fxt_n2m_3d</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node25"><a xlink:href="../proc/ply_fxt_n2m_3d.html" xlink:title="ply_fxt_n2m_3D">
+<polygon fill="#d9534f" stroke="#d9534f" points="684.5,-654 587.5,-654 587.5,-630 684.5,-630 684.5,-654"/>
+<text text-anchor="middle" x="636" y="-639.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fxt_n2m_3D</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_poly_project_n2m_multivar&#45;&gt;proc~ply_fxt_n2m_3d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge33" class="edge">
+<title>proc~ply_poly_project_n2m_multivar&#45;&gt;proc~ply_fxt_n2m_3d</title>
+<path fill="none" stroke="#000000" d="M523.57,-642C541.71,-642 560.38,-642 577.13,-642"/>
+<polygon fill="#000000" stroke="#000000" points="577.29,-645.5 587.29,-642 577.29,-638.5 577.29,-645.5"/>
+</g>
+<!-- proc~ply_l2p_trafo_1d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node26" class="node">
+<title>proc~ply_l2p_trafo_1d</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node26"><a xlink:href="../proc/ply_l2p_trafo_1d.html" xlink:title="ply_l2p_trafo_1D">
+<polygon fill="#d9534f" stroke="#d9534f" points="686.5,-612 585.5,-612 585.5,-588 686.5,-588 686.5,-612"/>
+<text text-anchor="middle" x="636" y="-597.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_l2p_trafo_1D</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_poly_project_n2m_multivar&#45;&gt;proc~ply_l2p_trafo_1d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge34" class="edge">
+<title>proc~ply_poly_project_n2m_multivar&#45;&gt;proc~ply_l2p_trafo_1d</title>
+<path fill="none" stroke="#000000" d="M493.03,-629.96C518.78,-624.53 549.21,-618.11 575.27,-612.61"/>
+<polygon fill="#000000" stroke="#000000" points="576.34,-615.96 585.4,-610.47 574.9,-609.11 576.34,-615.96"/>
+</g>
+<!-- proc~ply_l2p_trafo_2d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node27" class="node">
+<title>proc~ply_l2p_trafo_2d</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node27"><a xlink:href="../proc/ply_l2p_trafo_2d.html" xlink:title="ply_l2p_trafo_2D">
+<polygon fill="#d9534f" stroke="#d9534f" points="686.5,-570 585.5,-570 585.5,-546 686.5,-546 686.5,-570"/>
+<text text-anchor="middle" x="636" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_l2p_trafo_2D</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_poly_project_n2m_multivar&#45;&gt;proc~ply_l2p_trafo_2d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge35" class="edge">
+<title>proc~ply_poly_project_n2m_multivar&#45;&gt;proc~ply_l2p_trafo_2d</title>
+<path fill="none" stroke="#000000" d="M456.92,-629.76C481.11,-615.99 522.43,-593.64 560,-579 565.41,-576.89 571.11,-574.9 576.86,-573.05"/>
+<polygon fill="#000000" stroke="#000000" points="578.01,-576.36 586.53,-570.06 575.94,-569.67 578.01,-576.36"/>
+</g>
+<!-- proc~ply_l2p_trafo_3d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_node28" class="node">
+<title>proc~ply_l2p_trafo_3d</title>
+<g id="a_program~~approximate_1d_jump~~CallsGraph_node28"><a xlink:href="../proc/ply_l2p_trafo_3d.html" xlink:title="ply_l2p_trafo_3D">
+<polygon fill="#d9534f" stroke="#d9534f" points="686.5,-528 585.5,-528 585.5,-504 686.5,-504 686.5,-528"/>
+<text text-anchor="middle" x="636" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_l2p_trafo_3D</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_poly_project_n2m_multivar&#45;&gt;proc~ply_l2p_trafo_3d -->
+<g id="program~~approximate_1d_jump~~CallsGraph_edge36" class="edge">
+<title>proc~ply_poly_project_n2m_multivar&#45;&gt;proc~ply_l2p_trafo_3d</title>
+<path fill="none" stroke="#000000" d="M447.04,-629.67C467.28,-607.79 512.65,-562.12 560,-537 564.93,-534.39 570.21,-532.07 575.62,-530.02"/>
+<polygon fill="#000000" stroke="#000000" points="577.11,-533.21 585.41,-526.62 574.82,-526.59 577.11,-533.21"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprogramapproximate_1d_jumpCallsGraph = svgPanZoom('#programapproximate_1d_jumpCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<br>
+
+    <section>
+    <h2>Variables</h2>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-argstring"></span>
+              character(len=32)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>argstring</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-jota"></span>
+              real(kind=rk)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>jota</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-level~10"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>level</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-polydegree"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>polydegree</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ibis"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ibis</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ival"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ival</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ipoint"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ipoint</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-imode"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>imode</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-icoarse"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iCoarse</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ifine"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iFine</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-intmode"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>intmode</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bis_lb"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bis_lb</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-current"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>current</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-last"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>last</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-lastside"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>lastside</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bpos"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bpos</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-interval_jump"></span>
+              real(kind=rk)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>interval_jump</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ofact"></span>
+              real(kind=rk)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ofact</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bis_half"></span>
+              real(kind=rk)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bis_half</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x_point"></span>
+              real(kind=rk)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x_point</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-cur_lb"></span>
+              real(kind=rk)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>cur_lb</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ivldistance"></span>
+              real(kind=rk)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ivldistance</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-l2err"></span>
+              real(kind=rk)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>l2err</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-optierr"></span>
+              real(kind=rk)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>optierr</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-voldiff"></span>
+              real(kind=rk)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>voldiff</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bisect"></span>
+              real(kind=rk),
+            </td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>bisect</strong>(:)</td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodal_data~15"></span>
+              real(kind=rk),
+            </td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>nodal_data</strong>(:,:)</td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-modal_data~5"></span>
+              real(kind=rk),
+            </td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>modal_data</strong>(:,:)</td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-legmodes~2"></span>
+              real(kind=rk),
+            </td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>legmodes</strong>(:)</td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-exact"></span>
+              real(kind=rk),
+            </td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>exact</strong>(:)</td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-const1_left"></span>
+              real(kind=rk),
+            </td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>const1_left</strong>(:)</td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-const1_right"></span>
+              real(kind=rk),
+            </td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>const1_right</strong>(:)</td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-integral~2"></span>
+              real(kind=rk),
+            </td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>integral</strong>(:)</td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-intatjota"></span>
+              real(kind=rk),
+            </td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>intatjota</strong>(:,:)</td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ivcolor"></span>
+              integer,
+            </td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>ivcolor</strong>(:)</td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-project"></span>
+              type(<a href='../type/ply_prj_init_type.html'>ply_prj_init_type</a>)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>project</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-polypro"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>polypro</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-refine"></span>
+              type(<a href='../type/ply_modg_refine_type.html'>ply_modg_refine_type</a>)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>refine</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ivlen"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/dyn_realarray_type.html'>dyn_realarray_type</a>)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ivlen</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-method~2"></span>
+              character(len=10)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>method</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    </section>
+    <br>
+    
+    
+    
+
+    
+
+
+    
+
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

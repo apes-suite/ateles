@@ -1,0 +1,773 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_load_solver_parameters &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_load_solver_parameters
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.0% of total for procedures.">12 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_solver_param_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_solver_param_module.f90.html'>atl_solver_param_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/atl_solver_param_module.html'>atl_solver_param_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_load_solver_parameters</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine atl_load_solver_parameters(me, tree)  
+</h2>
+    
+
+    <p>Routine to initialize the global parameters, sets the solver
+ module variable.</p>
+<p>Subroutine to initialize the global parameters like simulation name, etc.
+ as specified in the given lua configuration file. The configuration file
+ is passed as a handle to this subroutine.</p>
+<div class="alert alert-success">
+<p class="alert-title h4">Todo</p>
+<p>HK: this is strange, the array of conf, should probably be moved
+          somewhere else.</p>
+</div>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~19"></span>
+              type(<a href='../type/atl_solver_param_type.html'>atl_solver_param_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~17"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~atl_load_solver_parameters~~CallsGraph Pages: 1 -->
+<svg id="procatl_load_solver_parametersCallsGraph" width="641pt" height="262pt"
+ viewBox="0.00 0.00 641.00 262.29" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~atl_load_solver_parameters~~CallsGraph" class="graph" transform="scale(0.72 0.72) rotate(0) translate(4 361)">
+<title>proc~~atl_load_solver_parameters~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-361 888,-361 888,4 -4,4"/>
+<!-- proc~atl_load_solver_parameters -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_node1" class="node">
+<title>proc~atl_load_solver_parameters</title>
+<polygon fill="none" stroke="black" points="160,-150 0,-150 0,-126 160,-126 160,-150"/>
+<text text-anchor="middle" x="80" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_load_solver_parameters</text>
+</g>
+<!-- conf -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_node2" class="node">
+<title>conf</title>
+<polygon fill="#777777" stroke="#777777" points="308,-276 254,-276 254,-252 308,-252 308,-276"/>
+<text text-anchor="middle" x="281" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">conf</text>
+</g>
+<!-- proc~atl_load_solver_parameters&#45;&gt;conf -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_edge1" class="edge">
+<title>proc~atl_load_solver_parameters&#45;&gt;conf</title>
+<path fill="none" stroke="#000000" d="M90.68,-150.15C108.88,-172.15 150.5,-218.59 196,-243 210.64,-250.85 228.29,-255.84 243.62,-258.97"/>
+<polygon fill="#000000" stroke="#000000" points="243.34,-262.48 253.81,-260.85 244.61,-255.59 243.34,-262.48"/>
+</g>
+<!-- proc~ply_sampled_tracking_load -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_node3" class="node">
+<title>proc~ply_sampled_tracking_load</title>
+<g id="a_proc~~atl_load_solver_parameters~~CallsGraph_node3"><a xlink:href="../proc/ply_sampled_tracking_load.html" xlink:title="ply_sampled_tracking_load">
+<polygon fill="#d9534f" stroke="#d9534f" points="359.5,-234 202.5,-234 202.5,-210 359.5,-210 359.5,-234"/>
+<text text-anchor="middle" x="281" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_sampled_tracking_load</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_load_solver_parameters&#45;&gt;proc~ply_sampled_tracking_load -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_edge2" class="edge">
+<title>proc~atl_load_solver_parameters&#45;&gt;proc~ply_sampled_tracking_load</title>
+<path fill="none" stroke="#000000" d="M99.4,-150.02C121.53,-164.01 160.17,-186.98 196,-201 201.56,-203.18 207.42,-205.18 213.34,-207.02"/>
+<polygon fill="#000000" stroke="#000000" points="212.77,-210.5 223.35,-209.95 214.73,-203.78 212.77,-210.5"/>
+</g>
+<!-- tem_debug_load_main -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_node4" class="node">
+<title>tem_debug_load_main</title>
+<g id="a_proc~~atl_load_solver_parameters~~CallsGraph_node4"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_debug_load_main.html" xlink:title="tem_debug_load_main">
+<polygon fill="#d9534f" stroke="#d9534f" points="347.5,-192 214.5,-192 214.5,-168 347.5,-168 347.5,-192"/>
+<text text-anchor="middle" x="281" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_debug_load_main</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_load_solver_parameters&#45;&gt;tem_debug_load_main -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_edge3" class="edge">
+<title>proc~atl_load_solver_parameters&#45;&gt;tem_debug_load_main</title>
+<path fill="none" stroke="#000000" d="M138.03,-150.04C161.44,-154.98 188.73,-160.74 213.08,-165.88"/>
+<polygon fill="#000000" stroke="#000000" points="212.46,-169.32 222.97,-167.96 213.9,-162.47 212.46,-169.32"/>
+</g>
+<!-- tem_load_general -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_node5" class="node">
+<title>tem_load_general</title>
+<g id="a_proc~~atl_load_solver_parameters~~CallsGraph_node5"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_load_general.html" xlink:title="tem_load_general">
+<polygon fill="#d9534f" stroke="#d9534f" points="335.5,-150 226.5,-150 226.5,-126 335.5,-126 335.5,-150"/>
+<text text-anchor="middle" x="281" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_general</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_load_solver_parameters&#45;&gt;tem_load_general -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_edge4" class="edge">
+<title>proc~atl_load_solver_parameters&#45;&gt;tem_load_general</title>
+<path fill="none" stroke="#000000" d="M160.22,-138C178.8,-138 198.35,-138 216.16,-138"/>
+<polygon fill="#000000" stroke="#000000" points="216.42,-141.5 226.42,-138 216.42,-134.5 216.42,-141.5"/>
+</g>
+<!-- tem_load_restart -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_node6" class="node">
+<title>tem_load_restart</title>
+<g id="a_proc~~atl_load_solver_parameters~~CallsGraph_node6"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_load_restart.html" xlink:title="tem_load_restart">
+<polygon fill="#d9534f" stroke="#d9534f" points="332,-108 230,-108 230,-84 332,-84 332,-108"/>
+<text text-anchor="middle" x="281" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_restart</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_load_solver_parameters&#45;&gt;tem_load_restart -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_edge5" class="edge">
+<title>proc~atl_load_solver_parameters&#45;&gt;tem_load_restart</title>
+<path fill="none" stroke="#000000" d="M138.03,-125.96C163.58,-120.57 193.73,-114.21 219.66,-108.74"/>
+<polygon fill="#000000" stroke="#000000" points="220.68,-112.1 229.74,-106.61 219.23,-105.25 220.68,-112.1"/>
+</g>
+<!-- tem_logging_load_primary -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_node7" class="node">
+<title>tem_logging_load_primary</title>
+<g id="a_proc~~atl_load_solver_parameters~~CallsGraph_node7"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_logging_load_primary.html" xlink:title="tem_logging_load_primary">
+<polygon fill="#d9534f" stroke="#d9534f" points="358,-66 204,-66 204,-42 358,-42 358,-66"/>
+<text text-anchor="middle" x="281" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_load_primary</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_load_solver_parameters&#45;&gt;tem_logging_load_primary -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_edge6" class="edge">
+<title>proc~atl_load_solver_parameters&#45;&gt;tem_logging_load_primary</title>
+<path fill="none" stroke="#000000" d="M99.4,-125.98C121.53,-111.99 160.17,-89.02 196,-75 201.56,-72.82 207.42,-70.82 213.34,-68.98"/>
+<polygon fill="#000000" stroke="#000000" points="214.73,-72.22 223.35,-66.05 212.77,-65.5 214.73,-72.22"/>
+</g>
+<!-- tem_timeControl_start_at_sim -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_node8" class="node">
+<title>tem_timeControl_start_at_sim</title>
+<g id="a_proc~~atl_load_solver_parameters~~CallsGraph_node8"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_timecontrol_start_at_sim.html" xlink:title="tem_timeControl_start_at_sim">
+<polygon fill="#d9534f" stroke="#d9534f" points="366,-24 196,-24 196,0 366,0 366,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timeControl_start_at_sim</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_load_solver_parameters&#45;&gt;tem_timeControl_start_at_sim -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_edge7" class="edge">
+<title>proc~atl_load_solver_parameters&#45;&gt;tem_timeControl_start_at_sim</title>
+<path fill="none" stroke="#000000" d="M90.68,-125.85C108.88,-103.85 150.5,-57.41 196,-33 199.73,-31 203.65,-29.19 207.67,-27.54"/>
+<polygon fill="#000000" stroke="#000000" points="209.06,-30.76 217.23,-24.01 206.63,-24.2 209.06,-30.76"/>
+</g>
+<!-- proc~ply_sampling_load -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_node9" class="node">
+<title>proc~ply_sampling_load</title>
+<g id="a_proc~~atl_load_solver_parameters~~CallsGraph_node9"><a xlink:href="../proc/ply_sampling_load.html" xlink:title="ply_sampling_load">
+<polygon fill="#d9534f" stroke="#d9534f" points="513,-255 402,-255 402,-231 513,-231 513,-255"/>
+<text text-anchor="middle" x="457.5" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_sampling_load</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sampled_tracking_load&#45;&gt;proc~ply_sampling_load -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_edge8" class="edge">
+<title>proc~ply_sampled_tracking_load&#45;&gt;proc~ply_sampling_load</title>
+<path fill="none" stroke="#000000" d="M359.55,-231.33C370.38,-232.64 381.42,-233.96 391.97,-235.23"/>
+<polygon fill="#000000" stroke="#000000" points="391.58,-238.71 401.92,-236.43 392.41,-231.76 391.58,-238.71"/>
+</g>
+<!-- tem_load_tracking -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_node10" class="node">
+<title>tem_load_tracking</title>
+<g id="a_proc~~atl_load_solver_parameters~~CallsGraph_node10"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_load_tracking.html" xlink:title="tem_load_tracking">
+<polygon fill="#d9534f" stroke="#d9534f" points="513,-213 402,-213 402,-189 513,-189 513,-213"/>
+<text text-anchor="middle" x="457.5" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_tracking</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sampled_tracking_load&#45;&gt;tem_load_tracking -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_edge9" class="edge">
+<title>proc~ply_sampled_tracking_load&#45;&gt;tem_load_tracking</title>
+<path fill="none" stroke="#000000" d="M359.55,-212.67C370.38,-211.36 381.42,-210.04 391.97,-208.77"/>
+<polygon fill="#000000" stroke="#000000" points="392.41,-212.24 401.92,-207.57 391.58,-205.29 392.41,-212.24"/>
+</g>
+<!-- aot_get_val -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_node11" class="node">
+<title>aot_get_val</title>
+<g id="a_proc~~atl_load_solver_parameters~~CallsGraph_node11"><a xlink:href="https://apes-suite.github.io/aotus/interface/aot_get_val~8.html" xlink:title="aot_get_val">
+<polygon fill="#a7506f" stroke="#a7506f" points="852.5,-357 779.5,-357 779.5,-333 852.5,-333 852.5,-357"/>
+<text text-anchor="middle" x="816" y="-342.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_get_val</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sampling_load&#45;&gt;aot_get_val -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_edge10" class="edge">
+<title>proc~ply_sampling_load&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M471.4,-255.2C487.96,-270.08 518.25,-294.76 549,-307 622.3,-336.17 714.82,-343.38 769.2,-344.92"/>
+<polygon fill="#000000" stroke="#000000" points="769.14,-348.42 779.22,-345.15 769.3,-341.42 769.14,-348.42"/>
+</g>
+<!-- aot_table_close -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_node12" class="node">
+<title>aot_table_close</title>
+<g id="a_proc~~atl_load_solver_parameters~~CallsGraph_node12"><a xlink:href="https://apes-suite.github.io/aotus/proc/aot_table_close.html" xlink:title="aot_table_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="678,-195 583,-195 583,-171 678,-171 678,-195"/>
+<text text-anchor="middle" x="630.5" y="-180.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_close</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sampling_load&#45;&gt;aot_table_close -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_edge11" class="edge">
+<title>proc~ply_sampling_load&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M489.36,-230.99C506.8,-224.32 529.03,-215.97 549,-209 559.4,-205.37 570.62,-201.63 581.29,-198.16"/>
+<polygon fill="#000000" stroke="#000000" points="582.45,-201.47 590.89,-195.07 580.3,-194.81 582.45,-201.47"/>
+</g>
+<!-- aot_table_open -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_node13" class="node">
+<title>aot_table_open</title>
+<g id="a_proc~~atl_load_solver_parameters~~CallsGraph_node13"><a xlink:href="https://apes-suite.github.io/aotus/proc/aot_table_open.html" xlink:title="aot_table_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="677.5,-153 583.5,-153 583.5,-129 677.5,-129 677.5,-153"/>
+<text text-anchor="middle" x="630.5" y="-138.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_open</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sampling_load&#45;&gt;aot_table_open -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_edge12" class="edge">
+<title>proc~ply_sampling_load&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M498.92,-230.99C503.96,-228.5 508.81,-225.52 513,-222 536.8,-201.99 524.11,-180.64 549,-162 556.3,-156.53 564.9,-152.48 573.71,-149.49"/>
+<polygon fill="#000000" stroke="#000000" points="574.72,-152.84 583.3,-146.63 572.72,-146.13 574.72,-152.84"/>
+</g>
+<!-- proc~ply_sampling_adaptive_load -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_node14" class="node">
+<title>proc~ply_sampling_adaptive_load</title>
+<g id="a_proc~~atl_load_solver_parameters~~CallsGraph_node14"><a xlink:href="../proc/ply_sampling_adaptive_load.html" xlink:title="ply_sampling_adaptive_load">
+<polygon fill="#d9534f" stroke="#d9534f" points="712,-275 549,-275 549,-251 712,-251 712,-275"/>
+<text text-anchor="middle" x="630.5" y="-260.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_sampling_adaptive_load</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sampling_load&#45;&gt;proc~ply_sampling_adaptive_load -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_edge13" class="edge">
+<title>proc~ply_sampling_load&#45;&gt;proc~ply_sampling_adaptive_load</title>
+<path fill="none" stroke="#000000" d="M513.08,-249.38C521.38,-250.35 530.14,-251.38 538.97,-252.41"/>
+<polygon fill="#000000" stroke="#000000" points="538.62,-255.89 548.96,-253.58 539.43,-248.94 538.62,-255.89"/>
+</g>
+<!-- tem_abort -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_node15" class="node">
+<title>tem_abort</title>
+<g id="a_proc~~atl_load_solver_parameters~~CallsGraph_node15"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="849.5,-315 782.5,-315 782.5,-291 849.5,-291 849.5,-315"/>
+<text text-anchor="middle" x="816" y="-300.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sampling_load&#45;&gt;tem_abort -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_edge14" class="edge">
+<title>proc~ply_sampling_load&#45;&gt;tem_abort</title>
+<path fill="none" stroke="#000000" d="M479.66,-255.19C497.52,-264.83 524.09,-277.68 549,-284 625.99,-303.52 719.26,-305.41 772.4,-304.53"/>
+<polygon fill="#000000" stroke="#000000" points="772.56,-308.03 782.48,-304.33 772.41,-301.03 772.56,-308.03"/>
+</g>
+<!-- upper_to_lower -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_node16" class="node">
+<title>upper_to_lower</title>
+<g id="a_proc~~atl_load_solver_parameters~~CallsGraph_node16"><a xlink:href="https://apes-suite.github.io/treelm/proc/upper_to_lower.html" xlink:title="upper_to_lower">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="863,-231 769,-231 769,-207 863,-207 863,-231"/>
+<text text-anchor="middle" x="816" y="-216.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">upper_to_lower</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sampling_load&#45;&gt;upper_to_lower -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_edge15" class="edge">
+<title>proc~ply_sampling_load&#45;&gt;upper_to_lower</title>
+<path fill="none" stroke="#000000" d="M513.03,-239.33C579.64,-234.84 691.72,-227.3 758.99,-222.77"/>
+<polygon fill="#000000" stroke="#000000" points="759.24,-226.26 768.98,-222.1 758.77,-219.28 759.24,-226.26"/>
+</g>
+<!-- proc~ply_sampling_adaptive_load&#45;&gt;aot_get_val -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_edge16" class="edge">
+<title>proc~ply_sampling_adaptive_load&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M652.01,-275.17C674.86,-288.4 713.2,-309.57 748,-324 754.89,-326.86 762.31,-329.55 769.62,-331.99"/>
+<polygon fill="#000000" stroke="#000000" points="768.87,-335.42 779.46,-335.15 771.01,-328.76 768.87,-335.42"/>
+</g>
+<!-- proc~ply_sampling_adaptive_load&#45;&gt;tem_abort -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_edge18" class="edge">
+<title>proc~ply_sampling_adaptive_load&#45;&gt;tem_abort</title>
+<path fill="none" stroke="#000000" d="M686.56,-275C714.14,-281.01 747.03,-288.18 772.62,-293.76"/>
+<polygon fill="#000000" stroke="#000000" points="771.88,-297.18 782.39,-295.89 773.37,-290.34 771.88,-297.18"/>
+</g>
+<!-- proc~ply_sampling_adaptive_load&#45;&gt;upper_to_lower -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_edge19" class="edge">
+<title>proc~ply_sampling_adaptive_load&#45;&gt;upper_to_lower</title>
+<path fill="none" stroke="#000000" d="M681.64,-250.98C705.52,-245.25 734.16,-238.38 758.78,-232.48"/>
+<polygon fill="#000000" stroke="#000000" points="759.79,-235.84 768.7,-230.1 758.15,-229.03 759.79,-235.84"/>
+</g>
+<!-- proc~ply_filter_element_load -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_node17" class="node">
+<title>proc~ply_filter_element_load</title>
+<g id="a_proc~~atl_load_solver_parameters~~CallsGraph_node17"><a xlink:href="../proc/ply_filter_element_load.html" xlink:title="ply_filter_element_load">
+<polygon fill="#d9534f" stroke="#d9534f" points="884,-273 748,-273 748,-249 884,-249 884,-273"/>
+<text text-anchor="middle" x="816" y="-258.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_filter_element_load</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sampling_adaptive_load&#45;&gt;proc~ply_filter_element_load -->
+<g id="proc~~atl_load_solver_parameters~~CallsGraph_edge17" class="edge">
+<title>proc~ply_sampling_adaptive_load&#45;&gt;proc~ply_filter_element_load</title>
+<path fill="none" stroke="#000000" d="M712.25,-262.12C720.73,-262.03 729.33,-261.93 737.77,-261.84"/>
+<polygon fill="#000000" stroke="#000000" points="737.99,-265.34 747.96,-261.73 737.92,-258.34 737.99,-265.34"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocatl_load_solver_parametersCallsGraph = svgPanZoom('#procatl_load_solver_parametersCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~atl_load_solver_parameters~~CalledByGraph Pages: 1 -->
+<svg id="procatl_load_solver_parametersCalledByGraph" width="421pt" height="74pt"
+ viewBox="0.00 0.00 421.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~atl_load_solver_parameters~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
+<title>proc~~atl_load_solver_parameters~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 417,-70 417,4 -4,4"/>
+<!-- proc~atl_load_solver_parameters -->
+<g id="proc~~atl_load_solver_parameters~~CalledByGraph_node1" class="node">
+<title>proc~atl_load_solver_parameters</title>
+<polygon fill="none" stroke="black" points="413,-45 253,-45 253,-21 413,-21 413,-45"/>
+<text text-anchor="middle" x="333" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_load_solver_parameters</text>
+</g>
+<!-- proc~atl_load_config -->
+<g id="proc~~atl_load_solver_parameters~~CalledByGraph_node2" class="node">
+<title>proc~atl_load_config</title>
+<g id="a_proc~~atl_load_solver_parameters~~CalledByGraph_node2"><a xlink:href="../proc/atl_load_config.html" xlink:title="atl_load_config">
+<polygon fill="#d9534f" stroke="#d9534f" points="217,-45 124,-45 124,-21 217,-21 217,-45"/>
+<text text-anchor="middle" x="170.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_load_config</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_load_config&#45;&gt;proc~atl_load_solver_parameters -->
+<g id="proc~~atl_load_solver_parameters~~CalledByGraph_edge1" class="edge">
+<title>proc~atl_load_config&#45;&gt;proc~atl_load_solver_parameters</title>
+<path fill="none" stroke="#000000" d="M217.06,-33C225.21,-33 233.95,-33 242.84,-33"/>
+<polygon fill="#000000" stroke="#000000" points="242.91,-36.5 252.91,-33 242.91,-29.5 242.91,-36.5"/>
+</g>
+<!-- program~ateles -->
+<g id="proc~~atl_load_solver_parameters~~CalledByGraph_node3" class="node">
+<title>program~ateles</title>
+<g id="a_proc~~atl_load_solver_parameters~~CalledByGraph_node3"><a xlink:href="../program/ateles.html" xlink:title="ateles">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="71,-66 17,-66 17,-42 71,-42 71,-66"/>
+<text text-anchor="middle" x="44" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ateles</text>
+</a>
+</g>
+</g>
+<!-- program~ateles&#45;&gt;proc~atl_load_config -->
+<g id="proc~~atl_load_solver_parameters~~CalledByGraph_edge2" class="edge">
+<title>program~ateles&#45;&gt;proc~atl_load_config</title>
+<path fill="none" stroke="#000000" d="M71.1,-49.6C83.5,-47.51 98.82,-44.92 113.66,-42.42"/>
+<polygon fill="#000000" stroke="#000000" points="114.53,-45.82 123.81,-40.71 113.36,-38.92 114.53,-45.82"/>
+</g>
+<!-- program~atl_harvesting -->
+<g id="proc~~atl_load_solver_parameters~~CalledByGraph_node4" class="node">
+<title>program~atl_harvesting</title>
+<g id="a_proc~~atl_load_solver_parameters~~CalledByGraph_node4"><a xlink:href="../program/atl_harvesting.html" xlink:title="atl_harvesting">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="88,-24 0,-24 0,0 88,0 88,-24"/>
+<text text-anchor="middle" x="44" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_harvesting</text>
+</a>
+</g>
+</g>
+<!-- program~atl_harvesting&#45;&gt;proc~atl_load_config -->
+<g id="proc~~atl_load_solver_parameters~~CalledByGraph_edge3" class="edge">
+<title>program~atl_harvesting&#45;&gt;proc~atl_load_config</title>
+<path fill="none" stroke="#000000" d="M88.19,-19.29C96.47,-20.68 105.25,-22.16 113.86,-23.61"/>
+<polygon fill="#000000" stroke="#000000" points="113.4,-27.09 123.84,-25.3 114.56,-20.18 113.4,-27.09"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

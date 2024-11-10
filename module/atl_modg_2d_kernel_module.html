@@ -1,0 +1,3465 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_modg_2d_kernel_module &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_modg_2d_kernel_module
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+            <li class="list-inline-item" id="meta-author"><i class="fa fa-pencil"></i> Jens Zudrop</li>
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 2.0% of total for modules and submodules.">877 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_modg_2d_kernel_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_modg_2d_kernel_module.f90.html'>atl_modg_2d_kernel_module.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_modg_2d_kernel_module</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_modg_2d_kernel_module.html#proc-atl_init_modg_2d_kernel">atl_init_modg_2d_kernel</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_kernel_module.html#proc-atl_preprocess_modg_2d_kernel">atl_preprocess_modg_2d_kernel</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_kernel_module.html#proc-atl_modg_2d_project_numflux">atl_modg_2d_project_NumFlux</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_kernel_module.html#proc-atl_modg_2d_project_source">atl_modg_2d_project_source</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_kernel_module.html#proc-atl_modg_2d_modalvoltomodalface">atl_modg_2d_modalVolToModalFace</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_kernel_module.html#proc-atl_modg_2d_ensure_pos_facemean">atl_modg_2d_ensure_pos_facemean</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_kernel_module.html#proc-atl_modg_2d_invmassmatrix">atl_modg_2d_invMassMatrix</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_kernel_module.html#proc-modg_2d_project_penalization_q">modg_2d_project_penalization_Q</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_kernel_module.html#proc-modg_2d_project_source_q">modg_2d_project_source_Q</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_kernel_module.html#proc-modg_2d_project_source_p">modg_2d_project_source_P</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_kernel_module.html#proc-modg_2d_project_stabviscnumfluxx_q">modg_2d_project_stabViscNumFluxX_Q</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_kernel_module.html#proc-modg_2d_project_stabviscnumfluxy_q">modg_2d_project_stabViscNumFluxY_Q</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_kernel_module.html#proc-modg_2d_project_numfluxx_q">modg_2d_project_numFluxX_Q</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_kernel_module.html#proc-modg_2d_project_numfluxx_difftestx_q">modg_2d_project_numFluxX_diffTestX_Q</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_kernel_module.html#proc-modg_2d_project_numfluxy_q">modg_2d_project_numFluxY_Q</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_kernel_module.html#proc-modg_2d_project_numfluxy_difftesty_q">modg_2d_project_numFluxY_diffTestY_Q</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_kernel_module.html#proc-modg_2d_invmassmatrix_q">modg_2d_invMassMatrix_Q</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_kernel_module.html#proc-modg_2d_invmassmatrix_p">modg_2d_invMassMatrix_P</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      <p>Module for routines and datatypes of MOdal Discontinuous Galerkin (MODG)
+ scheme. This scheme is a spectral scheme for linear, purley hyperbolic
+ partial differential equation systems.</p>
+<div class="alert alert-success">
+<p class="alert-title h4">Todo</p>
+<p>HK: Split this module into three: a common one, a Q part and a P part.</p>
+</div>
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='atl_penalization_module.html'>atl_penalization_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/env_module.html'>env_module</a></li>
+                  <li class="list-inline-item"><a href='atl_elemental_time_integration_module.html'>atl_elemental_time_integration_module</a></li>
+                  <li class="list-inline-item"><a href='atl_cube_elem_module.html'>atl_cube_elem_module</a></li>
+                  <li class="list-inline-item"><a href='atl_kerneldata_module.html'>atl_kerneldata_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_comm_module.html'>tem_comm_module</a></li>
+                  <li class="list-inline-item"><a href='atl_materialini_module.html'>atl_materialIni_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_facedata_module.html'>tem_faceData_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_param_module.html'>tem_param_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_comm_env_module.html'>tem_comm_env_module</a></li>
+                  <li class="list-inline-item"><a href='atl_equation_module.html'>atl_equation_module</a></li>
+                  <li class="list-inline-item"><a href='atl_parallel_module.html'>atl_parallel_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_time_module.html'>tem_time_module</a></li>
+                  <li class="list-inline-item"><a href='atl_physfluxfilnvrstk_module.html'>atl_physFluxFilNvrStk_module</a></li>
+                  <li class="list-inline-item"><a href='atl_scheme_module.html'>atl_scheme_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_element_module.html'>tem_element_module</a></li>
+                  <li class="list-inline-item"><a href='ply_poly_project_module.html'>ply_poly_project_module</a></li>
+                  <li class="list-inline-item"><a href='atl_facedata_module.html'>atl_facedata_module</a></li>
+                  <li class="list-inline-item"><a href='atl_voltoface_module.html'>atl_volToFace_module</a></li>
+                  <li class="list-inline-item"><a href='atl_source_types_module.html'>atl_source_types_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_logging_module.html'>tem_logging_module</a></li>
+                  <li class="list-inline-item"><a href='atl_boundary_module.html'>atl_boundary_module</a></li>
+                  <li class="list-inline-item"><a href='atl_materialprp_module.html'>atl_materialPrp_module</a></li>
+                  <li class="list-inline-item"><a href='atl_modg_2d_scheme_module.html'>atl_modg_2d_scheme_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/treelmesh_module.html'>treelmesh_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_aux_module.html'>tem_aux_module</a></li>
+                  <li class="list-inline-item"><a href='ply_modg_basis_module.html'>ply_modg_basis_module</a></li>
+                  <li class="list-inline-item"><a href='ply_dof_module.html'>ply_dof_module</a></li>
+                  <li class="list-inline-item"><a href='atl_physfluxnvrstk_2d_module.html'>atl_physFluxNvrStk_2d_module</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_modg_2d_kernel_module~~UsesGraph Pages: 1 -->
+<svg id="moduleatl_modg_2d_kernel_moduleUsesGraph" width="434pt" height="1208pt"
+ viewBox="0.00 0.00 434.00 1208.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 1204)">
+<title>module~~atl_modg_2d_kernel_module~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-1204 430,-1204 430,4 -4,4"/>
+<!-- module~atl_modg_2d_kernel_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node1" class="node">
+<title>module~atl_modg_2d_kernel_module</title>
+<polygon fill="none" stroke="black" points="426,-612 260,-612 260,-588 426,-588 426,-612"/>
+<text text-anchor="middle" x="343" y="-597.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_modg_2d_kernel_module</text>
+</g>
+<!-- env_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node2" class="node">
+<title>env_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node2"><a xlink:href="https://apes-suite.github.io/treelm/module/env_module.html" xlink:title="env_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="151,-1200 73,-1200 73,-1176 151,-1176 151,-1200"/>
+<text text-anchor="middle" x="112" y="-1185.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">env_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;env_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge1" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M341.25,-612.35C336.39,-687.73 307.04,-1085.46 224,-1167 207.63,-1183.07 183.05,-1188.84 161.17,-1190.37"/>
+<polygon fill="#000000" stroke="#000000" points="160.87,-1186.88 151.02,-1190.8 161.16,-1193.87 160.87,-1186.88"/>
+</g>
+<!-- module~atl_boundary_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node3" class="node">
+<title>module~atl_boundary_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node3"><a xlink:href="../module/atl_boundary_module.html" xlink:title="atl_boundary_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="176,-1158 48,-1158 48,-1134 176,-1134 176,-1158"/>
+<text text-anchor="middle" x="112" y="-1143.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_boundary_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;module~atl_boundary_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge2" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;module~atl_boundary_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M341.03,-612.36C335.09,-684.47 301.42,-1050.18 224,-1125 213.73,-1134.93 200.32,-1140.9 186.39,-1144.38"/>
+<polygon fill="#000000" stroke="#000000" points="185.27,-1141.03 176.19,-1146.48 186.69,-1147.89 185.27,-1141.03"/>
+</g>
+<!-- module~atl_cube_elem_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node4" class="node">
+<title>module~atl_cube_elem_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node4"><a xlink:href="../module/atl_cube_elem_module.html" xlink:title="atl_cube_elem_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="180,-1116 44,-1116 44,-1092 180,-1092 180,-1116"/>
+<text text-anchor="middle" x="112" y="-1101.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_cube_elem_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;module~atl_cube_elem_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge3" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;module~atl_cube_elem_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M340.78,-612.26C333.71,-680.71 295.86,-1014.83 224,-1083 214.53,-1091.98 202.49,-1097.71 189.85,-1101.28"/>
+<polygon fill="#000000" stroke="#000000" points="189.01,-1097.88 180.09,-1103.6 190.63,-1104.69 189.01,-1097.88"/>
+</g>
+<!-- module~atl_elemental_time_integration_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node5" class="node">
+<title>module~atl_elemental_time_integration_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node5"><a xlink:href="../module/atl_elemental_time_integration_module.html" xlink:title="atl_elemental_time_integration_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="224,-1074 0,-1074 0,-1050 224,-1050 224,-1074"/>
+<text text-anchor="middle" x="112" y="-1059.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_elemental_time_integration_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;module~atl_elemental_time_integration_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge4" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;module~atl_elemental_time_integration_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M340.51,-612.04C332.27,-676.42 290.37,-979.4 224,-1041 222.85,-1042.06 221.67,-1043.08 220.46,-1044.05"/>
+<polygon fill="#000000" stroke="#000000" points="218.26,-1041.31 212,-1049.86 222.23,-1047.09 218.26,-1041.31"/>
+</g>
+<!-- module~atl_equation_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node6" class="node">
+<title>module~atl_equation_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node6"><a xlink:href="../module/atl_equation_module.html" xlink:title="atl_equation_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="174,-1032 50,-1032 50,-1008 174,-1008 174,-1032"/>
+<text text-anchor="middle" x="112" y="-1017.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_equation_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;module~atl_equation_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge5" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;module~atl_equation_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M342.56,-612.06C344.35,-666.39 344.02,-890.48 224,-999 213.01,-1008.94 198.83,-1014.84 184.31,-1018.22"/>
+<polygon fill="#000000" stroke="#000000" points="183.39,-1014.84 174.24,-1020.18 184.73,-1021.71 183.39,-1014.84"/>
+</g>
+<!-- module~atl_facedata_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node7" class="node">
+<title>module~atl_facedata_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node7"><a xlink:href="../module/atl_facedata_module.html" xlink:title="atl_facedata_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="174,-990 50,-990 50,-966 174,-966 174,-990"/>
+<text text-anchor="middle" x="112" y="-975.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_facedata_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;module~atl_facedata_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge6" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;module~atl_facedata_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M342.08,-612.17C341.7,-663.17 333.02,-861.52 224,-957 212.85,-966.76 198.61,-972.59 184.08,-975.96"/>
+<polygon fill="#000000" stroke="#000000" points="183.16,-972.57 174.01,-977.92 184.49,-979.45 183.16,-972.57"/>
+</g>
+<!-- module~atl_kerneldata_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node8" class="node">
+<title>module~atl_kerneldata_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node8"><a xlink:href="../module/atl_kerneldata_module.html" xlink:title="atl_kerneldata_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="179.5,-948 44.5,-948 44.5,-924 179.5,-924 179.5,-948"/>
+<text text-anchor="middle" x="112" y="-933.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_kerneldata_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;module~atl_kerneldata_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge7" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;module~atl_kerneldata_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M341.49,-612.03C338.79,-659.1 322.29,-832.26 224,-915 214.23,-923.22 202.25,-928.62 189.82,-932.1"/>
+<polygon fill="#000000" stroke="#000000" points="188.7,-928.77 179.79,-934.5 190.33,-935.58 188.7,-928.77"/>
+</g>
+<!-- module~atl_materialini_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node9" class="node">
+<title>module~atl_materialini_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node9"><a xlink:href="../module/atl_materialini_module.html" xlink:title="atl_materialIni_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="179.5,-906 44.5,-906 44.5,-882 179.5,-882 179.5,-906"/>
+<text text-anchor="middle" x="112" y="-891.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_materialIni_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;module~atl_materialini_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge8" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;module~atl_materialini_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M340.71,-612.2C335.44,-655.51 311.48,-802.99 224,-873 214.09,-880.93 202.1,-886.19 189.71,-889.63"/>
+<polygon fill="#000000" stroke="#000000" points="188.64,-886.29 179.73,-892.01 190.27,-893.1 188.64,-886.29"/>
+</g>
+<!-- module~atl_materialprp_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node10" class="node">
+<title>module~atl_materialprp_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node10"><a xlink:href="../module/atl_materialprp_module.html" xlink:title="atl_materialPrp_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="181.5,-864 42.5,-864 42.5,-840 181.5,-840 181.5,-864"/>
+<text text-anchor="middle" x="112" y="-849.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_materialPrp_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;module~atl_materialprp_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge9" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;module~atl_materialprp_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M339.69,-612.22C331.63,-651.2 300.96,-773.37 224,-831 214.43,-838.16 203.13,-843.11 191.46,-846.48"/>
+<polygon fill="#000000" stroke="#000000" points="190.45,-843.13 181.61,-848.96 192.16,-849.92 190.45,-843.13"/>
+</g>
+<!-- module~atl_modg_2d_scheme_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node11" class="node">
+<title>module~atl_modg_2d_scheme_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node11"><a xlink:href="../module/atl_modg_2d_scheme_module.html" xlink:title="atl_modg_2d_scheme_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="199,-822 25,-822 25,-798 199,-798 199,-822"/>
+<text text-anchor="middle" x="112" y="-807.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_scheme_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;module~atl_modg_2d_scheme_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge10" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;module~atl_modg_2d_scheme_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M338.28,-612.16C327.15,-646.27 290.73,-743.36 224,-789 219.18,-792.3 213.97,-795.11 208.54,-797.51"/>
+<polygon fill="#000000" stroke="#000000" points="207.25,-794.26 199.22,-801.17 209.81,-800.78 207.25,-794.26"/>
+</g>
+<!-- module~atl_parallel_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node12" class="node">
+<title>module~atl_parallel_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node12"><a xlink:href="../module/atl_parallel_module.html" xlink:title="atl_parallel_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="171,-780 53,-780 53,-756 171,-756 171,-780"/>
+<text text-anchor="middle" x="112" y="-765.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_parallel_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;module~atl_parallel_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge11" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;module~atl_parallel_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M336.03,-612.32C321.38,-641.12 280.68,-712.97 224,-747 211.16,-754.71 196.1,-759.69 181.29,-762.88"/>
+<polygon fill="#000000" stroke="#000000" points="180.28,-759.51 171.1,-764.82 181.58,-766.39 180.28,-759.51"/>
+</g>
+<!-- module~atl_penalization_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node13" class="node">
+<title>module~atl_penalization_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node13"><a xlink:href="../module/atl_penalization_module.html" xlink:title="atl_penalization_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="183,-738 41,-738 41,-714 183,-714 183,-738"/>
+<text text-anchor="middle" x="112" y="-723.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_penalization_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;module~atl_penalization_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge12" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;module~atl_penalization_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M332.42,-612.05C314,-634.32 271.25,-681.76 224,-705 214.37,-709.74 203.78,-713.41 193.08,-716.26"/>
+<polygon fill="#000000" stroke="#000000" points="192.14,-712.88 183.25,-718.64 193.8,-719.68 192.14,-712.88"/>
+</g>
+<!-- module~atl_physfluxfilnvrstk_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node14" class="node">
+<title>module~atl_physfluxfilnvrstk_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node14"><a xlink:href="../module/atl_physfluxfilnvrstk_module.html" xlink:title="atl_physFluxFilNvrStk_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="196.5,-696 27.5,-696 27.5,-672 196.5,-672 196.5,-696"/>
+<text text-anchor="middle" x="112" y="-681.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_physFluxFilNvrStk_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;module~atl_physfluxfilnvrstk_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge13" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;module~atl_physfluxfilnvrstk_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M323.6,-612.11C301.05,-626.41 261.24,-649.88 224,-663 217.13,-665.42 209.92,-667.58 202.61,-669.5"/>
+<polygon fill="#000000" stroke="#000000" points="201.47,-666.18 192.61,-671.98 203.16,-672.97 201.47,-666.18"/>
+</g>
+<!-- module~atl_physfluxnvrstk_2d_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node15" class="node">
+<title>module~atl_physfluxnvrstk_2d_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node15"><a xlink:href="../module/atl_physfluxnvrstk_2d_module.html" xlink:title="atl_physFluxNvrStk_2d_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="200.5,-654 23.5,-654 23.5,-630 200.5,-630 200.5,-654"/>
+<text text-anchor="middle" x="112" y="-639.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_physFluxNvrStk_2d_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;module~atl_physfluxnvrstk_2d_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge14" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;module~atl_physfluxnvrstk_2d_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M276.38,-612.04C248.95,-617.07 216.91,-622.94 188.51,-628.15"/>
+<polygon fill="#000000" stroke="#000000" points="187.84,-624.72 178.63,-629.96 189.1,-631.6 187.84,-624.72"/>
+</g>
+<!-- module~atl_scheme_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node16" class="node">
+<title>module~atl_scheme_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node16"><a xlink:href="../module/atl_scheme_module.html" xlink:title="atl_scheme_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="171.5,-612 52.5,-612 52.5,-588 171.5,-588 171.5,-612"/>
+<text text-anchor="middle" x="112" y="-597.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_scheme_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;module~atl_scheme_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge15" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;module~atl_scheme_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M259.97,-600C234.48,-600 206.65,-600 182.13,-600"/>
+<polygon fill="#000000" stroke="#000000" points="181.84,-596.5 171.84,-600 181.84,-603.5 181.84,-596.5"/>
+</g>
+<!-- module~atl_source_types_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node17" class="node">
+<title>module~atl_source_types_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node17"><a xlink:href="../module/atl_source_types_module.html" xlink:title="atl_source_types_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="185,-570 39,-570 39,-546 185,-546 185,-570"/>
+<text text-anchor="middle" x="112" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_source_types_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;module~atl_source_types_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge16" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;module~atl_source_types_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M276.38,-587.96C248.95,-582.93 216.91,-577.06 188.51,-571.85"/>
+<polygon fill="#000000" stroke="#000000" points="189.1,-568.4 178.63,-570.04 187.84,-575.28 189.1,-568.4"/>
+</g>
+<!-- module~atl_voltoface_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node18" class="node">
+<title>module~atl_voltoface_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node18"><a xlink:href="../module/atl_voltoface_module.html" xlink:title="atl_volToFace_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="176.5,-528 47.5,-528 47.5,-504 176.5,-504 176.5,-528"/>
+<text text-anchor="middle" x="112" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_volToFace_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;module~atl_voltoface_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge17" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;module~atl_voltoface_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M323.6,-587.89C301.05,-573.59 261.24,-550.12 224,-537 212.18,-532.84 199.34,-529.44 186.73,-526.69"/>
+<polygon fill="#000000" stroke="#000000" points="187.19,-523.21 176.69,-524.62 185.78,-530.07 187.19,-523.21"/>
+</g>
+<!-- module~ply_dof_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node19" class="node">
+<title>module~ply_dof_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node19"><a xlink:href="../module/ply_dof_module.html" xlink:title="ply_dof_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="160.5,-486 63.5,-486 63.5,-462 160.5,-462 160.5,-486"/>
+<text text-anchor="middle" x="112" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_dof_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;module~ply_dof_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge18" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;module~ply_dof_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M332.42,-587.95C314,-565.68 271.25,-518.24 224,-495 207.67,-486.97 188.59,-482 170.91,-478.93"/>
+<polygon fill="#000000" stroke="#000000" points="171.11,-475.42 160.69,-477.33 170.03,-482.33 171.11,-475.42"/>
+</g>
+<!-- module~ply_modg_basis_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node20" class="node">
+<title>module~ply_modg_basis_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node20"><a xlink:href="../module/ply_modg_basis_module.html" xlink:title="ply_modg_basis_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="183,-444 41,-444 41,-420 183,-420 183,-444"/>
+<text text-anchor="middle" x="112" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_modg_basis_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;module~ply_modg_basis_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge19" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;module~ply_modg_basis_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M336.03,-587.68C321.38,-558.88 280.68,-487.03 224,-453 214.6,-447.36 204.02,-443.18 193.21,-440.09"/>
+<polygon fill="#000000" stroke="#000000" points="193.81,-436.63 183.25,-437.55 192.08,-443.41 193.81,-436.63"/>
+</g>
+<!-- module~ply_poly_project_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node21" class="node">
+<title>module~ply_poly_project_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node21"><a xlink:href="../module/ply_poly_project_module.html" xlink:title="ply_poly_project_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="184,-402 40,-402 40,-378 184,-378 184,-402"/>
+<text text-anchor="middle" x="112" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_poly_project_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;module~ply_poly_project_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge20" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;module~ply_poly_project_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M338.28,-587.84C327.15,-553.73 290.73,-456.64 224,-411 215.01,-404.85 204.71,-400.39 194.07,-397.16"/>
+<polygon fill="#000000" stroke="#000000" points="194.81,-393.73 184.24,-394.53 193,-400.49 194.81,-393.73"/>
+</g>
+<!-- tem_aux_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node22" class="node">
+<title>tem_aux_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node22"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_aux_module.html" xlink:title="tem_aux_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="164,-360 60,-360 60,-336 164,-336 164,-360"/>
+<text text-anchor="middle" x="112" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_aux_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;tem_aux_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge21" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M339.69,-587.78C331.63,-548.8 300.96,-426.63 224,-369 209.76,-358.34 191.68,-352.59 174.26,-349.62"/>
+<polygon fill="#000000" stroke="#000000" points="174.51,-346.12 164.12,-348.18 173.53,-353.05 174.51,-346.12"/>
+</g>
+<!-- tem_comm_env_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node23" class="node">
+<title>tem_comm_env_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node23"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_comm_env_module.html" xlink:title="tem_comm_env_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="183.5,-318 40.5,-318 40.5,-294 183.5,-294 183.5,-318"/>
+<text text-anchor="middle" x="112" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_comm_env_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;tem_comm_env_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge22" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;tem_comm_env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M340.71,-587.8C335.44,-544.49 311.48,-397.01 224,-327 215.12,-319.89 204.56,-314.93 193.55,-311.5"/>
+<polygon fill="#000000" stroke="#000000" points="194.34,-308.09 183.78,-308.87 192.52,-314.85 194.34,-308.09"/>
+</g>
+<!-- tem_comm_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node24" class="node">
+<title>tem_comm_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node24"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_comm_module.html" xlink:title="tem_comm_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="171,-276 53,-276 53,-252 171,-252 171,-276"/>
+<text text-anchor="middle" x="112" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_comm_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;tem_comm_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge23" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;tem_comm_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M341.49,-587.97C338.79,-540.9 322.29,-367.74 224,-285 212,-274.9 196.66,-269.06 181.25,-265.8"/>
+<polygon fill="#000000" stroke="#000000" points="181.59,-262.31 171.14,-264.02 180.38,-269.21 181.59,-262.31"/>
+</g>
+<!-- tem_element_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node25" class="node">
+<title>tem_element_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node25"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_element_module.html" xlink:title="tem_element_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="176.5,-234 47.5,-234 47.5,-210 176.5,-210 176.5,-234"/>
+<text text-anchor="middle" x="112" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_element_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;tem_element_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge24" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;tem_element_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M342.08,-587.83C341.7,-536.83 333.02,-338.48 224,-243 213.49,-233.8 200.24,-228.09 186.59,-224.65"/>
+<polygon fill="#000000" stroke="#000000" points="187.11,-221.18 176.6,-222.52 185.66,-228.03 187.11,-221.18"/>
+</g>
+<!-- tem_faceData_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node26" class="node">
+<title>tem_faceData_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node26"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_facedata_module.html" xlink:title="tem_faceData_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="178.5,-192 45.5,-192 45.5,-168 178.5,-168 178.5,-192"/>
+<text text-anchor="middle" x="112" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_faceData_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;tem_faceData_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge25" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;tem_faceData_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M342.56,-587.94C344.35,-533.61 344.02,-309.52 224,-201 214.09,-192.04 201.59,-186.36 188.58,-182.85"/>
+<polygon fill="#000000" stroke="#000000" points="189.1,-179.38 178.57,-180.57 187.55,-186.2 189.1,-179.38"/>
+</g>
+<!-- tem_logging_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node27" class="node">
+<title>tem_logging_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node27"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_logging_module.html" xlink:title="tem_logging_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="174,-150 50,-150 50,-126 174,-126 174,-150"/>
+<text text-anchor="middle" x="112" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge26" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M340.51,-587.96C332.27,-523.58 290.37,-220.6 224,-159 213.08,-148.86 198.87,-142.89 184.27,-139.51"/>
+<polygon fill="#000000" stroke="#000000" points="184.63,-136.02 174.15,-137.56 183.31,-142.89 184.63,-136.02"/>
+</g>
+<!-- tem_param_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node28" class="node">
+<title>tem_param_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node28"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_param_module.html" xlink:title="tem_param_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="172,-108 52,-108 52,-84 172,-84 172,-108"/>
+<text text-anchor="middle" x="112" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_param_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;tem_param_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge27" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;tem_param_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M340.78,-587.74C333.71,-519.29 295.86,-185.17 224,-117 212.62,-106.2 197.52,-100.1 182.13,-96.82"/>
+<polygon fill="#000000" stroke="#000000" points="182.46,-93.32 172.01,-95.05 181.25,-100.22 182.46,-93.32"/>
+</g>
+<!-- tem_time_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node29" class="node">
+<title>tem_time_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node29"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_time_module.html" xlink:title="tem_time_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="166.5,-66 57.5,-66 57.5,-42 166.5,-42 166.5,-66"/>
+<text text-anchor="middle" x="112" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;tem_time_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge28" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;tem_time_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M341.03,-587.64C335.09,-515.53 301.42,-149.82 224,-75 211.39,-62.81 194.04,-56.57 176.8,-53.62"/>
+<polygon fill="#000000" stroke="#000000" points="177.08,-50.13 166.7,-52.24 176.13,-57.06 177.08,-50.13"/>
+</g>
+<!-- treelmesh_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_node30" class="node">
+<title>treelmesh_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsesGraph_node30"><a xlink:href="https://apes-suite.github.io/treelm/module/treelmesh_module.html" xlink:title="treelmesh_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="168,-24 56,-24 56,0 168,0 168,-24"/>
+<text text-anchor="middle" x="112" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">treelmesh_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_kernel_module&#45;&gt;treelmesh_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsesGraph_edge29" class="edge">
+<title>module~atl_modg_2d_kernel_module&#45;&gt;treelmesh_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M341.25,-587.65C336.39,-512.27 307.04,-114.54 224,-33 211.89,-21.11 195.28,-14.86 178.6,-11.79"/>
+<polygon fill="#000000" stroke="#000000" points="178.65,-8.26 168.25,-10.27 177.63,-15.19 178.65,-8.26"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+          <div class="card">
+      <h3 class="card-header card-title bg-light">Used by</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_modg_2d_kernel_module~~UsedByGraph Pages: 1 -->
+<svg id="moduleatl_modg_2d_kernel_moduleUsedByGraph" width="641pt" height="146pt"
+ viewBox="0.00 0.00 641.00 146.43" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph" class="graph" transform="scale(0.78 0.78) rotate(0) translate(4 184)">
+<title>module~~atl_modg_2d_kernel_module~~UsedByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-184 819,-184 819,4 -4,4"/>
+<!-- module~atl_modg_2d_kernel_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_node1" class="node">
+<title>module~atl_modg_2d_kernel_module</title>
+<polygon fill="none" stroke="black" points="166,-87 0,-87 0,-63 166,-63 166,-87"/>
+<text text-anchor="middle" x="83" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_modg_2d_kernel_module</text>
+</g>
+<!-- module~atl_container_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_node2" class="node">
+<title>module~atl_container_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsedByGraph_node2"><a xlink:href="../module/atl_container_module.html" xlink:title="atl_container_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="352.5,-150 224.5,-150 224.5,-126 352.5,-126 352.5,-150"/>
+<text text-anchor="middle" x="288.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_container_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_container_module&#45;&gt;module~atl_modg_2d_kernel_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_edge1" class="edge">
+<title>module~atl_container_module&#45;&gt;module~atl_modg_2d_kernel_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M234.82,-125.95C223.92,-123.21 212.54,-120.16 202,-117 176.05,-109.22 147.42,-99.07 124.86,-90.69"/>
+<polygon fill="#000000" stroke="#000000" points="125.86,-87.33 115.27,-87.1 123.41,-93.89 125.86,-87.33"/>
+</g>
+<!-- proc~compute_rhs_cubes_modg_2d -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_node3" class="node">
+<title>proc~compute_rhs_cubes_modg_2d</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsedByGraph_node3"><a xlink:href="../proc/compute_rhs_cubes_modg_2d.html" xlink:title="compute_rhs_cubes_modg_2d">
+<polygon fill="#d9534f" stroke="#d9534f" points="375,-108 202,-108 202,-84 375,-84 375,-108"/>
+<text text-anchor="middle" x="288.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">compute_rhs_cubes_modg_2d</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_2d&#45;&gt;module~atl_modg_2d_kernel_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_edge2" class="edge">
+<title>proc~compute_rhs_cubes_modg_2d&#45;&gt;module~atl_modg_2d_kernel_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M201.79,-87.15C193.28,-86.28 184.61,-85.38 176.04,-84.5"/>
+<polygon fill="#000000" stroke="#000000" points="176.35,-81.01 166.04,-83.47 175.63,-87.97 176.35,-81.01"/>
+</g>
+<!-- proc~postprocess_rhs_cubes -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_node4" class="node">
+<title>proc~postprocess_rhs_cubes</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsedByGraph_node4"><a xlink:href="../proc/postprocess_rhs_cubes.html" xlink:title="postprocess_rhs_cubes">
+<polygon fill="#d9534f" stroke="#d9534f" points="355.5,-66 221.5,-66 221.5,-42 355.5,-42 355.5,-66"/>
+<text text-anchor="middle" x="288.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">postprocess_rhs_cubes</text>
+</a>
+</g>
+</g>
+<!-- proc~postprocess_rhs_cubes&#45;&gt;module~atl_modg_2d_kernel_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_edge3" class="edge">
+<title>proc~postprocess_rhs_cubes&#45;&gt;module~atl_modg_2d_kernel_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M221.43,-60.82C206.96,-62.31 191.39,-63.92 176.11,-65.5"/>
+<polygon fill="#000000" stroke="#000000" points="175.71,-62.02 166.12,-66.53 176.43,-68.98 175.71,-62.02"/>
+</g>
+<!-- proc~preprocess_rhs_cubes -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_node5" class="node">
+<title>proc~preprocess_rhs_cubes</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsedByGraph_node5"><a xlink:href="../proc/preprocess_rhs_cubes.html" xlink:title="preprocess_rhs_cubes">
+<polygon fill="#d9534f" stroke="#d9534f" points="353,-24 224,-24 224,0 353,0 353,-24"/>
+<text text-anchor="middle" x="288.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">preprocess_rhs_cubes</text>
+</a>
+</g>
+</g>
+<!-- proc~preprocess_rhs_cubes&#45;&gt;module~atl_modg_2d_kernel_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_edge4" class="edge">
+<title>proc~preprocess_rhs_cubes&#45;&gt;module~atl_modg_2d_kernel_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M234.82,-24.05C223.92,-26.79 212.54,-29.84 202,-33 176.05,-40.78 147.42,-50.93 124.86,-59.31"/>
+<polygon fill="#000000" stroke="#000000" points="123.41,-56.11 115.27,-62.9 125.86,-62.67 123.41,-56.11"/>
+</g>
+<!-- module~atl_initialize_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_node6" class="node">
+<title>module~atl_initialize_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsedByGraph_node6"><a xlink:href="../module/atl_initialize_module.html" xlink:title="atl_initialize_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="532,-150 411,-150 411,-126 532,-126 532,-150"/>
+<text text-anchor="middle" x="471.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_initialize_module&#45;&gt;module~atl_container_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_edge5" class="edge">
+<title>module~atl_initialize_module&#45;&gt;module~atl_container_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M410.98,-138C395.68,-138 379.04,-138 363.12,-138"/>
+<polygon fill="#000000" stroke="#000000" points="362.79,-134.5 352.79,-138 362.79,-141.5 362.79,-134.5"/>
+</g>
+<!-- module~atl_program_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_node7" class="node">
+<title>module~atl_program_module</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsedByGraph_node7"><a xlink:href="../module/atl_program_module.html" xlink:title="atl_program_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="691,-150 568,-150 568,-126 691,-126 691,-150"/>
+<text text-anchor="middle" x="629.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_program_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_program_module&#45;&gt;module~atl_container_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_edge6" class="edge">
+<title>module~atl_program_module&#45;&gt;module~atl_container_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M601.68,-150.01C571.01,-162.53 519.01,-180.08 472.5,-178"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M470.5,-178C424.07,-175.93 372.42,-163.46 336.22,-152.99"/>
+<polygon fill="#000000" stroke="#000000" points="337.02,-149.58 326.43,-150.1 335.03,-156.29 337.02,-149.58"/>
+</g>
+<!-- module~atl_program_module&#45;&gt;module~atl_initialize_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_edge9" class="edge">
+<title>module~atl_program_module&#45;&gt;module~atl_initialize_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M567.74,-138C559.41,-138 550.8,-138 542.32,-138"/>
+<polygon fill="#000000" stroke="#000000" points="542.07,-134.5 532.07,-138 542.07,-141.5 542.07,-134.5"/>
+</g>
+<!-- program~ateles -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_node8" class="node">
+<title>program~ateles</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsedByGraph_node8"><a xlink:href="../program/ateles.html" xlink:title="ateles">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="798,-180 744,-180 744,-156 798,-156 798,-180"/>
+<text text-anchor="middle" x="771" y="-165.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ateles</text>
+</a>
+</g>
+</g>
+<!-- program~ateles&#45;&gt;module~atl_container_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_edge7" class="edge">
+<title>program~ateles&#45;&gt;module~atl_container_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M743.73,-170.26C691.86,-174.42 572.66,-182.47 472.5,-178"/>
+</g>
+<!-- program~ateles&#45;&gt;module~atl_program_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_edge11" class="edge">
+<title>program~ateles&#45;&gt;module~atl_program_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M743.76,-162.36C730.24,-159.45 713.08,-155.76 696.23,-152.14"/>
+<polygon fill="#000000" stroke="#000000" points="696.89,-148.7 686.38,-150.02 695.42,-155.54 696.89,-148.7"/>
+</g>
+<!-- program~atl_harvesting -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_node9" class="node">
+<title>program~atl_harvesting</title>
+<g id="a_module~~atl_modg_2d_kernel_module~~UsedByGraph_node9"><a xlink:href="../program/atl_harvesting.html" xlink:title="atl_harvesting">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="815,-129 727,-129 727,-105 815,-105 815,-129"/>
+<text text-anchor="middle" x="771" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_harvesting</text>
+</a>
+</g>
+</g>
+<!-- program~atl_harvesting&#45;&gt;module~atl_container_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_edge8" class="edge">
+<title>program~atl_harvesting&#45;&gt;module~atl_container_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M726.85,-108.14C699.39,-103.25 663.01,-98.12 630.5,-98"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M628.5,-98C536.34,-97.65 431.05,-112.49 362.59,-124.19"/>
+<polygon fill="#000000" stroke="#000000" points="361.6,-120.81 352.34,-125.96 362.79,-127.71 361.6,-120.81"/>
+</g>
+<!-- program~atl_harvesting&#45;&gt;module~atl_initialize_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_edge10" class="edge">
+<title>program~atl_harvesting&#45;&gt;module~atl_initialize_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M628.5,-98C587.38,-97.84 542.01,-111.07 510.86,-122.35"/>
+<polygon fill="#000000" stroke="#000000" points="509.41,-119.16 501.26,-125.93 511.85,-125.72 509.41,-119.16"/>
+</g>
+<!-- program~atl_harvesting&#45;&gt;module~atl_program_module -->
+<g id="module~~atl_modg_2d_kernel_module~~UsedByGraph_edge12" class="edge">
+<title>program~atl_harvesting&#45;&gt;module~atl_program_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M726.63,-123.53C718.52,-124.75 709.86,-126.05 701.18,-127.36"/>
+<polygon fill="#000000" stroke="#000000" points="700.37,-123.94 691.01,-128.89 701.42,-130.86 700.37,-123.94"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panmoduleatl_modg_2d_kernel_moduleUsedByGraph = svgPanZoom('#moduleatl_modg_2d_kernel_moduleUsedByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      <br>
+
+
+
+
+
+
+
+
+        <section>
+          <h2>Subroutines</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_init_modg_2d_kernel"></span> <h3>public  subroutine <a href='../proc/atl_init_modg_2d_kernel.html'>atl_init_modg_2d_kernel</a>(kerneldata_list, statedata_list, statedata_stab_list, mesh_list, scheme_list, boundary_list, boundary_stab_list, equation, tree, time, commPattern, need_deviation)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Initiate the MODG kernel for cubic elements on all levels.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata_list~12"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>),
+            </td>
+<td></td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata_list</strong>(:)</td>
+            <td>
+<p>Array of kerneldata_types, one for each level. They will be initialized.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-statedata_list~23"></span>
+              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>),
+            </td>
+<td></td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>statedata_list</strong>(:)</td>
+            <td>
+<p>Array of statedata_types, one for each level.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-statedata_stab_list~5"></span>
+              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>),
+            </td>
+<td></td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>statedata_stab_list</strong>(:,:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh_list~27"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td></td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>mesh_list</strong>(:)</td>
+            <td>
+<p>List of cubic meshes. One entry per level.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_list~28"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td></td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>scheme_list</strong>(:)</td>
+            <td>
+<p>List of schemes on the levels.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-boundary_list~17"></span>
+              type(<a href='../type/atl_level_boundary_type.html'>atl_level_boundary_type</a>),
+            </td>
+<td></td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>boundary_list</strong>(:)</td>
+            <td>
+<p>The boundary description for the faces on the current level.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-boundary_stab_list~4"></span>
+              type(<a href='../type/atl_level_boundary_type.html'>atl_level_boundary_type</a>),
+            </td>
+<td></td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>boundary_stab_list</strong>(:)</td>
+            <td>
+<p>The boundary description for the faces on the current level.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~249"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation type.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~151"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+<p>The tree of the simulation domain</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-time~116"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>time</strong></td>
+            <td>
+<p>current time</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-commpattern~14"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_commpattern_type.html'>tem_commPattern_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>commPattern</strong></td>
+            <td>
+<p>mpi communication pattern type</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-need_deviation~5"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>need_deviation</strong></td>
+            <td>
+<p>Flag to indicate whether maximal polynomial deviations should be
+computed for the state.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_preprocess_modg_2d_kernel"></span> <h3>public  subroutine <a href='../proc/atl_preprocess_modg_2d_kernel.html'>atl_preprocess_modg_2d_kernel</a>(currentLevel, minLevel, maxLevel, equation, statedata, mesh_list, boundary_list, scheme_list, poly_proj_material, material_list, commPattern, proc)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Subroutine to execute the preprocessing for the MODG kernels.
+Currently this includes: Convert external source terms to modal
+representation.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-currentlevel~71"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>currentLevel</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-minlevel~54"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>minLevel</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxlevel~60"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxLevel</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~250"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-statedata~38"></span>
+              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>statedata</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh_list~28"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh_list</strong>(minlevel:maxlevel)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-boundary_list~18"></span>
+              type(<a href='../type/atl_level_boundary_type.html'>atl_level_boundary_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>boundary_list</strong>(minlevel:maxLevel)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_list~29"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_list</strong>(minlevel:maxlevel)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj_material~3"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj_material</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_list~21"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_list</strong>(minlevel:maxlevel)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-commpattern~15"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_commpattern_type.html'>tem_commPattern_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>commPattern</strong></td>
+            <td>
+<p>mpi communication pattern type</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-proc~15"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_comm_env_type.html'>tem_comm_env_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>proc</strong></td>
+            <td>
+<p>mpi communication environment with mpi communicator</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_2d_project_numflux"></span> <h3>public  subroutine <a href='../proc/atl_modg_2d_project_numflux.html'>atl_modg_2d_project_NumFlux</a>(mesh, equation, kerneldata, facedata, penalizationdata, usePenalization, scheme, poly_proj, dl_prod, dl_prodDiff)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Subroutine to project modal representations of numerical flux
+and source terms onto test functions.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh~107"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh</strong></td>
+            <td>
+<p>Descritption of the cubical elements in the mesh</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~251"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation description.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata~35"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata</strong></td>
+            <td>
+<p>The data of the kernel. Holds the physical fluxes.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facedata~39"></span>
+              type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>facedata</strong></td>
+            <td>
+<p>The representation on the face + representation of the flux.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata~9"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationdata</strong></td>
+            <td>
+<p>Volumetric data for the penalization</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-usepenalization~10"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>usePenalization</strong></td>
+            <td>
+<p>Flag to indicate whether the penalization data has to be considered, or
+if it is taken care of somewhere else (imex)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme~83"></span>
+              type(<a href='../type/atl_modg_2d_scheme_type.html'>atl_modg_2d_scheme_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme</strong></td>
+            <td>
+<p>The parameters of the MODG scheme</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~131"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Projection for the current level</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dl_prod~23"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dl_prod</strong>(2,scheme%maxPolyDegree+1)</td>
+            <td>
+<p>Precomputed scalar products of the test and ansatz function</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dl_proddiff~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dl_prodDiff</strong>(2,scheme%maxPolyDegree+1)</td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_2d_project_source"></span> <h3>public  subroutine <a href='../proc/atl_modg_2d_project_source.html'>atl_modg_2d_project_source</a>(sourcedata, nScalars, mesh, scheme, kerneldata, currentLevel)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Projection of the source terms (in modal representation) to
+the test functions.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-sourcedata~21"></span>
+              type(<a href='../type/atl_source_type.html'>atl_source_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>sourcedata</strong></td>
+            <td>
+<p>The modal representation of the source</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nscalars~114"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nScalars</strong></td>
+            <td>
+<p>The number scalar variables in the equation system.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh~109"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh</strong></td>
+            <td>
+<p>The cubical elements.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme~84"></span>
+              type(<a href='../type/atl_modg_2d_scheme_type.html'>atl_modg_2d_scheme_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme</strong></td>
+            <td>
+<p>The parameters of the MODG scheme</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata~37"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata</strong></td>
+            <td>
+<p>The data of the kernel. This one is updated by the projection.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-currentlevel~72"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>currentLevel</strong></td>
+            <td>
+<p>The current level</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_2d_modalvoltomodalface"></span> <h3>public  subroutine <a href='../proc/atl_modg_2d_modalvoltomodalface.html'>atl_modg_2d_modalVolToModalFace</a>(mesh, statedata, facedata, equation, modg_2d)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Projects modal representation of each cell to its faces, i.e.
+this subroutine creates a modal representation on the faces.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh~112"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh</strong></td>
+            <td>
+<p>The elements we apply the projection for.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-statedata~39"></span>
+              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>statedata</strong></td>
+            <td>
+<p>Volumetric, modal states for each element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facedata~40"></span>
+              type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>facedata</strong></td>
+            <td>
+<p>Modal representation on the face (will be updated by this routine for all
+fluid elements in mesh).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~254"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation system under consideration</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-modg_2d~2"></span>
+              type(<a href='../type/atl_modg_2d_scheme_type.html'>atl_modg_2d_scheme_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>modg_2d</strong></td>
+            <td>
+<p>The parameters of your modg scheme.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_2d_ensure_pos_facemean"></span> <h3>public  subroutine <a href='../proc/atl_modg_2d_ensure_pos_facemean.html'>atl_modg_2d_ensure_pos_facemean</a>(nElems_fluid, volState, faceRep, nScalars, ensure_positivity)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Lift the mean on the face to a positive value if necessary.</p><a href="../proc/atl_modg_2d_ensure_pos_facemean.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nelems_fluid~35"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nElems_fluid</strong></td>
+            <td>
+<p>Number of fluid elements</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-volstate~20"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>volState</strong>(:,:,:)</td>
+            <td>
+<p>Volumetric modal states for each element</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facerep~28"></span>
+              type(<a href='../type/atl_facerep_type.html'>atl_faceRep_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceRep</strong>(:)</td>
+            <td>
+<p>Modal representation on the face that might need limiting.</p><a href="../proc/atl_modg_2d_ensure_pos_facemean.html#variable-facerep~28" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nscalars~124"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nScalars</strong></td>
+            <td>
+<p>Number of variables</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ensure_positivity~3"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ensure_positivity</strong>(:)</td>
+            <td>
+<p>Indication for each variable, whether positivity is to be ensured
+or not.</p><a href="../proc/atl_modg_2d_ensure_pos_facemean.html#variable-ensure_positivity~3" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_2d_invmassmatrix"></span> <h3>public  subroutine <a href='../proc/atl_modg_2d_invmassmatrix.html'>atl_modg_2d_invMassMatrix</a>(mesh, equation, kerneldata, statedata, elementalTimestep, timestep, scheme)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Applies the inverse of the mass matrix for a 2D scheme.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh~113"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh</strong></td>
+            <td>
+<p>The mesh you are working with.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~255"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you solve.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata~40"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata</strong></td>
+            <td>
+<p>The data of the kernel.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-statedata~40"></span>
+              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>statedata</strong></td>
+            <td>
+<p>THe state if the equation</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elementaltimestep~3"></span>
+              procedure(<a href='../interface/atl_elemental_timestep_vec.html'>atl_elemental_timestep_vec</a>),
+            </td>
+<td>intent(in),</td>
+              <td></td>            <td>
+              pointer
+            </td>
+            <td>::</td>
+            <td><strong>elementalTimestep</strong></td>
+            <td>
+<p>The elemental timestepping routine, because of performance, this
+is constant.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-timestep~13"></span>
+              type(<a href='../type/atl_timestep_type.html'>atl_timestep_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>timestep</strong></td>
+            <td>
+<p>The timestepping data.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme~85"></span>
+              type(<a href='../type/atl_modg_2d_scheme_type.html'>atl_modg_2d_scheme_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme</strong></td>
+            <td>
+<p>Parameters of the modal dg scheme</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-modg_2d_project_penalization_q"></span> <h3>private  subroutine <a href='../proc/modg_2d_project_penalization_q.html'>modg_2d_project_penalization_Q</a>(nScalars, mesh, maxPolyDegree, kerneldata, penalizationdata)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Projection of the penalization terms (in modal representation) to the test
+functions.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nscalars~113"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nScalars</strong></td>
+            <td>
+<p>The number scalar variables in the equation system.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh~108"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh</strong></td>
+            <td>
+<p>The cubical elements.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxpolydegree~79"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxPolyDegree</strong></td>
+            <td>
+<p>The maximal polynomial degree of the modg scheme</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata~36"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata</strong></td>
+            <td>
+<p>The data of the kernel. This one is updated by the projection.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata~10"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationdata</strong></td>
+            <td>
+<p>Volumetric data for the penalization</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-modg_2d_project_source_q"></span> <h3>private  subroutine <a href='../proc/modg_2d_project_source_q.html'>modg_2d_project_source_Q</a>(nScalars, sourcedata, maxPolyDegree, mesh, kerneldata, currentLevel)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Projection of the source terms (in modal representation) to
+the test functions.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nscalars~115"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nScalars</strong></td>
+            <td>
+<p>The number scalar variables in the equation system.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-sourcedata~22"></span>
+              type(<a href='../type/atl_source_type.html'>atl_source_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>sourcedata</strong></td>
+            <td>
+<p>The modal representation of the source</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxpolydegree~80"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxPolyDegree</strong></td>
+            <td>
+<p>The maximal polynomial degree of the modg scheme</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh~110"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh</strong></td>
+            <td>
+<p>The cubical elements.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata~38"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata</strong></td>
+            <td>
+<p>The data of the kernel. This one is updated by the projection.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-currentlevel~73"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>currentLevel</strong></td>
+            <td>
+<p>The current level</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-modg_2d_project_source_p"></span> <h3>private  subroutine <a href='../proc/modg_2d_project_source_p.html'>modg_2d_project_source_P</a>(nScalars, sourcedata, maxPolyDegree, mesh, kerneldata, currentLevel)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Projection of the source terms (in modal representation) to
+the test functions.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nscalars~116"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nScalars</strong></td>
+            <td>
+<p>The number scalar variables in the equation system.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-sourcedata~23"></span>
+              type(<a href='../type/atl_source_type.html'>atl_source_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>sourcedata</strong></td>
+            <td>
+<p>The modal representation of the source</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxpolydegree~81"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxPolyDegree</strong></td>
+            <td>
+<p>The maximal polynomial degree of the modg scheme</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh~111"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh</strong></td>
+            <td>
+<p>The cubical elements.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata~39"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata</strong></td>
+            <td>
+<p>The data of the kernel. This one is updated by the projection.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-currentlevel~74"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>currentLevel</strong></td>
+            <td>
+<p>The current level</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-modg_2d_project_stabviscnumfluxx_q"></span> <h3>private  subroutine <a href='../proc/modg_2d_project_stabviscnumfluxx_q.html'>modg_2d_project_stabViscNumFluxX_Q</a>(numFlux, faceState, equation, maxPolyDegree, length, nElems_fluid, projection, poly_proj)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Projection of the numerical flux in x direction onto the testfunctions.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-numflux~6"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>numFlux</strong>(:,:,:,:)</td>
+            <td>
+<p>The numerical flux on the faces in modal representations.
+Dimension is (maxPolyDegree+1)^2 , nScalars</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facestate~21"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceState</strong>(:,:,:,:)</td>
+            <td>
+<p>The state on the faces in modal representations.
+Dimension is (maxPolyDegree+1)^2 , nScalars</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~252"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation system under consideration</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxpolydegree~82"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxPolyDegree</strong></td>
+            <td>
+<p>The maximal polynomial degree in each spatial direction.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-length~46"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>length</strong></td>
+            <td>
+<p>The length of the cubes.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nelems_fluid~28"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nElems_fluid</strong></td>
+            <td>
+<p>The element index</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-projection~15"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>projection</strong>(:,:,:)</td>
+            <td>
+<p>The numerical flux projected onto the test functions.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~132"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Projection for the current level</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-modg_2d_project_stabviscnumfluxy_q"></span> <h3>private  subroutine <a href='../proc/modg_2d_project_stabviscnumfluxy_q.html'>modg_2d_project_stabViscNumFluxY_Q</a>(numFlux, faceState, equation, maxPolyDegree, length, nElems_fluid, projection, poly_proj)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Projection of the numerical flux in y direction onto the testfunctions.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-numflux~7"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>numFlux</strong>(:,:,:,:)</td>
+            <td>
+<p>The numerical flux on the faces in modal representations.
+Dimension is (maxPolyDegree+1)^2 , nScalars</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facestate~22"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceState</strong>(:,:,:,:)</td>
+            <td>
+<p>The state on the faces in modal representations.
+Dimension is (maxPolyDegree+1)^2 , nScalars</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~253"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation system under consideration</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxpolydegree~83"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxPolyDegree</strong></td>
+            <td>
+<p>The maximal polynomial degree in each spatial direction.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-length~47"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>length</strong></td>
+            <td>
+<p>The length of the cubes.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nelems_fluid~29"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nElems_fluid</strong></td>
+            <td>
+<p>The element index</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-projection~16"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>projection</strong>(:,:,:)</td>
+            <td>
+<p>The numerical flux projected onto the test functions.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~133"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Projection for the current level</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-modg_2d_project_numfluxx_q"></span> <h3>private  subroutine <a href='../proc/modg_2d_project_numfluxx_q.html'>modg_2d_project_numFluxX_Q</a>(numFlux, nScalars, maxPolyDegree, length, nElems_fluid, dl_prod, projection)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Projection of the numerical flux in x direction onto the testfunctions
+for Q_space.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-numflux~8"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>numFlux</strong>(:,:,:,:)</td>
+            <td>
+<p>The numerical flux on the faces in modal representations.
+Dimension is (maxPolyDegree+1)^2 , nScalars</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nscalars~119"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nScalars</strong></td>
+            <td>
+<p>The number of scalar variables in your equation system.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxpolydegree~84"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxPolyDegree</strong></td>
+            <td>
+<p>The maximal polynomial degree in each spatial direction.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-length~48"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>length</strong></td>
+            <td>
+<p>The length of the cubes.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nelems_fluid~30"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nElems_fluid</strong></td>
+            <td>
+<p>The element index</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dl_prod~24"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dl_prod</strong>(2,maxPolyDegree+1)</td>
+            <td>
+<p>Precomputed dual Legendre products:</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-projection~17"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>projection</strong>(:,:,:)</td>
+            <td>
+<p>The numerical flux projected onto the test functions.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-modg_2d_project_numfluxx_difftestx_q"></span> <h3>private  subroutine <a href='../proc/modg_2d_project_numfluxx_difftestx_q.html'>modg_2d_project_numFluxX_diffTestX_Q</a>(numFluxLeftFace, numFluxRightFace, nScalars, maxPolyDegree, length, nElems_fluid, dl_prod, projection)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Projection of the numerical flux in x direction onto the testfunctions.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-numfluxleftface~3"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>numFluxLeftFace</strong>(:,:,:,:)</td>
+            <td>
+<p>The numerical flux on the left face in modal representations.
+Dimension is (maxPolyDegree+1)^2 , nScalars</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-numfluxrightface~3"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>numFluxRightFace</strong>(:,:,:,:)</td>
+            <td>
+<p>The numerical flux on the right face in modal representations.
+Dimension is (maxPolyDegree+1)^2 , nScalars</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nscalars~120"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nScalars</strong></td>
+            <td>
+<p>The number of scalar variables in your equation system.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxpolydegree~85"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxPolyDegree</strong></td>
+            <td>
+<p>The maximal polynomial degree in each spatial direction.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-length~49"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>length</strong></td>
+            <td>
+<p>The length of the cubes.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nelems_fluid~31"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nElems_fluid</strong></td>
+            <td>
+<p>The element index</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dl_prod~25"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dl_prod</strong>(2,maxPolyDegree+1)</td>
+            <td>
+<p>Precomputed dual Legendre products:</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-projection~18"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>projection</strong>(:,:,:)</td>
+            <td>
+<p>The numerical flux projected onto the test functions.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-modg_2d_project_numfluxy_q"></span> <h3>private  subroutine <a href='../proc/modg_2d_project_numfluxy_q.html'>modg_2d_project_numFluxY_Q</a>(numFlux, nScalars, maxPolyDegree, length, nElems_fluid, dl_prod, projection)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Projection of the numerical flux in y direction onto the testfunctions
+for Q_space.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-numflux~9"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>numFlux</strong>(:,:,:,:)</td>
+            <td>
+<p>The numerical flux on the faces in modal representations.
+Dimension is (maxPolyDegree+1)^2 , nScalars</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nscalars~121"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nScalars</strong></td>
+            <td>
+<p>The number of scalar variables in your equation system.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxpolydegree~86"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxPolyDegree</strong></td>
+            <td>
+<p>The maximal polynomial degree in each spatial direction.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-length~50"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>length</strong></td>
+            <td>
+<p>The length of the cubes.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nelems_fluid~32"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nElems_fluid</strong></td>
+            <td>
+<p>The element index</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dl_prod~26"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dl_prod</strong>(2,maxPolyDegree+1)</td>
+            <td>
+<p>Precomputed dual Legendre products:</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-projection~19"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>projection</strong>(:,:,:)</td>
+            <td>
+<p>The numerical flux projected onto the test functions.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-modg_2d_project_numfluxy_difftesty_q"></span> <h3>private  subroutine <a href='../proc/modg_2d_project_numfluxy_difftesty_q.html'>modg_2d_project_numFluxY_diffTestY_Q</a>(numFluxLeftFace, numFluxRightFace, nScalars, maxPolyDegree, length, nElems_fluid, dl_prod, projection)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Projection of the numerical flux in y direction onto the testfunctions.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-numfluxleftface~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>numFluxLeftFace</strong>(:,:,:,:)</td>
+            <td>
+<p>The numerical flux on the left face in modal representations.
+Dimension is (maxPolyDegree+1)^2 , nScalars</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-numfluxrightface~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>numFluxRightFace</strong>(:,:,:,:)</td>
+            <td>
+<p>The numerical flux on the right face in modal representations.
+Dimension is (maxPolyDegree+1)^2 , nScalars</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nscalars~122"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nScalars</strong></td>
+            <td>
+<p>The number of scalar variables in your equation system.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxpolydegree~87"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxPolyDegree</strong></td>
+            <td>
+<p>The maximal polynomial degree in each spatial direction.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-length~51"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>length</strong></td>
+            <td>
+<p>The length of the cubes.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nelems_fluid~33"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nElems_fluid</strong></td>
+            <td>
+<p>The element index</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dl_prod~27"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dl_prod</strong>(2,maxPolyDegree+1)</td>
+            <td>
+<p>Precomputed dual Legendre products:</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-projection~20"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>projection</strong>(:,:,:)</td>
+            <td>
+<p>The numerical flux projected onto the test functions.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-modg_2d_invmassmatrix_q"></span> <h3>private  subroutine <a href='../proc/modg_2d_invmassmatrix_q.html'>modg_2d_invMassMatrix_Q</a>(mesh, equation, kerneldata, scheme, nElems)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Applies the inverse of the mass matrix for a 2D scheme in Q_space.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh~114"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh</strong></td>
+            <td>
+<p>The mesh you are working with.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~256"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you solve.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata~41"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata</strong></td>
+            <td>
+<p>The data of the kernel.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme~86"></span>
+              type(<a href='../type/atl_modg_2d_scheme_type.html'>atl_modg_2d_scheme_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme</strong></td>
+            <td>
+<p>Parameters of the modal dg scheme</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nelems~104"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nElems</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-modg_2d_invmassmatrix_p"></span> <h3>private  subroutine <a href='../proc/modg_2d_invmassmatrix_p.html'>modg_2d_invMassMatrix_P</a>(mesh, kerneldata, scheme, nElems)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Applies the inverse of the mass matrix for a 2D scheme in P_space.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh~115"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh</strong></td>
+            <td>
+<p>The mesh you are working with.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata~42"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata</strong></td>
+            <td>
+<p>The data of the kernel.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme~87"></span>
+              type(<a href='../type/atl_modg_2d_scheme_type.html'>atl_modg_2d_scheme_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme</strong></td>
+            <td>
+<p>Parameters of the modal dg scheme</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nelems~105"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nElems</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

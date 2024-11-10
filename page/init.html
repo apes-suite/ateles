@@ -1,0 +1,546 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>Initialization &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>Initialization</h1>
+    <div class="container p-2 mb-4 bg-light border rounded-3">
+      <div class="row align-items-center justify-content-between">
+        <div class="col">
+          <ul class="list-inline" style="margin-bottom:0px; display:inline">
+          </ul>
+        </div>
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='index.html'>Documentation</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Initialization</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-3">
+        <div class="card card-body bg-light" id="sidebar-toc">
+          <ul class="nav flex-column align-items">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Documentation</a>
+            </li>
+          </ul>
+          <hr>
+          <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="apes_overview.html">APES Overview</a>
+              <a class="nav-link" href="build_and_run.html">Build and Run Ateles</a>
+              <a class="nav-link" href="examples/index.html">Example setups</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/acoustic/index.html">Acoustic Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/acoustic/gauss_densitypulse_2D/index.html">Gaussian Density Pulse Test Case</a>
+              <a class="nav-link" href="examples/acoustic/planar_wave_3D/index.html">Planar Wave</a>
+
+                </nav>
+              <a class="nav-link" href="examples/euler/index.html">Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/euler/1D/index.html">1D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/euler/1D/modalEstimate/index.html">Modal estimate for adaptive timesteps 1D</a>
+              <a class="nav-link" href="examples/euler/1D/piston/index.html">Formation of a shock wave ahead of a moving piston in 1D</a>
+              <a class="nav-link" href="examples/euler/1D/piston_modereduction/index.html">Formation of a shock wave ahead of a moving piston in 1D</a>
+              <a class="nav-link" href="examples/euler/1D/shock_stabilization_parallel/index.html">Shock Stabilization Test Case</a>
+              <a class="nav-link" href="examples/euler/1D/toro1_x/index.html">Toro Validation Test Case</a>
+
+                </nav>
+              <a class="nav-link" href="examples/euler/2D/index.html">2D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/euler/2D/gauss_densitypulse_spongelayer/index.html">Gaussian Density Pulse in 2D</a>
+              <a class="nav-link" href="examples/euler/2D/modalEstimate/index.html">Modal estimate for adaptive timesteps in 2D</a>
+              <a class="nav-link" href="examples/euler/2D/shock_stabilization_parallel/index.html">Shock Stabilization Test Case</a>
+              <a class="nav-link" href="examples/euler/2D/toro1_x/index.html">Toro1 Validation Test Case in X direction</a>
+              <a class="nav-link" href="examples/euler/2D/toro1_y/index.html">Toro1 Validation Test Case in Y direction</a>
+              <a class="nav-link" href="examples/euler/2D/toro2_x/index.html">Toro2 Setup along X for 2D Euler equations</a>
+              <a class="nav-link" href="examples/euler/2D/toro3_x/index.html">Toro3 Setup along X for 2D Euler equations</a>
+              <a class="nav-link" href="examples/euler/2D/toro4_x/index.html">Toro4 setup for 2D Euler equations with a positivity preserving filter</a>
+              <a class="nav-link" href="examples/euler/2D/vorticity/index.html">Vorticity Tracking</a>
+              <a class="nav-link" href="examples/euler/2D/wedge/index.html">Supersonic movement of a wedge</a>
+              <a class="nav-link" href="examples/euler/2D/wedge_modereduction/index.html">Supersonic movement of a wedge</a>
+
+                </nav>
+              <a class="nav-link" href="examples/euler/3D/index.html">3D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/euler/3D/gauss_densitypulse_deriv_quantity/index.html">Pulse in density with derived quantity</a>
+              <a class="nav-link" href="examples/euler/3D/gauss_densitypulse_fpt/index.html">Euler 3D pulse in density with FPT</a>
+              <a class="nav-link" href="examples/euler/3D/gauss_densitypulse_fxt/index.html">Euler 3D setup of Gaussian pulse in density with FXT</a>
+              <a class="nav-link" href="examples/euler/3D/gauss_densitypulse_l2p/index.html">Euler 3D setup with pulse in density and L2 projection</a>
+              <a class="nav-link" href="examples/euler/3D/gauss_densitypulse_spongelayer/index.html">Euler 3D pulse in density with sponge</a>
+              <a class="nav-link" href="examples/euler/3D/modalEstimate/index.html">Modal estimate in Euler 3D</a>
+              <a class="nav-link" href="examples/euler/3D/multilevel/index.html">Material with Multilevel in Euler 3D</a>
+              <a class="nav-link" href="examples/euler/3D/overview/index.html">Configuration overview for Euler 3D simulations</a>
+              <a class="nav-link" href="examples/euler/3D/p_polynomials/index.html">P-polynomial space</a>
+              <a class="nav-link" href="examples/euler/3D/qCriterion_deriv_quantity/index.html">Q-Criterion Tracking in Euler 3D</a>
+              <a class="nav-link" href="examples/euler/3D/shear_layer_Q4/index.html">Shear-Layer Q4</a>
+              <a class="nav-link" href="examples/euler/3D/shear_layer_Q4_parallel/index.html">Shear-Layer Q4</a>
+              <a class="nav-link" href="examples/euler/3D/shear_layer_Q8/index.html">Shear-Layer Q8</a>
+              <a class="nav-link" href="examples/euler/3D/shock_stabilization_localrefinement/index.html">Shock Stabilization in Euler 3D with local refinement</a>
+              <a class="nav-link" href="examples/euler/3D/shock_stabilization_parallel/index.html">Shock stabilization for 3D Euler equations with RK-Taylor</a>
+              <a class="nav-link" href="examples/euler/3D/shock_stabilization_periodic/index.html">Shock stabilization in periodic domain</a>
+              <a class="nav-link" href="examples/euler/3D/toro1_x/index.html">Toro1 Riemann problem in X direction</a>
+              <a class="nav-link" href="examples/euler/3D/toro1_y/index.html">Toro1 Riemann problem in Y direction</a>
+              <a class="nav-link" href="examples/euler/3D/toro1_z/index.html">Toro1 Riemann problem in Z direction</a>
+              <a class="nav-link" href="examples/euler/3D/vorticity/index.html">Vorticity Test Case</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="examples/heat/index.html">Heat Conduction</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/heat/1D/index.html">Heat Conduction in 1D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/heat/1D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+              <a class="nav-link" href="examples/heat/2D/index.html">Heat Conduction in 2D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/heat/2D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+              <a class="nav-link" href="examples/heat/3D/index.html">Heat Conduction in 3D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/heat/3D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="examples/lineareuler/index.html">Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/lineareuler/2D/index.html">2D Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/lineareuler/2D/gauss_pulse/index.html">Gaussian pulse in pressure with 2d linearized Euler equations</a>
+              <a class="nav-link" href="examples/lineareuler/2D/transientBackground/index.html">Transient background state in 2D linearized Euler</a>
+
+                </nav>
+              <a class="nav-link" href="examples/lineareuler/3D/index.html">3D Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/lineareuler/3D/gauss_pulse/index.html">Gaussian pulse in density for 3D linearized Euler equations</a>
+              <a class="nav-link" href="examples/lineareuler/3D/gradient/index.html">Tracking of gradients in 3D linearized Euler equations</a>
+              <a class="nav-link" href="examples/lineareuler/3D/transientBackground/index.html">Transient background state in 3D linearized Euler</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="examples/maxwell/index.html">Maxwell Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/maxwell/pec_scatter_inhomogenous_matFun_Q8_3D/index.html">Perfectly_scatter_Inhomogenous_Materia</a>
+              <a class="nav-link" href="examples/maxwell/pec_scatter_inhomogenous_matVar_Q8_3D/index.html">Perfectly_scatter_Inhomogenous_Materia</a>
+              <a class="nav-link" href="examples/maxwell/periodic_oscillator_P8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="examples/maxwell/periodic_oscillator_Q8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="examples/maxwell/rectangular_wave_Q8_3D/index.html">Rectangle Wave</a>
+
+                </nav>
+              <a class="nav-link" href="examples/maxwelldivcorr/index.html">Maxwell Equations With Divergence Correction</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/maxwelldivcorr/periodic_oscillator_P8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="examples/maxwelldivcorr/periodic_oscillator_Q8_3D/index.html">Periodic_Oscillator</a>
+
+                </nav>
+              <a class="nav-link" href="examples/maxwellpml/index.html">Maxwell Equations With Perfectly Matched Layers</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/maxwellpml/cylinder_scattering_Q8_2D/index.html">Perfectly matched Layer test case</a>
+
+                </nav>
+              <a class="nav-link" href="examples/navierstokes/index.html">Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/navierstokes/2D/index.html">2D Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/navierstokes/2D/constant_state/index.html">Constant State</a>
+              <a class="nav-link" href="examples/navierstokes/2D/shear_hat/index.html">Shear hat 2D</a>
+              <a class="nav-link" href="examples/navierstokes/2D/viscous_vortex/index.html">Viscous Vortex (TGV) 2D</a>
+
+                </nav>
+              <a class="nav-link" href="examples/navierstokes/3D/index.html">3D Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="examples/navierstokes/3D/shear_hat/index.html">Shear hat 3D</a>
+              <a class="nav-link" href="examples/navierstokes/3D/shear_tube/index.html">Shear tube 3D</a>
+
+                </nav>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link active disabled" href="init.html">Initialization</a>
+              <a class="nav-link" href="material.html">Material</a>
+              <a class="nav-link" href="neumann_boundaries.html">Neumann boundary conditions</a>
+              <a class="nav-link" href="new_eqn_system.html">Introducing a New Equation System</a>
+              <a class="nav-link" href="polynomials.html">Polynomials Library</a>
+              <a class="nav-link" href="postprocess_filtering.html">Postprocess Filtering</a>
+              <a class="nav-link" href="tutorial/index.html">Tutorial</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="tutorial/euler.html">Euler Testcase</a>
+              <a class="nav-link" href="tutorial/general.html">General Input File Information</a>
+              <a class="nav-link" href="tutorial/maxwell.html">Maxwell Testcase</a>
+              <a class="nav-link" href="tutorial/postprocessing.html">Postprocessing with atl_harvesting</a>
+              <a class="nav-link" href="tutorial/procedure.html">General Procedure for Running the Testcases</a>
+              <a class="nav-link" href="tutorial/source_term.html">Source Term</a>
+              <a class="nav-link" href="tutorial/tracking.html">Tracking</a>
+
+                </nav>
+          </nav>
+        </div>
+      </div>
+
+    <div class="col-9" id='text'>
+      <p>On this page the initialization of the complete Ateles solver is described.
+Basicly this process is done with the subroutine
+<a href="../proc/atl_initialize.html">atl_initialize</a>.
+During initialization,
+the configuration is read from the given Lua configuration file,
+all necessary data structures for the computation are build
+and the required values are set.</p>
+<div class="toc">
+<ul>
+<li><a href="#equation">Equation</a></li>
+<li><a href="#variable-system">Variable System</a><ul>
+<li><a href="#user-defined-variables">User Defined Variables</a></li>
+<li><a href="#source-terms">Source Terms</a></li>
+<li><a href="#material">Material</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="alert alert-success">
+<dl>
+<dt>Todo</dt>
+<dd>
+<p>Describe what is read, how it is read and where it is stored.</p>
+</dd>
+</dl>
+</div>
+<h2 id="equation">Equation</h2>
+<p>The equation description gets initialized with the call of
+<a href="../proc/atl_init_equation.html">atl_init_equation</a>.
+This subroutine reads the equation system to solve from the configuration file
+and calls the equation specific initialization routine
+to create the necessary data structures
+and to set the required values accordingly.</p>
+<p>The currently supported equation systems to load are</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Benjamin–Bona–Mahony_equation">Benjamin–Bona–Mahony equation</a>
+    with <a href="../proc/atl_load_bbmem.html">atl_load_BBMEM</a>,</li>
+<li><a href="https://en.wikipedia.org/wiki/Euler_equations_(fluid_dynamics)">Euler equations</a>
+    with <a href="../proc/atl_eqn_euler_init.html">atl_eqn_euler_init</a> or with
+    <a href="../proc/atl_eqn_lineareuler_init.html">atl_eqn_linearEuler_init</a> for linear Euler,</li>
+<li><a href="https://en.wikipedia.org/wiki/Navier–Stokes_equations">Navier–Stokes equations</a>
+    with <a href="../proc/atl_eqn_nvrstk_init.html">atl_eqn_nvrstk_init</a> or with
+    <a href="../proc/atl_eqn_filtered_nvrstk_init.html">atl_eqn_filtered_nvrstk_init</a>
+    for filtered Navier-Stokes,</li>
+<li><a href="https://en.wikipedia.org/wiki/Acoustic_wave_equation">Acoustic wave equation</a>
+    with <a href="../proc/atl_eqn_acoustic_init.html">atl_eqn_acoustic_init</a>,</li>
+<li><a href="https://en.wikipedia.org/wiki/Maxwell%27s_equations">Maxwell's equations</a>
+    with <a href="../proc/atl_eqn_maxwell_init.html">atl_eqn_maxwell_init</a>,</li>
+<li><a href="https://en.wikipedia.org/wiki/Nernst–Planck_equation">Nernst–Planck equation</a>
+    with <a href="../proc/atl_init_nerplanck_vars.html">atl_init_nerplanck_vars</a>,</li>
+<li><a href="https://en.wikipedia.org/wiki/Advection#The_advection_equation">Advection</a>
+    with <a href="../proc/atl_eqn_advection_1d_init.html">atl_eqn_advection_1d_init</a> and</li>
+<li><a href="https://en.wikipedia.org/wiki/Heat_equation">Heat equation</a>
+    with <a href="../proc/atl_eqn_heat_init.html">atl_eqn_heat_init</a>.</li>
+</ul>
+<h2 id="variable-system">Variable System</h2>
+<p>The variable system contains all variables used throughout the simulation.
+It is constructed during the initialization
+based on the data defined by the equation system
+and on the user defined variables provided by the configuration file.
+This includes also source terms, material properties,
+and penalization parameters.</p>
+<h3 id="user-defined-variables">User Defined Variables</h3>
+<p>The user can define variables that can serve different purposes.
+E.g. they can be used to be the data source for source terms,
+material properties or just to track quantities that are not provided
+by the used equation system.
+User defined variables are specified in the lua configuration file.
+They reside in it's own table called <code>variable</code>
+and follow the notation specified by <a href="../https:/apes-suite.github.io/treelm/module/tem_variable_module.html">tem_variable_module</a>.
+This table is loaded
+and gets added to the variable system during initialization.</p>
+<h3 id="source-terms">Source Terms</h3>
+<p>To load the source terms for a given variable system,
+we start with creating a list of possible source variables
+the variable system can make use of.
+Thus these variables depend on the specific equation system,
+this is done in the equation specific routines
+called by <a href="../proc/atl_init_equation.html">atl_init_equation</a>.
+There the name and the number of components for each variable is added
+to the list <code>initSource%eval_source</code> of type
+<a href="../type/atl_init_source_type.html">atl_init_source_type</a>.
+This list is taken to extract the corresponding variables for every source term
+from the lua configuration file where they are stored in the table <code>source</code>.
+Inside this table, the names of user defined variables are assigned
+to the names of source terms.
+Briefly, the <code>source</code> table is a dictionary with the name of the source terms
+and the names of the corresponding user defined variables.
+With these assignements and the list of possible source terms,
+a list of available source terms is created,
+which is stored in a list to be added to the variable system.</p>
+<p>To get more information about how to set up scource terms
+in the configuration file please read the
+<a href="./tutorial/source_term.html">source term tutorial</a>.</p>
+<div class="alert alert-success">
+<p class="alert-title h4">Todo</p>
+<p>pv: Correct the initialization description</p>
+</div>
+<p>There all possible variables that are actually notated
+in the configuration file and added to <code>equation%sources</code>.
+There all information from the configuration file
+as well as from the expected ovariable list are contained in two arrays.
+The first is <code>equation%sources%varname</code>,
+which contains the names of the source variables.
+The second array is called <code>equation%sources%variable</code>.
+This array contains instances of type <a href="../https:/apes-suite.github.io/treelm/type/tem_variable_type.html">tem_variable_type</a>,
+which itself contains a label, the number of components,
+the type of the variable and a reference to the function
+that provides the variable value when called.
+The label is the same as the variable name, but prefixed with 'source_'.
+The components are not taken from the configuration file but
+from the list of expected variables.
+The type of the variable depends on how the source variable
+is specified in the configuration file.
+And last but not least the reference to the function is added,
+which is also dependend on the variable notation in the configuration file.</p>
+<p>After extracting all variables from the configuration,
+we need to add them to the variable system.
+Therefore we have to add the lua variable
+which is called <code>source_&lt;variablename&gt;</code> to the variable system
+and later on add the variable <code>&lt;variablename&gt;</code> to the varSys as well.
+The latter one needs the former one as input varibale
+and it also needs to define specific get_element and get_point routines
+to actually get the data from the input varibale.</p>
+<p>Additionally, the <code>equation_type</code> has a list <code>eval_source</code>,
+which contains function pointers to the routines
+that actually evaluate the source term and apply it to the right hand side.
+To avoid unnecessary projections,
+these evaluation routines are now called in with modal values
+and have to do the projection internally, if needed.</p>
+<h3 id="material">Material</h3>
+<p>The configuration of materials is done according to source terms. Each equation
+system is able to use (or not to use) a different set of material parameters.
+Therefore, the material configuration is a part of the equation configuration.
+Inside the equation table a material table is to be defined. We handle
+materials as variables. For each material parameter the equation system expects
+a reference to a user-defined variable:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;permeability&quot;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;st_fun&quot;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;permittivity&quot;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;st_fun&quot;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;conductivity&quot;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;st_fun&quot;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">equation</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;maxwell&#39;</span><span class="p">,</span>
+  <span class="n">material</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">permeability</span> <span class="o">=</span> <span class="s1">&#39;permeability&#39;</span><span class="p">,</span>
+    <span class="n">permittivity</span> <span class="o">=</span> <span class="s1">&#39;permittivity&#39;</span><span class="p">,</span>
+    <span class="n">conductivity</span> <span class="o">=</span> <span class="s1">&#39;conductivity&#39;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Following this approach, every material parameter is defined by at least one
+space-time function. However, there are situations where more than one
+space-time function is needed. This is, for example, when there are different
+materials for the background and a special region within the domain. To get
+different materials for different regions, it is possible to add more than one
+space-time function to a material variable:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;permeability&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s1">&#39;st_fun&#39;</span><span class="p">,</span>
+    <span class="n">evaltype</span> <span class="o">=</span> <span class="s1">&#39;first&#39;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="p">{</span>
+        <span class="n">const</span> <span class="o">=</span> <span class="p">{</span> <span class="mf">1.0</span> <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="n">const</span> <span class="o">=</span> <span class="p">{</span> <span class="mf">2.0</span> <span class="p">},</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+          <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+          <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span> <span class="p">},</span>
+            <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span>
+              <span class="p">{</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="n">scatter_eps</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span> <span class="p">},</span>
+              <span class="p">{</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="n">scatter_eps</span><span class="p">,</span> <span class="mf">0.0</span> <span class="p">},</span>
+              <span class="p">{</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="n">scatter_eps</span> <span class="p">},</span>
+            <span class="p">},</span>
+            <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span> <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>With more than one space-time function for a variable, it is possible to get
+more than one value for one point. Therefore the evaltype setting was
+introduced. It defines how the evaluation routines should handle multiple
+values. Possible values are <code>add</code> (default), <code>first</code> and <code>firstonly_asglobal</code>.</p>
+<ul>
+<li>For variables with the evaltype <code>add</code>, all values for a given point are added.
+  Example: There is a background material with the constant value 1 and there
+  is a special shape with the constant value 2. For all points outside the shape
+  the variable returns 1, for all points inside the shape it returns 3.</li>
+<li>If the variable was defined with the evaltype <code>first</code>, the value of a point
+  depends on the space-time function's definition order. The example from
+  above (first space-time function with global shape returns 1, second
+  space-time function for a maller shape returns 2) will result in all points
+  having the value 1 as it is the first space-time function being defined.
+  When the order is reversed, the points within the shape will have a value of
+  2, all points outside the shape keep their value 1.</li>
+<li>TODO: The evaltype <code>firstonly_asglobal</code></li>
+</ul>
+<p>After reading all variables providing data for material parameters, Ateles will
+loop over all the subtrees of the different material variables and assign that
+space-time function to the element it has to evaluate. In the end, every element
+knows which space-time function it has to ask for the value of a single material
+parameter. This means, that for maxwell, each element has three space-time
+functions it needs to ask for the data, one for permeability, one for
+permittivity, and one for conductivity.</p>
+<p>The user has to take care of defining all material parameters for the whole
+domain. With the mechanism of different priorities based on the sorting
+described above, the user can define a global material parameter by providing it
+as the last space time function with global shape. All other space-time
+functions with a non-global shape will act according to the selected evaltype.</p>
+<p>After initializing all material space-time functions and assigning them to the
+elements, Ateles will check for elements that have no space-time function
+assigned (which means, the index to the space time function is 0). If there is
+at least one element that has at least one space-time function missing, Ateles
+will stop with a meaningful error message.</p>
+<p>For implementation details on materials, see <a href="./pages/material.html">Material</a>.</p>
+    </div>
+  </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

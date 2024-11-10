@@ -1,0 +1,744 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_space_basis.f90 &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_space_basis.f90
+      <small>Source File</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for source files.">35 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_space_basis.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+            <li class="breadcrumb-item active" aria-current="page">atl_space_basis.f90</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#mods-0"
+         aria-expanded="false" aria-controls="mods-0">
+         <h4 class="card-header bg-primary text-white">Modules</h4>
+      </a>
+      <div id="mods-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_space_basis.html">atl_space_basis</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../sourcefile/atl_space_basis.f90.html#src">atl_space_basis.f90</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    <div class="col-md-9" id='text'>
+      
+      <br>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">This file depends on</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: sourcefile~~atl_space_basis.f90~~EfferentGraph Pages: 1 -->
+<svg id="sourcefileatl_space_basisf90EfferentGraph" width="641pt" height="158pt"
+ viewBox="0.00 0.00 641.00 158.29" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph" class="graph" transform="scale(0.63 0.63) rotate(0) translate(4 245.42)">
+<title>sourcefile~~atl_space_basis.f90~~EfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-245.42 1006,-245.42 1006,4 -4,4"/>
+<!-- sourcefile~atl_space_basis.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_node1" class="node">
+<title>sourcefile~atl_space_basis.f90</title>
+<polygon fill="none" stroke="black" points="1002,-198.42 887,-198.42 887,-174.42 1002,-174.42 1002,-198.42"/>
+<text text-anchor="middle" x="944.5" y="-184.02" font-family="Helvetica,sans-Serif" font-size="10.50">atl_space_basis.f90</text>
+</g>
+<!-- sourcefile~atl_scheme_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_node2" class="node">
+<title>sourcefile~atl_scheme_module.f90</title>
+<g id="a_sourcefile~~atl_space_basis.f90~~EfferentGraph_node2"><a xlink:href="../sourcefile/atl_scheme_module.f90.html" xlink:title="atl_scheme_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="851,-178.42 712,-178.42 712,-154.42 851,-154.42 851,-178.42"/>
+<text text-anchor="middle" x="781.5" y="-164.02" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_scheme_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_space_basis.f90&#45;&gt;sourcefile~atl_scheme_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_edge1" class="edge">
+<title>sourcefile~atl_space_basis.f90&#45;&gt;sourcefile~atl_scheme_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M886.74,-179.37C878.47,-178.34 869.84,-177.27 861.24,-176.2"/>
+<polygon fill="#000000" stroke="#000000" points="861.53,-172.71 851.18,-174.95 860.67,-179.66 861.53,-172.71"/>
+</g>
+<!-- sourcefile~ply_modg_basis_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_node3" class="node">
+<title>sourcefile~ply_modg_basis_module.f90</title>
+<g id="a_sourcefile~~atl_space_basis.f90~~EfferentGraph_node3"><a xlink:href="../sourcefile/ply_modg_basis_module.f90.html" xlink:title="ply_modg_basis_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="660.5,-241.42 497.5,-241.42 497.5,-217.42 660.5,-217.42 660.5,-241.42"/>
+<text text-anchor="middle" x="579" y="-227.02" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_modg_basis_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_space_basis.f90&#45;&gt;sourcefile~ply_modg_basis_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_edge2" class="edge">
+<title>sourcefile~atl_space_basis.f90&#45;&gt;sourcefile~ply_modg_basis_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M886.7,-193.14C828.97,-199.97 738.62,-210.65 670.91,-218.66"/>
+<polygon fill="#000000" stroke="#000000" points="670.19,-215.22 660.67,-219.88 671.01,-222.18 670.19,-215.22"/>
+</g>
+<!-- sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~ply_modg_basis_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_edge7" class="edge">
+<title>sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~ply_modg_basis_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M753.88,-178.55C733.02,-187.71 703.1,-200.07 676,-208.42 668.35,-210.77 660.28,-212.97 652.2,-214.99"/>
+<polygon fill="#000000" stroke="#000000" points="651.26,-211.62 642.36,-217.36 652.91,-218.42 651.26,-211.62"/>
+</g>
+<!-- sourcefile~atl_modg_1d_scheme_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_node4" class="node">
+<title>sourcefile~atl_modg_1d_scheme_module.f90</title>
+<g id="a_sourcefile~~atl_space_basis.f90~~EfferentGraph_node4"><a xlink:href="../sourcefile/atl_modg_1d_scheme_module.f90.html" xlink:title="atl_modg_1d_scheme_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="676,-199.42 482,-199.42 482,-175.42 676,-175.42 676,-199.42"/>
+<text text-anchor="middle" x="579" y="-185.02" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_1d_scheme_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_modg_1d_scheme_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_edge3" class="edge">
+<title>sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_modg_1d_scheme_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M711.78,-173.62C703.55,-174.48 695.01,-175.37 686.4,-176.27"/>
+<polygon fill="#000000" stroke="#000000" points="685.87,-172.81 676.29,-177.33 686.6,-179.77 685.87,-172.81"/>
+</g>
+<!-- sourcefile~atl_modg_2d_scheme_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_node5" class="node">
+<title>sourcefile~atl_modg_2d_scheme_module.f90</title>
+<g id="a_sourcefile~~atl_space_basis.f90~~EfferentGraph_node5"><a xlink:href="../sourcefile/atl_modg_2d_scheme_module.f90.html" xlink:title="atl_modg_2d_scheme_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="676,-157.42 482,-157.42 482,-133.42 676,-133.42 676,-157.42"/>
+<text text-anchor="middle" x="579" y="-143.02" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_scheme_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_modg_2d_scheme_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_edge4" class="edge">
+<title>sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_modg_2d_scheme_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M711.78,-159.22C703.55,-158.36 695.01,-157.46 686.4,-156.56"/>
+<polygon fill="#000000" stroke="#000000" points="686.6,-153.06 676.29,-155.5 685.87,-160.03 686.6,-153.06"/>
+</g>
+<!-- sourcefile~atl_modg_scheme_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_node6" class="node">
+<title>sourcefile~atl_modg_scheme_module.f90</title>
+<g id="a_sourcefile~~atl_space_basis.f90~~EfferentGraph_node6"><a xlink:href="../sourcefile/atl_modg_scheme_module.f90.html" xlink:title="atl_modg_scheme_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="666.5,-115.42 491.5,-115.42 491.5,-91.42 666.5,-91.42 666.5,-115.42"/>
+<text text-anchor="middle" x="579" y="-101.02" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_scheme_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_modg_scheme_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_edge5" class="edge">
+<title>sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_modg_scheme_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M753.88,-154.28C733.02,-145.13 703.1,-132.76 676,-124.42 668.35,-122.06 660.28,-119.86 652.2,-117.85"/>
+<polygon fill="#000000" stroke="#000000" points="652.91,-114.42 642.36,-115.47 651.26,-121.22 652.91,-114.42"/>
+</g>
+<!-- sourcefile~atl_stabilization_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_node7" class="node">
+<title>sourcefile~atl_stabilization_module.f90</title>
+<g id="a_sourcefile~~atl_space_basis.f90~~EfferentGraph_node7"><a xlink:href="../sourcefile/atl_stabilization_module.f90.html" xlink:title="atl_stabilization_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="659.5,-73.42 498.5,-73.42 498.5,-49.42 659.5,-49.42 659.5,-73.42"/>
+<text text-anchor="middle" x="579" y="-59.02" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_stabilization_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_stabilization_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_edge6" class="edge">
+<title>sourcefile~atl_scheme_module.f90&#45;&gt;sourcefile~atl_stabilization_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M769.23,-154.31C751.31,-135.83 714.43,-100.8 676,-82.42 671.61,-80.32 667.01,-78.43 662.3,-76.72"/>
+<polygon fill="#000000" stroke="#000000" points="663.1,-73.3 652.51,-73.48 660.9,-79.95 663.1,-73.3"/>
+</g>
+<!-- sourcefile~ply_dof_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_node8" class="node">
+<title>sourcefile~ply_dof_module.f90</title>
+<g id="a_sourcefile~~atl_space_basis.f90~~EfferentGraph_node8"><a xlink:href="../sourcefile/ply_dof_module.f90.html" xlink:title="ply_dof_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="394.5,-178.42 277.5,-178.42 277.5,-154.42 394.5,-154.42 394.5,-178.42"/>
+<text text-anchor="middle" x="336" y="-164.02" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_dof_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ply_modg_basis_module.f90&#45;&gt;sourcefile~ply_dof_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_edge8" class="edge">
+<title>sourcefile~ply_modg_basis_module.f90&#45;&gt;sourcefile~ply_dof_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M519.98,-217.38C507.42,-214.59 494.24,-211.53 482,-208.42 449.62,-200.2 413.53,-189.75 385.46,-181.33"/>
+<polygon fill="#000000" stroke="#000000" points="386.47,-177.98 375.89,-178.45 384.45,-184.68 386.47,-177.98"/>
+</g>
+<!-- sourcefile~ply_space_integration_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_node9" class="node">
+<title>sourcefile~ply_space_integration_module.f90</title>
+<g id="a_sourcefile~~atl_space_basis.f90~~EfferentGraph_node9"><a xlink:href="../sourcefile/ply_space_integration_module.f90.html" xlink:title="ply_space_integration_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="433.5,-241.42 238.5,-241.42 238.5,-217.42 433.5,-217.42 433.5,-241.42"/>
+<text text-anchor="middle" x="336" y="-227.02" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_space_integration_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ply_modg_basis_module.f90&#45;&gt;sourcefile~ply_space_integration_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_edge9" class="edge">
+<title>sourcefile~ply_modg_basis_module.f90&#45;&gt;sourcefile~ply_space_integration_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M497.42,-229.42C480.29,-229.42 461.96,-229.42 444.02,-229.42"/>
+<polygon fill="#000000" stroke="#000000" points="443.82,-225.92 433.82,-229.42 443.82,-232.92 443.82,-225.92"/>
+</g>
+<!-- sourcefile~atl_modg_1d_scheme_module.f90&#45;&gt;sourcefile~ply_dof_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_edge10" class="edge">
+<title>sourcefile~atl_modg_1d_scheme_module.f90&#45;&gt;sourcefile~ply_dof_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M481.71,-179.03C455.9,-176.78 428.54,-174.39 404.64,-172.31"/>
+<polygon fill="#000000" stroke="#000000" points="404.89,-168.82 394.63,-171.44 404.29,-175.79 404.89,-168.82"/>
+</g>
+<!-- sourcefile~atl_modg_2d_scheme_module.f90&#45;&gt;sourcefile~ply_dof_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_edge11" class="edge">
+<title>sourcefile~atl_modg_2d_scheme_module.f90&#45;&gt;sourcefile~ply_dof_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M481.71,-153.81C455.9,-156.06 428.54,-158.44 404.64,-160.52"/>
+<polygon fill="#000000" stroke="#000000" points="404.29,-157.04 394.63,-161.4 404.89,-164.02 404.29,-157.04"/>
+</g>
+<!-- sourcefile~atl_modg_scheme_module.f90&#45;&gt;sourcefile~ply_dof_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_edge12" class="edge">
+<title>sourcefile~atl_modg_scheme_module.f90&#45;&gt;sourcefile~ply_dof_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M519.44,-115.44C507.03,-118.2 494.05,-121.27 482,-124.42 465.81,-128.65 462.05,-130.69 446,-135.42 427.69,-140.82 407.6,-146.58 389.71,-151.65"/>
+<polygon fill="#000000" stroke="#000000" points="388.69,-148.3 380.02,-154.39 390.6,-155.04 388.69,-148.3"/>
+</g>
+<!-- sourcefile~atl_cons_positivity_preserv_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_node10" class="node">
+<title>sourcefile~atl_cons_positivity_preserv_module.f90</title>
+<g id="a_sourcefile~~atl_space_basis.f90~~EfferentGraph_node10"><a xlink:href="../sourcefile/atl_cons_positivity_preserv_module.f90.html" xlink:title="atl_cons_positivity_preserv_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="446,-126.42 226,-126.42 226,-102.42 446,-102.42 446,-126.42"/>
+<text text-anchor="middle" x="336" y="-112.02" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_cons_positivity_preserv_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_stabilization_module.f90&#45;&gt;sourcefile~atl_cons_positivity_preserv_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_edge13" class="edge">
+<title>sourcefile~atl_stabilization_module.f90&#45;&gt;sourcefile~atl_cons_positivity_preserv_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M519.44,-73.44C507.03,-76.2 494.05,-79.27 482,-82.42 465.81,-86.65 462.24,-89.39 446,-93.42 436.15,-95.86 425.74,-98.19 415.41,-100.35"/>
+<polygon fill="#000000" stroke="#000000" points="414.66,-96.93 405.56,-102.36 416.06,-103.79 414.66,-96.93"/>
+</g>
+<!-- sourcefile~atl_covolume_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_node11" class="node">
+<title>sourcefile~atl_covolume_module.f90</title>
+<g id="a_sourcefile~~atl_space_basis.f90~~EfferentGraph_node11"><a xlink:href="../sourcefile/atl_covolume_module.f90.html" xlink:title="atl_covolume_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="411,-84.42 261,-84.42 261,-60.42 411,-60.42 411,-84.42"/>
+<text text-anchor="middle" x="336" y="-70.02" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_covolume_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_stabilization_module.f90&#45;&gt;sourcefile~atl_covolume_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_edge14" class="edge">
+<title>sourcefile~atl_stabilization_module.f90&#45;&gt;sourcefile~atl_covolume_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M498.42,-65.05C473.72,-66.18 446.41,-67.42 421.39,-68.57"/>
+<polygon fill="#000000" stroke="#000000" points="421.02,-65.08 411.19,-69.03 421.34,-72.07 421.02,-65.08"/>
+</g>
+<!-- sourcefile~atl_positivity_preserv_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_node12" class="node">
+<title>sourcefile~atl_positivity_preserv_module.f90</title>
+<g id="a_sourcefile~~atl_space_basis.f90~~EfferentGraph_node12"><a xlink:href="../sourcefile/atl_positivity_preserv_module.f90.html" xlink:title="atl_positivity_preserv_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="431,-42.42 241,-42.42 241,-18.42 431,-18.42 431,-42.42"/>
+<text text-anchor="middle" x="336" y="-28.02" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_positivity_preserv_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_stabilization_module.f90&#45;&gt;sourcefile~atl_positivity_preserv_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_edge15" class="edge">
+<title>sourcefile~atl_stabilization_module.f90&#45;&gt;sourcefile~atl_positivity_preserv_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M498.42,-51.18C479.86,-48.79 459.82,-46.22 440.39,-43.72"/>
+<polygon fill="#000000" stroke="#000000" points="440.66,-40.22 430.3,-42.42 439.77,-47.17 440.66,-40.22"/>
+</g>
+<!-- sourcefile~atl_spectral_viscosity_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_node13" class="node">
+<title>sourcefile~atl_spectral_viscosity_module.f90</title>
+<g id="a_sourcefile~~atl_space_basis.f90~~EfferentGraph_node13"><a xlink:href="../sourcefile/atl_spectral_viscosity_module.f90.html" xlink:title="atl_spectral_viscosity_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="190,-43.42 0,-43.42 0,-19.42 190,-19.42 190,-43.42"/>
+<text text-anchor="middle" x="95" y="-29.02" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_spectral_viscosity_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_stabilization_module.f90&#45;&gt;sourcefile~atl_spectral_viscosity_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_edge16" class="edge">
+<title>sourcefile~atl_stabilization_module.f90&#45;&gt;sourcefile~atl_spectral_viscosity_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M554.96,-49.25C529.22,-36.41 485.93,-17 446,-9.42 348.37,9.12 232.95,-4.93 162.12,-17.54"/>
+<polygon fill="#000000" stroke="#000000" points="161.21,-14.15 152,-19.39 162.47,-21.03 161.21,-14.15"/>
+</g>
+<!-- sourcefile~atl_covolume_module.f90&#45;&gt;sourcefile~atl_spectral_viscosity_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~EfferentGraph_edge17" class="edge">
+<title>sourcefile~atl_covolume_module.f90&#45;&gt;sourcefile~atl_spectral_viscosity_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M264.91,-60.39C237.06,-55.62 204.87,-50.1 176.11,-45.16"/>
+<polygon fill="#000000" stroke="#000000" points="176.54,-41.68 166.09,-43.44 175.36,-48.58 176.54,-41.68"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var pansourcefileatl_space_basisf90EfferentGraph = svgPanZoom('#sourcefileatl_space_basisf90EfferentGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#EfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="EfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="202pt" height="32pt"
+ viewBox="0.00 0.00 201.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 197.5,-28 197.5,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="193.5,-24 88.5,-24 88.5,0 193.5,0 193.5,-24"/>
+<text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Files dependent on this one</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: sourcefile~~atl_space_basis.f90~~AfferentGraph Pages: 1 -->
+<svg id="sourcefileatl_space_basisf90AfferentGraph" width="624pt" height="74pt"
+ viewBox="0.00 0.00 624.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~atl_space_basis.f90~~AfferentGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
+<title>sourcefile~~atl_space_basis.f90~~AfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 620,-70 620,4 -4,4"/>
+<!-- sourcefile~atl_space_basis.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~AfferentGraph_node1" class="node">
+<title>sourcefile~atl_space_basis.f90</title>
+<polygon fill="none" stroke="black" points="115,-46 0,-46 0,-22 115,-22 115,-46"/>
+<text text-anchor="middle" x="57.5" y="-31.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_space_basis.f90</text>
+</g>
+<!-- sourcefile~atl_initialize_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~AfferentGraph_node2" class="node">
+<title>sourcefile~atl_initialize_module.f90</title>
+<g id="a_sourcefile~~atl_space_basis.f90~~AfferentGraph_node2"><a xlink:href="../sourcefile/atl_initialize_module.f90.html" xlink:title="atl_initialize_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="293,-46 151,-46 151,-22 293,-22 293,-46"/>
+<text text-anchor="middle" x="222" y="-31.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_initialize_module.f90&#45;&gt;sourcefile~atl_space_basis.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~AfferentGraph_edge1" class="edge">
+<title>sourcefile~atl_initialize_module.f90&#45;&gt;sourcefile~atl_space_basis.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M150.67,-34C142.25,-34 133.68,-34 125.32,-34"/>
+<polygon fill="#000000" stroke="#000000" points="125.24,-30.5 115.24,-34 125.24,-37.5 125.24,-30.5"/>
+</g>
+<!-- sourcefile~atl_harvesting.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~AfferentGraph_node3" class="node">
+<title>sourcefile~atl_harvesting.f90</title>
+<g id="a_sourcefile~~atl_space_basis.f90~~AfferentGraph_node3"><a xlink:href="../sourcefile/atl_harvesting.f90.html" xlink:title="atl_harvesting.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="616,-66 508,-66 508,-42 616,-42 616,-66"/>
+<text text-anchor="middle" x="562" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_harvesting.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_harvesting.f90&#45;&gt;sourcefile~atl_initialize_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~AfferentGraph_edge2" class="edge">
+<title>sourcefile~atl_harvesting.f90&#45;&gt;sourcefile~atl_initialize_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M507.82,-50.85C452.96,-47.61 366.73,-42.5 303.52,-38.76"/>
+<polygon fill="#000000" stroke="#000000" points="303.37,-35.25 293.18,-38.15 302.96,-42.24 303.37,-35.25"/>
+</g>
+<!-- sourcefile~atl_program_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~AfferentGraph_node4" class="node">
+<title>sourcefile~atl_program_module.f90</title>
+<g id="a_sourcefile~~atl_space_basis.f90~~AfferentGraph_node4"><a xlink:href="../sourcefile/atl_program_module.f90.html" xlink:title="atl_program_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="472,-26 329,-26 329,-2 472,-2 472,-26"/>
+<text text-anchor="middle" x="400.5" y="-11.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_program_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~atl_harvesting.f90&#45;&gt;sourcefile~atl_program_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~AfferentGraph_edge5" class="edge">
+<title>sourcefile~atl_harvesting.f90&#45;&gt;sourcefile~atl_program_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M513.14,-42C496.35,-37.79 477.29,-33.01 459.73,-28.6"/>
+<polygon fill="#000000" stroke="#000000" points="460.15,-25.1 449.6,-26.06 458.45,-31.89 460.15,-25.1"/>
+</g>
+<!-- sourcefile~atl_program_module.f90&#45;&gt;sourcefile~atl_initialize_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~AfferentGraph_edge3" class="edge">
+<title>sourcefile~atl_program_module.f90&#45;&gt;sourcefile~atl_initialize_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M328.98,-21.99C320.49,-22.95 311.78,-23.94 303.16,-24.92"/>
+<polygon fill="#000000" stroke="#000000" points="302.66,-21.45 293.12,-26.05 303.45,-28.41 302.66,-21.45"/>
+</g>
+<!-- sourcefile~ateles.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~AfferentGraph_node5" class="node">
+<title>sourcefile~ateles.f90</title>
+<g id="a_sourcefile~~atl_space_basis.f90~~AfferentGraph_node5"><a xlink:href="../sourcefile/ateles.f90.html" xlink:title="ateles.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="594.5,-24 529.5,-24 529.5,0 594.5,0 594.5,-24"/>
+<text text-anchor="middle" x="562" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ateles.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ateles.f90&#45;&gt;sourcefile~atl_program_module.f90 -->
+<g id="sourcefile~~atl_space_basis.f90~~AfferentGraph_edge4" class="edge">
+<title>sourcefile~ateles.f90&#45;&gt;sourcefile~atl_program_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M529.49,-12.4C515.88,-12.57 499.27,-12.77 482.58,-12.98"/>
+<polygon fill="#000000" stroke="#000000" points="482.16,-9.49 472.21,-13.11 482.25,-16.49 482.16,-9.49"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#AfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="AfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="202pt" height="32pt"
+ viewBox="0.00 0.00 201.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 197.5,-28 197.5,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="193.5,-24 88.5,-24 88.5,0 193.5,0 193.5,-24"/>
+<text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+<br>
+      <section>
+        <h2><span class="anchor" id="src"></span>Source Code</h2>
+        <div class="hl codehilite"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="c">! Copyright (c) 2011-2014 Jens Zudrop &lt;j.zudrop@grs-sim.de&gt;</span>
+<a id="ln-2" name="ln-2" href="#ln-2"></a><span class="c">! Copyright (c) 2011 Metin Cakircali &lt;m.cakircali@grs-sim.de&gt;</span>
+<a id="ln-3" name="ln-3" href="#ln-3"></a><span class="c">! Copyright (c) 2011-2016 Harald Klimach &lt;harald.klimach@uni-siegen.de&gt;</span>
+<a id="ln-4" name="ln-4" href="#ln-4"></a><span class="c">! Copyright (c) 2011 Gaurang Phadke &lt;g.phadke@grs-sim.de&gt;</span>
+<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="c">! Copyright (c) 2012 Laura Didinger &lt;l.didinger@grs-sim.de&gt;</span>
+<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="c">! Copyright (c) 2012 Vyacheslav Korchagin &lt;v.korchagin@grs-sim.de&gt;</span>
+<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="c">! Copyright (c) 2012 Jan Hueckelheim &lt;j.hueckelheim@grs-sim.de&gt;</span>
+<a id="ln-8" name="ln-8" href="#ln-8"></a><span class="c">! Copyright (c) 2013, 2017-2018, 2020 Peter Vitt &lt;peter.vitt2@uni-siegen.de&gt;</span>
+<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="c">! Copyright (c) 2014 Verena Krupp &lt;verena.krupp@uni-siegen.de&gt;</span>
+<a id="ln-10" name="ln-10" href="#ln-10"></a><span class="c">! Copyright (c) 2015 Nikhil Anand &lt;nikhil.anand@uni-siegen.de&gt;</span>
+<a id="ln-11" name="ln-11" href="#ln-11"></a><span class="c">! Copyright (c) 2016 Tobias Girresser &lt;tobias.girresser@student.uni-siegen.de&gt;</span>
+<a id="ln-12" name="ln-12" href="#ln-12"></a><span class="c">! Copyright (c) 2017 Daniel Petró &lt;daniel.petro@student.uni-siegen.de&gt;</span>
+<a id="ln-13" name="ln-13" href="#ln-13"></a><span class="c">!</span>
+<a id="ln-14" name="ln-14" href="#ln-14"></a><span class="c">! Permission to use, copy, modify, and distribute this software for any</span>
+<a id="ln-15" name="ln-15" href="#ln-15"></a><span class="c">! purpose with or without fee is hereby granted, provided that the above</span>
+<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="c">! copyright notice and this permission notice appear in all copies.</span>
+<a id="ln-17" name="ln-17" href="#ln-17"></a><span class="c">!</span>
+<a id="ln-18" name="ln-18" href="#ln-18"></a><span class="c">! THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHORS DISCLAIM ALL WARRANTIES</span>
+<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="c">! WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF</span>
+<a id="ln-20" name="ln-20" href="#ln-20"></a><span class="c">! MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR</span>
+<a id="ln-21" name="ln-21" href="#ln-21"></a><span class="c">! ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES</span>
+<a id="ln-22" name="ln-22" href="#ln-22"></a><span class="c">! WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN</span>
+<a id="ln-23" name="ln-23" href="#ln-23"></a><span class="c">! ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF</span>
+<a id="ln-24" name="ln-24" href="#ln-24"></a><span class="c">! OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
+<a id="ln-25" name="ln-25" href="#ln-25"></a><span class="c">! **************************************************************************** !</span>
+<a id="ln-26" name="ln-26" href="#ln-26"></a>
+<a id="ln-27" name="ln-27" href="#ln-27"></a><span class="c">!&gt; author: Jens Zudrop</span>
+<a id="ln-28" name="ln-28" href="#ln-28"></a><span class="c">!! author Peter Vitt 2014, 2017, 2018</span>
+<a id="ln-29" name="ln-29" href="#ln-29"></a><span class="c">!! Module collecting all data types and subroutines related to the space basis.</span>
+<a id="ln-30" name="ln-30" href="#ln-30"></a><span class="c">!!</span>
+<a id="ln-31" name="ln-31" href="#ln-31"></a><span class="c">!! The polynomial basis defined here is used for the cubic modal discontinuous</span>
+<a id="ln-32" name="ln-32" href="#ln-32"></a><span class="c">!! Galerkin (CuMoDiG) scheme and the reconstructed polynomials in the Finite</span>
+<a id="ln-33" name="ln-33" href="#ln-33"></a><span class="c">!! Volume schemes within Ateles.</span>
+<a id="ln-34" name="ln-34" href="#ln-34"></a><span class="c">!! It makes use of a module variable for the basis, which is thereby accessible</span>
+<a id="ln-35" name="ln-35" href="#ln-35"></a><span class="c">!! by all modules, which use this module.</span>
+<a id="ln-36" name="ln-36" href="#ln-36"></a><span class="k">module </span><span class="n">atl_space_basis</span>
+<a id="ln-37" name="ln-37" href="#ln-37"></a>
+<a id="ln-38" name="ln-38" href="#ln-38"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_aux_module</span><span class="p">,</span><span class="w">             </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_abort</span>
+<a id="ln-39" name="ln-39" href="#ln-39"></a>
+<a id="ln-40" name="ln-40" href="#ln-40"></a><span class="w">  </span><span class="k">use </span><span class="n">atl_scheme_module</span><span class="p">,</span><span class="w">          </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">atl_scheme_type</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<a id="ln-41" name="ln-41" href="#ln-41"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                   </span><span class="n">atl_modg_scheme_prp</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<a id="ln-42" name="ln-42" href="#ln-42"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                   </span><span class="n">atl_modg_2d_scheme_prp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-43" name="ln-43" href="#ln-43"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                   </span><span class="n">atl_modg_1d_scheme_prp</span>
+<a id="ln-44" name="ln-44" href="#ln-44"></a><span class="w">  </span><span class="k">use </span><span class="n">ply_modg_basis_module</span><span class="p">,</span><span class="w">      </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">ply_init_modg_multilevelCoeffs</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-45" name="ln-45" href="#ln-45"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                   </span><span class="n">ply_modg_refine_type</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<a id="ln-46" name="ln-46" href="#ln-46"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                   </span><span class="n">ply_modg_covolume_type</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<a id="ln-47" name="ln-47" href="#ln-47"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                   </span><span class="n">ply_init_modg_covolumeCoeffs</span>
+<a id="ln-48" name="ln-48" href="#ln-48"></a>
+<a id="ln-49" name="ln-49" href="#ln-49"></a>
+<a id="ln-50" name="ln-50" href="#ln-50"></a><span class="w">  </span><span class="k">implicit none</span>
+<a id="ln-51" name="ln-51" href="#ln-51"></a><span class="k">  private</span>
+<a id="ln-52" name="ln-52" href="#ln-52"></a>
+<a id="ln-53" name="ln-53" href="#ln-53"></a>
+<a id="ln-54" name="ln-54" href="#ln-54"></a><span class="k">  public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">atl_init_spacebasis</span>
+<a id="ln-55" name="ln-55" href="#ln-55"></a>
+<a id="ln-56" name="ln-56" href="#ln-56"></a><span class="k">contains</span>
+<a id="ln-57" name="ln-57" href="#ln-57"></a>
+<a id="ln-58" name="ln-58" href="#ln-58"></a><span class="w">  </span><span class="c">!&gt; Initialize the space basis, this subroutine has to be called before</span>
+<a id="ln-59" name="ln-59" href="#ln-59"></a><span class="w">  </span><span class="c">!! using the module variable space_basis#basis.</span>
+<a id="ln-60" name="ln-60" href="#ln-60"></a><span class="w">  </span><span class="c">!!</span>
+<a id="ln-61" name="ln-61" href="#ln-61"></a><span class="w">  </span><span class="c">!! It reads the spatial part of the scheme table in the configuration</span>
+<a id="ln-62" name="ln-62" href="#ln-62"></a><span class="w">  </span><span class="c">!! script and fills the basis accordingly.</span>
+<a id="ln-63" name="ln-63" href="#ln-63"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">atl_init_spacebasis</span><span class="p">(</span><span class="w"> </span><span class="n">scheme_list</span><span class="p">,</span><span class="w"> </span><span class="n">minlevel</span><span class="p">,</span><span class="w"> </span><span class="n">maxlevel</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-64" name="ln-64" href="#ln-64"></a><span class="w">    </span><span class="c">!&gt; The minumum refinement level of the mesh</span>
+<a id="ln-65" name="ln-65" href="#ln-65"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">minlevel</span>
+<a id="ln-66" name="ln-66" href="#ln-66"></a><span class="w">    </span><span class="c">!&gt; The maximum refinement level of the mesh</span>
+<a id="ln-67" name="ln-67" href="#ln-67"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">maxlevel</span>
+<a id="ln-68" name="ln-68" href="#ln-68"></a><span class="w">    </span><span class="c">!&gt; The list of schemes on the different level</span>
+<a id="ln-69" name="ln-69" href="#ln-69"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">atl_scheme_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">scheme_list</span><span class="p">(</span><span class="n">minlevel</span><span class="p">:</span><span class="n">maxlevel</span><span class="p">)</span>
+<a id="ln-70" name="ln-70" href="#ln-70"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<a id="ln-71" name="ln-71" href="#ln-71"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">degree</span>
+<a id="ln-72" name="ln-72" href="#ln-72"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">ply_modg_covolume_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">covolumeBaseCoeff</span>
+<a id="ln-73" name="ln-73" href="#ln-73"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">ply_modg_refine_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">refineBaseCoeff</span>
+<a id="ln-74" name="ln-74" href="#ln-74"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<a id="ln-75" name="ln-75" href="#ln-75"></a>
+<a id="ln-76" name="ln-76" href="#ln-76"></a><span class="w">    </span><span class="c">! Check if we use the same scheme globally</span>
+<a id="ln-77" name="ln-77" href="#ln-77"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">any</span><span class="p">(</span><span class="n">scheme_list</span><span class="p">(:)%</span><span class="n">scheme</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="n">scheme_list</span><span class="p">(</span><span class="n">minlevel</span><span class="p">)%</span><span class="n">scheme</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-78" name="ln-78" href="#ln-78"></a><span class="k">      call </span><span class="n">tem_abort</span><span class="p">(</span><span class="w"> </span><span class="s1">&#39;ERROR in atl_init_spacebasis: &#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-79" name="ln-79" href="#ln-79"></a><span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; only global schemes are supported&#39;</span><span class="w">      </span><span class="p">)</span>
+<a id="ln-80" name="ln-80" href="#ln-80"></a><span class="w">    </span><span class="k">end if</span>
+<a id="ln-81" name="ln-81" href="#ln-81"></a>
+<a id="ln-82" name="ln-82" href="#ln-82"></a><span class="k">    </span><span class="n">degree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="c">! default value</span>
+<a id="ln-83" name="ln-83" href="#ln-83"></a><span class="w">    </span><span class="k">select case</span><span class="p">(</span><span class="n">scheme_list</span><span class="p">(</span><span class="n">minlevel</span><span class="p">)%</span><span class="n">scheme</span><span class="p">)</span>
+<a id="ln-84" name="ln-84" href="#ln-84"></a><span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="n">atl_modg_scheme_prp</span><span class="p">)</span>
+<a id="ln-85" name="ln-85" href="#ln-85"></a><span class="w">      </span><span class="n">degree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">maxval</span><span class="p">(</span><span class="n">scheme_list</span><span class="p">(:)%</span><span class="n">modg</span><span class="p">%</span><span class="n">maxPolyDegree</span><span class="p">)</span>
+<a id="ln-86" name="ln-86" href="#ln-86"></a>
+<a id="ln-87" name="ln-87" href="#ln-87"></a><span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="n">atl_modg_2d_scheme_prp</span><span class="p">)</span>
+<a id="ln-88" name="ln-88" href="#ln-88"></a><span class="w">      </span><span class="n">degree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">maxval</span><span class="p">(</span><span class="n">scheme_list</span><span class="p">(:)%</span><span class="n">modg_2d</span><span class="p">%</span><span class="n">maxPolyDegree</span><span class="p">)</span>
+<a id="ln-89" name="ln-89" href="#ln-89"></a>
+<a id="ln-90" name="ln-90" href="#ln-90"></a><span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="n">atl_modg_1d_scheme_prp</span><span class="p">)</span>
+<a id="ln-91" name="ln-91" href="#ln-91"></a><span class="w">      </span><span class="n">degree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">maxval</span><span class="p">(</span><span class="n">scheme_list</span><span class="p">(:)%</span><span class="n">modg_1d</span><span class="p">%</span><span class="n">maxPolyDegree</span><span class="p">)</span>
+<a id="ln-92" name="ln-92" href="#ln-92"></a>
+<a id="ln-93" name="ln-93" href="#ln-93"></a><span class="w">    </span><span class="k">case </span><span class="n">default</span>
+<a id="ln-94" name="ln-94" href="#ln-94"></a><span class="w">      </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">(</span><span class="w"> </span><span class="s1">&#39;ERROR in atl_init_spacebasis: unknown spatial scheme&#39;</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-95" name="ln-95" href="#ln-95"></a>
+<a id="ln-96" name="ln-96" href="#ln-96"></a><span class="w">    </span><span class="k">end select</span>
+<a id="ln-97" name="ln-97" href="#ln-97"></a>
+<a id="ln-98" name="ln-98" href="#ln-98"></a><span class="k">    call </span><span class="n">ply_init_modg_covolumeCoeffs</span><span class="p">(</span><span class="w"> </span><span class="n">nPoints</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">degree</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<a id="ln-99" name="ln-99" href="#ln-99"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                                </span><span class="n">nFunc</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">degree</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<a id="ln-100" name="ln-100" href="#ln-100"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                                </span><span class="n">integral</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">covolumeBaseCoeff</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-101" name="ln-101" href="#ln-101"></a><span class="w">    </span><span class="n">scheme_list</span><span class="p">(:)%</span><span class="n">modg_basis</span><span class="p">%</span><span class="n">covolumeBaseCoeff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">covolumeBaseCoeff</span>
+<a id="ln-102" name="ln-102" href="#ln-102"></a>
+<a id="ln-103" name="ln-103" href="#ln-103"></a><span class="w">    </span><span class="k">call </span><span class="n">ply_init_modg_multilevelCoeffs</span><span class="p">(</span><span class="w"> </span><span class="n">nPoints</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">degree</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-104" name="ln-104" href="#ln-104"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                                  </span><span class="n">nFunc</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">degree</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<a id="ln-105" name="ln-105" href="#ln-105"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                                  </span><span class="n">integral</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">refineBaseCoeff</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-106" name="ln-106" href="#ln-106"></a><span class="w">    </span><span class="n">scheme_list</span><span class="p">(:)%</span><span class="n">modg_basis</span><span class="p">%</span><span class="n">refineBaseCoeff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">refineBaseCoeff</span>
+<a id="ln-107" name="ln-107" href="#ln-107"></a>
+<a id="ln-108" name="ln-108" href="#ln-108"></a><span class="w">  </span><span class="k">end subroutine </span><span class="n">atl_init_spacebasis</span>
+<a id="ln-109" name="ln-109" href="#ln-109"></a>
+<a id="ln-110" name="ln-110" href="#ln-110"></a><span class="k">end module </span><span class="n">atl_space_basis</span>
+</pre></div>
+
+      </section>
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

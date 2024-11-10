@@ -1,0 +1,1919 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_modg_2d_navierstokes_kernel_module &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_modg_2d_navierstokes_kernel_module
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+            <li class="list-inline-item" id="meta-author"><i class="fa fa-pencil"></i> Jens Zudrop</li>
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.6% of total for modules and submodules.">259 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_modg_2d_navierstokes_kernel_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_modg_2d_navierstokes_kernel_module.f90.html'>atl_modg_2d_navierstokes_kernel_module.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_modg_2d_navierstokes_kernel_module</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#funcs-0"
+         aria-expanded="false" aria-controls="funcs-0">
+         <h4 class="card-header bg-primary text-white">Functions</h4>
+      </a>
+      <div id="funcs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_modg_2d_navierstokes_kernel_module.html#proc-atl_get_penaltyip_2d">atl_get_penaltyIP_2d</a>
+        </div>
+      </div>
+    </div>
+
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_modg_2d_navierstokes_kernel_module.html#proc-atl_modg_2d_navierstokes_physflux_const">atl_modg_2d_navierstokes_physFlux_const</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_navierstokes_kernel_module.html#proc-atl_modg_2d_navierstokes_penalization_const">atl_modg_2d_navierstokes_penalization_const</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_navierstokes_kernel_module.html#proc-atl_modg_2d_navierstokes_physflux_nonconst">atl_modg_2d_navierstokes_physFlux_NonConst</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_navierstokes_kernel_module.html#proc-atl_modg_2d_navierstokes_penalization_nonconst">atl_modg_2d_navierstokes_penalization_Nonconst</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_navierstokes_kernel_module.html#proc-atl_modg_2d_navierstokes_numflux">atl_modg_2d_navierstokes_numFlux</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_navierstokes_kernel_module.html#proc-modg_2d_viscnavierstokes_onedim_numflux">modg_2d_viscNavierStokes_oneDim_numFlux</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_navierstokes_kernel_module.html#proc-modg_2d_stabviscnavierstokes_onedim_numflux">modg_2d_stabViscNavierStokes_oneDim_numFlux</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      <p>Module for routines and datatypes of MOdal Discontinuous Galerkin (MODG)
+scheme for the compressible Navier-Stokes equation. This scheme is a spectral scheme for linear, convection dominated
+partial differential equation systems.</p>
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='atl_materialprp_module.html'>atl_materialPrp_module</a></li>
+                  <li class="list-inline-item"><a href='atl_equation_module.html'>atl_equation_module</a></li>
+                  <li class="list-inline-item"><a href='atl_modg_2d_scheme_module.html'>atl_modg_2d_scheme_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/treelmesh_module.html'>treelmesh_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/env_module.html'>env_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_facedata_module.html'>tem_faceData_module</a></li>
+                  <li class="list-inline-item"><a href='atl_modg_2d_euler_kernel_module.html'>atl_modg_2d_euler_kernel_module</a></li>
+                  <li class="list-inline-item"><a href='atl_penalization_module.html'>atl_penalization_module</a></li>
+                  <li class="list-inline-item"><a href='atl_scheme_module.html'>atl_scheme_module</a></li>
+                  <li class="list-inline-item"><a href='atl_cube_elem_module.html'>atl_cube_elem_module</a></li>
+                  <li class="list-inline-item"><a href='atl_viscnumflux_nvrstk_2d_module.html'>atl_viscNumFlux_Nvrstk_2d_module</a></li>
+                  <li class="list-inline-item"><a href='ply_poly_project_module.html'>ply_poly_project_module</a></li>
+                  <li class="list-inline-item"><a href='atl_facedata_module.html'>atl_facedata_module</a></li>
+                  <li class="list-inline-item"><a href='atl_physfluxeuler_2d_module.html'>atl_physFluxEuler_2d_module</a></li>
+                  <li class="list-inline-item"><a href='ply_oversample_module.html'>ply_oversample_module</a></li>
+                  <li class="list-inline-item"><a href='atl_physfluxnvrstk_2d_module.html'>atl_physFluxNvrStk_2d_module</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph Pages: 1 -->
+<svg id="moduleatl_modg_2d_navierstokes_kernel_moduleUsesGraph" width="483pt" height="662pt"
+ viewBox="0.00 0.00 483.00 662.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 658)">
+<title>module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-658 479,-658 479,4 -4,4"/>
+<!-- module~atl_modg_2d_navierstokes_kernel_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node1" class="node">
+<title>module~atl_modg_2d_navierstokes_kernel_module</title>
+<polygon fill="none" stroke="black" points="475,-339 237,-339 237,-315 475,-315 475,-339"/>
+<text text-anchor="middle" x="356" y="-324.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_modg_2d_navierstokes_kernel_module</text>
+</g>
+<!-- env_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node2" class="node">
+<title>env_module</title>
+<g id="a_module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node2"><a xlink:href="https://apes-suite.github.io/treelm/module/env_module.html" xlink:title="env_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="139.5,-654 61.5,-654 61.5,-630 139.5,-630 139.5,-654"/>
+<text text-anchor="middle" x="100.5" y="-639.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">env_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;env_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_edge1" class="edge">
+<title>module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M352.52,-339.18C342.59,-384.56 301.37,-544.99 201,-621 186.41,-632.05 167.32,-637.59 149.77,-640.28"/>
+<polygon fill="#000000" stroke="#000000" points="149.15,-636.83 139.66,-641.55 150.02,-643.77 149.15,-636.83"/>
+</g>
+<!-- module~atl_cube_elem_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node3" class="node">
+<title>module~atl_cube_elem_module</title>
+<g id="a_module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node3"><a xlink:href="../module/atl_cube_elem_module.html" xlink:title="atl_cube_elem_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="168.5,-612 32.5,-612 32.5,-588 168.5,-588 168.5,-612"/>
+<text text-anchor="middle" x="100.5" y="-597.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_cube_elem_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_cube_elem_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_edge2" class="edge">
+<title>module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_cube_elem_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M351.43,-339.14C338.68,-380.25 291.24,-515.24 201,-579 194.11,-583.87 186.32,-587.65 178.21,-590.59"/>
+<polygon fill="#000000" stroke="#000000" points="177.05,-587.28 168.58,-593.65 179.17,-593.95 177.05,-587.28"/>
+</g>
+<!-- module~atl_equation_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node4" class="node">
+<title>module~atl_equation_module</title>
+<g id="a_module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node4"><a xlink:href="../module/atl_equation_module.html" xlink:title="atl_equation_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="162.5,-570 38.5,-570 38.5,-546 162.5,-546 162.5,-570"/>
+<text text-anchor="middle" x="100.5" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_equation_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_equation_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_edge3" class="edge">
+<title>module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_equation_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M349.94,-339.13C334.05,-375.64 281.35,-485.16 201,-537 192.34,-542.59 182.46,-546.72 172.37,-549.76"/>
+<polygon fill="#000000" stroke="#000000" points="171.41,-546.4 162.66,-552.37 173.22,-553.16 171.41,-546.4"/>
+</g>
+<!-- module~atl_facedata_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node5" class="node">
+<title>module~atl_facedata_module</title>
+<g id="a_module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node5"><a xlink:href="../module/atl_facedata_module.html" xlink:title="atl_facedata_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="162.5,-528 38.5,-528 38.5,-504 162.5,-504 162.5,-528"/>
+<text text-anchor="middle" x="100.5" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_facedata_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_facedata_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_edge4" class="edge">
+<title>module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_facedata_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M347.77,-339.1C328.37,-370.44 271.8,-454.61 201,-495 192.26,-499.99 182.48,-503.79 172.55,-506.7"/>
+<polygon fill="#000000" stroke="#000000" points="171.39,-503.39 162.61,-509.31 173.17,-510.15 171.39,-503.39"/>
+</g>
+<!-- module~atl_materialprp_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node6" class="node">
+<title>module~atl_materialprp_module</title>
+<g id="a_module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node6"><a xlink:href="../module/atl_materialprp_module.html" xlink:title="atl_materialPrp_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="170,-486 31,-486 31,-462 170,-462 170,-486"/>
+<text text-anchor="middle" x="100.5" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_materialPrp_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_materialprp_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_edge5" class="edge">
+<title>module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_materialprp_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M344.01,-339.31C320.48,-364.83 262.37,-423.59 201,-453 194.38,-456.17 187.28,-458.87 180.04,-461.16"/>
+<polygon fill="#000000" stroke="#000000" points="178.73,-457.89 170.1,-464.04 180.68,-464.62 178.73,-457.89"/>
+</g>
+<!-- module~atl_modg_2d_euler_kernel_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node7" class="node">
+<title>module~atl_modg_2d_euler_kernel_module</title>
+<g id="a_module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node7"><a xlink:href="../module/atl_modg_2d_euler_kernel_module.html" xlink:title="atl_modg_2d_euler_kernel_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="200,-444 1,-444 1,-420 200,-420 200,-444"/>
+<text text-anchor="middle" x="100.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_euler_kernel_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_modg_2d_euler_kernel_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_edge6" class="edge">
+<title>module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_modg_2d_euler_kernel_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M336.87,-339.19C308.9,-357.45 253,-391.8 201,-411 194.66,-413.34 187.99,-415.45 181.23,-417.35"/>
+<polygon fill="#000000" stroke="#000000" points="180.06,-414.04 171.28,-419.98 181.85,-420.81 180.06,-414.04"/>
+</g>
+<!-- module~atl_modg_2d_scheme_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node8" class="node">
+<title>module~atl_modg_2d_scheme_module</title>
+<g id="a_module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node8"><a xlink:href="../module/atl_modg_2d_scheme_module.html" xlink:title="atl_modg_2d_scheme_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="187.5,-402 13.5,-402 13.5,-378 187.5,-378 187.5,-402"/>
+<text text-anchor="middle" x="100.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_scheme_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_modg_2d_scheme_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_edge7" class="edge">
+<title>module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_modg_2d_scheme_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M313.34,-339.07C282.45,-347.84 239.25,-359.76 201,-369 191.41,-371.32 181.27,-373.62 171.27,-375.81"/>
+<polygon fill="#000000" stroke="#000000" points="170.38,-372.42 161.35,-377.96 171.86,-379.27 170.38,-372.42"/>
+</g>
+<!-- module~atl_penalization_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node9" class="node">
+<title>module~atl_penalization_module</title>
+<g id="a_module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node9"><a xlink:href="../module/atl_penalization_module.html" xlink:title="atl_penalization_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="171.5,-360 29.5,-360 29.5,-336 171.5,-336 171.5,-360"/>
+<text text-anchor="middle" x="100.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_penalization_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_penalization_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_edge8" class="edge">
+<title>module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_penalization_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M236.79,-336.79C218.12,-338.34 199.2,-339.91 181.67,-341.36"/>
+<polygon fill="#000000" stroke="#000000" points="181.19,-337.89 171.52,-342.2 181.77,-344.86 181.19,-337.89"/>
+</g>
+<!-- module~atl_physfluxeuler_2d_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node10" class="node">
+<title>module~atl_physfluxeuler_2d_module</title>
+<g id="a_module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node10"><a xlink:href="../module/atl_physfluxeuler_2d_module.html" xlink:title="atl_physFluxEuler_2d_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="185.5,-318 15.5,-318 15.5,-294 185.5,-294 185.5,-318"/>
+<text text-anchor="middle" x="100.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_physFluxEuler_2d_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_physfluxeuler_2d_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_edge9" class="edge">
+<title>module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_physfluxeuler_2d_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M236.79,-317.21C223,-316.07 209.08,-314.91 195.69,-313.8"/>
+<polygon fill="#000000" stroke="#000000" points="195.81,-310.3 185.55,-312.96 195.23,-317.28 195.81,-310.3"/>
+</g>
+<!-- module~atl_physfluxnvrstk_2d_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node11" class="node">
+<title>module~atl_physfluxnvrstk_2d_module</title>
+<g id="a_module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node11"><a xlink:href="../module/atl_physfluxnvrstk_2d_module.html" xlink:title="atl_physFluxNvrStk_2d_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="189,-276 12,-276 12,-252 189,-252 189,-276"/>
+<text text-anchor="middle" x="100.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_physFluxNvrStk_2d_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_physfluxnvrstk_2d_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_edge10" class="edge">
+<title>module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_physfluxnvrstk_2d_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M313.34,-314.93C282.45,-306.16 239.25,-294.24 201,-285 191.41,-282.68 181.27,-280.38 171.27,-278.19"/>
+<polygon fill="#000000" stroke="#000000" points="171.86,-274.73 161.35,-276.04 170.38,-281.58 171.86,-274.73"/>
+</g>
+<!-- module~atl_scheme_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node12" class="node">
+<title>module~atl_scheme_module</title>
+<g id="a_module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node12"><a xlink:href="../module/atl_scheme_module.html" xlink:title="atl_scheme_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="160,-234 41,-234 41,-210 160,-210 160,-234"/>
+<text text-anchor="middle" x="100.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_scheme_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_scheme_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_edge11" class="edge">
+<title>module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_scheme_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M336.87,-314.81C308.9,-296.55 253,-262.2 201,-243 191.21,-239.39 180.64,-236.32 170.16,-233.74"/>
+<polygon fill="#000000" stroke="#000000" points="170.71,-230.28 160.18,-231.42 169.13,-237.1 170.71,-230.28"/>
+</g>
+<!-- module~atl_viscnumflux_nvrstk_2d_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node13" class="node">
+<title>module~atl_viscnumflux_nvrstk_2d_module</title>
+<g id="a_module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node13"><a xlink:href="../module/atl_viscnumflux_nvrstk_2d_module.html" xlink:title="atl_viscNumFlux_Nvrstk_2d_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="201,-192 0,-192 0,-168 201,-168 201,-192"/>
+<text text-anchor="middle" x="100.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_viscNumFlux_Nvrstk_2d_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_viscnumflux_nvrstk_2d_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_edge12" class="edge">
+<title>module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~atl_viscnumflux_nvrstk_2d_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M344.01,-314.69C320.48,-289.17 262.37,-230.41 201,-201 196.6,-198.89 192,-197 187.28,-195.29"/>
+<polygon fill="#000000" stroke="#000000" points="188.06,-191.86 177.47,-192.05 185.87,-198.51 188.06,-191.86"/>
+</g>
+<!-- module~ply_oversample_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node14" class="node">
+<title>module~ply_oversample_module</title>
+<g id="a_module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node14"><a xlink:href="../module/ply_oversample_module.html" xlink:title="ply_oversample_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="171.5,-150 29.5,-150 29.5,-126 171.5,-126 171.5,-150"/>
+<text text-anchor="middle" x="100.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_oversample_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~ply_oversample_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_edge13" class="edge">
+<title>module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~ply_oversample_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M347.77,-314.9C328.37,-283.56 271.8,-199.39 201,-159 194.78,-155.45 188.03,-152.5 181.08,-150.05"/>
+<polygon fill="#000000" stroke="#000000" points="182.1,-146.7 171.51,-147 179.97,-153.37 182.1,-146.7"/>
+</g>
+<!-- module~ply_poly_project_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node15" class="node">
+<title>module~ply_poly_project_module</title>
+<g id="a_module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node15"><a xlink:href="../module/ply_poly_project_module.html" xlink:title="ply_poly_project_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="172.5,-108 28.5,-108 28.5,-84 172.5,-84 172.5,-108"/>
+<text text-anchor="middle" x="100.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_poly_project_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~ply_poly_project_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_edge14" class="edge">
+<title>module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;module~ply_poly_project_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M349.94,-314.87C334.05,-278.36 281.35,-168.84 201,-117 195.22,-113.27 188.89,-110.19 182.32,-107.65"/>
+<polygon fill="#000000" stroke="#000000" points="183.15,-104.23 172.55,-104.29 180.87,-110.85 183.15,-104.23"/>
+</g>
+<!-- tem_faceData_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node16" class="node">
+<title>tem_faceData_module</title>
+<g id="a_module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node16"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_facedata_module.html" xlink:title="tem_faceData_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="167,-66 34,-66 34,-42 167,-42 167,-66"/>
+<text text-anchor="middle" x="100.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_faceData_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;tem_faceData_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_edge15" class="edge">
+<title>module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;tem_faceData_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M351.43,-314.86C338.68,-273.75 291.24,-138.76 201,-75 193.72,-69.86 185.44,-65.92 176.84,-62.93"/>
+<polygon fill="#000000" stroke="#000000" points="177.61,-59.5 167.03,-59.92 175.56,-66.2 177.61,-59.5"/>
+</g>
+<!-- treelmesh_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node17" class="node">
+<title>treelmesh_module</title>
+<g id="a_module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_node17"><a xlink:href="https://apes-suite.github.io/treelm/module/treelmesh_module.html" xlink:title="treelmesh_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="156.5,-24 44.5,-24 44.5,0 156.5,0 156.5,-24"/>
+<text text-anchor="middle" x="100.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">treelmesh_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;treelmesh_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsesGraph_edge16" class="edge">
+<title>module~atl_modg_2d_navierstokes_kernel_module&#45;&gt;treelmesh_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M352.52,-314.82C342.59,-269.44 301.37,-109.01 201,-33 190.95,-25.39 178.76,-20.39 166.42,-17.14"/>
+<polygon fill="#000000" stroke="#000000" points="167.04,-13.69 156.52,-14.89 165.49,-20.52 167.04,-13.69"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+          <div class="card">
+      <h3 class="card-header card-title bg-light">Used by</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_modg_2d_navierstokes_kernel_module~~UsedByGraph Pages: 1 -->
+<svg id="moduleatl_modg_2d_navierstokes_kernel_moduleUsedByGraph" width="641pt" height="47pt"
+ viewBox="0.00 0.00 641.00 47.21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsedByGraph" class="graph" transform="scale(0.91 0.91) rotate(0) translate(4 48)">
+<title>module~~atl_modg_2d_navierstokes_kernel_module~~UsedByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-48 702,-48 702,4 -4,4"/>
+<!-- module~atl_modg_2d_navierstokes_kernel_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsedByGraph_node1" class="node">
+<title>module~atl_modg_2d_navierstokes_kernel_module</title>
+<polygon fill="none" stroke="black" points="238,-44 0,-44 0,-20 238,-20 238,-44"/>
+<text text-anchor="middle" x="119" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_modg_2d_navierstokes_kernel_module</text>
+</g>
+<!-- module~atl_modg_2d_filnvrstk_kernel_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsedByGraph_node2" class="node">
+<title>module~atl_modg_2d_filnvrstk_kernel_module</title>
+<g id="a_module~~atl_modg_2d_navierstokes_kernel_module~~UsedByGraph_node2"><a xlink:href="../module/atl_modg_2d_filnvrstk_kernel_module.html" xlink:title="atl_modg_2d_filNvrStk_kernel_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="489,-24 274,-24 274,0 489,0 489,-24"/>
+<text text-anchor="middle" x="381.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_filNvrStk_kernel_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_filnvrstk_kernel_module&#45;&gt;module~atl_modg_2d_navierstokes_kernel_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsedByGraph_edge1" class="edge">
+<title>module~atl_modg_2d_filnvrstk_kernel_module&#45;&gt;module~atl_modg_2d_navierstokes_kernel_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M273.79,-20.19C265.41,-20.84 256.89,-21.49 248.39,-22.14"/>
+<polygon fill="#000000" stroke="#000000" points="248.12,-18.65 238.42,-22.91 248.65,-25.63 248.12,-18.65"/>
+</g>
+<!-- proc~compute_rhs_cubes_modg_2d -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsedByGraph_node3" class="node">
+<title>proc~compute_rhs_cubes_modg_2d</title>
+<g id="a_module~~atl_modg_2d_navierstokes_kernel_module~~UsedByGraph_node3"><a xlink:href="../proc/compute_rhs_cubes_modg_2d.html" xlink:title="compute_rhs_cubes_modg_2d">
+<polygon fill="#d9534f" stroke="#d9534f" points="698,-44 525,-44 525,-20 698,-20 698,-44"/>
+<text text-anchor="middle" x="611.5" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">compute_rhs_cubes_modg_2d</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_2d&#45;&gt;module~atl_modg_2d_navierstokes_kernel_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsedByGraph_edge2" class="edge">
+<title>proc~compute_rhs_cubes_modg_2d&#45;&gt;module~atl_modg_2d_navierstokes_kernel_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M524.87,-32.79C512.83,-32.88 500.6,-32.95 489,-33 393.45,-33.39 369.56,-33.31 274,-33 265.64,-32.97 257.03,-32.94 248.34,-32.9"/>
+<polygon fill="#000000" stroke="#000000" points="248.15,-29.4 238.13,-32.85 248.11,-36.4 248.15,-29.4"/>
+</g>
+<!-- proc~compute_rhs_cubes_modg_2d&#45;&gt;module~atl_modg_2d_filnvrstk_kernel_module -->
+<g id="module~~atl_modg_2d_navierstokes_kernel_module~~UsedByGraph_edge3" class="edge">
+<title>proc~compute_rhs_cubes_modg_2d&#45;&gt;module~atl_modg_2d_filnvrstk_kernel_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M524.95,-24.5C516.6,-23.76 508.02,-23.01 499.43,-22.26"/>
+<polygon fill="#000000" stroke="#000000" points="499.61,-18.76 489.34,-21.37 499,-25.73 499.61,-18.76"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panmoduleatl_modg_2d_navierstokes_kernel_moduleUsedByGraph = svgPanZoom('#moduleatl_modg_2d_navierstokes_kernel_moduleUsedByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      <br>
+
+
+
+
+
+
+
+        <section>
+          <h2>Functions</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_get_penaltyip_2d"></span> <h3>public  function <a href='../proc/atl_get_penaltyip_2d.html'>atl_get_penaltyIP_2d</a>(maxPolyDegree, elemLength, ip_param) result(penaltyIP)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Return the penalty parameter for the IP discretizations of higher order
+equations.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxpolydegree~89"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxPolyDegree</strong></td>
+            <td>
+<p>The maximal polynomial degree of the discretization
+(starting from 0 for FVM)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elemlength~29"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>elemLength</strong></td>
+            <td>
+<p>The length of an element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ip_param~3"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ip_param</strong></td>
+            <td>
+<p>The Interior Penalty paramter
+(should be large enough to ensure stability)</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>real(kind=rk)</small>
+    </h4>
+    <p>The resulting penalty parameter</p>
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+        <section>
+          <h2>Subroutines</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_2d_navierstokes_physflux_const"></span> <h3>public  subroutine <a href='../proc/atl_modg_2d_navierstokes_physflux_const.html'>atl_modg_2d_navierstokes_physFlux_const</a>(equation, res, state, iElem, iDir, penalizationData, poly_proj, material, nodal_data, nodal_GradData, nodal_res, ElemLength, scheme_min, scheme_current)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Calculate the physical flux for the MODG scheme and
+Navier-Stokes equation (with constant penalizations).</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~263"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you solve.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-res~131"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>res</strong>(:,:)</td>
+            <td>
+<p>To store the resulting phy flux in modal form</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state~164"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state</strong>(:,:)</td>
+            <td>
+<p>The state of the equation</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ielem~168"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iElem</strong></td>
+            <td>
+<p>The current Element</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-idir~118"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iDir</strong></td>
+            <td>
+<p>The current Direction</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata~33"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationData</strong></td>
+            <td>
+<p>The penalization data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~145"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Poly project</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~110"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong></td>
+            <td>
+<p>Material description for the faces on the current level</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodal_data~50"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodal_data</strong>(:,:)</td>
+            <td>
+<p>The state in nodal form</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodal_graddata~24"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodal_GradData</strong>(:,:,:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodal_res~26"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodal_res</strong>(:,:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elemlength~24"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ElemLength</strong></td>
+            <td>
+<p>Length of the element</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_min~33"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_min</strong></td>
+            <td>
+<p>The scheme information</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_current~24"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_current</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_2d_navierstokes_penalization_const"></span> <h3>public  subroutine <a href='../proc/atl_modg_2d_navierstokes_penalization_const.html'>atl_modg_2d_navierstokes_penalization_const</a>(equation, poly_proj, nodal_data, scheme_min, penalizationData, iElem, material)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>PV 20150820 Get the correct penalization data here</p><a href="../proc/atl_modg_2d_navierstokes_penalization_const.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~264"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you solve.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~146"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Poly project</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodal_data~51"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodal_data</strong>(:,:)</td>
+            <td>
+<p>The state in nodal form</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_min~34"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_min</strong></td>
+            <td>
+<p>The scheme information</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata~34"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationData</strong></td>
+            <td>
+<p>The penalization data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ielem~169"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iElem</strong></td>
+            <td>
+<p>The current Element</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~111"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong></td>
+            <td>
+<p>Material description for the faces on the current level</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_2d_navierstokes_physflux_nonconst"></span> <h3>public  subroutine <a href='../proc/atl_modg_2d_navierstokes_physflux_nonconst.html'>atl_modg_2d_navierstokes_physFlux_NonConst</a>(equation, res, state, iElem, iDir, penalizationData, poly_proj, material, nodal_data, nodal_GradData, nodal_res, ElemLength, scheme_min, scheme_current)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Calculate the physical flux for the MODG scheme and
+Navier-Stokes equation (with non-constant penalizations).</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~265"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you solve.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-res~132"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>res</strong>(:,:)</td>
+            <td>
+<p>To store the resulting phy flux in modal form</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state~165"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state</strong>(:,:)</td>
+            <td>
+<p>The state of the equation</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ielem~170"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iElem</strong></td>
+            <td>
+<p>The current Element</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-idir~119"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iDir</strong></td>
+            <td>
+<p>The current Direction</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata~35"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationData</strong></td>
+            <td>
+<p>The penalization data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~147"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Poly project</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~112"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong></td>
+            <td>
+<p>Material description for the faces on the current level</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodal_data~52"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodal_data</strong>(:,:)</td>
+            <td>
+<p>The state in nodal form</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodal_graddata~25"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodal_GradData</strong>(:,:,:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodal_res~27"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodal_res</strong>(:,:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elemlength~25"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ElemLength</strong></td>
+            <td>
+<p>Length of the element</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_min~35"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_min</strong></td>
+            <td>
+<p>The scheme information</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_current~25"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_current</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_2d_navierstokes_penalization_nonconst"></span> <h3>public  subroutine <a href='../proc/atl_modg_2d_navierstokes_penalization_nonconst.html'>atl_modg_2d_navierstokes_penalization_Nonconst</a>(equation, poly_proj, nodal_data, scheme_min, penalizationData, iElem, material)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>PV 20150820 Get the correct penalization data here</p><a href="../proc/atl_modg_2d_navierstokes_penalization_nonconst.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~266"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you solve.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~148"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Poly project</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodal_data~53"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodal_data</strong>(:,:)</td>
+            <td>
+<p>The state in nodal form</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_min~36"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_min</strong></td>
+            <td>
+<p>The scheme information</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata~36"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationData</strong></td>
+            <td>
+<p>The penalization data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ielem~171"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iElem</strong></td>
+            <td>
+<p>The current Element</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~113"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong></td>
+            <td>
+<p>Material description for the faces on the current level</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_2d_navierstokes_numflux"></span> <h3>public  subroutine <a href='../proc/atl_modg_2d_navierstokes_numflux.html'>atl_modg_2d_navierstokes_numFlux</a>(mesh, equation, facedata, scheme, poly_proj, material)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Calculate the numerical flux for Navier-Stokes equation and MODG scheme</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh~120"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh</strong></td>
+            <td>
+<p>The mesh you are working with.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~267"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you solve.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facedata~43"></span>
+              type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>facedata</strong></td>
+            <td>
+<p>The face representation of the state.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme~90"></span>
+              type(<a href='../type/atl_modg_2d_scheme_type.html'>atl_modg_2d_scheme_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme</strong></td>
+            <td>
+<p>Parameters of the modal dg scheme</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~149"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Parameter for used projection</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~114"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong></td>
+            <td>
+<p>Material description for the faces on the current level</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-modg_2d_viscnavierstokes_onedim_numflux"></span> <h3>private  subroutine <a href='../proc/modg_2d_viscnavierstokes_onedim_numflux.html'>modg_2d_viscNavierStokes_oneDim_numFlux</a>(equation, facedata, scheme, faces, faceDir, poly_proj, elemLength)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Numerical flux calculation for viscous part of the Navier-Stokes equation
+across the faces in a single spatial direction.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~268"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you solve.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facedata~44"></span>
+              type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>facedata</strong></td>
+            <td>
+<p>The face state if the equation</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme~91"></span>
+              type(<a href='../type/atl_modg_2d_scheme_type.html'>atl_modg_2d_scheme_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme</strong></td>
+            <td>
+<p>Parameters of the modal dg scheme</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-faces~17"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_faceiterator_type.html'>tem_faceIterator_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faces</strong></td>
+            <td>
+<p>The faces to calculate the fluxes for.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facedir~22"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceDir</strong></td>
+            <td>
+<p>The spatial direction of the faces you calc the fluxes for, use the
+following:
+* 1 --&gt; x direction.
+* 2 --&gt; y direction.
+* 3 --&gt; z direction.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~150"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Parameter for used projection</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elemlength~28"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>elemLength</strong></td>
+            <td>
+<p>The length of an element</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-modg_2d_stabviscnavierstokes_onedim_numflux"></span> <h3>private  subroutine <a href='../proc/modg_2d_stabviscnavierstokes_onedim_numflux.html'>modg_2d_stabViscNavierStokes_oneDim_numFlux</a>(equation, facedata, scheme, faces, faceDir, poly_proj)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Numerical flux calculation for stab-viscous part of the Navier-Stokes
+equation across the faces in a single
+spatial direction.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~269"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you solve.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facedata~45"></span>
+              type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>facedata</strong></td>
+            <td>
+<p>The face state if the equation</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme~92"></span>
+              type(<a href='../type/atl_modg_2d_scheme_type.html'>atl_modg_2d_scheme_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme</strong></td>
+            <td>
+<p>Parameters of the modal dg scheme</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-faces~18"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_faceiterator_type.html'>tem_faceIterator_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faces</strong></td>
+            <td>
+<p>The faces to calculate the fluxes for.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facedir~23"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceDir</strong></td>
+            <td>
+<p>The spatial direction of the faces you calc the fluxes for, use the
+following:
+1 --&gt; x direction. \n
+2 --&gt; y direction. \n
+3 --&gt; z direction.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~151"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Parameter for used projection</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

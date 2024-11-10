@@ -1,0 +1,1891 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_modg_2d_maxwell_kernel_module &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_modg_2d_maxwell_kernel_module
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.4% of total for modules and submodules.">190 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_modg_2d_maxwell_kernel_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_modg_2d_maxwell_kernel_module.f90.html'>atl_modg_2d_maxwell_kernel_module.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_modg_2d_maxwell_kernel_module</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#funcs-0"
+         aria-expanded="false" aria-controls="funcs-0">
+         <h4 class="card-header bg-primary text-white">Functions</h4>
+      </a>
+      <div id="funcs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_modg_2d_maxwell_kernel_module.html#proc-atl_physfluxmaxwell_2d">atl_physFluxMaxwell_2d</a>
+        </div>
+      </div>
+    </div>
+
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_modg_2d_maxwell_kernel_module.html#proc-atl_modg_maxwell_2d_numflux">atl_modg_maxwell_2d_numFlux</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_maxwell_kernel_module.html#proc-atl_modg_maxwell_2d_physflux_const">atl_modg_maxwell_2d_physFlux_const</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_maxwell_kernel_module.html#proc-atl_modg_maxwell_2d_physflux_nonconst">atl_modg_maxwell_2d_physFlux_NonConst</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_maxwell_kernel_module.html#proc-atl_modg_maxwell_2d_penalization_nonconst">atl_modg_maxwell_2d_penalization_NonConst</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_maxwell_kernel_module.html#proc-atl_modg_maxwell_2d_penalization_const">atl_modg_maxwell_2d_penalization_Const</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_maxwell_kernel_module.html#proc-compute_physflux_2d">compute_physFlux_2d</a>
+            <a class="list-group-item" href="../module/atl_modg_2d_maxwell_kernel_module.html#proc-compute_physflux_nonconst_2d">compute_physFlux_nonConst_2d</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      <p>Module for routines and datatypes of MOdal Discontinuous Galerkin (MODG)
+scheme. This scheme is a spectral scheme for linear, purley hyperbolic
+partial differential equation systems.</p>
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='atl_materialprp_module.html'>atl_materialPrp_module</a></li>
+                  <li class="list-inline-item"><a href='atl_equation_module.html'>atl_equation_module</a></li>
+                  <li class="list-inline-item"><a href='atl_modg_2d_scheme_module.html'>atl_modg_2d_scheme_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/env_module.html'>env_module</a></li>
+                  <li class="list-inline-item"><a href='atl_penalization_module.html'>atl_penalization_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_aux_module.html'>tem_aux_module</a></li>
+                  <li class="list-inline-item"><a href='atl_scheme_module.html'>atl_scheme_module</a></li>
+                  <li class="list-inline-item"><a href='ply_poly_project_module.html'>ply_poly_project_module</a></li>
+                  <li class="list-inline-item"><a href='ply_dof_module.html'>ply_dof_module</a></li>
+                  <li class="list-inline-item"><a href='atl_facedata_module.html'>atl_facedata_module</a></li>
+                  <li class="list-inline-item"><a href='ply_oversample_module.html'>ply_oversample_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_logging_module.html'>tem_logging_module</a></li>
+                  <li class="list-inline-item"><a href='atl_maxwell_flux_2d_module.html'>atl_maxwell_flux_2d_module</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph Pages: 1 -->
+<svg id="moduleatl_modg_2d_maxwell_kernel_moduleUsesGraph" width="433pt" height="536pt"
+ viewBox="0.00 0.00 433.00 536.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 532)">
+<title>module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-532 429,-532 429,4 -4,4"/>
+<!-- module~atl_modg_2d_maxwell_kernel_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node1" class="node">
+<title>module~atl_modg_2d_maxwell_kernel_module</title>
+<polygon fill="none" stroke="black" points="425,-276 210,-276 210,-252 425,-252 425,-276"/>
+<text text-anchor="middle" x="317.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_modg_2d_maxwell_kernel_module</text>
+</g>
+<!-- env_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node2" class="node">
+<title>env_module</title>
+<g id="a_module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node2"><a xlink:href="https://apes-suite.github.io/treelm/module/env_module.html" xlink:title="env_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="126,-528 48,-528 48,-504 126,-504 126,-528"/>
+<text text-anchor="middle" x="87" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">env_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_maxwell_kernel_module&#45;&gt;env_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_edge1" class="edge">
+<title>module~atl_modg_2d_maxwell_kernel_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M312.75,-276.09C300.13,-314.69 255.36,-435.83 174,-495 163.01,-503 149.34,-507.97 136.17,-511.06"/>
+<polygon fill="#000000" stroke="#000000" points="135.34,-507.66 126.24,-513.08 136.73,-514.52 135.34,-507.66"/>
+</g>
+<!-- module~atl_equation_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node3" class="node">
+<title>module~atl_equation_module</title>
+<g id="a_module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node3"><a xlink:href="../module/atl_equation_module.html" xlink:title="atl_equation_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="149,-486 25,-486 25,-462 149,-462 149,-486"/>
+<text text-anchor="middle" x="87" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_equation_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_maxwell_kernel_module&#45;&gt;module~atl_equation_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_edge2" class="edge">
+<title>module~atl_modg_2d_maxwell_kernel_module&#45;&gt;module~atl_equation_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M310.88,-276.49C294.85,-310.61 245.4,-406.01 174,-453 169.35,-456.06 164.29,-458.68 159.03,-460.92"/>
+<polygon fill="#000000" stroke="#000000" points="157.52,-457.74 149.39,-464.54 159.99,-464.29 157.52,-457.74"/>
+</g>
+<!-- module~atl_facedata_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node4" class="node">
+<title>module~atl_facedata_module</title>
+<g id="a_module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node4"><a xlink:href="../module/atl_facedata_module.html" xlink:title="atl_facedata_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="149,-444 25,-444 25,-420 149,-420 149,-444"/>
+<text text-anchor="middle" x="87" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_facedata_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_maxwell_kernel_module&#45;&gt;module~atl_facedata_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_edge3" class="edge">
+<title>module~atl_modg_2d_maxwell_kernel_module&#45;&gt;module~atl_facedata_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M308.47,-276.1C289.01,-304.42 236.3,-375.31 174,-411 169.25,-413.72 164.15,-416.09 158.91,-418.16"/>
+<polygon fill="#000000" stroke="#000000" points="157.58,-414.91 149.33,-421.55 159.92,-421.51 157.58,-414.91"/>
+</g>
+<!-- module~atl_materialprp_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node5" class="node">
+<title>module~atl_materialprp_module</title>
+<g id="a_module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node5"><a xlink:href="../module/atl_materialprp_module.html" xlink:title="atl_materialPrp_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="156.5,-402 17.5,-402 17.5,-378 156.5,-378 156.5,-402"/>
+<text text-anchor="middle" x="87" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_materialPrp_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_maxwell_kernel_module&#45;&gt;module~atl_materialprp_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_edge4" class="edge">
+<title>module~atl_modg_2d_maxwell_kernel_module&#45;&gt;module~atl_materialprp_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M303.89,-276.06C280.33,-297.93 227.17,-344.15 174,-369 169.42,-371.14 164.59,-373.08 159.66,-374.83"/>
+<polygon fill="#000000" stroke="#000000" points="158.5,-371.53 150.09,-377.97 160.68,-378.18 158.5,-371.53"/>
+</g>
+<!-- module~atl_maxwell_flux_2d_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node6" class="node">
+<title>module~atl_maxwell_flux_2d_module</title>
+<g id="a_module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node6"><a xlink:href="../module/atl_maxwell_flux_2d_module.html" xlink:title="atl_maxwell_flux_2d_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="169.5,-360 4.5,-360 4.5,-336 169.5,-336 169.5,-360"/>
+<text text-anchor="middle" x="87" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_maxwell_flux_2d_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_maxwell_kernel_module&#45;&gt;module~atl_maxwell_flux_2d_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_edge5" class="edge">
+<title>module~atl_modg_2d_maxwell_kernel_module&#45;&gt;module~atl_maxwell_flux_2d_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M292.81,-276.03C264.95,-289.81 217.02,-312.37 174,-327 167.45,-329.23 160.54,-331.32 153.61,-333.26"/>
+<polygon fill="#000000" stroke="#000000" points="152.22,-330.01 143.47,-335.98 154.04,-336.77 152.22,-330.01"/>
+</g>
+<!-- module~atl_modg_2d_scheme_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node7" class="node">
+<title>module~atl_modg_2d_scheme_module</title>
+<g id="a_module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node7"><a xlink:href="../module/atl_modg_2d_scheme_module.html" xlink:title="atl_modg_2d_scheme_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="174,-318 0,-318 0,-294 174,-294 174,-318"/>
+<text text-anchor="middle" x="87" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_scheme_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_maxwell_kernel_module&#45;&gt;module~atl_modg_2d_scheme_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_edge6" class="edge">
+<title>module~atl_modg_2d_maxwell_kernel_module&#45;&gt;module~atl_modg_2d_scheme_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M251.02,-276.04C223.65,-281.07 191.69,-286.94 163.35,-292.15"/>
+<polygon fill="#000000" stroke="#000000" points="162.69,-288.71 153.49,-293.96 163.96,-295.6 162.69,-288.71"/>
+</g>
+<!-- module~atl_penalization_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node8" class="node">
+<title>module~atl_penalization_module</title>
+<g id="a_module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node8"><a xlink:href="../module/atl_penalization_module.html" xlink:title="atl_penalization_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="158,-276 16,-276 16,-252 158,-252 158,-276"/>
+<text text-anchor="middle" x="87" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_penalization_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_maxwell_kernel_module&#45;&gt;module~atl_penalization_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_edge7" class="edge">
+<title>module~atl_modg_2d_maxwell_kernel_module&#45;&gt;module~atl_penalization_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M209.94,-264C195.94,-264 181.79,-264 168.32,-264"/>
+<polygon fill="#000000" stroke="#000000" points="168.18,-260.5 158.18,-264 168.18,-267.5 168.18,-260.5"/>
+</g>
+<!-- module~atl_scheme_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node9" class="node">
+<title>module~atl_scheme_module</title>
+<g id="a_module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node9"><a xlink:href="../module/atl_scheme_module.html" xlink:title="atl_scheme_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="146.5,-234 27.5,-234 27.5,-210 146.5,-210 146.5,-234"/>
+<text text-anchor="middle" x="87" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_scheme_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_maxwell_kernel_module&#45;&gt;module~atl_scheme_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_edge8" class="edge">
+<title>module~atl_modg_2d_maxwell_kernel_module&#45;&gt;module~atl_scheme_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M251.02,-251.96C221.52,-246.54 186.67,-240.14 156.79,-234.64"/>
+<polygon fill="#000000" stroke="#000000" points="157.33,-231.18 146.86,-232.82 156.06,-238.07 157.33,-231.18"/>
+</g>
+<!-- module~ply_dof_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node10" class="node">
+<title>module~ply_dof_module</title>
+<g id="a_module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node10"><a xlink:href="../module/ply_dof_module.html" xlink:title="ply_dof_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="135.5,-192 38.5,-192 38.5,-168 135.5,-168 135.5,-192"/>
+<text text-anchor="middle" x="87" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_dof_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_maxwell_kernel_module&#45;&gt;module~ply_dof_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_edge9" class="edge">
+<title>module~atl_modg_2d_maxwell_kernel_module&#45;&gt;module~ply_dof_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M292.81,-251.97C264.95,-238.19 217.02,-215.63 174,-201 164.93,-197.91 155.18,-195.09 145.61,-192.57"/>
+<polygon fill="#000000" stroke="#000000" points="146.3,-189.14 135.75,-190.07 144.58,-195.92 146.3,-189.14"/>
+</g>
+<!-- module~ply_oversample_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node11" class="node">
+<title>module~ply_oversample_module</title>
+<g id="a_module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node11"><a xlink:href="../module/ply_oversample_module.html" xlink:title="ply_oversample_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="158,-150 16,-150 16,-126 158,-126 158,-150"/>
+<text text-anchor="middle" x="87" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_oversample_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_maxwell_kernel_module&#45;&gt;module~ply_oversample_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_edge10" class="edge">
+<title>module~atl_modg_2d_maxwell_kernel_module&#45;&gt;module~ply_oversample_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M303.89,-251.94C280.33,-230.07 227.17,-183.85 174,-159 169.42,-156.86 164.59,-154.92 159.66,-153.17"/>
+<polygon fill="#000000" stroke="#000000" points="160.68,-149.82 150.09,-150.03 158.5,-156.47 160.68,-149.82"/>
+</g>
+<!-- module~ply_poly_project_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node12" class="node">
+<title>module~ply_poly_project_module</title>
+<g id="a_module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node12"><a xlink:href="../module/ply_poly_project_module.html" xlink:title="ply_poly_project_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="159,-108 15,-108 15,-84 159,-84 159,-108"/>
+<text text-anchor="middle" x="87" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_poly_project_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_maxwell_kernel_module&#45;&gt;module~ply_poly_project_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_edge11" class="edge">
+<title>module~atl_modg_2d_maxwell_kernel_module&#45;&gt;module~ply_poly_project_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M308.47,-251.9C289.01,-223.58 236.3,-152.69 174,-117 170.74,-115.13 167.32,-113.43 163.8,-111.88"/>
+<polygon fill="#000000" stroke="#000000" points="164.87,-108.54 154.28,-108.12 162.29,-115.05 164.87,-108.54"/>
+</g>
+<!-- tem_aux_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node13" class="node">
+<title>tem_aux_module</title>
+<g id="a_module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node13"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_aux_module.html" xlink:title="tem_aux_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="139,-66 35,-66 35,-42 139,-42 139,-66"/>
+<text text-anchor="middle" x="87" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_aux_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_maxwell_kernel_module&#45;&gt;tem_aux_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_edge12" class="edge">
+<title>module~atl_modg_2d_maxwell_kernel_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M310.88,-251.51C294.85,-217.39 245.4,-121.99 174,-75 166.36,-69.97 157.63,-66.15 148.73,-63.24"/>
+<polygon fill="#000000" stroke="#000000" points="149.62,-59.85 139.04,-60.43 147.67,-66.58 149.62,-59.85"/>
+</g>
+<!-- tem_logging_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node14" class="node">
+<title>tem_logging_module</title>
+<g id="a_module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_node14"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_logging_module.html" xlink:title="tem_logging_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="149,-24 25,-24 25,0 149,0 149,-24"/>
+<text text-anchor="middle" x="87" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_2d_maxwell_kernel_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsesGraph_edge13" class="edge">
+<title>module~atl_modg_2d_maxwell_kernel_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M312.75,-251.91C300.13,-213.31 255.36,-92.17 174,-33 169.42,-29.67 164.37,-26.86 159.09,-24.49"/>
+<polygon fill="#000000" stroke="#000000" points="159.96,-21.08 149.37,-20.69 157.41,-27.59 159.96,-21.08"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+          <div class="card">
+      <h3 class="card-header card-title bg-light">Used by</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_modg_2d_maxwell_kernel_module~~UsedByGraph Pages: 1 -->
+<svg id="moduleatl_modg_2d_maxwell_kernel_moduleUsedByGraph" width="432pt" height="32pt"
+ viewBox="0.00 0.00 432.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>module~~atl_modg_2d_maxwell_kernel_module~~UsedByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 428,-28 428,4 -4,4"/>
+<!-- module~atl_modg_2d_maxwell_kernel_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsedByGraph_node1" class="node">
+<title>module~atl_modg_2d_maxwell_kernel_module</title>
+<polygon fill="none" stroke="black" points="215,-24 0,-24 0,0 215,0 215,-24"/>
+<text text-anchor="middle" x="107.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_modg_2d_maxwell_kernel_module</text>
+</g>
+<!-- proc~compute_rhs_cubes_modg_2d -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsedByGraph_node2" class="node">
+<title>proc~compute_rhs_cubes_modg_2d</title>
+<g id="a_module~~atl_modg_2d_maxwell_kernel_module~~UsedByGraph_node2"><a xlink:href="../proc/compute_rhs_cubes_modg_2d.html" xlink:title="compute_rhs_cubes_modg_2d">
+<polygon fill="#d9534f" stroke="#d9534f" points="424,-24 251,-24 251,0 424,0 424,-24"/>
+<text text-anchor="middle" x="337.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">compute_rhs_cubes_modg_2d</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_2d&#45;&gt;module~atl_modg_2d_maxwell_kernel_module -->
+<g id="module~~atl_modg_2d_maxwell_kernel_module~~UsedByGraph_edge1" class="edge">
+<title>proc~compute_rhs_cubes_modg_2d&#45;&gt;module~atl_modg_2d_maxwell_kernel_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M250.95,-12C242.6,-12 234.02,-12 225.43,-12"/>
+<polygon fill="#000000" stroke="#000000" points="225.34,-8.5 215.34,-12 225.34,-15.5 225.34,-8.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      <br>
+
+
+
+
+
+
+
+        <section>
+          <h2>Functions</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_physfluxmaxwell_2d"></span> <h3>private  function <a href='../proc/atl_physfluxmaxwell_2d.html'>atl_physFluxMaxwell_2d</a>(state, material) result(flux)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Function for physical flux of the Maxwell equations in terms of D and B.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state~7"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state</strong>(7)</td>
+            <td>
+<p>State to compute the fluxes from (D,B).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~10"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong>(3)</td>
+            <td>
+<p>Material parameters (mu, epsilon) the flux calculation</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>real(kind=rk), (7)</small>
+    </h4>
+    <p>The resulting flux in x direction</p>
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+        <section>
+          <h2>Subroutines</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_maxwell_2d_numflux"></span> <h3>public  subroutine <a href='../proc/atl_modg_maxwell_2d_numflux.html'>atl_modg_maxwell_2d_numFlux</a>(equation, facedata, scheme, poly_proj, material)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Calculate the numerical flux for Maxwell equation and MODG scheme</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~12"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you solve.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facedata~3"></span>
+              type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>facedata</strong></td>
+            <td>
+<p>The face representation of the state.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme~2"></span>
+              type(<a href='../type/atl_modg_2d_scheme_type.html'>atl_modg_2d_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme</strong></td>
+            <td>
+<p>Parameters of the modal dg scheme</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~9"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Data for projection method</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~7"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong></td>
+            <td>
+<p>Material description for the faces on the current level</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_maxwell_2d_physflux_const"></span> <h3>public  subroutine <a href='../proc/atl_modg_maxwell_2d_physflux_const.html'>atl_modg_maxwell_2d_physFlux_const</a>(equation, res, state, iElem, iDir, penalizationData, poly_proj, material, nodal_data, nodal_GradData, nodal_res, ElemLength, scheme_min, scheme_current)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Calculate the physical flux for the MODG scheme and Maxwell equation.
+used for both space P and Q</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~13"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you solve.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-res~7"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>res</strong>(:,:)</td>
+            <td>
+<p>To store the resulting phy flux in modal form</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state</strong>(:,:)</td>
+            <td>
+<p>The state of the equation</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ielem~6"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iElem</strong></td>
+            <td>
+<p>The current Element</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-idir~7"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iDir</strong></td>
+            <td>
+<p>The current Direction</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata~4"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationData</strong></td>
+            <td>
+<p>The penalization data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~10"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Poly project</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~8"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong></td>
+            <td>
+<p>Material description for the faces on the current level</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodal_data~6"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodal_data</strong>(:,:)</td>
+            <td>
+<p>The state in nodal form</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodal_graddata~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodal_GradData</strong>(:,:,:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodal_res~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodal_res</strong>(:,:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elemlength~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ElemLength</strong></td>
+            <td>
+<p>Length of the element</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_min~4"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_min</strong></td>
+            <td>
+<p>The scheme information</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_current~4"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_current</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_maxwell_2d_physflux_nonconst"></span> <h3>public  subroutine <a href='../proc/atl_modg_maxwell_2d_physflux_nonconst.html'>atl_modg_maxwell_2d_physFlux_NonConst</a>(equation, res, state, iElem, iDir, penalizationData, poly_proj, material, nodal_data, nodal_GradData, nodal_res, ElemLength, scheme_min, scheme_current)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Calculate the physical flux for the MODG scheme and Maxwell equation.
+used for both space P and Q</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~14"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you solve.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-res~8"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>res</strong>(:,:)</td>
+            <td>
+<p>To store the resulting phy flux in modal form</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state~5"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state</strong>(:,:)</td>
+            <td>
+<p>The state of the equation</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ielem~7"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iElem</strong></td>
+            <td>
+<p>The current Element</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-idir~8"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iDir</strong></td>
+            <td>
+<p>The current Direction</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata~5"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationData</strong></td>
+            <td>
+<p>The penalization data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~11"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Poly project</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~9"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong></td>
+            <td>
+<p>Material description for the faces on the current level</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodal_data~7"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodal_data</strong>(:,:)</td>
+            <td>
+<p>The state in nodal form</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodal_graddata~5"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodal_GradData</strong>(:,:,:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodal_res~5"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodal_res</strong>(:,:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elemlength~5"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ElemLength</strong></td>
+            <td>
+<p>Length of the element</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_min~5"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_min</strong></td>
+            <td>
+<p>The scheme information</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_current~5"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_current</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_maxwell_2d_penalization_nonconst"></span> <h3>public  subroutine <a href='../proc/atl_modg_maxwell_2d_penalization_nonconst.html'>atl_modg_maxwell_2d_penalization_NonConst</a>(equation, poly_proj, nodal_data, scheme_min, penalizationData, iElem, material)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>PV 20150820 Get the correct penalization data here</p><a href="../proc/atl_modg_maxwell_2d_penalization_nonconst.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~15"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you solve.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~13"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Poly project</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodal_data~8"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodal_data</strong>(:,:)</td>
+            <td>
+<p>The state in nodal form</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_min~6"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_min</strong></td>
+            <td>
+<p>The scheme information</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata~6"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationData</strong></td>
+            <td>
+<p>The penalization data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ielem~9"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iElem</strong></td>
+            <td>
+<p>The current Element</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~12"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong></td>
+            <td>
+<p>Material description for the faces on the current level</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_maxwell_2d_penalization_const"></span> <h3>public  subroutine <a href='../proc/atl_modg_maxwell_2d_penalization_const.html'>atl_modg_maxwell_2d_penalization_Const</a>(equation, poly_proj, nodal_data, scheme_min, penalizationData, iElem, material)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~16"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you solve.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~14"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Poly project</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodal_data~9"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodal_data</strong>(:,:)</td>
+            <td>
+<p>The state in nodal form</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_min~7"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_min</strong></td>
+            <td>
+<p>The scheme information</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata~7"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationData</strong></td>
+            <td>
+<p>The penalization data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ielem~10"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iElem</strong></td>
+            <td>
+<p>The current Element</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~13"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong></td>
+            <td>
+<p>Material description for the faces on the current level</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-compute_physflux_2d"></span> <h3>private  subroutine <a href='../proc/compute_physflux_2d.html'>compute_physFlux_2d</a>(nDofs, nScalars, state_der, state, rot, inv_mu, inv_epsi)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Compute the physical flux in x direction.</p><a href="../proc/compute_physflux_2d.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ndofs~7"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nDofs</strong></td>
+            <td>
+<p>dimensions</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nscalars~4"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nScalars</strong></td>
+            <td>
+<p>dimensions</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state_der"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state_der</strong>(:,:)</td>
+            <td>
+<p>Array to store the fluxes in.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state~6"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state</strong>(nDofs,nScalars)</td>
+            <td>
+<p>State to compute the fluxes from.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rot~6"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rot</strong>(7)</td>
+            <td>
+<p>Rotationing to index the variables.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-inv_mu~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>inv_mu</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-inv_epsi~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>inv_epsi</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-compute_physflux_nonconst_2d"></span> <h3>private  subroutine <a href='../proc/compute_physflux_nonconst_2d.html'>compute_physFlux_nonConst_2d</a>(nDofs, nScalars, iElem, state_der, state, rot, nElems, elems, material, poly_proj, modalCoeffs, nodalPhysFlux)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Compute the physical flux in x direction.</p><a href="../proc/compute_physflux_nonconst_2d.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ndofs~8"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nDofs</strong></td>
+            <td>
+<p>dimensions</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nscalars~5"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nScalars</strong></td>
+            <td>
+<p>dimensions</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ielem~8"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iElem</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state_der~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state_der</strong>(:,:)</td>
+            <td>
+<p>Array to store the fluxes in.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state~8"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state</strong>(nDofs,nScalars)</td>
+            <td>
+<p>State to compute the fluxes from.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rot~7"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rot</strong>(7)</td>
+            <td>
+<p>Rotationing to index the variables.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nelems~2"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nElems</strong></td>
+            <td>
+<p>Number of elements.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elems"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>elems</strong>(nElems)</td>
+            <td>
+<p>Element positions in the total state vector</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~11"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong>(nElems,nDofs,3)</td>
+            <td>
+<p>Material parameters (mu, epsilon) for all elements</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~12"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Data for projection method</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-modalcoeffs~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>modalCoeffs</strong>(poly_proj%body_2D%oversamp_dofs,size(state,2),1)</td>
+            <td>
+<p>Working array for modal coefficients of the current element in the loop.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodalphysflux"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodalPhysFlux</strong>(poly_proj%body_2D%nquadpoints,size(state,2),2)</td>
+            <td>
+<p>Working array for nodal representation of the physical flux along the 3 spatial directions.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,703 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>ply_legToPnt_3D_multVar &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>ply_legToPnt_3D_multVar
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.0% of total for procedures.">10 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/ply_legFpt_3D_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/ply_legfpt_3d_module.f90.html'>ply_legFpt_3D_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/ply_legfpt_3d_module.html'>ply_legFpt_3D_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">ply_legToPnt_3D_multVar</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>private  subroutine ply_legToPnt_3D_multVar(fpt, legCoeffs, pntVal, nVars)  
+</h2>
+    
+
+    <p>Subroutine to transform Legendre expansion to point values
+ at Chebyshev nodes.
+VK: no multivar fashion of this routine is used anymore</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fpt~24"></span>
+              type(<a href='../type/ply_legfpt_type.html'>ply_legFpt_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fpt</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-legcoeffs~31"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>legCoeffs</strong>(:,:)</td>
+            <td>
+                <p>The Legendre coefficients to convert to point values (Chebyshev nodes).
+\attention Although this array serves as input only, it is modified
+inside of this routine by the underlying FPT algorithm. So, when
+this routine returns from its call the original values of pntVal will
+be modified.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-pntval~26"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pntVal</strong>(:,:)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nvars~31"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nVars</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~ply_legtopnt_3d_multvar~~CallsGraph Pages: 1 -->
+<svg id="procply_legtopnt_3d_multvarCallsGraph" width="469pt" height="32pt"
+ viewBox="0.00 0.00 469.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~ply_legtopnt_3d_multvar~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~ply_legtopnt_3d_multvar~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 465,-28 465,4 -4,4"/>
+<!-- proc~ply_legtopnt_3d_multvar -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CallsGraph_node1" class="node">
+<title>proc~ply_legtopnt_3d_multvar</title>
+<polygon fill="none" stroke="black" points="145,-24 0,-24 0,0 145,0 145,-24"/>
+<text text-anchor="middle" x="72.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">ply_legToPnt_3D_multVar</text>
+</g>
+<!-- interface~ply_legtopnt_3d -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CallsGraph_node2" class="node">
+<title>interface~ply_legtopnt_3d</title>
+<g id="a_proc~~ply_legtopnt_3d_multvar~~CallsGraph_node2"><a xlink:href="../interface/ply_legtopnt_3d.html" xlink:title="ply_LegTopnt_3D">
+<polygon fill="#a7506f" stroke="#a7506f" points="283,-24 181,-24 181,0 283,0 283,-24"/>
+<text text-anchor="middle" x="232" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_LegTopnt_3D</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_legtopnt_3d_multvar&#45;&gt;interface~ply_legtopnt_3d -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CallsGraph_edge1" class="edge">
+<title>proc~ply_legtopnt_3d_multvar&#45;&gt;interface~ply_legtopnt_3d</title>
+<path fill="none" stroke="#000000" d="M145.34,-5.27C153.87,-5.22 162.52,-5.26 170.87,-5.42"/>
+<polygon fill="#000000" stroke="#000000" points="170.8,-8.92 180.88,-5.66 170.97,-1.92 170.8,-8.92"/>
+</g>
+<!-- interface~ply_legtopnt_3d&#45;&gt;proc~ply_legtopnt_3d_multvar -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CallsGraph_edge2" class="edge">
+<title>interface~ply_legtopnt_3d&#45;&gt;proc~ply_legtopnt_3d_multvar</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M180.88,-18.34C172.75,-18.58 164.15,-18.72 155.49,-18.74"/>
+<polygon fill="#000000" stroke="#000000" points="155.34,-15.24 145.34,-18.73 155.33,-22.24 155.34,-15.24"/>
+</g>
+<!-- proc~ply_legtopnt_3d_singvar -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CallsGraph_node3" class="node">
+<title>proc~ply_legtopnt_3d_singvar</title>
+<g id="a_proc~~ply_legtopnt_3d_multvar~~CallsGraph_node3"><a xlink:href="../proc/ply_legtopnt_3d_singvar.html" xlink:title="ply_legToPnt_3D_singvar">
+<polygon fill="#d9534f" stroke="#d9534f" points="461,-24 319,-24 319,0 461,0 461,-24"/>
+<text text-anchor="middle" x="390" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_legToPnt_3D_singvar</text>
+</a>
+</g>
+</g>
+<!-- interface~ply_legtopnt_3d&#45;&gt;proc~ply_legtopnt_3d_singvar -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CallsGraph_edge3" class="edge">
+<title>interface~ply_legtopnt_3d&#45;&gt;proc~ply_legtopnt_3d_singvar</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M283.22,-12C291.41,-12 300.08,-12 308.78,-12"/>
+<polygon fill="#000000" stroke="#000000" points="308.99,-15.5 318.99,-12 308.99,-8.5 308.99,-15.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~ply_legtopnt_3d_multvar~~CalledByGraph Pages: 1 -->
+<svg id="procply_legtopnt_3d_multvarCalledByGraph" width="600pt" height="242pt"
+ viewBox="0.00 0.00 600.00 242.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 238)">
+<title>proc~~ply_legtopnt_3d_multvar~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-238 596,-238 596,4 -4,4"/>
+<!-- proc~ply_legtopnt_3d_multvar -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node1" class="node">
+<title>proc~ply_legtopnt_3d_multvar</title>
+<polygon fill="none" stroke="black" points="438,-234 293,-234 293,-210 438,-210 438,-234"/>
+<text text-anchor="middle" x="365.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50">ply_legToPnt_3D_multVar</text>
+</g>
+<!-- interface~ply_legtopnt_3d -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node2" class="node">
+<title>interface~ply_legtopnt_3d</title>
+<g id="a_proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node2"><a xlink:href="../interface/ply_legtopnt_3d.html" xlink:title="ply_LegTopnt_3D">
+<polygon fill="#a7506f" stroke="#a7506f" points="592,-150 490,-150 490,-126 592,-126 592,-150"/>
+<text text-anchor="middle" x="541" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_LegTopnt_3D</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_legtopnt_3d_multvar&#45;&gt;interface~ply_legtopnt_3d -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_edge6" class="edge">
+<title>proc~ply_legtopnt_3d_multvar&#45;&gt;interface~ply_legtopnt_3d</title>
+<path fill="none" stroke="#000000" d="M396.64,-209.93C413.98,-205.66 435.86,-200.41 454,-192 474.26,-182.61 494.53,-168.08 510.29,-156.28"/>
+<polygon fill="#000000" stroke="#000000" points="512.68,-158.86 518.56,-150.05 508.47,-153.27 512.68,-158.86"/>
+</g>
+<!-- interface~ply_legtopnt_3d&#45;&gt;proc~ply_legtopnt_3d_multvar -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_edge1" class="edge">
+<title>interface~ply_legtopnt_3d&#45;&gt;proc~ply_legtopnt_3d_multvar</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M532.61,-150.25C518.5,-167.09 486.24,-195.06 454,-210 451.98,-210.93 449.92,-211.83 447.83,-212.68"/>
+<polygon fill="#000000" stroke="#000000" points="446.59,-209.41 438.45,-216.19 449.04,-215.97 446.59,-209.41"/>
+</g>
+<!-- proc~ply_check_legtopnt_3d -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node3" class="node">
+<title>proc~ply_check_legtopnt_3d</title>
+<g id="a_proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node3"><a xlink:href="../proc/ply_check_legtopnt_3d.html" xlink:title="ply_check_legToPnt_3D">
+<polygon fill="#d9534f" stroke="#d9534f" points="433,-192 298,-192 298,-168 433,-168 433,-192"/>
+<text text-anchor="middle" x="365.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_check_legToPnt_3D</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_check_legtopnt_3d&#45;&gt;interface~ply_legtopnt_3d -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_edge2" class="edge">
+<title>proc~ply_check_legtopnt_3d&#45;&gt;interface~ply_legtopnt_3d</title>
+<path fill="none" stroke="#000000" d="M416.94,-167.93C429.08,-165.02 442,-161.9 454,-159 462.78,-156.88 472.05,-154.62 481.14,-152.41"/>
+<polygon fill="#000000" stroke="#000000" points="482.01,-155.8 490.89,-150.03 480.35,-149 482.01,-155.8"/>
+</g>
+<!-- proc~ply_check_legtopnt_3d~2 -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node4" class="node">
+<title>proc~ply_check_legtopnt_3d~2</title>
+<g id="a_proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node4"><a xlink:href="../proc/ply_check_legtopnt_3d~2.html" xlink:title="ply_check_legToPnt_3D">
+<polygon fill="#d9534f" stroke="#d9534f" points="433,-150 298,-150 298,-126 433,-126 433,-150"/>
+<text text-anchor="middle" x="365.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_check_legToPnt_3D</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_check_legtopnt_3d~2&#45;&gt;interface~ply_legtopnt_3d -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_edge3" class="edge">
+<title>proc~ply_check_legtopnt_3d~2&#45;&gt;interface~ply_legtopnt_3d</title>
+<path fill="none" stroke="#000000" d="M433.08,-138C448.38,-138 464.56,-138 479.58,-138"/>
+<polygon fill="#000000" stroke="#000000" points="479.77,-141.5 489.77,-138 479.77,-134.5 479.77,-141.5"/>
+</g>
+<!-- proc~ply_check_legtopnt_3d~3 -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node5" class="node">
+<title>proc~ply_check_legtopnt_3d~3</title>
+<g id="a_proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node5"><a xlink:href="../proc/ply_check_legtopnt_3d~3.html" xlink:title="ply_check_legToPnt_3D">
+<polygon fill="#d9534f" stroke="#d9534f" points="433,-108 298,-108 298,-84 433,-84 433,-108"/>
+<text text-anchor="middle" x="365.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_check_legToPnt_3D</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_check_legtopnt_3d~3&#45;&gt;interface~ply_legtopnt_3d -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_edge4" class="edge">
+<title>proc~ply_check_legtopnt_3d~3&#45;&gt;interface~ply_legtopnt_3d</title>
+<path fill="none" stroke="#000000" d="M416.94,-108.07C429.08,-110.98 442,-114.1 454,-117 462.78,-119.12 472.05,-121.38 481.14,-123.59"/>
+<polygon fill="#000000" stroke="#000000" points="480.35,-127 490.89,-125.97 482.01,-120.2 480.35,-127"/>
+</g>
+<!-- proc~ply_check_legtopnt_3d~4 -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node6" class="node">
+<title>proc~ply_check_legtopnt_3d~4</title>
+<g id="a_proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node6"><a xlink:href="../proc/ply_check_legtopnt_3d~4.html" xlink:title="ply_check_legToPnt_3D">
+<polygon fill="#d9534f" stroke="#d9534f" points="433,-66 298,-66 298,-42 433,-42 433,-66"/>
+<text text-anchor="middle" x="365.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_check_legToPnt_3D</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_check_legtopnt_3d~4&#45;&gt;interface~ply_legtopnt_3d -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_edge5" class="edge">
+<title>proc~ply_check_legtopnt_3d~4&#45;&gt;interface~ply_legtopnt_3d</title>
+<path fill="none" stroke="#000000" d="M430.13,-66.11C438.34,-68.58 446.49,-71.52 454,-75 478.31,-86.26 502.63,-104.93 519.17,-119.03"/>
+<polygon fill="#000000" stroke="#000000" points="517.23,-121.99 527.07,-125.93 521.84,-116.71 517.23,-121.99"/>
+</g>
+<!-- proc~ply_poly_project_m2n_multivar -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node7" class="node">
+<title>proc~ply_poly_project_m2n_multivar</title>
+<g id="a_proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node7"><a xlink:href="../proc/ply_poly_project_m2n_multivar.html" xlink:title="ply_poly_project_m2n_multiVar">
+<polygon fill="#d9534f" stroke="#d9534f" points="454,-24 277,-24 277,0 454,0 454,-24"/>
+<text text-anchor="middle" x="365.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_poly_project_m2n_multiVar</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_poly_project_m2n_multivar&#45;&gt;interface~ply_legtopnt_3d -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_edge7" class="edge">
+<title>proc~ply_poly_project_m2n_multivar&#45;&gt;interface~ply_legtopnt_3d</title>
+<path fill="none" stroke="#000000" d="M435.6,-24.01C442.06,-26.47 448.31,-29.43 454,-33 487.66,-54.11 514.29,-92.96 528.55,-117.03"/>
+<polygon fill="#000000" stroke="#000000" points="525.54,-118.82 533.56,-125.75 531.61,-115.34 525.54,-118.82"/>
+</g>
+<!-- interface~ply_poly_project_m2n -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node8" class="node">
+<title>interface~ply_poly_project_m2n</title>
+<g id="a_proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node8"><a xlink:href="../interface/ply_poly_project_m2n.html" xlink:title="ply_poly_project_m2n">
+<polygon fill="#a7506f" stroke="#a7506f" points="184,-24 57,-24 57,0 184,0 184,-24"/>
+<text text-anchor="middle" x="120.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_poly_project_m2n</text>
+</a>
+</g>
+</g>
+<!-- interface~ply_poly_project_m2n&#45;&gt;proc~ply_poly_project_m2n_multivar -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_edge12" class="edge">
+<title>interface~ply_poly_project_m2n&#45;&gt;proc~ply_poly_project_m2n_multivar</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M184.08,-12C209.25,-12 238.88,-12 266.77,-12"/>
+<polygon fill="#000000" stroke="#000000" points="266.95,-15.5 276.95,-12 266.95,-8.5 266.95,-15.5"/>
+</g>
+<!-- program~ply_fpt_ifpt_3d_multivar_lobattonodes_test -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node9" class="node">
+<title>program~ply_fpt_ifpt_3d_multivar_lobattonodes_test</title>
+<g id="a_proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node9"><a xlink:href="../program/ply_fpt_ifpt_3d_multivar_lobattonodes_test.html" xlink:title="ply_fpt_ifpt_3D_multiVar_lobattoNodes_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="241,-108 0,-108 0,-84 241,-84 241,-108"/>
+<text text-anchor="middle" x="120.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_ifpt_3D_multiVar_lobattoNodes_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_fpt_ifpt_3d_multivar_lobattonodes_test&#45;&gt;proc~ply_check_legtopnt_3d~3 -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_edge10" class="edge">
+<title>program~ply_fpt_ifpt_3d_multivar_lobattonodes_test&#45;&gt;proc~ply_check_legtopnt_3d~3</title>
+<path fill="none" stroke="#000000" d="M241.22,-96C257.09,-96 272.99,-96 287.86,-96"/>
+<polygon fill="#000000" stroke="#000000" points="287.97,-99.5 297.97,-96 287.97,-92.5 287.97,-99.5"/>
+</g>
+<!-- program~ply_fpt_ifpt_3d_multivar_test -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node10" class="node">
+<title>program~ply_fpt_ifpt_3d_multivar_test</title>
+<g id="a_proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node10"><a xlink:href="../program/ply_fpt_ifpt_3d_multivar_test.html" xlink:title="ply_fpt_ifpt_3D_multiVar_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="203,-150 38,-150 38,-126 203,-126 203,-150"/>
+<text text-anchor="middle" x="120.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_ifpt_3D_multiVar_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_fpt_ifpt_3d_multivar_test&#45;&gt;proc~ply_check_legtopnt_3d~2 -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_edge9" class="edge">
+<title>program~ply_fpt_ifpt_3d_multivar_test&#45;&gt;proc~ply_check_legtopnt_3d~2</title>
+<path fill="none" stroke="#000000" d="M203.09,-138C230.36,-138 260.64,-138 287.54,-138"/>
+<polygon fill="#000000" stroke="#000000" points="287.67,-141.5 297.67,-138 287.67,-134.5 287.67,-141.5"/>
+</g>
+<!-- program~ply_fpt_ifpt_3d_singvar_lobattonodes_test -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node11" class="node">
+<title>program~ply_fpt_ifpt_3d_singvar_lobattonodes_test</title>
+<g id="a_proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node11"><a xlink:href="../program/ply_fpt_ifpt_3d_singvar_lobattonodes_test.html" xlink:title="ply_fpt_ifpt_3D_singVar_lobattoNodes_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="238,-66 3,-66 3,-42 238,-42 238,-66"/>
+<text text-anchor="middle" x="120.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_ifpt_3D_singVar_lobattoNodes_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_fpt_ifpt_3d_singvar_lobattonodes_test&#45;&gt;proc~ply_check_legtopnt_3d~4 -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_edge11" class="edge">
+<title>program~ply_fpt_ifpt_3d_singvar_lobattonodes_test&#45;&gt;proc~ply_check_legtopnt_3d~4</title>
+<path fill="none" stroke="#000000" d="M238.02,-54C254.9,-54 271.92,-54 287.75,-54"/>
+<polygon fill="#000000" stroke="#000000" points="287.98,-57.5 297.98,-54 287.98,-50.5 287.98,-57.5"/>
+</g>
+<!-- program~ply_fpt_ifpt_3d_singvar_test -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node12" class="node">
+<title>program~ply_fpt_ifpt_3d_singvar_test</title>
+<g id="a_proc~~ply_legtopnt_3d_multvar~~CalledByGraph_node12"><a xlink:href="../program/ply_fpt_ifpt_3d_singvar_test.html" xlink:title="ply_fpt_ifpt_3D_singVar_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="200.5,-192 40.5,-192 40.5,-168 200.5,-168 200.5,-192"/>
+<text text-anchor="middle" x="120.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_ifpt_3D_singVar_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_fpt_ifpt_3d_singvar_test&#45;&gt;proc~ply_check_legtopnt_3d -->
+<g id="proc~~ply_legtopnt_3d_multvar~~CalledByGraph_edge8" class="edge">
+<title>program~ply_fpt_ifpt_3d_singvar_test&#45;&gt;proc~ply_check_legtopnt_3d</title>
+<path fill="none" stroke="#000000" d="M200.73,-180C228.73,-180 260.15,-180 287.93,-180"/>
+<polygon fill="#000000" stroke="#000000" points="287.99,-183.5 297.99,-180 287.99,-176.5 287.99,-183.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

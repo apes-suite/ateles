@@ -1,0 +1,640 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_op_Gradient_forPoint &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_op_Gradient_forPoint
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for procedures.">80 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_operator_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_operator_module.f90.html'>atl_operator_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/atl_operator_module.html'>atl_operator_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_op_Gradient_forPoint</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine atl_op_Gradient_forPoint(fun, varSys, point, time, tree, nPnts, res)  
+</h2>
+    
+
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fun~85"></span>
+              class(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fun</strong></td>
+            <td>
+                <p>Description of the method to obtain the variables, here some preset
+values might be stored, like the space time function to use or the
+required variables.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varsys~118"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varSys</strong></td>
+            <td>
+                <p>The variable system to obtain the variable from.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-point~24"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>point</strong>(:,:)</td>
+            <td>
+                <p>Three-dimensional coordinates at which the variable should be
+evaluated. Only useful for variables provided as space-time functions.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-time~104"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>time</strong></td>
+            <td>
+                <p>Point in time at which to evaluate the variable.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~139"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+                <p>global treelm mesh info</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-npnts~27"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nPnts</strong></td>
+            <td>
+                <p>Number of values to obtain for this variable (vectorized access).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-res~119"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>res</strong>(:)</td>
+            <td>
+                <p>Resulting values for the requested variable.</p>
+<p>Dimension: n requested entries x nComponents of this variable
+Access: (iElem-1)*fun%nComponents + iComp</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~atl_op_gradient_forpoint~~CallsGraph Pages: 1 -->
+<svg id="procatl_op_gradient_forpointCallsGraph" width="350pt" height="578pt"
+ viewBox="0.00 0.00 350.00 578.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 574)">
+<title>proc~~atl_op_gradient_forpoint~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-574 346,-574 346,4 -4,4"/>
+<!-- proc~atl_op_gradient_forpoint -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_node1" class="node">
+<title>proc~atl_op_gradient_forpoint</title>
+<polygon fill="none" stroke="black" points="143,-297 0,-297 0,-273 143,-273 143,-297"/>
+<text text-anchor="middle" x="71.5" y="-282.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_op_Gradient_forPoint</text>
+</g>
+<!-- get_element -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_node2" class="node">
+<title>get_element</title>
+<polygon fill="#777777" stroke="#777777" points="300,-570 221,-570 221,-546 300,-546 300,-570"/>
+<text text-anchor="middle" x="260.5" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_element</text>
+</g>
+<!-- proc~atl_op_gradient_forpoint&#45;&gt;get_element -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_edge1" class="edge">
+<title>proc~atl_op_gradient_forpoint&#45;&gt;get_element</title>
+<path fill="none" stroke="#000000" d="M73.88,-297.18C79.14,-337.86 101.76,-470.2 179,-537 187.96,-544.75 199.43,-549.68 210.9,-552.82"/>
+<polygon fill="#000000" stroke="#000000" points="210.37,-556.29 220.9,-555.13 211.95,-549.47 210.37,-556.29"/>
+</g>
+<!-- proc~atl_evallegendretenspoly1d -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_node3" class="node">
+<title>proc~atl_evallegendretenspoly1d</title>
+<g id="a_proc~~atl_op_gradient_forpoint~~CallsGraph_node3"><a xlink:href="../proc/atl_evallegendretenspoly1d.html" xlink:title="atl_evalLegendreTensPoly1d">
+<polygon fill="#d9534f" stroke="#d9534f" points="342,-528 179,-528 179,-504 342,-504 342,-528"/>
+<text text-anchor="middle" x="260.5" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_evalLegendreTensPoly1d</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_op_gradient_forpoint&#45;&gt;proc~atl_evallegendretenspoly1d -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_edge2" class="edge">
+<title>proc~atl_op_gradient_forpoint&#45;&gt;proc~atl_evallegendretenspoly1d</title>
+<path fill="none" stroke="#000000" d="M74.99,-297.17C83.04,-333.31 111.84,-440.88 179,-495 180.78,-496.44 182.65,-497.77 184.59,-499.02"/>
+<polygon fill="#000000" stroke="#000000" points="183.04,-502.17 193.49,-503.93 186.43,-496.04 183.04,-502.17"/>
+</g>
+<!-- proc~atl_evallegendretenspoly2d -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_node4" class="node">
+<title>proc~atl_evallegendretenspoly2d</title>
+<g id="a_proc~~atl_op_gradient_forpoint~~CallsGraph_node4"><a xlink:href="../proc/atl_evallegendretenspoly2d.html" xlink:title="atl_evalLegendreTensPoly2d">
+<polygon fill="#d9534f" stroke="#d9534f" points="342,-486 179,-486 179,-462 342,-462 342,-486"/>
+<text text-anchor="middle" x="260.5" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_evalLegendreTensPoly2d</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_op_gradient_forpoint&#45;&gt;proc~atl_evallegendretenspoly2d -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_edge3" class="edge">
+<title>proc~atl_op_gradient_forpoint&#45;&gt;proc~atl_evallegendretenspoly2d</title>
+<path fill="none" stroke="#000000" d="M76.69,-297.38C87.92,-328.64 121.82,-411.26 179,-453 181.09,-454.53 183.29,-455.94 185.56,-457.26"/>
+<polygon fill="#000000" stroke="#000000" points="184.15,-460.47 194.65,-461.83 187.29,-454.21 184.15,-460.47"/>
+</g>
+<!-- proc~ply_evallegendretenspoly -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_node5" class="node">
+<title>proc~ply_evallegendretenspoly</title>
+<g id="a_proc~~atl_op_gradient_forpoint~~CallsGraph_node5"><a xlink:href="../proc/ply_evallegendretenspoly.html" xlink:title="ply_evalLegendreTensPoly">
+<polygon fill="#d9534f" stroke="#d9534f" points="336,-444 185,-444 185,-420 336,-420 336,-444"/>
+<text text-anchor="middle" x="260.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_evalLegendreTensPoly</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_op_gradient_forpoint&#45;&gt;proc~ply_evallegendretenspoly -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_edge4" class="edge">
+<title>proc~atl_op_gradient_forpoint&#45;&gt;proc~ply_evallegendretenspoly</title>
+<path fill="none" stroke="#000000" d="M79.26,-297.2C93.93,-322.52 131.26,-380.93 179,-411 181.81,-412.77 184.77,-414.39 187.82,-415.88"/>
+<polygon fill="#000000" stroke="#000000" points="186.64,-419.18 197.21,-419.94 189.42,-412.76 186.64,-419.18"/>
+</g>
+<!-- tem_BaryOfId -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_node6" class="node">
+<title>tem_BaryOfId</title>
+<g id="a_proc~~atl_op_gradient_forpoint~~CallsGraph_node6"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_baryofid.html" xlink:title="tem_BaryOfId">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="303,-402 218,-402 218,-378 303,-378 303,-402"/>
+<text text-anchor="middle" x="260.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_BaryOfId</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_op_gradient_forpoint&#45;&gt;tem_BaryOfId -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_edge5" class="edge">
+<title>proc~atl_op_gradient_forpoint&#45;&gt;tem_BaryOfId</title>
+<path fill="none" stroke="#000000" d="M84.43,-297.21C102.99,-315.51 140.63,-349.92 179,-369 188.02,-373.49 198.1,-377.09 208,-379.95"/>
+<polygon fill="#000000" stroke="#000000" points="207.22,-383.37 217.78,-382.58 209.03,-376.6 207.22,-383.37"/>
+</g>
+<!-- tem_CoordOfReal -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_node7" class="node">
+<title>tem_CoordOfReal</title>
+<g id="a_proc~~atl_op_gradient_forpoint~~CallsGraph_node7"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_coordofreal.html" xlink:title="tem_CoordOfReal">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="313.5,-360 207.5,-360 207.5,-336 313.5,-336 313.5,-360"/>
+<text text-anchor="middle" x="260.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_CoordOfReal</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_op_gradient_forpoint&#45;&gt;tem_CoordOfReal -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_edge6" class="edge">
+<title>proc~atl_op_gradient_forpoint&#45;&gt;tem_CoordOfReal</title>
+<path fill="none" stroke="#000000" d="M100.64,-297.17C121.92,-306.11 151.98,-318.18 179,-327 185.55,-329.14 192.45,-331.21 199.35,-333.16"/>
+<polygon fill="#000000" stroke="#000000" points="198.84,-336.65 209.42,-335.93 200.7,-329.9 198.84,-336.65"/>
+</g>
+<!-- tem_ElemSize -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_node8" class="node">
+<title>tem_ElemSize</title>
+<g id="a_proc~~atl_op_gradient_forpoint~~CallsGraph_node8"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_elemsize.html" xlink:title="tem_ElemSize">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="304.5,-318 216.5,-318 216.5,-294 304.5,-294 304.5,-318"/>
+<text text-anchor="middle" x="260.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_ElemSize</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_op_gradient_forpoint&#45;&gt;tem_ElemSize -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_edge7" class="edge">
+<title>proc~atl_op_gradient_forpoint&#45;&gt;tem_ElemSize</title>
+<path fill="none" stroke="#000000" d="M143.2,-292.94C164.16,-295.29 186.75,-297.83 206.39,-300.04"/>
+<polygon fill="#000000" stroke="#000000" points="206.05,-303.52 216.37,-301.16 206.83,-296.56 206.05,-303.52"/>
+</g>
+<!-- tem_IdOfCoord -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_node9" class="node">
+<title>tem_IdOfCoord</title>
+<g id="a_proc~~atl_op_gradient_forpoint~~CallsGraph_node9"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_idofcoord.html" xlink:title="tem_IdOfCoord">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="307,-276 214,-276 214,-252 307,-252 307,-276"/>
+<text text-anchor="middle" x="260.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_IdOfCoord</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_op_gradient_forpoint&#45;&gt;tem_IdOfCoord -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_edge8" class="edge">
+<title>proc~atl_op_gradient_forpoint&#45;&gt;tem_IdOfCoord</title>
+<path fill="none" stroke="#000000" d="M143.2,-277.06C163.27,-274.81 184.84,-272.38 203.89,-270.24"/>
+<polygon fill="#000000" stroke="#000000" points="204.34,-273.72 213.89,-269.12 203.56,-266.76 204.34,-273.72"/>
+</g>
+<!-- tem_LevelOf -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_node10" class="node">
+<title>tem_LevelOf</title>
+<g id="a_proc~~atl_op_gradient_forpoint~~CallsGraph_node10"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_levelof.html" xlink:title="tem_LevelOf">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="300,-234 221,-234 221,-210 300,-210 300,-234"/>
+<text text-anchor="middle" x="260.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_LevelOf</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_op_gradient_forpoint&#45;&gt;tem_LevelOf -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_edge9" class="edge">
+<title>proc~atl_op_gradient_forpoint&#45;&gt;tem_LevelOf</title>
+<path fill="none" stroke="#000000" d="M100.64,-272.83C121.92,-263.89 151.98,-251.82 179,-243 189.2,-239.67 200.25,-236.51 210.81,-233.69"/>
+<polygon fill="#000000" stroke="#000000" points="211.94,-237.01 220.74,-231.11 210.18,-230.24 211.94,-237.01"/>
+</g>
+<!-- tem_PosOfId -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_node11" class="node">
+<title>tem_PosOfId</title>
+<g id="a_proc~~atl_op_gradient_forpoint~~CallsGraph_node11"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_posofid.html" xlink:title="tem_PosOfId">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="300,-192 221,-192 221,-168 300,-168 300,-192"/>
+<text text-anchor="middle" x="260.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_PosOfId</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_op_gradient_forpoint&#45;&gt;tem_PosOfId -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_edge10" class="edge">
+<title>proc~atl_op_gradient_forpoint&#45;&gt;tem_PosOfId</title>
+<path fill="none" stroke="#000000" d="M84.43,-272.79C102.99,-254.49 140.63,-220.08 179,-201 188.9,-196.08 200.08,-192.22 210.89,-189.23"/>
+<polygon fill="#000000" stroke="#000000" points="211.84,-192.6 220.66,-186.73 210.1,-185.82 211.84,-192.6"/>
+</g>
+<!-- tem_abort -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_node12" class="node">
+<title>tem_abort</title>
+<g id="a_proc~~atl_op_gradient_forpoint~~CallsGraph_node12"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="294,-150 227,-150 227,-126 294,-126 294,-150"/>
+<text text-anchor="middle" x="260.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_op_gradient_forpoint&#45;&gt;tem_abort -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_edge11" class="edge">
+<title>proc~atl_op_gradient_forpoint&#45;&gt;tem_abort</title>
+<path fill="none" stroke="#000000" d="M79.26,-272.8C93.93,-247.48 131.26,-189.07 179,-159 190.28,-151.89 203.9,-147.18 216.69,-144.06"/>
+<polygon fill="#000000" stroke="#000000" points="217.69,-147.43 226.72,-141.88 216.21,-140.59 217.69,-147.43"/>
+</g>
+<!-- tem_startTimer -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_node13" class="node">
+<title>tem_startTimer</title>
+<g id="a_proc~~atl_op_gradient_forpoint~~CallsGraph_node13"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_starttimer.html" xlink:title="tem_startTimer">
+<polygon fill="#d9534f" stroke="#d9534f" points="307.5,-108 213.5,-108 213.5,-84 307.5,-84 307.5,-108"/>
+<text text-anchor="middle" x="260.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_startTimer</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_op_gradient_forpoint&#45;&gt;tem_startTimer -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_edge12" class="edge">
+<title>proc~atl_op_gradient_forpoint&#45;&gt;tem_startTimer</title>
+<path fill="none" stroke="#000000" d="M76.69,-272.62C87.92,-241.36 121.82,-158.74 179,-117 186.37,-111.62 195,-107.62 203.82,-104.64"/>
+<polygon fill="#000000" stroke="#000000" points="204.83,-107.99 213.42,-101.79 202.84,-101.28 204.83,-107.99"/>
+</g>
+<!-- tem_stopTimer -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_node14" class="node">
+<title>tem_stopTimer</title>
+<g id="a_proc~~atl_op_gradient_forpoint~~CallsGraph_node14"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_stoptimer.html" xlink:title="tem_stopTimer">
+<polygon fill="#d9534f" stroke="#d9534f" points="306.5,-66 214.5,-66 214.5,-42 306.5,-42 306.5,-66"/>
+<text text-anchor="middle" x="260.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_stopTimer</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_op_gradient_forpoint&#45;&gt;tem_stopTimer -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_edge13" class="edge">
+<title>proc~atl_op_gradient_forpoint&#45;&gt;tem_stopTimer</title>
+<path fill="none" stroke="#000000" d="M74.99,-272.83C83.04,-236.69 111.84,-129.12 179,-75 186.43,-69.01 195.38,-64.72 204.58,-61.64"/>
+<polygon fill="#000000" stroke="#000000" points="205.57,-65 214.2,-58.85 203.62,-58.27 205.57,-65"/>
+</g>
+<!-- val -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_node15" class="node">
+<title>val</title>
+<polygon fill="#777777" stroke="#777777" points="287.5,-24 233.5,-24 233.5,0 287.5,0 287.5,-24"/>
+<text text-anchor="middle" x="260.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">val</text>
+</g>
+<!-- proc~atl_op_gradient_forpoint&#45;&gt;val -->
+<g id="proc~~atl_op_gradient_forpoint~~CallsGraph_edge14" class="edge">
+<title>proc~atl_op_gradient_forpoint&#45;&gt;val</title>
+<path fill="none" stroke="#000000" d="M73.88,-272.82C79.14,-232.14 101.76,-99.8 179,-33 191.16,-22.48 207.97,-17.14 223.08,-14.46"/>
+<polygon fill="#000000" stroke="#000000" points="223.79,-17.9 233.19,-13 222.79,-10.97 223.79,-17.9"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

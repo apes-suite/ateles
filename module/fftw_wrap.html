@@ -1,0 +1,3410 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>fftw_wrap &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>fftw_wrap
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for modules and submodules.">101 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/fftw_wrap.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/fftw_wrap.f90.html'>fftw_wrap.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">fftw_wrap</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_available">fftw_available</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-c_fftw_r2r_kind">C_FFTW_R2R_KIND</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_r2hc">FFTW_R2HC</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_hc2r">FFTW_HC2R</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_dht">FFTW_DHT</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_redft00">FFTW_REDFT00</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_redft01">FFTW_REDFT01</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_redft10">FFTW_REDFT10</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_redft11">FFTW_REDFT11</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_rodft00">FFTW_RODFT00</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_rodft01">FFTW_RODFT01</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_rodft10">FFTW_RODFT10</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_rodft11">FFTW_RODFT11</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_forward">FFTW_FORWARD</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_backward">FFTW_BACKWARD</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_measure">FFTW_MEASURE</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_destroy_input">FFTW_DESTROY_INPUT</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_unaligned">FFTW_UNALIGNED</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_conserve_memory">FFTW_CONSERVE_MEMORY</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_exhaustive">FFTW_EXHAUSTIVE</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_preserve_input">FFTW_PRESERVE_INPUT</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_patient">FFTW_PATIENT</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_estimate">FFTW_ESTIMATE</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_wisdom_only">FFTW_WISDOM_ONLY</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_estimate_patient">FFTW_ESTIMATE_PATIENT</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_believe_pcost">FFTW_BELIEVE_PCOST</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_no_dft_r2hc">FFTW_NO_DFT_R2HC</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_no_nonthreaded">FFTW_NO_NONTHREADED</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_no_buffering">FFTW_NO_BUFFERING</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_no_indirect_op">FFTW_NO_INDIRECT_OP</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_allow_large_generic">FFTW_ALLOW_LARGE_GENERIC</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_no_rank_splits">FFTW_NO_RANK_SPLITS</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_no_vrank_splits">FFTW_NO_VRANK_SPLITS</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_no_vrecurse">FFTW_NO_VRECURSE</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_no_simd">FFTW_NO_SIMD</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_no_slow">FFTW_NO_SLOW</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_no_fixed_radix_large_n">FFTW_NO_FIXED_RADIX_LARGE_N</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#variable-fftw_allow_pruning">FFTW_ALLOW_PRUNING</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#types-0"
+         aria-expanded="false" aria-controls="types-0">
+         <h4 class="card-header bg-primary text-white">Derived Types</h4>
+      </a>
+      <div id="types-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/fftw_wrap.html#type-fftw_iodim">fftw_iodim</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#type-fftw_iodim64">fftw_iodim64</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#type-fftwf_iodim">fftwf_iodim</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#type-fftwf_iodim64">fftwf_iodim64</a>
+        </div>
+      </div>
+    </div>
+
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#funcs-0"
+         aria-expanded="false" aria-controls="funcs-0">
+         <h4 class="card-header bg-primary text-white">Functions</h4>
+      </a>
+      <div id="funcs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/fftw_wrap.html#proc-fftw_plan_many_r2r">fftw_plan_many_r2r</a>
+            <a class="list-group-item" href="../module/fftw_wrap.html#proc-fftw_plan_r2r_1d">fftw_plan_r2r_1d</a>
+        </div>
+      </div>
+    </div>
+
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/fftw_wrap.html#proc-fftw_execute_r2r">fftw_execute_r2r</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      <p>type(C_PTR) function fftw_plan_dft(rank,n,in,out,sign,flags)
+  integer(C_INT), value :: rank
+  integer(C_INT), dimension(<em>), intent(in) :: n
+  complex(C_DOUBLE_COMPLEX), dimension(</em>), intent(out) :: in
+  complex(C_DOUBLE_COMPLEX), dimension(*), intent(out) :: out
+  integer(C_INT), value :: sign
+  integer(C_INT), value :: flags
+  fftw_plan_dft = C_NULL_PTR
+end function fftw_plan_dft</p>
+<p>type(C_PTR) function fftw_plan_dft_1d(n,in,out,sign,flags)
+  integer(C_INT), value :: n
+  complex(C_DOUBLE_COMPLEX), dimension(<em>), intent(out) :: in
+  complex(C_DOUBLE_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: sign
+  integer(C_INT), value :: flags
+  fftw_plan_dft_1d = C_NULL_PTR
+end function fftw_plan_dft_1d</p>
+<p>type(C_PTR) function fftw_plan_dft_2d(n0,n1,in,out,sign,flags)
+  integer(C_INT), value :: n0
+  integer(C_INT), value :: n1
+  complex(C_DOUBLE_COMPLEX), dimension(<em>), intent(out) :: in
+  complex(C_DOUBLE_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: sign
+  integer(C_INT), value :: flags
+  fftw_plan_dft_2d = C_NULL_PTR
+end function fftw_plan_dft_2d</p>
+<p>type(C_PTR) function fftw_plan_dft_3d(n0,n1,n2,in,out,sign,flags)
+  integer(C_INT), value :: n0
+  integer(C_INT), value :: n1
+  integer(C_INT), value :: n2
+  complex(C_DOUBLE_COMPLEX), dimension(<em>), intent(out) :: in
+  complex(C_DOUBLE_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: sign
+  integer(C_INT), value :: flags
+  fftw_plan_dft_3d = C_NULL_PTR
+end function fftw_plan_dft_3d</p>
+<p>type(C_PTR) function fftw_plan_many_dft(rank,n,howmany,in,inembed,istride,idist,out,onembed,ostride,odist,sign,flags)
+  integer(C_INT), value :: rank
+  integer(C_INT), dimension(<em>), intent(in) :: n
+  integer(C_INT), value :: howmany
+  complex(C_DOUBLE_COMPLEX), dimension(</em>), intent(out) :: in
+  integer(C_INT), dimension(<em>), intent(in) :: inembed
+  integer(C_INT), value :: istride
+  integer(C_INT), value :: idist
+  complex(C_DOUBLE_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), dimension(*), intent(in) :: onembed
+  integer(C_INT), value :: ostride
+  integer(C_INT), value :: odist
+  integer(C_INT), value :: sign
+  integer(C_INT), value :: flags
+  fftw_plan_many_dft = C_NULL_PTR
+end function fftw_plan_many_dft</p>
+<p>type(C_PTR) function fftw_plan_guru_dft(rank,dims,howmany_rank,howmany_dims,in,out,sign,flags)
+  integer(C_INT), value :: rank
+  type(fftw_iodim), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftw_iodim), dimension(</em>), intent(in) :: howmany_dims
+  complex(C_DOUBLE_COMPLEX), dimension(<em>), intent(out) :: in
+  complex(C_DOUBLE_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: sign
+  integer(C_INT), value :: flags
+  fftw_plan_guru_dft = C_NULL_PTR
+end function fftw_plan_guru_dft</p>
+<p>type(C_PTR) function fftw_plan_guru_split_dft(rank,dims,howmany_rank,howmany_dims,ri,ii,ro,io,flags)
+  integer(C_INT), value :: rank
+  type(fftw_iodim), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftw_iodim), dimension(</em>), intent(in) :: howmany_dims
+  real(C_DOUBLE), dimension(<em>), intent(out) :: ri
+  real(C_DOUBLE), dimension(</em>), intent(out) :: ii
+  real(C_DOUBLE), dimension(<em>), intent(out) :: ro
+  real(C_DOUBLE), dimension(</em>), intent(out) :: io
+  integer(C_INT), value :: flags
+  fftw_plan_guru_split_dft = C_NULL_PTR
+end function fftw_plan_guru_split_dft</p>
+<p>type(C_PTR) function fftw_plan_guru64_dft(rank,dims,howmany_rank,howmany_dims,in,out,sign,flags)
+  integer(C_INT), value :: rank
+  type(fftw_iodim64), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftw_iodim64), dimension(</em>), intent(in) :: howmany_dims
+  complex(C_DOUBLE_COMPLEX), dimension(<em>), intent(out) :: in
+  complex(C_DOUBLE_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: sign
+  integer(C_INT), value :: flags
+  fftw_plan_guru64_dft = C_NULL_PTR
+end function fftw_plan_guru64_dft</p>
+<p>type(C_PTR) function fftw_plan_guru64_split_dft(rank,dims,howmany_rank,howmany_dims,ri,ii,ro,io,flags)
+  integer(C_INT), value :: rank
+  type(fftw_iodim64), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftw_iodim64), dimension(</em>), intent(in) :: howmany_dims
+  real(C_DOUBLE), dimension(<em>), intent(out) :: ri
+  real(C_DOUBLE), dimension(</em>), intent(out) :: ii
+  real(C_DOUBLE), dimension(<em>), intent(out) :: ro
+  real(C_DOUBLE), dimension(</em>), intent(out) :: io
+  integer(C_INT), value :: flags
+  fftw_plan_guru64_split_dft = C_NULL_PTR
+end function fftw_plan_guru64_split_dft</p>
+<p>subroutine fftw_execute_dft(p,in,out)
+  type(C_PTR), value :: p
+  complex(C_DOUBLE_COMPLEX), dimension(<em>), intent(inout) :: in
+  complex(C_DOUBLE_COMPLEX), dimension(</em>), intent(out) :: out</p>
+<p>write(logUnit(1),*) 'ERROR: dummy fftw is not functional, stopping ... '
+  call tem_abort()</p>
+<p>end subroutine fftw_execute_dft</p>
+<p>subroutine fftw_execute_split_dft(p,ri,ii,ro,io)
+  type(C_PTR), value :: p
+  real(C_DOUBLE), dimension(<em>), intent(inout) :: ri
+  real(C_DOUBLE), dimension(</em>), intent(inout) :: ii
+  real(C_DOUBLE), dimension(<em>), intent(out) :: ro
+  real(C_DOUBLE), dimension(</em>), intent(out) :: io</p>
+<p>write(logUnit(1),*) 'ERROR: dummy fftw is not functional, stopping ... '
+  call tem_abort()</p>
+<p>end subroutine fftw_execute_split_dft</p>
+<p>type(C_PTR) function fftw_plan_many_dft_r2c(rank,n,howmany,in,inembed,istride,idist,out,onembed,ostride,odist,flags)
+  integer(C_INT), value :: rank
+  integer(C_INT), dimension(<em>), intent(in) :: n
+  integer(C_INT), value :: howmany
+  real(C_DOUBLE), dimension(</em>), intent(out) :: in
+  integer(C_INT), dimension(<em>), intent(in) :: inembed
+  integer(C_INT), value :: istride
+  integer(C_INT), value :: idist
+  complex(C_DOUBLE_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), dimension(*), intent(in) :: onembed
+  integer(C_INT), value :: ostride
+  integer(C_INT), value :: odist
+  integer(C_INT), value :: flags
+  fftw_plan_many_dft_r2c = C_NULL_PTR
+end function fftw_plan_many_dft_r2c</p>
+<p>type(C_PTR) function fftw_plan_dft_r2c(rank,n,in,out,flags)
+  integer(C_INT), value :: rank
+  integer(C_INT), dimension(<em>), intent(in) :: n
+  real(C_DOUBLE), dimension(</em>), intent(out) :: in
+  complex(C_DOUBLE_COMPLEX), dimension(*), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftw_plan_dft_r2c = C_NULL_PTR
+end function fftw_plan_dft_r2c</p>
+<p>type(C_PTR) function fftw_plan_dft_r2c_1d(n,in,out,flags)
+  integer(C_INT), value :: n
+  real(C_DOUBLE), dimension(<em>), intent(out) :: in
+  complex(C_DOUBLE_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftw_plan_dft_r2c_1d = C_NULL_PTR
+end function fftw_plan_dft_r2c_1d</p>
+<p>type(C_PTR) function fftw_plan_dft_r2c_2d(n0,n1,in,out,flags)
+  integer(C_INT), value :: n0
+  integer(C_INT), value :: n1
+  real(C_DOUBLE), dimension(<em>), intent(out) :: in
+  complex(C_DOUBLE_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftw_plan_dft_r2c_2d = C_NULL_PTR
+end function fftw_plan_dft_r2c_2d</p>
+<p>type(C_PTR) function fftw_plan_dft_r2c_3d(n0,n1,n2,in,out,flags)
+  integer(C_INT), value :: n0
+  integer(C_INT), value :: n1
+  integer(C_INT), value :: n2
+  real(C_DOUBLE), dimension(<em>), intent(out) :: in
+  complex(C_DOUBLE_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftw_plan_dft_r2c_3d = C_NULL_PTR
+end function fftw_plan_dft_r2c_3d</p>
+<p>type(C_PTR) function fftw_plan_many_dft_c2r(rank,n,howmany,in,inembed,istride,idist,out,onembed,ostride,odist,flags)
+  integer(C_INT), value :: rank
+  integer(C_INT), dimension(<em>), intent(in) :: n
+  integer(C_INT), value :: howmany
+  complex(C_DOUBLE_COMPLEX), dimension(</em>), intent(out) :: in
+  integer(C_INT), dimension(<em>), intent(in) :: inembed
+  integer(C_INT), value :: istride
+  integer(C_INT), value :: idist
+  real(C_DOUBLE), dimension(</em>), intent(out) :: out
+  integer(C_INT), dimension(*), intent(in) :: onembed
+  integer(C_INT), value :: ostride
+  integer(C_INT), value :: odist
+  integer(C_INT), value :: flags
+  fftw_plan_many_dft_c2r = C_NULL_PTR
+end function fftw_plan_many_dft_c2r</p>
+<p>type(C_PTR) function fftw_plan_dft_c2r(rank,n,in,out,flags)
+  integer(C_INT), value :: rank
+  integer(C_INT), dimension(<em>), intent(in) :: n
+  complex(C_DOUBLE_COMPLEX), dimension(</em>), intent(out) :: in
+  real(C_DOUBLE), dimension(*), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftw_plan_dft_c2r = C_NULL_PTR
+end function fftw_plan_dft_c2r</p>
+<p>type(C_PTR) function fftw_plan_dft_c2r_1d(n,in,out,flags)
+  integer(C_INT), value :: n
+  complex(C_DOUBLE_COMPLEX), dimension(<em>), intent(out) :: in
+  real(C_DOUBLE), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftw_plan_dft_c2r_1d = C_NULL_PTR
+end function fftw_plan_dft_c2r_1d</p>
+<p>type(C_PTR) function fftw_plan_dft_c2r_2d(n0,n1,in,out,flags)
+  integer(C_INT), value :: n0
+  integer(C_INT), value :: n1
+  complex(C_DOUBLE_COMPLEX), dimension(<em>), intent(out) :: in
+  real(C_DOUBLE), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftw_plan_dft_c2r_2d = C_NULL_PTR
+end function fftw_plan_dft_c2r_2d</p>
+<p>type(C_PTR) function fftw_plan_dft_c2r_3d(n0,n1,n2,in,out,flags)
+  integer(C_INT), value :: n0
+  integer(C_INT), value :: n1
+  integer(C_INT), value :: n2
+  complex(C_DOUBLE_COMPLEX), dimension(<em>), intent(out) :: in
+  real(C_DOUBLE), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftw_plan_dft_c2r_3d = C_NULL_PTR
+end function fftw_plan_dft_c2r_3d</p>
+<p>type(C_PTR) function fftw_plan_guru_dft_r2c(rank,dims,howmany_rank,howmany_dims,in,out,flags)
+  integer(C_INT), value :: rank
+  type(fftw_iodim), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftw_iodim), dimension(</em>), intent(in) :: howmany_dims
+  real(C_DOUBLE), dimension(<em>), intent(out) :: in
+  complex(C_DOUBLE_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftw_plan_guru_dft_r2c = C_NULL_PTR
+end function fftw_plan_guru_dft_r2c</p>
+<p>type(C_PTR) function fftw_plan_guru_dft_c2r(rank,dims,howmany_rank,howmany_dims,in,out,flags)
+  integer(C_INT), value :: rank
+  type(fftw_iodim), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftw_iodim), dimension(</em>), intent(in) :: howmany_dims
+  complex(C_DOUBLE_COMPLEX), dimension(<em>), intent(out) :: in
+  real(C_DOUBLE), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftw_plan_guru_dft_c2r = C_NULL_PTR
+end function fftw_plan_guru_dft_c2r</p>
+<p>type(C_PTR) function fftw_plan_guru_split_dft_r2c(rank,dims,howmany_rank,howmany_dims,in,ro,io,flags)
+  integer(C_INT), value :: rank
+  type(fftw_iodim), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftw_iodim), dimension(</em>), intent(in) :: howmany_dims
+  real(C_DOUBLE), dimension(<em>), intent(out) :: in
+  real(C_DOUBLE), dimension(</em>), intent(out) :: ro
+  real(C_DOUBLE), dimension(*), intent(out) :: io
+  integer(C_INT), value :: flags
+  fftw_plan_guru_split_dft_r2c = C_NULL_PTR
+end function fftw_plan_guru_split_dft_r2c</p>
+<p>type(C_PTR) function fftw_plan_guru_split_dft_c2r(rank,dims,howmany_rank,howmany_dims,ri,ii,out,flags)
+  integer(C_INT), value :: rank
+  type(fftw_iodim), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftw_iodim), dimension(</em>), intent(in) :: howmany_dims
+  real(C_DOUBLE), dimension(<em>), intent(out) :: ri
+  real(C_DOUBLE), dimension(</em>), intent(out) :: ii
+  real(C_DOUBLE), dimension(*), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftw_plan_guru_split_dft_c2r = C_NULL_PTR
+end function fftw_plan_guru_split_dft_c2r</p>
+<p>type(C_PTR) function fftw_plan_guru64_dft_r2c(rank,dims,howmany_rank,howmany_dims,in,out,flags)
+  integer(C_INT), value :: rank
+  type(fftw_iodim64), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftw_iodim64), dimension(</em>), intent(in) :: howmany_dims
+  real(C_DOUBLE), dimension(<em>), intent(out) :: in
+  complex(C_DOUBLE_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftw_plan_guru64_dft_r2c = C_NULL_PTR
+end function fftw_plan_guru64_dft_r2c</p>
+<p>type(C_PTR) function fftw_plan_guru64_dft_c2r(rank,dims,howmany_rank,howmany_dims,in,out,flags)
+  integer(C_INT), value :: rank
+  type(fftw_iodim64), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftw_iodim64), dimension(</em>), intent(in) :: howmany_dims
+  complex(C_DOUBLE_COMPLEX), dimension(<em>), intent(out) :: in
+  real(C_DOUBLE), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftw_plan_guru64_dft_c2r = C_NULL_PTR
+end function fftw_plan_guru64_dft_c2r</p>
+<p>type(C_PTR) function fftw_plan_guru64_split_dft_r2c(rank,dims,howmany_rank,howmany_dims,in,ro,io,flags)
+  integer(C_INT), value :: rank
+  type(fftw_iodim64), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftw_iodim64), dimension(</em>), intent(in) :: howmany_dims
+  real(C_DOUBLE), dimension(<em>), intent(out) :: in
+  real(C_DOUBLE), dimension(</em>), intent(out) :: ro
+  real(C_DOUBLE), dimension(*), intent(out) :: io
+  integer(C_INT), value :: flags
+  fftw_plan_guru64_split_dft_r2c = C_NULL_PTR
+end function fftw_plan_guru64_split_dft_r2c</p>
+<p>type(C_PTR) function fftw_plan_guru64_split_dft_c2r(rank,dims,howmany_rank,howmany_dims,ri,ii,out,flags)
+  integer(C_INT), value :: rank
+  type(fftw_iodim64), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftw_iodim64), dimension(</em>), intent(in) :: howmany_dims
+  real(C_DOUBLE), dimension(<em>), intent(out) :: ri
+  real(C_DOUBLE), dimension(</em>), intent(out) :: ii
+  real(C_DOUBLE), dimension(*), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftw_plan_guru64_split_dft_c2r = C_NULL_PTR
+end function fftw_plan_guru64_split_dft_c2r</p>
+<p>subroutine fftw_execute_dft_r2c(p,in,out)
+  type(C_PTR), value :: p
+  real(C_DOUBLE), dimension(<em>), intent(inout) :: in
+  complex(C_DOUBLE_COMPLEX), dimension(</em>), intent(out) :: out</p>
+<p>write(logUnit(1),*) 'ERROR: dummy fftw is not functional, stopping ... '
+  call tem_abort()</p>
+<p>end subroutine fftw_execute_dft_r2c</p>
+<p>subroutine fftw_execute_dft_c2r(p,in,out)
+  type(C_PTR), value :: p
+  complex(C_DOUBLE_COMPLEX), dimension(<em>), intent(inout) :: in
+  real(C_DOUBLE), dimension(</em>), intent(out) :: out</p>
+<p>write(logUnit(1),*) 'ERROR: dummy fftw is not functional, stopping ... '
+  call tem_abort()</p>
+<p>end subroutine fftw_execute_dft_c2r</p>
+<p>subroutine fftw_execute_split_dft_r2c(p,in,ro,io)
+  type(C_PTR), value :: p
+  real(C_DOUBLE), dimension(<em>), intent(inout) :: in
+  real(C_DOUBLE), dimension(</em>), intent(out) :: ro
+  real(C_DOUBLE), dimension(*), intent(out) :: io</p>
+<p>write(logUnit(1),*) 'ERROR: dummy fftw is not functional, stopping ... '
+  call tem_abort()</p>
+<p>end subroutine fftw_execute_split_dft_r2c</p>
+<p>subroutine fftw_execute_split_dft_c2r(p,ri,ii,out)
+  type(C_PTR), value :: p
+  real(C_DOUBLE), dimension(<em>), intent(inout) :: ri
+  real(C_DOUBLE), dimension(</em>), intent(inout) :: ii
+  real(C_DOUBLE), dimension(*), intent(out) :: out</p>
+<p>write(logUnit(1),*) 'ERROR: dummy fftw is not functional, stopping ... '
+  call tem_abort()</p>
+<p>end subroutine fftw_execute_split_dft_c2r</p>
+<p>type(C_PTR) function fftw_plan_r2r(rank,n,in,out,kind,flags)
+  integer(C_INT), value :: rank
+  integer(C_INT), dimension(<em>), intent(in) :: n
+  real(C_DOUBLE), dimension(</em>), intent(out) :: in
+  real(C_DOUBLE), dimension(<em>), intent(out) :: out
+  integer(C_FFTW_R2R_KIND), dimension(</em>), intent(in) :: kind
+  integer(C_INT), value :: flags
+  fftw_plan_r2r = C_NULL_PTR
+end function fftw_plan_r2r</p>
+<p>type(C_PTR) function fftw_plan_r2r_2d(n0,n1,in,out,kind0,kind1,flags)
+  integer(C_INT), value :: n0
+  integer(C_INT), value :: n1
+  real(C_DOUBLE), dimension(<em>), intent(out) :: in
+  real(C_DOUBLE), dimension(</em>), intent(out) :: out
+  integer(C_FFTW_R2R_KIND), value :: kind0
+  integer(C_FFTW_R2R_KIND), value :: kind1
+  integer(C_INT), value :: flags
+  fftw_plan_r2r_2d = C_NULL_PTR
+end function fftw_plan_r2r_2d</p>
+<p>type(C_PTR) function fftw_plan_r2r_3d(n0,n1,n2,in,out,kind0,kind1,kind2,flags)
+  integer(C_INT), value :: n0
+  integer(C_INT), value :: n1
+  integer(C_INT), value :: n2
+  real(C_DOUBLE), dimension(<em>), intent(out) :: in
+  real(C_DOUBLE), dimension(</em>), intent(out) :: out
+  integer(C_FFTW_R2R_KIND), value :: kind0
+  integer(C_FFTW_R2R_KIND), value :: kind1
+  integer(C_FFTW_R2R_KIND), value :: kind2
+  integer(C_INT), value :: flags
+  fftw_plan_r2r_3d = C_NULL_PTR
+end function fftw_plan_r2r_3d</p>
+<p>type(C_PTR) function fftw_plan_guru_r2r(rank,dims,howmany_rank,howmany_dims,in,out,kind,flags)
+  integer(C_INT), value :: rank
+  type(fftw_iodim), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftw_iodim), dimension(</em>), intent(in) :: howmany_dims
+  real(C_DOUBLE), dimension(<em>), intent(out) :: in
+  real(C_DOUBLE), dimension(</em>), intent(out) :: out
+  integer(C_FFTW_R2R_KIND), dimension(*), intent(in) :: kind
+  integer(C_INT), value :: flags
+  fftw_plan_guru_r2r = C_NULL_PTR
+end function fftw_plan_guru_r2r</p>
+<p>type(C_PTR) function fftw_plan_guru64_r2r(rank,dims,howmany_rank,howmany_dims,in,out,kind,flags)
+  integer(C_INT), value :: rank
+  type(fftw_iodim64), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftw_iodim64), dimension(</em>), intent(in) :: howmany_dims
+  real(C_DOUBLE), dimension(<em>), intent(out) :: in
+  real(C_DOUBLE), dimension(</em>), intent(out) :: out
+  integer(C_FFTW_R2R_KIND), dimension(*), intent(in) :: kind
+  integer(C_INT), value :: flags
+  fftw_plan_guru64_r2r = C_NULL_PTR
+end function fftw_plan_guru64_r2r</p>
+<p>subroutine fftw_destroy_plan(p)
+  type(C_PTR), value :: p
+end subroutine fftw_destroy_plan</p>
+<p>subroutine fftw_forget_wisdom()
+end subroutine fftw_forget_wisdom</p>
+<p>subroutine fftw_cleanup()
+end subroutine fftw_cleanup</p>
+<p>subroutine fftw_set_timelimit(t)
+  real(C_DOUBLE), value :: t
+end subroutine fftw_set_timelimit</p>
+<p>subroutine fftw_plan_with_nthreads(nthreads)
+  integer(C_INT), value :: nthreads
+end subroutine fftw_plan_with_nthreads</p>
+<p>integer(C_INT) function fftw_init_threads()
+  fftw_init_threads = -1_c_int
+end function fftw_init_threads</p>
+<p>subroutine fftw_cleanup_threads()
+end subroutine fftw_cleanup_threads</p>
+<p>integer(C_INT) function fftw_export_wisdom_to_filename(filename)
+  character(C_CHAR), dimension(*), intent(in) :: filename
+  fftw_export_wisdom_to_filename = -1_c_int
+end function fftw_export_wisdom_to_filename</p>
+<p>subroutine fftw_export_wisdom_to_file(output_file)
+  type(C_PTR), value :: output_file
+end subroutine fftw_export_wisdom_to_file</p>
+<p>type(C_PTR) function fftw_export_wisdom_to_string()
+  fftw_export_wisdom_to_string = C_NULL_PTR
+end function fftw_export_wisdom_to_string</p>
+<p>subroutine fftw_export_wisdom(write_char,data)
+  type(C_FUNPTR), value :: write_char
+  type(C_PTR), value :: data
+end subroutine fftw_export_wisdom</p>
+<p>integer(C_INT) function fftw_import_system_wisdom()
+  fftw_import_system_wisdom = -1_c_int
+end function fftw_import_system_wisdom</p>
+<p>integer(C_INT) function fftw_import_wisdom_from_filename(filename)
+  character(C_CHAR), dimension(*), intent(in) :: filename
+  fftw_import_wisdom_from_filename = -1_c_int
+end function fftw_import_wisdom_from_filename</p>
+<p>integer(C_INT) function fftw_import_wisdom_from_file(input_file)
+  type(C_PTR), value :: input_file
+  fftw_import_wisdom_from_file = -1_c_int
+end function fftw_import_wisdom_from_file</p>
+<p>integer(C_INT) function fftw_import_wisdom_from_string(input_string)
+  character(C_CHAR), dimension(*), intent(in) :: input_string
+  fftw_import_wisdom_from_string = -1_c_int
+end function fftw_import_wisdom_from_string</p>
+<p>integer(C_INT) function fftw_import_wisdom(read_char,data)
+  type(C_FUNPTR), value :: read_char
+  type(C_PTR), value :: data
+  fftw_import_wisdom = -1_c_int
+end function fftw_import_wisdom</p>
+<p>subroutine fftw_fprint_plan(p,output_file)
+  type(C_PTR), value :: p
+  type(C_PTR), value :: output_file
+end subroutine fftw_fprint_plan</p>
+<p>subroutine fftw_print_plan(p)
+  type(C_PTR), value :: p
+end subroutine fftw_print_plan</p>
+<p>type(C_PTR) function fftw_malloc(n)
+  integer(C_SIZE_T), value :: n
+  fftw_malloc = C_NULL_PTR
+end function fftw_malloc</p>
+<p>type(C_PTR) function fftw_alloc_real(n)
+  integer(C_SIZE_T), value :: n
+  fftw_alloc_real = C_NULL_PTR
+end function fftw_alloc_real</p>
+<p>type(C_PTR) function fftw_alloc_complex(n)
+  integer(C_SIZE_T), value :: n
+  fftw_alloc_complex = C_NULL_PTR
+end function fftw_alloc_complex</p>
+<p>subroutine fftw_free(p)
+  type(C_PTR), value :: p
+end subroutine fftw_free</p>
+<p>subroutine fftw_flops(p,add,mul,fmas)
+  type(C_PTR), value :: p
+  real(C_DOUBLE), intent(out) :: add
+  real(C_DOUBLE), intent(out) :: mul
+  real(C_DOUBLE), intent(out) :: fmas
+end subroutine fftw_flops</p>
+<p>real(C_DOUBLE) function fftw_estimate_cost(p)
+  type(C_PTR), value :: p
+  fftw_estimate_cost = 0.0_c_double
+end function fftw_estimate_cost</p>
+<p>real(C_DOUBLE) function fftw_cost(p)
+  type(C_PTR), value :: p
+  fftw_cost = 0.0_c_double
+end function fftw_cost</p>
+<p>type(C_PTR) function fftwf_plan_dft(rank,n,in,out,sign,flags)
+  integer(C_INT), value :: rank
+  integer(C_INT), dimension(<em>), intent(in) :: n
+  complex(C_FLOAT_COMPLEX), dimension(</em>), intent(out) :: in
+  complex(C_FLOAT_COMPLEX), dimension(*), intent(out) :: out
+  integer(C_INT), value :: sign
+  integer(C_INT), value :: flags
+  fftwf_plan_dft = C_NULL_PTR
+end function fftwf_plan_dft</p>
+<p>type(C_PTR) function fftwf_plan_dft_1d(n,in,out,sign,flags)
+  integer(C_INT), value :: n
+  complex(C_FLOAT_COMPLEX), dimension(<em>), intent(out) :: in
+  complex(C_FLOAT_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: sign
+  integer(C_INT), value :: flags
+  fftwf_plan_dft_1d = C_NULL_PTR
+end function fftwf_plan_dft_1d</p>
+<p>type(C_PTR) function fftwf_plan_dft_2d(n0,n1,in,out,sign,flags)
+  integer(C_INT), value :: n0
+  integer(C_INT), value :: n1
+  complex(C_FLOAT_COMPLEX), dimension(<em>), intent(out) :: in
+  complex(C_FLOAT_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: sign
+  integer(C_INT), value :: flags
+  fftwf_plan_dft_2d = C_NULL_PTR
+end function fftwf_plan_dft_2d</p>
+<p>type(C_PTR) function fftwf_plan_dft_3d(n0,n1,n2,in,out,sign,flags)
+  integer(C_INT), value :: n0
+  integer(C_INT), value :: n1
+  integer(C_INT), value :: n2
+  complex(C_FLOAT_COMPLEX), dimension(<em>), intent(out) :: in
+  complex(C_FLOAT_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: sign
+  integer(C_INT), value :: flags
+  fftwf_plan_dft_3d = C_NULL_PTR
+end function fftwf_plan_dft_3d</p>
+<p>type(C_PTR) function fftwf_plan_many_dft(rank,n,howmany,in,inembed,istride,idist,out,onembed,ostride,odist,sign,flags)
+  integer(C_INT), value :: rank
+  integer(C_INT), dimension(<em>), intent(in) :: n
+  integer(C_INT), value :: howmany
+  complex(C_FLOAT_COMPLEX), dimension(</em>), intent(out) :: in
+  integer(C_INT), dimension(<em>), intent(in) :: inembed
+  integer(C_INT), value :: istride
+  integer(C_INT), value :: idist
+  complex(C_FLOAT_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), dimension(*), intent(in) :: onembed
+  integer(C_INT), value :: ostride
+  integer(C_INT), value :: odist
+  integer(C_INT), value :: sign
+  integer(C_INT), value :: flags
+  fftwf_plan_many_dft = C_NULL_PTR
+end function fftwf_plan_many_dft</p>
+<p>type(C_PTR) function fftwf_plan_guru_dft(rank,dims,howmany_rank,howmany_dims,in,out,sign,flags)
+  integer(C_INT), value :: rank
+  type(fftwf_iodim), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftwf_iodim), dimension(</em>), intent(in) :: howmany_dims
+  complex(C_FLOAT_COMPLEX), dimension(<em>), intent(out) :: in
+  complex(C_FLOAT_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: sign
+  integer(C_INT), value :: flags
+  fftwf_plan_guru_dft = C_NULL_PTR
+end function fftwf_plan_guru_dft</p>
+<p>type(C_PTR) function fftwf_plan_guru_split_dft(rank,dims,howmany_rank,howmany_dims,ri,ii,ro,io,flags)
+  integer(C_INT), value :: rank
+  type(fftwf_iodim), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftwf_iodim), dimension(</em>), intent(in) :: howmany_dims
+  real(C_FLOAT), dimension(<em>), intent(out) :: ri
+  real(C_FLOAT), dimension(</em>), intent(out) :: ii
+  real(C_FLOAT), dimension(<em>), intent(out) :: ro
+  real(C_FLOAT), dimension(</em>), intent(out) :: io
+  integer(C_INT), value :: flags
+  fftwf_plan_guru_split_dft = C_NULL_PTR
+end function fftwf_plan_guru_split_dft</p>
+<p>type(C_PTR) function fftwf_plan_guru64_dft(rank,dims,howmany_rank,howmany_dims,in,out,sign,flags)
+  integer(C_INT), value :: rank
+  type(fftwf_iodim64), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftwf_iodim64), dimension(</em>), intent(in) :: howmany_dims
+  complex(C_FLOAT_COMPLEX), dimension(<em>), intent(out) :: in
+  complex(C_FLOAT_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: sign
+  integer(C_INT), value :: flags
+  fftwf_plan_guru64_dft = C_NULL_PTR
+end function fftwf_plan_guru64_dft</p>
+<p>type(C_PTR) function fftwf_plan_guru64_split_dft(rank,dims,howmany_rank,howmany_dims,ri,ii,ro,io,flags)
+  integer(C_INT), value :: rank
+  type(fftwf_iodim64), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftwf_iodim64), dimension(</em>), intent(in) :: howmany_dims
+  real(C_FLOAT), dimension(<em>), intent(out) :: ri
+  real(C_FLOAT), dimension(</em>), intent(out) :: ii
+  real(C_FLOAT), dimension(<em>), intent(out) :: ro
+  real(C_FLOAT), dimension(</em>), intent(out) :: io
+  integer(C_INT), value :: flags
+  fftwf_plan_guru64_split_dft = C_NULL_PTR
+end function fftwf_plan_guru64_split_dft</p>
+<p>subroutine fftwf_execute_dft(p,in,out)
+  type(C_PTR), value :: p
+  complex(C_FLOAT_COMPLEX), dimension(<em>), intent(inout) :: in
+  complex(C_FLOAT_COMPLEX), dimension(</em>), intent(out) :: out</p>
+<p>write(logUnit(1),*) 'ERROR: dummy fftw is not functional, stopping ... '
+  call tem_abort()</p>
+<p>end subroutine fftwf_execute_dft</p>
+<p>subroutine fftwf_execute_split_dft(p,ri,ii,ro,io)
+  type(C_PTR), value :: p
+  real(C_FLOAT), dimension(<em>), intent(inout) :: ri
+  real(C_FLOAT), dimension(</em>), intent(inout) :: ii
+  real(C_FLOAT), dimension(<em>), intent(out) :: ro
+  real(C_FLOAT), dimension(</em>), intent(out) :: io</p>
+<p>write(logUnit(1),*) 'ERROR: dummy fftw is not functional, stopping ... '
+  call tem_abort()</p>
+<p>end subroutine fftwf_execute_split_dft</p>
+<p>type(C_PTR) function fftwf_plan_many_dft_r2c(rank,n,howmany,in,inembed,istride,idist,out,onembed,ostride,odist,flags)
+  integer(C_INT), value :: rank
+  integer(C_INT), dimension(<em>), intent(in) :: n
+  integer(C_INT), value :: howmany
+  real(C_FLOAT), dimension(</em>), intent(out) :: in
+  integer(C_INT), dimension(<em>), intent(in) :: inembed
+  integer(C_INT), value :: istride
+  integer(C_INT), value :: idist
+  complex(C_FLOAT_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), dimension(*), intent(in) :: onembed
+  integer(C_INT), value :: ostride
+  integer(C_INT), value :: odist
+  integer(C_INT), value :: flags
+  fftwf_plan_many_dft_r2c = C_NULL_PTR
+end function fftwf_plan_many_dft_r2c</p>
+<p>type(C_PTR) function fftwf_plan_dft_r2c(rank,n,in,out,flags)
+  integer(C_INT), value :: rank
+  integer(C_INT), dimension(<em>), intent(in) :: n
+  real(C_FLOAT), dimension(</em>), intent(out) :: in
+  complex(C_FLOAT_COMPLEX), dimension(*), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftwf_plan_dft_r2c = C_NULL_PTR
+end function fftwf_plan_dft_r2c</p>
+<p>type(C_PTR) function fftwf_plan_dft_r2c_1d(n,in,out,flags)
+  integer(C_INT), value :: n
+  real(C_FLOAT), dimension(<em>), intent(out) :: in
+  complex(C_FLOAT_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftwf_plan_dft_r2c_1d = C_NULL_PTR
+end function fftwf_plan_dft_r2c_1d</p>
+<p>type(C_PTR) function fftwf_plan_dft_r2c_2d(n0,n1,in,out,flags)
+  integer(C_INT), value :: n0
+  integer(C_INT), value :: n1
+  real(C_FLOAT), dimension(<em>), intent(out) :: in
+  complex(C_FLOAT_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftwf_plan_dft_r2c_2d = C_NULL_PTR
+end function fftwf_plan_dft_r2c_2d</p>
+<p>type(C_PTR) function fftwf_plan_dft_r2c_3d(n0,n1,n2,in,out,flags)
+  integer(C_INT), value :: n0
+  integer(C_INT), value :: n1
+  integer(C_INT), value :: n2
+  real(C_FLOAT), dimension(<em>), intent(out) :: in
+  complex(C_FLOAT_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftwf_plan_dft_r2c_3d = C_NULL_PTR
+end function fftwf_plan_dft_r2c_3d</p>
+<p>type(C_PTR) function fftwf_plan_many_dft_c2r(rank,n,howmany,in,inembed,istride,idist,out,onembed,ostride,odist,flags)
+  integer(C_INT), value :: rank
+  integer(C_INT), dimension(<em>), intent(in) :: n
+  integer(C_INT), value :: howmany
+  complex(C_FLOAT_COMPLEX), dimension(</em>), intent(out) :: in
+  integer(C_INT), dimension(<em>), intent(in) :: inembed
+  integer(C_INT), value :: istride
+  integer(C_INT), value :: idist
+  real(C_FLOAT), dimension(</em>), intent(out) :: out
+  integer(C_INT), dimension(*), intent(in) :: onembed
+  integer(C_INT), value :: ostride
+  integer(C_INT), value :: odist
+  integer(C_INT), value :: flags
+  fftwf_plan_many_dft_c2r = C_NULL_PTR
+end function fftwf_plan_many_dft_c2r</p>
+<p>type(C_PTR) function fftwf_plan_dft_c2r(rank,n,in,out,flags)
+  integer(C_INT), value :: rank
+  integer(C_INT), dimension(<em>), intent(in) :: n
+  complex(C_FLOAT_COMPLEX), dimension(</em>), intent(out) :: in
+  real(C_FLOAT), dimension(*), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftwf_plan_dft_c2r = C_NULL_PTR
+end function fftwf_plan_dft_c2r</p>
+<p>type(C_PTR) function fftwf_plan_dft_c2r_1d(n,in,out,flags)
+  integer(C_INT), value :: n
+  complex(C_FLOAT_COMPLEX), dimension(<em>), intent(out) :: in
+  real(C_FLOAT), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftwf_plan_dft_c2r_1d = C_NULL_PTR
+end function fftwf_plan_dft_c2r_1d</p>
+<p>type(C_PTR) function fftwf_plan_dft_c2r_2d(n0,n1,in,out,flags)
+  integer(C_INT), value :: n0
+  integer(C_INT), value :: n1
+  complex(C_FLOAT_COMPLEX), dimension(<em>), intent(out) :: in
+  real(C_FLOAT), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftwf_plan_dft_c2r_2d = C_NULL_PTR
+end function fftwf_plan_dft_c2r_2d</p>
+<p>type(C_PTR) function fftwf_plan_dft_c2r_3d(n0,n1,n2,in,out,flags)
+  integer(C_INT), value :: n0
+  integer(C_INT), value :: n1
+  integer(C_INT), value :: n2
+  complex(C_FLOAT_COMPLEX), dimension(<em>), intent(out) :: in
+  real(C_FLOAT), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftwf_plan_dft_c2r_3d = C_NULL_PTR
+end function fftwf_plan_dft_c2r_3d</p>
+<p>type(C_PTR) function fftwf_plan_guru_dft_r2c(rank,dims,howmany_rank,howmany_dims,in,out,flags)
+  integer(C_INT), value :: rank
+  type(fftwf_iodim), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftwf_iodim), dimension(</em>), intent(in) :: howmany_dims
+  real(C_FLOAT), dimension(<em>), intent(out) :: in
+  complex(C_FLOAT_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftwf_plan_guru_dft_r2c = C_NULL_PTR
+end function fftwf_plan_guru_dft_r2c</p>
+<p>type(C_PTR) function fftwf_plan_guru_dft_c2r(rank,dims,howmany_rank,howmany_dims,in,out,flags)
+  integer(C_INT), value :: rank
+  type(fftwf_iodim), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftwf_iodim), dimension(</em>), intent(in) :: howmany_dims
+  complex(C_FLOAT_COMPLEX), dimension(<em>), intent(out) :: in
+  real(C_FLOAT), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftwf_plan_guru_dft_c2r = C_NULL_PTR
+end function fftwf_plan_guru_dft_c2r</p>
+<p>type(C_PTR) function fftwf_plan_guru_split_dft_r2c(rank,dims,howmany_rank,howmany_dims,in,ro,io,flags)
+  integer(C_INT), value :: rank
+  type(fftwf_iodim), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftwf_iodim), dimension(</em>), intent(in) :: howmany_dims
+  real(C_FLOAT), dimension(<em>), intent(out) :: in
+  real(C_FLOAT), dimension(</em>), intent(out) :: ro
+  real(C_FLOAT), dimension(*), intent(out) :: io
+  integer(C_INT), value :: flags
+  fftwf_plan_guru_split_dft_r2c = C_NULL_PTR
+end function fftwf_plan_guru_split_dft_r2c</p>
+<p>type(C_PTR) function fftwf_plan_guru_split_dft_c2r(rank,dims,howmany_rank,howmany_dims,ri,ii,out,flags)
+  integer(C_INT), value :: rank
+  type(fftwf_iodim), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftwf_iodim), dimension(</em>), intent(in) :: howmany_dims
+  real(C_FLOAT), dimension(<em>), intent(out) :: ri
+  real(C_FLOAT), dimension(</em>), intent(out) :: ii
+  real(C_FLOAT), dimension(*), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftwf_plan_guru_split_dft_c2r = C_NULL_PTR
+end function fftwf_plan_guru_split_dft_c2r</p>
+<p>type(C_PTR) function fftwf_plan_guru64_dft_r2c(rank,dims,howmany_rank,howmany_dims,in,out,flags)
+  integer(C_INT), value :: rank
+  type(fftwf_iodim64), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftwf_iodim64), dimension(</em>), intent(in) :: howmany_dims
+  real(C_FLOAT), dimension(<em>), intent(out) :: in
+  complex(C_FLOAT_COMPLEX), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftwf_plan_guru64_dft_r2c = C_NULL_PTR
+end function fftwf_plan_guru64_dft_r2c</p>
+<p>type(C_PTR) function fftwf_plan_guru64_dft_c2r(rank,dims,howmany_rank,howmany_dims,in,out,flags)
+  integer(C_INT), value :: rank
+  type(fftwf_iodim64), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftwf_iodim64), dimension(</em>), intent(in) :: howmany_dims
+  complex(C_FLOAT_COMPLEX), dimension(<em>), intent(out) :: in
+  real(C_FLOAT), dimension(</em>), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftwf_plan_guru64_dft_c2r = C_NULL_PTR
+end function fftwf_plan_guru64_dft_c2r</p>
+<p>type(C_PTR) function fftwf_plan_guru64_split_dft_r2c(rank,dims,howmany_rank,howmany_dims,in,ro,io,flags)
+  integer(C_INT), value :: rank
+  type(fftwf_iodim64), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftwf_iodim64), dimension(</em>), intent(in) :: howmany_dims
+  real(C_FLOAT), dimension(<em>), intent(out) :: in
+  real(C_FLOAT), dimension(</em>), intent(out) :: ro
+  real(C_FLOAT), dimension(*), intent(out) :: io
+  integer(C_INT), value :: flags
+  fftwf_plan_guru64_split_dft_r2c = C_NULL_PTR
+end function fftwf_plan_guru64_split_dft_r2c</p>
+<p>type(C_PTR) function fftwf_plan_guru64_split_dft_c2r(rank,dims,howmany_rank,howmany_dims,ri,ii,out,flags)
+  integer(C_INT), value :: rank
+  type(fftwf_iodim64), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftwf_iodim64), dimension(</em>), intent(in) :: howmany_dims
+  real(C_FLOAT), dimension(<em>), intent(out) :: ri
+  real(C_FLOAT), dimension(</em>), intent(out) :: ii
+  real(C_FLOAT), dimension(*), intent(out) :: out
+  integer(C_INT), value :: flags
+  fftwf_plan_guru64_split_dft_c2r = C_NULL_PTR
+end function fftwf_plan_guru64_split_dft_c2r</p>
+<p>subroutine fftwf_execute_dft_r2c(p,in,out)
+  type(C_PTR), value :: p
+  real(C_FLOAT), dimension(<em>), intent(inout) :: in
+  complex(C_FLOAT_COMPLEX), dimension(</em>), intent(out) :: out</p>
+<p>write(logUnit(1),*) 'ERROR: dummy fftw is not functional, stopping ... '
+  call tem_abort()</p>
+<p>end subroutine fftwf_execute_dft_r2c</p>
+<p>subroutine fftwf_execute_dft_c2r(p,in,out)
+  type(C_PTR), value :: p
+  complex(C_FLOAT_COMPLEX), dimension(<em>), intent(inout) :: in
+  real(C_FLOAT), dimension(</em>), intent(out) :: out</p>
+<p>write(logUnit(1),*) 'ERROR: dummy fftw is not functional, stopping ... '
+  call tem_abort()</p>
+<p>end subroutine fftwf_execute_dft_c2r</p>
+<p>subroutine fftwf_execute_split_dft_r2c(p,in,ro,io)
+  type(C_PTR), value :: p
+  real(C_FLOAT), dimension(<em>), intent(inout) :: in
+  real(C_FLOAT), dimension(</em>), intent(out) :: ro
+  real(C_FLOAT), dimension(*), intent(out) :: io</p>
+<p>write(logUnit(1),*) 'ERROR: dummy fftw is not functional, stopping ... '
+  call tem_abort()</p>
+<p>end subroutine fftwf_execute_split_dft_r2c</p>
+<p>subroutine fftwf_execute_split_dft_c2r(p,ri,ii,out)
+  type(C_PTR), value :: p
+  real(C_FLOAT), dimension(<em>), intent(inout) :: ri
+  real(C_FLOAT), dimension(</em>), intent(inout) :: ii
+  real(C_FLOAT), dimension(*), intent(out) :: out</p>
+<p>write(logUnit(1),*) 'ERROR: dummy fftw is not functional, stopping ... '
+  call tem_abort()</p>
+<p>end subroutine fftwf_execute_split_dft_c2r</p>
+<p>type(C_PTR) function fftwf_plan_many_r2r(rank,n,howmany,in,inembed,istride,idist,out,onembed,ostride,odist,kind,flags)
+  integer(C_INT), value :: rank
+  integer(C_INT), dimension(<em>), intent(in) :: n
+  integer(C_INT), value :: howmany
+  real(C_FLOAT), dimension(</em>), intent(out) :: in
+  integer(C_INT), dimension(<em>), intent(in) :: inembed
+  integer(C_INT), value :: istride
+  integer(C_INT), value :: idist
+  real(C_FLOAT), dimension(</em>), intent(out) :: out
+  integer(C_INT), dimension(<em>), intent(in) :: onembed
+  integer(C_INT), value :: ostride
+  integer(C_INT), value :: odist
+  integer(C_FFTW_R2R_KIND), dimension(</em>), intent(in) :: kind
+  integer(C_INT), value :: flags
+  fftwf_plan_many_r2r = C_NULL_PTR
+end function fftwf_plan_many_r2r</p>
+<p>type(C_PTR) function fftwf_plan_r2r(rank,n,in,out,kind,flags)
+  integer(C_INT), value :: rank
+  integer(C_INT), dimension(<em>), intent(in) :: n
+  real(C_FLOAT), dimension(</em>), intent(out) :: in
+  real(C_FLOAT), dimension(<em>), intent(out) :: out
+  integer(C_FFTW_R2R_KIND), dimension(</em>), intent(in) :: kind
+  integer(C_INT), value :: flags
+  fftwf_plan_r2r = C_NULL_PTR
+end function fftwf_plan_r2r</p>
+<p>type(C_PTR) function fftwf_plan_r2r_1d(n,in,out,kind,flags)
+  integer(C_INT), value :: n
+  real(C_FLOAT), dimension(<em>), intent(out) :: in
+  real(C_FLOAT), dimension(</em>), intent(out) :: out
+  integer(C_FFTW_R2R_KIND), value :: kind
+  integer(C_INT), value :: flags
+  fftwf_plan_r2r_1d = C_NULL_PTR
+end function fftwf_plan_r2r_1d</p>
+<p>type(C_PTR) function fftwf_plan_r2r_2d(n0,n1,in,out,kind0,kind1,flags)
+  integer(C_INT), value :: n0
+  integer(C_INT), value :: n1
+  real(C_FLOAT), dimension(<em>), intent(out) :: in
+  real(C_FLOAT), dimension(</em>), intent(out) :: out
+  integer(C_FFTW_R2R_KIND), value :: kind0
+  integer(C_FFTW_R2R_KIND), value :: kind1
+  integer(C_INT), value :: flags
+  fftwf_plan_r2r_2d = C_NULL_PTR
+end function fftwf_plan_r2r_2d</p>
+<p>type(C_PTR) function fftwf_plan_r2r_3d(n0,n1,n2,in,out,kind0,kind1,kind2,flags)
+  integer(C_INT), value :: n0
+  integer(C_INT), value :: n1
+  integer(C_INT), value :: n2
+  real(C_FLOAT), dimension(<em>), intent(out) :: in
+  real(C_FLOAT), dimension(</em>), intent(out) :: out
+  integer(C_FFTW_R2R_KIND), value :: kind0
+  integer(C_FFTW_R2R_KIND), value :: kind1
+  integer(C_FFTW_R2R_KIND), value :: kind2
+  integer(C_INT), value :: flags
+  fftwf_plan_r2r_3d = C_NULL_PTR
+end function fftwf_plan_r2r_3d</p>
+<p>type(C_PTR) function fftwf_plan_guru_r2r(rank,dims,howmany_rank,howmany_dims,in,out,kind,flags)
+  integer(C_INT), value :: rank
+  type(fftwf_iodim), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftwf_iodim), dimension(</em>), intent(in) :: howmany_dims
+  real(C_FLOAT), dimension(<em>), intent(out) :: in
+  real(C_FLOAT), dimension(</em>), intent(out) :: out
+  integer(C_FFTW_R2R_KIND), dimension(*), intent(in) :: kind
+  integer(C_INT), value :: flags
+  fftwf_plan_guru_r2r = C_NULL_PTR
+end function fftwf_plan_guru_r2r</p>
+<p>type(C_PTR) function fftwf_plan_guru64_r2r(rank,dims,howmany_rank,howmany_dims,in,out,kind,flags)
+  integer(C_INT), value :: rank
+  type(fftwf_iodim64), dimension(<em>), intent(in) :: dims
+  integer(C_INT), value :: howmany_rank
+  type(fftwf_iodim64), dimension(</em>), intent(in) :: howmany_dims
+  real(C_FLOAT), dimension(<em>), intent(out) :: in
+  real(C_FLOAT), dimension(</em>), intent(out) :: out
+  integer(C_FFTW_R2R_KIND), dimension(*), intent(in) :: kind
+  integer(C_INT), value :: flags
+  fftwf_plan_guru64_r2r = C_NULL_PTR
+end function fftwf_plan_guru64_r2r</p>
+<p>subroutine fftwf_execute_r2r(p,in,out)
+  type(C_PTR), value :: p
+  real(C_FLOAT), dimension(<em>), intent(inout) :: in
+  real(C_FLOAT), dimension(</em>), intent(out) :: out</p>
+<p>write(logUnit(1),*) 'ERROR: dummy fftw is not functional, stopping ... '
+  call tem_abort()</p>
+<p>end subroutine fftwf_execute_r2r</p>
+<p>subroutine fftwf_destroy_plan(p)
+  type(C_PTR), value :: p
+end subroutine fftwf_destroy_plan</p>
+<p>subroutine fftwf_forget_wisdom()
+end subroutine fftwf_forget_wisdom</p>
+<p>subroutine fftwf_cleanup()
+end subroutine fftwf_cleanup</p>
+<p>subroutine fftwf_set_timelimit(t)
+  real(C_DOUBLE), value :: t
+end subroutine fftwf_set_timelimit</p>
+<p>subroutine fftwf_plan_with_nthreads(nthreads)
+  integer(C_INT), value :: nthreads
+end subroutine fftwf_plan_with_nthreads</p>
+<p>integer(C_INT) function fftwf_init_threads()
+  fftwf_init_threads = -1_c_int
+end function fftwf_init_threads</p>
+<p>subroutine fftwf_cleanup_threads()
+end subroutine fftwf_cleanup_threads</p>
+<p>integer(C_INT) function fftwf_export_wisdom_to_filename(filename)
+  character(C_CHAR), dimension(*), intent(in) :: filename
+  fftwf_export_wisdom_to_filename = -1_c_int
+end function fftwf_export_wisdom_to_filename</p>
+<p>subroutine fftwf_export_wisdom_to_file(output_file)
+  type(C_PTR), value :: output_file
+end subroutine fftwf_export_wisdom_to_file</p>
+<p>type(C_PTR) function fftwf_export_wisdom_to_string()
+  fftwf_export_wisdom_to_string = C_NULL_PTR
+end function fftwf_export_wisdom_to_string</p>
+<p>subroutine fftwf_export_wisdom(write_char,data)
+  type(C_FUNPTR), value :: write_char
+  type(C_PTR), value :: data
+end subroutine fftwf_export_wisdom</p>
+<p>integer(C_INT) function fftwf_import_system_wisdom()
+  fftwf_import_system_wisdom = -1_c_int
+end function fftwf_import_system_wisdom</p>
+<p>integer(C_INT) function fftwf_import_wisdom_from_filename(filename)
+  character(C_CHAR), dimension(*), intent(in) :: filename
+  fftwf_import_wisdom_from_filename = -1_c_int
+end function fftwf_import_wisdom_from_filename</p>
+<p>integer(C_INT) function fftwf_import_wisdom_from_file(input_file)
+  type(C_PTR), value :: input_file
+  fftwf_import_wisdom_from_file = -1_c_int
+end function fftwf_import_wisdom_from_file</p>
+<p>integer(C_INT) function fftwf_import_wisdom_from_string(input_string)
+  character(C_CHAR), dimension(*), intent(in) :: input_string
+  fftwf_import_wisdom_from_string = -1_c_int
+end function fftwf_import_wisdom_from_string</p>
+<p>integer(C_INT) function fftwf_import_wisdom(read_char,data)
+  type(C_FUNPTR), value :: read_char
+  type(C_PTR), value :: data
+  fftwf_import_wisdom = -1_c_int
+end function fftwf_import_wisdom</p>
+<p>subroutine fftwf_fprint_plan(p,output_file)
+  type(C_PTR), value :: p
+  type(C_PTR), value :: output_file
+end subroutine fftwf_fprint_plan</p>
+<p>subroutine fftwf_print_plan(p)
+  type(C_PTR), value :: p
+end subroutine fftwf_print_plan</p>
+<p>type(C_PTR) function fftwf_malloc(n)
+  integer(C_SIZE_T), value :: n
+  fftwf_malloc = C_NULL_PTR
+end function fftwf_malloc</p>
+<p>type(C_PTR) function fftwf_alloc_real(n)
+  integer(C_SIZE_T), value :: n
+  fftwf_alloc_real = C_NULL_PTR
+end function fftwf_alloc_real</p>
+<p>type(C_PTR) function fftwf_alloc_complex(n)
+  integer(C_SIZE_T), value :: n
+  fftwf_alloc_complex = C_NULL_PTR
+end function fftwf_alloc_complex</p>
+<p>subroutine fftwf_free(p)
+  type(C_PTR), value :: p
+end subroutine fftwf_free</p>
+<p>subroutine fftwf_flops(p,add,mul,fmas)
+  type(C_PTR), value :: p
+  real(C_DOUBLE), intent(out) :: add
+  real(C_DOUBLE), intent(out) :: mul
+  real(C_DOUBLE), intent(out) :: fmas
+end subroutine fftwf_flops</p>
+<p>real(C_DOUBLE) function fftwf_estimate_cost(p)
+  type(C_PTR), value :: p
+  fftwf_estimate_cost = 0.0_c_double
+end function fftwf_estimate_cost</p>
+<p>real(C_DOUBLE) function fftwf_cost(p)
+  type(C_PTR), value :: p
+  fftwf_cost = 0.0_c_double
+end function fftwf_cost</p>
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_logging_module.html'>tem_logging_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_aux_module.html'>tem_aux_module</a></li>
+                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_c_binding'>iso_c_binding</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~fftw_wrap~~UsesGraph Pages: 1 -->
+<svg id="modulefftw_wrapUsesGraph" width="232pt" height="116pt"
+ viewBox="0.00 0.00 232.00 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~fftw_wrap~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<title>module~~fftw_wrap~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-112 228,-112 228,4 -4,4"/>
+<!-- module~fftw_wrap -->
+<g id="module~~fftw_wrap~~UsesGraph_node1" class="node">
+<title>module~fftw_wrap</title>
+<polygon fill="none" stroke="black" points="224,-66 160,-66 160,-42 224,-42 224,-66"/>
+<text text-anchor="middle" x="192" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">fftw_wrap</text>
+</g>
+<!-- iso_c_binding -->
+<g id="module~~fftw_wrap~~UsesGraph_node2" class="node">
+<title>iso_c_binding</title>
+<g id="a_module~~fftw_wrap~~UsesGraph_node2"><a xlink:href="http://fortranwiki.org/fortran/show/iso_c_binding" xlink:title="iso_c_binding">
+<polygon fill="#337ab7" stroke="#337ab7" points="104,-108 20,-108 20,-84 104,-84 104,-108"/>
+<text text-anchor="middle" x="62" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_c_binding</text>
+</a>
+</g>
+</g>
+<!-- module~fftw_wrap&#45;&gt;iso_c_binding -->
+<g id="module~~fftw_wrap~~UsesGraph_edge1" class="edge">
+<title>module~fftw_wrap&#45;&gt;iso_c_binding</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M159.69,-64.27C144.59,-69.23 126.18,-75.27 109.49,-80.75"/>
+<polygon fill="#000000" stroke="#000000" points="108.31,-77.45 99.9,-83.89 110.49,-84.1 108.31,-77.45"/>
+</g>
+<!-- tem_aux_module -->
+<g id="module~~fftw_wrap~~UsesGraph_node3" class="node">
+<title>tem_aux_module</title>
+<g id="a_module~~fftw_wrap~~UsesGraph_node3"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_aux_module.html" xlink:title="tem_aux_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="114,-66 10,-66 10,-42 114,-42 114,-66"/>
+<text text-anchor="middle" x="62" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_aux_module</text>
+</a>
+</g>
+</g>
+<!-- module~fftw_wrap&#45;&gt;tem_aux_module -->
+<g id="module~~fftw_wrap~~UsesGraph_edge2" class="edge">
+<title>module~fftw_wrap&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M159.69,-54C149.05,-54 136.76,-54 124.59,-54"/>
+<polygon fill="#000000" stroke="#000000" points="124.43,-50.5 114.43,-54 124.43,-57.5 124.43,-50.5"/>
+</g>
+<!-- tem_logging_module -->
+<g id="module~~fftw_wrap~~UsesGraph_node4" class="node">
+<title>tem_logging_module</title>
+<g id="a_module~~fftw_wrap~~UsesGraph_node4"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_logging_module.html" xlink:title="tem_logging_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="124,-24 0,-24 0,0 124,0 124,-24"/>
+<text text-anchor="middle" x="62" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_module</text>
+</a>
+</g>
+</g>
+<!-- module~fftw_wrap&#45;&gt;tem_logging_module -->
+<g id="module~~fftw_wrap~~UsesGraph_edge3" class="edge">
+<title>module~fftw_wrap&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M159.69,-43.73C144.59,-38.77 126.18,-32.73 109.49,-27.25"/>
+<polygon fill="#000000" stroke="#000000" points="110.49,-23.9 99.9,-24.11 108.31,-30.55 110.49,-23.9"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+          <div class="card">
+      <h3 class="card-header card-title bg-light">Used by</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~fftw_wrap~~UsedByGraph Pages: 1 -->
+<svg id="modulefftw_wrapUsedByGraph" width="641pt" height="520pt"
+ viewBox="0.00 0.00 641.00 520.22" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~fftw_wrap~~UsedByGraph" class="graph" transform="scale(0.73 0.73) rotate(0) translate(4 711)">
+<title>module~~fftw_wrap~~UsedByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-711 877,-711 877,4 -4,4"/>
+<!-- module~fftw_wrap -->
+<g id="module~~fftw_wrap~~UsedByGraph_node1" class="node">
+<title>module~fftw_wrap</title>
+<polygon fill="none" stroke="black" points="64,-190 0,-190 0,-166 64,-166 64,-190"/>
+<text text-anchor="middle" x="32" y="-175.6" font-family="Helvetica,sans-Serif" font-size="10.50">fftw_wrap</text>
+</g>
+<!-- module~ply_legfpt_2d_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_node2" class="node">
+<title>module~ply_legfpt_2d_module</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node2"><a xlink:href="../module/ply_legfpt_2d_module.html" xlink:title="ply_legFpt_2D_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="587,-579 454,-579 454,-555 587,-555 587,-579"/>
+<text text-anchor="middle" x="520.5" y="-564.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_legFpt_2D_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_legfpt_2d_module&#45;&gt;module~fftw_wrap -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge1" class="edge">
+<title>module~ply_legfpt_2d_module&#45;&gt;module~fftw_wrap</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M453.77,-563.49C421.5,-562.67 382.11,-562.98 347,-567"/>
+</g>
+<!-- module~ply_legfpt_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_node4" class="node">
+<title>module~ply_legfpt_module</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node4"><a xlink:href="../module/ply_legfpt_module.html" xlink:title="ply_legFpt_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="402,-438 290,-438 290,-414 402,-414 402,-438"/>
+<text text-anchor="middle" x="346" y="-423.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_legFpt_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_legfpt_2d_module&#45;&gt;module~ply_legfpt_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge17" class="edge">
+<title>module~ply_legfpt_2d_module&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M472.76,-554.95C463.12,-551.32 453.36,-546.73 445,-541 407.8,-515.53 376.37,-472.41 359.74,-446.83"/>
+<polygon fill="#000000" stroke="#000000" points="362.61,-444.83 354.29,-438.27 356.7,-448.59 362.61,-444.83"/>
+</g>
+<!-- module~ply_legfpt_3d_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_node3" class="node">
+<title>module~ply_legfpt_3d_module</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node3"><a xlink:href="../module/ply_legfpt_3d_module.html" xlink:title="ply_legFpt_3D_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="587,-498 454,-498 454,-474 587,-474 587,-498"/>
+<text text-anchor="middle" x="520.5" y="-483.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_legFpt_3D_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_legfpt_3d_module&#45;&gt;module~fftw_wrap -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge2" class="edge">
+<title>module~ply_legfpt_3d_module&#45;&gt;module~fftw_wrap</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M503,-498.28C473.54,-519.13 409.12,-559.89 347,-567"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M345,-567C269.71,-575.62 243.79,-597.69 174.5,-567"/>
+</g>
+<!-- module~ply_legfpt_3d_module&#45;&gt;module~ply_legfpt_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge18" class="edge">
+<title>module~ply_legfpt_3d_module&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M484.59,-473.86C457.62,-464.47 420.1,-451.43 391.06,-441.32"/>
+<polygon fill="#000000" stroke="#000000" points="392.16,-438 381.56,-438.02 389.86,-444.61 392.16,-438"/>
+</g>
+<!-- module~ply_legfpt_module&#45;&gt;module~fftw_wrap -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge3" class="edge">
+<title>module~ply_legfpt_module&#45;&gt;module~fftw_wrap</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M339.09,-438.27C318.95,-478.26 250.01,-600.45 174.5,-567"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M172.5,-567C101.38,-535.5 50.66,-278.28 36.8,-200.32"/>
+<polygon fill="#000000" stroke="#000000" points="40.2,-199.41 35.03,-190.16 33.3,-200.61 40.2,-199.41"/>
+</g>
+<!-- module~ply_polybaseexc_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_node6" class="node">
+<title>module~ply_polybaseexc_module</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node6"><a xlink:href="../module/ply_polybaseexc_module.html" xlink:title="ply_polyBaseExc_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="247,-169 100,-169 100,-145 247,-145 247,-169"/>
+<text text-anchor="middle" x="173.5" y="-154.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_polyBaseExc_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_legfpt_module&#45;&gt;module~ply_polybaseexc_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge35" class="edge">
+<title>module~ply_legfpt_module&#45;&gt;module~ply_polybaseexc_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M343.9,-413.83C339.62,-373.78 320.45,-244.83 247,-178 245.67,-176.79 244.27,-175.64 242.81,-174.57"/>
+<polygon fill="#000000" stroke="#000000" points="244.31,-171.38 233.96,-169.09 240.62,-177.33 244.31,-171.38"/>
+</g>
+<!-- module~ply_nodes_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_node5" class="node">
+<title>module~ply_nodes_module</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node5"><a xlink:href="../module/ply_nodes_module.html" xlink:title="ply_nodes_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="229.5,-211 117.5,-211 117.5,-187 229.5,-187 229.5,-211"/>
+<text text-anchor="middle" x="173.5" y="-196.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_nodes_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_nodes_module&#45;&gt;module~fftw_wrap -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge4" class="edge">
+<title>module~ply_nodes_module&#45;&gt;module~fftw_wrap</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M117.37,-190.7C102.92,-188.53 87.6,-186.22 74.04,-184.18"/>
+<polygon fill="#000000" stroke="#000000" points="74.46,-180.7 64.05,-182.67 73.42,-187.62 74.46,-180.7"/>
+</g>
+<!-- module~ply_polybaseexc_module&#45;&gt;module~fftw_wrap -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge5" class="edge">
+<title>module~ply_polybaseexc_module&#45;&gt;module~fftw_wrap</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M99.89,-167.93C91.05,-169.26 82.26,-170.58 74.11,-171.81"/>
+<polygon fill="#000000" stroke="#000000" points="73.53,-168.36 64.17,-173.31 74.58,-175.28 73.53,-168.36"/>
+</g>
+<!-- module~ply_prj_header_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_node7" class="node">
+<title>module~ply_prj_header_module</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node7"><a xlink:href="../module/ply_prj_header_module.html" xlink:title="ply_prj_header_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="589,-129 452,-129 452,-105 589,-105 589,-129"/>
+<text text-anchor="middle" x="520.5" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_prj_header_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;module~fftw_wrap -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge6" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;module~fftw_wrap</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M470.03,-104.99C451.07,-100.96 429.15,-96.99 409,-95 271.13,-81.41 228.13,-83.31 100,-136 84.98,-142.18 69.54,-151.61 57.27,-159.98"/>
+<polygon fill="#000000" stroke="#000000" points="55.12,-157.21 48.94,-165.82 59.14,-162.94 55.12,-157.21"/>
+</g>
+<!-- module~atl_stabilize_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_node8" class="node">
+<title>module~atl_stabilize_module</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node8"><a xlink:href="../module/atl_stabilize_module.html" xlink:title="atl_stabilize_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="406.5,-170 285.5,-170 285.5,-146 406.5,-146 406.5,-170"/>
+<text text-anchor="middle" x="346" y="-155.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_stabilize_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_stabilize_module&#45;&gt;module~ply_polybaseexc_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge34" class="edge">
+<title>module~atl_stabilize_module&#45;&gt;module~ply_polybaseexc_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M285.37,-157.65C276.27,-157.6 266.74,-157.54 257.26,-157.49"/>
+<polygon fill="#000000" stroke="#000000" points="257.02,-153.98 247,-157.43 256.98,-160.98 257.02,-153.98"/>
+</g>
+<!-- module~ply_dynarray_project_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_node9" class="node">
+<title>module~ply_dynarray_project_module</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node9"><a xlink:href="../module/ply_dynarray_project_module.html" xlink:title="ply_dynarray_project_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="837,-234 668,-234 668,-210 837,-210 837,-234"/>
+<text text-anchor="middle" x="752.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_dynarray_project_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_dynarray_project_module&#45;&gt;module~ply_prj_header_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge37" class="edge">
+<title>module~ply_dynarray_project_module&#45;&gt;module~ply_prj_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M667.71,-212.52C655.45,-209.65 643.2,-205.89 632,-201 596.17,-185.34 561.36,-155.78 540.68,-136.24"/>
+<polygon fill="#000000" stroke="#000000" points="543.1,-133.71 533.47,-129.29 538.24,-138.75 543.1,-133.71"/>
+</g>
+<!-- module~ply_poly_project_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_node10" class="node">
+<title>module~ply_poly_project_module</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node10"><a xlink:href="../module/ply_poly_project_module.html" xlink:title="ply_poly_project_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="824.5,-371 680.5,-371 680.5,-347 824.5,-347 824.5,-371"/>
+<text text-anchor="middle" x="752.5" y="-356.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_poly_project_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_legfpt_2d_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge7" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_legfpt_2d_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M680.42,-357.98C662.68,-361.09 645.02,-367.56 632,-380 578.97,-430.64 644.76,-486.24 596,-541 593.08,-544.28 589.72,-547.15 586.08,-549.65"/>
+<polygon fill="#000000" stroke="#000000" points="584.02,-546.8 577.15,-554.86 587.55,-552.85 584.02,-546.8"/>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_legfpt_3d_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge12" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_legfpt_3d_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M680.45,-360.1C663.22,-363.29 645.8,-369.27 632,-380 601.22,-403.93 624.74,-433.66 596,-460 592.12,-463.55 587.73,-466.63 583.07,-469.28"/>
+<polygon fill="#000000" stroke="#000000" points="581.22,-466.29 573.84,-473.89 584.35,-472.56 581.22,-466.29"/>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_legfpt_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge19" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M680.45,-362.67C663.69,-365.86 646.5,-371.2 632,-380 609.51,-393.65 617.96,-412.5 596,-427 567.48,-445.82 555.65,-444.68 521.5,-446"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M519.5,-446C484.02,-447.37 444.69,-443.25 412.55,-438.4"/>
+<polygon fill="#000000" stroke="#000000" points="412.8,-434.9 402.38,-436.81 411.72,-441.81 412.8,-434.9"/>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_nodes_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge33" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_nodes_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M739,-346.66C705.24,-313.46 613.57,-224.25 596,-217 477.91,-168.27 325.09,-177.58 239.67,-188.47"/>
+<polygon fill="#000000" stroke="#000000" points="239.05,-185.02 229.59,-189.8 239.96,-191.96 239.05,-185.02"/>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_prj_header_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge38" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_prj_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M736.73,-346.83C712.93,-326.76 665.39,-284.79 632,-243 612.83,-219 615.63,-207.63 596,-184 581,-165.94 561.1,-148.29 545.64,-135.65"/>
+<polygon fill="#000000" stroke="#000000" points="547.56,-132.7 537.57,-129.17 543.18,-138.16 547.56,-132.7"/>
+</g>
+<!-- program~ply_fpt_ifpt_2d_multivar_lobattonodes_test -->
+<g id="module~~fftw_wrap~~UsedByGraph_node11" class="node">
+<title>program~ply_fpt_ifpt_2d_multivar_lobattonodes_test</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node11"><a xlink:href="../program/ply_fpt_ifpt_2d_multivar_lobattonodes_test.html" xlink:title="ply_fpt_ifpt_2D_multiVar_lobattoNodes_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="873,-707 632,-707 632,-683 873,-683 873,-707"/>
+<text text-anchor="middle" x="752.5" y="-692.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_ifpt_2D_multiVar_lobattoNodes_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_fpt_ifpt_2d_multivar_lobattonodes_test&#45;&gt;module~ply_legfpt_2d_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge8" class="edge">
+<title>program~ply_fpt_ifpt_2d_multivar_lobattonodes_test&#45;&gt;module~ply_legfpt_2d_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M654.01,-682.96C646.38,-680.5 638.94,-677.54 632,-674 591.14,-653.16 555.37,-612.12 536.25,-587.37"/>
+<polygon fill="#000000" stroke="#000000" points="539.02,-585.23 530.2,-579.35 533.43,-589.44 539.02,-585.23"/>
+</g>
+<!-- program~ply_fpt_ifpt_2d_multivar_lobattonodes_test&#45;&gt;module~ply_legfpt_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge20" class="edge">
+<title>program~ply_fpt_ifpt_2d_multivar_lobattonodes_test&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M631.95,-701.28C594.85,-698.81 554.95,-691.37 521.5,-674"/>
+</g>
+<!-- program~ply_fpt_ifpt_2d_multivar_test -->
+<g id="module~~fftw_wrap~~UsedByGraph_node12" class="node">
+<title>program~ply_fpt_ifpt_2d_multivar_test</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node12"><a xlink:href="../program/ply_fpt_ifpt_2d_multivar_test.html" xlink:title="ply_fpt_ifpt_2D_multiVar_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="835,-665 670,-665 670,-641 835,-641 835,-665"/>
+<text text-anchor="middle" x="752.5" y="-650.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_ifpt_2D_multiVar_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_fpt_ifpt_2d_multivar_test&#45;&gt;module~ply_legfpt_2d_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge9" class="edge">
+<title>program~ply_fpt_ifpt_2d_multivar_test&#45;&gt;module~ply_legfpt_2d_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M669.79,-642.67C656.94,-639.9 643.96,-636.4 632,-632 600.43,-620.37 567.61,-599.81 546.03,-584.92"/>
+<polygon fill="#000000" stroke="#000000" points="547.98,-582.01 537.78,-579.13 543.95,-587.74 547.98,-582.01"/>
+</g>
+<!-- program~ply_fpt_ifpt_2d_multivar_test&#45;&gt;module~ply_legfpt_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge21" class="edge">
+<title>program~ply_fpt_ifpt_2d_multivar_test&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M669.96,-664.75C609.23,-672.78 534.65,-680.82 521.5,-674"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M519.5,-674C471.31,-648.98 388.22,-502.18 358.22,-446.98"/>
+<polygon fill="#000000" stroke="#000000" points="361.24,-445.2 353.4,-438.07 355.08,-448.53 361.24,-445.2"/>
+</g>
+<!-- program~ply_fpt_ifpt_2d_singvar_lobattonodes_test -->
+<g id="module~~fftw_wrap~~UsedByGraph_node13" class="node">
+<title>program~ply_fpt_ifpt_2d_singvar_lobattonodes_test</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node13"><a xlink:href="../program/ply_fpt_ifpt_2d_singvar_lobattonodes_test.html" xlink:title="ply_fpt_ifpt_2D_singVar_lobattoNodes_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="870,-623 635,-623 635,-599 870,-599 870,-623"/>
+<text text-anchor="middle" x="752.5" y="-608.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_ifpt_2D_singVar_lobattoNodes_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_fpt_ifpt_2d_singvar_lobattonodes_test&#45;&gt;module~ply_legfpt_2d_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge10" class="edge">
+<title>program~ply_fpt_ifpt_2d_singvar_lobattonodes_test&#45;&gt;module~ply_legfpt_2d_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M680.98,-598.98C664.86,-596.13 647.83,-593.04 632,-590 617.62,-587.24 602.21,-584.13 587.61,-581.11"/>
+<polygon fill="#000000" stroke="#000000" points="588.15,-577.65 577.65,-579.04 586.72,-584.5 588.15,-577.65"/>
+</g>
+<!-- program~ply_fpt_ifpt_2d_singvar_lobattonodes_test&#45;&gt;module~ply_legfpt_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge22" class="edge">
+<title>program~ply_fpt_ifpt_2d_singvar_lobattonodes_test&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M651.1,-598.95C644.44,-596.47 638,-593.51 632,-590 610.19,-577.24 617.31,-559.58 596,-546 567.18,-527.64 554.07,-537.34 521.5,-527"/>
+</g>
+<!-- program~ply_fpt_ifpt_2d_singvar_test -->
+<g id="module~~fftw_wrap~~UsedByGraph_node14" class="node">
+<title>program~ply_fpt_ifpt_2d_singvar_test</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node14"><a xlink:href="../program/ply_fpt_ifpt_2d_singvar_test.html" xlink:title="ply_fpt_ifpt_2D_singVar_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="832.5,-581 672.5,-581 672.5,-557 832.5,-557 832.5,-581"/>
+<text text-anchor="middle" x="752.5" y="-566.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_ifpt_2D_singVar_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_fpt_ifpt_2d_singvar_test&#45;&gt;module~ply_legfpt_2d_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge11" class="edge">
+<title>program~ply_fpt_ifpt_2d_singvar_test&#45;&gt;module~ply_legfpt_2d_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M672.35,-568.31C648.02,-568.1 621.3,-567.87 597.21,-567.66"/>
+<polygon fill="#000000" stroke="#000000" points="597.09,-564.16 587.06,-567.57 597.03,-571.16 597.09,-564.16"/>
+</g>
+<!-- program~ply_fpt_ifpt_2d_singvar_test&#45;&gt;module~ply_legfpt_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge23" class="edge">
+<title>program~ply_fpt_ifpt_2d_singvar_test&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M673.94,-557C618.65,-548.03 549.35,-535.85 521.5,-527"/>
+</g>
+<!-- program~ply_fpt_ifpt_3d_multivar_lobattonodes_test -->
+<g id="module~~fftw_wrap~~UsedByGraph_node15" class="node">
+<title>program~ply_fpt_ifpt_3d_multivar_lobattonodes_test</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node15"><a xlink:href="../program/ply_fpt_ifpt_3d_multivar_lobattonodes_test.html" xlink:title="ply_fpt_ifpt_3D_multiVar_lobattoNodes_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="873,-539 632,-539 632,-515 873,-515 873,-539"/>
+<text text-anchor="middle" x="752.5" y="-524.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_ifpt_3D_multiVar_lobattoNodes_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_fpt_ifpt_3d_multivar_lobattonodes_test&#45;&gt;module~ply_legfpt_3d_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge13" class="edge">
+<title>program~ply_fpt_ifpt_3d_multivar_lobattonodes_test&#45;&gt;module~ply_legfpt_3d_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M682.61,-514.96C666.03,-512.04 648.38,-508.92 632,-506 620.79,-504 608.95,-501.87 597.34,-499.78"/>
+<polygon fill="#000000" stroke="#000000" points="597.69,-496.29 587.22,-497.95 596.44,-503.17 597.69,-496.29"/>
+</g>
+<!-- program~ply_fpt_ifpt_3d_multivar_lobattonodes_test&#45;&gt;module~ply_legfpt_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge24" class="edge">
+<title>program~ply_fpt_ifpt_3d_multivar_lobattonodes_test&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M667.94,-539.02C623.46,-542.45 568.41,-541.89 521.5,-527"/>
+</g>
+<!-- program~ply_fpt_ifpt_3d_multivar_test -->
+<g id="module~~fftw_wrap~~UsedByGraph_node16" class="node">
+<title>program~ply_fpt_ifpt_3d_multivar_test</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node16"><a xlink:href="../program/ply_fpt_ifpt_3d_multivar_test.html" xlink:title="ply_fpt_ifpt_3D_multiVar_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="835,-497 670,-497 670,-473 835,-473 835,-497"/>
+<text text-anchor="middle" x="752.5" y="-482.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_ifpt_3D_multiVar_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_fpt_ifpt_3d_multivar_test&#45;&gt;module~ply_legfpt_3d_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge14" class="edge">
+<title>program~ply_fpt_ifpt_3d_multivar_test&#45;&gt;module~ply_legfpt_3d_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M669.76,-485.36C646.14,-485.46 620.48,-485.57 597.24,-485.67"/>
+<polygon fill="#000000" stroke="#000000" points="597.08,-482.17 587.1,-485.71 597.11,-489.17 597.08,-482.17"/>
+</g>
+<!-- program~ply_fpt_ifpt_3d_multivar_test&#45;&gt;module~ply_legfpt_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge25" class="edge">
+<title>program~ply_fpt_ifpt_3d_multivar_test&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M681.96,-497.05C665.57,-499.94 648.16,-503.04 632,-506 582.83,-514.99 569.15,-542.13 521.5,-527"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M519.5,-527C486.82,-516.62 475.46,-522.72 445,-507 413.94,-490.97 383.8,-463.77 365.33,-445.36"/>
+<polygon fill="#000000" stroke="#000000" points="367.67,-442.74 358.16,-438.06 362.68,-447.65 367.67,-442.74"/>
+</g>
+<!-- program~ply_fpt_ifpt_3d_singvar_lobattonodes_test -->
+<g id="module~~fftw_wrap~~UsedByGraph_node17" class="node">
+<title>program~ply_fpt_ifpt_3d_singvar_lobattonodes_test</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node17"><a xlink:href="../program/ply_fpt_ifpt_3d_singvar_lobattonodes_test.html" xlink:title="ply_fpt_ifpt_3D_singVar_lobattoNodes_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="870,-455 635,-455 635,-431 870,-431 870,-455"/>
+<text text-anchor="middle" x="752.5" y="-440.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_ifpt_3D_singVar_lobattoNodes_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_fpt_ifpt_3d_singvar_lobattonodes_test&#45;&gt;module~ply_legfpt_3d_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge15" class="edge">
+<title>program~ply_fpt_ifpt_3d_singvar_lobattonodes_test&#45;&gt;module~ply_legfpt_3d_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M681.63,-455.01C665.33,-457.88 648.05,-460.99 632,-464 618.54,-466.52 604.18,-469.31 590.41,-472.03"/>
+<polygon fill="#000000" stroke="#000000" points="589.65,-468.61 580.52,-473.99 591.01,-475.48 589.65,-468.61"/>
+</g>
+<!-- program~ply_fpt_ifpt_3d_singvar_lobattonodes_test&#45;&gt;module~ply_legfpt_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge26" class="edge">
+<title>program~ply_fpt_ifpt_3d_singvar_lobattonodes_test&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M634.76,-443.36C598.46,-443.79 558.31,-444.57 521.5,-446"/>
+</g>
+<!-- program~ply_fpt_ifpt_3d_singvar_test -->
+<g id="module~~fftw_wrap~~UsedByGraph_node18" class="node">
+<title>program~ply_fpt_ifpt_3d_singvar_test</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node18"><a xlink:href="../program/ply_fpt_ifpt_3d_singvar_test.html" xlink:title="ply_fpt_ifpt_3D_singVar_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="832.5,-413 672.5,-413 672.5,-389 832.5,-389 832.5,-413"/>
+<text text-anchor="middle" x="752.5" y="-398.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_ifpt_3D_singVar_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_fpt_ifpt_3d_singvar_test&#45;&gt;module~ply_legfpt_3d_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge16" class="edge">
+<title>program~ply_fpt_ifpt_3d_singvar_test&#45;&gt;module~ply_legfpt_3d_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M672.28,-407.58C658.33,-410.76 644.34,-415.37 632,-422 611.51,-433.01 615.53,-447.37 596,-460 589.99,-463.89 583.33,-467.27 576.53,-470.19"/>
+<polygon fill="#000000" stroke="#000000" points="575.23,-466.95 567.23,-473.9 577.82,-473.45 575.23,-466.95"/>
+</g>
+<!-- program~ply_fpt_ifpt_3d_singvar_test&#45;&gt;module~ply_legfpt_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge27" class="edge">
+<title>program~ply_fpt_ifpt_3d_singvar_test&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M680.33,-413.03C664.4,-415.85 647.61,-418.94 632,-422 582.69,-431.68 571.72,-444.05 521.5,-446"/>
+</g>
+<!-- program~ply_fpt_ifpt_test -->
+<g id="module~~fftw_wrap~~UsedByGraph_node19" class="node">
+<title>program~ply_fpt_ifpt_test</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node19"><a xlink:href="../program/ply_fpt_ifpt_test.html" xlink:title="ply_fpt_ifpt_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="568,-418 473,-418 473,-394 568,-394 568,-418"/>
+<text text-anchor="middle" x="520.5" y="-403.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_ifpt_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_fpt_ifpt_test&#45;&gt;module~ply_legfpt_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge28" class="edge">
+<title>program~ply_fpt_ifpt_test&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M472.82,-411.41C454.21,-413.57 432.47,-416.09 412.34,-418.42"/>
+<polygon fill="#000000" stroke="#000000" points="411.83,-414.96 402.3,-419.59 412.63,-421.91 411.83,-414.96"/>
+</g>
+<!-- program~ply_fpt_lobattonodes_test -->
+<g id="module~~fftw_wrap~~UsedByGraph_node20" class="node">
+<title>program~ply_fpt_lobattonodes_test</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node20"><a xlink:href="../program/ply_fpt_lobattonodes_test.html" xlink:title="ply_fpt_lobattoNodes_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="594.5,-376 446.5,-376 446.5,-352 594.5,-352 594.5,-376"/>
+<text text-anchor="middle" x="520.5" y="-361.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_lobattoNodes_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_fpt_lobattonodes_test&#45;&gt;module~ply_legfpt_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge29" class="edge">
+<title>program~ply_fpt_lobattonodes_test&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M473.52,-376.01C464.03,-378.76 454.14,-381.81 445,-385 423.94,-392.34 400.91,-401.9 382.47,-409.93"/>
+<polygon fill="#000000" stroke="#000000" points="381.02,-406.75 373.28,-413.98 383.84,-413.15 381.02,-406.75"/>
+</g>
+<!-- program~ply_fpt_test -->
+<g id="module~~fftw_wrap~~UsedByGraph_node21" class="node">
+<title>program~ply_fpt_test</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node21"><a xlink:href="../program/ply_fpt_test.html" xlink:title="ply_fpt_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="557,-334 484,-334 484,-310 557,-310 557,-334"/>
+<text text-anchor="middle" x="520.5" y="-319.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_fpt_test&#45;&gt;module~ply_legfpt_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge30" class="edge">
+<title>program~ply_fpt_test&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M483.82,-328.76C471.11,-332.01 456.98,-336.63 445,-343 413.65,-359.67 383.38,-387.72 364.98,-406.54"/>
+<polygon fill="#000000" stroke="#000000" points="362.24,-404.34 357.85,-413.98 367.3,-409.18 362.24,-404.34"/>
+</g>
+<!-- program~ply_ifpt_lobattonodes_test -->
+<g id="module~~fftw_wrap~~UsedByGraph_node22" class="node">
+<title>program~ply_ifpt_lobattonodes_test</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node22"><a xlink:href="../program/ply_ifpt_lobattonodes_test.html" xlink:title="ply_ifpt_lobattoNodes_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="596,-292 445,-292 445,-268 596,-268 596,-292"/>
+<text text-anchor="middle" x="520.5" y="-277.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_ifpt_lobattoNodes_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_ifpt_lobattonodes_test&#45;&gt;module~ply_legfpt_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge31" class="edge">
+<title>program~ply_ifpt_lobattonodes_test&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M462.1,-292.11C456.08,-294.55 450.25,-297.48 445,-301 404.63,-328.05 373.4,-377.09 357.86,-405.03"/>
+<polygon fill="#000000" stroke="#000000" points="354.71,-403.5 353.03,-413.96 360.86,-406.83 354.71,-403.5"/>
+</g>
+<!-- program~ply_ifpt_test -->
+<g id="module~~fftw_wrap~~UsedByGraph_node23" class="node">
+<title>program~ply_ifpt_test</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node23"><a xlink:href="../program/ply_ifpt_test.html" xlink:title="ply_ifpt_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="558.5,-250 482.5,-250 482.5,-226 558.5,-226 558.5,-250"/>
+<text text-anchor="middle" x="520.5" y="-235.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_ifpt_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_ifpt_test&#45;&gt;module~ply_legfpt_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge32" class="edge">
+<title>program~ply_ifpt_test&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M482.45,-242.65C469.61,-245.69 455.74,-250.71 445,-259 395.56,-297.16 366.27,-367.89 353.92,-403.81"/>
+<polygon fill="#000000" stroke="#000000" points="350.44,-403.18 350.62,-413.77 357.09,-405.38 350.44,-403.18"/>
+</g>
+<!-- program~ply_polybaseexc_test -->
+<g id="module~~fftw_wrap~~UsedByGraph_node24" class="node">
+<title>program~ply_polybaseexc_test</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node24"><a xlink:href="../program/ply_polybaseexc_test.html" xlink:title="ply_polyBaseExc_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="409,-128 283,-128 283,-104 409,-104 409,-128"/>
+<text text-anchor="middle" x="346" y="-113.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_polyBaseExc_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_polybaseexc_test&#45;&gt;module~ply_polybaseexc_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge36" class="edge">
+<title>program~ply_polybaseexc_test&#45;&gt;module~ply_polybaseexc_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M294.77,-128.08C275.86,-132.63 254.17,-137.84 234.46,-142.58"/>
+<polygon fill="#000000" stroke="#000000" points="233.57,-139.19 224.67,-144.94 235.21,-146 233.57,-139.19"/>
+</g>
+<!-- program~ply_project_2d_fpt_lobattopoints_test -->
+<g id="module~~fftw_wrap~~UsedByGraph_node25" class="node">
+<title>program~ply_project_2d_fpt_lobattopoints_test</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node25"><a xlink:href="../program/ply_project_2d_fpt_lobattopoints_test.html" xlink:title="ply_project_2d_fpt_lobattoPoints_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="856.5,-192 648.5,-192 648.5,-168 856.5,-168 856.5,-192"/>
+<text text-anchor="middle" x="752.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_project_2d_fpt_lobattoPoints_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_project_2d_fpt_lobattopoints_test&#45;&gt;module~ply_prj_header_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge39" class="edge">
+<title>program~ply_project_2d_fpt_lobattopoints_test&#45;&gt;module~ply_prj_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M670.69,-167.94C657.66,-165.39 644.39,-162.41 632,-159 606.78,-152.06 579.27,-141.61 558.02,-132.88"/>
+<polygon fill="#000000" stroke="#000000" points="559.3,-129.62 548.72,-129 556.6,-136.08 559.3,-129.62"/>
+</g>
+<!-- program~ply_project_2d_fpt_test -->
+<g id="module~~fftw_wrap~~UsedByGraph_node26" class="node">
+<title>program~ply_project_2d_fpt_test</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node26"><a xlink:href="../program/ply_project_2d_fpt_test.html" xlink:title="ply_project_2d_fpt_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="819,-150 686,-150 686,-126 819,-126 819,-150"/>
+<text text-anchor="middle" x="752.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_project_2d_fpt_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_project_2d_fpt_test&#45;&gt;module~ply_prj_header_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge40" class="edge">
+<title>program~ply_project_2d_fpt_test&#45;&gt;module~ply_prj_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M685.9,-132.01C658.94,-129.55 627.5,-126.68 599.38,-124.11"/>
+<polygon fill="#000000" stroke="#000000" points="599.47,-120.6 589.19,-123.18 598.83,-127.58 599.47,-120.6"/>
+</g>
+<!-- program~ply_project_fpt_lobattopoints_test -->
+<g id="module~~fftw_wrap~~UsedByGraph_node27" class="node">
+<title>program~ply_project_fpt_lobattopoints_test</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node27"><a xlink:href="../program/ply_project_fpt_lobattopoints_test.html" xlink:title="ply_project_fpt_lobattoPoints_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="847,-108 658,-108 658,-84 847,-84 847,-108"/>
+<text text-anchor="middle" x="752.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_project_fpt_lobattoPoints_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_project_fpt_lobattopoints_test&#45;&gt;module~ply_prj_header_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge41" class="edge">
+<title>program~ply_project_fpt_lobattopoints_test&#45;&gt;module~ply_prj_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M657.95,-104.54C638.45,-106.32 618.09,-108.18 599.23,-109.9"/>
+<polygon fill="#000000" stroke="#000000" points="598.87,-106.42 589.22,-110.82 599.5,-113.39 598.87,-106.42"/>
+</g>
+<!-- program~ply_project_fpt_test -->
+<g id="module~~fftw_wrap~~UsedByGraph_node28" class="node">
+<title>program~ply_project_fpt_test</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node28"><a xlink:href="../program/ply_project_fpt_test.html" xlink:title="ply_project_fpt_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="810,-66 695,-66 695,-42 810,-42 810,-66"/>
+<text text-anchor="middle" x="752.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_project_fpt_test</text>
+</a>
+</g>
+</g>
+<!-- program~ply_project_fpt_test&#45;&gt;module~ply_prj_header_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge42" class="edge">
+<title>program~ply_project_fpt_test&#45;&gt;module~ply_prj_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M694.78,-61.71C674.76,-65.03 652.21,-69.44 632,-75 606.78,-81.94 579.27,-92.39 558.02,-101.12"/>
+<polygon fill="#000000" stroke="#000000" points="556.6,-97.92 548.72,-105 559.3,-104.38 556.6,-97.92"/>
+</g>
+<!-- program~test_fxtd_n2m2n -->
+<g id="module~~fftw_wrap~~UsedByGraph_node29" class="node">
+<title>program~test_fxtd_n2m2n</title>
+<g id="a_module~~fftw_wrap~~UsedByGraph_node29"><a xlink:href="../program/test_fxtd_n2m2n.html" xlink:title="test_fxtd_n2m2n">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="802.5,-24 702.5,-24 702.5,0 802.5,0 802.5,-24"/>
+<text text-anchor="middle" x="752.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_fxtd_n2m2n</text>
+</a>
+</g>
+</g>
+<!-- program~test_fxtd_n2m2n&#45;&gt;module~ply_prj_header_module -->
+<g id="module~~fftw_wrap~~UsedByGraph_edge43" class="edge">
+<title>program~test_fxtd_n2m2n&#45;&gt;module~ply_prj_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M702.3,-15.34C680.11,-18.17 654,-23.38 632,-33 596.17,-48.66 561.36,-78.22 540.68,-97.76"/>
+<polygon fill="#000000" stroke="#000000" points="538.24,-95.25 533.47,-104.71 543.1,-100.29 538.24,-95.25"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panmodulefftw_wrapUsedByGraph = svgPanZoom('#modulefftw_wrapUsedByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      <br>
+
+
+        <section>
+          <h2>Variables</h2>
+            <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_available"></span>
+              logical,
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>fftw_available</strong></td>
+<td> =</td>
+                <td>.false.</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-c_fftw_r2r_kind"></span>
+              integer,
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>C_FFTW_R2R_KIND</strong></td>
+<td> =</td>
+                <td>C_INT32_T</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_r2hc"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_R2HC</strong></td>
+<td> =</td>
+                <td>0</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_hc2r"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_HC2R</strong></td>
+<td> =</td>
+                <td>1</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_dht"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_DHT</strong></td>
+<td> =</td>
+                <td>2</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_redft00"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_REDFT00</strong></td>
+<td> =</td>
+                <td>3</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_redft01"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_REDFT01</strong></td>
+<td> =</td>
+                <td>4</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_redft10"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_REDFT10</strong></td>
+<td> =</td>
+                <td>5</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_redft11"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_REDFT11</strong></td>
+<td> =</td>
+                <td>6</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_rodft00"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_RODFT00</strong></td>
+<td> =</td>
+                <td>7</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_rodft01"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_RODFT01</strong></td>
+<td> =</td>
+                <td>8</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_rodft10"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_RODFT10</strong></td>
+<td> =</td>
+                <td>9</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_rodft11"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_RODFT11</strong></td>
+<td> =</td>
+                <td>10</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_forward"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_FORWARD</strong></td>
+<td> =</td>
+                <td>-1</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_backward"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_BACKWARD</strong></td>
+<td> =</td>
+                <td>+1</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_measure"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_MEASURE</strong></td>
+<td> =</td>
+                <td>0</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_destroy_input"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_DESTROY_INPUT</strong></td>
+<td> =</td>
+                <td>1</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_unaligned"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_UNALIGNED</strong></td>
+<td> =</td>
+                <td>2</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_conserve_memory"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_CONSERVE_MEMORY</strong></td>
+<td> =</td>
+                <td>4</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_exhaustive"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_EXHAUSTIVE</strong></td>
+<td> =</td>
+                <td>8</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_preserve_input"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_PRESERVE_INPUT</strong></td>
+<td> =</td>
+                <td>16</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_patient"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_PATIENT</strong></td>
+<td> =</td>
+                <td>32</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_estimate"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_ESTIMATE</strong></td>
+<td> =</td>
+                <td>64</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_wisdom_only"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_WISDOM_ONLY</strong></td>
+<td> =</td>
+                <td>2097152</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_estimate_patient"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_ESTIMATE_PATIENT</strong></td>
+<td> =</td>
+                <td>128</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_believe_pcost"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_BELIEVE_PCOST</strong></td>
+<td> =</td>
+                <td>256</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_no_dft_r2hc"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_NO_DFT_R2HC</strong></td>
+<td> =</td>
+                <td>512</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_no_nonthreaded"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_NO_NONTHREADED</strong></td>
+<td> =</td>
+                <td>1024</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_no_buffering"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_NO_BUFFERING</strong></td>
+<td> =</td>
+                <td>2048</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_no_indirect_op"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_NO_INDIRECT_OP</strong></td>
+<td> =</td>
+                <td>4096</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_allow_large_generic"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_ALLOW_LARGE_GENERIC</strong></td>
+<td> =</td>
+                <td>8192</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_no_rank_splits"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_NO_RANK_SPLITS</strong></td>
+<td> =</td>
+                <td>16384</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_no_vrank_splits"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_NO_VRANK_SPLITS</strong></td>
+<td> =</td>
+                <td>32768</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_no_vrecurse"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_NO_VRECURSE</strong></td>
+<td> =</td>
+                <td>65536</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_no_simd"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_NO_SIMD</strong></td>
+<td> =</td>
+                <td>131072</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_no_slow"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_NO_SLOW</strong></td>
+<td> =</td>
+                <td>262144</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_no_fixed_radix_large_n"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_NO_FIXED_RADIX_LARGE_N</strong></td>
+<td> =</td>
+                <td>524288</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fftw_allow_pruning"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>FFTW_ALLOW_PRUNING</strong></td>
+<td> =</td>
+                <td>1048576</td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+        </section>
+        <br>
+
+
+
+
+        <section>
+          <h2>Derived Types</h2>
+              <div class="card">
+    <div class="card-header codesum">
+      <span class="anchor" id="type-fftw_iodim"></span>
+      <h3>
+        type, public, bind(C)&nbsp;::&nbsp;
+        <a href='../type/fftw_iodim.html'>fftw_iodim</a>
+        
+      </h3>
+    </div>
+    <div class="card-body">
+      
+
+        <h4>Components</h4>
+          <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-n~10"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>n</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-is"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>is</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-os"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>os</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum">
+      <span class="anchor" id="type-fftw_iodim64"></span>
+      <h3>
+        type, public, bind(C)&nbsp;::&nbsp;
+        <a href='../type/fftw_iodim64.html'>fftw_iodim64</a>
+        
+      </h3>
+    </div>
+    <div class="card-body">
+      
+
+        <h4>Components</h4>
+          <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-n~11"></span>
+              integer(kind=C_INTPTR_T),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>n</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-is~2"></span>
+              integer(kind=C_INTPTR_T),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>is</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-os~2"></span>
+              integer(kind=C_INTPTR_T),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>os</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum">
+      <span class="anchor" id="type-fftwf_iodim"></span>
+      <h3>
+        type, public, bind(C)&nbsp;::&nbsp;
+        <a href='../type/fftwf_iodim.html'>fftwf_iodim</a>
+        
+      </h3>
+    </div>
+    <div class="card-body">
+      
+
+        <h4>Components</h4>
+          <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-n~12"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>n</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-is~3"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>is</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-os~3"></span>
+              integer(kind=C_INT),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>os</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum">
+      <span class="anchor" id="type-fftwf_iodim64"></span>
+      <h3>
+        type, public, bind(C)&nbsp;::&nbsp;
+        <a href='../type/fftwf_iodim64.html'>fftwf_iodim64</a>
+        
+      </h3>
+    </div>
+    <div class="card-body">
+      
+
+        <h4>Components</h4>
+          <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-n~13"></span>
+              integer(kind=C_INTPTR_T),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>n</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-is~4"></span>
+              integer(kind=C_INTPTR_T),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>is</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-os~4"></span>
+              integer(kind=C_INTPTR_T),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>os</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+        <section>
+          <h2>Functions</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-fftw_plan_many_r2r"></span> <h3>public  function <a href='../proc/fftw_plan_many_r2r.html'>fftw_plan_many_r2r</a>(rank, n, howmany, in, inembed, istride, idist, out, onembed, ostride, odist, kind, flags)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rank"></span>
+              integer(kind=C_INT),
+            </td>
+<td></td>
+              <td></td>            <td>
+              value
+            </td>
+            <td>::</td>
+            <td><strong>rank</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-n~14"></span>
+              integer(kind=C_INT),
+            </td>
+<td>intent(in),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>n</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-howmany"></span>
+              integer(kind=C_INT),
+            </td>
+<td></td>
+              <td></td>            <td>
+              value
+            </td>
+            <td>::</td>
+            <td><strong>howmany</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-in"></span>
+              real(kind=C_DOUBLE),
+            </td>
+<td>intent(out),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>in</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-inembed"></span>
+              integer(kind=C_INT),
+            </td>
+<td>intent(in),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>inembed</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-istride"></span>
+              integer(kind=C_INT),
+            </td>
+<td></td>
+              <td></td>            <td>
+              value
+            </td>
+            <td>::</td>
+            <td><strong>istride</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-idist"></span>
+              integer(kind=C_INT),
+            </td>
+<td></td>
+              <td></td>            <td>
+              value
+            </td>
+            <td>::</td>
+            <td><strong>idist</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-out"></span>
+              real(kind=C_DOUBLE),
+            </td>
+<td>intent(out),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>out</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-onembed"></span>
+              integer(kind=C_INT),
+            </td>
+<td>intent(in),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>onembed</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ostride"></span>
+              integer(kind=C_INT),
+            </td>
+<td></td>
+              <td></td>            <td>
+              value
+            </td>
+            <td>::</td>
+            <td><strong>ostride</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-odist"></span>
+              integer(kind=C_INT),
+            </td>
+<td></td>
+              <td></td>            <td>
+              value
+            </td>
+            <td>::</td>
+            <td><strong>odist</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kind~2"></span>
+              integer(kind=C_FFTW_R2R_KIND),
+            </td>
+<td>intent(in),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>kind</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-flags"></span>
+              integer(kind=C_INT),
+            </td>
+<td></td>
+              <td></td>            <td>
+              value
+            </td>
+            <td>::</td>
+            <td><strong>flags</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(c_ptr)</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-fftw_plan_r2r_1d"></span> <h3>public  function <a href='../proc/fftw_plan_r2r_1d.html'>fftw_plan_r2r_1d</a>(n, in, out, kind, flags)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-n~15"></span>
+              integer(kind=C_INT),
+            </td>
+<td></td>
+              <td></td>            <td>
+              value
+            </td>
+            <td>::</td>
+            <td><strong>n</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-in~2"></span>
+              real(kind=C_DOUBLE),
+            </td>
+<td>intent(out),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>in</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-out~2"></span>
+              real(kind=C_DOUBLE),
+            </td>
+<td>intent(out),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>out</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kind~3"></span>
+              integer(kind=C_FFTW_R2R_KIND),
+            </td>
+<td></td>
+              <td></td>            <td>
+              value
+            </td>
+            <td>::</td>
+            <td><strong>kind</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-flags~2"></span>
+              integer(kind=C_INT),
+            </td>
+<td></td>
+              <td></td>            <td>
+              value
+            </td>
+            <td>::</td>
+            <td><strong>flags</strong></td>
+            <td>
+<p>dummy code to use all arguments</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(c_ptr)</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+        <section>
+          <h2>Subroutines</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-fftw_execute_r2r"></span> <h3>public  subroutine <a href='../proc/fftw_execute_r2r.html'>fftw_execute_r2r</a>(p, in, out)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-p~19"></span>
+              type(C_PTR),
+            </td>
+<td></td>
+              <td></td>            <td>
+              value
+            </td>
+            <td>::</td>
+            <td><strong>p</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-in~3"></span>
+              real(kind=C_DOUBLE),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>in</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-out~3"></span>
+              real(kind=C_DOUBLE),
+            </td>
+<td>intent(out),</td>
+              <td></td>            <td>
+              dimension(*)
+            </td>
+            <td>::</td>
+            <td><strong>out</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

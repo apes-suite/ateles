@@ -1,0 +1,1480 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>compute_rhs_cubes_modg_1d &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>compute_rhs_cubes_modg_1d
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for procedures.">67 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_compute_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_compute_module.f90.html'>atl_compute_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/atl_compute_module.html'>atl_compute_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">compute_rhs_cubes_modg_1d</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>private  subroutine compute_rhs_cubes_modg_1d(minLevel, maxLevel, currentLevel, mesh_list, tree, kerneldata_list, statedata_list, facedata_list, source, penalizationdata_list, scheme_list, poly_proj_pos, poly_proj_list, equation, material_list, general, computePenalization)  
+</h2>
+        <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='../module/atl_equation_module.html'>atl_equation_module</a></li>
+                  <li class="list-inline-item"><a href='../module/atl_modg_1d_advection_kernel_module.html'>atl_modg_1d_advection_kernel_module</a></li>
+                  <li class="list-inline-item"><a href='../module/atl_penalization_module.html'>atl_penalization_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/treelmesh_module.html'>treelmesh_module</a></li>
+                  <li class="list-inline-item"><a href='../module/atl_modg_1d_kernel_module.html'>atl_modg_1d_kernel_module</a></li>
+                  <li class="list-inline-item"><a href='../module/atl_modg_1d_euler_kernel_module.html'>atl_modg_1d_euler_kernel_module</a></li>
+                  <li class="list-inline-item"><a href='../module/atl_modg_1d_loclineuler_kernel_module.html'>atl_modg_1d_LoclinEuler_kernel_module</a></li>
+                  <li class="list-inline-item"><a href='../module/atl_elemental_time_integration_module.html'>atl_elemental_time_integration_module</a></li>
+                  <li class="list-inline-item"><a href='../module/atl_scheme_module.html'>atl_scheme_module</a></li>
+                  <li class="list-inline-item"><a href='../module/atl_modg_1d_heat_kernel_module.html'>atl_modg_1d_heat_kernel_module</a></li>
+                  <li class="list-inline-item"><a href='../module/ply_dynarray_project_module.html'>ply_dynarray_project_module</a></li>
+                  <li class="list-inline-item"><a href='../module/atl_cube_elem_module.html'>atl_cube_elem_module</a></li>
+                  <li class="list-inline-item"><a href='../module/atl_modg_1d_multilevel_module.html'>atl_modg_1d_multilevel_module</a></li>
+                  <li class="list-inline-item"><a href='../module/atl_facedata_module.html'>atl_facedata_module</a></li>
+                  <li class="list-inline-item"><a href='../module/ply_poly_project_module.html'>ply_poly_project_module</a></li>
+                  <li class="list-inline-item"><a href='../module/atl_source_types_module.html'>atl_source_types_module</a></li>
+                  <li class="list-inline-item"><a href='../module/atl_kerneldata_module.html'>atl_kerneldata_module</a></li>
+                  <li class="list-inline-item"><a href='../module/atl_materialprp_module.html'>atl_materialPrp_module</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~compute_rhs_cubes_modg_1d~~UsesGraph Pages: 1 -->
+<svg id="proccompute_rhs_cubes_modg_1dUsesGraph" width="447pt" height="746pt"
+ viewBox="0.00 0.00 447.00 746.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 742)">
+<title>proc~~compute_rhs_cubes_modg_1d~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-742 443,-742 443,4 -4,4"/>
+<!-- proc~compute_rhs_cubes_modg_1d -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node1" class="node">
+<title>proc~compute_rhs_cubes_modg_1d</title>
+<polygon fill="none" stroke="black" points="439,-381 266,-381 266,-357 439,-357 439,-381"/>
+<text text-anchor="middle" x="352.5" y="-366.6" font-family="Helvetica,sans-Serif" font-size="10.50">compute_rhs_cubes_modg_1d</text>
+</g>
+<!-- module~atl_cube_elem_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node2" class="node">
+<title>module~atl_cube_elem_module</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node2"><a xlink:href="../module/atl_cube_elem_module.html" xlink:title="atl_cube_elem_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="183,-738 47,-738 47,-714 183,-714 183,-738"/>
+<text text-anchor="middle" x="115" y="-723.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_cube_elem_module</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_cube_elem_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_edge1" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_cube_elem_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M351.17,-381.15C349.15,-430.36 334.58,-616.37 230,-705 219.5,-713.9 206.47,-719.54 193.02,-723.03"/>
+<polygon fill="#000000" stroke="#000000" points="192.18,-719.63 183.17,-725.21 193.69,-726.47 192.18,-719.63"/>
+</g>
+<!-- module~atl_elemental_time_integration_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node3" class="node">
+<title>module~atl_elemental_time_integration_module</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node3"><a xlink:href="../module/atl_elemental_time_integration_module.html" xlink:title="atl_elemental_time_integration_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="227,-696 3,-696 3,-672 227,-672 227,-696"/>
+<text text-anchor="middle" x="115" y="-681.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_elemental_time_integration_module</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_elemental_time_integration_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_edge2" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_elemental_time_integration_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M350.48,-381.19C345.99,-426.58 323.79,-587.07 230,-663 228.39,-664.31 226.72,-665.54 225,-666.71"/>
+<polygon fill="#000000" stroke="#000000" points="222.88,-663.9 216.06,-672 226.44,-669.92 222.88,-663.9"/>
+</g>
+<!-- module~atl_equation_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node4" class="node">
+<title>module~atl_equation_module</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node4"><a xlink:href="../module/atl_equation_module.html" xlink:title="atl_equation_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="177,-654 53,-654 53,-630 177,-630 177,-654"/>
+<text text-anchor="middle" x="115" y="-639.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_equation_module</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_equation_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_edge3" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_equation_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M349.59,-381.16C342.42,-422.34 313.21,-557.5 230,-621 217.66,-630.41 202.42,-636.06 187.13,-639.36"/>
+<polygon fill="#000000" stroke="#000000" points="186.31,-635.95 177.11,-641.2 187.58,-642.84 186.31,-635.95"/>
+</g>
+<!-- module~atl_facedata_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node5" class="node">
+<title>module~atl_facedata_module</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node5"><a xlink:href="../module/atl_facedata_module.html" xlink:title="atl_facedata_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="177,-612 53,-612 53,-588 177,-588 177,-612"/>
+<text text-anchor="middle" x="115" y="-597.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_facedata_module</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_facedata_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_edge4" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_facedata_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M348.36,-381.18C338.24,-417.81 302.8,-527.66 230,-579 217.45,-587.85 202.26,-593.29 187.11,-596.56"/>
+<polygon fill="#000000" stroke="#000000" points="186.38,-593.14 177.19,-598.42 187.67,-600.02 186.38,-593.14"/>
+</g>
+<!-- module~atl_kerneldata_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node6" class="node">
+<title>module~atl_kerneldata_module</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node6"><a xlink:href="../module/atl_kerneldata_module.html" xlink:title="atl_kerneldata_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="182.5,-570 47.5,-570 47.5,-546 182.5,-546 182.5,-570"/>
+<text text-anchor="middle" x="115" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_kerneldata_module</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_kerneldata_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_edge5" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_kerneldata_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M346.58,-381.19C333.16,-412.75 292.69,-497.4 230,-537 218.81,-544.07 205.86,-548.89 192.77,-552.15"/>
+<polygon fill="#000000" stroke="#000000" points="191.78,-548.79 182.77,-554.36 193.29,-555.62 191.78,-548.79"/>
+</g>
+<!-- module~atl_materialprp_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node7" class="node">
+<title>module~atl_materialprp_module</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node7"><a xlink:href="../module/atl_materialprp_module.html" xlink:title="atl_materialPrp_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="184.5,-528 45.5,-528 45.5,-504 184.5,-504 184.5,-528"/>
+<text text-anchor="middle" x="115" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_materialPrp_module</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_materialprp_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_edge6" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_materialprp_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M343.78,-381.09C326.7,-406.73 283.01,-466.53 230,-495 219.09,-500.86 206.83,-505.12 194.51,-508.2"/>
+<polygon fill="#000000" stroke="#000000" points="193.62,-504.81 184.64,-510.43 195.17,-511.64 193.62,-504.81"/>
+</g>
+<!-- module~atl_modg_1d_advection_kernel_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node8" class="node">
+<title>module~atl_modg_1d_advection_kernel_module</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node8"><a xlink:href="../module/atl_modg_1d_advection_kernel_module.html" xlink:title="atl_modg_1d_advection_kernel_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="226.5,-486 3.5,-486 3.5,-462 226.5,-462 226.5,-486"/>
+<text text-anchor="middle" x="115" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_1d_advection_kernel_module</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_modg_1d_advection_kernel_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_edge7" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_modg_1d_advection_kernel_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M338.07,-381.21C316.8,-399.81 273.34,-435 230,-453 224.52,-455.27 218.8,-457.3 212.95,-459.11"/>
+<polygon fill="#000000" stroke="#000000" points="211.67,-455.84 203.02,-461.96 213.6,-462.57 211.67,-455.84"/>
+</g>
+<!-- module~atl_modg_1d_euler_kernel_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node9" class="node">
+<title>module~atl_modg_1d_euler_kernel_module</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node9"><a xlink:href="../module/atl_modg_1d_euler_kernel_module.html" xlink:title="atl_modg_1d_euler_kernel_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="214.5,-444 15.5,-444 15.5,-420 214.5,-420 214.5,-444"/>
+<text text-anchor="middle" x="115" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_1d_euler_kernel_module</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_modg_1d_euler_kernel_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_edge8" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_modg_1d_euler_kernel_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M320.93,-381C296.6,-390.21 261.51,-402.7 230,-411 220.44,-413.52 210.35,-415.84 200.29,-417.96"/>
+<polygon fill="#000000" stroke="#000000" points="199.36,-414.57 190.25,-420 200.75,-421.43 199.36,-414.57"/>
+</g>
+<!-- module~atl_modg_1d_heat_kernel_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node10" class="node">
+<title>module~atl_modg_1d_heat_kernel_module</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node10"><a xlink:href="../module/atl_modg_1d_heat_kernel_module.html" xlink:title="atl_modg_1d_heat_kernel_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="212.5,-402 17.5,-402 17.5,-378 212.5,-378 212.5,-402"/>
+<text text-anchor="middle" x="115" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_1d_heat_kernel_module</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_modg_1d_heat_kernel_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_edge9" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_modg_1d_heat_kernel_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M265.81,-376.64C251.95,-377.88 237.44,-379.17 223.15,-380.45"/>
+<polygon fill="#000000" stroke="#000000" points="222.44,-376.99 212.79,-381.37 223.06,-383.97 222.44,-376.99"/>
+</g>
+<!-- module~atl_modg_1d_kernel_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node11" class="node">
+<title>module~atl_modg_1d_kernel_module</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node11"><a xlink:href="../module/atl_modg_1d_kernel_module.html" xlink:title="atl_modg_1d_kernel_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="198,-360 32,-360 32,-336 198,-336 198,-360"/>
+<text text-anchor="middle" x="115" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_1d_kernel_module</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_modg_1d_kernel_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_edge10" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_modg_1d_kernel_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M265.81,-361.36C247.08,-359.69 227.18,-357.91 208.21,-356.22"/>
+<polygon fill="#000000" stroke="#000000" points="208.36,-352.72 198.09,-355.32 207.74,-359.69 208.36,-352.72"/>
+</g>
+<!-- module~atl_modg_1d_loclineuler_kernel_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node12" class="node">
+<title>module~atl_modg_1d_loclineuler_kernel_module</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node12"><a xlink:href="../module/atl_modg_1d_loclineuler_kernel_module.html" xlink:title="atl_modg_1d_LoclinEuler_kernel_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="230,-318 0,-318 0,-294 230,-294 230,-318"/>
+<text text-anchor="middle" x="115" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_1d_LoclinEuler_kernel_module</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_modg_1d_loclineuler_kernel_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_edge11" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_modg_1d_loclineuler_kernel_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M320.93,-357C296.6,-347.79 261.51,-335.3 230,-327 220.44,-324.48 210.35,-322.16 200.29,-320.04"/>
+<polygon fill="#000000" stroke="#000000" points="200.75,-316.57 190.25,-318 199.36,-323.43 200.75,-316.57"/>
+</g>
+<!-- module~atl_modg_1d_multilevel_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node13" class="node">
+<title>module~atl_modg_1d_multilevel_module</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node13"><a xlink:href="../module/atl_modg_1d_multilevel_module.html" xlink:title="atl_modg_1d_multilevel_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="207,-276 23,-276 23,-252 207,-252 207,-276"/>
+<text text-anchor="middle" x="115" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_1d_multilevel_module</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_modg_1d_multilevel_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_edge12" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_modg_1d_multilevel_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M338.07,-356.79C316.8,-338.19 273.34,-303 230,-285 224.52,-282.73 218.8,-280.7 212.95,-278.89"/>
+<polygon fill="#000000" stroke="#000000" points="213.6,-275.43 203.02,-276.04 211.67,-282.16 213.6,-275.43"/>
+</g>
+<!-- module~atl_penalization_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node14" class="node">
+<title>module~atl_penalization_module</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node14"><a xlink:href="../module/atl_penalization_module.html" xlink:title="atl_penalization_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="186,-234 44,-234 44,-210 186,-210 186,-234"/>
+<text text-anchor="middle" x="115" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_penalization_module</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_penalization_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_edge13" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_penalization_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M343.78,-356.91C326.7,-331.27 283.01,-271.47 230,-243 219.54,-237.38 207.85,-233.24 196.05,-230.19"/>
+<polygon fill="#000000" stroke="#000000" points="196.67,-226.74 186.14,-227.88 195.08,-233.56 196.67,-226.74"/>
+</g>
+<!-- module~atl_scheme_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node15" class="node">
+<title>module~atl_scheme_module</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node15"><a xlink:href="../module/atl_scheme_module.html" xlink:title="atl_scheme_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="174.5,-192 55.5,-192 55.5,-168 174.5,-168 174.5,-192"/>
+<text text-anchor="middle" x="115" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_scheme_module</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_scheme_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_edge14" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_scheme_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M346.58,-356.81C333.16,-325.25 292.69,-240.6 230,-201 216.6,-192.54 200.66,-187.29 185,-184.09"/>
+<polygon fill="#000000" stroke="#000000" points="185.25,-180.58 174.79,-182.26 184.02,-187.47 185.25,-180.58"/>
+</g>
+<!-- module~atl_source_types_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node16" class="node">
+<title>module~atl_source_types_module</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node16"><a xlink:href="../module/atl_source_types_module.html" xlink:title="atl_source_types_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="188,-150 42,-150 42,-126 188,-126 188,-150"/>
+<text text-anchor="middle" x="115" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_source_types_module</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_source_types_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_edge15" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_source_types_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M348.36,-356.82C338.24,-320.19 302.8,-210.34 230,-159 220.52,-152.32 209.54,-147.58 198.2,-144.25"/>
+<polygon fill="#000000" stroke="#000000" points="198.74,-140.77 188.18,-141.67 196.99,-147.55 198.74,-140.77"/>
+</g>
+<!-- module~ply_dynarray_project_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node17" class="node">
+<title>module~ply_dynarray_project_module</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node17"><a xlink:href="../module/ply_dynarray_project_module.html" xlink:title="ply_dynarray_project_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="199.5,-108 30.5,-108 30.5,-84 199.5,-84 199.5,-108"/>
+<text text-anchor="middle" x="115" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_dynarray_project_module</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;module~ply_dynarray_project_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_edge16" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;module~ply_dynarray_project_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M349.59,-356.84C342.42,-315.66 313.21,-180.5 230,-117 223.7,-112.19 216.64,-108.37 209.21,-105.34"/>
+<polygon fill="#000000" stroke="#000000" points="210.21,-101.98 199.62,-101.91 207.85,-108.57 210.21,-101.98"/>
+</g>
+<!-- module~ply_poly_project_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node18" class="node">
+<title>module~ply_poly_project_module</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node18"><a xlink:href="../module/ply_poly_project_module.html" xlink:title="ply_poly_project_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="187,-66 43,-66 43,-42 187,-42 187,-66"/>
+<text text-anchor="middle" x="115" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_poly_project_module</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;module~ply_poly_project_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_edge17" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;module~ply_poly_project_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M350.48,-356.81C345.99,-311.42 323.79,-150.93 230,-75 220.37,-67.21 208.79,-61.95 196.74,-58.45"/>
+<polygon fill="#000000" stroke="#000000" points="197.56,-55.05 187,-56.01 195.85,-61.84 197.56,-55.05"/>
+</g>
+<!-- treelmesh_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node19" class="node">
+<title>treelmesh_module</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~UsesGraph_node19"><a xlink:href="https://apes-suite.github.io/treelm/module/treelmesh_module.html" xlink:title="treelmesh_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="171,-24 59,-24 59,0 171,0 171,-24"/>
+<text text-anchor="middle" x="115" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">treelmesh_module</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;treelmesh_module -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~UsesGraph_edge18" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;treelmesh_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M351.17,-356.85C349.15,-307.64 334.58,-121.63 230,-33 216.46,-21.53 198.72,-15.46 181.28,-12.45"/>
+<polygon fill="#000000" stroke="#000000" points="181.47,-8.94 171.08,-11.01 180.49,-15.87 181.47,-8.94"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+
+    <p>Computes the right hand side for cubical elements and 1D MODG scheme.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-minlevel~51"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>minLevel</strong></td>
+            <td>
+                <p>The minimum level of the mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxlevel~57"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxLevel</strong></td>
+            <td>
+                <p>The maximum level of the mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-currentlevel~67"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>currentLevel</strong></td>
+            <td>
+                <p>The level of the mesh you are computing the rhs for.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh_list~26"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh_list</strong>(minLevel:maxLevel)</td>
+            <td>
+                <p>List of mesh parts. For each level we have one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~131"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+                <p>treelm mesh</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata_list~11"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+                <p>List of kerneldatas. For each level we have one</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-statedata_list~22"></span>
+              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>statedata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+                <p>List of states you want to calc the rhs for. For each level we have one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facedata_list~10"></span>
+              type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>facedata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+                <p>List of facedatas. For each level we have one</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-source~28"></span>
+              type(<a href='../type/atl_source_type.html'>atl_source_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>source</strong></td>
+            <td>
+                <p>Levelwise list of sources</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata_list~10"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationdata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+                <p>Levelwise list of penalization data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_list~27"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_list</strong>(minLevel:maxLevel)</td>
+            <td>
+                <p>List of schemes, for each level.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj_pos~22"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj_pos</strong>(minLevel:maxLevel)</td>
+            <td>
+                <p>List of levelwise position of  projection method in unique
+projection_list</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj_list~30"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj_list</strong>(:)</td>
+            <td>
+                <p>unique list for projection methods</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~233"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+                <p>The equation you are operating with.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_list~20"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_list</strong>(minlevel:maxlevel)</td>
+            <td>
+                <p>Material parameter description.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-general~45"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_general_type.html'>tem_general_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>general</strong></td>
+            <td>
+                <p>General treelm settings</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-computepenalization~4"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>computePenalization</strong></td>
+            <td>
+                <p>Flag to indicate whether penalization terms should be computed or not.</p>
+<p>This is used to switch off the application of penalizing terms from
+the convective computation and instead compute it in an implicit
+update, see the atl_imexrk_module.
+Default is .true.!</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~compute_rhs_cubes_modg_1d~~CallsGraph Pages: 1 -->
+<svg id="proccompute_rhs_cubes_modg_1dCallsGraph" width="425pt" height="494pt"
+ viewBox="0.00 0.00 425.00 494.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 490)">
+<title>proc~~compute_rhs_cubes_modg_1d~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-490 421,-490 421,4 -4,4"/>
+<!-- proc~compute_rhs_cubes_modg_1d -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node1" class="node">
+<title>proc~compute_rhs_cubes_modg_1d</title>
+<polygon fill="none" stroke="black" points="173,-255 0,-255 0,-231 173,-231 173,-255"/>
+<text text-anchor="middle" x="86.5" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50">compute_rhs_cubes_modg_1d</text>
+</g>
+<!-- exchange_real -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node2" class="node">
+<title>exchange_real</title>
+<polygon fill="#777777" stroke="#777777" points="358,-486 268,-486 268,-462 358,-462 358,-486"/>
+<text text-anchor="middle" x="313" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">exchange_real</text>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;exchange_real -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_edge1" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;exchange_real</title>
+<path fill="none" stroke="#000000" d="M90.68,-255.11C100.93,-291.57 136.69,-400.97 209,-453 223.05,-463.11 240.82,-468.61 257.63,-471.53"/>
+<polygon fill="#000000" stroke="#000000" points="257.53,-475.05 267.93,-473.03 258.54,-468.12 257.53,-475.05"/>
+</g>
+<!-- proc~atl_modg_1d_advection_numflux -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node3" class="node">
+<title>proc~atl_modg_1d_advection_numflux</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node3"><a xlink:href="../proc/atl_modg_1d_advection_numflux.html" xlink:title="atl_modg_1d_advection_numFlux">
+<polygon fill="#d9534f" stroke="#d9534f" points="408,-444 218,-444 218,-420 408,-420 408,-444"/>
+<text text-anchor="middle" x="313" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_1d_advection_numFlux</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;proc~atl_modg_1d_advection_numflux -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_edge2" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;proc~atl_modg_1d_advection_numflux</title>
+<path fill="none" stroke="#000000" d="M92.46,-255.12C105.99,-286.52 146.69,-370.81 209,-411 211.64,-412.7 214.38,-414.27 217.22,-415.71"/>
+<polygon fill="#000000" stroke="#000000" points="215.96,-418.98 226.51,-419.92 218.84,-412.61 215.96,-418.98"/>
+</g>
+<!-- proc~atl_modg_1d_euler_numflux -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node4" class="node">
+<title>proc~atl_modg_1d_euler_numflux</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node4"><a xlink:href="../proc/atl_modg_1d_euler_numflux.html" xlink:title="atl_modg_1d_euler_numFlux">
+<polygon fill="#d9534f" stroke="#d9534f" points="395.5,-402 230.5,-402 230.5,-378 395.5,-378 395.5,-402"/>
+<text text-anchor="middle" x="313" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_1d_euler_numFlux</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;proc~atl_modg_1d_euler_numflux -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_edge3" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;proc~atl_modg_1d_euler_numflux</title>
+<path fill="none" stroke="#000000" d="M95.26,-255.01C112.42,-280.5 156.26,-340.03 209,-369 212.78,-371.08 216.74,-372.95 220.81,-374.63"/>
+<polygon fill="#000000" stroke="#000000" points="219.9,-378.03 230.49,-378.25 222.35,-371.47 219.9,-378.03"/>
+</g>
+<!-- proc~atl_modg_1d_finetocoarseface -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node5" class="node">
+<title>proc~atl_modg_1d_finetocoarseface</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node5"><a xlink:href="../proc/atl_modg_1d_finetocoarseface.html" xlink:title="atl_modg_1d_fineToCoarseFace">
+<polygon fill="#d9534f" stroke="#d9534f" points="403,-360 223,-360 223,-336 403,-336 403,-360"/>
+<text text-anchor="middle" x="313" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_1d_fineToCoarseFace</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;proc~atl_modg_1d_finetocoarseface -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_edge4" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;proc~atl_modg_1d_finetocoarseface</title>
+<path fill="none" stroke="#000000" d="M100.97,-255.11C122.29,-273.58 165.83,-308.59 209,-327 214.32,-329.27 219.91,-331.3 225.61,-333.11"/>
+<polygon fill="#000000" stroke="#000000" points="224.7,-336.5 235.28,-335.97 226.68,-329.78 224.7,-336.5"/>
+</g>
+<!-- proc~atl_modg_1d_heat_numflux -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node6" class="node">
+<title>proc~atl_modg_1d_heat_numflux</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node6"><a xlink:href="../proc/atl_modg_1d_heat_numflux.html" xlink:title="atl_modg_1d_heat_numFlux">
+<polygon fill="#d9534f" stroke="#d9534f" points="393.5,-318 232.5,-318 232.5,-294 393.5,-294 393.5,-318"/>
+<text text-anchor="middle" x="313" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_1d_heat_numFlux</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;proc~atl_modg_1d_heat_numflux -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_edge5" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;proc~atl_modg_1d_heat_numflux</title>
+<path fill="none" stroke="#000000" d="M118.61,-255.03C142.95,-264.12 177.78,-276.46 209,-285 217.79,-287.4 227.07,-289.67 236.32,-291.76"/>
+<polygon fill="#000000" stroke="#000000" points="235.79,-295.23 246.31,-293.95 237.29,-288.39 235.79,-295.23"/>
+</g>
+<!-- proc~atl_modg_1d_project_testfunc -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node7" class="node">
+<title>proc~atl_modg_1d_project_testfunc</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node7"><a xlink:href="../proc/atl_modg_1d_project_testfunc.html" xlink:title="atl_modg_1d_project_testFunc">
+<polygon fill="#d9534f" stroke="#d9534f" points="399,-276 227,-276 227,-252 399,-252 399,-276"/>
+<text text-anchor="middle" x="313" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_1d_project_testFunc</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;proc~atl_modg_1d_project_testfunc -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_edge6" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;proc~atl_modg_1d_project_testfunc</title>
+<path fill="none" stroke="#000000" d="M173.01,-251C187.31,-252.34 202.22,-253.73 216.74,-255.09"/>
+<polygon fill="#000000" stroke="#000000" points="216.44,-258.58 226.72,-256.02 217.09,-251.61 216.44,-258.58"/>
+</g>
+<!-- proc~modg_1d_compute_project_physflux -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node8" class="node">
+<title>proc~modg_1d_compute_project_physflux</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node8"><a xlink:href="../proc/modg_1d_compute_project_physflux.html" xlink:title="modg_1d_compute_project_physFlux">
+<polygon fill="#d9534f" stroke="#d9534f" points="417,-234 209,-234 209,-210 417,-210 417,-234"/>
+<text text-anchor="middle" x="313" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">modg_1d_compute_project_physFlux</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;proc~modg_1d_compute_project_physflux -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_edge7" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;proc~modg_1d_compute_project_physflux</title>
+<path fill="none" stroke="#000000" d="M173.01,-235C181.39,-234.22 189.97,-233.41 198.56,-232.61"/>
+<polygon fill="#000000" stroke="#000000" points="199.01,-236.08 208.64,-231.67 198.36,-229.12 199.01,-236.08"/>
+</g>
+<!-- recvbuffer_flux -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node9" class="node">
+<title>recvbuffer_flux</title>
+<polygon fill="#777777" stroke="#777777" points="359,-192 267,-192 267,-168 359,-168 359,-192"/>
+<text text-anchor="middle" x="313" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">recvbuffer_flux</text>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;recvbuffer_flux -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_edge8" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;recvbuffer_flux</title>
+<path fill="none" stroke="#000000" d="M118.61,-230.97C142.95,-221.88 177.78,-209.54 209,-201 224.38,-196.79 241.26,-193.01 256.82,-189.86"/>
+<polygon fill="#000000" stroke="#000000" points="257.7,-193.25 266.83,-187.87 256.34,-186.38 257.7,-193.25"/>
+</g>
+<!-- sendbuffer_flux -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node10" class="node">
+<title>sendbuffer_flux</title>
+<polygon fill="#777777" stroke="#777777" points="360.5,-150 265.5,-150 265.5,-126 360.5,-126 360.5,-150"/>
+<text text-anchor="middle" x="313" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">sendbuffer_flux</text>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;sendbuffer_flux -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_edge9" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;sendbuffer_flux</title>
+<path fill="none" stroke="#000000" d="M100.97,-230.89C122.29,-212.42 165.83,-177.41 209,-159 223.53,-152.81 240.01,-148.4 255.45,-145.28"/>
+<polygon fill="#000000" stroke="#000000" points="256.24,-148.69 265.42,-143.41 254.95,-141.81 256.24,-148.69"/>
+</g>
+<!-- tem_abort -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node11" class="node">
+<title>tem_abort</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node11"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="346.5,-108 279.5,-108 279.5,-84 346.5,-84 346.5,-108"/>
+<text text-anchor="middle" x="313" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;tem_abort -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_edge10" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;tem_abort</title>
+<path fill="none" stroke="#000000" d="M95.26,-230.99C112.42,-205.5 156.26,-145.97 209,-117 227.3,-106.94 249.82,-101.68 269.14,-98.94"/>
+<polygon fill="#000000" stroke="#000000" points="269.7,-102.39 279.19,-97.69 268.84,-95.45 269.7,-102.39"/>
+</g>
+<!-- tem_startTimer -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node12" class="node">
+<title>tem_startTimer</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node12"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_starttimer.html" xlink:title="tem_startTimer">
+<polygon fill="#d9534f" stroke="#d9534f" points="360,-66 266,-66 266,-42 360,-42 360,-66"/>
+<text text-anchor="middle" x="313" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_startTimer</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;tem_startTimer -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_edge11" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;tem_startTimer</title>
+<path fill="none" stroke="#000000" d="M92.46,-230.88C105.99,-199.48 146.69,-115.19 209,-75 222.91,-66.03 239.88,-60.78 256.01,-57.74"/>
+<polygon fill="#000000" stroke="#000000" points="256.61,-61.19 265.91,-56.12 255.48,-54.28 256.61,-61.19"/>
+</g>
+<!-- tem_stopTimer -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node13" class="node">
+<title>tem_stopTimer</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CallsGraph_node13"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_stoptimer.html" xlink:title="tem_stopTimer">
+<polygon fill="#d9534f" stroke="#d9534f" points="359,-24 267,-24 267,0 359,0 359,-24"/>
+<text text-anchor="middle" x="313" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_stopTimer</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;tem_stopTimer -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CallsGraph_edge12" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;tem_stopTimer</title>
+<path fill="none" stroke="#000000" d="M90.68,-230.89C100.93,-194.43 136.69,-85.03 209,-33 222.8,-23.07 240.2,-17.59 256.75,-14.63"/>
+<polygon fill="#000000" stroke="#000000" points="257.54,-18.05 266.9,-13.09 256.49,-11.13 257.54,-18.05"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~compute_rhs_cubes_modg_1d~~CalledByGraph Pages: 1 -->
+<svg id="proccompute_rhs_cubes_modg_1dCalledByGraph" width="641pt" height="246pt"
+ viewBox="0.00 0.00 641.00 246.31" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph" class="graph" transform="scale(0.74 0.74) rotate(0) translate(4 328)">
+<title>proc~~compute_rhs_cubes_modg_1d~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-328 860,-328 860,4 -4,4"/>
+<!-- proc~compute_rhs_cubes_modg_1d -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node1" class="node">
+<title>proc~compute_rhs_cubes_modg_1d</title>
+<polygon fill="none" stroke="black" points="856,-174 683,-174 683,-150 856,-150 856,-174"/>
+<text text-anchor="middle" x="769.5" y="-159.6" font-family="Helvetica,sans-Serif" font-size="10.50">compute_rhs_cubes_modg_1d</text>
+</g>
+<!-- proc~compute_rhs_cubes -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node2" class="node">
+<title>proc~compute_rhs_cubes</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node2"><a xlink:href="../proc/compute_rhs_cubes.html" xlink:title="compute_rhs_cubes">
+<polygon fill="#d9534f" stroke="#d9534f" points="647,-174 529,-174 529,-150 647,-150 647,-174"/>
+<text text-anchor="middle" x="588" y="-159.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">compute_rhs_cubes</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes&#45;&gt;proc~compute_rhs_cubes_modg_1d -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_edge1" class="edge">
+<title>proc~compute_rhs_cubes&#45;&gt;proc~compute_rhs_cubes_modg_1d</title>
+<path fill="none" stroke="#000000" d="M647.28,-162C655.45,-162 664.01,-162 672.65,-162"/>
+<polygon fill="#000000" stroke="#000000" points="672.81,-165.5 682.81,-162 672.81,-158.5 672.81,-165.5"/>
+</g>
+<!-- interface~atl_compute_rhs -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node3" class="node">
+<title>interface~atl_compute_rhs</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node3"><a xlink:href="../interface/atl_compute_rhs.html" xlink:title="atl_compute_rhs">
+<polygon fill="#a7506f" stroke="#a7506f" points="493,-174 393,-174 393,-150 493,-150 493,-174"/>
+<text text-anchor="middle" x="443" y="-159.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_compute_rhs</text>
+</a>
+</g>
+</g>
+<!-- interface~atl_compute_rhs&#45;&gt;proc~compute_rhs_cubes -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_edge2" class="edge">
+<title>interface~atl_compute_rhs&#45;&gt;proc~compute_rhs_cubes</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M493.21,-162C501.46,-162 510.14,-162 518.76,-162"/>
+<polygon fill="#000000" stroke="#000000" points="518.83,-165.5 528.83,-162 518.83,-158.5 518.83,-165.5"/>
+</g>
+<!-- proc~global_corrector_substep -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node4" class="node">
+<title>proc~global_corrector_substep</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node4"><a xlink:href="../proc/global_corrector_substep.html" xlink:title="global_corrector_substep">
+<polygon fill="#d9534f" stroke="#d9534f" points="357,-324 211,-324 211,-300 357,-300 357,-324"/>
+<text text-anchor="middle" x="284" y="-309.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">global_corrector_substep</text>
+</a>
+</g>
+</g>
+<!-- proc~global_corrector_substep&#45;&gt;interface~atl_compute_rhs -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_edge3" class="edge">
+<title>proc~global_corrector_substep&#45;&gt;interface~atl_compute_rhs</title>
+<path fill="none" stroke="#000000" d="M341.13,-299.97C346.77,-297.51 352.18,-294.56 357,-291 395.05,-262.91 421.01,-212.31 433.48,-183.54"/>
+<polygon fill="#000000" stroke="#000000" points="436.84,-184.58 437.47,-174.01 430.38,-181.88 436.84,-184.58"/>
+</g>
+<!-- proc~imexrk_substep -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node5" class="node">
+<title>proc~imexrk_substep</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node5"><a xlink:href="../proc/imexrk_substep.html" xlink:title="imexrk_substep">
+<polygon fill="#d9534f" stroke="#d9534f" points="331.5,-264 236.5,-264 236.5,-240 331.5,-240 331.5,-264"/>
+<text text-anchor="middle" x="284" y="-249.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">imexrk_substep</text>
+</a>
+</g>
+</g>
+<!-- proc~imexrk_substep&#45;&gt;interface~atl_compute_rhs -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_edge4" class="edge">
+<title>proc~imexrk_substep&#45;&gt;interface~atl_compute_rhs</title>
+<path fill="none" stroke="#000000" d="M331.77,-241.31C340.4,-238.52 349.16,-235.11 357,-231 382.03,-217.88 406.65,-196.73 422.9,-181.3"/>
+<polygon fill="#000000" stroke="#000000" points="425.43,-183.72 430.17,-174.24 420.56,-178.69 425.43,-183.72"/>
+</g>
+<!-- proc~imexrk_substep&#45;&gt;proc~imexrk_substep -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_edge10" class="edge">
+<title>proc~imexrk_substep&#45;&gt;proc~imexrk_substep</title>
+<path fill="none" stroke="#000000" d="M257.88,-264.01C248.75,-272.97 257.46,-282 284,-282 300.59,-282 310.21,-278.47 312.87,-273.64"/>
+<polygon fill="#000000" stroke="#000000" points="316.23,-272.67 310.12,-264.01 309.5,-274.59 316.23,-272.67"/>
+</g>
+<!-- proc~mesh_timestep_euler -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node6" class="node">
+<title>proc~mesh_timestep_euler</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node6"><a xlink:href="../proc/mesh_timestep_euler.html" xlink:title="mesh_timestep_euler">
+<polygon fill="#d9534f" stroke="#d9534f" points="347.5,-204 220.5,-204 220.5,-180 347.5,-180 347.5,-204"/>
+<text text-anchor="middle" x="284" y="-189.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mesh_timestep_euler</text>
+</a>
+</g>
+</g>
+<!-- proc~mesh_timestep_euler&#45;&gt;interface~atl_compute_rhs -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_edge5" class="edge">
+<title>proc~mesh_timestep_euler&#45;&gt;interface~atl_compute_rhs</title>
+<path fill="none" stroke="#000000" d="M347.5,-180.06C359.14,-177.83 371.27,-175.51 382.81,-173.31"/>
+<polygon fill="#000000" stroke="#000000" points="383.6,-176.72 392.77,-171.41 382.29,-169.85 383.6,-176.72"/>
+</g>
+<!-- proc~mesh_timestep_euler&#45;&gt;proc~mesh_timestep_euler -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_edge12" class="edge">
+<title>proc~mesh_timestep_euler&#45;&gt;proc~mesh_timestep_euler</title>
+<path fill="none" stroke="#000000" d="M257.88,-204.01C248.75,-212.97 257.46,-222 284,-222 300.59,-222 310.21,-218.47 312.87,-213.64"/>
+<polygon fill="#000000" stroke="#000000" points="316.23,-212.67 310.12,-204.01 309.5,-214.59 316.23,-212.67"/>
+</g>
+<!-- proc~rk2_substep -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node7" class="node">
+<title>proc~rk2_substep</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node7"><a xlink:href="../proc/rk2_substep.html" xlink:title="rk2_substep">
+<polygon fill="#d9534f" stroke="#d9534f" points="322,-144 246,-144 246,-120 322,-120 322,-144"/>
+<text text-anchor="middle" x="284" y="-129.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">rk2_substep</text>
+</a>
+</g>
+</g>
+<!-- proc~rk2_substep&#45;&gt;interface~atl_compute_rhs -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_edge6" class="edge">
+<title>proc~rk2_substep&#45;&gt;interface~atl_compute_rhs</title>
+<path fill="none" stroke="#000000" d="M322.21,-139.11C340.36,-142.58 362.64,-146.84 383.04,-150.73"/>
+<polygon fill="#000000" stroke="#000000" points="382.4,-154.17 392.87,-152.61 383.71,-147.3 382.4,-154.17"/>
+</g>
+<!-- proc~rk2_substep&#45;&gt;proc~rk2_substep -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_edge14" class="edge">
+<title>proc~rk2_substep&#45;&gt;proc~rk2_substep</title>
+<path fill="none" stroke="#000000" d="M257.88,-144.01C248.75,-152.97 257.46,-162 284,-162 300.59,-162 310.21,-158.47 312.87,-153.64"/>
+<polygon fill="#000000" stroke="#000000" points="316.23,-152.67 310.12,-144.01 309.5,-154.59 316.23,-152.67"/>
+</g>
+<!-- proc~rk4_substep -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node8" class="node">
+<title>proc~rk4_substep</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node8"><a xlink:href="../proc/rk4_substep.html" xlink:title="rk4_substep">
+<polygon fill="#d9534f" stroke="#d9534f" points="322,-84 246,-84 246,-60 322,-60 322,-84"/>
+<text text-anchor="middle" x="284" y="-69.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">rk4_substep</text>
+</a>
+</g>
+</g>
+<!-- proc~rk4_substep&#45;&gt;interface~atl_compute_rhs -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_edge7" class="edge">
+<title>proc~rk4_substep&#45;&gt;interface~atl_compute_rhs</title>
+<path fill="none" stroke="#000000" d="M307.84,-84.04C322.07,-91.62 340.7,-101.7 357,-111 376.04,-121.86 397.19,-134.55 413.62,-144.55"/>
+<polygon fill="#000000" stroke="#000000" points="411.86,-147.58 422.22,-149.8 415.51,-141.6 411.86,-147.58"/>
+</g>
+<!-- proc~rk4_substep&#45;&gt;proc~rk4_substep -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_edge16" class="edge">
+<title>proc~rk4_substep&#45;&gt;proc~rk4_substep</title>
+<path fill="none" stroke="#000000" d="M257.88,-84.01C248.75,-92.97 257.46,-102 284,-102 300.59,-102 310.21,-98.47 312.87,-93.64"/>
+<polygon fill="#000000" stroke="#000000" points="316.23,-92.67 310.12,-84.01 309.5,-94.59 316.23,-92.67"/>
+</g>
+<!-- proc~rktaylor_substep -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node9" class="node">
+<title>proc~rktaylor_substep</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node9"><a xlink:href="../proc/rktaylor_substep.html" xlink:title="rktaylor_substep">
+<polygon fill="#d9534f" stroke="#d9534f" points="334,-24 234,-24 234,0 334,0 334,-24"/>
+<text text-anchor="middle" x="284" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">rktaylor_substep</text>
+</a>
+</g>
+</g>
+<!-- proc~rktaylor_substep&#45;&gt;interface~atl_compute_rhs -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_edge8" class="edge">
+<title>proc~rktaylor_substep&#45;&gt;interface~atl_compute_rhs</title>
+<path fill="none" stroke="#000000" d="M313.74,-24.11C327.67,-30.81 344.14,-40.01 357,-51 388.12,-77.58 415.12,-117.3 429.93,-141.32"/>
+<polygon fill="#000000" stroke="#000000" points="427,-143.24 435.16,-149.99 432.99,-139.62 427,-143.24"/>
+</g>
+<!-- proc~rktaylor_substep&#45;&gt;proc~rktaylor_substep -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_edge18" class="edge">
+<title>proc~rktaylor_substep&#45;&gt;proc~rktaylor_substep</title>
+<path fill="none" stroke="#000000" d="M257.88,-24.01C248.75,-32.97 257.46,-42 284,-42 300.59,-42 310.21,-38.47 312.87,-33.64"/>
+<polygon fill="#000000" stroke="#000000" points="316.23,-32.67 310.12,-24.01 309.5,-34.59 316.23,-32.67"/>
+</g>
+<!-- proc~mesh_timestep_imexrk -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node10" class="node">
+<title>proc~mesh_timestep_imexrk</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node10"><a xlink:href="../proc/mesh_timestep_imexrk.html" xlink:title="mesh_timestep_imexrk">
+<polygon fill="#d9534f" stroke="#d9534f" points="155,-264 20,-264 20,-240 155,-240 155,-264"/>
+<text text-anchor="middle" x="87.5" y="-249.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mesh_timestep_imexrk</text>
+</a>
+</g>
+</g>
+<!-- proc~mesh_timestep_imexrk&#45;&gt;proc~imexrk_substep -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_edge11" class="edge">
+<title>proc~mesh_timestep_imexrk&#45;&gt;proc~imexrk_substep</title>
+<path fill="none" stroke="#000000" d="M155.16,-252C178.23,-252 203.86,-252 226.07,-252"/>
+<polygon fill="#000000" stroke="#000000" points="226.35,-255.5 236.35,-252 226.35,-248.5 226.35,-255.5"/>
+</g>
+<!-- proc~mesh_timestep_predcor_cerk4 -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node11" class="node">
+<title>proc~mesh_timestep_predcor_cerk4</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node11"><a xlink:href="../proc/mesh_timestep_predcor_cerk4.html" xlink:title="mesh_timestep_predcor_cerk4">
+<polygon fill="#d9534f" stroke="#d9534f" points="175,-324 0,-324 0,-300 175,-300 175,-324"/>
+<text text-anchor="middle" x="87.5" y="-309.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mesh_timestep_predcor_cerk4</text>
+</a>
+</g>
+</g>
+<!-- proc~mesh_timestep_predcor_cerk4&#45;&gt;proc~global_corrector_substep -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_edge9" class="edge">
+<title>proc~mesh_timestep_predcor_cerk4&#45;&gt;proc~global_corrector_substep</title>
+<path fill="none" stroke="#000000" d="M175.23,-312C183.72,-312 192.33,-312 200.78,-312"/>
+<polygon fill="#000000" stroke="#000000" points="201,-315.5 211,-312 201,-308.5 201,-315.5"/>
+</g>
+<!-- proc~mesh_timestep_rk4 -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node12" class="node">
+<title>proc~mesh_timestep_rk4</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node12"><a xlink:href="../proc/mesh_timestep_rk4.html" xlink:title="mesh_timestep_rk4">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-84 29.5,-84 29.5,-60 145.5,-60 145.5,-84"/>
+<text text-anchor="middle" x="87.5" y="-69.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mesh_timestep_rk4</text>
+</a>
+</g>
+</g>
+<!-- proc~mesh_timestep_rk4&#45;&gt;proc~rk4_substep -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_edge15" class="edge">
+<title>proc~mesh_timestep_rk4&#45;&gt;proc~rk4_substep</title>
+<path fill="none" stroke="#000000" d="M145.54,-72C174.27,-72 208.67,-72 235.88,-72"/>
+<polygon fill="#000000" stroke="#000000" points="235.92,-75.5 245.92,-72 235.92,-68.5 235.92,-75.5"/>
+</g>
+<!-- proc~mesh_timestep_rktaylor -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node13" class="node">
+<title>proc~mesh_timestep_rktaylor</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node13"><a xlink:href="../proc/mesh_timestep_rktaylor.html" xlink:title="mesh_timestep_rktaylor">
+<polygon fill="#d9534f" stroke="#d9534f" points="157.5,-24 17.5,-24 17.5,0 157.5,0 157.5,-24"/>
+<text text-anchor="middle" x="87.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mesh_timestep_rktaylor</text>
+</a>
+</g>
+</g>
+<!-- proc~mesh_timestep_rktaylor&#45;&gt;proc~rktaylor_substep -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_edge17" class="edge">
+<title>proc~mesh_timestep_rktaylor&#45;&gt;proc~rktaylor_substep</title>
+<path fill="none" stroke="#000000" d="M157.62,-12C179.3,-12 203.01,-12 223.93,-12"/>
+<polygon fill="#000000" stroke="#000000" points="223.95,-15.5 233.95,-12 223.95,-8.5 223.95,-15.5"/>
+</g>
+<!-- proc~mesh_timestep_ssprk2 -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node14" class="node">
+<title>proc~mesh_timestep_ssprk2</title>
+<g id="a_proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_node14"><a xlink:href="../proc/mesh_timestep_ssprk2.html" xlink:title="mesh_timestep_ssprk2">
+<polygon fill="#d9534f" stroke="#d9534f" points="154,-144 21,-144 21,-120 154,-120 154,-144"/>
+<text text-anchor="middle" x="87.5" y="-129.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mesh_timestep_ssprk2</text>
+</a>
+</g>
+</g>
+<!-- proc~mesh_timestep_ssprk2&#45;&gt;proc~rk2_substep -->
+<g id="proc~~compute_rhs_cubes_modg_1d~~CalledByGraph_edge13" class="edge">
+<title>proc~mesh_timestep_ssprk2&#45;&gt;proc~rk2_substep</title>
+<path fill="none" stroke="#000000" d="M154.08,-132C180.81,-132 211.12,-132 235.64,-132"/>
+<polygon fill="#000000" stroke="#000000" points="235.76,-135.5 245.76,-132 235.76,-128.5 235.76,-135.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproccompute_rhs_cubes_modg_1dCalledByGraph = svgPanZoom('#proccompute_rhs_cubes_modg_1dCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

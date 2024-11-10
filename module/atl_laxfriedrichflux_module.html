@@ -1,0 +1,1648 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_laxFriedrichFlux_module &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_laxFriedrichFlux_module
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+            <li class="list-inline-item" id="meta-author"><i class="fa fa-pencil"></i> Jens Zudrop</li>
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.4% of total for modules and submodules.">156 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_laxFriedrichFlux_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_laxfriedrichflux_module.f90.html'>atl_laxFriedrichFlux_module.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_laxFriedrichFlux_module</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_laxfriedrichflux_module.html#proc-atl_laxfriedeuler">atl_laxFriedEuler</a>
+            <a class="list-group-item" href="../module/atl_laxfriedrichflux_module.html#proc-atl_laxfriedlineareuler">atl_laxFriedLinearEuler</a>
+            <a class="list-group-item" href="../module/atl_laxfriedrichflux_module.html#proc-atl_laxfriedacoustic">atl_laxFriedAcoustic</a>
+            <a class="list-group-item" href="../module/atl_laxfriedrichflux_module.html#proc-atl_laxfriedrans">atl_laxFriedRans</a>
+            <a class="list-group-item" href="../module/atl_laxfriedrichflux_module.html#proc-atl_laxfriedrans_2d">atl_laxFriedRans_2D</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      <p>Module collects all Lax-Friedrich flux for different types of equations.</p>
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='atl_eqn_acoustic_module.html'>atl_eqn_acoustic_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/env_module.html'>env_module</a></li>
+                  <li class="list-inline-item"><a href='atl_physfluxfilnvrstk_module.html'>atl_physFluxFilNvrStk_module</a></li>
+                  <li class="list-inline-item"><a href='atl_eqn_euler_module.html'>atl_eqn_euler_module</a></li>
+                  <li class="list-inline-item"><a href='atl_acoustic_physflux_module.html'>atl_acoustic_physflux_module</a></li>
+                  <li class="list-inline-item"><a href='atl_lineareuler_physflux_module.html'>atl_LinearEuler_physflux_module</a></li>
+                  <li class="list-inline-item"><a href='atl_eqn_lineareuler_module.html'>atl_eqn_LinearEuler_module</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_laxfriedrichflux_module~~UsesGraph Pages: 1 -->
+<svg id="moduleatl_laxfriedrichflux_moduleUsesGraph" width="641pt" height="428pt"
+ viewBox="0.00 0.00 641.00 427.87" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph" class="graph" transform="scale(0.8 0.8) rotate(0) translate(4 532)">
+<title>module~~atl_laxfriedrichflux_module~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-532 799,-532 799,4 -4,4"/>
+<!-- module~atl_laxfriedrichflux_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_node1" class="node">
+<title>module~atl_laxfriedrichflux_module</title>
+<polygon fill="none" stroke="black" points="795,-362 634,-362 634,-338 795,-338 795,-362"/>
+<text text-anchor="middle" x="714.5" y="-347.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_laxFriedrichFlux_module</text>
+</g>
+<!-- env_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_node2" class="node">
+<title>env_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsesGraph_node2"><a xlink:href="https://apes-suite.github.io/treelm/module/env_module.html" xlink:title="env_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="123.5,-528 45.5,-528 45.5,-504 123.5,-504 123.5,-528"/>
+<text text-anchor="middle" x="84.5" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">env_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_laxfriedrichflux_module&#45;&gt;env_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge1" class="edge">
+<title>module~atl_laxfriedrichflux_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M503,-430C409.42,-442.72 380.14,-400.25 290.5,-430"/>
+</g>
+<!-- module~atl_acoustic_physflux_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_node3" class="node">
+<title>module~atl_acoustic_physflux_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsesGraph_node3"><a xlink:href="../module/atl_acoustic_physflux_module.html" xlink:title="atl_acoustic_physflux_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="589.5,-402 418.5,-402 418.5,-378 589.5,-378 589.5,-402"/>
+<text text-anchor="middle" x="504" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_acoustic_physflux_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_laxfriedrichflux_module&#45;&gt;module~atl_acoustic_physflux_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge2" class="edge">
+<title>module~atl_laxfriedrichflux_module&#45;&gt;module~atl_acoustic_physflux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M650.94,-362C627.96,-366.41 601.73,-371.44 577.92,-376.01"/>
+<polygon fill="#000000" stroke="#000000" points="577.03,-372.62 567.87,-377.94 578.35,-379.49 577.03,-372.62"/>
+</g>
+<!-- module~atl_eqn_acoustic_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_node4" class="node">
+<title>module~atl_eqn_acoustic_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsesGraph_node4"><a xlink:href="../module/atl_eqn_acoustic_module.html" xlink:title="atl_eqn_acoustic_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="363,-360 216,-360 216,-336 363,-336 363,-360"/>
+<text text-anchor="middle" x="289.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_acoustic_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_laxfriedrichflux_module&#45;&gt;module~atl_eqn_acoustic_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge3" class="edge">
+<title>module~atl_laxfriedrichflux_module&#45;&gt;module~atl_eqn_acoustic_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M633.94,-349.62C559.54,-349.27 448.87,-348.75 373.41,-348.39"/>
+<polygon fill="#000000" stroke="#000000" points="373.02,-344.89 363,-348.34 372.98,-351.89 373.02,-344.89"/>
+</g>
+<!-- module~atl_eqn_euler_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_node5" class="node">
+<title>module~atl_eqn_euler_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsesGraph_node5"><a xlink:href="../module/atl_eqn_euler_module.html" xlink:title="atl_eqn_euler_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="354.5,-402 224.5,-402 224.5,-378 354.5,-378 354.5,-402"/>
+<text text-anchor="middle" x="289.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_euler_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_laxfriedrichflux_module&#45;&gt;module~atl_eqn_euler_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge4" class="edge">
+<title>module~atl_laxfriedrichflux_module&#45;&gt;module~atl_eqn_euler_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M694.65,-362.12C672.4,-375.9 633.87,-398.16 598,-411 558.28,-425.22 546.8,-424.32 505,-430"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M503,-430C473.38,-434.03 398.39,-417.57 345.93,-404.55"/>
+<polygon fill="#000000" stroke="#000000" points="346.64,-401.12 336.09,-402.08 344.94,-407.91 346.64,-401.12"/>
+</g>
+<!-- module~atl_eqn_lineareuler_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_node6" class="node">
+<title>module~atl_eqn_lineareuler_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsesGraph_node6"><a xlink:href="../module/atl_eqn_lineareuler_module.html" xlink:title="atl_eqn_LinearEuler_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="371.5,-282 207.5,-282 207.5,-258 371.5,-258 371.5,-282"/>
+<text text-anchor="middle" x="289.5" y="-267.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_LinearEuler_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_laxfriedrichflux_module&#45;&gt;module~atl_eqn_lineareuler_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge5" class="edge">
+<title>module~atl_laxfriedrichflux_module&#45;&gt;module~atl_eqn_lineareuler_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M503,-270C459.7,-252.99 407.49,-252.74 365.67,-256.86"/>
+<polygon fill="#000000" stroke="#000000" points="365.1,-253.4 355.54,-257.97 365.86,-260.36 365.1,-253.4"/>
+</g>
+<!-- module~atl_lineareuler_physflux_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_node7" class="node">
+<title>module~atl_lineareuler_physflux_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsesGraph_node7"><a xlink:href="../module/atl_lineareuler_physflux_module.html" xlink:title="atl_LinearEuler_physflux_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="598,-322 410,-322 410,-298 598,-298 598,-322"/>
+<text text-anchor="middle" x="504" y="-307.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_LinearEuler_physflux_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_laxfriedrichflux_module&#45;&gt;module~atl_lineareuler_physflux_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge6" class="edge">
+<title>module~atl_laxfriedrichflux_module&#45;&gt;module~atl_lineareuler_physflux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M650.94,-338C627.96,-333.59 601.73,-328.56 577.92,-323.99"/>
+<polygon fill="#000000" stroke="#000000" points="578.35,-320.51 567.87,-322.06 577.03,-327.38 578.35,-320.51"/>
+</g>
+<!-- module~atl_physfluxfilnvrstk_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_node8" class="node">
+<title>module~atl_physfluxfilnvrstk_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsesGraph_node8"><a xlink:href="../module/atl_physfluxfilnvrstk_module.html" xlink:title="atl_physFluxFilNvrStk_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="374,-108 205,-108 205,-84 374,-84 374,-108"/>
+<text text-anchor="middle" x="289.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_physFluxFilNvrStk_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_laxfriedrichflux_module&#45;&gt;module~atl_physfluxfilnvrstk_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge7" class="edge">
+<title>module~atl_laxfriedrichflux_module&#45;&gt;module~atl_physfluxfilnvrstk_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M694.65,-337.88C672.4,-324.1 633.87,-301.84 598,-289 558.28,-274.78 544.27,-285.42 505,-270"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M503,-270C417.18,-236.29 339.76,-154.23 307.02,-116.09"/>
+<polygon fill="#000000" stroke="#000000" points="309.5,-113.61 300.37,-108.23 304.16,-118.13 309.5,-113.61"/>
+</g>
+<!-- module~atl_acoustic_physflux_module&#45;&gt;env_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge8" class="edge">
+<title>module~atl_acoustic_physflux_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M427.55,-402.01C377.09,-410.46 315.53,-421.69 290.5,-430"/>
+</g>
+<!-- module~atl_acoustic_physflux_module&#45;&gt;module~atl_eqn_acoustic_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge9" class="edge">
+<title>module~atl_acoustic_physflux_module&#45;&gt;module~atl_eqn_acoustic_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M442.11,-377.96C416.88,-372.98 387.45,-367.16 361.26,-361.99"/>
+<polygon fill="#000000" stroke="#000000" points="361.89,-358.54 351.4,-360.04 360.53,-365.41 361.89,-358.54"/>
+</g>
+<!-- module~atl_eqn_acoustic_module&#45;&gt;env_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge14" class="edge">
+<title>module~atl_eqn_acoustic_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M217.26,-360.01C212.8,-362.5 208.65,-365.46 205,-369 163.17,-409.52 210.83,-454.48 169,-495 159.51,-504.19 146.62,-509.54 133.81,-512.6"/>
+<polygon fill="#000000" stroke="#000000" points="132.76,-509.24 123.62,-514.6 134.11,-516.11 132.76,-509.24"/>
+</g>
+<!-- aot_out_general_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_node9" class="node">
+<title>aot_out_general_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsesGraph_node9"><a xlink:href="https://apes-suite.github.io/aotus/module/aot_out_general_module.html" xlink:title="aot_out_general_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="157,-486 12,-486 12,-462 157,-462 157,-486"/>
+<text text-anchor="middle" x="84.5" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_out_general_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_acoustic_module&#45;&gt;aot_out_general_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge10" class="edge">
+<title>module~atl_eqn_acoustic_module&#45;&gt;aot_out_general_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M218.56,-360.13C213.69,-362.58 209.09,-365.51 205,-369 174.1,-395.36 199.9,-426.64 169,-453 167.46,-454.31 165.86,-455.54 164.19,-456.69"/>
+<polygon fill="#000000" stroke="#000000" points="162.27,-453.77 155.44,-461.87 165.83,-459.79 162.27,-453.77"/>
+</g>
+<!-- aot_out_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_node10" class="node">
+<title>aot_out_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsesGraph_node10"><a xlink:href="https://apes-suite.github.io/aotus/module/aot_out_module.html" xlink:title="aot_out_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="133.5,-402 35.5,-402 35.5,-378 133.5,-378 133.5,-402"/>
+<text text-anchor="middle" x="84.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_out_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_acoustic_module&#45;&gt;aot_out_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge11" class="edge">
+<title>module~atl_eqn_acoustic_module&#45;&gt;aot_out_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M230.33,-360.04C203.21,-365.65 171.02,-372.31 143.88,-377.92"/>
+<polygon fill="#000000" stroke="#000000" points="142.83,-374.56 133.75,-380.02 144.25,-381.42 142.83,-374.56"/>
+</g>
+<!-- aot_table_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_node11" class="node">
+<title>aot_table_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsesGraph_node11"><a xlink:href="https://apes-suite.github.io/aotus/module/aot_table_module.html" xlink:title="aot_table_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="138.5,-276 30.5,-276 30.5,-252 138.5,-252 138.5,-276"/>
+<text text-anchor="middle" x="84.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_acoustic_module&#45;&gt;aot_table_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge12" class="edge">
+<title>module~atl_eqn_acoustic_module&#45;&gt;aot_table_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M268.89,-335.78C245.76,-321.82 205.79,-299.09 169,-285 162.53,-282.52 155.66,-280.25 148.76,-278.2"/>
+<polygon fill="#000000" stroke="#000000" points="149.23,-274.69 138.65,-275.34 147.32,-281.43 149.23,-274.69"/>
+</g>
+<!-- aotus_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_node12" class="node">
+<title>aotus_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsesGraph_node12"><a xlink:href="https://apes-suite.github.io/aotus/module/aotus_module.html" xlink:title="aotus_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="128.5,-360 40.5,-360 40.5,-336 128.5,-336 128.5,-360"/>
+<text text-anchor="middle" x="84.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aotus_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_acoustic_module&#45;&gt;aotus_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge13" class="edge">
+<title>module~atl_eqn_acoustic_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M215.79,-348C190.32,-348 162.21,-348 138.64,-348"/>
+<polygon fill="#000000" stroke="#000000" points="138.5,-344.5 128.5,-348 138.5,-351.5 138.5,-344.5"/>
+</g>
+<!-- module~atl_materialfun_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_node15" class="node">
+<title>module~atl_materialfun_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsesGraph_node15"><a xlink:href="../module/atl_materialfun_module.html" xlink:title="atl_materialFun_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="155,-234 14,-234 14,-210 155,-210 155,-234"/>
+<text text-anchor="middle" x="84.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_materialFun_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_acoustic_module&#45;&gt;module~atl_materialfun_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge15" class="edge">
+<title>module~atl_eqn_acoustic_module&#45;&gt;module~atl_materialfun_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M266.84,-335.92C249.09,-325.42 223.9,-309.08 205,-291 185.73,-272.57 191.21,-257.77 169,-243 166.41,-241.28 163.68,-239.69 160.87,-238.24"/>
+<polygon fill="#000000" stroke="#000000" points="162.16,-234.98 151.61,-234.03 159.26,-241.36 162.16,-234.98"/>
+</g>
+<!-- tem_logging_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_node17" class="node">
+<title>tem_logging_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsesGraph_node17"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_logging_module.html" xlink:title="tem_logging_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="146.5,-444 22.5,-444 22.5,-420 146.5,-420 146.5,-444"/>
+<text text-anchor="middle" x="84.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_acoustic_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge16" class="edge">
+<title>module~atl_eqn_acoustic_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M223.49,-360.07C217.01,-362.51 210.72,-365.46 205,-369 184.1,-381.94 189.9,-398.06 169,-411 164.92,-413.52 160.56,-415.74 156.04,-417.7"/>
+<polygon fill="#000000" stroke="#000000" points="154.67,-414.48 146.6,-421.34 157.19,-421.01 154.67,-414.48"/>
+</g>
+<!-- tem_tools_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_node20" class="node">
+<title>tem_tools_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsesGraph_node20"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_tools_module.html" xlink:title="tem_tools_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="139.5,-318 29.5,-318 29.5,-294 139.5,-294 139.5,-318"/>
+<text text-anchor="middle" x="84.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tools_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_acoustic_module&#45;&gt;tem_tools_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge17" class="edge">
+<title>module~atl_eqn_acoustic_module&#45;&gt;tem_tools_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M230.33,-335.96C205.09,-330.74 175.45,-324.61 149.59,-319.26"/>
+<polygon fill="#000000" stroke="#000000" points="150.01,-315.77 139.5,-317.17 148.59,-322.63 150.01,-315.77"/>
+</g>
+<!-- module~atl_eqn_euler_module&#45;&gt;env_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge20" class="edge">
+<title>module~atl_eqn_euler_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M227.77,-402.15C219.5,-405.66 211.61,-410.18 205,-416 176.06,-441.52 198.64,-470.3 169,-495 159.03,-503.31 146.23,-508.39 133.65,-511.49"/>
+<polygon fill="#000000" stroke="#000000" points="132.75,-508.1 123.67,-513.57 134.18,-514.96 132.75,-508.1"/>
+</g>
+<!-- module~atl_eqn_euler_module&#45;&gt;aot_out_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge18" class="edge">
+<title>module~atl_eqn_euler_module&#45;&gt;aot_out_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M224.27,-390C198.44,-390 168.87,-390 143.68,-390"/>
+<polygon fill="#000000" stroke="#000000" points="143.54,-386.5 133.54,-390 143.54,-393.5 143.54,-386.5"/>
+</g>
+<!-- module~atl_eqn_euler_module&#45;&gt;aotus_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge19" class="edge">
+<title>module~atl_eqn_euler_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M230.33,-377.96C201.42,-371.98 166.75,-364.81 138.58,-358.98"/>
+<polygon fill="#000000" stroke="#000000" points="139.02,-355.5 128.51,-356.9 137.6,-362.35 139.02,-355.5"/>
+</g>
+<!-- tem_aux_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_node16" class="node">
+<title>tem_aux_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsesGraph_node16"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_aux_module.html" xlink:title="tem_aux_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="136.5,-108 32.5,-108 32.5,-84 136.5,-84 136.5,-108"/>
+<text text-anchor="middle" x="84.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_aux_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_euler_module&#45;&gt;tem_aux_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge21" class="edge">
+<title>module~atl_eqn_euler_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M224.26,-382.43C216.99,-379.24 210.3,-374.89 205,-369 129.29,-284.93 244.71,-201.07 169,-117 162.83,-110.15 154.78,-105.38 146.13,-102.09"/>
+<polygon fill="#000000" stroke="#000000" points="147.14,-98.74 136.55,-99.07 145.03,-105.41 147.14,-98.74"/>
+</g>
+<!-- module~atl_eqn_euler_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge22" class="edge">
+<title>module~atl_eqn_euler_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M230.33,-402.04C206.44,-406.98 178.61,-412.74 153.76,-417.88"/>
+<polygon fill="#000000" stroke="#000000" points="152.76,-414.51 143.68,-419.96 154.18,-421.36 152.76,-414.51"/>
+</g>
+<!-- module~atl_eqn_lineareuler_module&#45;&gt;env_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge26" class="edge">
+<title>module~atl_eqn_lineareuler_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M260.64,-282.14C242.05,-291.68 218.6,-306.75 205,-327 162.42,-390.39 222.03,-440.06 169,-495 159.65,-504.68 146.55,-510.15 133.49,-513.18"/>
+<polygon fill="#000000" stroke="#000000" points="132.76,-509.75 123.57,-515.04 134.05,-516.63 132.76,-509.75"/>
+</g>
+<!-- module~atl_eqn_lineareuler_module&#45;&gt;aot_out_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge23" class="edge">
+<title>module~atl_eqn_lineareuler_module&#45;&gt;aot_out_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M267.49,-282.19C249.91,-292.88 224.61,-309.43 205,-327 186.69,-343.41 189.9,-356.06 169,-369 161.25,-373.8 152.46,-377.5 143.56,-380.36"/>
+<polygon fill="#000000" stroke="#000000" points="142.55,-377.01 133.91,-383.14 144.48,-383.73 142.55,-377.01"/>
+</g>
+<!-- module~atl_eqn_lineareuler_module&#45;&gt;aot_table_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge24" class="edge">
+<title>module~atl_eqn_lineareuler_module&#45;&gt;aot_table_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M207.39,-267.6C187.92,-267.03 167.4,-266.42 148.87,-265.87"/>
+<polygon fill="#000000" stroke="#000000" points="148.89,-262.37 138.79,-265.58 148.68,-269.37 148.89,-262.37"/>
+</g>
+<!-- module~atl_eqn_lineareuler_module&#45;&gt;aotus_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge25" class="edge">
+<title>module~atl_eqn_lineareuler_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M266.6,-282.07C243.06,-294.67 204.25,-314.3 169,-327 159.4,-330.46 148.99,-333.56 138.87,-336.26"/>
+<polygon fill="#000000" stroke="#000000" points="137.72,-332.94 128.9,-338.82 139.46,-339.72 137.72,-332.94"/>
+</g>
+<!-- module~atl_eqn_lineareuler_module&#45;&gt;module~atl_materialfun_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge27" class="edge">
+<title>module~atl_eqn_lineareuler_module&#45;&gt;module~atl_materialfun_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M237.54,-257.95C209.91,-251.42 175.57,-243.3 146.52,-236.43"/>
+<polygon fill="#000000" stroke="#000000" points="147.02,-232.95 136.48,-234.06 145.41,-239.76 147.02,-232.95"/>
+</g>
+<!-- module~atl_eqn_lineareuler_module&#45;&gt;tem_aux_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge28" class="edge">
+<title>module~atl_eqn_lineareuler_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M282.63,-257.84C267.88,-228.66 226.34,-154.33 169,-117 162.14,-112.54 154.4,-109.02 146.46,-106.25"/>
+<polygon fill="#000000" stroke="#000000" points="147.32,-102.85 136.73,-103.23 145.25,-109.54 147.32,-102.85"/>
+</g>
+<!-- module~atl_eqn_lineareuler_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge29" class="edge">
+<title>module~atl_eqn_lineareuler_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M263.38,-282.18C245.13,-292.1 220.94,-307.62 205,-327 179.2,-358.37 199.9,-384.64 169,-411 165.05,-414.37 160.63,-417.21 155.95,-419.61"/>
+<polygon fill="#000000" stroke="#000000" points="154.42,-416.46 146.67,-423.68 157.24,-422.86 154.42,-416.46"/>
+</g>
+<!-- tem_temporal_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_node18" class="node">
+<title>tem_temporal_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsesGraph_node18"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_temporal_module.html" xlink:title="tem_temporal_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="151,-192 18,-192 18,-168 151,-168 151,-192"/>
+<text text-anchor="middle" x="84.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_temporal_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_lineareuler_module&#45;&gt;tem_temporal_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge30" class="edge">
+<title>module~atl_eqn_lineareuler_module&#45;&gt;tem_temporal_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M271.07,-257.85C248.48,-242.6 207.41,-216.57 169,-201 163.59,-198.81 157.88,-196.79 152.1,-194.96"/>
+<polygon fill="#000000" stroke="#000000" points="152.91,-191.55 142.33,-192.03 150.9,-198.25 152.91,-191.55"/>
+</g>
+<!-- tem_time_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_node19" class="node">
+<title>tem_time_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsesGraph_node19"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_time_module.html" xlink:title="tem_time_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="139,-150 30,-150 30,-126 139,-126 139,-150"/>
+<text text-anchor="middle" x="84.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_lineareuler_module&#45;&gt;tem_time_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge31" class="edge">
+<title>module~atl_eqn_lineareuler_module&#45;&gt;tem_time_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M279.08,-257.88C260.56,-234.93 217.03,-185.08 169,-159 162.68,-155.57 155.78,-152.68 148.75,-150.26"/>
+<polygon fill="#000000" stroke="#000000" points="149.71,-146.9 139.12,-147.24 147.62,-153.57 149.71,-146.9"/>
+</g>
+<!-- module~atl_eqn_lineareuler_module&#45;&gt;tem_tools_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge32" class="edge">
+<title>module~atl_eqn_lineareuler_module&#45;&gt;tem_tools_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M220.62,-282.04C197.63,-286.11 172.04,-290.65 149.37,-294.67"/>
+<polygon fill="#000000" stroke="#000000" points="148.75,-291.23 139.52,-296.42 149.98,-298.12 148.75,-291.23"/>
+</g>
+<!-- module~atl_lineareuler_physflux_module&#45;&gt;env_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge33" class="edge">
+<title>module~atl_lineareuler_physflux_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M479.91,-322.09C460.26,-332.97 431.83,-350.1 410,-369 391.42,-385.1 395.05,-398.3 374,-411 341.41,-430.66 326.62,-418.01 290.5,-430"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M288.5,-430C231.12,-449.04 225.32,-473.01 169,-495 157.69,-499.42 145.14,-503.15 133.29,-506.18"/>
+<polygon fill="#000000" stroke="#000000" points="132.42,-502.79 123.54,-508.56 134.08,-509.59 132.42,-502.79"/>
+</g>
+<!-- module~atl_lineareuler_physflux_module&#45;&gt;module~atl_eqn_lineareuler_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge34" class="edge">
+<title>module~atl_lineareuler_physflux_module&#45;&gt;module~atl_eqn_lineareuler_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M439.24,-298C415.71,-293.57 388.85,-288.51 364.49,-283.93"/>
+<polygon fill="#000000" stroke="#000000" points="365.05,-280.47 354.58,-282.06 363.76,-287.35 365.05,-280.47"/>
+</g>
+<!-- module~atl_physfluxfilnvrstk_module&#45;&gt;env_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge35" class="edge">
+<title>module~atl_physfluxfilnvrstk_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M279.99,-108C262.76,-132.94 223.79,-192.75 205,-249 169.98,-353.8 243.09,-413.02 169,-495 159.9,-505.07 146.74,-510.64 133.55,-513.64"/>
+<polygon fill="#000000" stroke="#000000" points="132.74,-510.23 123.53,-515.45 133.99,-517.11 132.74,-510.23"/>
+</g>
+<!-- module~atl_eqn_filnvrstk_var_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_node13" class="node">
+<title>module~atl_eqn_filnvrstk_var_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsesGraph_node13"><a xlink:href="../module/atl_eqn_filnvrstk_var_module.html" xlink:title="atl_eqn_filNvrStk_var_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="169,-24 0,-24 0,0 169,0 169,-24"/>
+<text text-anchor="middle" x="84.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_filNvrStk_var_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_physfluxfilnvrstk_module&#45;&gt;module~atl_eqn_filnvrstk_var_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge36" class="edge">
+<title>module~atl_physfluxfilnvrstk_module&#45;&gt;module~atl_eqn_filnvrstk_var_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M268.89,-83.78C245.76,-69.82 205.79,-47.09 169,-33 163.23,-30.79 157.14,-28.75 151,-26.87"/>
+<polygon fill="#000000" stroke="#000000" points="151.9,-23.49 141.32,-24.07 149.95,-30.21 151.9,-23.49"/>
+</g>
+<!-- module~atl_eqn_nvrstk_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_node14" class="node">
+<title>module~atl_eqn_nvrstk_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsesGraph_node14"><a xlink:href="../module/atl_eqn_nvrstk_module.html" xlink:title="atl_eqn_nvrstk_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="152,-66 17,-66 17,-42 152,-42 152,-66"/>
+<text text-anchor="middle" x="84.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_nvrstk_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_physfluxfilnvrstk_module&#45;&gt;module~atl_eqn_nvrstk_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge37" class="edge">
+<title>module~atl_physfluxfilnvrstk_module&#45;&gt;module~atl_eqn_nvrstk_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M230.33,-83.96C206.44,-79.02 178.61,-73.26 153.76,-68.12"/>
+<polygon fill="#000000" stroke="#000000" points="154.18,-64.64 143.68,-66.04 152.76,-71.49 154.18,-64.64"/>
+</g>
+<!-- module~atl_physfluxfilnvrstk_module&#45;&gt;tem_aux_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsesGraph_edge38" class="edge">
+<title>module~atl_physfluxfilnvrstk_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M204.76,-96C185.31,-96 164.97,-96 146.71,-96"/>
+<polygon fill="#000000" stroke="#000000" points="146.5,-92.5 136.5,-96 146.5,-99.5 146.5,-92.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panmoduleatl_laxfriedrichflux_moduleUsesGraph = svgPanZoom('#moduleatl_laxfriedrichflux_moduleUsesGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+          <div class="card">
+      <h3 class="card-header card-title bg-light">Used by</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_laxfriedrichflux_module~~UsedByGraph Pages: 1 -->
+<svg id="moduleatl_laxfriedrichflux_moduleUsedByGraph" width="641pt" height="99pt"
+ viewBox="0.00 0.00 641.00 98.93" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph" class="graph" transform="scale(0.59 0.59) rotate(0) translate(4 163)">
+<title>module~~atl_laxfriedrichflux_module~~UsedByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-163 1078,-163 1078,4 -4,4"/>
+<!-- module~atl_laxfriedrichflux_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_node1" class="node">
+<title>module~atl_laxfriedrichflux_module</title>
+<polygon fill="none" stroke="black" points="161,-66 0,-66 0,-42 161,-42 161,-66"/>
+<text text-anchor="middle" x="80.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_laxFriedrichFlux_module</text>
+</g>
+<!-- module~atl_eqn_euler_hlp_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_node2" class="node">
+<title>module~atl_eqn_euler_hlp_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsedByGraph_node2"><a xlink:href="../module/atl_eqn_euler_hlp_module.html" xlink:title="atl_eqn_euler_hlp_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="366,-128 214,-128 214,-104 366,-104 366,-128"/>
+<text text-anchor="middle" x="290" y="-113.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_euler_hlp_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_euler_hlp_module&#45;&gt;module~atl_laxfriedrichflux_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_edge1" class="edge">
+<title>module~atl_eqn_euler_hlp_module&#45;&gt;module~atl_laxfriedrichflux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M248.5,-103.9C215.08,-93.91 167.5,-79.7 131.67,-68.99"/>
+<polygon fill="#000000" stroke="#000000" points="132.48,-65.58 121.9,-66.07 130.48,-72.29 132.48,-65.58"/>
+</g>
+<!-- module~atl_eqn_filnvrstk_hlp_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_node3" class="node">
+<title>module~atl_eqn_filnvrstk_hlp_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsedByGraph_node3"><a xlink:href="../module/atl_eqn_filnvrstk_hlp_module.html" xlink:title="atl_eqn_filnvrStk_hlp_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="374,-66 206,-66 206,-42 374,-42 374,-66"/>
+<text text-anchor="middle" x="290" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_filnvrStk_hlp_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_filnvrstk_hlp_module&#45;&gt;module~atl_laxfriedrichflux_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_edge2" class="edge">
+<title>module~atl_eqn_filnvrstk_hlp_module&#45;&gt;module~atl_laxfriedrichflux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M205.8,-54C194.37,-54 182.6,-54 171.07,-54"/>
+<polygon fill="#000000" stroke="#000000" points="171.01,-50.5 161.01,-54 171.01,-57.5 171.01,-50.5"/>
+</g>
+<!-- module~atl_eqn_lineareuler_hlp_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_node4" class="node">
+<title>module~atl_eqn_lineareuler_hlp_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsedByGraph_node4"><a xlink:href="../module/atl_eqn_lineareuler_hlp_module.html" xlink:title="atl_eqn_LinearEuler_hlp_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="383,-24 197,-24 197,0 383,0 383,-24"/>
+<text text-anchor="middle" x="290" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_LinearEuler_hlp_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_lineareuler_hlp_module&#45;&gt;module~atl_laxfriedrichflux_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_edge3" class="edge">
+<title>module~atl_eqn_lineareuler_hlp_module&#45;&gt;module~atl_laxfriedrichflux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M229.54,-24.04C205.01,-29 176.42,-34.79 150.94,-39.95"/>
+<polygon fill="#000000" stroke="#000000" points="150.08,-36.55 140.97,-41.96 151.47,-43.41 150.08,-36.55"/>
+</g>
+<!-- module~atl_eqn_nvrstk_hlp_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_node5" class="node">
+<title>module~atl_eqn_nvrstk_hlp_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsedByGraph_node5"><a xlink:href="../module/atl_eqn_nvrstk_hlp_module.html" xlink:title="atl_eqn_nvrstk_hlp_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="576,-138 419,-138 419,-114 576,-114 576,-138"/>
+<text text-anchor="middle" x="497.5" y="-123.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_nvrstk_hlp_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_eqn_nvrstk_hlp_module&#45;&gt;module~atl_eqn_euler_hlp_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_edge4" class="edge">
+<title>module~atl_eqn_nvrstk_hlp_module&#45;&gt;module~atl_eqn_euler_hlp_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M418.81,-122.22C404.91,-121.54 390.35,-120.83 376.25,-120.15"/>
+<polygon fill="#000000" stroke="#000000" points="376.24,-116.64 366.08,-119.65 375.9,-123.64 376.24,-116.64"/>
+</g>
+<!-- module~atl_equation_init_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_node6" class="node">
+<title>module~atl_equation_init_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsedByGraph_node6"><a xlink:href="../module/atl_equation_init_module.html" xlink:title="atl_equation_init_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="758,-138 612,-138 612,-114 758,-114 758,-138"/>
+<text text-anchor="middle" x="685" y="-123.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_equation_init_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_equation_init_module&#45;&gt;module~atl_eqn_euler_hlp_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_edge5" class="edge">
+<title>module~atl_equation_init_module&#45;&gt;module~atl_eqn_euler_hlp_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M632.93,-138.02C615.03,-141.67 594.73,-145.2 576,-147 506.54,-153.69 488.29,-155.27 419,-147 392.48,-143.83 363.51,-137.1 339.85,-130.72"/>
+<polygon fill="#000000" stroke="#000000" points="340.63,-127.3 330.06,-128.02 338.77,-134.05 340.63,-127.3"/>
+</g>
+<!-- module~atl_equation_init_module&#45;&gt;module~atl_eqn_filnvrstk_hlp_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_edge7" class="edge">
+<title>module~atl_equation_init_module&#45;&gt;module~atl_eqn_filnvrstk_hlp_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M496.5,-44C453.34,-33.77 403.69,-35.82 364.01,-40.64"/>
+<polygon fill="#000000" stroke="#000000" points="363.35,-37.2 353.88,-41.96 364.25,-44.14 363.35,-37.2"/>
+</g>
+<!-- module~atl_equation_init_module&#45;&gt;module~atl_eqn_lineareuler_hlp_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_edge8" class="edge">
+<title>module~atl_equation_init_module&#45;&gt;module~atl_eqn_lineareuler_hlp_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M666.84,-113.88C646.18,-99.8 610.01,-76.75 576,-63 543.12,-49.71 533.01,-52.18 498.5,-44"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M496.5,-44C463.23,-36.12 426.45,-29.69 393.31,-24.71"/>
+<polygon fill="#000000" stroke="#000000" points="393.56,-21.21 383.15,-23.22 392.54,-28.14 393.56,-21.21"/>
+</g>
+<!-- module~atl_equation_init_module&#45;&gt;module~atl_eqn_nvrstk_hlp_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_edge9" class="edge">
+<title>module~atl_equation_init_module&#45;&gt;module~atl_eqn_nvrstk_hlp_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M611.75,-126C603.34,-126 594.7,-126 586.11,-126"/>
+<polygon fill="#000000" stroke="#000000" points="586.08,-122.5 576.08,-126 586.07,-129.5 586.08,-122.5"/>
+</g>
+<!-- proc~implicit_update -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_node7" class="node">
+<title>proc~implicit_update</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsedByGraph_node7"><a xlink:href="../proc/implicit_update.html" xlink:title="implicit_update">
+<polygon fill="#d9534f" stroke="#d9534f" points="544.5,-96 450.5,-96 450.5,-72 544.5,-72 544.5,-96"/>
+<text text-anchor="middle" x="497.5" y="-81.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">implicit_update</text>
+</a>
+</g>
+</g>
+<!-- proc~implicit_update&#45;&gt;module~atl_eqn_euler_hlp_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_edge6" class="edge">
+<title>proc~implicit_update&#45;&gt;module~atl_eqn_euler_hlp_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M450.38,-91.18C428.44,-94.6 401.5,-98.79 376.04,-102.76"/>
+<polygon fill="#000000" stroke="#000000" points="375.34,-99.32 366,-104.32 376.42,-106.24 375.34,-99.32"/>
+</g>
+<!-- module~atl_initialize_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_node8" class="node">
+<title>module~atl_initialize_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsedByGraph_node8"><a xlink:href="../module/atl_initialize_module.html" xlink:title="atl_initialize_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="915,-138 794,-138 794,-114 915,-114 915,-138"/>
+<text text-anchor="middle" x="854.5" y="-123.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_initialize_module&#45;&gt;module~atl_equation_init_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_edge10" class="edge">
+<title>module~atl_initialize_module&#45;&gt;module~atl_equation_init_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M793.97,-126C785.66,-126 777,-126 768.36,-126"/>
+<polygon fill="#000000" stroke="#000000" points="768.24,-122.5 758.24,-126 768.24,-129.5 768.24,-122.5"/>
+</g>
+<!-- module~atl_program_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_node9" class="node">
+<title>module~atl_program_module</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsedByGraph_node9"><a xlink:href="../module/atl_program_module.html" xlink:title="atl_program_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="1074,-159 951,-159 951,-135 1074,-135 1074,-159"/>
+<text text-anchor="middle" x="1012.5" y="-144.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_program_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_program_module&#45;&gt;module~atl_initialize_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_edge11" class="edge">
+<title>module~atl_program_module&#45;&gt;module~atl_initialize_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M950.74,-138.82C942.32,-137.69 933.61,-136.51 925.04,-135.36"/>
+<polygon fill="#000000" stroke="#000000" points="925.45,-131.88 915.07,-134.02 924.51,-138.82 925.45,-131.88"/>
+</g>
+<!-- program~atl_harvesting -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_node10" class="node">
+<title>program~atl_harvesting</title>
+<g id="a_module~~atl_laxfriedrichflux_module~~UsedByGraph_node10"><a xlink:href="../program/atl_harvesting.html" xlink:title="atl_harvesting">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1056.5,-117 968.5,-117 968.5,-93 1056.5,-93 1056.5,-117"/>
+<text text-anchor="middle" x="1012.5" y="-102.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_harvesting</text>
+</a>
+</g>
+</g>
+<!-- program~atl_harvesting&#45;&gt;module~atl_initialize_module -->
+<g id="module~~atl_laxfriedrichflux_module~~UsedByGraph_edge12" class="edge">
+<title>program~atl_harvesting&#45;&gt;module~atl_initialize_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M968.46,-110.79C955.05,-112.6 939.9,-114.64 925.16,-116.62"/>
+<polygon fill="#000000" stroke="#000000" points="924.48,-113.18 915.04,-117.99 925.42,-120.12 924.48,-113.18"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panmoduleatl_laxfriedrichflux_moduleUsedByGraph = svgPanZoom('#moduleatl_laxfriedrichflux_moduleUsedByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      <br>
+
+
+
+
+
+
+
+
+        <section>
+          <h2>Subroutines</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_laxfriedeuler"></span> <h3>public  subroutine <a href='../proc/atl_laxfriedeuler.html'>atl_laxFriedEuler</a>(euler, state_left, state_right, material_left, material_right, nPoints, flux)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Lax-Friedrich flux (in fully conservative variables) for the Euler equation</p><a href="../proc/atl_laxfriedeuler.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-euler~29"></span>
+              class(<a href='../type/atl_euler_type.html'>atl_euler_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>euler</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state_left~13"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state_left</strong>(:,:)</td>
+            <td>
+<p>The state on the face from its left limit (in conservative variables).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state_right~13"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state_right</strong>(:,:)</td>
+            <td>
+<p>The state on the face from its right limit (in conservative variables).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_left~20"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_left</strong>(:,:)</td>
+            <td>
+<p>The left value of the characteristic function (stemming from
+penalization)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_right~20"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_right</strong>(:,:)</td>
+            <td>
+<p>The right value of the characteristic function (stemming from
+penalization)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-npoints~26"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nPoints</strong></td>
+            <td>
+<p>Number of points to evaluate the flux at.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-flux~37"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>flux</strong>(:,:)</td>
+            <td>
+<p>Resulting flux for the left element (in conservative variables).</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_laxfriedlineareuler"></span> <h3>public  subroutine <a href='../proc/atl_laxfriedlineareuler.html'>atl_laxFriedLinearEuler</a>(nSides, nFaceDofs, faceRep, faceFlux, leftPos, rightPos, var, LinearEuler, idir)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Lax-Friedrich flux (in fully conservative variables) for the</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nsides~19"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nSides</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nfacedofs~32"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nFaceDofs</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facerep~23"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceRep</strong>(:,:,:,:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-faceflux~22"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceFlux</strong>(:,:,:,:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-leftpos~19"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>leftPos</strong>(nSides)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rightpos~19"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rightPos</strong>(nsides)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-var~16"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>var</strong>(:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-lineareuler~12"></span>
+              type(<a href='../type/atl_lineareuler_type.html'>atl_LinearEuler_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>LinearEuler</strong></td>
+            <td>
+<p>Datatype for acoustic equation include all background data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-idir~12"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>idir</strong></td>
+            <td>
+<p>Direction of the flow, used for background velocity</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_laxfriedacoustic"></span> <h3>public  subroutine <a href='../proc/atl_laxfriedacoustic.html'>atl_laxFriedAcoustic</a>(left, right, acoustic, flux, idir)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Lax-Friedrich flux (in fully conservative variables) for the Acoustic equation</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-left~61"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>left</strong>(4)</td>
+            <td>
+<p>The state on the face from its left limit (in conservative variables).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-right~61"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>right</strong>(4)</td>
+            <td>
+<p>The state on the face from its right limit (in conservative variables).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-acoustic~6"></span>
+              type(<a href='../type/atl_acoustic_type.html'>atl_acoustic_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>acoustic</strong></td>
+            <td>
+<p>Datatype for acoustic equation include all background data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-flux~39"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>flux</strong>(4)</td>
+            <td>
+<p>Resulting flux for the left element (in conservative variables).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-idir~13"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>idir</strong></td>
+            <td>
+<p>Direction of the flow, used for background velocity</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_laxfriedrans"></span> <h3>public  subroutine <a href='../proc/atl_laxfriedrans.html'>atl_laxFriedRans</a>(euler, state_left, state_right, material_left, material_right, nPoints, flux)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Lax-Friedrich flux (in fully conservative variables) for the Euler equation</p><a href="../proc/atl_laxfriedrans.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-euler~30"></span>
+              class(<a href='../type/atl_euler_type.html'>atl_euler_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>euler</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state_left~14"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state_left</strong>(:,:)</td>
+            <td>
+<p>The state on the face from its left limit (in conservative variables).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state_right~14"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state_right</strong>(:,:)</td>
+            <td>
+<p>The state on the face from its right limit (in conservative variables).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_left~21"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_left</strong>(:,:)</td>
+            <td>
+<p>The left value of the characteristic function (stemming from
+penalization)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_right~21"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_right</strong>(:,:)</td>
+            <td>
+<p>The right value of the characteristic function (stemming from
+penalization)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-npoints~27"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nPoints</strong></td>
+            <td>
+<p>Number of points to evaluate the flux at.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-flux~40"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>flux</strong>(:,:)</td>
+            <td>
+<p>Resulting flux for the left element (in conservative variables).</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_laxfriedrans_2d"></span> <h3>public  subroutine <a href='../proc/atl_laxfriedrans_2d.html'>atl_laxFriedRans_2D</a>(euler, state_left, state_right, material_left, material_right, nPoints, flux)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-euler~31"></span>
+              class(<a href='../type/atl_euler_type.html'>atl_euler_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>euler</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state_left~15"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state_left</strong>(:,:)</td>
+            <td>
+<p>The state on the face from its left limit (in conservative variables).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state_right~15"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state_right</strong>(:,:)</td>
+            <td>
+<p>The state on the face from its right limit (in conservative variables).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_left~22"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_left</strong>(:,:)</td>
+            <td>
+<p>The left value of the characteristic function (stemming from
+penalization)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_right~22"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_right</strong>(:,:)</td>
+            <td>
+<p>The right value of the characteristic function (stemming from
+penalization)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-npoints~28"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nPoints</strong></td>
+            <td>
+<p>Number of points to evaluate the flux at.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-flux~41"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>flux</strong>(:,:)</td>
+            <td>
+<p>Resulting flux for the left element (in conservative variables).</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

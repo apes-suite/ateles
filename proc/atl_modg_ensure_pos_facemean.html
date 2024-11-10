@@ -1,0 +1,640 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_modg_ensure_pos_facemean &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_modg_ensure_pos_facemean
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.0% of total for procedures.">18 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_modg_kernel_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_modg_kernel_module.f90.html'>atl_modg_kernel_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/atl_modg_kernel_module.html'>atl_modg_kernel_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_modg_ensure_pos_facemean</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine atl_modg_ensure_pos_facemean(nElems_fluid, volState, faceRep, nScalars, ensure_positivity)  
+</h2>
+    
+
+    <p>Lift the mean on the face to a positive value if necessary.</p>
+<p>In some equations, some variables may not be allowed to be negative,
+for example the density and energy in flow simulations.
+With this routine we enforce this limitation for the projected mean
+state on the element surfaces.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nelems_fluid~22"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nElems_fluid</strong></td>
+            <td>
+                <p>Number of fluid elements</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-volstate~9"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>volState</strong>(:,:,:)</td>
+            <td>
+                <p>Volumetric modal states for each element</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facerep~14"></span>
+              type(<a href='../type/atl_facerep_type.html'>atl_faceRep_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceRep</strong>(:)</td>
+            <td>
+                <p>Modal representation on the face that might need limiting.</p>
+<p>All means below 0 of variables where positivity is to be ensured will
+be increased to a small value above 0.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nscalars~59"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nScalars</strong></td>
+            <td>
+                <p>Number of variables</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ensure_positivity"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ensure_positivity</strong>(:)</td>
+            <td>
+                <p>Indication for each variable, whether positivity is to be ensured
+or not.</p>
+<p>Only variables where this is set to .true. will be modified by this
+routine.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~atl_modg_ensure_pos_facemean~~CalledByGraph Pages: 1 -->
+<svg id="procatl_modg_ensure_pos_facemeanCalledByGraph" width="641pt" height="236pt"
+ viewBox="0.00 0.00 641.00 236.46" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph" class="graph" transform="scale(0.71 0.71) rotate(0) translate(4 328)">
+<title>proc~~atl_modg_ensure_pos_facemean~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-328 896,-328 896,4 -4,4"/>
+<!-- proc~atl_modg_ensure_pos_facemean -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node1" class="node">
+<title>proc~atl_modg_ensure_pos_facemean</title>
+<polygon fill="none" stroke="black" points="892,-174 705,-174 705,-150 892,-150 892,-174"/>
+<text text-anchor="middle" x="798.5" y="-159.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_modg_ensure_pos_facemean</text>
+</g>
+<!-- proc~preprocess_rhs_cubes -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node2" class="node">
+<title>proc~preprocess_rhs_cubes</title>
+<g id="a_proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node2"><a xlink:href="../proc/preprocess_rhs_cubes.html" xlink:title="preprocess_rhs_cubes">
+<polygon fill="#d9534f" stroke="#d9534f" points="669,-174 540,-174 540,-150 669,-150 669,-174"/>
+<text text-anchor="middle" x="604.5" y="-159.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">preprocess_rhs_cubes</text>
+</a>
+</g>
+</g>
+<!-- proc~preprocess_rhs_cubes&#45;&gt;proc~atl_modg_ensure_pos_facemean -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_edge1" class="edge">
+<title>proc~preprocess_rhs_cubes&#45;&gt;proc~atl_modg_ensure_pos_facemean</title>
+<path fill="none" stroke="#000000" d="M669.17,-162C677.4,-162 686,-162 694.67,-162"/>
+<polygon fill="#000000" stroke="#000000" points="694.87,-165.5 704.87,-162 694.87,-158.5 694.87,-165.5"/>
+</g>
+<!-- interface~atl_preprocess_rhs -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node3" class="node">
+<title>interface~atl_preprocess_rhs</title>
+<g id="a_proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node3"><a xlink:href="../interface/atl_preprocess_rhs.html" xlink:title="atl_preprocess_rhs">
+<polygon fill="#a7506f" stroke="#a7506f" points="504,-174 393,-174 393,-150 504,-150 504,-174"/>
+<text text-anchor="middle" x="448.5" y="-159.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_preprocess_rhs</text>
+</a>
+</g>
+</g>
+<!-- interface~atl_preprocess_rhs&#45;&gt;proc~preprocess_rhs_cubes -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_edge2" class="edge">
+<title>interface~atl_preprocess_rhs&#45;&gt;proc~preprocess_rhs_cubes</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M504.23,-162C512.49,-162 521.13,-162 529.72,-162"/>
+<polygon fill="#000000" stroke="#000000" points="529.75,-165.5 539.75,-162 529.75,-158.5 529.75,-165.5"/>
+</g>
+<!-- proc~global_corrector_substep -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node4" class="node">
+<title>proc~global_corrector_substep</title>
+<g id="a_proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node4"><a xlink:href="../proc/global_corrector_substep.html" xlink:title="global_corrector_substep">
+<polygon fill="#d9534f" stroke="#d9534f" points="357,-324 211,-324 211,-300 357,-300 357,-324"/>
+<text text-anchor="middle" x="284" y="-309.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">global_corrector_substep</text>
+</a>
+</g>
+</g>
+<!-- proc~global_corrector_substep&#45;&gt;interface~atl_preprocess_rhs -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_edge3" class="edge">
+<title>proc~global_corrector_substep&#45;&gt;interface~atl_preprocess_rhs</title>
+<path fill="none" stroke="#000000" d="M340.66,-299.99C346.45,-297.53 352.02,-294.56 357,-291 396.4,-262.79 424.6,-211.87 438.24,-183.16"/>
+<polygon fill="#000000" stroke="#000000" points="441.45,-184.56 442.45,-174.01 435.09,-181.63 441.45,-184.56"/>
+</g>
+<!-- proc~imexrk_substep -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node5" class="node">
+<title>proc~imexrk_substep</title>
+<g id="a_proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node5"><a xlink:href="../proc/imexrk_substep.html" xlink:title="imexrk_substep">
+<polygon fill="#d9534f" stroke="#d9534f" points="331.5,-264 236.5,-264 236.5,-240 331.5,-240 331.5,-264"/>
+<text text-anchor="middle" x="284" y="-249.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">imexrk_substep</text>
+</a>
+</g>
+</g>
+<!-- proc~imexrk_substep&#45;&gt;interface~atl_preprocess_rhs -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_edge4" class="edge">
+<title>proc~imexrk_substep&#45;&gt;interface~atl_preprocess_rhs</title>
+<path fill="none" stroke="#000000" d="M331.67,-241.12C340.31,-238.34 349.1,-234.99 357,-231 383.22,-217.76 409.51,-196.63 426.94,-181.23"/>
+<polygon fill="#000000" stroke="#000000" points="429.67,-183.49 434.75,-174.2 424.98,-178.29 429.67,-183.49"/>
+</g>
+<!-- proc~imexrk_substep&#45;&gt;proc~imexrk_substep -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_edge10" class="edge">
+<title>proc~imexrk_substep&#45;&gt;proc~imexrk_substep</title>
+<path fill="none" stroke="#000000" d="M256.88,-264.01C247.41,-272.97 256.45,-282 284,-282 301.22,-282 311.2,-278.47 313.96,-273.64"/>
+<polygon fill="#000000" stroke="#000000" points="317.31,-272.61 311.12,-264.01 310.59,-274.6 317.31,-272.61"/>
+</g>
+<!-- proc~mesh_timestep_euler -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node6" class="node">
+<title>proc~mesh_timestep_euler</title>
+<g id="a_proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node6"><a xlink:href="../proc/mesh_timestep_euler.html" xlink:title="mesh_timestep_euler">
+<polygon fill="#d9534f" stroke="#d9534f" points="347.5,-204 220.5,-204 220.5,-180 347.5,-180 347.5,-204"/>
+<text text-anchor="middle" x="284" y="-189.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mesh_timestep_euler</text>
+</a>
+</g>
+</g>
+<!-- proc~mesh_timestep_euler&#45;&gt;interface~atl_preprocess_rhs -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_edge5" class="edge">
+<title>proc~mesh_timestep_euler&#45;&gt;interface~atl_preprocess_rhs</title>
+<path fill="none" stroke="#000000" d="M347.83,-180.4C359.29,-178.28 371.28,-176.07 382.8,-173.95"/>
+<polygon fill="#000000" stroke="#000000" points="383.58,-177.36 392.78,-172.1 382.31,-170.48 383.58,-177.36"/>
+</g>
+<!-- proc~mesh_timestep_euler&#45;&gt;proc~mesh_timestep_euler -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_edge12" class="edge">
+<title>proc~mesh_timestep_euler&#45;&gt;proc~mesh_timestep_euler</title>
+<path fill="none" stroke="#000000" d="M256.88,-204.01C247.41,-212.97 256.45,-222 284,-222 301.22,-222 311.2,-218.47 313.96,-213.64"/>
+<polygon fill="#000000" stroke="#000000" points="317.31,-212.61 311.12,-204.01 310.59,-214.6 317.31,-212.61"/>
+</g>
+<!-- proc~rk2_substep -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node7" class="node">
+<title>proc~rk2_substep</title>
+<g id="a_proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node7"><a xlink:href="../proc/rk2_substep.html" xlink:title="rk2_substep">
+<polygon fill="#d9534f" stroke="#d9534f" points="322,-144 246,-144 246,-120 322,-120 322,-144"/>
+<text text-anchor="middle" x="284" y="-129.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">rk2_substep</text>
+</a>
+</g>
+</g>
+<!-- proc~rk2_substep&#45;&gt;interface~atl_preprocess_rhs -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_edge6" class="edge">
+<title>proc~rk2_substep&#45;&gt;interface~atl_preprocess_rhs</title>
+<path fill="none" stroke="#000000" d="M322.28,-138.88C340.24,-142.2 362.3,-146.27 382.87,-150.07"/>
+<polygon fill="#000000" stroke="#000000" points="382.35,-153.53 392.82,-151.91 383.63,-146.65 382.35,-153.53"/>
+</g>
+<!-- proc~rk2_substep&#45;&gt;proc~rk2_substep -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_edge14" class="edge">
+<title>proc~rk2_substep&#45;&gt;proc~rk2_substep</title>
+<path fill="none" stroke="#000000" d="M256.88,-144.01C247.41,-152.97 256.45,-162 284,-162 301.22,-162 311.2,-158.47 313.96,-153.64"/>
+<polygon fill="#000000" stroke="#000000" points="317.31,-152.61 311.12,-144.01 310.59,-154.6 317.31,-152.61"/>
+</g>
+<!-- proc~rk4_substep -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node8" class="node">
+<title>proc~rk4_substep</title>
+<g id="a_proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node8"><a xlink:href="../proc/rk4_substep.html" xlink:title="rk4_substep">
+<polygon fill="#d9534f" stroke="#d9534f" points="322,-84 246,-84 246,-60 322,-60 322,-84"/>
+<text text-anchor="middle" x="284" y="-69.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">rk4_substep</text>
+</a>
+</g>
+</g>
+<!-- proc~rk4_substep&#45;&gt;interface~atl_preprocess_rhs -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_edge7" class="edge">
+<title>proc~rk4_substep&#45;&gt;interface~atl_preprocess_rhs</title>
+<path fill="none" stroke="#000000" d="M307.43,-84.03C321.66,-91.69 340.45,-101.86 357,-111 377.3,-122.22 400.04,-135.03 417.65,-145.01"/>
+<polygon fill="#000000" stroke="#000000" points="415.92,-148.06 426.34,-149.95 419.37,-141.97 415.92,-148.06"/>
+</g>
+<!-- proc~rk4_substep&#45;&gt;proc~rk4_substep -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_edge16" class="edge">
+<title>proc~rk4_substep&#45;&gt;proc~rk4_substep</title>
+<path fill="none" stroke="#000000" d="M256.88,-84.01C247.41,-92.97 256.45,-102 284,-102 301.22,-102 311.2,-98.47 313.96,-93.64"/>
+<polygon fill="#000000" stroke="#000000" points="317.31,-92.61 311.12,-84.01 310.59,-94.6 317.31,-92.61"/>
+</g>
+<!-- proc~rktaylor_substep -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node9" class="node">
+<title>proc~rktaylor_substep</title>
+<g id="a_proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node9"><a xlink:href="../proc/rktaylor_substep.html" xlink:title="rktaylor_substep">
+<polygon fill="#d9534f" stroke="#d9534f" points="334,-24 234,-24 234,0 334,0 334,-24"/>
+<text text-anchor="middle" x="284" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">rktaylor_substep</text>
+</a>
+</g>
+</g>
+<!-- proc~rktaylor_substep&#45;&gt;interface~atl_preprocess_rhs -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_edge8" class="edge">
+<title>proc~rktaylor_substep&#45;&gt;interface~atl_preprocess_rhs</title>
+<path fill="none" stroke="#000000" d="M313.25,-24.11C327.22,-30.87 343.86,-40.12 357,-51 389.26,-77.72 418.26,-117.34 434.31,-141.32"/>
+<polygon fill="#000000" stroke="#000000" points="431.39,-143.25 439.81,-149.68 437.24,-139.4 431.39,-143.25"/>
+</g>
+<!-- proc~rktaylor_substep&#45;&gt;proc~rktaylor_substep -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_edge18" class="edge">
+<title>proc~rktaylor_substep&#45;&gt;proc~rktaylor_substep</title>
+<path fill="none" stroke="#000000" d="M256.88,-24.01C247.41,-32.97 256.45,-42 284,-42 301.22,-42 311.2,-38.47 313.96,-33.64"/>
+<polygon fill="#000000" stroke="#000000" points="317.31,-32.61 311.12,-24.01 310.59,-34.6 317.31,-32.61"/>
+</g>
+<!-- proc~mesh_timestep_imexrk -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node10" class="node">
+<title>proc~mesh_timestep_imexrk</title>
+<g id="a_proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node10"><a xlink:href="../proc/mesh_timestep_imexrk.html" xlink:title="mesh_timestep_imexrk">
+<polygon fill="#d9534f" stroke="#d9534f" points="155,-264 20,-264 20,-240 155,-240 155,-264"/>
+<text text-anchor="middle" x="87.5" y="-249.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mesh_timestep_imexrk</text>
+</a>
+</g>
+</g>
+<!-- proc~mesh_timestep_imexrk&#45;&gt;proc~imexrk_substep -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_edge11" class="edge">
+<title>proc~mesh_timestep_imexrk&#45;&gt;proc~imexrk_substep</title>
+<path fill="none" stroke="#000000" d="M155.16,-252C178.23,-252 203.86,-252 226.07,-252"/>
+<polygon fill="#000000" stroke="#000000" points="226.35,-255.5 236.35,-252 226.35,-248.5 226.35,-255.5"/>
+</g>
+<!-- proc~mesh_timestep_predcor_cerk4 -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node11" class="node">
+<title>proc~mesh_timestep_predcor_cerk4</title>
+<g id="a_proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node11"><a xlink:href="../proc/mesh_timestep_predcor_cerk4.html" xlink:title="mesh_timestep_predcor_cerk4">
+<polygon fill="#d9534f" stroke="#d9534f" points="175,-324 0,-324 0,-300 175,-300 175,-324"/>
+<text text-anchor="middle" x="87.5" y="-309.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mesh_timestep_predcor_cerk4</text>
+</a>
+</g>
+</g>
+<!-- proc~mesh_timestep_predcor_cerk4&#45;&gt;proc~global_corrector_substep -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_edge9" class="edge">
+<title>proc~mesh_timestep_predcor_cerk4&#45;&gt;proc~global_corrector_substep</title>
+<path fill="none" stroke="#000000" d="M175.23,-312C183.72,-312 192.33,-312 200.78,-312"/>
+<polygon fill="#000000" stroke="#000000" points="201,-315.5 211,-312 201,-308.5 201,-315.5"/>
+</g>
+<!-- proc~mesh_timestep_rk4 -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node12" class="node">
+<title>proc~mesh_timestep_rk4</title>
+<g id="a_proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node12"><a xlink:href="../proc/mesh_timestep_rk4.html" xlink:title="mesh_timestep_rk4">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-84 29.5,-84 29.5,-60 145.5,-60 145.5,-84"/>
+<text text-anchor="middle" x="87.5" y="-69.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mesh_timestep_rk4</text>
+</a>
+</g>
+</g>
+<!-- proc~mesh_timestep_rk4&#45;&gt;proc~rk4_substep -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_edge15" class="edge">
+<title>proc~mesh_timestep_rk4&#45;&gt;proc~rk4_substep</title>
+<path fill="none" stroke="#000000" d="M145.54,-72C174.27,-72 208.67,-72 235.88,-72"/>
+<polygon fill="#000000" stroke="#000000" points="235.92,-75.5 245.92,-72 235.92,-68.5 235.92,-75.5"/>
+</g>
+<!-- proc~mesh_timestep_rktaylor -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node13" class="node">
+<title>proc~mesh_timestep_rktaylor</title>
+<g id="a_proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node13"><a xlink:href="../proc/mesh_timestep_rktaylor.html" xlink:title="mesh_timestep_rktaylor">
+<polygon fill="#d9534f" stroke="#d9534f" points="157.5,-24 17.5,-24 17.5,0 157.5,0 157.5,-24"/>
+<text text-anchor="middle" x="87.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mesh_timestep_rktaylor</text>
+</a>
+</g>
+</g>
+<!-- proc~mesh_timestep_rktaylor&#45;&gt;proc~rktaylor_substep -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_edge17" class="edge">
+<title>proc~mesh_timestep_rktaylor&#45;&gt;proc~rktaylor_substep</title>
+<path fill="none" stroke="#000000" d="M157.62,-12C179.3,-12 203.01,-12 223.93,-12"/>
+<polygon fill="#000000" stroke="#000000" points="223.95,-15.5 233.95,-12 223.95,-8.5 223.95,-15.5"/>
+</g>
+<!-- proc~mesh_timestep_ssprk2 -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node14" class="node">
+<title>proc~mesh_timestep_ssprk2</title>
+<g id="a_proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_node14"><a xlink:href="../proc/mesh_timestep_ssprk2.html" xlink:title="mesh_timestep_ssprk2">
+<polygon fill="#d9534f" stroke="#d9534f" points="154,-144 21,-144 21,-120 154,-120 154,-144"/>
+<text text-anchor="middle" x="87.5" y="-129.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mesh_timestep_ssprk2</text>
+</a>
+</g>
+</g>
+<!-- proc~mesh_timestep_ssprk2&#45;&gt;proc~rk2_substep -->
+<g id="proc~~atl_modg_ensure_pos_facemean~~CalledByGraph_edge13" class="edge">
+<title>proc~mesh_timestep_ssprk2&#45;&gt;proc~rk2_substep</title>
+<path fill="none" stroke="#000000" d="M154.08,-132C180.81,-132 211.12,-132 235.64,-132"/>
+<polygon fill="#000000" stroke="#000000" points="235.76,-135.5 245.76,-132 235.76,-128.5 235.76,-135.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocatl_modg_ensure_pos_facemeanCalledByGraph = svgPanZoom('#procatl_modg_ensure_pos_facemeanCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

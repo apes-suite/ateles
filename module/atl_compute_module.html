@@ -1,0 +1,3811 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_compute_module &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_compute_module
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+            <li class="list-inline-item" id="meta-author"><i class="fa fa-pencil"></i> Jens Zudrop</li>
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 2.3% of total for modules and submodules.">1013 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_compute_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_compute_module.f90.html'>atl_compute_module.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_compute_module</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#inters-0"
+         aria-expanded="false" aria-controls="inters-0">
+         <h4 class="card-header bg-primary text-white">Interfaces</h4>
+      </a>
+      <div id="inters-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_compute_module.html#interface-atl_preprocess_rhs">atl_preprocess_rhs</a>
+            <a class="list-group-item" href="../module/atl_compute_module.html#interface-atl_postprocess_rhs">atl_postprocess_rhs</a>
+            <a class="list-group-item" href="../module/atl_compute_module.html#interface-atl_compute_rhs">atl_compute_rhs</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_compute_module.html#proc-atl_initialize_state_der">atl_initialize_state_der</a>
+            <a class="list-group-item" href="../module/atl_compute_module.html#proc-preprocess_rhs_cubes">preprocess_rhs_cubes</a>
+            <a class="list-group-item" href="../module/atl_compute_module.html#proc-postprocess_rhs_cubes">postprocess_rhs_cubes</a>
+            <a class="list-group-item" href="../module/atl_compute_module.html#proc-compute_rhs_cubes">compute_rhs_cubes</a>
+            <a class="list-group-item" href="../module/atl_compute_module.html#proc-compute_rhs_cubes_modg">compute_rhs_cubes_modg</a>
+            <a class="list-group-item" href="../module/atl_compute_module.html#proc-modg_compute_project_physflux">modg_compute_project_physFlux</a>
+            <a class="list-group-item" href="../module/atl_compute_module.html#proc-compute_rhs_cubes_modg_2d">compute_rhs_cubes_modg_2d</a>
+            <a class="list-group-item" href="../module/atl_compute_module.html#proc-modg_2d_compute_project_physflux">modg_2d_compute_project_physFlux</a>
+            <a class="list-group-item" href="../module/atl_compute_module.html#proc-compute_rhs_cubes_modg_1d">compute_rhs_cubes_modg_1d</a>
+            <a class="list-group-item" href="../module/atl_compute_module.html#proc-modg_1d_compute_project_physflux">modg_1d_compute_project_physFlux</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      <p>All routines, which are usually used inside the time step
+iteration loop, are collected inside this module.
+The computation of the right hand side is decomposed
+into 3 main steps: pre-process, compute_rhs and post-process.</p>
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='atl_materialprp_module.html'>atl_materialPrp_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/env_module.html'>env_module</a></li>
+                  <li class="list-inline-item"><a href='atl_eqn_lineareuler_module.html'>atl_eqn_LinearEuler_module</a></li>
+                  <li class="list-inline-item"><a href='atl_source_module.html'>atl_source_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_aux_module.html'>tem_aux_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_element_module.html'>tem_element_module</a></li>
+                  <li class="list-inline-item"><a href='atl_timer_module.html'>atl_timer_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_timer_module.html'>tem_timer_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_general_module.html'>tem_general_module</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_compute_module~~UsesGraph Pages: 1 -->
+<svg id="moduleatl_compute_moduleUsesGraph" width="332pt" height="368pt"
+ viewBox="0.00 0.00 332.00 368.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_compute_module~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 364)">
+<title>module~~atl_compute_module~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-364 328,-364 328,4 -4,4"/>
+<!-- module~atl_compute_module -->
+<g id="module~~atl_compute_module~~UsesGraph_node1" class="node">
+<title>module~atl_compute_module</title>
+<polygon fill="none" stroke="black" points="324,-192 200,-192 200,-168 324,-168 324,-192"/>
+<text text-anchor="middle" x="262" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_compute_module</text>
+</g>
+<!-- env_module -->
+<g id="module~~atl_compute_module~~UsesGraph_node2" class="node">
+<title>env_module</title>
+<g id="a_module~~atl_compute_module~~UsesGraph_node2"><a xlink:href="https://apes-suite.github.io/treelm/module/env_module.html" xlink:title="env_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="121,-360 43,-360 43,-336 121,-336 121,-360"/>
+<text text-anchor="middle" x="82" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">env_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_compute_module&#45;&gt;env_module -->
+<g id="module~~atl_compute_module~~UsesGraph_edge1" class="edge">
+<title>module~atl_compute_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M256.58,-192.07C245.59,-220.32 214.25,-291.08 164,-327 154.4,-333.86 142.74,-338.48 131.29,-341.59"/>
+<polygon fill="#000000" stroke="#000000" points="130.27,-338.24 121.35,-343.96 131.88,-345.05 130.27,-338.24"/>
+</g>
+<!-- module~atl_eqn_lineareuler_module -->
+<g id="module~~atl_compute_module~~UsesGraph_node3" class="node">
+<title>module~atl_eqn_lineareuler_module</title>
+<g id="a_module~~atl_compute_module~~UsesGraph_node3"><a xlink:href="../module/atl_eqn_lineareuler_module.html" xlink:title="atl_eqn_LinearEuler_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="164,-318 0,-318 0,-294 164,-294 164,-318"/>
+<text text-anchor="middle" x="82" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_eqn_LinearEuler_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_compute_module&#45;&gt;module~atl_eqn_lineareuler_module -->
+<g id="module~~atl_compute_module~~UsesGraph_edge2" class="edge">
+<title>module~atl_compute_module&#45;&gt;module~atl_eqn_lineareuler_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M253.28,-192.16C238.65,-214.19 204.67,-260.66 164,-285 160.98,-286.81 157.8,-288.46 154.53,-289.97"/>
+<polygon fill="#000000" stroke="#000000" points="153,-286.82 145.1,-293.88 155.68,-293.29 153,-286.82"/>
+</g>
+<!-- module~atl_materialprp_module -->
+<g id="module~~atl_compute_module~~UsesGraph_node4" class="node">
+<title>module~atl_materialprp_module</title>
+<g id="a_module~~atl_compute_module~~UsesGraph_node4"><a xlink:href="../module/atl_materialprp_module.html" xlink:title="atl_materialPrp_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="151.5,-276 12.5,-276 12.5,-252 151.5,-252 151.5,-276"/>
+<text text-anchor="middle" x="82" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_materialPrp_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_compute_module&#45;&gt;module~atl_materialprp_module -->
+<g id="module~~atl_compute_module~~UsesGraph_edge3" class="edge">
+<title>module~atl_compute_module&#45;&gt;module~atl_materialprp_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M245.77,-192.14C227.38,-206.25 195.06,-229.32 164,-243 159.22,-245.11 154.18,-247.03 149.06,-248.79"/>
+<polygon fill="#000000" stroke="#000000" points="147.6,-245.59 139.14,-251.97 149.73,-252.25 147.6,-245.59"/>
+</g>
+<!-- module~atl_source_module -->
+<g id="module~~atl_compute_module~~UsesGraph_node5" class="node">
+<title>module~atl_source_module</title>
+<g id="a_module~~atl_compute_module~~UsesGraph_node5"><a xlink:href="../module/atl_source_module.html" xlink:title="atl_source_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="138,-234 26,-234 26,-210 138,-210 138,-234"/>
+<text text-anchor="middle" x="82" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_source_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_compute_module&#45;&gt;module~atl_source_module -->
+<g id="module~~atl_compute_module~~UsesGraph_edge4" class="edge">
+<title>module~atl_compute_module&#45;&gt;module~atl_source_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M209.99,-192.04C189.42,-196.89 165.51,-202.53 144.02,-207.6"/>
+<polygon fill="#000000" stroke="#000000" points="142.94,-204.26 134.02,-209.96 144.55,-211.07 142.94,-204.26"/>
+</g>
+<!-- module~atl_timer_module -->
+<g id="module~~atl_compute_module~~UsesGraph_node6" class="node">
+<title>module~atl_timer_module</title>
+<g id="a_module~~atl_compute_module~~UsesGraph_node6"><a xlink:href="../module/atl_timer_module.html" xlink:title="atl_timer_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="135,-192 29,-192 29,-168 135,-168 135,-192"/>
+<text text-anchor="middle" x="82" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_timer_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_compute_module&#45;&gt;module~atl_timer_module -->
+<g id="module~~atl_compute_module~~UsesGraph_edge5" class="edge">
+<title>module~atl_compute_module&#45;&gt;module~atl_timer_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M199.74,-180C182.17,-180 163,-180 145.36,-180"/>
+<polygon fill="#000000" stroke="#000000" points="145.18,-176.5 135.18,-180 145.18,-183.5 145.18,-176.5"/>
+</g>
+<!-- tem_aux_module -->
+<g id="module~~atl_compute_module~~UsesGraph_node7" class="node">
+<title>tem_aux_module</title>
+<g id="a_module~~atl_compute_module~~UsesGraph_node7"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_aux_module.html" xlink:title="tem_aux_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="134,-150 30,-150 30,-126 134,-126 134,-150"/>
+<text text-anchor="middle" x="82" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_aux_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_compute_module&#45;&gt;tem_aux_module -->
+<g id="module~~atl_compute_module~~UsesGraph_edge6" class="edge">
+<title>module~atl_compute_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M209.99,-167.96C189.42,-163.11 165.51,-157.47 144.02,-152.4"/>
+<polygon fill="#000000" stroke="#000000" points="144.55,-148.93 134.02,-150.04 142.94,-155.74 144.55,-148.93"/>
+</g>
+<!-- tem_element_module -->
+<g id="module~~atl_compute_module~~UsesGraph_node8" class="node">
+<title>tem_element_module</title>
+<g id="a_module~~atl_compute_module~~UsesGraph_node8"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_element_module.html" xlink:title="tem_element_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="146.5,-108 17.5,-108 17.5,-84 146.5,-84 146.5,-108"/>
+<text text-anchor="middle" x="82" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_element_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_compute_module&#45;&gt;tem_element_module -->
+<g id="module~~atl_compute_module~~UsesGraph_edge7" class="edge">
+<title>module~atl_compute_module&#45;&gt;tem_element_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M245.77,-167.86C227.38,-153.75 195.06,-130.68 164,-117 159.22,-114.89 154.18,-112.97 149.06,-111.21"/>
+<polygon fill="#000000" stroke="#000000" points="149.73,-107.75 139.14,-108.03 147.6,-114.41 149.73,-107.75"/>
+</g>
+<!-- tem_general_module -->
+<g id="module~~atl_compute_module~~UsesGraph_node9" class="node">
+<title>tem_general_module</title>
+<g id="a_module~~atl_compute_module~~UsesGraph_node9"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_general_module.html" xlink:title="tem_general_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="145,-66 19,-66 19,-42 145,-42 145,-66"/>
+<text text-anchor="middle" x="82" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_general_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_compute_module&#45;&gt;tem_general_module -->
+<g id="module~~atl_compute_module~~UsesGraph_edge8" class="edge">
+<title>module~atl_compute_module&#45;&gt;tem_general_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M253.28,-167.84C238.65,-145.81 204.67,-99.34 164,-75 160.98,-73.19 157.8,-71.54 154.53,-70.03"/>
+<polygon fill="#000000" stroke="#000000" points="155.68,-66.71 145.1,-66.12 153,-73.18 155.68,-66.71"/>
+</g>
+<!-- tem_timer_module -->
+<g id="module~~atl_compute_module~~UsesGraph_node10" class="node">
+<title>tem_timer_module</title>
+<g id="a_module~~atl_compute_module~~UsesGraph_node10"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_timer_module.html" xlink:title="tem_timer_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="138.5,-24 25.5,-24 25.5,0 138.5,0 138.5,-24"/>
+<text text-anchor="middle" x="82" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timer_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_compute_module&#45;&gt;tem_timer_module -->
+<g id="module~~atl_compute_module~~UsesGraph_edge9" class="edge">
+<title>module~atl_compute_module&#45;&gt;tem_timer_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M256.58,-167.93C245.59,-139.68 214.25,-68.92 164,-33 159.15,-29.54 153.78,-26.64 148.18,-24.23"/>
+<polygon fill="#000000" stroke="#000000" points="149.17,-20.86 138.58,-20.59 146.69,-27.41 149.17,-20.86"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+          <div class="card">
+      <h3 class="card-header card-title bg-light">Used by</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_compute_module~~UsedByGraph Pages: 1 -->
+<svg id="moduleatl_compute_moduleUsedByGraph" width="641pt" height="155pt"
+ viewBox="0.00 0.00 641.00 155.12" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_compute_module~~UsedByGraph" class="graph" transform="scale(0.64 0.64) rotate(0) translate(4 238)">
+<title>module~~atl_compute_module~~UsedByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-238 996,-238 996,4 -4,4"/>
+<!-- module~atl_compute_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_node1" class="node">
+<title>module~atl_compute_module</title>
+<polygon fill="none" stroke="black" points="124,-129 0,-129 0,-105 124,-105 124,-129"/>
+<text text-anchor="middle" x="62" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_compute_module</text>
+</g>
+<!-- module~atl_fwdeuler_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_node2" class="node">
+<title>module~atl_fwdeuler_module</title>
+<g id="a_module~~atl_compute_module~~UsedByGraph_node2"><a xlink:href="../module/atl_fwdeuler_module.html" xlink:title="atl_fwdEuler_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="295,-150 171,-150 171,-126 295,-126 295,-150"/>
+<text text-anchor="middle" x="233" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_fwdEuler_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_fwdeuler_module&#45;&gt;module~atl_compute_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_edge1" class="edge">
+<title>module~atl_fwdeuler_module&#45;&gt;module~atl_compute_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M170.99,-130.42C159.09,-128.94 146.53,-127.38 134.34,-125.86"/>
+<polygon fill="#000000" stroke="#000000" points="134.56,-122.37 124.21,-124.61 133.7,-129.31 134.56,-122.37"/>
+</g>
+<!-- module~atl_rk4_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_node3" class="node">
+<title>module~atl_rk4_module</title>
+<g id="a_module~~atl_compute_module~~UsedByGraph_node3"><a xlink:href="../module/atl_rk4_module.html" xlink:title="atl_rk4_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="280,-108 186,-108 186,-84 280,-84 280,-108"/>
+<text text-anchor="middle" x="233" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_rk4_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_rk4_module&#45;&gt;module~atl_compute_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_edge2" class="edge">
+<title>module~atl_rk4_module&#45;&gt;module~atl_compute_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M185.82,-101.74C169.89,-103.72 151.65,-105.98 134.19,-108.15"/>
+<polygon fill="#000000" stroke="#000000" points="133.52,-104.71 124.03,-109.42 134.38,-111.66 133.52,-104.71"/>
+</g>
+<!-- module~atl_rktaylor_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_node4" class="node">
+<title>module~atl_rktaylor_module</title>
+<g id="a_module~~atl_compute_module~~UsedByGraph_node4"><a xlink:href="../module/atl_rktaylor_module.html" xlink:title="atl_rktaylor_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="292,-234 174,-234 174,-210 292,-210 292,-234"/>
+<text text-anchor="middle" x="233" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_rktaylor_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_rktaylor_module&#45;&gt;module~atl_compute_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_edge3" class="edge">
+<title>module~atl_rktaylor_module&#45;&gt;module~atl_compute_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M180.55,-209.96C173.45,-207.45 166.4,-204.49 160,-201 128.85,-184.03 98.92,-155.67 80.74,-136.65"/>
+<polygon fill="#000000" stroke="#000000" points="83.09,-134.04 73.7,-129.14 77.98,-138.83 83.09,-134.04"/>
+</g>
+<!-- module~atl_ssprk2_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_node5" class="node">
+<title>module~atl_ssprk2_module</title>
+<g id="a_module~~atl_compute_module~~UsedByGraph_node5"><a xlink:href="../module/atl_ssprk2_module.html" xlink:title="atl_ssprk2_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="289,-192 177,-192 177,-168 289,-168 289,-192"/>
+<text text-anchor="middle" x="233" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_ssprk2_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_ssprk2_module&#45;&gt;module~atl_compute_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_edge4" class="edge">
+<title>module~atl_ssprk2_module&#45;&gt;module~atl_compute_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M187.55,-167.98C178.37,-165.23 168.82,-162.18 160,-159 138.98,-151.42 116.01,-141.54 97.7,-133.28"/>
+<polygon fill="#000000" stroke="#000000" points="99.14,-130.09 88.58,-129.12 96.23,-136.45 99.14,-130.09"/>
+</g>
+<!-- proc~global_corrector_substep -->
+<g id="module~~atl_compute_module~~UsedByGraph_node6" class="node">
+<title>proc~global_corrector_substep</title>
+<g id="a_module~~atl_compute_module~~UsedByGraph_node6"><a xlink:href="../proc/global_corrector_substep.html" xlink:title="global_corrector_substep">
+<polygon fill="#d9534f" stroke="#d9534f" points="306,-66 160,-66 160,-42 306,-42 306,-66"/>
+<text text-anchor="middle" x="233" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">global_corrector_substep</text>
+</a>
+</g>
+</g>
+<!-- proc~global_corrector_substep&#45;&gt;module~atl_compute_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_edge5" class="edge">
+<title>proc~global_corrector_substep&#45;&gt;module~atl_compute_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M187.55,-66.02C178.37,-68.77 168.82,-71.82 160,-75 138.98,-82.58 116.01,-92.46 97.7,-100.72"/>
+<polygon fill="#000000" stroke="#000000" points="96.23,-97.55 88.58,-104.88 99.14,-103.91 96.23,-97.55"/>
+</g>
+<!-- proc~imexrk_substep -->
+<g id="module~~atl_compute_module~~UsedByGraph_node7" class="node">
+<title>proc~imexrk_substep</title>
+<g id="a_module~~atl_compute_module~~UsedByGraph_node7"><a xlink:href="../proc/imexrk_substep.html" xlink:title="imexrk_substep">
+<polygon fill="#d9534f" stroke="#d9534f" points="280.5,-24 185.5,-24 185.5,0 280.5,0 280.5,-24"/>
+<text text-anchor="middle" x="233" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">imexrk_substep</text>
+</a>
+</g>
+</g>
+<!-- proc~imexrk_substep&#45;&gt;module~atl_compute_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_edge6" class="edge">
+<title>proc~imexrk_substep&#45;&gt;module~atl_compute_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M185.12,-22.49C176.5,-25.3 167.78,-28.76 160,-33 128.85,-49.97 98.92,-78.33 80.74,-97.35"/>
+<polygon fill="#000000" stroke="#000000" points="77.98,-95.17 73.7,-104.86 83.09,-99.96 77.98,-95.17"/>
+</g>
+<!-- module~atl_global_time_integration_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_node8" class="node">
+<title>module~atl_global_time_integration_module</title>
+<g id="a_module~~atl_compute_module~~UsedByGraph_node8"><a xlink:href="../module/atl_global_time_integration_module.html" xlink:title="atl_global_time_integration_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="545,-171 342,-171 342,-147 545,-147 545,-171"/>
+<text text-anchor="middle" x="443.5" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_global_time_integration_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_global_time_integration_module&#45;&gt;module~atl_fwdeuler_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_edge7" class="edge">
+<title>module~atl_global_time_integration_module&#45;&gt;module~atl_fwdeuler_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M341.91,-148.87C329.59,-147.63 317.2,-146.38 305.43,-145.19"/>
+<polygon fill="#000000" stroke="#000000" points="305.56,-141.69 295.26,-144.17 304.86,-148.66 305.56,-141.69"/>
+</g>
+<!-- module~atl_global_time_integration_module&#45;&gt;module~atl_rk4_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_edge8" class="edge">
+<title>module~atl_global_time_integration_module&#45;&gt;module~atl_rk4_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M404.01,-146.99C376.69,-138.51 339.13,-126.93 306,-117 299.38,-115.02 292.41,-112.95 285.52,-110.93"/>
+<polygon fill="#000000" stroke="#000000" points="286.11,-107.45 275.53,-108 284.14,-114.17 286.11,-107.45"/>
+</g>
+<!-- module~atl_global_time_integration_module&#45;&gt;module~atl_rktaylor_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_edge9" class="edge">
+<title>module~atl_global_time_integration_module&#45;&gt;module~atl_rktaylor_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M404.01,-171.01C376.69,-179.49 339.13,-191.07 306,-201 299.38,-202.98 292.41,-205.05 285.52,-207.07"/>
+<polygon fill="#000000" stroke="#000000" points="284.14,-203.83 275.53,-210 286.11,-210.55 284.14,-203.83"/>
+</g>
+<!-- module~atl_global_time_integration_module&#45;&gt;module~atl_ssprk2_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_edge10" class="edge">
+<title>module~atl_global_time_integration_module&#45;&gt;module~atl_ssprk2_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M341.91,-169.13C327.39,-170.59 312.78,-172.07 299.19,-173.43"/>
+<polygon fill="#000000" stroke="#000000" points="298.62,-169.97 289.03,-174.46 299.33,-176.94 298.62,-169.97"/>
+</g>
+<!-- module~atl_container_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_node9" class="node">
+<title>module~atl_container_module</title>
+<g id="a_module~~atl_compute_module~~UsedByGraph_node9"><a xlink:href="../module/atl_container_module.html" xlink:title="atl_container_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="709,-151 581,-151 581,-127 709,-127 709,-151"/>
+<text text-anchor="middle" x="645" y="-136.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_container_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_container_module&#45;&gt;module~atl_global_time_integration_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_edge11" class="edge">
+<title>module~atl_container_module&#45;&gt;module~atl_global_time_integration_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M580.88,-145.33C572.58,-146.16 563.9,-147.03 555.1,-147.91"/>
+<polygon fill="#000000" stroke="#000000" points="554.73,-144.43 545.13,-148.91 555.43,-151.4 554.73,-144.43"/>
+</g>
+<!-- module~atl_program_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_node10" class="node">
+<title>module~atl_program_module</title>
+<g id="a_module~~atl_compute_module~~UsedByGraph_node10"><a xlink:href="../module/atl_program_module.html" xlink:title="atl_program_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="868,-191 745,-191 745,-167 868,-167 868,-191"/>
+<text text-anchor="middle" x="806.5" y="-176.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_program_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_program_module&#45;&gt;module~atl_global_time_integration_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_edge12" class="edge">
+<title>module~atl_program_module&#45;&gt;module~atl_global_time_integration_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M744.67,-175.63C693.09,-172.77 617.77,-168.6 555.49,-165.15"/>
+<polygon fill="#000000" stroke="#000000" points="555.39,-161.64 545.21,-164.58 555,-168.63 555.39,-161.64"/>
+</g>
+<!-- module~atl_program_module&#45;&gt;module~atl_container_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_edge14" class="edge">
+<title>module~atl_program_module&#45;&gt;module~atl_container_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M757.64,-167C740.85,-162.79 721.79,-158.01 704.23,-153.6"/>
+<polygon fill="#000000" stroke="#000000" points="704.65,-150.1 694.1,-151.06 702.95,-156.89 704.65,-150.1"/>
+</g>
+<!-- module~atl_initialize_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_node11" class="node">
+<title>module~atl_initialize_module</title>
+<g id="a_module~~atl_compute_module~~UsedByGraph_node11"><a xlink:href="../module/atl_initialize_module.html" xlink:title="atl_initialize_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="867,-149 746,-149 746,-125 867,-125 867,-149"/>
+<text text-anchor="middle" x="806.5" y="-134.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_initialize_module&#45;&gt;module~atl_container_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_edge13" class="edge">
+<title>module~atl_initialize_module&#45;&gt;module~atl_container_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M745.65,-137.75C737.08,-137.86 728.17,-137.97 719.37,-138.08"/>
+<polygon fill="#000000" stroke="#000000" points="719.07,-134.58 709.11,-138.21 719.16,-141.58 719.07,-134.58"/>
+</g>
+<!-- program~ateles -->
+<g id="module~~atl_compute_module~~UsedByGraph_node12" class="node">
+<title>program~ateles</title>
+<g id="a_module~~atl_compute_module~~UsedByGraph_node12"><a xlink:href="../program/ateles.html" xlink:title="ateles">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="975,-149 921,-149 921,-125 975,-125 975,-149"/>
+<text text-anchor="middle" x="948" y="-134.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ateles</text>
+</a>
+</g>
+</g>
+<!-- program~ateles&#45;&gt;module~atl_container_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_edge15" class="edge">
+<title>program~ateles&#45;&gt;module~atl_container_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M920.65,-128.16C905.45,-123.52 885.87,-118.33 868,-116 813.79,-108.92 799.31,-109.77 745,-116 729.76,-117.75 713.45,-120.96 698.56,-124.44"/>
+<polygon fill="#000000" stroke="#000000" points="697.4,-121.12 688.51,-126.88 699.05,-127.92 697.4,-121.12"/>
+</g>
+<!-- program~ateles&#45;&gt;module~atl_program_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_edge17" class="edge">
+<title>program~ateles&#45;&gt;module~atl_program_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M920.76,-144.9C902.9,-150.28 878.69,-157.57 857.25,-164.02"/>
+<polygon fill="#000000" stroke="#000000" points="856.19,-160.69 847.62,-166.92 858.2,-167.39 856.19,-160.69"/>
+</g>
+<!-- program~atl_harvesting -->
+<g id="module~~atl_compute_module~~UsedByGraph_node13" class="node">
+<title>program~atl_harvesting</title>
+<g id="a_module~~atl_compute_module~~UsedByGraph_node13"><a xlink:href="../program/atl_harvesting.html" xlink:title="atl_harvesting">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="992,-211 904,-211 904,-187 992,-187 992,-211"/>
+<text text-anchor="middle" x="948" y="-196.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_harvesting</text>
+</a>
+</g>
+</g>
+<!-- program~atl_harvesting&#45;&gt;module~atl_container_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_edge16" class="edge">
+<title>program~atl_harvesting&#45;&gt;module~atl_container_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M903.9,-206.02C862.35,-211.21 798.14,-215.06 745,-200 715.86,-191.74 686.87,-172.21 667.87,-157.46"/>
+<polygon fill="#000000" stroke="#000000" points="669.87,-154.58 659.88,-151.08 665.5,-160.05 669.87,-154.58"/>
+</g>
+<!-- program~atl_harvesting&#45;&gt;module~atl_program_module -->
+<g id="module~~atl_compute_module~~UsedByGraph_edge18" class="edge">
+<title>program~atl_harvesting&#45;&gt;module~atl_program_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M903.63,-192.78C895.52,-191.62 886.86,-190.38 878.18,-189.13"/>
+<polygon fill="#000000" stroke="#000000" points="878.4,-185.63 868.01,-187.67 877.41,-192.56 878.4,-185.63"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panmoduleatl_compute_moduleUsedByGraph = svgPanZoom('#moduleatl_compute_moduleUsedByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      <br>
+
+
+
+
+        <section>
+          <h2>Interfaces</h2>
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-atl_preprocess_rhs"></span>
+      <h3>public        interface <a href='../interface/atl_preprocess_rhs.html'>atl_preprocess_rhs</a> 
+      </h3>
+    </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private  subroutine <a href='../proc/preprocess_rhs_cubes.html'>preprocess_rhs_cubes</a>(minLevel, maxLevel, currentLevel, mesh_list, tree, statedata_list, facedata_list, boundary_list, bc, scheme_list, poly_proj_list, equation, material_list, general)  
+
+    </h3>
+    
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-minlevel~45"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>minLevel</strong></td>
+            <td>
+<p>The minimum level of the mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxlevel~51"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxLevel</strong></td>
+            <td>
+<p>The maximum level of the mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-currentlevel~61"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>currentLevel</strong></td>
+            <td>
+<p>the level to compute on</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh_list~22"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of mesh parts. For each level we have one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~129"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+<p>treelm mesh</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-statedata_list~18"></span>
+              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>statedata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of states you want to calc the rhs for. For each level we have one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facedata_list~6"></span>
+              type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>facedata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of face states you want to calc the rhs for. For each level we have
+one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-boundary_list~16"></span>
+              type(<a href='../type/atl_level_boundary_type.html'>atl_level_boundary_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>boundary_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of boundaries, for each level.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc~36"></span>
+              type(<a href='../type/atl_boundary_type.html'>atl_boundary_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc</strong>(:)</td>
+            <td>
+<p>The global boundary description.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_list~23"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of schemes, for each level.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj_list~26"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj_list</strong>(:)</td>
+            <td>
+<p>unique list for projection methods</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~226"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you are operating with.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_list~16"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_list</strong>(minlevel:maxlevel)</td>
+            <td>
+<p>Information about the material parameters of the equation.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-general~41"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_general_type.html'>tem_general_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>general</strong></td>
+            <td>
+<p>General treelm settings.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+    </ul>
+  </div>
+
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-atl_postprocess_rhs"></span>
+      <h3>public        interface <a href='../interface/atl_postprocess_rhs.html'>atl_postprocess_rhs</a> 
+      </h3>
+    </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private  subroutine <a href='../proc/postprocess_rhs_cubes.html'>postprocess_rhs_cubes</a>(mesh, kerneldata, statedata, scheme, timestep, equation)  
+
+    </h3>
+    
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh~99"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh</strong></td>
+            <td>
+<p>List of mesh parts. For each level we have one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata~29"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata</strong></td>
+            <td>
+<p>List of kerneldatas. For each level we have one</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-statedata~34"></span>
+              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>statedata</strong></td>
+            <td>
+<p>List of states you want to calc the rhs for. For each level we have one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme~76"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme</strong></td>
+            <td>
+<p>List of schemes, for each level.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-timestep~12"></span>
+              type(<a href='../type/atl_timestep_type.html'>atl_timestep_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>timestep</strong></td>
+            <td>
+<p>List of levelwise timestepping algorihtms</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~227"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you are operating with.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+    </ul>
+  </div>
+
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-atl_compute_rhs"></span>
+      <h3>public        interface <a href='../interface/atl_compute_rhs.html'>atl_compute_rhs</a> 
+      </h3>
+    </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private  subroutine <a href='../proc/compute_rhs_cubes.html'>compute_rhs_cubes</a>(minLevel, maxLevel, currentLevel, mesh_list, tree, kerneldata_list, statedata_list, facedata_list, source, penalizationdata_list, scheme_list, poly_proj_pos, poly_proj_list, equation, material_list, general, computePenalization)  
+
+    </h3>
+    
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-minlevel~46"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>minLevel</strong></td>
+            <td>
+<p>The minimum level of the mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxlevel~52"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxLevel</strong></td>
+            <td>
+<p>The maximum level of the mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-currentlevel~62"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>currentLevel</strong></td>
+            <td>
+<p>The level of the mesh you are computing the rhs for.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh_list~23"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of mesh parts. For each level we have one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~130"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+<p>treelm mesh</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata_list~8"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of kerneldatas. For each level we have one</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-statedata_list~19"></span>
+              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>statedata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of states you want to calc the rhs for. For each level we have one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facedata_list~7"></span>
+              type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>facedata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of facedatas. For each level we have one</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-source~25"></span>
+              type(<a href='../type/atl_source_type.html'>atl_source_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>source</strong></td>
+            <td>
+<p>Levelwise list of sources</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata_list~7"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationdata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>Levelwise list of penalization data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_list~24"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of schemes, for each level.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj_pos~19"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj_pos</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of levelwise position of  projection method in unique
+projection_list</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj_list~27"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj_list</strong>(:)</td>
+            <td>
+<p>unique list for projection methods</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~228"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you are operating with.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_list~17"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_list</strong>(minlevel:maxlevel)</td>
+            <td>
+<p>Material parameter description.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-general~42"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_general_type.html'>tem_general_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>general</strong></td>
+            <td>
+<p>General treelm settings</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-computepenalization"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>computePenalization</strong></td>
+            <td>
+<p>Flag to indicate whether penalization terms should be computed or not.</p><a href="../proc/compute_rhs_cubes.html#variable-computepenalization" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+    </ul>
+  </div>
+
+        </section>
+        <br>
+
+
+
+
+        <section>
+          <h2>Subroutines</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_initialize_state_der"></span> <h3>public  subroutine <a href='../proc/atl_initialize_state_der.html'>atl_initialize_state_der</a>(state_der)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>This routine is used to initialize an array in an OpenMP PARALLEL region.
+Usually this is done using a WORKSHARE directive, but due to a bug in
+Intel 15 we cannot make use of WORKSHARE.</p><a href="../proc/atl_initialize_state_der.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state_der~13"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state_der</strong>(:,:,:)</td>
+            <td>
+<p>The state derivates of the kerneldata.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-preprocess_rhs_cubes"></span> <h3>private  subroutine <a href='../proc/preprocess_rhs_cubes.html'>preprocess_rhs_cubes</a>(minLevel, maxLevel, currentLevel, mesh_list, tree, statedata_list, facedata_list, boundary_list, bc, scheme_list, poly_proj_list, equation, material_list, general)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>c
+o
+m
+p
+u
+t
+e</p>
+<p>t
+h
+e</p>
+<p>r
+i
+g
+h
+t</p>
+<p>h
+a
+n
+d</p>
+<p>s
+i
+d
+e</p>
+<p>o
+f</p>
+<p>y
+o
+u
+r</p>
+<p>d
+i
+s
+c
+r
+e
+t
+e</p>
+<p>e
+q
+u
+a
+t
+i
+o
+n
+.</p><a href="../proc/preprocess_rhs_cubes.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-minlevel~45"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>minLevel</strong></td>
+            <td>
+<p>The minimum level of the mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxlevel~51"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxLevel</strong></td>
+            <td>
+<p>The maximum level of the mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-currentlevel~61"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>currentLevel</strong></td>
+            <td>
+<p>the level to compute on</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh_list~22"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of mesh parts. For each level we have one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~129"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+<p>treelm mesh</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-statedata_list~18"></span>
+              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>statedata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of states you want to calc the rhs for. For each level we have one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facedata_list~6"></span>
+              type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>facedata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of face states you want to calc the rhs for. For each level we have
+one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-boundary_list~16"></span>
+              type(<a href='../type/atl_level_boundary_type.html'>atl_level_boundary_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>boundary_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of boundaries, for each level.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc~36"></span>
+              type(<a href='../type/atl_boundary_type.html'>atl_boundary_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc</strong>(:)</td>
+            <td>
+<p>The global boundary description.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_list~23"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of schemes, for each level.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj_list~26"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj_list</strong>(:)</td>
+            <td>
+<p>unique list for projection methods</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~226"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you are operating with.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_list~16"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_list</strong>(minlevel:maxlevel)</td>
+            <td>
+<p>Information about the material parameters of the equation.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-general~41"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_general_type.html'>tem_general_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>general</strong></td>
+            <td>
+<p>General treelm settings.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-postprocess_rhs_cubes"></span> <h3>private  subroutine <a href='../proc/postprocess_rhs_cubes.html'>postprocess_rhs_cubes</a>(mesh, kerneldata, statedata, scheme, timestep, equation)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>A
+p
+p
+l
+i
+e
+s</p>
+<p>t
+h
+e</p>
+<p>p
+o
+s
+t
+p
+r
+o
+c
+e
+s
+s
+i
+n
+g</p>
+<p>s
+t
+e
+p</p>
+<p>o
+f</p>
+<p>t
+h
+e</p>
+<p>c
+o
+m
+p
+u
+t
+e</p>
+<p>s
+t
+e
+p
+.</p><a href="../proc/postprocess_rhs_cubes.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh~99"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh</strong></td>
+            <td>
+<p>List of mesh parts. For each level we have one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata~29"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata</strong></td>
+            <td>
+<p>List of kerneldatas. For each level we have one</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-statedata~34"></span>
+              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>statedata</strong></td>
+            <td>
+<p>List of states you want to calc the rhs for. For each level we have one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme~76"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme</strong></td>
+            <td>
+<p>List of schemes, for each level.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-timestep~12"></span>
+              type(<a href='../type/atl_timestep_type.html'>atl_timestep_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>timestep</strong></td>
+            <td>
+<p>List of levelwise timestepping algorihtms</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~227"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you are operating with.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-compute_rhs_cubes"></span> <h3>private  subroutine <a href='../proc/compute_rhs_cubes.html'>compute_rhs_cubes</a>(minLevel, maxLevel, currentLevel, mesh_list, tree, kerneldata_list, statedata_list, facedata_list, source, penalizationdata_list, scheme_list, poly_proj_pos, poly_proj_list, equation, material_list, general, computePenalization)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>c
+o
+m
+p
+u
+t
+e</p>
+<p>t
+h
+e</p>
+<p>r
+i
+g
+h
+t</p>
+<p>h
+a
+n
+d</p>
+<p>s
+i
+d
+e</p>
+<p>o
+f</p>
+<p>y
+o
+u
+r</p>
+<p>d
+i
+s
+c
+r
+e
+t
+e</p>
+<p>e
+q
+u
+a
+t
+i
+o
+n
+.</p><a href="../proc/compute_rhs_cubes.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-minlevel~46"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>minLevel</strong></td>
+            <td>
+<p>The minimum level of the mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxlevel~52"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxLevel</strong></td>
+            <td>
+<p>The maximum level of the mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-currentlevel~62"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>currentLevel</strong></td>
+            <td>
+<p>The level of the mesh you are computing the rhs for.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh_list~23"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of mesh parts. For each level we have one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~130"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+<p>treelm mesh</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata_list~8"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of kerneldatas. For each level we have one</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-statedata_list~19"></span>
+              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>statedata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of states you want to calc the rhs for. For each level we have one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facedata_list~7"></span>
+              type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>facedata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of facedatas. For each level we have one</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-source~25"></span>
+              type(<a href='../type/atl_source_type.html'>atl_source_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>source</strong></td>
+            <td>
+<p>Levelwise list of sources</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata_list~7"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationdata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>Levelwise list of penalization data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_list~24"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of schemes, for each level.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj_pos~19"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj_pos</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of levelwise position of  projection method in unique
+projection_list</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj_list~27"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj_list</strong>(:)</td>
+            <td>
+<p>unique list for projection methods</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~228"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you are operating with.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_list~17"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_list</strong>(minlevel:maxlevel)</td>
+            <td>
+<p>Material parameter description.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-general~42"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_general_type.html'>tem_general_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>general</strong></td>
+            <td>
+<p>General treelm settings</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-computepenalization"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>computePenalization</strong></td>
+            <td>
+<p>Flag to indicate whether penalization terms should be computed or not.</p><a href="../proc/compute_rhs_cubes.html#variable-computepenalization" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-compute_rhs_cubes_modg"></span> <h3>private  subroutine <a href='../proc/compute_rhs_cubes_modg.html'>compute_rhs_cubes_modg</a>(minLevel, maxLevel, currentLevel, mesh_list, kerneldata_list, statedata_list, facedata_list, source, penalizationdata_list, scheme_list, poly_proj_pos, poly_proj_list, equation, material_list, general, computePenalization)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Computes the right hand side for cubical elements and MODG scheme.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-minlevel~47"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>minLevel</strong></td>
+            <td>
+<p>The minimum level of the mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxlevel~53"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxLevel</strong></td>
+            <td>
+<p>The maximum level of the mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-currentlevel~63"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>currentLevel</strong></td>
+            <td>
+<p>The level of the mesh you are computing the rhs for.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh_list~24"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of mesh parts. For each level we have one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata_list~9"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of kerneldatas. For each level we have one</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-statedata_list~20"></span>
+              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>statedata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of states you want to calc the rhs for. For each level we have one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facedata_list~8"></span>
+              type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>facedata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of facedatas. For each level we have one</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-source~26"></span>
+              type(<a href='../type/atl_source_type.html'>atl_source_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>source</strong></td>
+            <td>
+<p>Levelwise list of sources</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata_list~8"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationdata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>Levelwise list of penalization data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_list~25"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of schemes, for each level.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj_pos~20"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj_pos</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of levelwise position of  projection method in unique list</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj_list~28"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj_list</strong>(:)</td>
+            <td>
+<p>unique list for projection methods</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~229"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you are operating with.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_list~18"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_list</strong>(minlevel:maxlevel)</td>
+            <td>
+<p>Information about the material parameters of the equation.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-general~43"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_general_type.html'>tem_general_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>general</strong></td>
+            <td>
+<p>General treelm settings</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-computepenalization~2"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>computePenalization</strong></td>
+            <td>
+<p>Flag to indicate whether penalization terms should be computed or not.</p><a href="../proc/compute_rhs_cubes_modg.html#variable-computepenalization~2" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-modg_compute_project_physflux"></span> <h3>private  subroutine <a href='../proc/modg_compute_project_physflux.html'>modg_compute_project_physFlux</a>(mesh, equation, kerneldata, statedata, dirVec, poly_proj, material, scheme, dl_prod, apply_pen, penalizationdata, minLevel, currentLevel, maxLevel, eval_phy, usePenalization)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>TODO NA - Move this routine to the atl_modg_kernel_module</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh~100"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh</strong></td>
+            <td>
+<p>Descritption of the cubical elements in the mesh</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~230"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation description.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata~30"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata</strong></td>
+            <td>
+<p>The data of the kernel. Holds the physical fluxes.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-statedata~35"></span>
+              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>statedata</strong></td>
+            <td>
+<p>The representation on the face + representation of the flux.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dirvec~10"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dirVec</strong>(3,3)</td>
+            <td>
+<p>vector for direction indicators</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~122"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Data for projection method</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~99"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong></td>
+            <td>
+<p>Material parameters (mu, epsilon) for all elements</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme~77"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>The parameters of the MODG scheme</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dl_prod~5"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dl_prod</strong>(:,:)</td>
+            <td>
+<p>stored scalar products of the testfunction and anstaz function</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-apply_pen"></span>
+              type(<a href='../type/atl_penalization_pointer_type.html'>atl_penalization_pointer_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>apply_pen</strong>(2)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata~6"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationdata</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-minlevel~48"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>minLevel</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-currentlevel~64"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>currentLevel</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxlevel~54"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxLevel</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-eval_phy"></span>
+              type(<a href='../type/atl_physflux_pointer_type.html'>atl_physflux_pointer_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>eval_phy</strong>(2)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-usepenalization~5"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>usePenalization</strong></td>
+            <td>
+<p>Flag indicating whether to apply the penalization or not.</p><a href="../proc/modg_compute_project_physflux.html#variable-usepenalization~5" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-compute_rhs_cubes_modg_2d"></span> <h3>private  subroutine <a href='../proc/compute_rhs_cubes_modg_2d.html'>compute_rhs_cubes_modg_2d</a>(minLevel, maxLevel, currentLevel, mesh_list, kerneldata_list, statedata_list, facedata_list, source, penalizationdata_list, scheme_list, poly_proj_pos, poly_proj_list, equation, material_list, general, computePenalization)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Computes the right hand side for cubical elements and 2D MODG scheme.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-minlevel~49"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>minLevel</strong></td>
+            <td>
+<p>The minimum level of the mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxlevel~55"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxLevel</strong></td>
+            <td>
+<p>The maximum level of the mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-currentlevel~65"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>currentLevel</strong></td>
+            <td>
+<p>The level of the mesh you are computing the rhs for.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh_list~25"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of mesh parts. For each level we have one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata_list~10"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of kerneldatas. For each level we have one</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-statedata_list~21"></span>
+              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>statedata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of states you want to calc the rhs for. For each level we have one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facedata_list~9"></span>
+              type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>facedata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of facedatas. For each level we have one</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-source~27"></span>
+              type(<a href='../type/atl_source_type.html'>atl_source_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>source</strong></td>
+            <td>
+<p>Levelwise list of sources</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata_list~9"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationdata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>Levelwise list of penalization data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_list~26"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of schemes, for each level.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj_pos~21"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj_pos</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of levelwise position of  projection method in unique
+projection_list</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj_list~29"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj_list</strong>(:)</td>
+            <td>
+<p>unique list for projection methods</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~231"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you are operating with.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_list~19"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_list</strong>(minlevel:maxlevel)</td>
+            <td>
+<p>Information about the material parameters of the equation.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-general~44"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_general_type.html'>tem_general_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>general</strong></td>
+            <td>
+<p>General treelm settings</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-computepenalization~3"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>computePenalization</strong></td>
+            <td>
+<p>Flag to indicate whether penalization terms should be computed or not.</p><a href="../proc/compute_rhs_cubes_modg_2d.html#variable-computepenalization~3" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-modg_2d_compute_project_physflux"></span> <h3>private  subroutine <a href='../proc/modg_2d_compute_project_physflux.html'>modg_2d_compute_project_physFlux</a>(mesh, equation, kerneldata, statedata, scheme, poly_proj, dl_prod, penalizationdata, material, minLevel, maxLevel, currentLevel, eval_phy, apply_pen, usePenalization)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>This subroutine computes the physical fluxes for various equation system</p><a href="../proc/modg_2d_compute_project_physflux.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh~101"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh</strong></td>
+            <td>
+<p>Descritption of the cubical elements in the mesh</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~232"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation description.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata~31"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata</strong></td>
+            <td>
+<p>The data of the kernel. Holds the physical fluxes.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-statedata~36"></span>
+              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>statedata</strong></td>
+            <td>
+<p>The representation on the face + representation of the flux.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme~78"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>The parameters of the MODG scheme</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~123"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Data for projection method</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dl_prod~6"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dl_prod</strong>(2,scheme(currentLevel)%modg_2d%maxPolyDegree+1)</td>
+            <td>
+<p>stored scalar products of the testfunction and anstaz function</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata~7"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationdata</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~100"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong></td>
+            <td>
+<p>Material parameters (mu, epsilon) for all elements</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-minlevel~50"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>minLevel</strong></td>
+            <td>
+<p>the levels of the geometry</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxlevel~56"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxLevel</strong></td>
+            <td>
+<p>the levels of the geometry</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-currentlevel~66"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>currentLevel</strong></td>
+            <td>
+<p>the levels of the geometry</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-eval_phy~2"></span>
+              type(<a href='../type/atl_physflux_pointer_type.html'>atl_physflux_pointer_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>eval_phy</strong>(2)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-apply_pen~2"></span>
+              type(<a href='../type/atl_penalization_pointer_type.html'>atl_penalization_pointer_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>apply_pen</strong>(2)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-usepenalization~7"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>usePenalization</strong></td>
+            <td>
+<p>Flag indicating whether to apply the penalization or not.</p><a href="../proc/modg_2d_compute_project_physflux.html#variable-usepenalization~7" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-compute_rhs_cubes_modg_1d"></span> <h3>private  subroutine <a href='../proc/compute_rhs_cubes_modg_1d.html'>compute_rhs_cubes_modg_1d</a>(minLevel, maxLevel, currentLevel, mesh_list, tree, kerneldata_list, statedata_list, facedata_list, source, penalizationdata_list, scheme_list, poly_proj_pos, poly_proj_list, equation, material_list, general, computePenalization)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Computes the right hand side for cubical elements and 1D MODG scheme.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-minlevel~51"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>minLevel</strong></td>
+            <td>
+<p>The minimum level of the mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxlevel~57"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxLevel</strong></td>
+            <td>
+<p>The maximum level of the mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-currentlevel~67"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>currentLevel</strong></td>
+            <td>
+<p>The level of the mesh you are computing the rhs for.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh_list~26"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of mesh parts. For each level we have one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~131"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+<p>treelm mesh</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata_list~11"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of kerneldatas. For each level we have one</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-statedata_list~22"></span>
+              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>statedata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of states you want to calc the rhs for. For each level we have one.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facedata_list~10"></span>
+              type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>facedata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of facedatas. For each level we have one</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-source~28"></span>
+              type(<a href='../type/atl_source_type.html'>atl_source_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>source</strong></td>
+            <td>
+<p>Levelwise list of sources</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata_list~10"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationdata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>Levelwise list of penalization data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_list~27"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_list</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of schemes, for each level.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj_pos~22"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj_pos</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>List of levelwise position of  projection method in unique
+projection_list</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj_list~30"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj_list</strong>(:)</td>
+            <td>
+<p>unique list for projection methods</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~233"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you are operating with.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_list~20"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_list</strong>(minlevel:maxlevel)</td>
+            <td>
+<p>Material parameter description.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-general~45"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_general_type.html'>tem_general_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>general</strong></td>
+            <td>
+<p>General treelm settings</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-computepenalization~4"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>computePenalization</strong></td>
+            <td>
+<p>Flag to indicate whether penalization terms should be computed or not.</p><a href="../proc/compute_rhs_cubes_modg_1d.html#variable-computepenalization~4" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-modg_1d_compute_project_physflux"></span> <h3>private  subroutine <a href='../proc/modg_1d_compute_project_physflux.html'>modg_1d_compute_project_physFlux</a>(mesh, equation, material, kerneldata, statedata, scheme, poly_proj, penalizationdata, minLevel, maxLevel, currentLevel, usePenalization)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh~102"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh</strong></td>
+            <td>
+<p>Descritption of the cubical elements in the mesh</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~234"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation description.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~101"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong></td>
+            <td>
+<p>Description of the material parameters.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-kerneldata~32"></span>
+              type(<a href='../type/atl_kerneldata_type.html'>atl_kerneldata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>kerneldata</strong></td>
+            <td>
+<p>The data of the kernel. Holds the physical fluxes.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-statedata~37"></span>
+              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>statedata</strong></td>
+            <td>
+<p>The representation on the face + representation of the flux.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme~79"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>The parameters of the MODG scheme</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~124"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Data for projection method</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata~8"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationdata</strong></td>
+            <td>
+<p>Penalization terms</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-minlevel~52"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>minLevel</strong></td>
+            <td>
+<p>the levels of the geometry</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxlevel~58"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxLevel</strong></td>
+            <td>
+<p>the levels of the geometry</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-currentlevel~68"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>currentLevel</strong></td>
+            <td>
+<p>the levels of the geometry</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-usepenalization~9"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>usePenalization</strong></td>
+            <td>
+<p>Flag indicating whether to apply the penalization or not.</p><a href="../proc/modg_1d_compute_project_physflux.html#variable-usepenalization~9" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,585 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../../favicon.png">
+
+    <title>Maxwell Testcase &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../../css/pygments.css" rel="stylesheet">
+    <link href="../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/local.css" rel="stylesheet">
+      <link  href="../../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>Maxwell Testcase</h1>
+    <div class="container p-2 mb-4 bg-light border rounded-3">
+      <div class="row align-items-center justify-content-between">
+        <div class="col">
+          <ul class="list-inline" style="margin-bottom:0px; display:inline">
+          </ul>
+        </div>
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../index.html'>Documentation</a></li>
+                <li class="breadcrumb-item"><a href='index.html'>Tutorial</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Maxwell Testcase</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-3">
+        <div class="card card-body bg-light" id="sidebar-toc">
+          <ul class="nav flex-column align-items">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Documentation</a>
+            </li>
+          </ul>
+          <hr>
+          <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="../apes_overview.html">APES Overview</a>
+              <a class="nav-link" href="../build_and_run.html">Build and Run Ateles</a>
+              <a class="nav-link" href="../examples/index.html">Example setups</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/acoustic/index.html">Acoustic Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/acoustic/gauss_densitypulse_2D/index.html">Gaussian Density Pulse Test Case</a>
+              <a class="nav-link" href="../examples/acoustic/planar_wave_3D/index.html">Planar Wave</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/euler/index.html">Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/euler/1D/index.html">1D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/euler/1D/modalEstimate/index.html">Modal estimate for adaptive timesteps 1D</a>
+              <a class="nav-link" href="../examples/euler/1D/piston/index.html">Formation of a shock wave ahead of a moving piston in 1D</a>
+              <a class="nav-link" href="../examples/euler/1D/piston_modereduction/index.html">Formation of a shock wave ahead of a moving piston in 1D</a>
+              <a class="nav-link" href="../examples/euler/1D/shock_stabilization_parallel/index.html">Shock Stabilization Test Case</a>
+              <a class="nav-link" href="../examples/euler/1D/toro1_x/index.html">Toro Validation Test Case</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/euler/2D/index.html">2D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/euler/2D/gauss_densitypulse_spongelayer/index.html">Gaussian Density Pulse in 2D</a>
+              <a class="nav-link" href="../examples/euler/2D/modalEstimate/index.html">Modal estimate for adaptive timesteps in 2D</a>
+              <a class="nav-link" href="../examples/euler/2D/shock_stabilization_parallel/index.html">Shock Stabilization Test Case</a>
+              <a class="nav-link" href="../examples/euler/2D/toro1_x/index.html">Toro1 Validation Test Case in X direction</a>
+              <a class="nav-link" href="../examples/euler/2D/toro1_y/index.html">Toro1 Validation Test Case in Y direction</a>
+              <a class="nav-link" href="../examples/euler/2D/toro2_x/index.html">Toro2 Setup along X for 2D Euler equations</a>
+              <a class="nav-link" href="../examples/euler/2D/toro3_x/index.html">Toro3 Setup along X for 2D Euler equations</a>
+              <a class="nav-link" href="../examples/euler/2D/toro4_x/index.html">Toro4 setup for 2D Euler equations with a positivity preserving filter</a>
+              <a class="nav-link" href="../examples/euler/2D/vorticity/index.html">Vorticity Tracking</a>
+              <a class="nav-link" href="../examples/euler/2D/wedge/index.html">Supersonic movement of a wedge</a>
+              <a class="nav-link" href="../examples/euler/2D/wedge_modereduction/index.html">Supersonic movement of a wedge</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/euler/3D/index.html">3D Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/euler/3D/gauss_densitypulse_deriv_quantity/index.html">Pulse in density with derived quantity</a>
+              <a class="nav-link" href="../examples/euler/3D/gauss_densitypulse_fpt/index.html">Euler 3D pulse in density with FPT</a>
+              <a class="nav-link" href="../examples/euler/3D/gauss_densitypulse_fxt/index.html">Euler 3D setup of Gaussian pulse in density with FXT</a>
+              <a class="nav-link" href="../examples/euler/3D/gauss_densitypulse_l2p/index.html">Euler 3D setup with pulse in density and L2 projection</a>
+              <a class="nav-link" href="../examples/euler/3D/gauss_densitypulse_spongelayer/index.html">Euler 3D pulse in density with sponge</a>
+              <a class="nav-link" href="../examples/euler/3D/modalEstimate/index.html">Modal estimate in Euler 3D</a>
+              <a class="nav-link" href="../examples/euler/3D/multilevel/index.html">Material with Multilevel in Euler 3D</a>
+              <a class="nav-link" href="../examples/euler/3D/overview/index.html">Configuration overview for Euler 3D simulations</a>
+              <a class="nav-link" href="../examples/euler/3D/p_polynomials/index.html">P-polynomial space</a>
+              <a class="nav-link" href="../examples/euler/3D/qCriterion_deriv_quantity/index.html">Q-Criterion Tracking in Euler 3D</a>
+              <a class="nav-link" href="../examples/euler/3D/shear_layer_Q4/index.html">Shear-Layer Q4</a>
+              <a class="nav-link" href="../examples/euler/3D/shear_layer_Q4_parallel/index.html">Shear-Layer Q4</a>
+              <a class="nav-link" href="../examples/euler/3D/shear_layer_Q8/index.html">Shear-Layer Q8</a>
+              <a class="nav-link" href="../examples/euler/3D/shock_stabilization_localrefinement/index.html">Shock Stabilization in Euler 3D with local refinement</a>
+              <a class="nav-link" href="../examples/euler/3D/shock_stabilization_parallel/index.html">Shock stabilization for 3D Euler equations with RK-Taylor</a>
+              <a class="nav-link" href="../examples/euler/3D/shock_stabilization_periodic/index.html">Shock stabilization in periodic domain</a>
+              <a class="nav-link" href="../examples/euler/3D/toro1_x/index.html">Toro1 Riemann problem in X direction</a>
+              <a class="nav-link" href="../examples/euler/3D/toro1_y/index.html">Toro1 Riemann problem in Y direction</a>
+              <a class="nav-link" href="../examples/euler/3D/toro1_z/index.html">Toro1 Riemann problem in Z direction</a>
+              <a class="nav-link" href="../examples/euler/3D/vorticity/index.html">Vorticity Test Case</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../examples/heat/index.html">Heat Conduction</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/heat/1D/index.html">Heat Conduction in 1D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/heat/1D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/heat/2D/index.html">Heat Conduction in 2D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/heat/2D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/heat/3D/index.html">Heat Conduction in 3D</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/heat/3D/sinus_temperature/index.html">Sinus Function Changing Temperature</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../examples/lineareuler/index.html">Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/lineareuler/2D/index.html">2D Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/lineareuler/2D/gauss_pulse/index.html">Gaussian pulse in pressure with 2d linearized Euler equations</a>
+              <a class="nav-link" href="../examples/lineareuler/2D/transientBackground/index.html">Transient background state in 2D linearized Euler</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/lineareuler/3D/index.html">3D Linearized Euler Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/lineareuler/3D/gauss_pulse/index.html">Gaussian pulse in density for 3D linearized Euler equations</a>
+              <a class="nav-link" href="../examples/lineareuler/3D/gradient/index.html">Tracking of gradients in 3D linearized Euler equations</a>
+              <a class="nav-link" href="../examples/lineareuler/3D/transientBackground/index.html">Transient background state in 3D linearized Euler</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../examples/maxwell/index.html">Maxwell Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/maxwell/pec_scatter_inhomogenous_matFun_Q8_3D/index.html">Perfectly_scatter_Inhomogenous_Materia</a>
+              <a class="nav-link" href="../examples/maxwell/pec_scatter_inhomogenous_matVar_Q8_3D/index.html">Perfectly_scatter_Inhomogenous_Materia</a>
+              <a class="nav-link" href="../examples/maxwell/periodic_oscillator_P8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="../examples/maxwell/periodic_oscillator_Q8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="../examples/maxwell/rectangular_wave_Q8_3D/index.html">Rectangle Wave</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/maxwelldivcorr/index.html">Maxwell Equations With Divergence Correction</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/maxwelldivcorr/periodic_oscillator_P8_3D/index.html">Periodic_Oscillator</a>
+              <a class="nav-link" href="../examples/maxwelldivcorr/periodic_oscillator_Q8_3D/index.html">Periodic_Oscillator</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/maxwellpml/index.html">Maxwell Equations With Perfectly Matched Layers</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/maxwellpml/cylinder_scattering_Q8_2D/index.html">Perfectly matched Layer test case</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/navierstokes/index.html">Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/navierstokes/2D/index.html">2D Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/navierstokes/2D/constant_state/index.html">Constant State</a>
+              <a class="nav-link" href="../examples/navierstokes/2D/shear_hat/index.html">Shear hat 2D</a>
+              <a class="nav-link" href="../examples/navierstokes/2D/viscous_vortex/index.html">Viscous Vortex (TGV) 2D</a>
+
+                </nav>
+              <a class="nav-link" href="../examples/navierstokes/3D/index.html">3D Navier-Stokes Equations</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../examples/navierstokes/3D/shear_hat/index.html">Shear hat 3D</a>
+              <a class="nav-link" href="../examples/navierstokes/3D/shear_tube/index.html">Shear tube 3D</a>
+
+                </nav>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../init.html">Initialization</a>
+              <a class="nav-link" href="../material.html">Material</a>
+              <a class="nav-link" href="../neumann_boundaries.html">Neumann boundary conditions</a>
+              <a class="nav-link" href="../new_eqn_system.html">Introducing a New Equation System</a>
+              <a class="nav-link" href="../polynomials.html">Polynomials Library</a>
+              <a class="nav-link" href="../postprocess_filtering.html">Postprocess Filtering</a>
+              <a class="nav-link" href="index.html">Tutorial</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="euler.html">Euler Testcase</a>
+              <a class="nav-link" href="general.html">General Input File Information</a>
+              <a class="nav-link active disabled" href="maxwell.html">Maxwell Testcase</a>
+              <a class="nav-link" href="postprocessing.html">Postprocessing with atl_harvesting</a>
+              <a class="nav-link" href="procedure.html">General Procedure for Running the Testcases</a>
+              <a class="nav-link" href="source_term.html">Source Term</a>
+              <a class="nav-link" href="tracking.html">Tracking</a>
+
+                </nav>
+          </nav>
+        </div>
+      </div>
+
+    <div class="col-9" id='text'>
+      <p>This tutorial provides a step by step introduction
+to setting up a simulation of
+<a href="https://en.wikipedia.org/wiki/Maxwell%27s_equations">Maxwell equations</a>
+in a homogenus media.
+For the simulation domain we will use a periodic cube.</p>
+<p>We assume that you already have read the
+<a href="procedure.html">General Procedure for Running the Testcases</a>
+and the
+<a href="general.html">General Input File Information</a>.</p>
+<div class="toc">
+<ul>
+<li><a href="#the-input-lua-file">The Input Lua File</a></li>
+<li><a href="#general-settings-for-the-simulation">General Settings for the Simulation</a></li>
+<li><a href="#geometry">Geometry</a></li>
+<li><a href="#specific-parameters-for-this-testcase">Specific Parameters for this Testcase</a></li>
+<li><a href="#additional-functions-for-this-testcase">Additional Functions for this Testcase</a></li>
+<li><a href="#initial-condition">Initial Condition</a></li>
+<li><a href="#scheme">Scheme</a></li>
+<li><a href="#defining-the-equations">Defining the Equations</a></li>
+<li><a href="#global-material">Global Material</a></li>
+<li><a href="#restart-settings">Restart Settings</a></li>
+<li><a href="#running-the-simulation">Running the simulation</a></li>
+</ul>
+</div>
+<h2 id="the-input-lua-file">The Input Lua File</h2>
+<p>In this tutorial, we will show and examine the input file for the Maxwell
+testcase in <code>tutorial/testcase/maxwell/ateles.lua</code>.
+Because this input file is specifically designed for the Maxwell testcase,
+it does not make use of all the available options.
+A complete input file with all available settings
+can be found in the ateles folder <code>ateles/ateles.lua</code>.</p>
+<h2 id="general-settings-for-the-simulation">General Settings for the Simulation</h2>
+<p>First we give all the general settings for the simulation.
+Since we are going to simulate a periodic oscillator using modal
+<a href="https://en.wikipedia.org/wiki/Discontinuous_Galerkin_method">DG</a>
+scheme,
+we set the name of the simulation to <code>posci_modg</code>.
+We will simulate <script type="math/tex">\sqrt{2}</script> seconds
+and every 10th iteration we get information about the current timestep
+printed to the screen during the simulation.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- global simulation options</span>
+<span class="n">simulation_name</span> <span class="o">=</span> <span class="s1">&#39;posci_modg&#39;</span> <span class="c1">-- the name of the simualtion</span>
+<span class="n">sim_control</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">time_control</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">interval</span> <span class="o">=</span> <span class="p">{</span><span class="n">iter</span> <span class="o">=</span> <span class="mi">10</span><span class="p">},</span>
+    <span class="n">min</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">max</span> <span class="o">=</span> <span class="nb">math.sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>        <span class="c1">-- final simulation time</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="geometry">Geometry</h2>
+<p>Further, the solver needs a defined geometry.
+In this testcase we use a pre-defined geometry (<code>cube</code>),
+which is just a simple cube with periodic boundaries and no obstacles.
+We set the <code>length</code> of this cube to be 2 meter
+and choose a <code>refinementLevel</code> of 2
+(the space is cut into 4 (<script type="math/tex">= 2^2</script>) portions in each dimension). We position
+the cube's center to the point x=0, y=0, z=0 by moving it half of it's width to
+x-, y- and z-.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- mesh definitions</span>
+<span class="n">cubeLength</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">predefined</span> <span class="o">=</span> <span class="s1">&#39;cube&#39;</span><span class="p">,</span>
+  <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">cubeLength</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span>
+    <span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">cubeLength</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span>
+    <span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">cubeLength</span> <span class="o">/</span> <span class="mf">2.0</span>
+  <span class="p">},</span>
+  <span class="n">length</span> <span class="o">=</span> <span class="n">cubeLength</span><span class="p">,</span>
+  <span class="n">refinementLevel</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="specific-parameters-for-this-testcase">Specific Parameters for this Testcase</h2>
+<p>It is possible to define global parameters in Lua,
+which is a convenient way if some parameters are used several times
+or need to be changed frequently for e.g. a parameter study.
+Hence, we define some parameters, which will be used below in the function set.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- some global parameters for the T_{nm} mode testcase</span>
+<span class="n">amplX</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1">-- the integer number of the mode in x direction</span>
+<span class="n">amplY</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1">-- the integer number of the mode in y direction</span>
+</code></pre></div>
+
+<h2 id="additional-functions-for-this-testcase">Additional Functions for this Testcase</h2>
+<p>Lua also supports defining functions in the global scope.
+For this testcase,
+there exists an analytical solution if <script type="math/tex">\epsilon = \mu = 1</script>. Hence,
+we define functions which are time and space depended
+for the temporal angular frequency
+which is then used in the functions for the electric
+and magnetic field in each direction.
+Moreover, we specify a function for the initial condition of the electric field
+in the z direction.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- the analytic solution for this testcase is given by the following functions</span>
+<span class="c1">-- (only correct for epsi = mu = 1):</span>
+<span class="c1">-- ... definition of temporal angular frequency</span>
+<span class="n">w</span> <span class="o">=</span> <span class="nb">math.sqrt</span><span class="p">(</span><span class="n">amplX</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">amplY</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1">-- ... E_x = 0.0</span>
+<span class="kr">function</span> <span class="nf">electricX</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+  <span class="kr">return</span> <span class="mf">0.0</span>
+<span class="kr">end</span>
+<span class="c1">-- ... E_y = 0.0</span>
+<span class="kr">function</span> <span class="nf">electricY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+  <span class="kr">return</span> <span class="mf">0.0</span>  <span class="c1">-- math.sin(amplX * math.pi * x) * math.sin(amplY * math.pi * z) * math.cos(w * t)</span>
+<span class="kr">end</span>
+<span class="c1">-- ... E_z(x, y, z, t) = sin(amplX \pi x) sin(amplY \pi y) cos(w t)</span>
+<span class="kr">function</span> <span class="nf">electricZ</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+  <span class="kr">return</span> <span class="nb">math.sin</span><span class="p">(</span><span class="n">amplX</span> <span class="o">*</span> <span class="nb">math.pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="nb">math.sin</span><span class="p">(</span><span class="n">amplY</span> <span class="o">*</span> <span class="nb">math.pi</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="nb">math.cos</span><span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+<span class="kr">end</span>
+<span class="c1">-- ... B_x(x, y, z, t) = -\frac{\pi n}{w} sin(m \pi x) cos(n \pi y) sin(w t)</span>
+<span class="kr">function</span> <span class="nf">magneticX</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+  <span class="kr">return</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nb">math.pi</span> <span class="o">*</span> <span class="n">amplY</span><span class="o">/</span><span class="n">w</span><span class="p">)</span> <span class="o">*</span> <span class="nb">math.sin</span><span class="p">(</span><span class="n">amplX</span> <span class="o">*</span> <span class="nb">math.pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="nb">math.cos</span><span class="p">(</span><span class="n">amplY</span> <span class="o">*</span> <span class="nb">math.pi</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="nb">math.sin</span><span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+<span class="kr">end</span>
+<span class="c1">-- ... B_y(x, y, z, t) = \frac{\pi m}{w} cos(m \pi x) sin(n \pi y) sin(w t)</span>
+<span class="kr">function</span> <span class="nf">magneticY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+   <span class="kr">return</span> <span class="p">(</span><span class="nb">math.pi</span> <span class="o">*</span> <span class="n">amplX</span> <span class="o">/</span> <span class="n">w</span><span class="p">)</span> <span class="o">*</span> <span class="nb">math.cos</span><span class="p">(</span><span class="n">amplX</span> <span class="o">*</span> <span class="nb">math.pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="nb">math.sin</span><span class="p">(</span><span class="n">amplY</span> <span class="o">*</span> <span class="nb">math.pi</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="nb">math.sin</span><span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+<span class="kr">end</span>
+<span class="c1">-- ... B_z = 0.0</span>
+<span class="kr">function</span> <span class="nf">magneticZ</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+  <span class="kr">return</span> <span class="mf">0.0</span>  <span class="c1">-- (math.pi * amplX / w) * math.cos(amplX * math.pi * x) * math.sin(amplY * math.pi * z) * math.sin(w * t )</span>
+<span class="kr">end</span>
+</code></pre></div>
+
+<h2 id="initial-condition">Initial Condition</h2>
+<p>Next, the solver requires an initial condition.
+Since we are considering the Maxwell equations,
+the electric and magnetic field in each direction has to be defined.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- initial condition</span>
+<span class="c1">-- ...initial condition function for electric field (z component)</span>
+<span class="kr">function</span> <span class="nf">ic_electricZ</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+  <span class="kr">return</span> <span class="n">electricZ</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="kr">end</span>
+<span class="n">initial_condition</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">displacement_fieldX</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>           <span class="c1">-- electric field , x component</span>
+  <span class="n">displacement_fieldY</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>           <span class="c1">-- electric field , z component</span>
+  <span class="n">displacement_fieldZ</span> <span class="o">=</span> <span class="n">ic_electricZ</span><span class="p">,</span>  <span class="c1">-- electric field , z component</span>
+  <span class="n">magnetic_fieldX</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>           <span class="c1">-- magnetic induction , x component</span>
+  <span class="n">magnetic_fieldY</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>           <span class="c1">-- magnetic induction , y component</span>
+  <span class="n">magnetic_fieldZ</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>           <span class="c1">-- magnetic induction , z component</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="scheme">Scheme</h2>
+<p>Of course, we need to define the parameter
+for the scheme using the variable <code>scheme</code>.
+The scheme is further split into the spatial and temporal discretization, each
+described in a correspondigly named variable.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- scheme definitions</span>
+<span class="n">scheme</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">-- the spatial discretization scheme</span>
+  <span class="n">spatial</span> <span class="o">=</span>  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;modg&#39;</span><span class="p">,</span>        <span class="c1">-- we use the modal discontinuous Galerkin scheme</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>                <span class="c1">-- the maximal polynomial degree for each spatial direction</span>
+    <span class="n">modg_space</span> <span class="o">=</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span>
+  <span class="p">},</span>
+
+  <span class="c1">-- the temporal discretization scheme</span>
+  <span class="n">temporal</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;explicitRungeKutta&#39;</span><span class="p">,</span>
+    <span class="n">steps</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="c1">-- how to control the timestep</span>
+    <span class="n">control</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;cfl&#39;</span><span class="p">,</span>       <span class="c1">-- the name of the timestep control mechanism</span>
+      <span class="n">cfl</span> <span class="o">=</span> <span class="mf">0.095</span><span class="p">,</span>        <span class="c1">-- Courant-Friedrichs-Levy number</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>For the spatial discretization scheme,
+the parameter <code>name</code> specifies which scheme is used
+whereby <code>modg</code> is the predfined name for modal discontinious Galerkin scheme.
+Moreover, the parameter <code>m</code> defines the maximal polynomial degree
+for each spatial direction, while <code>modg_space</code> defines
+which polynomial space (P or Q) is used for the approximation.</p>
+<p>Similary, for the temporal discretization scheme
+the parameter <code>name</code> defines which scheme should be used.
+Here we use the predefined name <code>explicitRungeKutta</code>.
+To perform the classical four-step
+<a href="https://en.wikipedia.org/wiki/Runge–Kutta_methods#The_Runge.E2.80.93Kutta_method">Runge-Kutta scheme</a>,
+the parameter <code>steps</code> is set to <code>4</code>.
+Since it is an explicit time stepping scheme,
+each timestep needs to be controlled.
+Therefore, we set the <code>control</code> variables as above.
+In Ateles this is done by the Courant-Friedrichs-Lewy- or CFL-condition.
+The parameter <code>cfl</code> defines the cfl number
+which depends on the spatial discretiztion.</p>
+<h2 id="defining-the-equations">Defining the Equations</h2>
+<p>Here, we define which system of equations should be solved.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- equation definitions</span>
+<span class="n">equation</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;maxwell&#39;</span><span class="p">,</span>   <span class="c1">-- we solve maxwell&#39;s equations</span>
+  <span class="n">material</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">permeability</span> <span class="o">=</span> <span class="s1">&#39;global_maxwell_permeability&#39;</span><span class="p">,</span>
+    <span class="n">permittivity</span> <span class="o">=</span> <span class="s1">&#39;global_maxwell_permittivity&#39;</span><span class="p">,</span>
+    <span class="n">conductivity</span> <span class="o">=</span> <span class="s1">&#39;global_maxwell_conductivity&#39;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Since this is the maxwell testcase,
+we define <code>name= 'maxwell'</code> which is a predefined name in the Ateles solver.
+Additionally, for the maxwell equation system,
+the magnetic permeability, electric permitivity
+and conductivity need to be set.
+This is done with a material table.
+In this table we are using variables which we define in the next section.</p>
+<h2 id="global-material">Global Material</h2>
+<p>We define the global material for Maxwell.
+It consists of three different components:</p>
+<ul>
+<li>permeability</li>
+<li>permittivity and</li>
+<li>conductivity.</li>
+</ul>
+<p>Each is a scalar, so we need three sclars for this equation system.
+As this is the global fallback material,
+we define each material to be a neutral term,
+which in this case is 0.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- Maxwell material parameters</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">1.0</span>    <span class="c1">-- the magnetic permeability (vacuum has 4.0 * math.pi * (10.0^(-7.0)))</span>
+<span class="n">epsi</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1">-- the electric permitivity (vacuum has 8.85418781762 * (10.0^(-12.0)))</span>
+<span class="n">conductivity</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">-- This is the global material for Maxwell.</span>
+  <span class="c1">-- It consists of three different components,</span>
+  <span class="c1">-- permeability, permittivity, and conductivity, each a scalar,</span>
+  <span class="c1">-- so that we need three scalars for this equation system.</span>
+  <span class="c1">-- As this is the global fallback material, we define each material to be a neutral term,</span>
+  <span class="c1">-- which in this case is 0.</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;global_maxwell_permeability&quot;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;st_fun&quot;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="p">{</span> <span class="n">const</span> <span class="o">=</span> <span class="n">mu</span> <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;global_maxwell_permittivity&quot;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;st_fun&quot;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="p">{</span> <span class="n">const</span> <span class="o">=</span> <span class="n">epsi</span> <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;global_maxwell_conductivity&quot;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;st_fun&quot;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="p">{</span> <span class="n">const</span> <span class="o">=</span> <span class="n">conductivity</span> <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="restart-settings">Restart Settings</h2>
+<p>Finally, we set the parameters for writing restart files.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- configuration for the restart file</span>
+<span class="n">restart</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">---- file to restart from</span>
+  <span class="c1">--read = &#39;./restart/posci_modg_lastHeader.lua&#39;,</span>
+
+  <span class="c1">-- folder to write restart data to</span>
+  <span class="n">write</span> <span class="o">=</span> <span class="s1">&#39;restart/&#39;</span><span class="p">,</span>
+  <span class="c1">-- temporal definition of restart write</span>
+  <span class="n">time_control</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">min</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">max</span> <span class="o">=</span> <span class="n">sim_control</span><span class="p">.</span><span class="n">time_control</span><span class="p">.</span><span class="n">max</span><span class="p">,</span>
+    <span class="n">interval</span> <span class="o">=</span> <span class="n">sim_control</span><span class="p">.</span><span class="n">time_control</span><span class="p">.</span><span class="n">max</span><span class="o">/</span><span class="mi">5</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="running-the-simulation">Running the simulation</h2>
+<p>When you run the simulation, make sure that you are calling the solver Ateles
+from the folder where the configuration file resides. This is
+<code>tutorial/testcase/maxwell/ateles.lua</code>. When calling it from another folder, 
+you also need to create the restart folder somewhere else, which will cause
+some problems later on. First of all you have to take more care when calling
+the postprocessing tool in the next step, but it is also easier to recap in
+future, when the simulation input and output are stored in the same folder.</p>
+    </div>
+  </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

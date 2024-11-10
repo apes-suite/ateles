@@ -1,0 +1,1283 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_modg_1d_euler_kernel_module &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_modg_1d_euler_kernel_module
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+            <li class="list-inline-item" id="meta-author"><i class="fa fa-pencil"></i> Jens Zudrop</li>
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.3% of total for modules and submodules.">127 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_modg_1d_euler_kernel_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_modg_1d_euler_kernel_module.f90.html'>atl_modg_1d_euler_kernel_module.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_modg_1d_euler_kernel_module</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_modg_1d_euler_kernel_module.html#proc-atl_modg_1d_euler_physflux_const">atl_modg_1d_euler_physFlux_const</a>
+            <a class="list-group-item" href="../module/atl_modg_1d_euler_kernel_module.html#proc-atl_modg_1d_euler_physflux_nonconst">atl_modg_1d_euler_physFlux_nonConst</a>
+            <a class="list-group-item" href="../module/atl_modg_1d_euler_kernel_module.html#proc-atl_modg_1d_euler_numflux">atl_modg_1d_euler_numFlux</a>
+            <a class="list-group-item" href="../module/atl_modg_1d_euler_kernel_module.html#proc-atl_modg_1d_euler_penalization_const">atl_modg_1d_euler_penalization_Const</a>
+            <a class="list-group-item" href="../module/atl_modg_1d_euler_kernel_module.html#proc-atl_modg_1d_euler_penalization_nonconst">atl_modg_1d_euler_penalization_NonConst</a>
+            <a class="list-group-item" href="../module/atl_modg_1d_euler_kernel_module.html#proc-modg_1d_euler_onedim_numflux">modg_1d_euler_oneDim_numFlux</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      <p>Module for routines and datatypes of MOdal Discontinuous Galerkin (MODG)
+scheme for the 1D Euler equation.
+This scheme is a spectral scheme for linear, purley hyperbolic
+partial differential equation systems.</p>
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='atl_equation_module.html'>atl_equation_module</a></li>
+                  <li class="list-inline-item"><a href='atl_penalization_module.html'>atl_penalization_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/treelmesh_module.html'>treelmesh_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/env_module.html'>env_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_facedata_module.html'>tem_faceData_module</a></li>
+                  <li class="list-inline-item"><a href='atl_scheme_module.html'>atl_scheme_module</a></li>
+                  <li class="list-inline-item"><a href='atl_facedata_module.html'>atl_facedata_module</a></li>
+                  <li class="list-inline-item"><a href='ply_poly_project_module.html'>ply_poly_project_module</a></li>
+                  <li class="list-inline-item"><a href='atl_physfluxeuler_1d_module.html'>atl_physFluxEuler_1d_module</a></li>
+                  <li class="list-inline-item"><a href='atl_materialprp_module.html'>atl_materialPrp_module</a></li>
+                  <li class="list-inline-item"><a href='ply_oversample_module.html'>ply_oversample_module</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_modg_1d_euler_kernel_module~~UsesGraph Pages: 1 -->
+<svg id="moduleatl_modg_1d_euler_kernel_moduleUsesGraph" width="413pt" height="452pt"
+ viewBox="0.00 0.00 413.00 452.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 448)">
+<title>module~~atl_modg_1d_euler_kernel_module~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-448 409,-448 409,4 -4,4"/>
+<!-- module~atl_modg_1d_euler_kernel_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node1" class="node">
+<title>module~atl_modg_1d_euler_kernel_module</title>
+<polygon fill="none" stroke="black" points="405,-234 206,-234 206,-210 405,-210 405,-234"/>
+<text text-anchor="middle" x="305.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_modg_1d_euler_kernel_module</text>
+</g>
+<!-- env_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node2" class="node">
+<title>env_module</title>
+<g id="a_module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node2"><a xlink:href="https://apes-suite.github.io/treelm/module/env_module.html" xlink:title="env_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="124,-444 46,-444 46,-420 124,-420 124,-444"/>
+<text text-anchor="middle" x="85" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">env_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_1d_euler_kernel_module&#45;&gt;env_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_edge1" class="edge">
+<title>module~atl_modg_1d_euler_kernel_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M299.39,-234.46C284.74,-268.53 239.2,-363.8 170,-411 159.42,-418.22 146.57,-422.96 134.14,-426.07"/>
+<polygon fill="#000000" stroke="#000000" points="133.33,-422.66 124.32,-428.23 134.83,-429.5 133.33,-422.66"/>
+</g>
+<!-- module~atl_equation_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node3" class="node">
+<title>module~atl_equation_module</title>
+<g id="a_module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node3"><a xlink:href="../module/atl_equation_module.html" xlink:title="atl_equation_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="147,-402 23,-402 23,-378 147,-378 147,-402"/>
+<text text-anchor="middle" x="85" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_equation_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_1d_euler_kernel_module&#45;&gt;module~atl_equation_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_edge2" class="edge">
+<title>module~atl_modg_1d_euler_kernel_module&#45;&gt;module~atl_equation_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M297.08,-234.09C279.07,-262.39 230.03,-333.23 170,-369 165.86,-371.47 161.44,-373.65 156.87,-375.57"/>
+<polygon fill="#000000" stroke="#000000" points="155.46,-372.36 147.34,-379.17 157.93,-378.91 155.46,-372.36"/>
+</g>
+<!-- module~atl_facedata_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node4" class="node">
+<title>module~atl_facedata_module</title>
+<g id="a_module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node4"><a xlink:href="../module/atl_facedata_module.html" xlink:title="atl_facedata_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="147,-360 23,-360 23,-336 147,-336 147,-360"/>
+<text text-anchor="middle" x="85" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_facedata_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_1d_euler_kernel_module&#45;&gt;module~atl_facedata_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_edge3" class="edge">
+<title>module~atl_modg_1d_euler_kernel_module&#45;&gt;module~atl_facedata_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M292.73,-234.07C270.69,-255.95 220.85,-302.19 170,-327 165.75,-329.07 161.27,-330.96 156.69,-332.66"/>
+<polygon fill="#000000" stroke="#000000" points="155.51,-329.37 147.18,-335.92 157.78,-335.99 155.51,-329.37"/>
+</g>
+<!-- module~atl_materialprp_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node5" class="node">
+<title>module~atl_materialprp_module</title>
+<g id="a_module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node5"><a xlink:href="../module/atl_materialprp_module.html" xlink:title="atl_materialPrp_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="154.5,-318 15.5,-318 15.5,-294 154.5,-294 154.5,-318"/>
+<text text-anchor="middle" x="85" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_materialPrp_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_1d_euler_kernel_module&#45;&gt;module~atl_materialprp_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_edge4" class="edge">
+<title>module~atl_modg_1d_euler_kernel_module&#45;&gt;module~atl_materialprp_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M282.22,-234.07C255.99,-247.89 210.82,-270.49 170,-285 163.72,-287.23 157.09,-289.32 150.43,-291.25"/>
+<polygon fill="#000000" stroke="#000000" points="149.38,-287.91 140.68,-293.96 151.25,-294.65 149.38,-287.91"/>
+</g>
+<!-- module~atl_penalization_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node6" class="node">
+<title>module~atl_penalization_module</title>
+<g id="a_module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node6"><a xlink:href="../module/atl_penalization_module.html" xlink:title="atl_penalization_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="156,-276 14,-276 14,-252 156,-252 156,-276"/>
+<text text-anchor="middle" x="85" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_penalization_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_1d_euler_kernel_module&#45;&gt;module~atl_penalization_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_edge5" class="edge">
+<title>module~atl_modg_1d_euler_kernel_module&#45;&gt;module~atl_penalization_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M241.89,-234.04C215.94,-239.02 185.68,-244.84 158.76,-250.01"/>
+<polygon fill="#000000" stroke="#000000" points="157.78,-246.64 148.62,-251.96 159.1,-253.51 157.78,-246.64"/>
+</g>
+<!-- module~atl_physfluxeuler_1d_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node7" class="node">
+<title>module~atl_physfluxeuler_1d_module</title>
+<g id="a_module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node7"><a xlink:href="../module/atl_physfluxeuler_1d_module.html" xlink:title="atl_physFluxEuler_1d_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="170,-234 0,-234 0,-210 170,-210 170,-234"/>
+<text text-anchor="middle" x="85" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_physFluxEuler_1d_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_1d_euler_kernel_module&#45;&gt;module~atl_physfluxeuler_1d_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_edge6" class="edge">
+<title>module~atl_modg_1d_euler_kernel_module&#45;&gt;module~atl_physfluxeuler_1d_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M205.8,-222C197.36,-222 188.83,-222 180.42,-222"/>
+<polygon fill="#000000" stroke="#000000" points="180.24,-218.5 170.24,-222 180.24,-225.5 180.24,-218.5"/>
+</g>
+<!-- module~atl_scheme_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node8" class="node">
+<title>module~atl_scheme_module</title>
+<g id="a_module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node8"><a xlink:href="../module/atl_scheme_module.html" xlink:title="atl_scheme_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="144.5,-192 25.5,-192 25.5,-168 144.5,-168 144.5,-192"/>
+<text text-anchor="middle" x="85" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_scheme_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_1d_euler_kernel_module&#45;&gt;module~atl_scheme_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_edge7" class="edge">
+<title>module~atl_modg_1d_euler_kernel_module&#45;&gt;module~atl_scheme_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M241.89,-209.96C214.71,-204.74 182.79,-198.6 154.93,-193.25"/>
+<polygon fill="#000000" stroke="#000000" points="155.35,-189.77 144.87,-191.32 154.03,-196.64 155.35,-189.77"/>
+</g>
+<!-- module~ply_oversample_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node9" class="node">
+<title>module~ply_oversample_module</title>
+<g id="a_module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node9"><a xlink:href="../module/ply_oversample_module.html" xlink:title="ply_oversample_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="156,-150 14,-150 14,-126 156,-126 156,-150"/>
+<text text-anchor="middle" x="85" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_oversample_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_1d_euler_kernel_module&#45;&gt;module~ply_oversample_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_edge8" class="edge">
+<title>module~atl_modg_1d_euler_kernel_module&#45;&gt;module~ply_oversample_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M282.22,-209.93C255.99,-196.11 210.82,-173.51 170,-159 163.72,-156.77 157.09,-154.68 150.43,-152.75"/>
+<polygon fill="#000000" stroke="#000000" points="151.25,-149.35 140.68,-150.04 149.38,-156.09 151.25,-149.35"/>
+</g>
+<!-- module~ply_poly_project_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node10" class="node">
+<title>module~ply_poly_project_module</title>
+<g id="a_module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node10"><a xlink:href="../module/ply_poly_project_module.html" xlink:title="ply_poly_project_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="157,-108 13,-108 13,-84 157,-84 157,-108"/>
+<text text-anchor="middle" x="85" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_poly_project_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_1d_euler_kernel_module&#45;&gt;module~ply_poly_project_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_edge9" class="edge">
+<title>module~atl_modg_1d_euler_kernel_module&#45;&gt;module~ply_poly_project_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M292.73,-209.93C270.69,-188.05 220.85,-141.81 170,-117 165.75,-114.93 161.27,-113.04 156.69,-111.34"/>
+<polygon fill="#000000" stroke="#000000" points="157.78,-108.01 147.18,-108.08 155.51,-114.63 157.78,-108.01"/>
+</g>
+<!-- tem_faceData_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node11" class="node">
+<title>tem_faceData_module</title>
+<g id="a_module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node11"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_facedata_module.html" xlink:title="tem_faceData_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="151.5,-66 18.5,-66 18.5,-42 151.5,-42 151.5,-66"/>
+<text text-anchor="middle" x="85" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_faceData_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_1d_euler_kernel_module&#45;&gt;tem_faceData_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_edge10" class="edge">
+<title>module~atl_modg_1d_euler_kernel_module&#45;&gt;tem_faceData_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M297.08,-209.91C279.07,-181.61 230.03,-110.77 170,-75 166.84,-73.12 163.53,-71.41 160.1,-69.85"/>
+<polygon fill="#000000" stroke="#000000" points="161.43,-66.61 150.85,-66.06 158.78,-73.09 161.43,-66.61"/>
+</g>
+<!-- treelmesh_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node12" class="node">
+<title>treelmesh_module</title>
+<g id="a_module~~atl_modg_1d_euler_kernel_module~~UsesGraph_node12"><a xlink:href="https://apes-suite.github.io/treelm/module/treelmesh_module.html" xlink:title="treelmesh_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="141,-24 29,-24 29,0 141,0 141,-24"/>
+<text text-anchor="middle" x="85" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">treelmesh_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_1d_euler_kernel_module&#45;&gt;treelmesh_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsesGraph_edge11" class="edge">
+<title>module~atl_modg_1d_euler_kernel_module&#45;&gt;treelmesh_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M299.39,-209.54C284.74,-175.47 239.2,-80.2 170,-33 164.24,-29.07 157.82,-25.88 151.15,-23.28"/>
+<polygon fill="#000000" stroke="#000000" points="151.86,-19.83 141.27,-19.89 149.59,-26.45 151.86,-19.83"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+          <div class="card">
+      <h3 class="card-header card-title bg-light">Used by</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_modg_1d_euler_kernel_module~~UsedByGraph Pages: 1 -->
+<svg id="moduleatl_modg_1d_euler_kernel_moduleUsedByGraph" width="451pt" height="74pt"
+ viewBox="0.00 0.00 451.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
+<title>module~~atl_modg_1d_euler_kernel_module~~UsedByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 447,-70 447,4 -4,4"/>
+<!-- module~atl_modg_1d_euler_kernel_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsedByGraph_node1" class="node">
+<title>module~atl_modg_1d_euler_kernel_module</title>
+<polygon fill="none" stroke="black" points="199,-45 0,-45 0,-21 199,-21 199,-45"/>
+<text text-anchor="middle" x="99.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_modg_1d_euler_kernel_module</text>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsedByGraph_node2" class="node">
+<title>proc~compute_rhs_cubes_modg_1d</title>
+<g id="a_module~~atl_modg_1d_euler_kernel_module~~UsedByGraph_node2"><a xlink:href="../proc/compute_rhs_cubes_modg_1d.html" xlink:title="compute_rhs_cubes_modg_1d">
+<polygon fill="#d9534f" stroke="#d9534f" points="425.5,-66 252.5,-66 252.5,-42 425.5,-42 425.5,-66"/>
+<text text-anchor="middle" x="339" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">compute_rhs_cubes_modg_1d</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_modg_1d_euler_kernel_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsedByGraph_edge1" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;module~atl_modg_1d_euler_kernel_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M252.26,-46.42C238.22,-45.18 223.52,-43.88 209.02,-42.6"/>
+<polygon fill="#000000" stroke="#000000" points="209.3,-39.11 199.03,-41.71 208.68,-46.08 209.3,-39.11"/>
+</g>
+<!-- proc~modg_1d_compute_project_physflux -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsedByGraph_node3" class="node">
+<title>proc~modg_1d_compute_project_physflux</title>
+<g id="a_module~~atl_modg_1d_euler_kernel_module~~UsedByGraph_node3"><a xlink:href="../proc/modg_1d_compute_project_physflux.html" xlink:title="modg_1d_compute_project_physFlux">
+<polygon fill="#d9534f" stroke="#d9534f" points="443,-24 235,-24 235,0 443,0 443,-24"/>
+<text text-anchor="middle" x="339" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">modg_1d_compute_project_physFlux</text>
+</a>
+</g>
+</g>
+<!-- proc~modg_1d_compute_project_physflux&#45;&gt;module~atl_modg_1d_euler_kernel_module -->
+<g id="module~~atl_modg_1d_euler_kernel_module~~UsedByGraph_edge2" class="edge">
+<title>proc~modg_1d_compute_project_physflux&#45;&gt;module~atl_modg_1d_euler_kernel_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M234.87,-21.12C226.32,-21.88 217.66,-22.64 209.07,-23.4"/>
+<polygon fill="#000000" stroke="#000000" points="208.69,-19.92 199.04,-24.29 209.31,-26.89 208.69,-19.92"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      <br>
+
+
+
+
+
+
+
+
+        <section>
+          <h2>Subroutines</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_1d_euler_physflux_const"></span> <h3>public  subroutine <a href='../proc/atl_modg_1d_euler_physflux_const.html'>atl_modg_1d_euler_physFlux_const</a>(equation, poly_proj, res, pointVal, penalty_char, U_o)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Calculate the physical flux for the MODG scheme and
+Euler equation with constant characteristic (mask function) in the
+element.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~239"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you solve.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~127"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Parameters for projection</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-res~115"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>res</strong>(:,:)</td>
+            <td>
+<p>The physical flux result to be stored in</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-pointval~24"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pointVal</strong>(:,:)</td>
+            <td>
+<p>Nodal representation of the polynomial with in each cell.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalty_char~6"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalty_char</strong></td>
+            <td>
+<p>Characteristic (mask) function of the material penalization.</p><a href="../proc/atl_modg_1d_euler_physflux_const.html#variable-penalty_char~6" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-u_o~6"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>U_o</strong></td>
+            <td>
+<p>Obstacle velocity</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_1d_euler_physflux_nonconst"></span> <h3>public  subroutine <a href='../proc/atl_modg_1d_euler_physflux_nonconst.html'>atl_modg_1d_euler_physFlux_nonConst</a>(equation, poly_proj, res, pointVal, penalty_char, U_o)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Calculate the physical flux for the MODG scheme and
+Euler equation with variable characteristic (mask function) in the
+element.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~240"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you solve.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~128"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Parameters for projection</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-res~116"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>res</strong>(:,:)</td>
+            <td>
+<p>The physical flux result to be stored in</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-pointval~25"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pointVal</strong>(:,:)</td>
+            <td>
+<p>Nodal representation of the polynomial with in each cell.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalty_char~7"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalty_char</strong>(:)</td>
+            <td>
+<p>Characteristic (mask) function of the material penalization.</p><a href="../proc/atl_modg_1d_euler_physflux_nonconst.html#variable-penalty_char~7" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-u_o~7"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>U_o</strong>(:)</td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_1d_euler_numflux"></span> <h3>public  subroutine <a href='../proc/atl_modg_1d_euler_numflux.html'>atl_modg_1d_euler_numFlux</a>(equation, facedata, material)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Calculate the numerical flux for Euler equation and MODG scheme</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~241"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you solve.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facedata~37"></span>
+              type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>facedata</strong></td>
+            <td>
+<p>The face representation of the state.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~104"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong></td>
+            <td>
+<p>Material description for the faces on the current level</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_1d_euler_penalization_const"></span> <h3>public  subroutine <a href='../proc/atl_modg_1d_euler_penalization_const.html'>atl_modg_1d_euler_penalization_Const</a>(equation, poly_proj, nodal_data, scheme_min, penalizationData, iElem, material)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~243"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you solve.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~129"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Poly project</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodal_data~48"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodal_data</strong>(:,:)</td>
+            <td>
+<p>The state in nodal form</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_min~31"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_min</strong></td>
+            <td>
+<p>The scheme information</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata~31"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationData</strong></td>
+            <td>
+<p>The penalization data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ielem~148"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iElem</strong></td>
+            <td>
+<p>The current Element</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~106"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong></td>
+            <td>
+<p>Material description for the faces on the current level</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_1d_euler_penalization_nonconst"></span> <h3>public  subroutine <a href='../proc/atl_modg_1d_euler_penalization_nonconst.html'>atl_modg_1d_euler_penalization_NonConst</a>(equation, poly_proj, nodal_data, scheme_min, penalizationData, iElem, material)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~244"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you solve.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~130"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Poly project</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodal_data~49"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodal_data</strong>(:,:)</td>
+            <td>
+<p>The state in nodal form</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme_min~32"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme_min</strong></td>
+            <td>
+<p>The scheme information</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalizationdata~32"></span>
+              type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalizationData</strong></td>
+            <td>
+<p>The penalization data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ielem~149"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iElem</strong></td>
+            <td>
+<p>The current Element</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~107"></span>
+              type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong></td>
+            <td>
+<p>Material description for the faces on the current level</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-modg_1d_euler_onedim_numflux"></span> <h3>private  subroutine <a href='../proc/modg_1d_euler_onedim_numflux.html'>modg_1d_euler_oneDim_numFlux</a>(equation, facedata, faces, material)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Numerical flux calculation for Euler equation across the faces in a single
+spatial direction.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~242"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+<p>The equation you solve.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facedata~38"></span>
+              type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>facedata</strong></td>
+            <td>
+<p>The face state if the equation</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-faces~14"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_faceiterator_type.html'>tem_faceIterator_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faces</strong></td>
+            <td>
+<p>The faces to calculate the fluxes for.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~105"></span>
+              type(<a href='../type/atl_facematerialdata_type.html'>atl_faceMaterialData_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong></td>
+            <td>
+<p>The penalization material left and right of the face</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

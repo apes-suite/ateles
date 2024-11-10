@@ -1,0 +1,1052 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>ply_sampled_track_output &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>ply_sampled_track_output
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for procedures.">80 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/ply_sampled_tracking_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/ply_sampled_tracking_module.f90.html'>ply_sampled_tracking_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/ply_sampled_tracking_module.html'>ply_sampled_tracking_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">ply_sampled_track_output</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine ply_sampled_track_output(me, mesh, bc, solver, proc, varSys, var_degree, lvl_degree, var_space, simControl, time)  
+</h2>
+    
+
+    <p>Output sampled tracking data.</p>
+<p>Iterates over all tracking instances in the given me variable, checks
+ whether it should be written at the current point in time (if simControl
+ is provided), subsamples the data and performs the hvs_output for the
+ subsampled data.</p>
+<div class="alert alert-success">
+<p class="alert-title h4">Todo</p>
+<p>Instead of recreating the sampled varsys and mesh everytime the
+      tracking is written, store them in the <a href="../type/ply_sampled_tracking_type.html">ply_sampled_tracking_type</a>.</p>
+</div>
+<p>Get the communicator description for the subsampled mesh.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~71"></span>
+              type(<a href='../type/ply_sampled_tracking_type.html'>ply_sampled_tracking_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>Sampled tracking instances.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh~83"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh</strong></td>
+            <td>
+                <p>Global mesh, required for the sampling.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc~29"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_bc_prop_type.html'>tem_BC_prop_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc</strong></td>
+            <td>
+                <p>Boundary properties, needed to inherit boundary information to refined
+meshes and allow the extraction of boundary shape geometries.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-solver~3"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_solvehead_type.html'>tem_solveHead_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>solver</strong></td>
+            <td>
+                <p>Information about the solver, needed for the output file name.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-proc~10"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_comm_env_type.html'>tem_comm_env_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>proc</strong></td>
+            <td>
+                <p>General communication environment</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varsys~87"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varSys</strong></td>
+            <td>
+                <p>Original variable system</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-var_degree~3"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>var_degree</strong>(:)</td>
+            <td>
+                <p>Maximal polynomial degree for each variable</p>
+<p>Needs to match the size of the variable system.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-lvl_degree~3"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>lvl_degree</strong>(:)</td>
+            <td>
+                <p>Maximal polynomial degree for each level</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-var_space~3"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>var_space</strong>(:)</td>
+            <td>
+                <p>Maximal polynomial space for each variable</p>
+<p>Needs to match the size of the variable system.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-simcontrol~2"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_simcontrol_type.html'>tem_simControl_type</a>),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>simControl</strong></td>
+            <td>
+                <p>Simulation control to determine, whether trackings should be written</p>
+<p>If not provided, all trackings will be written unconditionally.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-time~71"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>time</strong></td>
+            <td>
+                <p>Provide a time for the current data set to write in tracking.</p>
+<p>This only is respected if no simControl is provided. If simControl
+is present the time information from it will be used instead.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~ply_sampled_track_output~~CallsGraph Pages: 1 -->
+<svg id="procply_sampled_track_outputCallsGraph" width="581pt" height="582pt"
+ viewBox="0.00 0.00 581.00 582.32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~ply_sampled_track_output~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 578.32)">
+<title>proc~~ply_sampled_track_output~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-578.32 577,-578.32 577,4 -4,4"/>
+<!-- proc~ply_sampled_track_output -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node1" class="node">
+<title>proc~ply_sampled_track_output</title>
+<polygon fill="none" stroke="black" points="151,-305.32 0,-305.32 0,-281.32 151,-281.32 151,-305.32"/>
+<text text-anchor="middle" x="75.5" y="-290.92" font-family="Helvetica,sans-Serif" font-size="10.50">ply_sampled_track_output</text>
+</g>
+<!-- config -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node2" class="node">
+<title>config</title>
+<polygon fill="#777777" stroke="#777777" points="304.5,-574.32 250.5,-574.32 250.5,-550.32 304.5,-550.32 304.5,-574.32"/>
+<text text-anchor="middle" x="277.5" y="-559.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">config</text>
+</g>
+<!-- proc~ply_sampled_track_output&#45;&gt;config -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge1" class="edge">
+<title>proc~ply_sampled_track_output&#45;&gt;config</title>
+<path fill="none" stroke="#000000" d="M78.39,-305.55C85.18,-345.21 112.01,-471.42 187,-536.32 201.73,-549.06 222.39,-555.57 240.16,-558.89"/>
+<polygon fill="#000000" stroke="#000000" points="239.79,-562.37 250.21,-560.5 240.89,-555.46 239.79,-562.37"/>
+</g>
+<!-- free_treelmesh -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node3" class="node">
+<title>free_treelmesh</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node3"><a xlink:href="https://apes-suite.github.io/treelm/proc/free_treelmesh.html" xlink:title="free_treelmesh">
+<polygon fill="#d9534f" stroke="#d9534f" points="534.5,-536.32 442.5,-536.32 442.5,-512.32 534.5,-512.32 534.5,-536.32"/>
+<text text-anchor="middle" x="488.5" y="-521.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">free_treelmesh</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sampled_track_output&#45;&gt;free_treelmesh -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge2" class="edge">
+<title>proc~ply_sampled_track_output&#45;&gt;free_treelmesh</title>
+<path fill="none" stroke="#000000" d="M78.69,-305.57C86.08,-342.89 113.85,-455.59 187,-503.32 226.06,-528.8 356.56,-528.97 432.13,-526.73"/>
+<polygon fill="#000000" stroke="#000000" points="432.53,-530.21 442.41,-526.4 432.3,-523.22 432.53,-530.21"/>
+</g>
+<!-- hvs_output_close -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node4" class="node">
+<title>hvs_output_close</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node4"><a xlink:href="https://apes-suite.github.io/treelm/proc/hvs_output_close.html" xlink:title="hvs_output_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="329,-494.32 226,-494.32 226,-470.32 329,-470.32 329,-494.32"/>
+<text text-anchor="middle" x="277.5" y="-479.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_output_close</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sampled_track_output&#45;&gt;hvs_output_close -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge3" class="edge">
+<title>proc~ply_sampled_track_output&#45;&gt;hvs_output_close</title>
+<path fill="none" stroke="#000000" d="M80.75,-305.33C92.42,-336.45 128.04,-420.13 187,-461.32 195.63,-467.34 205.75,-471.66 216.02,-474.74"/>
+<polygon fill="#000000" stroke="#000000" points="215.31,-478.17 225.87,-477.34 217.09,-471.41 215.31,-478.17"/>
+</g>
+<!-- hvs_output_init -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node5" class="node">
+<title>hvs_output_init</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node5"><a xlink:href="https://apes-suite.github.io/treelm/proc/hvs_output_init.html" xlink:title="hvs_output_init">
+<polygon fill="#d9534f" stroke="#d9534f" points="323.5,-452.32 231.5,-452.32 231.5,-428.32 323.5,-428.32 323.5,-452.32"/>
+<text text-anchor="middle" x="277.5" y="-437.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_output_init</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sampled_track_output&#45;&gt;hvs_output_init -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge4" class="edge">
+<title>proc~ply_sampled_track_output&#45;&gt;hvs_output_init</title>
+<path fill="none" stroke="#000000" d="M83.57,-305.61C98.91,-331.1 137.86,-389.81 187,-419.32 197.37,-425.54 209.44,-429.92 221.3,-433"/>
+<polygon fill="#000000" stroke="#000000" points="220.64,-436.44 231.17,-435.3 222.22,-429.62 220.64,-436.44"/>
+</g>
+<!-- hvs_output_open -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node6" class="node">
+<title>hvs_output_open</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node6"><a xlink:href="https://apes-suite.github.io/treelm/proc/hvs_output_open.html" xlink:title="hvs_output_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="329,-410.32 226,-410.32 226,-386.32 329,-386.32 329,-410.32"/>
+<text text-anchor="middle" x="277.5" y="-395.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_output_open</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sampled_track_output&#45;&gt;hvs_output_open -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge5" class="edge">
+<title>proc~ply_sampled_track_output&#45;&gt;hvs_output_open</title>
+<path fill="none" stroke="#000000" d="M88.6,-305.33C107.78,-323.67 147.11,-358.52 187,-377.32 195.99,-381.55 205.9,-384.97 215.75,-387.71"/>
+<polygon fill="#000000" stroke="#000000" points="214.98,-391.13 225.54,-390.24 216.73,-384.35 214.98,-391.13"/>
+</g>
+<!-- hvs_output_write -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node7" class="node">
+<title>hvs_output_write</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node7"><a xlink:href="https://apes-suite.github.io/treelm/proc/hvs_output_write.html" xlink:title="hvs_output_write">
+<polygon fill="#d9534f" stroke="#d9534f" points="328.5,-368.32 226.5,-368.32 226.5,-344.32 328.5,-344.32 328.5,-368.32"/>
+<text text-anchor="middle" x="277.5" y="-353.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_output_write</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sampled_track_output&#45;&gt;hvs_output_write -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge6" class="edge">
+<title>proc~ply_sampled_track_output&#45;&gt;hvs_output_write</title>
+<path fill="none" stroke="#000000" d="M105.22,-305.44C127.31,-314.46 158.74,-326.67 187,-335.32 196.5,-338.22 206.67,-340.96 216.63,-343.43"/>
+<polygon fill="#000000" stroke="#000000" points="215.94,-346.86 226.48,-345.82 217.58,-340.06 215.94,-346.86"/>
+</g>
+<!-- instance -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node8" class="node">
+<title>instance</title>
+<polygon fill="#777777" stroke="#777777" points="306.5,-326.32 248.5,-326.32 248.5,-302.32 306.5,-302.32 306.5,-326.32"/>
+<text text-anchor="middle" x="277.5" y="-311.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">instance</text>
+</g>
+<!-- proc~ply_sampled_track_output&#45;&gt;instance -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge7" class="edge">
+<title>proc~ply_sampled_track_output&#45;&gt;instance</title>
+<path fill="none" stroke="#000000" d="M151.26,-301.17C180.96,-304.29 213.85,-307.74 238.47,-310.32"/>
+<polygon fill="#000000" stroke="#000000" points="238.17,-313.81 248.48,-311.37 238.9,-306.85 238.17,-313.81"/>
+</g>
+<!-- proc~ply_sample_data -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node9" class="node">
+<title>proc~ply_sample_data</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node9"><a xlink:href="../proc/ply_sample_data.html" xlink:title="ply_sample_data">
+<polygon fill="#d9534f" stroke="#d9534f" points="328.5,-284.32 226.5,-284.32 226.5,-260.32 328.5,-260.32 328.5,-284.32"/>
+<text text-anchor="middle" x="277.5" y="-269.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_sample_data</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sampled_track_output&#45;&gt;proc~ply_sample_data -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge8" class="edge">
+<title>proc~ply_sampled_track_output&#45;&gt;proc~ply_sample_data</title>
+<path fill="none" stroke="#000000" d="M151.26,-285.47C172.71,-283.21 195.82,-280.79 216.27,-278.64"/>
+<polygon fill="#000000" stroke="#000000" points="216.81,-282.1 226.39,-277.58 216.08,-275.14 216.81,-282.1"/>
+</g>
+<!-- proc~ply_sampling_free_methoddata -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node10" class="node">
+<title>proc~ply_sampling_free_methoddata</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node10"><a xlink:href="../proc/ply_sampling_free_methoddata.html" xlink:title="ply_sampling_free_methodData">
+<polygon fill="#d9534f" stroke="#d9534f" points="368,-242.32 187,-242.32 187,-218.32 368,-218.32 368,-242.32"/>
+<text text-anchor="middle" x="277.5" y="-227.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_sampling_free_methodData</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sampled_track_output&#45;&gt;proc~ply_sampling_free_methoddata -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge9" class="edge">
+<title>proc~ply_sampled_track_output&#45;&gt;proc~ply_sampling_free_methoddata</title>
+<path fill="none" stroke="#000000" d="M105.22,-281.2C127.31,-272.17 158.74,-259.96 187,-251.32 194.4,-249.05 202.22,-246.89 210.02,-244.88"/>
+<polygon fill="#000000" stroke="#000000" points="211.01,-248.24 219.86,-242.41 209.31,-241.45 211.01,-248.24"/>
+</g>
+<!-- tem_empty_varsys -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node11" class="node">
+<title>tem_empty_varsys</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node11"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_empty_varsys.html" xlink:title="tem_empty_varsys">
+<polygon fill="#d9534f" stroke="#d9534f" points="333.5,-200.32 221.5,-200.32 221.5,-176.32 333.5,-176.32 333.5,-200.32"/>
+<text text-anchor="middle" x="277.5" y="-185.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_empty_varsys</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sampled_track_output&#45;&gt;tem_empty_varsys -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge10" class="edge">
+<title>proc~ply_sampled_track_output&#45;&gt;tem_empty_varsys</title>
+<path fill="none" stroke="#000000" d="M88.6,-281.3C107.78,-262.96 147.11,-228.11 187,-209.32 194.68,-205.7 203.03,-202.68 211.44,-200.16"/>
+<polygon fill="#000000" stroke="#000000" points="212.61,-203.47 221.31,-197.44 210.74,-196.73 212.61,-203.47"/>
+</g>
+<!-- tem_time_reset -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node12" class="node">
+<title>tem_time_reset</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node12"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_time_reset.html" xlink:title="tem_time_reset">
+<polygon fill="#d9534f" stroke="#d9534f" points="324.5,-158.32 230.5,-158.32 230.5,-134.32 324.5,-134.32 324.5,-158.32"/>
+<text text-anchor="middle" x="277.5" y="-143.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_reset</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sampled_track_output&#45;&gt;tem_time_reset -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge11" class="edge">
+<title>proc~ply_sampled_track_output&#45;&gt;tem_time_reset</title>
+<path fill="none" stroke="#000000" d="M83.57,-281.02C98.91,-255.53 137.86,-196.82 187,-167.32 197.05,-161.28 208.71,-156.98 220.22,-153.91"/>
+<polygon fill="#000000" stroke="#000000" points="221.33,-157.25 230.25,-151.53 219.71,-150.44 221.33,-157.25"/>
+</g>
+<!-- tem_tracker -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node13" class="node">
+<title>tem_tracker</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node13"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_tracker.html" xlink:title="tem_tracker">
+<polygon fill="#d9534f" stroke="#d9534f" points="316,-116.32 239,-116.32 239,-92.32 316,-92.32 316,-116.32"/>
+<text text-anchor="middle" x="277.5" y="-101.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tracker</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sampled_track_output&#45;&gt;tem_tracker -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge12" class="edge">
+<title>proc~ply_sampled_track_output&#45;&gt;tem_tracker</title>
+<path fill="none" stroke="#000000" d="M80.75,-281.31C92.42,-250.19 128.04,-166.5 187,-125.32 199.11,-116.86 214.16,-111.77 228.44,-108.72"/>
+<polygon fill="#000000" stroke="#000000" points="229.45,-112.1 238.65,-106.85 228.18,-105.21 229.45,-112.1"/>
+</g>
+<!-- tem_tracking_has_triggered -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node14" class="node">
+<title>tem_tracking_has_triggered</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node14"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_tracking_has_triggered.html" xlink:title="tem_tracking_has_triggered">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="357.5,-74.32 197.5,-74.32 197.5,-50.32 357.5,-50.32 357.5,-74.32"/>
+<text text-anchor="middle" x="277.5" y="-59.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tracking_has_triggered</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sampled_track_output&#45;&gt;tem_tracking_has_triggered -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge13" class="edge">
+<title>proc~ply_sampled_track_output&#45;&gt;tem_tracking_has_triggered</title>
+<path fill="none" stroke="#000000" d="M79.17,-281.06C87.76,-244.68 118.25,-136.51 187,-83.32 188.85,-81.89 190.77,-80.55 192.77,-79.31"/>
+<polygon fill="#000000" stroke="#000000" points="194.74,-82.22 201.88,-74.4 191.42,-76.06 194.74,-82.22"/>
+</g>
+<!-- val -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node15" class="node">
+<title>val</title>
+<polygon fill="#777777" stroke="#777777" points="515.5,-32.32 461.5,-32.32 461.5,-8.32 515.5,-8.32 515.5,-32.32"/>
+<text text-anchor="middle" x="488.5" y="-17.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">val</text>
+</g>
+<!-- proc~ply_sampled_track_output&#45;&gt;val -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge14" class="edge">
+<title>proc~ply_sampled_track_output&#45;&gt;val</title>
+<path fill="none" stroke="#000000" d="M77.57,-281.13C81.97,-239.29 102.64,-100.74 187,-41.32 267.03,15.05 390.67,0.22 451.37,-11.83"/>
+<polygon fill="#000000" stroke="#000000" points="450.75,-15.28 461.25,-13.88 452.17,-8.42 450.75,-15.28"/>
+</g>
+<!-- proc~ply_sample_data&#45;&gt;free_treelmesh -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge15" class="edge">
+<title>proc~ply_sample_data&#45;&gt;free_treelmesh</title>
+<path fill="none" stroke="#000000" d="M328.78,-273.87C343.23,-276.78 357.83,-282.51 368,-293.32 432.9,-362.28 339.65,-433.84 404,-503.32 411.54,-511.46 421.74,-516.65 432.41,-519.91"/>
+<polygon fill="#000000" stroke="#000000" points="431.73,-523.34 442.28,-522.39 433.44,-516.56 431.73,-523.34"/>
+</g>
+<!-- proc~ply_sample_data&#45;&gt;val -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge27" class="edge">
+<title>proc~ply_sample_data&#45;&gt;val</title>
+<path fill="none" stroke="#000000" d="M328.78,-270.76C343.23,-267.85 357.83,-262.13 368,-251.32 432.9,-182.36 339.65,-110.79 404,-41.32 415.94,-28.42 434.53,-22.94 451.14,-20.79"/>
+<polygon fill="#000000" stroke="#000000" points="451.53,-24.26 461.15,-19.84 450.87,-17.3 451.53,-24.26"/>
+</g>
+<!-- get_element -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node16" class="node">
+<title>get_element</title>
+<polygon fill="#777777" stroke="#777777" points="528,-494.32 449,-494.32 449,-470.32 528,-470.32 528,-494.32"/>
+<text text-anchor="middle" x="488.5" y="-479.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_element</text>
+</g>
+<!-- proc~ply_sample_data&#45;&gt;get_element -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge16" class="edge">
+<title>proc~ply_sample_data&#45;&gt;get_element</title>
+<path fill="none" stroke="#000000" d="M328.51,-274.13C342.95,-277.05 357.61,-282.72 368,-293.32 421.47,-347.83 350.97,-406.38 404,-461.32 413.27,-470.91 426.22,-476.37 439.16,-479.41"/>
+<polygon fill="#000000" stroke="#000000" points="438.52,-482.85 449,-481.29 439.83,-475.98 438.52,-482.85"/>
+</g>
+<!-- proc~ply_legendre_1d -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node17" class="node">
+<title>proc~ply_legendre_1d</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node17"><a xlink:href="../proc/ply_legendre_1d.html" xlink:title="ply_legendre_1D">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="539,-452.32 438,-452.32 438,-428.32 539,-428.32 539,-452.32"/>
+<text text-anchor="middle" x="488.5" y="-437.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_legendre_1D</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sample_data&#45;&gt;proc~ply_legendre_1d -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge17" class="edge">
+<title>proc~ply_sample_data&#45;&gt;proc~ply_legendre_1d</title>
+<path fill="none" stroke="#000000" d="M328.55,-274.66C342.82,-277.62 357.37,-283.18 368,-293.32 410.16,-333.5 362.17,-378.8 404,-419.32 410.7,-425.81 419.1,-430.38 427.97,-433.59"/>
+<polygon fill="#000000" stroke="#000000" points="427.13,-436.99 437.72,-436.56 429.17,-430.3 427.13,-436.99"/>
+</g>
+<!-- proc~ply_sample_adaptive -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node18" class="node">
+<title>proc~ply_sample_adaptive</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node18"><a xlink:href="../proc/ply_sample_adaptive.html" xlink:title="ply_sample_adaptive">
+<polygon fill="#d9534f" stroke="#d9534f" points="550.5,-410.32 426.5,-410.32 426.5,-386.32 550.5,-386.32 550.5,-410.32"/>
+<text text-anchor="middle" x="488.5" y="-395.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_sample_adaptive</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sample_data&#45;&gt;proc~ply_sample_adaptive -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge18" class="edge">
+<title>proc~ply_sample_data&#45;&gt;proc~ply_sample_adaptive</title>
+<path fill="none" stroke="#000000" d="M328.71,-275.71C342.67,-278.75 357,-284.08 368,-293.32 399.11,-319.43 373.1,-350.96 404,-377.32 407.95,-380.69 412.37,-383.53 417.05,-385.92"/>
+<polygon fill="#000000" stroke="#000000" points="415.76,-389.18 426.33,-390 418.58,-382.77 415.76,-389.18"/>
+</g>
+<!-- tem_CoordOfId -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node19" class="node">
+<title>tem_CoordOfId</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node19"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_coordofid.html" xlink:title="tem_CoordOfId">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="535,-368.32 442,-368.32 442,-344.32 535,-344.32 535,-368.32"/>
+<text text-anchor="middle" x="488.5" y="-353.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_CoordOfId</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sample_data&#45;&gt;tem_CoordOfId -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge19" class="edge">
+<title>proc~ply_sample_data&#45;&gt;tem_CoordOfId</title>
+<path fill="none" stroke="#000000" d="M328.5,-278.26C342,-281.37 356.14,-286.1 368,-293.32 389.01,-306.09 383.1,-322.38 404,-335.32 412.48,-340.57 422.22,-344.51 431.98,-347.46"/>
+<polygon fill="#000000" stroke="#000000" points="431.13,-350.86 441.7,-350.11 432.97,-344.11 431.13,-350.86"/>
+</g>
+<!-- tem_abort -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node20" class="node">
+<title>tem_abort</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node20"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="522,-326.32 455,-326.32 455,-302.32 522,-302.32 522,-326.32"/>
+<text text-anchor="middle" x="488.5" y="-311.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sample_data&#45;&gt;tem_abort -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge20" class="edge">
+<title>proc~ply_sample_data&#45;&gt;tem_abort</title>
+<path fill="none" stroke="#000000" d="M328.56,-282.38C364.02,-289.5 411.08,-298.96 444.78,-305.73"/>
+<polygon fill="#000000" stroke="#000000" points="444.28,-309.2 454.78,-307.74 445.66,-302.34 444.28,-309.2"/>
+</g>
+<!-- tem_create_subTree_of -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node21" class="node">
+<title>tem_create_subTree_of</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node21"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_create_subtree_of.html" xlink:title="tem_create_subTree_of">
+<polygon fill="#d9534f" stroke="#d9534f" points="555.5,-284.32 421.5,-284.32 421.5,-260.32 555.5,-260.32 555.5,-284.32"/>
+<text text-anchor="middle" x="488.5" y="-269.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_subTree_of</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sample_data&#45;&gt;tem_create_subTree_of -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge21" class="edge">
+<title>proc~ply_sample_data&#45;&gt;tem_create_subTree_of</title>
+<path fill="none" stroke="#000000" d="M328.56,-272.32C353.3,-272.32 383.68,-272.32 411.24,-272.32"/>
+<polygon fill="#000000" stroke="#000000" points="411.24,-275.82 421.24,-272.32 411.24,-268.82 411.24,-275.82"/>
+</g>
+<!-- tem_create_tree_from_sub -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node22" class="node">
+<title>tem_create_tree_from_sub</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node22"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_create_tree_from_sub.html" xlink:title="tem_create_tree_from_sub">
+<polygon fill="#d9534f" stroke="#d9534f" points="565,-242.32 412,-242.32 412,-218.32 565,-218.32 565,-242.32"/>
+<text text-anchor="middle" x="488.5" y="-227.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_tree_from_sub</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sample_data&#45;&gt;tem_create_tree_from_sub -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge22" class="edge">
+<title>proc~ply_sample_data&#45;&gt;tem_create_tree_from_sub</title>
+<path fill="none" stroke="#000000" d="M328.56,-262.26C355.14,-256.92 388.23,-250.27 417.32,-244.42"/>
+<polygon fill="#000000" stroke="#000000" points="418.32,-247.79 427.43,-242.39 416.94,-240.93 418.32,-247.79"/>
+</g>
+<!-- tem_destroy_subTree -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node23" class="node">
+<title>tem_destroy_subTree</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node23"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_destroy_subtree.html" xlink:title="tem_destroy_subTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="550.5,-200.32 426.5,-200.32 426.5,-176.32 550.5,-176.32 550.5,-200.32"/>
+<text text-anchor="middle" x="488.5" y="-185.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_destroy_subTree</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sample_data&#45;&gt;tem_destroy_subTree -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge23" class="edge">
+<title>proc~ply_sample_data&#45;&gt;tem_destroy_subTree</title>
+<path fill="none" stroke="#000000" d="M328.5,-266.38C342,-263.27 356.14,-258.53 368,-251.32 389.01,-238.54 383.1,-222.26 404,-209.32 408.08,-206.79 412.44,-204.57 416.96,-202.62"/>
+<polygon fill="#000000" stroke="#000000" points="418.33,-205.84 426.4,-198.97 415.81,-199.31 418.33,-205.84"/>
+</g>
+<!-- tem_refine_global_subtree -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node24" class="node">
+<title>tem_refine_global_subtree</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node24"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_refine_global_subtree.html" xlink:title="tem_refine_global_subtree">
+<polygon fill="#d9534f" stroke="#d9534f" points="565,-158.32 412,-158.32 412,-134.32 565,-134.32 565,-158.32"/>
+<text text-anchor="middle" x="488.5" y="-143.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_refine_global_subtree</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sample_data&#45;&gt;tem_refine_global_subtree -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge24" class="edge">
+<title>proc~ply_sample_data&#45;&gt;tem_refine_global_subtree</title>
+<path fill="none" stroke="#000000" d="M328.71,-268.93C342.67,-265.89 357,-260.55 368,-251.32 399.11,-225.21 373.1,-193.67 404,-167.32 405.54,-166.01 407.14,-164.78 408.81,-163.62"/>
+<polygon fill="#000000" stroke="#000000" points="410.73,-166.55 417.56,-158.45 407.17,-160.52 410.73,-166.55"/>
+</g>
+<!-- tem_varSys_append_stateVar -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node25" class="node">
+<title>tem_varSys_append_stateVar</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node25"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_varsys_append_statevar.html" xlink:title="tem_varSys_append_stateVar">
+<polygon fill="#d9534f" stroke="#d9534f" points="573,-116.32 404,-116.32 404,-92.32 573,-92.32 573,-116.32"/>
+<text text-anchor="middle" x="488.5" y="-101.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_append_stateVar</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sample_data&#45;&gt;tem_varSys_append_stateVar -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge25" class="edge">
+<title>proc~ply_sample_data&#45;&gt;tem_varSys_append_stateVar</title>
+<path fill="none" stroke="#000000" d="M328.55,-269.98C342.82,-267.01 357.37,-261.45 368,-251.32 410.16,-211.13 362.17,-165.84 404,-125.32 405.25,-124.1 406.57,-122.95 407.94,-121.87"/>
+<polygon fill="#000000" stroke="#000000" points="409.88,-124.78 416.26,-116.33 406,-118.95 409.88,-124.78"/>
+</g>
+<!-- tem_varSys_init -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_node26" class="node">
+<title>tem_varSys_init</title>
+<g id="a_proc~~ply_sampled_track_output~~CallsGraph_node26"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_varsys_init.html" xlink:title="tem_varSys_init">
+<polygon fill="#d9534f" stroke="#d9534f" points="536.5,-74.32 440.5,-74.32 440.5,-50.32 536.5,-50.32 536.5,-74.32"/>
+<text text-anchor="middle" x="488.5" y="-59.92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_init</text>
+</a>
+</g>
+</g>
+<!-- proc~ply_sample_data&#45;&gt;tem_varSys_init -->
+<g id="proc~~ply_sampled_track_output~~CallsGraph_edge26" class="edge">
+<title>proc~ply_sample_data&#45;&gt;tem_varSys_init</title>
+<path fill="none" stroke="#000000" d="M328.51,-270.51C342.95,-267.58 357.61,-261.91 368,-251.32 421.47,-196.8 350.97,-138.26 404,-83.32 411.24,-75.82 420.73,-70.85 430.7,-67.58"/>
+<polygon fill="#000000" stroke="#000000" points="431.63,-70.96 440.36,-64.95 429.79,-64.2 431.63,-70.96"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~ply_sampled_track_output~~CalledByGraph Pages: 1 -->
+<svg id="procply_sampled_track_outputCalledByGraph" width="412pt" height="116pt"
+ viewBox="0.00 0.00 412.00 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~ply_sampled_track_output~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<title>proc~~ply_sampled_track_output~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-112 408,-112 408,4 -4,4"/>
+<!-- proc~ply_sampled_track_output -->
+<g id="proc~~ply_sampled_track_output~~CalledByGraph_node1" class="node">
+<title>proc~ply_sampled_track_output</title>
+<polygon fill="none" stroke="black" points="404,-66 253,-66 253,-42 404,-42 404,-66"/>
+<text text-anchor="middle" x="328.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">ply_sampled_track_output</text>
+</g>
+<!-- proc~atl_initialize_program -->
+<g id="proc~~ply_sampled_track_output~~CalledByGraph_node2" class="node">
+<title>proc~atl_initialize_program</title>
+<g id="a_proc~~ply_sampled_track_output~~CalledByGraph_node2"><a xlink:href="../proc/atl_initialize_program.html" xlink:title="atl_initialize_program">
+<polygon fill="#d9534f" stroke="#d9534f" points="217,-108 90,-108 90,-84 217,-84 217,-108"/>
+<text text-anchor="middle" x="153.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize_program</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_initialize_program&#45;&gt;proc~ply_sampled_track_output -->
+<g id="proc~~ply_sampled_track_output~~CalledByGraph_edge1" class="edge">
+<title>proc~atl_initialize_program&#45;&gt;proc~ply_sampled_track_output</title>
+<path fill="none" stroke="#000000" d="M204.07,-83.96C224.07,-79.11 247.31,-73.47 268.19,-68.4"/>
+<polygon fill="#000000" stroke="#000000" points="269.03,-71.8 277.92,-66.04 267.37,-65 269.03,-71.8"/>
+</g>
+<!-- proc~atl_solve_program -->
+<g id="proc~~ply_sampled_track_output~~CalledByGraph_node3" class="node">
+<title>proc~atl_solve_program</title>
+<g id="a_proc~~ply_sampled_track_output~~CalledByGraph_node3"><a xlink:href="../proc/atl_solve_program.html" xlink:title="atl_solve_program">
+<polygon fill="#d9534f" stroke="#d9534f" points="208.5,-66 98.5,-66 98.5,-42 208.5,-42 208.5,-66"/>
+<text text-anchor="middle" x="153.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_solve_program</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_solve_program&#45;&gt;proc~ply_sampled_track_output -->
+<g id="proc~~ply_sampled_track_output~~CalledByGraph_edge2" class="edge">
+<title>proc~atl_solve_program&#45;&gt;proc~ply_sampled_track_output</title>
+<path fill="none" stroke="#000000" d="M208.76,-54C219.57,-54 231.16,-54 242.71,-54"/>
+<polygon fill="#000000" stroke="#000000" points="242.83,-57.5 252.83,-54 242.83,-50.5 242.83,-57.5"/>
+</g>
+<!-- program~atl_harvesting -->
+<g id="proc~~ply_sampled_track_output~~CalledByGraph_node4" class="node">
+<title>program~atl_harvesting</title>
+<g id="a_proc~~ply_sampled_track_output~~CalledByGraph_node4"><a xlink:href="../program/atl_harvesting.html" xlink:title="atl_harvesting">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="197.5,-24 109.5,-24 109.5,0 197.5,0 197.5,-24"/>
+<text text-anchor="middle" x="153.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_harvesting</text>
+</a>
+</g>
+</g>
+<!-- program~atl_harvesting&#45;&gt;proc~ply_sampled_track_output -->
+<g id="proc~~ply_sampled_track_output~~CalledByGraph_edge3" class="edge">
+<title>program~atl_harvesting&#45;&gt;proc~ply_sampled_track_output</title>
+<path fill="none" stroke="#000000" d="M197.71,-22.49C218.89,-27.63 244.75,-33.91 267.79,-39.5"/>
+<polygon fill="#000000" stroke="#000000" points="267.26,-42.98 277.8,-41.94 268.91,-36.17 267.26,-42.98"/>
+</g>
+<!-- program~ateles -->
+<g id="proc~~ply_sampled_track_output~~CalledByGraph_node5" class="node">
+<title>program~ateles</title>
+<g id="a_proc~~ply_sampled_track_output~~CalledByGraph_node5"><a xlink:href="../program/ateles.html" xlink:title="ateles">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="54,-87 0,-87 0,-63 54,-63 54,-87"/>
+<text text-anchor="middle" x="27" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ateles</text>
+</a>
+</g>
+</g>
+<!-- program~ateles&#45;&gt;proc~atl_initialize_program -->
+<g id="proc~~ply_sampled_track_output~~CalledByGraph_edge4" class="edge">
+<title>program~ateles&#45;&gt;proc~atl_initialize_program</title>
+<path fill="none" stroke="#000000" d="M54.1,-79.4C61.8,-80.7 70.62,-82.19 79.76,-83.73"/>
+<polygon fill="#000000" stroke="#000000" points="79.31,-87.2 89.76,-85.42 80.48,-80.3 79.31,-87.2"/>
+</g>
+<!-- program~ateles&#45;&gt;proc~atl_solve_program -->
+<g id="proc~~ply_sampled_track_output~~CalledByGraph_edge5" class="edge">
+<title>program~ateles&#45;&gt;proc~atl_solve_program</title>
+<path fill="none" stroke="#000000" d="M54.1,-70.6C64.18,-68.9 76.2,-66.87 88.32,-64.83"/>
+<polygon fill="#000000" stroke="#000000" points="89.2,-68.23 98.48,-63.11 88.04,-61.32 89.2,-68.23"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

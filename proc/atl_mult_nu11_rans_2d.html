@@ -1,0 +1,532 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_mult_nu11_Rans_2d &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_mult_nu11_Rans_2d
+      <small>Function</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">27 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_physFluxFilNvrstk_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_physfluxfilnvrstk_module.f90.html'>atl_physFluxFilNvrstk_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/atl_physfluxfilnvrstk_module.html'>atl_physFluxFilNvrStk_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_mult_nu11_Rans_2d</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  function atl_mult_nu11_Rans_2d(state, velocity, inVec, isenCoeff, mu, lambda, thermCond, rans_params, heatCap) result(outVec)  
+</h2>
+    
+
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state~132"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state</strong>(6)</td>
+            <td>
+                <p>The state array</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-velocity~30"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>velocity</strong>(2)</td>
+            <td>
+                <p>The velocity</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-invec~14"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>inVec</strong>(6)</td>
+            <td>
+                <p>Vector to be multiplied with nu11</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-isencoeff~8"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>isenCoeff</strong></td>
+            <td>
+                <p>Adiabatice index, also known as isentropic expansion factor.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mu~25"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mu</strong></td>
+            <td>
+                <p>Dynamic Viscosity</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-lambda~21"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>lambda</strong></td>
+            <td>
+                <p>Viscosity</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-thermcond~12"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>thermCond</strong></td>
+            <td>
+                <p>The thermal cond</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rans_params~3"></span>
+              type(<a href='../type/atl_navier_stokes_rans_type.html'>atl_navier_stokes_rans_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rans_params</strong></td>
+            <td>
+                <p>The constants for the Rans eqn</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-heatcap~12"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>heatCap</strong></td>
+            <td>
+                <p>The specific heat capacity (per mass unit mass, at constant volume)</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <h3>Return Value
+        <small>
+          <span class="anchor" id="variable-outvec~14"></span>
+          real(kind=rk), (6)
+        </small>
+      </h3>
+      <p>The result of the matrix vector product</p>
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~atl_mult_nu11_rans_2d~~CalledByGraph Pages: 1 -->
+<svg id="procatl_mult_nu11_rans_2dCalledByGraph" width="641pt" height="21pt"
+ viewBox="0.00 0.00 641.00 21.04" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~atl_mult_nu11_rans_2d~~CalledByGraph" class="graph" transform="scale(0.66 0.66) rotate(0) translate(4 28)">
+<title>proc~~atl_mult_nu11_rans_2d~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 971,-28 971,4 -4,4"/>
+<!-- proc~atl_mult_nu11_rans_2d -->
+<g id="proc~~atl_mult_nu11_rans_2d~~CalledByGraph_node1" class="node">
+<title>proc~atl_mult_nu11_rans_2d</title>
+<polygon fill="none" stroke="black" points="967,-24 830,-24 830,0 967,0 967,-24"/>
+<text text-anchor="middle" x="898.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_mult_nu11_Rans_2d</text>
+</g>
+<!-- proc~modg_2d_project_stabviscnumfluxx_q -->
+<g id="proc~~atl_mult_nu11_rans_2d~~CalledByGraph_node2" class="node">
+<title>proc~modg_2d_project_stabviscnumfluxx_q</title>
+<g id="a_proc~~atl_mult_nu11_rans_2d~~CalledByGraph_node2"><a xlink:href="../proc/modg_2d_project_stabviscnumfluxx_q.html" xlink:title="modg_2d_project_stabViscNumFluxX_Q">
+<polygon fill="#d9534f" stroke="#d9534f" points="794,-24 574,-24 574,0 794,0 794,-24"/>
+<text text-anchor="middle" x="684" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">modg_2d_project_stabViscNumFluxX_Q</text>
+</a>
+</g>
+</g>
+<!-- proc~modg_2d_project_stabviscnumfluxx_q&#45;&gt;proc~atl_mult_nu11_rans_2d -->
+<g id="proc~~atl_mult_nu11_rans_2d~~CalledByGraph_edge1" class="edge">
+<title>proc~modg_2d_project_stabviscnumfluxx_q&#45;&gt;proc~atl_mult_nu11_rans_2d</title>
+<path fill="none" stroke="#000000" d="M794.05,-12C802.74,-12 811.41,-12 819.82,-12"/>
+<polygon fill="#000000" stroke="#000000" points="819.94,-15.5 829.94,-12 819.94,-8.5 819.94,-15.5"/>
+</g>
+<!-- proc~atl_modg_2d_project_numflux -->
+<g id="proc~~atl_mult_nu11_rans_2d~~CalledByGraph_node3" class="node">
+<title>proc~atl_modg_2d_project_numflux</title>
+<g id="a_proc~~atl_mult_nu11_rans_2d~~CalledByGraph_node3"><a xlink:href="../proc/atl_modg_2d_project_numflux.html" xlink:title="atl_modg_2d_project_NumFlux">
+<polygon fill="#d9534f" stroke="#d9534f" points="538,-24 363,-24 363,0 538,0 538,-24"/>
+<text text-anchor="middle" x="450.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_2d_project_NumFlux</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_modg_2d_project_numflux&#45;&gt;proc~modg_2d_project_stabviscnumfluxx_q -->
+<g id="proc~~atl_mult_nu11_rans_2d~~CalledByGraph_edge2" class="edge">
+<title>proc~atl_modg_2d_project_numflux&#45;&gt;proc~modg_2d_project_stabviscnumfluxx_q</title>
+<path fill="none" stroke="#000000" d="M538.03,-12C546.43,-12 555.05,-12 563.7,-12"/>
+<polygon fill="#000000" stroke="#000000" points="563.85,-15.5 573.85,-12 563.85,-8.5 563.85,-15.5"/>
+</g>
+<!-- proc~compute_rhs_cubes_modg_2d -->
+<g id="proc~~atl_mult_nu11_rans_2d~~CalledByGraph_node4" class="node">
+<title>proc~compute_rhs_cubes_modg_2d</title>
+<g id="a_proc~~atl_mult_nu11_rans_2d~~CalledByGraph_node4"><a xlink:href="../proc/compute_rhs_cubes_modg_2d.html" xlink:title="compute_rhs_cubes_modg_2d">
+<polygon fill="#d9534f" stroke="#d9534f" points="327,-24 154,-24 154,0 327,0 327,-24"/>
+<text text-anchor="middle" x="240.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">compute_rhs_cubes_modg_2d</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_2d&#45;&gt;proc~atl_modg_2d_project_numflux -->
+<g id="proc~~atl_mult_nu11_rans_2d~~CalledByGraph_edge3" class="edge">
+<title>proc~compute_rhs_cubes_modg_2d&#45;&gt;proc~atl_modg_2d_project_numflux</title>
+<path fill="none" stroke="#000000" d="M327,-12C335.54,-12 344.25,-12 352.89,-12"/>
+<polygon fill="#000000" stroke="#000000" points="352.98,-15.5 362.98,-12 352.98,-8.5 352.98,-15.5"/>
+</g>
+<!-- proc~compute_rhs_cubes -->
+<g id="proc~~atl_mult_nu11_rans_2d~~CalledByGraph_node5" class="node">
+<title>proc~compute_rhs_cubes</title>
+<g id="a_proc~~atl_mult_nu11_rans_2d~~CalledByGraph_node5"><a xlink:href="../proc/compute_rhs_cubes.html" xlink:title="compute_rhs_cubes">
+<polygon fill="#d9534f" stroke="#d9534f" points="118,-24 0,-24 0,0 118,0 118,-24"/>
+<text text-anchor="middle" x="59" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">compute_rhs_cubes</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes&#45;&gt;proc~compute_rhs_cubes_modg_2d -->
+<g id="proc~~atl_mult_nu11_rans_2d~~CalledByGraph_edge4" class="edge">
+<title>proc~compute_rhs_cubes&#45;&gt;proc~compute_rhs_cubes_modg_2d</title>
+<path fill="none" stroke="#000000" d="M118.28,-12C126.45,-12 135.01,-12 143.65,-12"/>
+<polygon fill="#000000" stroke="#000000" points="143.81,-15.5 153.81,-12 143.81,-8.5 143.81,-15.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocatl_mult_nu11_rans_2dCalledByGraph = svgPanZoom('#procatl_mult_nu11_rans_2dCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

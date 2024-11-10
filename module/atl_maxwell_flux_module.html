@@ -1,0 +1,3884 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_maxwell_flux_module &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_maxwell_flux_module
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+            <li class="list-inline-item" id="meta-author"><i class="fa fa-pencil"></i> Jens Zudrop</li>
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.5% of total for modules and submodules.">216 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_maxwell_flux_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_maxwell_flux_module.f90.html'>atl_maxwell_flux_module.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_maxwell_flux_module</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#inters-0"
+         aria-expanded="false" aria-controls="inters-0">
+         <h4 class="card-header bg-primary text-white">Interfaces</h4>
+      </a>
+      <div id="inters-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_maxwell_flux_module.html#interface-atl_maxwell_flux">atl_maxwell_flux</a>
+            <a class="list-group-item" href="../module/atl_maxwell_flux_module.html#interface-atl_maxwell_hc_flux">atl_maxwell_hc_flux</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#funcs-0"
+         aria-expanded="false" aria-controls="funcs-0">
+         <h4 class="card-header bg-primary text-white">Functions</h4>
+      </a>
+      <div id="funcs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_maxwell_flux_module.html#proc-atl_physfluxmaxwelldivcor">atl_physFluxMaxwellDivCor</a>
+        </div>
+      </div>
+    </div>
+
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/atl_maxwell_flux_module.html#proc-maxwell_flux_cube">maxwell_flux_cube</a>
+            <a class="list-group-item" href="../module/atl_maxwell_flux_module.html#proc-maxwell_flux_nonconst_cube_vec">maxwell_flux_nonconst_cube_vec</a>
+            <a class="list-group-item" href="../module/atl_maxwell_flux_module.html#proc-maxwell_flux_cube_vec">maxwell_flux_cube_vec</a>
+            <a class="list-group-item" href="../module/atl_maxwell_flux_module.html#proc-maxwell_hc_flux_cube">maxwell_hc_flux_cube</a>
+            <a class="list-group-item" href="../module/atl_maxwell_flux_module.html#proc-maxwell_hc_flux_cube_vec">maxwell_hc_flux_cube_vec</a>
+            <a class="list-group-item" href="../module/atl_maxwell_flux_module.html#proc-maxwell_hc_flux_nonconst_cube_vec">maxwell_hc_flux_nonconst_cube_vec</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      <p>module that holds all routines to calculate the flux for
+hyperbolic Maxwell equations.</p>
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='ply_oversample_module.html'>ply_oversample_module</a></li>
+                  <li class="list-inline-item"><a href='ply_poly_project_module.html'>ply_poly_project_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/env_module.html'>env_module</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_maxwell_flux_module~~UsesGraph Pages: 1 -->
+<svg id="moduleatl_maxwell_flux_moduleUsesGraph" width="641pt" height="476pt"
+ viewBox="0.00 0.00 641.00 475.99" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_maxwell_flux_module~~UsesGraph" class="graph" transform="scale(0.57 0.57) rotate(0) translate(4 826.95)">
+<title>module~~atl_maxwell_flux_module~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-826.95 1115,-826.95 1115,4 -4,4"/>
+<!-- module~atl_maxwell_flux_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node1" class="node">
+<title>module~atl_maxwell_flux_module</title>
+<polygon fill="none" stroke="black" points="1111,-70.95 965,-70.95 965,-46.95 1111,-46.95 1111,-70.95"/>
+<text text-anchor="middle" x="1038" y="-56.55" font-family="Helvetica,sans-Serif" font-size="10.50">atl_maxwell_flux_module</text>
+</g>
+<!-- env_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node2" class="node">
+<title>env_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node2"><a xlink:href="https://apes-suite.github.io/treelm/module/env_module.html" xlink:title="env_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="126.5,-150.95 48.5,-150.95 48.5,-126.95 126.5,-126.95 126.5,-150.95"/>
+<text text-anchor="middle" x="87.5" y="-136.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">env_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_maxwell_flux_module&#45;&gt;env_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge1" class="edge">
+<title>module~atl_maxwell_flux_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M975.33,-46.92C960.18,-43.97 944,-40.84 929,-37.95 849.91,-22.71 831.18,-11.54 751,-3.95 687.28,2.08 670.89,-0.22 607,-3.95 553.62,-7.06 540.91,-15.32 487.5,-17.95"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M485.5,-17.95C398.41,-19.64 374.5,1.11 289.5,-17.95"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M287.5,-17.95C253.32,-25.61 240.81,-18.55 211,-36.95 190.08,-49.86 193.25,-62.47 175,-78.95 157.21,-95.01 134.95,-110.36 117.46,-121.51"/>
+<polygon fill="#000000" stroke="#000000" points="115.41,-118.67 108.8,-126.94 119.13,-124.6 115.41,-118.67"/>
+</g>
+<!-- module~ply_oversample_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node3" class="node">
+<title>module~ply_oversample_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node3"><a xlink:href="../module/ply_oversample_module.html" xlink:title="ply_oversample_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="929,-70.95 787,-70.95 787,-46.95 929,-46.95 929,-70.95"/>
+<text text-anchor="middle" x="858" y="-56.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_oversample_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_maxwell_flux_module&#45;&gt;module~ply_oversample_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge2" class="edge">
+<title>module~atl_maxwell_flux_module&#45;&gt;module~ply_oversample_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M964.86,-58.95C956.5,-58.95 947.93,-58.95 939.47,-58.95"/>
+<polygon fill="#000000" stroke="#000000" points="939.23,-55.45 929.23,-58.95 939.23,-62.45 939.23,-55.45"/>
+</g>
+<!-- module~ply_poly_project_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node4" class="node">
+<title>module~ply_poly_project_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node4"><a xlink:href="../module/ply_poly_project_module.html" xlink:title="ply_poly_project_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="751,-170.95 607,-170.95 607,-146.95 751,-146.95 751,-170.95"/>
+<text text-anchor="middle" x="679" y="-156.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_poly_project_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_maxwell_flux_module&#45;&gt;module~ply_poly_project_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge3" class="edge">
+<title>module~atl_maxwell_flux_module&#45;&gt;module~ply_poly_project_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M993.94,-71.01C928.31,-89.39 803.45,-124.37 732.57,-144.22"/>
+<polygon fill="#000000" stroke="#000000" points="731.62,-140.85 722.94,-146.92 733.51,-147.59 731.62,-140.85"/>
+</g>
+<!-- module~ply_oversample_module&#45;&gt;env_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge4" class="edge">
+<title>module~ply_oversample_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M820.91,-46.85C785.51,-35.88 729.75,-20.98 680,-17.95"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M678,-17.95C593.49,-12.8 572.06,-13.78 487.5,-17.95"/>
+</g>
+<!-- module~ply_oversample_module&#45;&gt;module~ply_poly_project_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge6" class="edge">
+<title>module~ply_oversample_module&#45;&gt;module~ply_poly_project_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M835.65,-71.01C804.42,-88.65 746.13,-121.59 710.42,-141.76"/>
+<polygon fill="#000000" stroke="#000000" points="708.41,-138.88 701.43,-146.84 711.85,-144.97 708.41,-138.88"/>
+</g>
+<!-- module~ply_dof_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node5" class="node">
+<title>module~ply_dof_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node5"><a xlink:href="../module/ply_dof_module.html" xlink:title="ply_dof_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="535,-69.95 438,-69.95 438,-45.95 535,-45.95 535,-69.95"/>
+<text text-anchor="middle" x="486.5" y="-55.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_dof_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_oversample_module&#45;&gt;module~ply_dof_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge5" class="edge">
+<title>module~ply_oversample_module&#45;&gt;module~ply_dof_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M678,-17.95C652,-16.36 588.21,-31.2 541.59,-43.25"/>
+<polygon fill="#000000" stroke="#000000" points="540.42,-39.94 531.62,-45.85 542.18,-46.71 540.42,-39.94"/>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;env_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge7" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M485.5,-97.95C399.41,-84.63 376.61,-98.01 289.5,-97.95"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M287.5,-97.95C234.17,-97.91 174.42,-112.22 134.44,-123.94"/>
+<polygon fill="#000000" stroke="#000000" points="133.29,-120.63 124.72,-126.85 135.3,-127.34 133.29,-120.63"/>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_dof_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge8" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_dof_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M663.68,-146.71C643.97,-130.4 606.84,-101.55 571,-83.95 562.79,-79.92 553.83,-76.34 544.91,-73.24"/>
+<polygon fill="#000000" stroke="#000000" points="545.89,-69.87 535.3,-70.05 543.69,-76.52 545.89,-69.87"/>
+</g>
+<!-- module~ply_dynarray_project_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node6" class="node">
+<title>module~ply_dynarray_project_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node6"><a xlink:href="../module/ply_dynarray_project_module.html" xlink:title="ply_dynarray_project_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="571,-459.95 402,-459.95 402,-435.95 571,-435.95 571,-459.95"/>
+<text text-anchor="middle" x="486.5" y="-445.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_dynarray_project_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_dynarray_project_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge9" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_dynarray_project_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M674.33,-171.14C663.24,-206.58 627.33,-311.53 571,-381.95 555.67,-401.12 533.76,-418.16 516.24,-430.13"/>
+<polygon fill="#000000" stroke="#000000" points="513.92,-427.46 507.53,-435.91 517.79,-433.3 513.92,-427.46"/>
+</g>
+<!-- module~ply_fxt_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node7" class="node">
+<title>module~ply_fxt_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node7"><a xlink:href="../module/ply_fxt_module.html" xlink:title="ply_fxt_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="335,-69.95 242,-69.95 242,-45.95 335,-45.95 335,-69.95"/>
+<text text-anchor="middle" x="288.5" y="-55.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fxt_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_fxt_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge10" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_fxt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M650.69,-146.91C629.31,-137.81 598.65,-125.47 571,-116.95 534.63,-105.74 525.11,-103.76 487.5,-97.95"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M485.5,-97.95C437.93,-90.59 384.41,-79.47 345.33,-70.83"/>
+<polygon fill="#000000" stroke="#000000" points="345.74,-67.33 335.21,-68.57 344.21,-74.16 345.74,-67.33"/>
+</g>
+<!-- module~ply_l2p_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node8" class="node">
+<title>module~ply_l2p_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node8"><a xlink:href="../module/ply_l2p_module.html" xlink:title="ply_l2p_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="336.5,-655.95 240.5,-655.95 240.5,-631.95 336.5,-631.95 336.5,-655.95"/>
+<text text-anchor="middle" x="288.5" y="-641.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_l2p_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_l2p_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge11" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_l2p_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M485.5,-683.95C459.24,-696.8 382.71,-675.44 333.42,-659.31"/>
+<polygon fill="#000000" stroke="#000000" points="334.24,-655.89 323.64,-656.06 332.03,-662.54 334.24,-655.89"/>
+</g>
+<!-- module~ply_legfpt_2d_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node9" class="node">
+<title>module~ply_legfpt_2d_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node9"><a xlink:href="../module/ply_legfpt_2d_module.html" xlink:title="ply_legFpt_2D_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="553,-149.95 420,-149.95 420,-125.95 553,-125.95 553,-149.95"/>
+<text text-anchor="middle" x="486.5" y="-135.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_legFpt_2D_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_legfpt_2d_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge12" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_legfpt_2d_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M606.79,-151.1C592.68,-149.54 577.81,-147.9 563.54,-146.33"/>
+<polygon fill="#000000" stroke="#000000" points="563.59,-142.81 553.27,-145.2 562.83,-149.77 563.59,-142.81"/>
+</g>
+<!-- module~ply_legfpt_3d_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node10" class="node">
+<title>module~ply_legfpt_3d_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node10"><a xlink:href="../module/ply_legfpt_3d_module.html" xlink:title="ply_legFpt_3D_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="553,-191.95 420,-191.95 420,-167.95 553,-167.95 553,-191.95"/>
+<text text-anchor="middle" x="486.5" y="-177.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_legFpt_3D_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_legfpt_3d_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge13" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_legfpt_3d_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M606.79,-166.8C592.68,-168.35 577.81,-169.99 563.54,-171.57"/>
+<polygon fill="#000000" stroke="#000000" points="562.83,-168.12 553.27,-172.7 563.59,-175.08 562.83,-168.12"/>
+</g>
+<!-- module~ply_legfpt_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node11" class="node">
+<title>module~ply_legfpt_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node11"><a xlink:href="../module/ply_legfpt_module.html" xlink:title="ply_legFpt_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="344.5,-343.95 232.5,-343.95 232.5,-319.95 344.5,-319.95 344.5,-343.95"/>
+<text text-anchor="middle" x="288.5" y="-329.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_legFpt_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_legfpt_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge14" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M650.99,-170.98C582.75,-201.36 403.38,-281.24 325.95,-315.72"/>
+<polygon fill="#000000" stroke="#000000" points="324.3,-312.62 316.59,-319.88 327.15,-319.01 324.3,-312.62"/>
+</g>
+<!-- module~ply_nodes_header_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node12" class="node">
+<title>module~ply_nodes_header_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node12"><a xlink:href="../module/ply_nodes_header_module.html" xlink:title="ply_nodes_header_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="366,-149.95 211,-149.95 211,-125.95 366,-125.95 366,-149.95"/>
+<text text-anchor="middle" x="288.5" y="-135.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_nodes_header_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_nodes_header_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge15" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_nodes_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M485.5,-97.95C458.21,-93.73 389.18,-110.19 340.8,-123.26"/>
+<polygon fill="#000000" stroke="#000000" points="339.84,-119.9 331.12,-125.91 341.69,-126.65 339.84,-119.9"/>
+</g>
+<!-- module~ply_nodes_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node13" class="node">
+<title>module~ply_nodes_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node13"><a xlink:href="../module/ply_nodes_module.html" xlink:title="ply_nodes_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="542.5,-372.95 430.5,-372.95 430.5,-348.95 542.5,-348.95 542.5,-372.95"/>
+<text text-anchor="middle" x="486.5" y="-358.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_nodes_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_nodes_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge16" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_nodes_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M669.23,-171.12C651.77,-195.01 610.88,-249.27 571,-289.95 552.11,-309.21 528.53,-328.92 511.25,-342.67"/>
+<polygon fill="#000000" stroke="#000000" points="509.01,-339.97 503.32,-348.91 513.34,-345.47 509.01,-339.97"/>
+</g>
+<!-- module~ply_prj_header_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node14" class="node">
+<title>module~ply_prj_header_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node14"><a xlink:href="../module/ply_prj_header_module.html" xlink:title="ply_prj_header_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="357,-499.95 220,-499.95 220,-475.95 357,-475.95 357,-499.95"/>
+<text text-anchor="middle" x="288.5" y="-485.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_prj_header_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;module~ply_prj_header_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge17" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;module~ply_prj_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M675.87,-171.1C662.58,-245.18 588.3,-634.61 487.5,-683.95"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M485.5,-683.95C414.42,-718.74 423.04,-606.8 366,-551.95 349.15,-535.74 328.8,-518.83 313.32,-506.47"/>
+<polygon fill="#000000" stroke="#000000" points="315.29,-503.56 305.28,-500.1 310.95,-509.05 315.29,-503.56"/>
+</g>
+<!-- tem_aux_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node15" class="node">
+<title>tem_aux_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node15"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_aux_module.html" xlink:title="tem_aux_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="139.5,-654.95 35.5,-654.95 35.5,-630.95 139.5,-630.95 139.5,-654.95"/>
+<text text-anchor="middle" x="87.5" y="-640.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_aux_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;tem_aux_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge18" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M485.5,-683.95C428.15,-712.71 246.01,-678.4 149.65,-657.22"/>
+<polygon fill="#000000" stroke="#000000" points="150.27,-653.78 139.75,-655.03 148.75,-660.61 150.27,-653.78"/>
+</g>
+<!-- tem_logging_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node16" class="node">
+<title>tem_logging_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node16"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_logging_module.html" xlink:title="tem_logging_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="149.5,-822.95 25.5,-822.95 25.5,-798.95 149.5,-798.95 149.5,-822.95"/>
+<text text-anchor="middle" x="87.5" y="-808.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge19" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M485.5,-683.95C406.13,-723.62 365.51,-676.17 289.5,-721.95"/>
+</g>
+<!-- tem_tools_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node17" class="node">
+<title>tem_tools_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node17"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_tools_module.html" xlink:title="tem_tools_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="142.5,-528.95 32.5,-528.95 32.5,-504.95 142.5,-504.95 142.5,-528.95"/>
+<text text-anchor="middle" x="87.5" y="-514.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tools_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_poly_project_module&#45;&gt;tem_tools_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge20" class="edge">
+<title>module~ply_poly_project_module&#45;&gt;tem_tools_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M485.5,-683.95C431.94,-710.16 419.81,-648.63 366,-622.95 282.15,-582.92 262.95,-567.92 175,-537.95 167.88,-535.52 160.34,-533.26 152.8,-531.19"/>
+<polygon fill="#000000" stroke="#000000" points="153.48,-527.75 142.92,-528.57 151.69,-534.51 153.48,-527.75"/>
+</g>
+<!-- module~ply_dof_module&#45;&gt;env_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge21" class="edge">
+<title>module~ply_dof_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M445.88,-45.87C397.56,-31.83 318.73,-11.39 289.5,-17.95"/>
+</g>
+<!-- module~ply_dynarray_project_module&#45;&gt;env_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge23" class="edge">
+<title>module~ply_dynarray_project_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M465.59,-435.82C447.27,-423.89 420.25,-404.26 402,-381.95 379.6,-354.56 391.25,-335.73 366,-310.95 311.38,-257.34 264.89,-290.29 211,-235.95 184.68,-209.41 203.98,-183.54 175,-159.95 164.21,-151.16 150.31,-145.96 136.82,-142.9"/>
+<polygon fill="#000000" stroke="#000000" points="137.12,-139.4 126.64,-140.96 135.81,-146.28 137.12,-139.4"/>
+</g>
+<!-- module~ply_dynarray_project_module&#45;&gt;module~ply_prj_header_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge24" class="edge">
+<title>module~ply_dynarray_project_module&#45;&gt;module~ply_prj_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M426.69,-459.95C405.28,-464.32 380.87,-469.3 358.65,-473.84"/>
+<polygon fill="#000000" stroke="#000000" points="357.7,-470.46 348.6,-475.89 359.1,-477.32 357.7,-470.46"/>
+</g>
+<!-- module~ply_dynarray_project_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge25" class="edge">
+<title>module~ply_dynarray_project_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M480.87,-460.35C467.34,-495.43 425.06,-597.19 366,-664.95 338.14,-696.91 325.82,-700.07 289.5,-721.95"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M287.5,-721.95C237.45,-752.09 229.02,-767.69 175,-789.95 169.69,-792.14 164.1,-794.13 158.42,-795.94"/>
+<polygon fill="#000000" stroke="#000000" points="157.39,-792.6 148.82,-798.82 159.4,-799.3 157.39,-792.6"/>
+</g>
+<!-- aotus_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node19" class="node">
+<title>aotus_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node19"><a xlink:href="https://apes-suite.github.io/aotus/module/aotus_module.html" xlink:title="aotus_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="131.5,-444.95 43.5,-444.95 43.5,-420.95 131.5,-420.95 131.5,-444.95"/>
+<text text-anchor="middle" x="87.5" y="-430.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aotus_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_dynarray_project_module&#45;&gt;aotus_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge22" class="edge">
+<title>module~ply_dynarray_project_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M401.79,-444.78C323.41,-441.82 208.63,-437.49 141.95,-434.97"/>
+<polygon fill="#000000" stroke="#000000" points="141.8,-431.46 131.67,-434.58 141.54,-438.45 141.8,-431.46"/>
+</g>
+<!-- module~ply_fxt_module&#45;&gt;env_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge26" class="edge">
+<title>module~ply_fxt_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M249.5,-70.07C237.13,-74.23 223.4,-79.07 211,-83.95 180.74,-95.85 147.09,-111.11 122.72,-122.54"/>
+<polygon fill="#000000" stroke="#000000" points="121.09,-119.44 113.54,-126.87 124.08,-125.77 121.09,-119.44"/>
+</g>
+<!-- module~fxt_fwrap -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node22" class="node">
+<title>module~fxt_fwrap</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node22"><a xlink:href="../module/fxt_fwrap.html" xlink:title="fxt_fwrap">
+<polygon fill="#337ab7" stroke="#337ab7" points="118,-69.95 57,-69.95 57,-45.95 118,-45.95 118,-69.95"/>
+<text text-anchor="middle" x="87.5" y="-55.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">fxt_fwrap</text>
+</a>
+</g>
+</g>
+<!-- module~ply_fxt_module&#45;&gt;module~fxt_fwrap -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge27" class="edge">
+<title>module~ply_fxt_module&#45;&gt;module~fxt_fwrap</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M241.85,-57.95C207.57,-57.95 161.1,-57.95 128.33,-57.95"/>
+<polygon fill="#000000" stroke="#000000" points="128.2,-54.45 118.2,-57.95 128.2,-61.45 128.2,-54.45"/>
+</g>
+<!-- module~ply_fxt_header_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node24" class="node">
+<title>module~ply_fxt_header_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node24"><a xlink:href="../module/ply_fxt_header_module.html" xlink:title="ply_fxt_header_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="155.5,-234.95 19.5,-234.95 19.5,-210.95 155.5,-210.95 155.5,-234.95"/>
+<text text-anchor="middle" x="87.5" y="-220.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fxt_header_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_fxt_module&#45;&gt;module~ply_fxt_header_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge28" class="edge">
+<title>module~ply_fxt_module&#45;&gt;module~ply_fxt_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M266.24,-70.1C249.36,-80.65 226.17,-97.3 211,-116.95 185.94,-149.43 206.27,-175.39 175,-201.95 171.91,-204.57 168.54,-206.88 164.99,-208.91"/>
+<polygon fill="#000000" stroke="#000000" points="163.26,-205.86 155.82,-213.4 166.34,-212.14 163.26,-205.86"/>
+</g>
+<!-- module~ply_l2p_module&#45;&gt;env_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge29" class="edge">
+<title>module~ply_l2p_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M278.24,-631.74C261.53,-608.99 226.66,-557.96 211,-508.95 187.28,-434.68 226.28,-218.68 175,-159.95 165.43,-148.99 151.2,-143.25 137.03,-140.37"/>
+<polygon fill="#000000" stroke="#000000" points="137.22,-136.86 126.79,-138.75 136.12,-143.77 137.22,-136.86"/>
+</g>
+<!-- module~ply_l2p_module&#45;&gt;tem_aux_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge35" class="edge">
+<title>module~ply_l2p_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M240.34,-643.71C213.2,-643.57 178.79,-643.4 149.59,-643.25"/>
+<polygon fill="#000000" stroke="#000000" points="149.52,-639.75 139.51,-643.2 149.49,-646.75 149.52,-639.75"/>
+</g>
+<!-- module~ply_l2p_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge37" class="edge">
+<title>module~ply_l2p_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M268.7,-655.95C251.76,-667.55 227.11,-686.48 211,-707.95 187.11,-739.78 205.5,-764.38 175,-789.95 170.18,-793.99 164.71,-797.27 158.91,-799.94"/>
+<polygon fill="#000000" stroke="#000000" points="157.59,-796.7 149.59,-803.65 160.17,-803.21 157.59,-796.7"/>
+</g>
+<!-- module~ply_l2p_header_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node25" class="node">
+<title>module~ply_l2p_header_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node25"><a xlink:href="../module/ply_l2p_header_module.html" xlink:title="ply_l2p_header_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="157,-570.95 18,-570.95 18,-546.95 157,-546.95 157,-570.95"/>
+<text text-anchor="middle" x="87.5" y="-556.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_l2p_header_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_l2p_module&#45;&gt;module~ply_l2p_header_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge30" class="edge">
+<title>module~ply_l2p_module&#45;&gt;module~ply_l2p_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M269.96,-631.9C248.47,-617.64 210.51,-594.04 175,-579.95 169.48,-577.76 163.67,-575.75 157.77,-573.92"/>
+<polygon fill="#000000" stroke="#000000" points="158.4,-570.46 147.82,-571.01 156.43,-577.18 158.4,-570.46"/>
+</g>
+<!-- module~ply_lagrange_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node26" class="node">
+<title>module~ply_lagrange_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node26"><a xlink:href="../module/ply_lagrange_module.html" xlink:title="ply_lagrange_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="151,-696.95 24,-696.95 24,-672.95 151,-672.95 151,-696.95"/>
+<text text-anchor="middle" x="87.5" y="-682.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_lagrange_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_l2p_module&#45;&gt;module~ply_lagrange_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge31" class="edge">
+<title>module~ply_l2p_module&#45;&gt;module~ply_lagrange_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M240.34,-653.66C215.47,-658.79 184.49,-665.17 157.02,-670.83"/>
+<polygon fill="#000000" stroke="#000000" points="156.16,-667.43 147.07,-672.88 157.57,-674.29 156.16,-667.43"/>
+</g>
+<!-- module~ply_modg_basis_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node27" class="node">
+<title>module~ply_modg_basis_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node27"><a xlink:href="../module/ply_modg_basis_module.html" xlink:title="ply_modg_basis_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="158.5,-780.95 16.5,-780.95 16.5,-756.95 158.5,-756.95 158.5,-780.95"/>
+<text text-anchor="middle" x="87.5" y="-766.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_modg_basis_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_l2p_module&#45;&gt;module~ply_modg_basis_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge32" class="edge">
+<title>module~ply_l2p_module&#45;&gt;module~ply_modg_basis_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M271.71,-656.08C255.84,-668.52 230.94,-688.71 211,-707.95 193.78,-724.55 195.54,-735.69 175,-747.95 171.83,-749.84 168.49,-751.56 165.06,-753.13"/>
+<polygon fill="#000000" stroke="#000000" points="163.69,-749.91 155.75,-756.93 166.33,-756.39 163.69,-749.91"/>
+</g>
+<!-- module~ply_nodeset_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node28" class="node">
+<title>module~ply_nodeset_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node28"><a xlink:href="../module/ply_nodeset_module.html" xlink:title="ply_nodeset_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="148.5,-612.95 26.5,-612.95 26.5,-588.95 148.5,-588.95 148.5,-612.95"/>
+<text text-anchor="middle" x="87.5" y="-598.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_nodeset_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_l2p_module&#45;&gt;module~ply_nodeset_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge33" class="edge">
+<title>module~ply_l2p_module&#45;&gt;module~ply_nodeset_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M240.34,-633.76C214.53,-628.18 182.16,-621.19 153.94,-615.09"/>
+<polygon fill="#000000" stroke="#000000" points="154.67,-611.66 144.15,-612.97 153.19,-618.51 154.67,-611.66"/>
+</g>
+<!-- module~ply_space_integration_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node30" class="node">
+<title>module~ply_space_integration_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node30"><a xlink:href="../module/ply_space_integration_module.html" xlink:title="ply_space_integration_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="175,-738.95 0,-738.95 0,-714.95 175,-714.95 175,-738.95"/>
+<text text-anchor="middle" x="87.5" y="-724.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_space_integration_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_l2p_module&#45;&gt;module~ply_space_integration_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge34" class="edge">
+<title>module~ply_l2p_module&#45;&gt;module~ply_space_integration_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M269.14,-656.08C247.46,-669.91 209.92,-692.37 175,-705.95 169.23,-708.19 163.16,-710.24 157.01,-712.12"/>
+<polygon fill="#000000" stroke="#000000" points="155.96,-708.78 147.31,-714.9 157.89,-715.5 155.96,-708.78"/>
+</g>
+<!-- tem_compileconf_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node31" class="node">
+<title>tem_compileconf_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node31"><a xlink:href="https://apes-suite.github.io/treelm/module/tem_compileconf_module.html" xlink:title="tem_compileconf_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="163,-402.95 12,-402.95 12,-378.95 163,-378.95 163,-402.95"/>
+<text text-anchor="middle" x="87.5" y="-388.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_compileconf_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_l2p_module&#45;&gt;tem_compileconf_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge36" class="edge">
+<title>module~ply_l2p_module&#45;&gt;tem_compileconf_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M279.64,-631.65C264.94,-608.33 232.82,-555.84 211,-508.95 191.6,-467.25 209.36,-442.5 175,-411.95 173.65,-410.75 172.24,-409.61 170.79,-408.54"/>
+<polygon fill="#000000" stroke="#000000" points="172.31,-405.37 161.97,-403.06 168.61,-411.31 172.31,-405.37"/>
+</g>
+<!-- module~ply_legfpt_2d_module&#45;&gt;env_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge38" class="edge">
+<title>module~ply_legfpt_2d_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M448.75,-125.85C409.7,-114.09 345.93,-97.99 289.5,-97.95"/>
+</g>
+<!-- module~ply_legfpt_2d_module&#45;&gt;module~ply_legfpt_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge41" class="edge">
+<title>module~ply_legfpt_2d_module&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M419.7,-147.52C413.22,-150.43 407.14,-154.16 402,-158.95 364.64,-193.69 394.66,-225.74 366,-267.95 353.44,-286.44 334.1,-302.56 318,-313.99"/>
+<polygon fill="#000000" stroke="#000000" points="315.73,-311.31 309.46,-319.85 319.69,-317.08 315.73,-311.31"/>
+</g>
+<!-- iso_c_binding -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node20" class="node">
+<title>iso_c_binding</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node20"><a xlink:href="http://fortranwiki.org/fortran/show/iso_c_binding" xlink:title="iso_c_binding">
+<polygon fill="#337ab7" stroke="#337ab7" points="129.5,-192.95 45.5,-192.95 45.5,-168.95 129.5,-168.95 129.5,-192.95"/>
+<text text-anchor="middle" x="87.5" y="-178.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_c_binding</text>
+</a>
+</g>
+</g>
+<!-- module~ply_legfpt_2d_module&#45;&gt;iso_c_binding -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge39" class="edge">
+<title>module~ply_legfpt_2d_module&#45;&gt;iso_c_binding</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M435.19,-149.96C386.87,-161.17 317.24,-176.41 289.5,-177.95"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M287.5,-177.95C237.36,-180.72 180,-181.31 139.79,-181.31"/>
+<polygon fill="#000000" stroke="#000000" points="139.7,-177.81 129.7,-181.29 139.69,-184.81 139.7,-177.81"/>
+</g>
+<!-- module~fftw_wrap -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node21" class="node">
+<title>module~fftw_wrap</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node21"><a xlink:href="../module/fftw_wrap.html" xlink:title="fftw_wrap">
+<polygon fill="#337ab7" stroke="#337ab7" points="119.5,-318.95 55.5,-318.95 55.5,-294.95 119.5,-294.95 119.5,-318.95"/>
+<text text-anchor="middle" x="87.5" y="-304.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">fftw_wrap</text>
+</a>
+</g>
+</g>
+<!-- module~ply_legfpt_2d_module&#45;&gt;module~fftw_wrap -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge40" class="edge">
+<title>module~ply_legfpt_2d_module&#45;&gt;module~fftw_wrap</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M423.09,-149.97C415.77,-152.44 408.58,-155.4 402,-158.95 382.89,-169.24 383.92,-179.7 366,-191.95 287.89,-245.34 263.95,-253.7 175,-285.95 160.62,-291.16 144.43,-295.48 129.98,-298.82"/>
+<polygon fill="#000000" stroke="#000000" points="128.82,-295.49 119.81,-301.08 130.33,-302.33 128.82,-295.49"/>
+</g>
+<!-- module~ply_legfpt_3d_module&#45;&gt;env_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge42" class="edge">
+<title>module~ply_legfpt_3d_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M420.49,-167.88C414.01,-165.43 407.72,-162.49 402,-158.95 381.1,-146.01 386.92,-129.86 366,-116.95 336.19,-98.55 324.53,-97.97 289.5,-97.95"/>
+</g>
+<!-- module~ply_legfpt_3d_module&#45;&gt;module~ply_legfpt_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge45" class="edge">
+<title>module~ply_legfpt_3d_module&#45;&gt;module~ply_legfpt_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M469.79,-192.13C435.44,-218.77 353.5,-282.31 312.99,-313.73"/>
+<polygon fill="#000000" stroke="#000000" points="310.77,-311.02 305.01,-319.92 315.06,-316.56 310.77,-311.02"/>
+</g>
+<!-- module~ply_legfpt_3d_module&#45;&gt;iso_c_binding -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge43" class="edge">
+<title>module~ply_legfpt_3d_module&#45;&gt;iso_c_binding</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M419.67,-177.13C381.61,-176.04 332.82,-175.55 289.5,-177.95"/>
+</g>
+<!-- module~ply_legfpt_3d_module&#45;&gt;module~fftw_wrap -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge44" class="edge">
+<title>module~ply_legfpt_3d_module&#45;&gt;module~fftw_wrap</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M481.56,-192.19C470.1,-225.51 433.24,-317.67 366,-352.95 305,-384.95 276.74,-373.54 211,-352.95 192.41,-347.13 192.77,-335.94 175,-327.95 160.8,-321.56 144.38,-316.95 129.69,-313.71"/>
+<polygon fill="#000000" stroke="#000000" points="130.34,-310.27 119.84,-311.67 128.92,-317.12 130.34,-310.27"/>
+</g>
+<!-- module~ply_legfpt_module&#45;&gt;env_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge46" class="edge">
+<title>module~ply_legfpt_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M232.42,-320.82C224.4,-317.18 216.88,-312.36 211,-305.95 165.81,-256.71 222.34,-207.12 175,-159.95 164.87,-149.85 150.76,-144.31 136.87,-141.35"/>
+<polygon fill="#000000" stroke="#000000" points="137.31,-137.88 126.86,-139.63 136.12,-144.78 137.31,-137.88"/>
+</g>
+<!-- module~ply_legfpt_module&#45;&gt;iso_c_binding -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge47" class="edge">
+<title>module~ply_legfpt_module&#45;&gt;iso_c_binding</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M232.13,-320C224.34,-316.46 216.97,-311.88 211,-305.95 176.32,-271.46 211.19,-234.85 175,-201.95 165.35,-193.17 152.65,-187.9 139.97,-184.77"/>
+<polygon fill="#000000" stroke="#000000" points="140.36,-181.28 129.86,-182.7 138.96,-188.14 140.36,-181.28"/>
+</g>
+<!-- module~ply_legfpt_module&#45;&gt;module~fftw_wrap -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge48" class="edge">
+<title>module~ply_legfpt_module&#45;&gt;module~fftw_wrap</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M232.33,-325.02C199.82,-320.93 159.36,-315.85 129.65,-312.12"/>
+<polygon fill="#000000" stroke="#000000" points="129.97,-308.63 119.62,-310.86 129.1,-315.58 129.97,-308.63"/>
+</g>
+<!-- module~ply_fpt_header_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node23" class="node">
+<title>module~ply_fpt_header_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node23"><a xlink:href="../module/ply_fpt_header_module.html" xlink:title="ply_fpt_header_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="156,-360.95 19,-360.95 19,-336.95 156,-336.95 156,-360.95"/>
+<text text-anchor="middle" x="87.5" y="-346.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_fpt_header_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_legfpt_module&#45;&gt;module~ply_fpt_header_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge49" class="edge">
+<title>module~ply_legfpt_module&#45;&gt;module~ply_fpt_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M232.33,-336.66C211.88,-338.41 188.29,-340.42 166.21,-342.31"/>
+<polygon fill="#000000" stroke="#000000" points="165.85,-338.83 156.19,-343.17 166.45,-345.8 165.85,-338.83"/>
+</g>
+<!-- module~ply_polybaseexc_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node29" class="node">
+<title>module~ply_polybaseexc_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node29"><a xlink:href="../module/ply_polybaseexc_module.html" xlink:title="ply_polyBaseExc_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="161,-276.95 14,-276.95 14,-252.95 161,-252.95 161,-276.95"/>
+<text text-anchor="middle" x="87.5" y="-262.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_polyBaseExc_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_legfpt_module&#45;&gt;module~ply_polybaseexc_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge50" class="edge">
+<title>module~ply_legfpt_module&#45;&gt;module~ply_polybaseexc_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M247.67,-319.92C235.71,-315.9 222.67,-311.12 211,-305.95 194.27,-298.53 192.05,-292.61 175,-285.95 169.24,-283.7 163.16,-281.63 157.01,-279.76"/>
+<polygon fill="#000000" stroke="#000000" points="157.9,-276.37 147.32,-276.97 155.96,-283.1 157.9,-276.37"/>
+</g>
+<!-- module~ply_legfpt_module&#45;&gt;tem_compileconf_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge51" class="edge">
+<title>module~ply_legfpt_module&#45;&gt;tem_compileconf_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M254.27,-344.03C232,-351.91 201.93,-362.15 175,-369.95 167.3,-372.18 159.16,-374.37 151.09,-376.44"/>
+<polygon fill="#000000" stroke="#000000" points="150.14,-373.07 141.3,-378.91 151.85,-379.86 150.14,-373.07"/>
+</g>
+<!-- module~ply_nodes_header_module&#45;&gt;env_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge52" class="edge">
+<title>module~ply_nodes_header_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M210.85,-138.33C185.99,-138.46 159.12,-138.59 136.91,-138.7"/>
+<polygon fill="#000000" stroke="#000000" points="136.71,-135.21 126.73,-138.76 136.75,-142.21 136.71,-135.21"/>
+</g>
+<!-- module~ply_nodes_module&#45;&gt;env_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge54" class="edge">
+<title>module~ply_nodes_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M471.08,-348.85C428.66,-313.89 299.43,-211.94 175,-159.95 162.96,-154.92 149.45,-150.92 136.76,-147.82"/>
+<polygon fill="#000000" stroke="#000000" points="137.32,-144.36 126.79,-145.53 135.75,-151.18 137.32,-144.36"/>
+</g>
+<!-- module~ply_nodes_module&#45;&gt;module~ply_nodes_header_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge56" class="edge">
+<title>module~ply_nodes_module&#45;&gt;module~ply_nodes_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M479.6,-348.94C460.46,-310.4 399.37,-190.75 366,-163.95 361.38,-160.23 356.19,-157.04 350.76,-154.29"/>
+<polygon fill="#000000" stroke="#000000" points="351.99,-151.01 341.44,-150.08 349.11,-157.38 351.99,-151.01"/>
+</g>
+<!-- module~ply_nodes_module&#45;&gt;tem_aux_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge58" class="edge">
+<title>module~ply_nodes_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M463.01,-373.17C444,-384.63 417.47,-403.5 402,-426.95 368.28,-478.07 408.22,-515.59 366,-559.95 336.28,-591.17 221.92,-617.8 149.61,-631.98"/>
+<polygon fill="#000000" stroke="#000000" points="148.85,-628.56 139.7,-633.9 150.18,-635.44 148.85,-628.56"/>
+</g>
+<!-- module~ply_nodes_module&#45;&gt;aotus_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge53" class="edge">
+<title>module~ply_nodes_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M287.5,-409.95C237.92,-411.09 181.84,-418.1 141.87,-424.08"/>
+<polygon fill="#000000" stroke="#000000" points="141.18,-420.64 131.82,-425.61 142.23,-427.56 141.18,-420.64"/>
+</g>
+<!-- module~ply_nodes_module&#45;&gt;module~fftw_wrap -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge55" class="edge">
+<title>module~ply_nodes_module&#45;&gt;module~fftw_wrap</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M455.19,-372.99C417.16,-387.04 349.64,-408.56 289.5,-409.95"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M287.5,-409.95C251.88,-410.77 239.16,-407.79 211,-385.95 187.03,-367.35 199.57,-345.74 175,-327.95 161.98,-318.52 145.27,-313.29 130,-310.4"/>
+<polygon fill="#000000" stroke="#000000" points="130.16,-306.88 119.73,-308.75 129.05,-313.79 130.16,-306.88"/>
+</g>
+<!-- module~ply_nodes_module&#45;&gt;module~ply_nodeset_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge57" class="edge">
+<title>module~ply_nodes_module&#45;&gt;module~ply_nodeset_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M464.94,-373.08C446.43,-384.87 419.51,-404.28 402,-426.95 377.67,-458.44 394.95,-481.63 366,-508.95 309.18,-562.57 220.36,-584.97 158.57,-594.31"/>
+<polygon fill="#000000" stroke="#000000" points="157.91,-590.87 148.51,-595.75 158.9,-597.8 157.91,-590.87"/>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;env_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge61" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;env_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M265.48,-475.81C247.67,-464.75 223.56,-446.68 211,-423.95 153.73,-320.3 254.33,-247.87 175,-159.95 165.25,-149.15 150.98,-143.45 136.82,-140.56"/>
+<polygon fill="#000000" stroke="#000000" points="137.03,-137.05 126.6,-138.93 135.92,-143.96 137.03,-137.05"/>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;tem_aux_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge66" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;tem_aux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M278.72,-500.27C257.13,-530.22 201.33,-605.61 175,-621.95 167.19,-626.79 158.34,-630.52 149.35,-633.39"/>
+<polygon fill="#000000" stroke="#000000" points="148.24,-630.07 139.59,-636.18 150.17,-636.8 148.24,-630.07"/>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;tem_logging_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge67" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;tem_logging_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M279,-499.98C263.24,-522.84 229.41,-574.61 211,-622.95 183.97,-693.9 227.99,-735.57 175,-789.95 170.47,-794.6 165.1,-798.28 159.28,-801.2"/>
+<polygon fill="#000000" stroke="#000000" points="157.69,-798.07 149.84,-805.18 160.41,-804.53 157.69,-798.07"/>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;tem_tools_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge68" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;tem_tools_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M219.85,-497.81C198.16,-500.97 174.21,-504.46 152.77,-507.58"/>
+<polygon fill="#000000" stroke="#000000" points="152.18,-504.13 142.79,-509.04 153.19,-511.06 152.18,-504.13"/>
+</g>
+<!-- aot_out_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_node18" class="node">
+<title>aot_out_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsesGraph_node18"><a xlink:href="https://apes-suite.github.io/aotus/module/aot_out_module.html" xlink:title="aot_out_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="136.5,-486.95 38.5,-486.95 38.5,-462.95 136.5,-462.95 136.5,-486.95"/>
+<text text-anchor="middle" x="87.5" y="-472.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_out_module</text>
+</a>
+</g>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;aot_out_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge59" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;aot_out_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M219.85,-483.53C196.2,-481.98 169.87,-480.26 147.03,-478.77"/>
+<polygon fill="#000000" stroke="#000000" points="147.02,-475.26 136.81,-478.1 146.56,-482.25 147.02,-475.26"/>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;aotus_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge60" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;aotus_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M249.64,-475.93C227.89,-469.18 200,-460.76 175,-453.95 164.27,-451.03 152.74,-448.09 141.7,-445.37"/>
+<polygon fill="#000000" stroke="#000000" points="142.28,-441.91 131.74,-442.95 140.63,-448.71 142.28,-441.91"/>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;module~fftw_wrap -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge62" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;module~fftw_wrap</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M268.09,-475.93C250.97,-464.45 226.42,-445.71 211,-423.95 184.66,-386.77 209.1,-358.17 175,-327.95 162.67,-317.02 145.6,-311.55 129.88,-308.89"/>
+<polygon fill="#000000" stroke="#000000" points="130.19,-305.4 119.81,-307.52 129.25,-312.34 130.19,-305.4"/>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;module~ply_fpt_header_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge63" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;module~ply_fpt_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M270.48,-475.95C254.13,-463.92 229.27,-444.32 211,-423.95 191.74,-402.47 198.63,-386.48 175,-369.95 172.06,-367.89 168.95,-366.04 165.71,-364.36"/>
+<polygon fill="#000000" stroke="#000000" points="166.86,-361.04 156.31,-360.1 163.97,-367.42 166.86,-361.04"/>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;module~ply_fxt_header_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge64" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;module~ply_fxt_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M266.19,-475.83C248.57,-464.66 224.35,-446.43 211,-423.95 169.35,-353.8 231.5,-302.8 175,-243.95 171.93,-240.75 168.46,-238 164.72,-235.65"/>
+<polygon fill="#000000" stroke="#000000" points="166.05,-232.39 155.57,-230.84 162.79,-238.59 166.05,-232.39"/>
+</g>
+<!-- module~ply_prj_header_module&#45;&gt;module~ply_l2p_header_module -->
+<g id="module~~atl_maxwell_flux_module~~UsesGraph_edge65" class="edge">
+<title>module~ply_prj_header_module&#45;&gt;module~ply_l2p_header_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M245.42,-500.06C234.01,-503.93 221.82,-508.62 211,-513.95 193.75,-522.45 192.61,-530.23 175,-537.95 170.05,-540.12 164.83,-542.09 159.52,-543.87"/>
+<polygon fill="#000000" stroke="#000000" points="158.38,-540.56 149.88,-546.88 160.47,-547.24 158.38,-540.56"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panmoduleatl_maxwell_flux_moduleUsesGraph = svgPanZoom('#moduleatl_maxwell_flux_moduleUsesGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+          <div class="card">
+      <h3 class="card-header card-title bg-light">Used by</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~atl_maxwell_flux_module~~UsedByGraph Pages: 1 -->
+<svg id="moduleatl_maxwell_flux_moduleUsedByGraph" width="612pt" height="74pt"
+ viewBox="0.00 0.00 612.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~atl_maxwell_flux_module~~UsedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
+<title>module~~atl_maxwell_flux_module~~UsedByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 608,-70 608,4 -4,4"/>
+<!-- module~atl_maxwell_flux_module -->
+<g id="module~~atl_maxwell_flux_module~~UsedByGraph_node1" class="node">
+<title>module~atl_maxwell_flux_module</title>
+<polygon fill="none" stroke="black" points="146,-45 0,-45 0,-21 146,-21 146,-45"/>
+<text text-anchor="middle" x="73" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_maxwell_flux_module</text>
+</g>
+<!-- module~atl_modg_maxwell_kernel_module -->
+<g id="module~~atl_maxwell_flux_module~~UsedByGraph_node2" class="node">
+<title>module~atl_modg_maxwell_kernel_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsedByGraph_node2"><a xlink:href="../module/atl_modg_maxwell_kernel_module.html" xlink:title="atl_modg_maxwell_kernel_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="396,-66 200,-66 200,-42 396,-42 396,-66"/>
+<text text-anchor="middle" x="298" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_maxwell_kernel_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_maxwell_kernel_module&#45;&gt;module~atl_maxwell_flux_module -->
+<g id="module~~atl_maxwell_flux_module~~UsedByGraph_edge1" class="edge">
+<title>module~atl_modg_maxwell_kernel_module&#45;&gt;module~atl_maxwell_flux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M199.84,-44.85C185.29,-43.48 170.42,-42.08 156.22,-40.74"/>
+<polygon fill="#000000" stroke="#000000" points="156.31,-37.24 146.02,-39.78 155.65,-44.2 156.31,-37.24"/>
+</g>
+<!-- module~atl_modg_maxwelldivcor_kernel_module -->
+<g id="module~~atl_maxwell_flux_module~~UsedByGraph_node3" class="node">
+<title>module~atl_modg_maxwelldivcor_kernel_module</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsedByGraph_node3"><a xlink:href="../module/atl_modg_maxwelldivcor_kernel_module.html" xlink:title="atl_modg_maxwellDivCor_kernel_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="414,-24 182,-24 182,0 414,0 414,-24"/>
+<text text-anchor="middle" x="298" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_maxwellDivCor_kernel_module</text>
+</a>
+</g>
+</g>
+<!-- module~atl_modg_maxwelldivcor_kernel_module&#45;&gt;module~atl_maxwell_flux_module -->
+<g id="module~~atl_maxwell_flux_module~~UsedByGraph_edge2" class="edge">
+<title>module~atl_modg_maxwelldivcor_kernel_module&#45;&gt;module~atl_maxwell_flux_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M181.91,-22.84C173.28,-23.65 164.67,-24.46 156.31,-25.25"/>
+<polygon fill="#000000" stroke="#000000" points="155.86,-21.78 146.23,-26.2 156.52,-28.74 155.86,-21.78"/>
+</g>
+<!-- proc~compute_rhs_cubes_modg -->
+<g id="module~~atl_maxwell_flux_module~~UsedByGraph_node4" class="node">
+<title>proc~compute_rhs_cubes_modg</title>
+<g id="a_module~~atl_maxwell_flux_module~~UsedByGraph_node4"><a xlink:href="../proc/compute_rhs_cubes_modg.html" xlink:title="compute_rhs_cubes_modg">
+<polygon fill="#d9534f" stroke="#d9534f" points="604,-45 450,-45 450,-21 604,-21 604,-45"/>
+<text text-anchor="middle" x="527" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">compute_rhs_cubes_modg</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg&#45;&gt;module~atl_modg_maxwell_kernel_module -->
+<g id="module~~atl_maxwell_flux_module~~UsedByGraph_edge3" class="edge">
+<title>proc~compute_rhs_cubes_modg&#45;&gt;module~atl_modg_maxwell_kernel_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M449.78,-40.05C435.86,-41.34 421.1,-42.7 406.48,-44.06"/>
+<polygon fill="#000000" stroke="#000000" points="406.02,-40.58 396.38,-44.99 406.66,-47.55 406.02,-40.58"/>
+</g>
+<!-- proc~compute_rhs_cubes_modg&#45;&gt;module~atl_modg_maxwelldivcor_kernel_module -->
+<g id="module~~atl_maxwell_flux_module~~UsedByGraph_edge4" class="edge">
+<title>proc~compute_rhs_cubes_modg&#45;&gt;module~atl_modg_maxwelldivcor_kernel_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M449.78,-25.95C441.54,-25.19 433.01,-24.4 424.38,-23.6"/>
+<polygon fill="#000000" stroke="#000000" points="424.5,-20.1 414.22,-22.66 423.86,-27.07 424.5,-20.1"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      <br>
+
+
+
+
+        <section>
+          <h2>Interfaces</h2>
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-atl_maxwell_flux"></span>
+      <h3>public        interface <a href='../interface/atl_maxwell_flux.html'>atl_maxwell_flux</a> 
+      </h3>
+    </div>
+      <div class="card-body">
+        <p>Interface for fluxes of pure Maxwell equations.</p>
+      </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private  subroutine <a href='../proc/maxwell_flux_cube.html'>maxwell_flux_cube</a>(left, right, left_mu, left_epsi, right_mu, right_epsi, flux)  
+
+    </h3>
+    
+  <p>Subroutine to calculate the flux for pure Maxwell equations without
+any divergence cleaning on the reference cubic face.</p>
+<p>This subroutine calculates the flux of the Maxwell equation on the
+reference cubic face. This implementation is based on the this article:
+A three-dimensional finite-volume solver for Maxwell equations with
+divergence cleaning on unstructured meshes, C.D. Munz, P. Ommes,
+R. Schneider, Computer Physiscs communications 130, 83-117, 1999.
+Additionally we splitted the correction technique from the Maxwell fluxes
+themself to be able to use the fluxes for Maxwell in combination with an
+arbitrary divergence correction technique. Please notice that this flux
+function assumes constant material parameters in both cells.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-left~54"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>left</strong>(6)</td>
+            <td>
+<p>Left state vector (as conservative variables). The order of this vector
+has to be \f$ (D_x, D_y, D_z, B_1, B_2, B_3) \f$ where E and B denoted
+electric field vetor and magnetic field (also called magnetic induction)
+vector.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-right~54"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>right</strong>(6)</td>
+            <td>
+<p>Right state vector (as conservative variables). The order of this vector
+has to be (D_x, D_y, D_z, B_1, B_2, B_3) where E and B denoted the
+electric field vetor and magnetic field (also called magnetic induction)
+vector.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-left_mu~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>left_mu</strong></td>
+            <td>
+<p>The magnetic permeability of the left element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-left_epsi~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>left_epsi</strong></td>
+            <td>
+<p>The electric permitivity of the left element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-right_mu~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>right_mu</strong></td>
+            <td>
+<p>The magnetic permeability of the right element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-right_epsi~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>right_epsi</strong></td>
+            <td>
+<p>The electric permitivity of the right element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-flux~26"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>flux</strong>(6)</td>
+            <td>
+<p>The flux between left and right cell. The order of this vector is the
+same as the input arguments.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private  subroutine <a href='../proc/maxwell_flux_cube_vec.html'>maxwell_flux_cube_vec</a>(nTotalFaces, nSides, nFaceDofs, faceRep, faceFlux, leftPos, rightPos, var, material_left, material_right)  
+
+    </h3>
+    
+  <p>face-vector</p>
+<p>This subroutine assumes the Maxwell equations with D and B as input
+variables. Furthermore, it is able to handle jumping material parameters.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ntotalfaces~9"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nTotalFaces</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nsides~14"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nSides</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nfacedofs~28"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nFaceDofs</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facerep~17"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceRep</strong>(nTotalFaces,nFaceDofs,6,2)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-faceflux~17"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceFlux</strong>(nTotalFaces,nFaceDofs,6,2)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-leftpos~14"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>leftPos</strong>(nSides)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rightpos~14"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rightPos</strong>(nsides)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-var~12"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>var</strong>(6)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_left~11"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_left</strong>(nSides,1,2)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_right~11"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_right</strong>(nSides,1,2)</td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private  subroutine <a href='../proc/maxwell_flux_nonconst_cube_vec.html'>maxwell_flux_nonconst_cube_vec</a>(nTotalFaces, nSides, nFaceDofs, faceRep, faceFlux, leftPos, rightPos, var, material_left, material_right, poly_proj, modalCoeffs, pntVal, nodalNumFlux, numFluxBuffer)  
+
+    </h3>
+    
+  <p>face-vector</p>
+<p>This subroutine assumes the Maxwell equations with D and B as input
+variables. Furthermore, it is able to handle arbitray material parameters
+by a pseudo-spectral technique.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ntotalfaces~8"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nTotalFaces</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nsides~13"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nSides</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nfacedofs~27"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nFaceDofs</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facerep~16"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceRep</strong>(nTotalFaces,nFaceDofs,6,2)</td>
+            <td>
+<p>The modal representation on the faces, left and right trace.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-faceflux~16"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceFlux</strong>(nTotalFaces,nFaceDofs,6,2)</td>
+            <td>
+<p>The fluxes for all faces, for left and right elements.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-leftpos~13"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>leftPos</strong>(nSides)</td>
+            <td>
+<p>Positions for the left and right elements of all faces</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rightpos~13"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rightPos</strong>(nsides)</td>
+            <td>
+<p>Positions for the left and right elements of all faces</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-var~11"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>var</strong>(6)</td>
+            <td>
+<p>Variable rotation indices</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_left~10"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_left</strong>(nSides,nFaceDofs,2)</td>
+            <td>
+<p>Material parameters for the left faces.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_right~10"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_right</strong>(nSides,nFaceDofs,2)</td>
+            <td>
+<p>Material parameters for the right faces.</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html#variable-material_right~10" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~98"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Data for projection method</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-modalcoeffs~27"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>modalCoeffs</strong>(:,:,:)</td>
+            <td>
+<p>Working array for the left and right modal coefficients</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-pntval~23"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pntVal</strong>(:,:,:)</td>
+            <td>
+<p>Working array for the left and right point values</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodalnumflux~8"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodalNumFlux</strong>(:,:)</td>
+            <td>
+<p>Working array for the nodal flux</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-numfluxbuffer~12"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>numFluxBuffer</strong>(:,:)</td>
+            <td>
+<p>Working array for the modal numerical flux</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+    </ul>
+  </div>
+
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-atl_maxwell_hc_flux"></span>
+      <h3>public        interface <a href='../interface/atl_maxwell_hc_flux.html'>atl_maxwell_hc_flux</a> 
+      </h3>
+    </div>
+      <div class="card-body">
+        <p>Interface for fluxes of Maxwell equations with
+hyperbolic divergence cleaning.</p>
+      </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private  subroutine <a href='../proc/maxwell_hc_flux_cube.html'>maxwell_hc_flux_cube</a>(left, right, mat_left, mat_right, flux)  
+
+    </h3>
+    
+  <p>hyperbolic divergence cleaning on the reference cubic face.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-left~57"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>left</strong>(8)</td>
+            <td>
+<p>Left state vector (as conservative variables). The order of this vector
+has to be \f$ (D_x, D_y, D_z, B_1, B_2, B_3, phi, psi) \f$ where E and B
+denoted electric field vetor and magnetic field (also called magnetic
+induction) vector.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-right~57"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>right</strong>(8)</td>
+            <td>
+<p>Right state vector (as conservative variables). The order of this vector
+has to be (D_x, D_y, D_z, B_1, B_2, B_3, phi, psi) where E and B denoted
+the electric field vetor and magnetic field (also called magnetic
+induction) vector.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mat_left"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mat_left</strong>(4)</td>
+            <td>
+<p>Material for the left face</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mat_right"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mat_right</strong>(4)</td>
+            <td>
+<p>Material for the right face
+   !&gt;  The magnetic permeability of the left element.
+   real(kind=rk), intent(in)  :: left_mu
+   !&gt;  The electric permitivity of the left element.
+   real(kind=rk), intent(in)  :: left_epsi
+   !&gt;  Parameter for the magnetic correction on the left element.
+   real(kind=rk), intent(in)  :: left_gam
+   !&gt;  Parameter for the electric correction on the left element.
+   real(kind=rk), intent(in)  :: left_chi
+   !&gt;  The magnetic permeability of the right element.
+   real(kind=rk), intent(in)  :: right_mu
+   !&gt;  The electric permitivity of the right element.
+   real(kind=rk), intent(in)  :: right_epsi
+   !&gt;  Parameter for the magnetic correction on the right element.
+   real(kind=rk), intent(in)  :: right_gam
+   !&gt;  Parameter for the electric correction on the right element.
+   real(kind=rk), intent(in)  :: right_chi</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-flux~28"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>flux</strong>(8)</td>
+            <td>
+<p>The flux between left and right cell. The order of this vector is the
+same as the input arguments.</p><a href="../proc/maxwell_hc_flux_cube.html#variable-flux~28" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private  subroutine <a href='../proc/maxwell_hc_flux_cube_vec.html'>maxwell_hc_flux_cube_vec</a>(nTotalFaces, nSides, nFaceDofs, faceRep, faceFlux, leftPos, rightPos, var, material_left, material_right)  
+
+    </h3>
+    
+  <p>cleaning directly on the face-vector</p>
+<p>This subroutine assumes the Maxwell equations with D and B as input
+variables. Furthermore, it is able to handle jumping material parameters.</p>
+<p>Assign the same flux for left and right element</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ntotalfaces~10"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nTotalFaces</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nsides~15"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nSides</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nfacedofs~29"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nFaceDofs</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facerep~18"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceRep</strong>(nTotalFaces,nFaceDofs,8,2)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-faceflux~18"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceFlux</strong>(nTotalFaces,nFaceDofs,8,2)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-leftpos~15"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>leftPos</strong>(nSides)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rightpos~15"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rightPos</strong>(nsides)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-var~13"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>var</strong>(8)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_left~12"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_left</strong>(nSides,1,4)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_right~12"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_right</strong>(nSides,1,4)</td>
+            <td>
+<p>integer :: iSide, left, right, iDof
+real(kind=rk) :: left_mu, right_mu
+real(kind=rk) :: left_epsi, right_epsi
+real(kind=rk) :: left_gam, right_gam
+real(kind=rk) :: left_chi, right_chi
+real(kind=rk) :: left_speedOfLight, right_speedOfLight
+real(kind=rk) :: inv_denom_mu, inv_denom_epsi
+! --------------------------------------------------------------------------</p><a href="../proc/maxwell_hc_flux_cube_vec.html#variable-material_right~12" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private  subroutine <a href='../proc/maxwell_hc_flux_nonconst_cube_vec.html'>maxwell_hc_flux_nonconst_cube_vec</a>(nTotalFaces, nSides, nFaceDofs, faceRep, faceFlux, leftPos, rightPos, var, material_left, material_right, poly_proj, left_modalCoeffs, right_modalCoeffs, left_pntVal, right_pntVal, nodalNumFlux, numFluxBuffer)  
+
+    </h3>
+    
+  <p>cleaning directly on the face-vector</p>
+<p>This subroutine assumes the Maxwell equations with D and B as input
+ variables. Furthermore, it is able to handle arbitray material parameters
+ by a pseudo-spectral technique.</p>
+<p>! Get the material of the left and right element at the current
+! face.
+! ... left material
+left_mu = material_left(iSide,iPoint,1)
+left_epsi = material_left(iSide,iPoint,2)
+left_gam = material_left(iSide,iPoint,3)
+left_chi = material_left(iSide,iPoint,4)
+! ... right material
+right_mu = material_right(iSide,iPoint,1)
+right_epsi = material_right(iSide,iPoint,2)
+right_gam = material_right(iSide,iPoint,3)
+right_chi = material_right(iSide,iPoint,4)</p>
+<p>&amp; left_mu = left_mu, &amp;
+ &amp; left_epsi = left_epsi, &amp;
+ &amp; left_gam = left_gam, &amp;
+ &amp; left_chi = left_chi, &amp;
+ &amp; right_mu = right_mu, &amp;
+ &amp; right_epsi = right_epsi, &amp;
+ &amp; right_gam = right_gam, &amp;
+ &amp; right_chi = right_chi, &amp;</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ntotalfaces~11"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nTotalFaces</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nsides~16"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nSides</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nfacedofs~30"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nFaceDofs</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facerep~19"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceRep</strong>(nTotalFaces,nFaceDofs,8,2)</td>
+            <td>
+<p>The modal representation on the faces, left and right trace.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-faceflux~19"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceFlux</strong>(nTotalFaces,nFaceDofs,8,2)</td>
+            <td>
+<p>The fluxes for all faces, for left and right elements.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-leftpos~16"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>leftPos</strong>(nSides)</td>
+            <td>
+<p>Positions for the left and right elements of all faces</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rightpos~16"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rightPos</strong>(nsides)</td>
+            <td>
+<p>Positions for the left and right elements of all faces</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-var~14"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>var</strong>(8)</td>
+            <td>
+<p>Variable rotation indices</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_left~13"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_left</strong>(nSides,nFaceDofs,4)</td>
+            <td>
+<p>Material parameters for the left faces.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_right~13"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_right</strong>(nSides,nFaceDofs,4)</td>
+            <td>
+<p>Material parameters for the right faces.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~99"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Data for projection method
+   !&gt; Working array for the left and right modal coefficients
+   real(kind=rk), intent(inout) :: left_modalCoeffs((fpt%nQuadPoints)<strong>2,8)
+   real(kind=rk), intent(inout) :: right_modalCoeffs((fpt%nQuadPoints)</strong>2,8)
+   !&gt; Working array for the left and right point values
+   real(kind=rk), intent(inout) :: left_pntVal((fpt%nQuadPoints)<strong>2,8)
+   real(kind=rk), intent(inout) :: right_pntVal((fpt%nQuadPoints)</strong>2,8)
+   !&gt; Working array for the nodal flux
+   real(kind=rk), intent(inout) :: nodalNumFlux((fpt%nQuadPoints)<strong>2,8)
+   !&gt; Working array for the modal numerical flux
+   real(kind=rk), intent(inout) :: numFluxBuffer((fpt%nQuadPoints)</strong>2,8)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-left_modalcoeffs~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>left_modalCoeffs</strong>(:,:)</td>
+            <td>
+<p>Working array for the left and right modal coefficients</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-right_modalcoeffs~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>right_modalCoeffs</strong>(:,:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-left_pntval~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>left_pntVal</strong>(:,:)</td>
+            <td>
+<p>Working array for the left and right point values</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-right_pntval~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>right_pntVal</strong>(:,:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodalnumflux~9"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>nodalNumFlux</strong>(:,:)</td>
+            <td>
+<p>Working array for the nodal flux</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-numfluxbuffer~13"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>numFluxBuffer</strong>(:,:)</td>
+            <td>
+<p>Working array for the modal numerical flux</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+    </ul>
+  </div>
+
+        </section>
+        <br>
+
+
+
+        <section>
+          <h2>Functions</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_physfluxmaxwelldivcor"></span> <h3>public  function <a href='../proc/atl_physfluxmaxwelldivcor.html'>atl_physFluxMaxwellDivCor</a>(state, material) result(flux)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Function for physical flux of the Maxwell equations in terms of D and B.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state~102"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state</strong>(8)</td>
+            <td>
+<p>State to compute the fluxes from (D,B).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material~82"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material</strong>(4)</td>
+            <td>
+<p>Material parameters (mu, epsilon) the flux calculation</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>real(kind=rk), (8)</small>
+    </h4>
+    <p>The resulting flux in x direction</p>
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+        <section>
+          <h2>Subroutines</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-maxwell_flux_cube"></span> <h3>private  subroutine <a href='../proc/maxwell_flux_cube.html'>maxwell_flux_cube</a>(left, right, left_mu, left_epsi, right_mu, right_epsi, flux)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Subroutine to calculate the flux for pure Maxwell equations without
+any divergence cleaning on the reference cubic face.</p><a href="../proc/maxwell_flux_cube.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-left~54"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>left</strong>(6)</td>
+            <td>
+<p>Left state vector (as conservative variables). The order of this vector
+has to be \f$ (D_x, D_y, D_z, B_1, B_2, B_3) \f$ where E and B denoted
+electric field vetor and magnetic field (also called magnetic induction)
+vector.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-right~54"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>right</strong>(6)</td>
+            <td>
+<p>Right state vector (as conservative variables). The order of this vector
+has to be (D_x, D_y, D_z, B_1, B_2, B_3) where E and B denoted the
+electric field vetor and magnetic field (also called magnetic induction)
+vector.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-left_mu~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>left_mu</strong></td>
+            <td>
+<p>The magnetic permeability of the left element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-left_epsi~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>left_epsi</strong></td>
+            <td>
+<p>The electric permitivity of the left element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-right_mu~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>right_mu</strong></td>
+            <td>
+<p>The magnetic permeability of the right element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-right_epsi~4"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>right_epsi</strong></td>
+            <td>
+<p>The electric permitivity of the right element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-flux~26"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>flux</strong>(6)</td>
+            <td>
+<p>The flux between left and right cell. The order of this vector is the
+same as the input arguments.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-maxwell_flux_nonconst_cube_vec"></span> <h3>private  subroutine <a href='../proc/maxwell_flux_nonconst_cube_vec.html'>maxwell_flux_nonconst_cube_vec</a>(nTotalFaces, nSides, nFaceDofs, faceRep, faceFlux, leftPos, rightPos, var, material_left, material_right, poly_proj, modalCoeffs, pntVal, nodalNumFlux, numFluxBuffer)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>c
+a
+l
+c
+u
+l
+a
+t
+e</p>
+<p>f
+l
+u
+x</p>
+<p>o
+f</p>
+<p>p
+u
+r
+e</p>
+<p>m
+a
+x
+w
+e
+l
+l</p>
+<p>e
+q
+u
+a
+t
+i
+o
+n</p>
+<p>d
+i
+r
+e
+c
+t
+l
+y</p>
+<p>o
+n</p>
+<p>t
+h
+e</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ntotalfaces~8"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nTotalFaces</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nsides~13"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nSides</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nfacedofs~27"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nFaceDofs</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facerep~16"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceRep</strong>(nTotalFaces,nFaceDofs,6,2)</td>
+            <td>
+<p>The modal representation on the faces, left and right trace.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-faceflux~16"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceFlux</strong>(nTotalFaces,nFaceDofs,6,2)</td>
+            <td>
+<p>The fluxes for all faces, for left and right elements.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-leftpos~13"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>leftPos</strong>(nSides)</td>
+            <td>
+<p>Positions for the left and right elements of all faces</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rightpos~13"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rightPos</strong>(nsides)</td>
+            <td>
+<p>Positions for the left and right elements of all faces</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-var~11"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>var</strong>(6)</td>
+            <td>
+<p>Variable rotation indices</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_left~10"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_left</strong>(nSides,nFaceDofs,2)</td>
+            <td>
+<p>Material parameters for the left faces.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_right~10"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_right</strong>(nSides,nFaceDofs,2)</td>
+            <td>
+<p>Material parameters for the right faces.</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html#variable-material_right~10" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~98"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Data for projection method</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-modalcoeffs~27"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>modalCoeffs</strong>(:,:,:)</td>
+            <td>
+<p>Working array for the left and right modal coefficients</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-pntval~23"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pntVal</strong>(:,:,:)</td>
+            <td>
+<p>Working array for the left and right point values</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodalnumflux~8"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nodalNumFlux</strong>(:,:)</td>
+            <td>
+<p>Working array for the nodal flux</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-numfluxbuffer~12"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>numFluxBuffer</strong>(:,:)</td>
+            <td>
+<p>Working array for the modal numerical flux</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-maxwell_flux_cube_vec"></span> <h3>private  subroutine <a href='../proc/maxwell_flux_cube_vec.html'>maxwell_flux_cube_vec</a>(nTotalFaces, nSides, nFaceDofs, faceRep, faceFlux, leftPos, rightPos, var, material_left, material_right)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>c
+a
+l
+c
+u
+l
+a
+t
+e</p>
+<p>f
+l
+u
+x</p>
+<p>o
+f</p>
+<p>p
+u
+r
+e</p>
+<p>m
+a
+x
+w
+e
+l
+l</p>
+<p>e
+q
+u
+a
+t
+i
+o
+n</p>
+<p>d
+i
+r
+e
+c
+t
+l
+y</p>
+<p>o
+n</p>
+<p>t
+h
+e</p><a href="../proc/maxwell_flux_cube_vec.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ntotalfaces~9"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nTotalFaces</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nsides~14"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nSides</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nfacedofs~28"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nFaceDofs</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facerep~17"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceRep</strong>(nTotalFaces,nFaceDofs,6,2)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-faceflux~17"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceFlux</strong>(nTotalFaces,nFaceDofs,6,2)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-leftpos~14"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>leftPos</strong>(nSides)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rightpos~14"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rightPos</strong>(nsides)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-var~12"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>var</strong>(6)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_left~11"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_left</strong>(nSides,1,2)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_right~11"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_right</strong>(nSides,1,2)</td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-maxwell_hc_flux_cube"></span> <h3>private  subroutine <a href='../proc/maxwell_hc_flux_cube.html'>maxwell_hc_flux_cube</a>(left, right, mat_left, mat_right, flux)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>S
+u
+b
+r
+o
+u
+t
+i
+n
+e</p>
+<p>t
+o</p>
+<p>c
+a
+l
+c
+u
+l
+a
+t
+e</p>
+<p>t
+h
+e</p>
+<p>f
+l
+u
+x</p>
+<p>f
+o
+r</p>
+<p>p
+u
+r
+e</p>
+<p>M
+a
+x
+w
+e
+l
+l</p>
+<p>e
+q
+u
+a
+t
+i
+o
+n
+s</p>
+<p>w
+i
+t
+h</p><a href="../proc/maxwell_hc_flux_cube.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-left~57"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>left</strong>(8)</td>
+            <td>
+<p>Left state vector (as conservative variables). The order of this vector
+has to be \f$ (D_x, D_y, D_z, B_1, B_2, B_3, phi, psi) \f$ where E and B
+denoted electric field vetor and magnetic field (also called magnetic
+induction) vector.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-right~57"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>right</strong>(8)</td>
+            <td>
+<p>Right state vector (as conservative variables). The order of this vector
+has to be (D_x, D_y, D_z, B_1, B_2, B_3, phi, psi) where E and B denoted
+the electric field vetor and magnetic field (also called magnetic
+induction) vector.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mat_left"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mat_left</strong>(4)</td>
+            <td>
+<p>Material for the left face</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mat_right"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mat_right</strong>(4)</td>
+            <td>
+<p>Material for the right face
+   !&gt;  The magnetic permeability of the left element.
+   real(kind=rk), intent(in)  :: left_mu
+   !&gt;  The electric permitivity of the left element.
+   real(kind=rk), intent(in)  :: left_epsi
+   !&gt;  Parameter for the magnetic correction on the left element.
+   real(kind=rk), intent(in)  :: left_gam
+   !&gt;  Parameter for the electric correction on the left element.
+   real(kind=rk), intent(in)  :: left_chi
+   !&gt;  The magnetic permeability of the right element.
+   real(kind=rk), intent(in)  :: right_mu
+   !&gt;  The electric permitivity of the right element.
+   real(kind=rk), intent(in)  :: right_epsi
+   !&gt;  Parameter for the magnetic correction on the right element.
+   real(kind=rk), intent(in)  :: right_gam
+   !&gt;  Parameter for the electric correction on the right element.
+   real(kind=rk), intent(in)  :: right_chi</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-flux~28"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>flux</strong>(8)</td>
+            <td>
+<p>The flux between left and right cell. The order of this vector is the
+same as the input arguments.</p><a href="../proc/maxwell_hc_flux_cube.html#variable-flux~28" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-maxwell_hc_flux_cube_vec"></span> <h3>private  subroutine <a href='../proc/maxwell_hc_flux_cube_vec.html'>maxwell_hc_flux_cube_vec</a>(nTotalFaces, nSides, nFaceDofs, faceRep, faceFlux, leftPos, rightPos, var, material_left, material_right)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>c
+a
+l
+c
+u
+l
+a
+t
+e</p>
+<p>f
+l
+u
+x</p>
+<p>o
+f</p>
+<p>m
+a
+x
+w
+e
+l
+l</p>
+<p>e
+q
+u
+a
+t
+i
+o
+n</p>
+<p>w
+i
+t
+h</p>
+<p>h
+y
+p
+e
+r
+b
+o
+l
+i
+c</p>
+<p>d
+i
+v
+e
+r
+g
+e
+n
+c
+e</p><a href="../proc/maxwell_hc_flux_cube_vec.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ntotalfaces~10"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nTotalFaces</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nsides~15"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nSides</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nfacedofs~29"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nFaceDofs</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facerep~18"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceRep</strong>(nTotalFaces,nFaceDofs,8,2)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-faceflux~18"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceFlux</strong>(nTotalFaces,nFaceDofs,8,2)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-leftpos~15"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>leftPos</strong>(nSides)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rightpos~15"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rightPos</strong>(nsides)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-var~13"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>var</strong>(8)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_left~12"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_left</strong>(nSides,1,4)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_right~12"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_right</strong>(nSides,1,4)</td>
+            <td>
+<p>integer :: iSide, left, right, iDof
+real(kind=rk) :: left_mu, right_mu
+real(kind=rk) :: left_epsi, right_epsi
+real(kind=rk) :: left_gam, right_gam
+real(kind=rk) :: left_chi, right_chi
+real(kind=rk) :: left_speedOfLight, right_speedOfLight
+real(kind=rk) :: inv_denom_mu, inv_denom_epsi
+! --------------------------------------------------------------------------</p><a href="../proc/maxwell_hc_flux_cube_vec.html#variable-material_right~12" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-maxwell_hc_flux_nonconst_cube_vec"></span> <h3>private  subroutine <a href='../proc/maxwell_hc_flux_nonconst_cube_vec.html'>maxwell_hc_flux_nonconst_cube_vec</a>(nTotalFaces, nSides, nFaceDofs, faceRep, faceFlux, leftPos, rightPos, var, material_left, material_right, poly_proj, left_modalCoeffs, right_modalCoeffs, left_pntVal, right_pntVal, nodalNumFlux, numFluxBuffer)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>c
+a
+l
+c
+u
+l
+a
+t
+e</p>
+<p>f
+l
+u
+x</p>
+<p>o
+f</p>
+<p>m
+a
+x
+w
+e
+l
+l</p>
+<p>e
+q
+u
+a
+t
+i
+o
+n</p>
+<p>w
+i
+t
+h</p>
+<p>h
+y
+p
+e
+r
+b
+o
+l
+i
+c</p>
+<p>d
+i
+v
+e
+r
+g
+e
+n
+c
+e</p><a href="../proc/maxwell_hc_flux_nonconst_cube_vec.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ntotalfaces~11"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nTotalFaces</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nsides~16"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nSides</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nfacedofs~30"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nFaceDofs</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facerep~19"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceRep</strong>(nTotalFaces,nFaceDofs,8,2)</td>
+            <td>
+<p>The modal representation on the faces, left and right trace.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-faceflux~19"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceFlux</strong>(nTotalFaces,nFaceDofs,8,2)</td>
+            <td>
+<p>The fluxes for all faces, for left and right elements.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-leftpos~16"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>leftPos</strong>(nSides)</td>
+            <td>
+<p>Positions for the left and right elements of all faces</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rightpos~16"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rightPos</strong>(nsides)</td>
+            <td>
+<p>Positions for the left and right elements of all faces</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-var~14"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>var</strong>(8)</td>
+            <td>
+<p>Variable rotation indices</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_left~13"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_left</strong>(nSides,nFaceDofs,4)</td>
+            <td>
+<p>Material parameters for the left faces.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_right~13"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_right</strong>(nSides,nFaceDofs,4)</td>
+            <td>
+<p>Material parameters for the right faces.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-poly_proj~99"></span>
+              type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>poly_proj</strong></td>
+            <td>
+<p>Data for projection method
+   !&gt; Working array for the left and right modal coefficients
+   real(kind=rk), intent(inout) :: left_modalCoeffs((fpt%nQuadPoints)<strong>2,8)
+   real(kind=rk), intent(inout) :: right_modalCoeffs((fpt%nQuadPoints)</strong>2,8)
+   !&gt; Working array for the left and right point values
+   real(kind=rk), intent(inout) :: left_pntVal((fpt%nQuadPoints)<strong>2,8)
+   real(kind=rk), intent(inout) :: right_pntVal((fpt%nQuadPoints)</strong>2,8)
+   !&gt; Working array for the nodal flux
+   real(kind=rk), intent(inout) :: nodalNumFlux((fpt%nQuadPoints)<strong>2,8)
+   !&gt; Working array for the modal numerical flux
+   real(kind=rk), intent(inout) :: numFluxBuffer((fpt%nQuadPoints)</strong>2,8)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-left_modalcoeffs~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>left_modalCoeffs</strong>(:,:)</td>
+            <td>
+<p>Working array for the left and right modal coefficients</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-right_modalcoeffs~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>right_modalCoeffs</strong>(:,:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-left_pntval~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>left_pntVal</strong>(:,:)</td>
+            <td>
+<p>Working array for the left and right point values</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-right_pntval~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>right_pntVal</strong>(:,:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nodalnumflux~9"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>nodalNumFlux</strong>(:,:)</td>
+            <td>
+<p>Working array for the nodal flux</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-numfluxbuffer~13"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>numFluxBuffer</strong>(:,:)</td>
+            <td>
+<p>Working array for the modal numerical flux</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

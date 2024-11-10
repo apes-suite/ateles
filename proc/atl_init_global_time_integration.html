@@ -1,0 +1,748 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_init_global_time_integration &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_init_global_time_integration
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">54 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_global_time_integration_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_global_time_integration_module.f90.html'>atl_global_time_integration_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/atl_global_time_integration_module.html'>atl_global_time_integration_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_init_global_time_integration</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine atl_init_global_time_integration(me, minLevel, maxLevel, statedata_list, mesh_list, equation)  
+</h2>
+    
+
+    <p>Routine to init the timestepping scheme.</p>
+<p>This allocates datafields as needed. Be aware that the configuration
+has to be loaded beforehand!</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~58"></span>
+              type(<a href='../type/atl_global_timestep_type.html'>atl_global_timestep_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>the scheme you want to initialize.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-minlevel~31"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>minLevel</strong></td>
+            <td>
+                <p>The minimum level of the mesh</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxlevel~35"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxLevel</strong></td>
+            <td>
+                <p>The maximum level of the mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-statedata_list~14"></span>
+              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>statedata_list</strong>(minLevel:maxLevel)</td>
+            <td>
+                <p>The state list used in your solver, for each level one entry.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh_list~11"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh_list</strong>(minLevel:maxLevel)</td>
+            <td>
+                <p>Mesh description</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-equation~136"></span>
+              type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>equation</strong></td>
+            <td>
+                <p>The equaton you are using.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~atl_init_global_time_integration~~CallsGraph Pages: 1 -->
+<svg id="procatl_init_global_time_integrationCallsGraph" width="577pt" height="327pt"
+ viewBox="0.00 0.00 577.00 327.22" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~atl_init_global_time_integration~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 323.22)">
+<title>proc~~atl_init_global_time_integration~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-323.22 573,-323.22 573,4 -4,4"/>
+<!-- proc~atl_init_global_time_integration -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_node1" class="node">
+<title>proc~atl_init_global_time_integration</title>
+<polygon fill="none" stroke="black" points="179,-172.22 0,-172.22 0,-148.22 179,-148.22 179,-172.22"/>
+<text text-anchor="middle" x="89.5" y="-157.82" font-family="Helvetica,sans-Serif" font-size="10.50">atl_init_global_time_integration</text>
+</g>
+<!-- nelems -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_node2" class="node">
+<title>nelems</title>
+<polygon fill="#777777" stroke="#777777" points="367.5,-319.22 313.5,-319.22 313.5,-295.22 367.5,-295.22 367.5,-319.22"/>
+<text text-anchor="middle" x="340.5" y="-304.82" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">nelems</text>
+</g>
+<!-- proc~atl_init_global_time_integration&#45;&gt;nelems -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_edge1" class="edge">
+<title>proc~atl_init_global_time_integration&#45;&gt;nelems</title>
+<path fill="none" stroke="#000000" d="M98.46,-172.37C116.04,-198.13 160.97,-258.14 215,-286.22 242.35,-300.43 277.22,-305.37 303.1,-306.93"/>
+<polygon fill="#000000" stroke="#000000" points="303.09,-310.43 313.24,-307.4 303.41,-303.44 303.09,-310.43"/>
+</g>
+<!-- proc~atl_init_explicit_ssprk -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_node3" class="node">
+<title>proc~atl_init_explicit_ssprk</title>
+<g id="a_proc~~atl_init_global_time_integration~~CallsGraph_node3"><a xlink:href="../proc/atl_init_explicit_ssprk.html" xlink:title="atl_init_explicit_ssprk">
+<polygon fill="#d9534f" stroke="#d9534f" points="402.5,-277.22 278.5,-277.22 278.5,-253.22 402.5,-253.22 402.5,-277.22"/>
+<text text-anchor="middle" x="340.5" y="-262.82" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_init_explicit_ssprk</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_init_global_time_integration&#45;&gt;proc~atl_init_explicit_ssprk -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_edge2" class="edge">
+<title>proc~atl_init_global_time_integration&#45;&gt;proc~atl_init_explicit_ssprk</title>
+<path fill="none" stroke="#000000" d="M104.29,-172.5C126.11,-191.2 170.69,-226.51 215,-244.22 231.59,-250.85 250.23,-255.39 267.95,-258.5"/>
+<polygon fill="#000000" stroke="#000000" points="267.81,-262.02 278.24,-260.16 268.93,-255.11 267.81,-262.02"/>
+</g>
+<!-- proc~atl_init_expliciteuler -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_node4" class="node">
+<title>proc~atl_init_expliciteuler</title>
+<g id="a_proc~~atl_init_global_time_integration~~CallsGraph_node4"><a xlink:href="../proc/atl_init_expliciteuler.html" xlink:title="atl_init_explicitEuler">
+<polygon fill="#d9534f" stroke="#d9534f" points="399.5,-235.22 281.5,-235.22 281.5,-211.22 399.5,-211.22 399.5,-235.22"/>
+<text text-anchor="middle" x="340.5" y="-220.82" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_init_explicitEuler</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_init_global_time_integration&#45;&gt;proc~atl_init_expliciteuler -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_edge3" class="edge">
+<title>proc~atl_init_global_time_integration&#45;&gt;proc~atl_init_expliciteuler</title>
+<path fill="none" stroke="#000000" d="M121.56,-172.23C146.5,-181.5 182.59,-194.08 215,-202.22 233.12,-206.77 252.97,-210.62 271.39,-213.73"/>
+<polygon fill="#000000" stroke="#000000" points="271.02,-217.22 281.46,-215.38 272.16,-210.31 271.02,-217.22"/>
+</g>
+<!-- proc~atl_init_explicitlocalpredictorglobalcorrector -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_node5" class="node">
+<title>proc~atl_init_explicitlocalpredictorglobalcorrector</title>
+<g id="a_proc~~atl_init_global_time_integration~~CallsGraph_node5"><a xlink:href="../proc/atl_init_explicitlocalpredictorglobalcorrector.html" xlink:title="atl_init_explicitLocalPredictorGlobalCorrector">
+<polygon fill="#d9534f" stroke="#d9534f" points="466,-193.22 215,-193.22 215,-169.22 466,-169.22 466,-193.22"/>
+<text text-anchor="middle" x="340.5" y="-178.82" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_init_explicitLocalPredictorGlobalCorrector</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_init_global_time_integration&#45;&gt;proc~atl_init_explicitlocalpredictorglobalcorrector -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_edge4" class="edge">
+<title>proc~atl_init_global_time_integration&#45;&gt;proc~atl_init_explicitlocalpredictorglobalcorrector</title>
+<path fill="none" stroke="#000000" d="M179.34,-167.71C187.57,-168.41 196.03,-169.12 204.55,-169.84"/>
+<polygon fill="#000000" stroke="#000000" points="204.32,-173.33 214.58,-170.69 204.91,-166.36 204.32,-173.33"/>
+</g>
+<!-- proc~atl_init_explicitrungekutta -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_node6" class="node">
+<title>proc~atl_init_explicitrungekutta</title>
+<g id="a_proc~~atl_init_global_time_integration~~CallsGraph_node6"><a xlink:href="../proc/atl_init_explicitrungekutta.html" xlink:title="atl_init_explicitRungeKutta">
+<polygon fill="#d9534f" stroke="#d9534f" points="416,-151.22 265,-151.22 265,-127.22 416,-127.22 416,-151.22"/>
+<text text-anchor="middle" x="340.5" y="-136.82" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_init_explicitRungeKutta</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_init_global_time_integration&#45;&gt;proc~atl_init_explicitrungekutta -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_edge5" class="edge">
+<title>proc~atl_init_global_time_integration&#45;&gt;proc~atl_init_explicitrungekutta</title>
+<path fill="none" stroke="#000000" d="M179.34,-152.73C203.78,-150.67 230.23,-148.44 254.45,-146.39"/>
+<polygon fill="#000000" stroke="#000000" points="255.01,-149.86 264.68,-145.53 254.42,-142.88 255.01,-149.86"/>
+</g>
+<!-- proc~atl_init_explicitrungekuttataylor -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_node7" class="node">
+<title>proc~atl_init_explicitrungekuttataylor</title>
+<g id="a_proc~~atl_init_global_time_integration~~CallsGraph_node7"><a xlink:href="../proc/atl_init_explicitrungekuttataylor.html" xlink:title="atl_init_explicitRungeKuttaTaylor">
+<polygon fill="#d9534f" stroke="#d9534f" points="432,-109.22 249,-109.22 249,-85.22 432,-85.22 432,-109.22"/>
+<text text-anchor="middle" x="340.5" y="-94.82" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_init_explicitRungeKuttaTaylor</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_init_global_time_integration&#45;&gt;proc~atl_init_explicitrungekuttataylor -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_edge6" class="edge">
+<title>proc~atl_init_global_time_integration&#45;&gt;proc~atl_init_explicitrungekuttataylor</title>
+<path fill="none" stroke="#000000" d="M121.56,-148.21C146.5,-138.94 182.59,-126.37 215,-118.22 225.34,-115.62 236.24,-113.26 247.11,-111.12"/>
+<polygon fill="#000000" stroke="#000000" points="247.91,-114.53 257.08,-109.23 246.6,-107.66 247.91,-114.53"/>
+</g>
+<!-- proc~atl_init_imexrungekutta -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_node8" class="node">
+<title>proc~atl_init_imexrungekutta</title>
+<g id="a_proc~~atl_init_global_time_integration~~CallsGraph_node8"><a xlink:href="../proc/atl_init_imexrungekutta.html" xlink:title="atl_init_imexRungeKutta">
+<polygon fill="#d9534f" stroke="#d9534f" points="410,-67.22 271,-67.22 271,-43.22 410,-43.22 410,-67.22"/>
+<text text-anchor="middle" x="340.5" y="-52.82" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_init_imexRungeKutta</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_init_global_time_integration&#45;&gt;proc~atl_init_imexrungekutta -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_edge7" class="edge">
+<title>proc~atl_init_global_time_integration&#45;&gt;proc~atl_init_imexrungekutta</title>
+<path fill="none" stroke="#000000" d="M104.29,-147.95C126.11,-129.25 170.69,-93.93 215,-76.22 229.36,-70.48 245.26,-66.31 260.76,-63.28"/>
+<polygon fill="#000000" stroke="#000000" points="261.65,-66.67 270.87,-61.45 260.4,-59.79 261.65,-66.67"/>
+</g>
+<!-- tem_abort -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_node9" class="node">
+<title>tem_abort</title>
+<g id="a_proc~~atl_init_global_time_integration~~CallsGraph_node9"><a xlink:href="https://apes-suite.github.io/treelm/proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="569,-130.22 502,-130.22 502,-106.22 569,-106.22 569,-130.22"/>
+<text text-anchor="middle" x="535.5" y="-115.82" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_init_global_time_integration&#45;&gt;tem_abort -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_edge8" class="edge">
+<title>proc~atl_init_global_time_integration&#45;&gt;tem_abort</title>
+<path fill="none" stroke="#000000" d="M97.62,-148.17C114.18,-121.5 158.25,-57.93 215,-34.22 317.94,8.78 365.23,13.63 466,-34.22 493.17,-47.12 513.12,-76.66 524.27,-97.03"/>
+<polygon fill="#000000" stroke="#000000" points="521.31,-98.93 529.03,-106.18 527.52,-95.7 521.31,-98.93"/>
+</g>
+<!-- proc~atl_init_explicit_ssprk&#45;&gt;tem_abort -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_edge9" class="edge">
+<title>proc~atl_init_explicit_ssprk&#45;&gt;tem_abort</title>
+<path fill="none" stroke="#000000" d="M402.7,-265.67C424.34,-263.18 447.8,-257.21 466,-244.22 501.58,-218.82 520.58,-169 529,-140.2"/>
+<polygon fill="#000000" stroke="#000000" points="532.45,-140.85 531.72,-130.28 525.7,-139 532.45,-140.85"/>
+</g>
+<!-- proc~atl_init_explicitlocalpredictorglobalcorrector&#45;&gt;tem_abort -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_edge10" class="edge">
+<title>proc~atl_init_explicitlocalpredictorglobalcorrector&#45;&gt;tem_abort</title>
+<path fill="none" stroke="#000000" d="M436.32,-169.15C446.49,-166.7 456.56,-163.76 466,-160.22 481.66,-154.35 497.68,-144.77 510.28,-136.24"/>
+<polygon fill="#000000" stroke="#000000" points="512.61,-138.88 518.8,-130.28 508.6,-133.14 512.61,-138.88"/>
+</g>
+<!-- proc~atl_init_explicitrungekutta&#45;&gt;tem_abort -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_edge11" class="edge">
+<title>proc~atl_init_explicitrungekutta&#45;&gt;tem_abort</title>
+<path fill="none" stroke="#000000" d="M416.12,-131.1C441.76,-128.31 469.57,-125.29 491.8,-122.87"/>
+<polygon fill="#000000" stroke="#000000" points="492.34,-126.33 501.9,-121.77 491.58,-119.37 492.34,-126.33"/>
+</g>
+<!-- proc~atl_init_explicitrungekuttataylor&#45;&gt;tem_abort -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_edge12" class="edge">
+<title>proc~atl_init_explicitrungekuttataylor&#45;&gt;tem_abort</title>
+<path fill="none" stroke="#000000" d="M432.07,-107.08C452.86,-109.34 474.03,-111.64 491.68,-113.56"/>
+<polygon fill="#000000" stroke="#000000" points="491.31,-117.04 501.63,-114.65 492.07,-110.08 491.31,-117.04"/>
+</g>
+<!-- proc~atl_init_imexrungekutta&#45;&gt;tem_abort -->
+<g id="proc~~atl_init_global_time_integration~~CallsGraph_edge13" class="edge">
+<title>proc~atl_init_imexrungekutta&#45;&gt;tem_abort</title>
+<path fill="none" stroke="#000000" d="M410.26,-62.01C428.74,-65.12 448.45,-69.64 466,-76.22 481.66,-82.09 497.68,-91.68 510.28,-100.21"/>
+<polygon fill="#000000" stroke="#000000" points="508.6,-103.3 518.8,-106.17 512.61,-97.57 508.6,-103.3"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~atl_init_global_time_integration~~CalledByGraph Pages: 1 -->
+<svg id="procatl_init_global_time_integrationCalledByGraph" width="641pt" height="66pt"
+ viewBox="0.00 0.00 641.00 65.52" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~atl_init_global_time_integration~~CalledByGraph" class="graph" transform="scale(0.89 0.89) rotate(0) translate(4 70)">
+<title>proc~~atl_init_global_time_integration~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 720,-70 720,4 -4,4"/>
+<!-- proc~atl_init_global_time_integration -->
+<g id="proc~~atl_init_global_time_integration~~CalledByGraph_node1" class="node">
+<title>proc~atl_init_global_time_integration</title>
+<polygon fill="none" stroke="black" points="716,-45 537,-45 537,-21 716,-21 716,-45"/>
+<text text-anchor="middle" x="626.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_init_global_time_integration</text>
+</g>
+<!-- proc~atl_init_elem_container -->
+<g id="proc~~atl_init_global_time_integration~~CalledByGraph_node2" class="node">
+<title>proc~atl_init_elem_container</title>
+<g id="a_proc~~atl_init_global_time_integration~~CalledByGraph_node2"><a xlink:href="../proc/atl_init_elem_container.html" xlink:title="atl_init_elem_container">
+<polygon fill="#d9534f" stroke="#d9534f" points="501,-45 365,-45 365,-21 501,-21 501,-45"/>
+<text text-anchor="middle" x="433" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_init_elem_container</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_init_elem_container&#45;&gt;proc~atl_init_global_time_integration -->
+<g id="proc~~atl_init_global_time_integration~~CalledByGraph_edge1" class="edge">
+<title>proc~atl_init_elem_container&#45;&gt;proc~atl_init_global_time_integration</title>
+<path fill="none" stroke="#000000" d="M501.25,-33C509.53,-33 518.14,-33 526.77,-33"/>
+<polygon fill="#000000" stroke="#000000" points="526.9,-36.5 536.9,-33 526.9,-29.5 526.9,-36.5"/>
+</g>
+<!-- proc~atl_initialize -->
+<g id="proc~~atl_init_global_time_integration~~CalledByGraph_node3" class="node">
+<title>proc~atl_initialize</title>
+<g id="a_proc~~atl_init_global_time_integration~~CalledByGraph_node3"><a xlink:href="../proc/atl_initialize.html" xlink:title="atl_initialize">
+<polygon fill="#d9534f" stroke="#d9534f" points="329,-45 253,-45 253,-21 329,-21 329,-45"/>
+<text text-anchor="middle" x="291" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_initialize&#45;&gt;proc~atl_init_elem_container -->
+<g id="proc~~atl_init_global_time_integration~~CalledByGraph_edge2" class="edge">
+<title>proc~atl_initialize&#45;&gt;proc~atl_init_elem_container</title>
+<path fill="none" stroke="#000000" d="M329.15,-33C337.15,-33 345.9,-33 354.8,-33"/>
+<polygon fill="#000000" stroke="#000000" points="354.89,-36.5 364.89,-33 354.89,-29.5 354.89,-36.5"/>
+</g>
+<!-- proc~atl_initialize_program -->
+<g id="proc~~atl_init_global_time_integration~~CalledByGraph_node4" class="node">
+<title>proc~atl_initialize_program</title>
+<g id="a_proc~~atl_init_global_time_integration~~CalledByGraph_node4"><a xlink:href="../proc/atl_initialize_program.html" xlink:title="atl_initialize_program">
+<polygon fill="#d9534f" stroke="#d9534f" points="217,-66 90,-66 90,-42 217,-42 217,-66"/>
+<text text-anchor="middle" x="153.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_initialize_program</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_initialize_program&#45;&gt;proc~atl_initialize -->
+<g id="proc~~atl_init_global_time_integration~~CalledByGraph_edge3" class="edge">
+<title>proc~atl_initialize_program&#45;&gt;proc~atl_initialize</title>
+<path fill="none" stroke="#000000" d="M217.09,-44.3C225.77,-42.95 234.56,-41.59 242.89,-40.3"/>
+<polygon fill="#000000" stroke="#000000" points="243.44,-43.76 252.78,-38.77 242.37,-36.84 243.44,-43.76"/>
+</g>
+<!-- program~atl_harvesting -->
+<g id="proc~~atl_init_global_time_integration~~CalledByGraph_node5" class="node">
+<title>program~atl_harvesting</title>
+<g id="a_proc~~atl_init_global_time_integration~~CalledByGraph_node5"><a xlink:href="../program/atl_harvesting.html" xlink:title="atl_harvesting">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="197.5,-24 109.5,-24 109.5,0 197.5,0 197.5,-24"/>
+<text text-anchor="middle" x="153.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_harvesting</text>
+</a>
+</g>
+</g>
+<!-- program~atl_harvesting&#45;&gt;proc~atl_initialize -->
+<g id="proc~~atl_init_global_time_integration~~CalledByGraph_edge4" class="edge">
+<title>program~atl_harvesting&#45;&gt;proc~atl_initialize</title>
+<path fill="none" stroke="#000000" d="M197.75,-18.7C211.96,-20.9 227.83,-23.36 242.35,-25.61"/>
+<polygon fill="#000000" stroke="#000000" points="242.22,-29.14 252.63,-27.21 243.29,-22.22 242.22,-29.14"/>
+</g>
+<!-- program~ateles -->
+<g id="proc~~atl_init_global_time_integration~~CalledByGraph_node6" class="node">
+<title>program~ateles</title>
+<g id="a_proc~~atl_init_global_time_integration~~CalledByGraph_node6"><a xlink:href="../program/ateles.html" xlink:title="ateles">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="54,-66 0,-66 0,-42 54,-42 54,-66"/>
+<text text-anchor="middle" x="27" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ateles</text>
+</a>
+</g>
+</g>
+<!-- program~ateles&#45;&gt;proc~atl_initialize_program -->
+<g id="proc~~atl_init_global_time_integration~~CalledByGraph_edge5" class="edge">
+<title>program~ateles&#45;&gt;proc~atl_initialize_program</title>
+<path fill="none" stroke="#000000" d="M54.1,-54C61.71,-54 70.44,-54 79.47,-54"/>
+<polygon fill="#000000" stroke="#000000" points="79.76,-57.5 89.76,-54 79.76,-50.5 79.76,-57.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocatl_init_global_time_integrationCalledByGraph = svgPanZoom('#procatl_init_global_time_integrationCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

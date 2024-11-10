@@ -1,0 +1,549 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Discontinuous Galerkin solver with explicit time stepping.">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>atl_physFluxEuler_1d &ndash; Ateles</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Ateles </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">Documentation</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>atl_physFluxEuler_1d
+      <small>Function</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.0% of total for procedures.">13 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/atl_physFluxEuler_1d_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/atl_physfluxeuler_1d_module.f90.html'>atl_physFluxEuler_1d_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/atl_physfluxeuler_1d_module.html'>atl_physFluxEuler_1d_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">atl_physFluxEuler_1d</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  function atl_physFluxEuler_1d(state, isenCoeff, penalty_scaling, U_o) result(physFlux)  
+</h2>
+    
+
+    <p>Physical flux calculation along x direction for Euler equation.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state~136"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state</strong>(:)</td>
+            <td>
+                <p>The state in nodal space. Dimension is the number of vars, i.e. 3 for
+Euler 1d</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-isencoeff~10"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>isenCoeff</strong></td>
+            <td>
+                <p>Adiabatic index, also known as isentropic expansion factor.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-penalty_scaling"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>penalty_scaling</strong></td>
+            <td>
+                <p>The scaling of the mass flux due to the penality in the porous
+material.</p>
+<p>It is given by $1 + (\frac{1}{\phi} - 1) \Chi$
+Thus, if there is no porous media, this factor has to be 1.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-u_o~5"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>U_o</strong></td>
+            <td>
+                <p>Obstacle velocity</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <h3>Return Value
+        <small>
+          <span class="anchor" id="variable-physflux~15"></span>
+          real(kind=rk), (3)
+        </small>
+      </h3>
+      <p>The physical flux along the x axis for all variables</p>
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~atl_physfluxeuler_1d~~CalledByGraph Pages: 1 -->
+<svg id="procatl_physfluxeuler_1dCalledByGraph" width="641pt" height="135pt"
+ viewBox="0.00 0.00 641.00 134.77" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph" class="graph" transform="scale(0.57 0.57) rotate(0) translate(4 234)">
+<title>proc~~atl_physfluxeuler_1d~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-234 1128,-234 1128,4 -4,4"/>
+<!-- proc~atl_physfluxeuler_1d -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_node1" class="node">
+<title>proc~atl_physfluxeuler_1d</title>
+<polygon fill="none" stroke="black" points="1124,-126 1000,-126 1000,-102 1124,-102 1124,-126"/>
+<text text-anchor="middle" x="1062" y="-111.6" font-family="Helvetica,sans-Serif" font-size="10.50">atl_physFluxEuler_1d</text>
+</g>
+<!-- proc~atl_averagefluxeuler_1d -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_node2" class="node">
+<title>proc~atl_averagefluxeuler_1d</title>
+<g id="a_proc~~atl_physfluxeuler_1d~~CalledByGraph_node2"><a xlink:href="../proc/atl_averagefluxeuler_1d.html" xlink:title="atl_averageFluxEuler_1d">
+<polygon fill="#d9534f" stroke="#d9534f" points="925.5,-230 781.5,-230 781.5,-206 925.5,-206 925.5,-230"/>
+<text text-anchor="middle" x="853.5" y="-215.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_averageFluxEuler_1d</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_averagefluxeuler_1d&#45;&gt;proc~atl_physfluxeuler_1d -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_edge1" class="edge">
+<title>proc~atl_averagefluxeuler_1d&#45;&gt;proc~atl_physfluxeuler_1d</title>
+<path fill="none" stroke="#000000" d="M925.74,-209.89C938.85,-206.87 952.14,-202.71 964,-197 995.98,-181.61 1025.9,-153 1043.83,-133.73"/>
+<polygon fill="#000000" stroke="#000000" points="1046.62,-135.86 1050.75,-126.11 1041.44,-131.16 1046.62,-135.86"/>
+</g>
+<!-- proc~atl_godunoveuler1d -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_node3" class="node">
+<title>proc~atl_godunoveuler1d</title>
+<g id="a_proc~~atl_physfluxeuler_1d~~CalledByGraph_node3"><a xlink:href="../proc/atl_godunoveuler1d.html" xlink:title="atl_GodunovEuler1D">
+<polygon fill="#d9534f" stroke="#d9534f" points="914.5,-188 792.5,-188 792.5,-164 914.5,-164 914.5,-188"/>
+<text text-anchor="middle" x="853.5" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_GodunovEuler1D</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_godunoveuler1d&#45;&gt;proc~atl_physfluxeuler_1d -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_edge2" class="edge">
+<title>proc~atl_godunoveuler1d&#45;&gt;proc~atl_physfluxeuler_1d</title>
+<path fill="none" stroke="#000000" d="M914.73,-166.8C930.9,-163.7 948.26,-159.78 964,-155 985.6,-148.44 1008.93,-138.67 1027.3,-130.31"/>
+<polygon fill="#000000" stroke="#000000" points="1028.81,-133.47 1036.41,-126.1 1025.87,-127.12 1028.81,-133.47"/>
+</g>
+<!-- proc~atl_laxfriedeuler_1d -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_node4" class="node">
+<title>proc~atl_laxfriedeuler_1d</title>
+<g id="a_proc~~atl_physfluxeuler_1d~~CalledByGraph_node4"><a xlink:href="../proc/atl_laxfriedeuler_1d.html" xlink:title="atl_laxFriedEuler_1d">
+<polygon fill="#d9534f" stroke="#d9534f" points="913.5,-146 793.5,-146 793.5,-122 913.5,-122 913.5,-146"/>
+<text text-anchor="middle" x="853.5" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_laxFriedEuler_1d</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_laxfriedeuler_1d&#45;&gt;proc~atl_physfluxeuler_1d -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_edge3" class="edge">
+<title>proc~atl_laxfriedeuler_1d&#45;&gt;proc~atl_physfluxeuler_1d</title>
+<path fill="none" stroke="#000000" d="M913.67,-128.27C937.35,-125.98 964.83,-123.31 989.59,-120.92"/>
+<polygon fill="#000000" stroke="#000000" points="990.05,-124.39 999.66,-119.94 989.37,-117.42 990.05,-124.39"/>
+</g>
+<!-- proc~atl_modg_1d_euler_physflux_const -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_node5" class="node">
+<title>proc~atl_modg_1d_euler_physflux_const</title>
+<g id="a_proc~~atl_physfluxeuler_1d~~CalledByGraph_node5"><a xlink:href="../proc/atl_modg_1d_euler_physflux_const.html" xlink:title="atl_modg_1d_euler_physFlux_const">
+<polygon fill="#d9534f" stroke="#d9534f" points="953,-66 754,-66 754,-42 953,-42 953,-66"/>
+<text text-anchor="middle" x="853.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_1d_euler_physFlux_const</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_modg_1d_euler_physflux_const&#45;&gt;proc~atl_physfluxeuler_1d -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_edge4" class="edge">
+<title>proc~atl_modg_1d_euler_physflux_const&#45;&gt;proc~atl_physfluxeuler_1d</title>
+<path fill="none" stroke="#000000" d="M910.22,-66.05C927.55,-70.11 946.66,-74.92 964,-80 982.47,-85.41 1002.59,-92.3 1019.69,-98.46"/>
+<polygon fill="#000000" stroke="#000000" points="1018.78,-101.85 1029.38,-101.98 1021.18,-95.27 1018.78,-101.85"/>
+</g>
+<!-- proc~atl_modg_1d_euler_physflux_nonconst -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_node6" class="node">
+<title>proc~atl_modg_1d_euler_physflux_nonconst</title>
+<g id="a_proc~~atl_physfluxeuler_1d~~CalledByGraph_node6"><a xlink:href="../proc/atl_modg_1d_euler_physflux_nonconst.html" xlink:title="atl_modg_1d_euler_physFlux_nonConst">
+<polygon fill="#d9534f" stroke="#d9534f" points="964,-24 743,-24 743,0 964,0 964,-24"/>
+<text text-anchor="middle" x="853.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_modg_1d_euler_physFlux_nonConst</text>
+</a>
+</g>
+</g>
+<!-- proc~atl_modg_1d_euler_physflux_nonconst&#45;&gt;proc~atl_physfluxeuler_1d -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_edge5" class="edge">
+<title>proc~atl_modg_1d_euler_physflux_nonconst&#45;&gt;proc~atl_physfluxeuler_1d</title>
+<path fill="none" stroke="#000000" d="M940.15,-24.02C948.39,-26.48 956.48,-29.44 964,-33 995.57,-47.96 1025.4,-75.66 1043.44,-94.45"/>
+<polygon fill="#000000" stroke="#000000" points="1041.02,-96.99 1050.42,-101.9 1046.13,-92.21 1041.02,-96.99"/>
+</g>
+<!-- proc~modg_1d_compute_project_physflux -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_node7" class="node">
+<title>proc~modg_1d_compute_project_physflux</title>
+<g id="a_proc~~atl_physfluxeuler_1d~~CalledByGraph_node7"><a xlink:href="../proc/modg_1d_compute_project_physflux.html" xlink:title="modg_1d_compute_project_physFlux">
+<polygon fill="#d9534f" stroke="#d9534f" points="707,-66 499,-66 499,-42 707,-42 707,-66"/>
+<text text-anchor="middle" x="603" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">modg_1d_compute_project_physFlux</text>
+</a>
+</g>
+</g>
+<!-- proc~modg_1d_compute_project_physflux&#45;&gt;proc~atl_physfluxeuler_1d -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_edge6" class="edge">
+<title>proc~modg_1d_compute_project_physflux&#45;&gt;proc~atl_physfluxeuler_1d</title>
+<path fill="none" stroke="#000000" d="M681.14,-66.05C701.26,-69.08 722.93,-72.25 743,-75 827.74,-86.6 925.42,-98.33 989.91,-105.86"/>
+<polygon fill="#000000" stroke="#000000" points="989.63,-109.35 999.97,-107.03 990.44,-102.4 989.63,-109.35"/>
+</g>
+<!-- proc~modg_1d_compute_project_physflux&#45;&gt;proc~atl_modg_1d_euler_physflux_const -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_edge7" class="edge">
+<title>proc~modg_1d_compute_project_physflux&#45;&gt;proc~atl_modg_1d_euler_physflux_const</title>
+<path fill="none" stroke="#000000" d="M707.23,-54C719.31,-54 731.67,-54 743.83,-54"/>
+<polygon fill="#000000" stroke="#000000" points="743.98,-57.5 753.98,-54 743.98,-50.5 743.98,-57.5"/>
+</g>
+<!-- proc~modg_1d_compute_project_physflux&#45;&gt;proc~atl_modg_1d_euler_physflux_nonconst -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_edge8" class="edge">
+<title>proc~modg_1d_compute_project_physflux&#45;&gt;proc~atl_modg_1d_euler_physflux_nonconst</title>
+<path fill="none" stroke="#000000" d="M675.21,-41.96C705.23,-36.89 740.35,-30.96 771.36,-25.71"/>
+<polygon fill="#000000" stroke="#000000" points="772,-29.15 781.28,-24.04 770.84,-22.25 772,-29.15"/>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_node8" class="node">
+<title>proc~compute_rhs_cubes_modg_1d</title>
+<g id="a_proc~~atl_physfluxeuler_1d~~CalledByGraph_node8"><a xlink:href="../proc/compute_rhs_cubes_modg_1d.html" xlink:title="compute_rhs_cubes_modg_1d">
+<polygon fill="#d9534f" stroke="#d9534f" points="463,-66 290,-66 290,-42 463,-42 463,-66"/>
+<text text-anchor="middle" x="376.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">compute_rhs_cubes_modg_1d</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes_modg_1d&#45;&gt;proc~modg_1d_compute_project_physflux -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_edge9" class="edge">
+<title>proc~compute_rhs_cubes_modg_1d&#45;&gt;proc~modg_1d_compute_project_physflux</title>
+<path fill="none" stroke="#000000" d="M463.01,-54C471.39,-54 479.97,-54 488.56,-54"/>
+<polygon fill="#000000" stroke="#000000" points="488.64,-57.5 498.64,-54 488.64,-50.5 488.64,-57.5"/>
+</g>
+<!-- proc~compute_rhs_cubes -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_node9" class="node">
+<title>proc~compute_rhs_cubes</title>
+<g id="a_proc~~atl_physfluxeuler_1d~~CalledByGraph_node9"><a xlink:href="../proc/compute_rhs_cubes.html" xlink:title="compute_rhs_cubes">
+<polygon fill="#d9534f" stroke="#d9534f" points="254,-66 136,-66 136,-42 254,-42 254,-66"/>
+<text text-anchor="middle" x="195" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">compute_rhs_cubes</text>
+</a>
+</g>
+</g>
+<!-- proc~compute_rhs_cubes&#45;&gt;proc~compute_rhs_cubes_modg_1d -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_edge10" class="edge">
+<title>proc~compute_rhs_cubes&#45;&gt;proc~compute_rhs_cubes_modg_1d</title>
+<path fill="none" stroke="#000000" d="M254.28,-54C262.45,-54 271.01,-54 279.65,-54"/>
+<polygon fill="#000000" stroke="#000000" points="279.81,-57.5 289.81,-54 279.81,-50.5 279.81,-57.5"/>
+</g>
+<!-- interface~atl_compute_rhs -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_node10" class="node">
+<title>interface~atl_compute_rhs</title>
+<g id="a_proc~~atl_physfluxeuler_1d~~CalledByGraph_node10"><a xlink:href="../interface/atl_compute_rhs.html" xlink:title="atl_compute_rhs">
+<polygon fill="#a7506f" stroke="#a7506f" points="100,-66 0,-66 0,-42 100,-42 100,-66"/>
+<text text-anchor="middle" x="50" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">atl_compute_rhs</text>
+</a>
+</g>
+</g>
+<!-- interface~atl_compute_rhs&#45;&gt;proc~compute_rhs_cubes -->
+<g id="proc~~atl_physfluxeuler_1d~~CalledByGraph_edge11" class="edge">
+<title>interface~atl_compute_rhs&#45;&gt;proc~compute_rhs_cubes</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M100.21,-54C108.46,-54 117.14,-54 125.76,-54"/>
+<polygon fill="#000000" stroke="#000000" points="125.83,-57.5 135.83,-54 125.83,-50.5 125.83,-57.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocatl_physfluxeuler_1dCalledByGraph = svgPanZoom('#procatl_physfluxeuler_1dCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Ateles
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>b078e468b47d</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-10T09:34:02.903283             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>
