@@ -650,11 +650,11 @@ contains
         ! This is the source corresponding to the fifth var i.e turbulent KE
         ! the multiplication with k_bar as the rey_stress_tensor used here is
         ! divided by k_bar
-        source(1) = rey_stress_tensor(1,1)*velGrad(1,1)*k_bar             &
-          &       + rey_stress_tensor(1,2)*velGrad(1,2)*k_bar             &
-          &       + rey_stress_tensor(2,1)*velGrad(2,1)*k_bar             &
-          &       + rey_stress_tensor(2,2)*velGrad(2,2)*k_bar             &
-          &       - beta_k*max(pointVal(iPoint,5),0.0)&
+        source(1) = rey_stress_tensor(1,1)*velGrad(1,1)*k_bar &
+          &       + rey_stress_tensor(1,2)*velGrad(1,2)*k_bar &
+          &       + rey_stress_tensor(2,1)*velGrad(2,1)*k_bar &
+          &       + rey_stress_tensor(2,2)*velGrad(2,2)*k_bar &
+          &       - beta_k*max(pointVal(iPoint,5),0.0_rk)     &
                           *exp(omega_r)
 
         ! This is the source corresponding to the sixth conservative var
