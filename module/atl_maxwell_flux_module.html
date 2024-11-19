@@ -186,8 +186,8 @@ hyperbolic Maxwell equations.</p>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='ply_oversample_module.html'>ply_oversample_module</a></li>
                   <li class="list-inline-item"><a href='ply_poly_project_module.html'>ply_poly_project_module</a></li>
+                  <li class="list-inline-item"><a href='ply_oversample_module.html'>ply_oversample_module</a></li>
                   <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/env_module.html'>env_module</a></li>
               </ul>
             </li>
@@ -1169,7 +1169,7 @@ function assumes constant material parameters in both cells.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-left~19"></span>
+              <span class="anchor" id="variable-left~40"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -1187,7 +1187,7 @@ vector.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-right~19"></span>
+              <span class="anchor" id="variable-right~40"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -1265,7 +1265,7 @@ vector.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-flux~26"></span>
+              <span class="anchor" id="variable-flux~16"></span>
               real(kind=rk),
             </td>
 <td>intent(out)</td>
@@ -1307,7 +1307,184 @@ variables. Furthermore, it is able to handle jumping material parameters.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-ntotalfaces~6"></span>
+              <span class="anchor" id="variable-ntotalfaces~5"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nTotalFaces</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nsides~13"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nSides</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nfacedofs~13"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nFaceDofs</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facerep~12"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceRep</strong>(nTotalFaces,nFaceDofs,6,2)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-faceflux~11"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceFlux</strong>(nTotalFaces,nFaceDofs,6,2)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-leftpos~12"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>leftPos</strong>(nSides)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rightpos~12"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rightPos</strong>(nsides)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-var~11"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>var</strong>(6)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_left~9"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_left</strong>(nSides,1,2)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_right~9"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_right</strong>(nSides,1,2)</td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private  subroutine <a href='../proc/maxwell_flux_nonconst_cube_vec.html'>maxwell_flux_nonconst_cube_vec</a>(nTotalFaces, nSides, nFaceDofs, faceRep, faceFlux, leftPos, rightPos, var, material_left, material_right, poly_proj, modalCoeffs, pntVal, nodalNumFlux, numFluxBuffer)  
+
+    </h3>
+    
+  <p>face-vector</p>
+<p>This subroutine assumes the Maxwell equations with D and B as input
+variables. Furthermore, it is able to handle arbitray material parameters
+by a pseudo-spectral technique.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ntotalfaces~4"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1362,183 +1539,6 @@ variables. Furthermore, it is able to handle jumping material parameters.</p>
             <td>::</td>
             <td><strong>faceRep</strong>(nTotalFaces,nFaceDofs,6,2)</td>
             <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-faceflux~11"></span>
-              real(kind=rk),
-            </td>
-<td>intent(inout)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>faceFlux</strong>(nTotalFaces,nFaceDofs,6,2)</td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-leftpos~11"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>leftPos</strong>(nSides)</td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-rightpos~11"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>rightPos</strong>(nsides)</td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-var~10"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>var</strong>(6)</td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-material_left~16"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>material_left</strong>(nSides,1,2)</td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-material_right~16"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>material_right</strong>(nSides,1,2)</td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-          </li>
-          <li class="list-group-item">
-                <h3>
-    private  subroutine <a href='../proc/maxwell_flux_nonconst_cube_vec.html'>maxwell_flux_nonconst_cube_vec</a>(nTotalFaces, nSides, nFaceDofs, faceRep, faceFlux, leftPos, rightPos, var, material_left, material_right, poly_proj, modalCoeffs, pntVal, nodalNumFlux, numFluxBuffer)  
-
-    </h3>
-    
-  <p>face-vector</p>
-<p>This subroutine assumes the Maxwell equations with D and B as input
-variables. Furthermore, it is able to handle arbitray material parameters
-by a pseudo-spectral technique.</p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-ntotalfaces~5"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nTotalFaces</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-nsides~11"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nSides</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-nfacedofs~11"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nFaceDofs</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-facerep~10"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>faceRep</strong>(nTotalFaces,nFaceDofs,6,2)</td>
-            <td>
 <p>The modal representation on the faces, left and right trace.</p>
             </td>
         </tr>
@@ -1559,7 +1559,7 @@ by a pseudo-spectral technique.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-leftpos~10"></span>
+              <span class="anchor" id="variable-leftpos~11"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1574,7 +1574,7 @@ by a pseudo-spectral technique.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rightpos~10"></span>
+              <span class="anchor" id="variable-rightpos~11"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1589,7 +1589,7 @@ by a pseudo-spectral technique.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-var~9"></span>
+              <span class="anchor" id="variable-var~10"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1604,7 +1604,7 @@ by a pseudo-spectral technique.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_left~15"></span>
+              <span class="anchor" id="variable-material_left~8"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -1619,7 +1619,7 @@ by a pseudo-spectral technique.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_right~15"></span>
+              <span class="anchor" id="variable-material_right~8"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -1629,12 +1629,12 @@ by a pseudo-spectral technique.</p>
             <td>::</td>
             <td><strong>material_right</strong>(nSides,nFaceDofs,2)</td>
             <td>
-<p>Material parameters for the right faces.</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html#variable-material_right~15" class="pull-right"><emph>Read more&hellip;</emph></a>
+<p>Material parameters for the right faces.</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html#variable-material_right~8" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-poly_proj~63"></span>
+              <span class="anchor" id="variable-poly_proj~72"></span>
               type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>)
             </td>
 <td></td>
@@ -1649,7 +1649,7 @@ by a pseudo-spectral technique.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-modalcoeffs~14"></span>
+              <span class="anchor" id="variable-modalcoeffs~22"></span>
               real(kind=rk),
             </td>
 <td>intent(inout)</td>
@@ -1664,7 +1664,7 @@ by a pseudo-spectral technique.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-pntval~6"></span>
+              <span class="anchor" id="variable-pntval~23"></span>
               real(kind=rk),
             </td>
 <td>intent(inout)</td>
@@ -1679,7 +1679,7 @@ by a pseudo-spectral technique.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nodalnumflux~10"></span>
+              <span class="anchor" id="variable-nodalnumflux~7"></span>
               real(kind=rk),
             </td>
 <td>intent(inout)</td>
@@ -1694,7 +1694,7 @@ by a pseudo-spectral technique.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-numfluxbuffer~14"></span>
+              <span class="anchor" id="variable-numfluxbuffer~10"></span>
               real(kind=rk),
             </td>
 <td>intent(inout)</td>
@@ -1747,7 +1747,7 @@ hyperbolic divergence cleaning.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-left~22"></span>
+              <span class="anchor" id="variable-left~43"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -1765,7 +1765,7 @@ induction) vector.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-right~22"></span>
+              <span class="anchor" id="variable-right~43"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -1829,7 +1829,7 @@ induction) vector.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-flux~28"></span>
+              <span class="anchor" id="variable-flux~18"></span>
               real(kind=rk),
             </td>
 <td>intent(out)</td>
@@ -1840,7 +1840,7 @@ induction) vector.</p>
             <td><strong>flux</strong>(8)</td>
             <td>
 <p>The flux between left and right cell. The order of this vector is the
-same as the input arguments.</p><a href="../proc/maxwell_hc_flux_cube.html#variable-flux~28" class="pull-right"><emph>Read more&hellip;</emph></a>
+same as the input arguments.</p><a href="../proc/maxwell_hc_flux_cube.html#variable-flux~18" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
     </tbody>
@@ -1872,211 +1872,7 @@ variables. Furthermore, it is able to handle jumping material parameters.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-ntotalfaces~7"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nTotalFaces</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-nsides~13"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nSides</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-nfacedofs~13"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nFaceDofs</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-facerep~12"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>faceRep</strong>(nTotalFaces,nFaceDofs,8,2)</td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-faceflux~12"></span>
-              real(kind=rk),
-            </td>
-<td>intent(inout)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>faceFlux</strong>(nTotalFaces,nFaceDofs,8,2)</td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-leftpos~12"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>leftPos</strong>(nSides)</td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-rightpos~12"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>rightPos</strong>(nsides)</td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-var~11"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>var</strong>(8)</td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-material_left~17"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>material_left</strong>(nSides,1,4)</td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-material_right~17"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>material_right</strong>(nSides,1,4)</td>
-            <td>
-<p>integer :: iSide, left, right, iDof
-real(kind=rk) :: left_mu, right_mu
-real(kind=rk) :: left_epsi, right_epsi
-real(kind=rk) :: left_gam, right_gam
-real(kind=rk) :: left_chi, right_chi
-real(kind=rk) :: left_speedOfLight, right_speedOfLight
-real(kind=rk) :: inv_denom_mu, inv_denom_epsi
-! --------------------------------------------------------------------------</p><a href="../proc/maxwell_hc_flux_cube_vec.html#variable-material_right~17" class="pull-right"><emph>Read more&hellip;</emph></a>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-          </li>
-          <li class="list-group-item">
-                <h3>
-    private  subroutine <a href='../proc/maxwell_hc_flux_nonconst_cube_vec.html'>maxwell_hc_flux_nonconst_cube_vec</a>(nTotalFaces, nSides, nFaceDofs, faceRep, faceFlux, leftPos, rightPos, var, material_left, material_right, poly_proj, left_modalCoeffs, right_modalCoeffs, left_pntVal, right_pntVal, nodalNumFlux, numFluxBuffer)  
-
-    </h3>
-    
-  <p>cleaning directly on the face-vector</p>
-<p>This subroutine assumes the Maxwell equations with D and B as input
- variables. Furthermore, it is able to handle arbitray material parameters
- by a pseudo-spectral technique.</p>
-<p>! Get the material of the left and right element at the current
-! face.
-! ... left material
-left_mu = material_left(iSide,iPoint,1)
-left_epsi = material_left(iSide,iPoint,2)
-left_gam = material_left(iSide,iPoint,3)
-left_chi = material_left(iSide,iPoint,4)
-! ... right material
-right_mu = material_right(iSide,iPoint,1)
-right_epsi = material_right(iSide,iPoint,2)
-right_gam = material_right(iSide,iPoint,3)
-right_chi = material_right(iSide,iPoint,4)</p>
-<p>&amp; left_mu = left_mu, &amp;
- &amp; left_epsi = left_epsi, &amp;
- &amp; left_gam = left_gam, &amp;
- &amp; left_chi = left_chi, &amp;
- &amp; right_mu = right_mu, &amp;
- &amp; right_epsi = right_epsi, &amp;
- &amp; right_gam = right_gam, &amp;
- &amp; right_chi = right_chi, &amp;</p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-ntotalfaces~8"></span>
+              <span class="anchor" id="variable-ntotalfaces~6"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2131,6 +1927,210 @@ right_chi = material_right(iSide,iPoint,4)</p>
             <td>::</td>
             <td><strong>faceRep</strong>(nTotalFaces,nFaceDofs,8,2)</td>
             <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-faceflux~12"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceFlux</strong>(nTotalFaces,nFaceDofs,8,2)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-leftpos~13"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>leftPos</strong>(nSides)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rightpos~13"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rightPos</strong>(nsides)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-var~12"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>var</strong>(8)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_left~10"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_left</strong>(nSides,1,4)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_right~10"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_right</strong>(nSides,1,4)</td>
+            <td>
+<p>integer :: iSide, left, right, iDof
+real(kind=rk) :: left_mu, right_mu
+real(kind=rk) :: left_epsi, right_epsi
+real(kind=rk) :: left_gam, right_gam
+real(kind=rk) :: left_chi, right_chi
+real(kind=rk) :: left_speedOfLight, right_speedOfLight
+real(kind=rk) :: inv_denom_mu, inv_denom_epsi
+! --------------------------------------------------------------------------</p><a href="../proc/maxwell_hc_flux_cube_vec.html#variable-material_right~10" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private  subroutine <a href='../proc/maxwell_hc_flux_nonconst_cube_vec.html'>maxwell_hc_flux_nonconst_cube_vec</a>(nTotalFaces, nSides, nFaceDofs, faceRep, faceFlux, leftPos, rightPos, var, material_left, material_right, poly_proj, left_modalCoeffs, right_modalCoeffs, left_pntVal, right_pntVal, nodalNumFlux, numFluxBuffer)  
+
+    </h3>
+    
+  <p>cleaning directly on the face-vector</p>
+<p>This subroutine assumes the Maxwell equations with D and B as input
+ variables. Furthermore, it is able to handle arbitray material parameters
+ by a pseudo-spectral technique.</p>
+<p>! Get the material of the left and right element at the current
+! face.
+! ... left material
+left_mu = material_left(iSide,iPoint,1)
+left_epsi = material_left(iSide,iPoint,2)
+left_gam = material_left(iSide,iPoint,3)
+left_chi = material_left(iSide,iPoint,4)
+! ... right material
+right_mu = material_right(iSide,iPoint,1)
+right_epsi = material_right(iSide,iPoint,2)
+right_gam = material_right(iSide,iPoint,3)
+right_chi = material_right(iSide,iPoint,4)</p>
+<p>&amp; left_mu = left_mu, &amp;
+ &amp; left_epsi = left_epsi, &amp;
+ &amp; left_gam = left_gam, &amp;
+ &amp; left_chi = left_chi, &amp;
+ &amp; right_mu = right_mu, &amp;
+ &amp; right_epsi = right_epsi, &amp;
+ &amp; right_gam = right_gam, &amp;
+ &amp; right_chi = right_chi, &amp;</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ntotalfaces~7"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nTotalFaces</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nsides~15"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nSides</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nfacedofs~15"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nFaceDofs</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facerep~14"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceRep</strong>(nTotalFaces,nFaceDofs,8,2)</td>
+            <td>
 <p>The modal representation on the faces, left and right trace.</p>
             </td>
         </tr>
@@ -2151,7 +2151,7 @@ right_chi = material_right(iSide,iPoint,4)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-leftpos~13"></span>
+              <span class="anchor" id="variable-leftpos~14"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2166,7 +2166,7 @@ right_chi = material_right(iSide,iPoint,4)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rightpos~13"></span>
+              <span class="anchor" id="variable-rightpos~14"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2181,7 +2181,7 @@ right_chi = material_right(iSide,iPoint,4)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-var~12"></span>
+              <span class="anchor" id="variable-var~13"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2196,7 +2196,7 @@ right_chi = material_right(iSide,iPoint,4)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_left~18"></span>
+              <span class="anchor" id="variable-material_left~11"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -2211,7 +2211,7 @@ right_chi = material_right(iSide,iPoint,4)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_right~18"></span>
+              <span class="anchor" id="variable-material_right~11"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -2226,7 +2226,7 @@ right_chi = material_right(iSide,iPoint,4)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-poly_proj~64"></span>
+              <span class="anchor" id="variable-poly_proj~73"></span>
               type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>)
             </td>
 <td></td>
@@ -2251,7 +2251,7 @@ right_chi = material_right(iSide,iPoint,4)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-left_modalcoeffs"></span>
+              <span class="anchor" id="variable-left_modalcoeffs~2"></span>
               real(kind=rk),
             </td>
 <td>intent(inout),</td>
@@ -2266,7 +2266,7 @@ right_chi = material_right(iSide,iPoint,4)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-right_modalcoeffs"></span>
+              <span class="anchor" id="variable-right_modalcoeffs~2"></span>
               real(kind=rk),
             </td>
 <td>intent(inout),</td>
@@ -2281,7 +2281,7 @@ right_chi = material_right(iSide,iPoint,4)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-left_pntval"></span>
+              <span class="anchor" id="variable-left_pntval~2"></span>
               real(kind=rk),
             </td>
 <td>intent(inout),</td>
@@ -2296,7 +2296,7 @@ right_chi = material_right(iSide,iPoint,4)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-right_pntval"></span>
+              <span class="anchor" id="variable-right_pntval~2"></span>
               real(kind=rk),
             </td>
 <td>intent(inout),</td>
@@ -2311,7 +2311,7 @@ right_chi = material_right(iSide,iPoint,4)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nodalnumflux~11"></span>
+              <span class="anchor" id="variable-nodalnumflux~8"></span>
               real(kind=rk),
             </td>
 <td>intent(inout),</td>
@@ -2326,7 +2326,7 @@ right_chi = material_right(iSide,iPoint,4)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-numfluxbuffer~15"></span>
+              <span class="anchor" id="variable-numfluxbuffer~11"></span>
               real(kind=rk),
             </td>
 <td>intent(inout),</td>
@@ -2374,7 +2374,7 @@ right_chi = material_right(iSide,iPoint,4)</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-state~80"></span>
+              <span class="anchor" id="variable-state~73"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -2389,7 +2389,7 @@ right_chi = material_right(iSide,iPoint,4)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material~47"></span>
+              <span class="anchor" id="variable-material~51"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -2440,7 +2440,7 @@ any divergence cleaning on the reference cubic face.</p><a href="../proc/maxwell
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-left~19"></span>
+              <span class="anchor" id="variable-left~40"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -2458,7 +2458,7 @@ vector.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-right~19"></span>
+              <span class="anchor" id="variable-right~40"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -2536,7 +2536,7 @@ vector.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-flux~26"></span>
+              <span class="anchor" id="variable-flux~16"></span>
               real(kind=rk),
             </td>
 <td>intent(out)</td>
@@ -2623,7 +2623,7 @@ e</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html" class="pull-right"><e
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-ntotalfaces~5"></span>
+              <span class="anchor" id="variable-ntotalfaces~4"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2638,7 +2638,7 @@ e</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html" class="pull-right"><e
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nsides~11"></span>
+              <span class="anchor" id="variable-nsides~12"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2653,7 +2653,7 @@ e</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html" class="pull-right"><e
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nfacedofs~11"></span>
+              <span class="anchor" id="variable-nfacedofs~12"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2668,7 +2668,7 @@ e</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html" class="pull-right"><e
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-facerep~10"></span>
+              <span class="anchor" id="variable-facerep~11"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -2698,7 +2698,7 @@ e</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html" class="pull-right"><e
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-leftpos~10"></span>
+              <span class="anchor" id="variable-leftpos~11"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2713,7 +2713,7 @@ e</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html" class="pull-right"><e
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rightpos~10"></span>
+              <span class="anchor" id="variable-rightpos~11"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2728,7 +2728,7 @@ e</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html" class="pull-right"><e
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-var~9"></span>
+              <span class="anchor" id="variable-var~10"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2743,7 +2743,7 @@ e</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html" class="pull-right"><e
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_left~15"></span>
+              <span class="anchor" id="variable-material_left~8"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -2758,7 +2758,7 @@ e</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html" class="pull-right"><e
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_right~15"></span>
+              <span class="anchor" id="variable-material_right~8"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -2768,12 +2768,12 @@ e</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html" class="pull-right"><e
             <td>::</td>
             <td><strong>material_right</strong>(nSides,nFaceDofs,2)</td>
             <td>
-<p>Material parameters for the right faces.</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html#variable-material_right~15" class="pull-right"><emph>Read more&hellip;</emph></a>
+<p>Material parameters for the right faces.</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html#variable-material_right~8" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-poly_proj~63"></span>
+              <span class="anchor" id="variable-poly_proj~72"></span>
               type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>)
             </td>
 <td></td>
@@ -2788,7 +2788,7 @@ e</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html" class="pull-right"><e
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-modalcoeffs~14"></span>
+              <span class="anchor" id="variable-modalcoeffs~22"></span>
               real(kind=rk),
             </td>
 <td>intent(inout)</td>
@@ -2803,7 +2803,7 @@ e</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html" class="pull-right"><e
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-pntval~6"></span>
+              <span class="anchor" id="variable-pntval~23"></span>
               real(kind=rk),
             </td>
 <td>intent(inout)</td>
@@ -2818,7 +2818,7 @@ e</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html" class="pull-right"><e
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nodalnumflux~10"></span>
+              <span class="anchor" id="variable-nodalnumflux~7"></span>
               real(kind=rk),
             </td>
 <td>intent(inout)</td>
@@ -2833,7 +2833,7 @@ e</p><a href="../proc/maxwell_flux_nonconst_cube_vec.html" class="pull-right"><e
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-numfluxbuffer~14"></span>
+              <span class="anchor" id="variable-numfluxbuffer~10"></span>
               real(kind=rk),
             </td>
 <td>intent(inout)</td>
@@ -2919,7 +2919,7 @@ e</p><a href="../proc/maxwell_flux_cube_vec.html" class="pull-right"><emph>Read 
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-ntotalfaces~6"></span>
+              <span class="anchor" id="variable-ntotalfaces~5"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2934,7 +2934,7 @@ e</p><a href="../proc/maxwell_flux_cube_vec.html" class="pull-right"><emph>Read 
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nsides~12"></span>
+              <span class="anchor" id="variable-nsides~13"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2949,7 +2949,7 @@ e</p><a href="../proc/maxwell_flux_cube_vec.html" class="pull-right"><emph>Read 
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nfacedofs~12"></span>
+              <span class="anchor" id="variable-nfacedofs~13"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2964,7 +2964,7 @@ e</p><a href="../proc/maxwell_flux_cube_vec.html" class="pull-right"><emph>Read 
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-facerep~11"></span>
+              <span class="anchor" id="variable-facerep~12"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -2994,7 +2994,7 @@ e</p><a href="../proc/maxwell_flux_cube_vec.html" class="pull-right"><emph>Read 
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-leftpos~11"></span>
+              <span class="anchor" id="variable-leftpos~12"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3009,7 +3009,7 @@ e</p><a href="../proc/maxwell_flux_cube_vec.html" class="pull-right"><emph>Read 
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rightpos~11"></span>
+              <span class="anchor" id="variable-rightpos~12"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3024,7 +3024,7 @@ e</p><a href="../proc/maxwell_flux_cube_vec.html" class="pull-right"><emph>Read 
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-var~10"></span>
+              <span class="anchor" id="variable-var~11"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3039,7 +3039,7 @@ e</p><a href="../proc/maxwell_flux_cube_vec.html" class="pull-right"><emph>Read 
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_left~16"></span>
+              <span class="anchor" id="variable-material_left~9"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -3054,7 +3054,7 @@ e</p><a href="../proc/maxwell_flux_cube_vec.html" class="pull-right"><emph>Read 
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_right~16"></span>
+              <span class="anchor" id="variable-material_right~9"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -3148,7 +3148,7 @@ h</p><a href="../proc/maxwell_hc_flux_cube.html" class="pull-right"><emph>Read m
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-left~22"></span>
+              <span class="anchor" id="variable-left~43"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -3166,7 +3166,7 @@ induction) vector.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-right~22"></span>
+              <span class="anchor" id="variable-right~43"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -3230,7 +3230,7 @@ induction) vector.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-flux~28"></span>
+              <span class="anchor" id="variable-flux~18"></span>
               real(kind=rk),
             </td>
 <td>intent(out)</td>
@@ -3241,7 +3241,7 @@ induction) vector.</p>
             <td><strong>flux</strong>(8)</td>
             <td>
 <p>The flux between left and right cell. The order of this vector is the
-same as the input arguments.</p><a href="../proc/maxwell_hc_flux_cube.html#variable-flux~28" class="pull-right"><emph>Read more&hellip;</emph></a>
+same as the input arguments.</p><a href="../proc/maxwell_hc_flux_cube.html#variable-flux~18" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
     </tbody>
@@ -3324,7 +3324,7 @@ e</p><a href="../proc/maxwell_hc_flux_cube_vec.html" class="pull-right"><emph>Re
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-ntotalfaces~7"></span>
+              <span class="anchor" id="variable-ntotalfaces~6"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3339,7 +3339,7 @@ e</p><a href="../proc/maxwell_hc_flux_cube_vec.html" class="pull-right"><emph>Re
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nsides~13"></span>
+              <span class="anchor" id="variable-nsides~14"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3354,7 +3354,7 @@ e</p><a href="../proc/maxwell_hc_flux_cube_vec.html" class="pull-right"><emph>Re
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nfacedofs~13"></span>
+              <span class="anchor" id="variable-nfacedofs~14"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3369,7 +3369,7 @@ e</p><a href="../proc/maxwell_hc_flux_cube_vec.html" class="pull-right"><emph>Re
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-facerep~12"></span>
+              <span class="anchor" id="variable-facerep~13"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -3399,7 +3399,7 @@ e</p><a href="../proc/maxwell_hc_flux_cube_vec.html" class="pull-right"><emph>Re
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-leftpos~12"></span>
+              <span class="anchor" id="variable-leftpos~13"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3414,7 +3414,7 @@ e</p><a href="../proc/maxwell_hc_flux_cube_vec.html" class="pull-right"><emph>Re
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rightpos~12"></span>
+              <span class="anchor" id="variable-rightpos~13"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3429,7 +3429,7 @@ e</p><a href="../proc/maxwell_hc_flux_cube_vec.html" class="pull-right"><emph>Re
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-var~11"></span>
+              <span class="anchor" id="variable-var~12"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3444,7 +3444,7 @@ e</p><a href="../proc/maxwell_hc_flux_cube_vec.html" class="pull-right"><emph>Re
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_left~17"></span>
+              <span class="anchor" id="variable-material_left~10"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -3459,7 +3459,7 @@ e</p><a href="../proc/maxwell_hc_flux_cube_vec.html" class="pull-right"><emph>Re
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_right~17"></span>
+              <span class="anchor" id="variable-material_right~10"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -3476,7 +3476,7 @@ real(kind=rk) :: left_gam, right_gam
 real(kind=rk) :: left_chi, right_chi
 real(kind=rk) :: left_speedOfLight, right_speedOfLight
 real(kind=rk) :: inv_denom_mu, inv_denom_epsi
-! --------------------------------------------------------------------------</p><a href="../proc/maxwell_hc_flux_cube_vec.html#variable-material_right~17" class="pull-right"><emph>Read more&hellip;</emph></a>
+! --------------------------------------------------------------------------</p><a href="../proc/maxwell_hc_flux_cube_vec.html#variable-material_right~10" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
     </tbody>
@@ -3559,7 +3559,7 @@ e</p><a href="../proc/maxwell_hc_flux_nonconst_cube_vec.html" class="pull-right"
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-ntotalfaces~8"></span>
+              <span class="anchor" id="variable-ntotalfaces~7"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3574,7 +3574,7 @@ e</p><a href="../proc/maxwell_hc_flux_nonconst_cube_vec.html" class="pull-right"
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nsides~14"></span>
+              <span class="anchor" id="variable-nsides~15"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3589,7 +3589,7 @@ e</p><a href="../proc/maxwell_hc_flux_nonconst_cube_vec.html" class="pull-right"
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nfacedofs~14"></span>
+              <span class="anchor" id="variable-nfacedofs~15"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3604,7 +3604,7 @@ e</p><a href="../proc/maxwell_hc_flux_nonconst_cube_vec.html" class="pull-right"
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-facerep~13"></span>
+              <span class="anchor" id="variable-facerep~14"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -3634,7 +3634,7 @@ e</p><a href="../proc/maxwell_hc_flux_nonconst_cube_vec.html" class="pull-right"
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-leftpos~13"></span>
+              <span class="anchor" id="variable-leftpos~14"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3649,7 +3649,7 @@ e</p><a href="../proc/maxwell_hc_flux_nonconst_cube_vec.html" class="pull-right"
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rightpos~13"></span>
+              <span class="anchor" id="variable-rightpos~14"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3664,7 +3664,7 @@ e</p><a href="../proc/maxwell_hc_flux_nonconst_cube_vec.html" class="pull-right"
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-var~12"></span>
+              <span class="anchor" id="variable-var~13"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3679,7 +3679,7 @@ e</p><a href="../proc/maxwell_hc_flux_nonconst_cube_vec.html" class="pull-right"
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_left~18"></span>
+              <span class="anchor" id="variable-material_left~11"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -3694,7 +3694,7 @@ e</p><a href="../proc/maxwell_hc_flux_nonconst_cube_vec.html" class="pull-right"
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_right~18"></span>
+              <span class="anchor" id="variable-material_right~11"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -3709,7 +3709,7 @@ e</p><a href="../proc/maxwell_hc_flux_nonconst_cube_vec.html" class="pull-right"
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-poly_proj~64"></span>
+              <span class="anchor" id="variable-poly_proj~73"></span>
               type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>)
             </td>
 <td></td>
@@ -3734,7 +3734,7 @@ e</p><a href="../proc/maxwell_hc_flux_nonconst_cube_vec.html" class="pull-right"
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-left_modalcoeffs"></span>
+              <span class="anchor" id="variable-left_modalcoeffs~2"></span>
               real(kind=rk),
             </td>
 <td>intent(inout),</td>
@@ -3749,7 +3749,7 @@ e</p><a href="../proc/maxwell_hc_flux_nonconst_cube_vec.html" class="pull-right"
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-right_modalcoeffs"></span>
+              <span class="anchor" id="variable-right_modalcoeffs~2"></span>
               real(kind=rk),
             </td>
 <td>intent(inout),</td>
@@ -3764,7 +3764,7 @@ e</p><a href="../proc/maxwell_hc_flux_nonconst_cube_vec.html" class="pull-right"
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-left_pntval"></span>
+              <span class="anchor" id="variable-left_pntval~2"></span>
               real(kind=rk),
             </td>
 <td>intent(inout),</td>
@@ -3779,7 +3779,7 @@ e</p><a href="../proc/maxwell_hc_flux_nonconst_cube_vec.html" class="pull-right"
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-right_pntval"></span>
+              <span class="anchor" id="variable-right_pntval~2"></span>
               real(kind=rk),
             </td>
 <td>intent(inout),</td>
@@ -3794,7 +3794,7 @@ e</p><a href="../proc/maxwell_hc_flux_nonconst_cube_vec.html" class="pull-right"
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nodalnumflux~11"></span>
+              <span class="anchor" id="variable-nodalnumflux~8"></span>
               real(kind=rk),
             </td>
 <td>intent(inout),</td>
@@ -3809,7 +3809,7 @@ e</p><a href="../proc/maxwell_hc_flux_nonconst_cube_vec.html" class="pull-right"
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-numfluxbuffer~15"></span>
+              <span class="anchor" id="variable-numfluxbuffer~11"></span>
               real(kind=rk),
             </td>
 <td>intent(inout),</td>
@@ -3852,7 +3852,7 @@ e</p><a href="../proc/maxwell_hc_flux_nonconst_cube_vec.html" class="pull-right"
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-11-11T18:06:04.603122             </p>
+ on 2024-11-19T10:23:40.473240+0000             </p>
           </div>
         </div>
         <br>
