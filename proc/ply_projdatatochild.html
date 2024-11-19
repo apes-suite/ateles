@@ -80,20 +80,20 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 0.4% of total for procedures.">167 statements</a>
+                 title=" 0.1% of total for procedures.">25 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/ply_poly_transformation_module.f90"> Source File</a>
+              <a href="../src/ply_LegPolyProjection_module.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/ply_poly_transformation_module.f90.html'>ply_poly_transformation_module.f90</a></li>
-                <li class="breadcrumb-item"><a href='../module/ply_poly_transformation_module.html'>ply_poly_transformation_module</a></li>
+                <li class="breadcrumb-item"><a href='../sourcefile/ply_legpolyprojection_module.f90.html'>ply_LegPolyProjection_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/ply_legpolyprojection_module.html'>ply_LegPolyProjection_module</a></li>
             <li class="breadcrumb-item active" aria-current="page">ply_projDataToChild</li>
           </ol>
         </nav>
@@ -139,11 +139,12 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>private  subroutine ply_projDataToChild(parentData, nParentDofs, nChildDofs, nComponents, nDimensions, nChilds, transform_matrix, childData)  
+    <h2>private  subroutine ply_projDataToChild(parentData, nParentDofs, nChildDofs, nComponents, nChilds, projection, childData)  
 </h2>
     
 
-    <p>Subroutine to project element data from a parent cell to its children.</p>
+    <p>Subroutine to project elemental data from a parent cell to one of
+its children.</p>
 
 
     <h3>Arguments</h3>
@@ -169,7 +170,8 @@
             <td>::</td>
             <td><strong>parentData</strong>(:)</td>
             <td>
-                <p>The polynomial data for a single parent element.</p>
+                <p>Linearized data for a single variable (can have multiple components)
+and a single degree of freedom of the parent cell.</p>
             </td>
         </tr>
         <tr>
@@ -189,7 +191,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nchilddofs~3"></span>
+              <span class="anchor" id="variable-nchilddofs~4"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -204,7 +206,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ncomponents~5"></span>
+              <span class="anchor" id="variable-ncomponents~4"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -214,27 +216,12 @@
             <td>::</td>
             <td><strong>nComponents</strong></td>
             <td>
-                <p>The number of componentns for the given variable.</p>
+                <p>The number of componentns of the given variable.</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ndimensions~6"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nDimensions</strong></td>
-            <td>
-                <p>The number of dimensions.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-nchilds~2"></span>
+              <span class="anchor" id="variable-nchilds~4"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -244,22 +231,23 @@
             <td>::</td>
             <td><strong>nChilds</strong></td>
             <td>
-                <p>The number of child elements.</p>
+                <p>The number of children.</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-transform_matrix~2"></span>
-              real(kind=rk),
+              <span class="anchor" id="variable-projection~4"></span>
+              type(<a href='../type/ply_projcoeff_type.html'>ply_ProjCoeff_type</a>),
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>transform_matrix</strong>(:,:)</td>
+            <td><strong>projection</strong></td>
             <td>
-                <p>The transformation matrix for the linear coordinate transformation.</p>
+                <p>The information about the projection coefficients for the parent
+dofs to the child dofs.</p>
             </td>
         </tr>
         <tr>
@@ -267,14 +255,14 @@
               <span class="anchor" id="variable-childdata~2"></span>
               real(kind=rk),
             </td>
-<td>intent(out),</td>
+<td>intent(out)</td>
               <td></td>            <td>
-              allocatable
+              
             </td>
             <td>::</td>
             <td><strong>childData</strong>(:)</td>
             <td>
-                <p>The new data representation for all child cell of the parent cell.</p>
+                <p>The created childData.</p>
             </td>
         </tr>
     </tbody>
@@ -292,46 +280,46 @@
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~ply_projdatatochild~~CalledByGraph Pages: 1 -->
-<svg id="procply_projdatatochildCalledByGraph" width="456pt" height="32pt"
- viewBox="0.00 0.00 456.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg id="procply_projdatatochildCalledByGraph" width="431pt" height="32pt"
+ viewBox="0.00 0.00 431.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="proc~~ply_projdatatochild~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
 <title>proc~~ply_projdatatochild~~CalledByGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 452,-28 452,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 427,-28 427,4 -4,4"/>
 <!-- proc~ply_projdatatochild -->
 <g id="proc~~ply_projdatatochild~~CalledByGraph_node1" class="node">
 <title>proc~ply_projdatatochild</title>
-<polygon fill="none" stroke="black" points="448,-24 330,-24 330,0 448,0 448,-24"/>
-<text text-anchor="middle" x="389" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">ply_projDataToChild</text>
+<polygon fill="none" stroke="black" points="423,-24 305,-24 305,0 423,0 423,-24"/>
+<text text-anchor="middle" x="364" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">ply_projDataToChild</text>
 </g>
 <!-- proc~ply_subsampledata -->
 <g id="proc~~ply_projdatatochild~~CalledByGraph_node2" class="node">
 <title>proc~ply_subsampledata</title>
 <g id="a_proc~~ply_projdatatochild~~CalledByGraph_node2"><a xlink:href="../proc/ply_subsampledata.html" xlink:title="ply_subsampleData">
-<polygon fill="#d9534f" stroke="#d9534f" points="294,-24 177,-24 177,0 294,0 294,-24"/>
-<text text-anchor="middle" x="235.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_subsampleData</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="269,-24 152,-24 152,0 269,0 269,-24"/>
+<text text-anchor="middle" x="210.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_subsampleData</text>
 </a>
 </g>
 </g>
 <!-- proc~ply_subsampledata&#45;&gt;proc~ply_projdatatochild -->
 <g id="proc~~ply_projdatatochild~~CalledByGraph_edge1" class="edge">
 <title>proc~ply_subsampledata&#45;&gt;proc~ply_projdatatochild</title>
-<path fill="none" stroke="#000000" d="M294.21,-12C302.62,-12 311.35,-12 319.95,-12"/>
-<polygon fill="#000000" stroke="#000000" points="319.95,-15.5 329.95,-12 319.95,-8.5 319.95,-15.5"/>
+<path fill="none" stroke="#000000" d="M269.21,-12C277.62,-12 286.35,-12 294.95,-12"/>
+<polygon fill="#000000" stroke="#000000" points="294.95,-15.5 304.95,-12 294.95,-8.5 294.95,-15.5"/>
 </g>
-<!-- proc~ply_poly_transformation -->
+<!-- proc~ply_qpolyprojection -->
 <g id="proc~~ply_projdatatochild~~CalledByGraph_node3" class="node">
-<title>proc~ply_poly_transformation</title>
-<g id="a_proc~~ply_projdatatochild~~CalledByGraph_node3"><a xlink:href="../proc/ply_poly_transformation.html" xlink:title="ply_Poly_Transformation">
-<polygon fill="#d9534f" stroke="#d9534f" points="141,-24 0,-24 0,0 141,0 141,-24"/>
-<text text-anchor="middle" x="70.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_Poly_Transformation</text>
+<title>proc~ply_qpolyprojection</title>
+<g id="a_proc~~ply_projdatatochild~~CalledByGraph_node3"><a xlink:href="../proc/ply_qpolyprojection.html" xlink:title="ply_QPolyProjection">
+<polygon fill="#d9534f" stroke="#d9534f" points="116,-24 0,-24 0,0 116,0 116,-24"/>
+<text text-anchor="middle" x="58" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ply_QPolyProjection</text>
 </a>
 </g>
 </g>
-<!-- proc~ply_poly_transformation&#45;&gt;proc~ply_subsampledata -->
+<!-- proc~ply_qpolyprojection&#45;&gt;proc~ply_subsampledata -->
 <g id="proc~~ply_projdatatochild~~CalledByGraph_edge2" class="edge">
-<title>proc~ply_poly_transformation&#45;&gt;proc~ply_subsampledata</title>
-<path fill="none" stroke="#000000" d="M141.1,-12C149.59,-12 158.25,-12 166.72,-12"/>
-<polygon fill="#000000" stroke="#000000" points="166.91,-15.5 176.91,-12 166.91,-8.5 166.91,-15.5"/>
+<title>proc~ply_qpolyprojection&#45;&gt;proc~ply_subsampledata</title>
+<path fill="none" stroke="#000000" d="M116.33,-12C124.59,-12 133.17,-12 141.62,-12"/>
+<polygon fill="#000000" stroke="#000000" points="141.83,-15.5 151.83,-12 141.83,-8.5 141.83,-15.5"/>
 </g>
 </g>
 </svg>
@@ -445,7 +433,7 @@ implementation in a submodule of an interface in a parent module.
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-11-19T10:23:40.473240+0000             </p>
+ on 2024-11-19T13:45:54.808297+0000             </p>
           </div>
         </div>
         <br>
