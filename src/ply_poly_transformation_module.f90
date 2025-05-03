@@ -447,74 +447,19 @@ contains
 
         nIndeps = parent_modes**(nDimensions-1)
 
-        ! Allocate memory for two childs and set it to zero
+        ! Allocate memory for two childs in x-direction
         if (iDimension .eq. nDimensions) then
           allocate(childData(nChildElems_cur * child_modes**nDimensions &
             &                * nComponents))
-          childData = 0.0_rk
         else
           allocate(childData(nChildElems_cur                   &
             &                  * parent_modes**(nDimensions-1) &
             &                  * child_modes**(nDimensions-2)  &
             &                  * nComponents                   ))
-          childData = 0.0_rk
         end if
+        childData = 0.0_rk
 
-        ! iSubElem = 1
-        do iComponent = 1, nComponents
-          do iIndep = 1, nIndeps
-
-            lower_bound = iComponent + (iIndep - 1) * parent_modes * nComponents
-            upper_bound = iIndep * parent_modes * nComponents
-
-            temp_data = parentData(lower_bound:upper_bound:stride)
-
-            do iMode = 1, child_modes
-                child_dofPos = iComponent                                   &
-                  &              + (iMode-1) * nComponents                  &
-                  &              + (iIndep - 1) * child_modes * nComponents
-
-              do jMode = iMode, parent_modes
-
-                childData(child_dofpos) = childData(child_dofpos)         &
-                  &                         + temp_Data(jMode)            &
-                  &                         * transform_matrix(jMode,iMode)
-
-              end do
-            end do
-          end do
-        end do
-
-        if (nSubElems > 1) then
-        ! iSubElem = 2
-          do iComponent = 1, nComponents
-            do iIndep = 1, nIndeps
-
-              lower_bound = iComponent &
-                &             + (iIndep - 1) * parent_modes * nComponents
-              upper_bound = iIndep * parent_modes * nComponents
-
-              temp_data = parentData(lower_bound:upper_bound:stride)
-
-              do iMode = 1, child_modes
-                  child_dofPos = iComponent                                   &
-                    &              + (iMode-1) * nComponents                  &
-                    &              + (iIndep - 1) * child_modes * nComponents &
-                    &              + nComponents                              &
-                    &                * child_modes**(nDimensions-2)           &
-                    &                * parent_modes**(nDimensions-1)
-
-                do jMode = iMode, parent_modes
-
-                  childData(child_dofpos) = childData(child_dofpos)           &
-                    &                         + temp_Data(jMode)              &
-                    &                           * transform_matrix(iMode,jMode)
-
-                end do
-              end do
-            end do
-          end do
-        end if
+        call splitx()
 
       elseif (iDimension .eq. 2) then
 
@@ -526,99 +471,14 @@ contains
         if (iDimension .eq. nDimensions) then
           allocate(childData(nChildElems_cur * child_modes**nDimensions &
             &                * nComponents) )
-          childData = 0.0_rk
         else
           allocate(childData(nChildElems_cur                                &
             &                  * parent_modes**(nDimensions-2)              &
             &                  * child_modes**(nDimensions-1) * nComponents))
-          childData = 0.0_rk
         end if
+        childData = 0.0_rk
 
-        do iChildElem_prev = 1, nChildElems_prev
-          ! iSubElem = 1
-          childElem = iChildElem_prev
-          do iComponent = 1, nComponents
-            do kMode = 1, parent_modes
-              do lMode = 1, child_modes
-
-                lower_bound = iComponent                                 &
-                  & + (lMode-1) * nComponents                            &
-                  & + (kMode-1) * child_modes*parent_modes * nComponents &
-                  & + (iChildElem_prev-1) * nComponents                  &
-                  &   * child_modes**(nDimensions-2)                     &
-                  &   * parent_modes**(nDimensions-1)
-
-                upper_bound = kMode * parent_modes * child_modes * nComponents &
-                  &             + (iChildElem_prev-1) * nComponents            &
-                  &               * child_modes**(nDimensions-2)               &
-                  &               * parent_modes**(nDimensions-1)
-
-                temp_data = childData_prev(lower_bound:upper_bound:stride)
-
-                do iMode = 1, child_modes
-                    child_dofPos = iComponent                                &
-                      &              + (iMode-1) * child_modes * nComponents &
-                      &              + (lMode-1) * nComponents               &
-                      &              + (kMode-1) * nComponents               &
-                      &                * child_modes**2                      &
-                      &              + (childElem-1) * nComponents           &
-                      &                * child_modes**(nDimensions-1)        &
-                      &                * parent_modes**(nDimensions-2)
-
-                  do jMode = iMode, parent_modes
-
-                    childData(child_dofpos) = childData(child_dofpos)         &
-                      & + temp_Data(jMode) * transform_matrix(jMode,iMode)
-
-                  end do
-                end do
-              end do
-            end do
-          end do
-
-          if (nSubElems > 1) then
-            ! iSubElem = 2
-            childElem = iChildElem_prev + 2
-            do iComponent = 1, nComponents
-              do kMode = 1, parent_modes
-                do lMode = 1, child_modes
-
-                  lower_bound = iComponent                                 &
-                    & + (lMode-1) * nComponents                            &
-                    & + (kMode-1) * child_modes*parent_modes * nComponents &
-                    & + (iChildElem_prev-1) * nComponents                  &
-                    &   * child_modes**(nDimensions-2)                     &
-                    &   * parent_modes**(nDimensions-1)
-
-                  upper_bound = kMode * parent_modes * child_modes &
-                    &   * nComponents                              &
-                    & + (iChildElem_prev-1) * nComponents          &
-                    &   * child_modes**(nDimensions-2)             &
-                    &   * parent_modes**(nDimensions-1)
-
-                  temp_data = childData_prev(lower_bound:upper_bound:stride)
-
-                  do iMode = 1, child_modes
-                      child_dofPos = iComponent                      &
-                        & + (iMode-1) * child_modes * nComponents    &
-                        & + (lMode-1) * nComponents                  &
-                        & + (kMode-1) * nComponents * child_modes**2 &
-                        & + (childElem-1) * nComponents              &
-                        &   * child_modes**(nDimensions-1)           &
-                        &   * parent_modes**(nDimensions-2)
-
-                    do jMode = iMode, parent_modes
-
-                      childData(child_dofpos) = childData(child_dofpos) &
-                        & + temp_Data(jMode) * transform_matrix(iMode,jMode)
-
-                    end do
-                  end do
-                end do
-              end do
-            end do
-          end if
-        end do
+        call splity()
 
       else
 
@@ -633,9 +493,221 @@ contains
           &                 * nComponents))
         childData = 0.0_rk
 
-        do iChildElem_prev = 1, nChildElems_prev
-          ! iSubElem = 1
-          childElem = iChildElem_prev
+        call splitz()
+
+      end if
+    end do
+
+    deallocate(childData_prev)
+    deallocate(temp_Data)
+
+  contains
+
+    ! NOTE: these internal subroutines were introduced to help the compiler
+    !       and avoid internal compiler errors when compiling for AVX
+    !       instructions.
+
+    ! Perform the projection in x direction onto two child elements
+    subroutine splitx()
+      ! iSubElem = 1
+      do iComponent = 1, nComponents
+        do iIndep = 1, nIndeps
+
+          lower_bound = iComponent + (iIndep - 1) * parent_modes * nComponents
+          upper_bound = iIndep * parent_modes * nComponents
+
+          temp_data = parentData(lower_bound:upper_bound:stride)
+
+          do iMode = 1, child_modes
+              child_dofPos = iComponent                                   &
+                &              + (iMode-1) * nComponents                  &
+                &              + (iIndep - 1) * child_modes * nComponents
+
+            do jMode = iMode, parent_modes
+
+              childData(child_dofpos) = childData(child_dofpos)         &
+                &                         + temp_Data(jMode)            &
+                &                         * transform_matrix(jMode,iMode)
+
+            end do
+          end do
+        end do
+      end do
+
+      if (nSubElems > 1) then
+      ! iSubElem = 2
+        do iComponent = 1, nComponents
+          do iIndep = 1, nIndeps
+
+            lower_bound = iComponent &
+              &             + (iIndep - 1) * parent_modes * nComponents
+            upper_bound = iIndep * parent_modes * nComponents
+
+            temp_data = parentData(lower_bound:upper_bound:stride)
+
+            do iMode = 1, child_modes
+                child_dofPos = iComponent                                   &
+                  &              + (iMode-1) * nComponents                  &
+                  &              + (iIndep - 1) * child_modes * nComponents &
+                  &              + nComponents                              &
+                  &                * child_modes**(nDimensions-2)           &
+                  &                * parent_modes**(nDimensions-1)
+
+              do jMode = iMode, parent_modes
+
+                childData(child_dofpos) = childData(child_dofpos)           &
+                  &                         + temp_Data(jMode)              &
+                  &                           * transform_matrix(iMode,jMode)
+
+              end do
+            end do
+          end do
+        end do
+      end if
+    end subroutine splitx
+
+    ! Perform the projection in y direction onto the two child elements
+    ! for each of the  two parents
+    ! (the projected elements split in x direction)
+    subroutine splity()
+      do iChildElem_prev = 1, nChildElems_prev
+        ! iSubElem = 1
+        childElem = iChildElem_prev
+        do iComponent = 1, nComponents
+          do kMode = 1, parent_modes
+            do lMode = 1, child_modes
+
+              lower_bound = iComponent                                 &
+                & + (lMode-1) * nComponents                            &
+                & + (kMode-1) * child_modes*parent_modes * nComponents &
+                & + (iChildElem_prev-1) * nComponents                  &
+                &   * child_modes**(nDimensions-2)                     &
+                &   * parent_modes**(nDimensions-1)
+
+              upper_bound = kMode * parent_modes * child_modes * nComponents &
+                &             + (iChildElem_prev-1) * nComponents            &
+                &               * child_modes**(nDimensions-2)               &
+                &               * parent_modes**(nDimensions-1)
+
+              temp_data = childData_prev(lower_bound:upper_bound:stride)
+
+              do iMode = 1, child_modes
+                  child_dofPos = iComponent                                &
+                    &              + (iMode-1) * child_modes * nComponents &
+                    &              + (lMode-1) * nComponents               &
+                    &              + (kMode-1) * nComponents               &
+                    &                * child_modes**2                      &
+                    &              + (childElem-1) * nComponents           &
+                    &                * child_modes**(nDimensions-1)        &
+                    &                * parent_modes**(nDimensions-2)
+
+                do jMode = iMode, parent_modes
+
+                  childData(child_dofpos) = childData(child_dofpos)         &
+                    & + temp_Data(jMode) * transform_matrix(jMode,iMode)
+
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if (nSubElems > 1) then
+          ! iSubElem = 2
+          childElem = iChildElem_prev + 2
+          do iComponent = 1, nComponents
+            do kMode = 1, parent_modes
+              do lMode = 1, child_modes
+
+                lower_bound = iComponent                                 &
+                  & + (lMode-1) * nComponents                            &
+                  & + (kMode-1) * child_modes*parent_modes * nComponents &
+                  & + (iChildElem_prev-1) * nComponents                  &
+                  &   * child_modes**(nDimensions-2)                     &
+                  &   * parent_modes**(nDimensions-1)
+
+                upper_bound = kMode * parent_modes * child_modes &
+                  &   * nComponents                              &
+                  & + (iChildElem_prev-1) * nComponents          &
+                  &   * child_modes**(nDimensions-2)             &
+                  &   * parent_modes**(nDimensions-1)
+
+                temp_data = childData_prev(lower_bound:upper_bound:stride)
+
+                do iMode = 1, child_modes
+                    child_dofPos = iComponent                      &
+                      & + (iMode-1) * child_modes * nComponents    &
+                      & + (lMode-1) * nComponents                  &
+                      & + (kMode-1) * nComponents * child_modes**2 &
+                      & + (childElem-1) * nComponents              &
+                      &   * child_modes**(nDimensions-1)           &
+                      &   * parent_modes**(nDimensions-2)
+
+                  do jMode = iMode, parent_modes
+
+                    childData(child_dofpos) = childData(child_dofpos) &
+                      & + temp_Data(jMode) * transform_matrix(iMode,jMode)
+
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end if
+      end do
+    end subroutine splity
+
+    ! Perform the projection in z direction onto the two child elements
+    ! for each of the four parents
+    ! (the projected elements split in x and y direction)
+    subroutine splitz()
+      do iChildElem_prev = 1, nChildElems_prev
+        ! iSubElem = 1
+        childElem = iChildElem_prev
+        do iComponent = 1, nComponents
+          iIndep = 0
+          do kMode = 1,child_modes
+            do lMode = 1,child_modes
+              iIndep = iIndep + 1
+
+              lower_bound = iComponent                &
+                & + (iIndep - 1) * nComponents        &
+                & + (iChildElem_prev-1) * nComponents &
+                &   * child_modes**(nDimensions-1)    &
+                &   * parent_modes**(nDimensions-2)
+
+              upper_bound = parent_modes * child_modes**(nDimensions-1) &
+                &   * nComponents                                       &
+                & - (nComponents - iComponent)                          &
+                & + (iChildElem_prev-1) * nComponents                   &
+                &   * child_modes**(nDimensions-1)                      &
+                &   * parent_modes**(nDimensions-2)
+
+              temp_data(:) = childData_prev &
+                &            (lower_bound:upper_bound:stride)
+
+              do iMode = 1, child_modes
+                  child_dofPos = iComponent                      &
+                    & + (iMode-1) * child_modes**2 * nComponents &
+                    & + (lMode - 1) * nComponents                &
+                    & + (kMode - 1) * child_modes * nComponents  &
+                    & + (childElem - 1) * nComponents            &
+                    &   * child_modes**nDimensions
+
+                do jMode = iMode, parent_modes
+
+                  childData(child_dofpos) = childData(child_dofpos) &
+                    & + temp_Data(jMode) * transform_matrix(jMode,iMode)
+
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if (nSubElems > 1) then
+          ! iSubElem = 2
+          childElem = iChildElem_prev + 4
           do iComponent = 1, nComponents
             iIndep = 0
             do kMode = 1,child_modes
@@ -655,8 +727,7 @@ contains
                   &   * child_modes**(nDimensions-1)                      &
                   &   * parent_modes**(nDimensions-2)
 
-                temp_data(:) = childData_prev &
-                  &            (lower_bound:upper_bound:stride)
+                temp_data(:) = childData_prev(lower_bound:upper_bound:stride)
 
                 do iMode = 1, child_modes
                     child_dofPos = iComponent                      &
@@ -669,63 +740,16 @@ contains
                   do jMode = iMode, parent_modes
 
                     childData(child_dofpos) = childData(child_dofpos) &
-                      & + temp_Data(jMode) * transform_matrix(jMode,iMode)
+                      & + temp_Data(jMode) * transform_matrix(iMode,jMode)
 
                   end do
                 end do
               end do
             end do
           end do
-
-          if (nSubElems > 1) then
-            ! iSubElem = 2
-            childElem = iChildElem_prev + 4
-            do iComponent = 1, nComponents
-              iIndep = 0
-              do kMode = 1,child_modes
-                do lMode = 1,child_modes
-                  iIndep = iIndep + 1
-
-                  lower_bound = iComponent                &
-                    & + (iIndep - 1) * nComponents        &
-                    & + (iChildElem_prev-1) * nComponents &
-                    &   * child_modes**(nDimensions-1)    &
-                    &   * parent_modes**(nDimensions-2)
-
-                  upper_bound = parent_modes * child_modes**(nDimensions-1) &
-                    &   * nComponents                                       &
-                    & - (nComponents - iComponent)                          &
-                    & + (iChildElem_prev-1) * nComponents                   &
-                    &   * child_modes**(nDimensions-1)                      &
-                    &   * parent_modes**(nDimensions-2)
-
-                  temp_data(:) = childData_prev(lower_bound:upper_bound:stride)
-
-                  do iMode = 1, child_modes
-                      child_dofPos = iComponent                      &
-                        & + (iMode-1) * child_modes**2 * nComponents &
-                        & + (lMode - 1) * nComponents                &
-                        & + (kMode - 1) * child_modes * nComponents  &
-                        & + (childElem - 1) * nComponents            &
-                        &   * child_modes**nDimensions
-
-                    do jMode = iMode, parent_modes
-
-                      childData(child_dofpos) = childData(child_dofpos) &
-                        & + temp_Data(jMode) * transform_matrix(iMode,jMode)
-
-                    end do
-                  end do
-                end do
-              end do
-            end do
-          end if
-        end do
-      end if
-    end do
-
-    deallocate(childData_prev)
-    deallocate(temp_Data)
+        end if
+      end do
+    end subroutine splitz
 
   end subroutine ply_projDataToChild
   ! ************************************************************************ !

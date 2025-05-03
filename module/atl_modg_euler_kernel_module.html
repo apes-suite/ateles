@@ -12,14 +12,29 @@
 
     <title>atl_modg_euler_kernel_module &ndash; Ateles</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../css/pygments.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../css/local.css" rel="stylesheet">
-      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../css/pygments.css" rel="stylesheet">
     <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -101,9 +116,11 @@
     </div>
   </div>
   <script>
-    $(function () {
-    $('[data-bs-toggle="tooltip"]').tooltip()
-    })
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
   </script>
 
   </div>
@@ -165,15 +182,15 @@ purley hyperbolic partial differential equation systems.</p>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='atl_physfluxeuler_module.html'>atl_physFluxEuler_module</a></li>
+                  <li class="list-inline-item"><a href='atl_materialprp_module.html'>atl_materialPrp_module</a></li>
                   <li class="list-inline-item"><a href='atl_equation_module.html'>atl_equation_module</a></li>
+                  <li class="list-inline-item"><a href='atl_scheme_module.html'>atl_scheme_module</a></li>
                   <li class="list-inline-item"><a href='ply_poly_project_module.html'>ply_poly_project_module</a></li>
+                  <li class="list-inline-item"><a href='atl_physfluxeuler_module.html'>atl_physFluxEuler_module</a></li>
                   <li class="list-inline-item"><a href='atl_facedata_module.html'>atl_facedata_module</a></li>
-                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/env_module.html'>env_module</a></li>
                   <li class="list-inline-item"><a href='ply_oversample_module.html'>ply_oversample_module</a></li>
                   <li class="list-inline-item"><a href='atl_penalization_module.html'>atl_penalization_module</a></li>
-                  <li class="list-inline-item"><a href='atl_scheme_module.html'>atl_scheme_module</a></li>
-                  <li class="list-inline-item"><a href='atl_materialprp_module.html'>atl_materialPrp_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/env_module.html'>env_module</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -619,7 +636,7 @@ Euler equation.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-equation~142"></span>
+              <span class="anchor" id="variable-equation~88"></span>
               type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
             </td>
 <td>intent(in)</td>
@@ -634,7 +651,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-res~104"></span>
+              <span class="anchor" id="variable-res~60"></span>
               real(kind=rk),
             </td>
 <td>intent(inout)</td>
@@ -649,7 +666,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-state~98"></span>
+              <span class="anchor" id="variable-state~39"></span>
               real(kind=rk),
             </td>
 <td>intent(in),</td>
@@ -664,7 +681,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ielem~115"></span>
+              <span class="anchor" id="variable-ielem~48"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -679,7 +696,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-idir~64"></span>
+              <span class="anchor" id="variable-idir~30"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -694,7 +711,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-penalizationdata~18"></span>
+              <span class="anchor" id="variable-penalizationdata~8"></span>
               type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -709,7 +726,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-poly_proj~89"></span>
+              <span class="anchor" id="variable-poly_proj~25"></span>
               type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -724,7 +741,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material~64"></span>
+              <span class="anchor" id="variable-material~39"></span>
               type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -739,7 +756,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nodal_data~32"></span>
+              <span class="anchor" id="variable-nodal_data~12"></span>
               real(kind=rk),
             </td>
 <td>intent(in),</td>
@@ -754,7 +771,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nodal_graddata~12"></span>
+              <span class="anchor" id="variable-nodal_graddata~8"></span>
               real(kind=rk),
             </td>
 <td>intent(in),</td>
@@ -769,7 +786,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nodal_res~12"></span>
+              <span class="anchor" id="variable-nodal_res~8"></span>
               real(kind=rk),
             </td>
 <td>intent(inout)</td>
@@ -784,7 +801,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-elemlength~12"></span>
+              <span class="anchor" id="variable-elemlength~8"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -799,7 +816,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-scheme_min~18"></span>
+              <span class="anchor" id="variable-scheme_min~8"></span>
               type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -814,7 +831,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-scheme_current~12"></span>
+              <span class="anchor" id="variable-scheme_current~8"></span>
               type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -854,7 +871,7 @@ Euler equation.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-equation~143"></span>
+              <span class="anchor" id="variable-equation~89"></span>
               type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
             </td>
 <td>intent(in)</td>
@@ -869,7 +886,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-poly_proj~90"></span>
+              <span class="anchor" id="variable-poly_proj~26"></span>
               type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -884,7 +901,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nodal_data~33"></span>
+              <span class="anchor" id="variable-nodal_data~13"></span>
               real(kind=rk),
             </td>
 <td>intent(in),</td>
@@ -899,7 +916,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-scheme_min~19"></span>
+              <span class="anchor" id="variable-scheme_min~9"></span>
               type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -914,7 +931,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-penalizationdata~19"></span>
+              <span class="anchor" id="variable-penalizationdata~9"></span>
               type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -929,7 +946,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ielem~116"></span>
+              <span class="anchor" id="variable-ielem~49"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -944,7 +961,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material~65"></span>
+              <span class="anchor" id="variable-material~40"></span>
               type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -985,7 +1002,7 @@ Euler equation.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-equation~144"></span>
+              <span class="anchor" id="variable-equation~90"></span>
               type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1000,7 +1017,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-res~105"></span>
+              <span class="anchor" id="variable-res~61"></span>
               real(kind=rk),
             </td>
 <td>intent(inout)</td>
@@ -1015,7 +1032,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-state~99"></span>
+              <span class="anchor" id="variable-state~40"></span>
               real(kind=rk),
             </td>
 <td>intent(in),</td>
@@ -1030,7 +1047,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ielem~117"></span>
+              <span class="anchor" id="variable-ielem~50"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1045,7 +1062,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-idir~65"></span>
+              <span class="anchor" id="variable-idir~31"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1060,7 +1077,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-penalizationdata~20"></span>
+              <span class="anchor" id="variable-penalizationdata~10"></span>
               type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1075,7 +1092,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-poly_proj~91"></span>
+              <span class="anchor" id="variable-poly_proj~27"></span>
               type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1090,7 +1107,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material~66"></span>
+              <span class="anchor" id="variable-material~41"></span>
               type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1105,7 +1122,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nodal_data~34"></span>
+              <span class="anchor" id="variable-nodal_data~14"></span>
               real(kind=rk),
             </td>
 <td>intent(in),</td>
@@ -1120,7 +1137,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nodal_graddata~13"></span>
+              <span class="anchor" id="variable-nodal_graddata~9"></span>
               real(kind=rk),
             </td>
 <td>intent(in),</td>
@@ -1135,7 +1152,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nodal_res~13"></span>
+              <span class="anchor" id="variable-nodal_res~9"></span>
               real(kind=rk),
             </td>
 <td>intent(inout)</td>
@@ -1150,7 +1167,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-elemlength~13"></span>
+              <span class="anchor" id="variable-elemlength~9"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -1165,7 +1182,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-scheme_min~20"></span>
+              <span class="anchor" id="variable-scheme_min~10"></span>
               type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1180,7 +1197,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-scheme_current~13"></span>
+              <span class="anchor" id="variable-scheme_current~9"></span>
               type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1220,7 +1237,7 @@ Euler equation.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-equation~145"></span>
+              <span class="anchor" id="variable-equation~91"></span>
               type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1235,7 +1252,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-poly_proj~92"></span>
+              <span class="anchor" id="variable-poly_proj~28"></span>
               type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1250,7 +1267,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nodal_data~35"></span>
+              <span class="anchor" id="variable-nodal_data~15"></span>
               real(kind=rk),
             </td>
 <td>intent(in),</td>
@@ -1265,7 +1282,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-scheme_min~21"></span>
+              <span class="anchor" id="variable-scheme_min~11"></span>
               type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1280,7 +1297,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-penalizationdata~21"></span>
+              <span class="anchor" id="variable-penalizationdata~11"></span>
               type(<a href='../type/atl_penalizationdata_type.html'>atl_penalizationData_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1295,7 +1312,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ielem~118"></span>
+              <span class="anchor" id="variable-ielem~51"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1310,7 +1327,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material~67"></span>
+              <span class="anchor" id="variable-material~42"></span>
               type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1350,7 +1367,7 @@ Euler equation.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-equation~146"></span>
+              <span class="anchor" id="variable-equation~92"></span>
               type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1365,7 +1382,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-facedata~25"></span>
+              <span class="anchor" id="variable-facedata~11"></span>
               type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1380,7 +1397,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-poly_proj~93"></span>
+              <span class="anchor" id="variable-poly_proj~29"></span>
               type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1395,7 +1412,7 @@ Euler equation.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material~68"></span>
+              <span class="anchor" id="variable-material~43"></span>
               type(<a href='../type/atl_material_type.html'>atl_material_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1436,7 +1453,7 @@ spatial direction.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-equation~147"></span>
+              <span class="anchor" id="variable-equation~93"></span>
               type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1451,7 +1468,7 @@ spatial direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nsides~17"></span>
+              <span class="anchor" id="variable-nsides~5"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1466,7 +1483,7 @@ spatial direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-facerep~18"></span>
+              <span class="anchor" id="variable-facerep~5"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -1481,7 +1498,7 @@ spatial direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faceflux~17"></span>
+              <span class="anchor" id="variable-faceflux~5"></span>
               real(kind=rk),
             </td>
 <td>intent(inout)</td>
@@ -1496,7 +1513,7 @@ spatial direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-leftpos~16"></span>
+              <span class="anchor" id="variable-leftpos~5"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1512,7 +1529,7 @@ left and right of the face).</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rightpos~16"></span>
+              <span class="anchor" id="variable-rightpos~5"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1528,7 +1545,7 @@ left and right of the face).</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-poly_proj~94"></span>
+              <span class="anchor" id="variable-poly_proj~30"></span>
               type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1543,7 +1560,7 @@ left and right of the face).</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-varrotation~8"></span>
+              <span class="anchor" id="variable-varrotation"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1558,7 +1575,7 @@ left and right of the face).</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_left~17"></span>
+              <span class="anchor" id="variable-material_left~3"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -1573,7 +1590,7 @@ left and right of the face).</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_right~17"></span>
+              <span class="anchor" id="variable-material_right~3"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -1614,7 +1631,7 @@ spatial direction.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-equation~148"></span>
+              <span class="anchor" id="variable-equation~94"></span>
               type(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1629,7 +1646,7 @@ spatial direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nsides~18"></span>
+              <span class="anchor" id="variable-nsides~6"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1644,7 +1661,7 @@ spatial direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-facerep~19"></span>
+              <span class="anchor" id="variable-facerep~6"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -1659,7 +1676,7 @@ spatial direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faceflux~18"></span>
+              <span class="anchor" id="variable-faceflux~6"></span>
               real(kind=rk),
             </td>
 <td>intent(inout)</td>
@@ -1674,7 +1691,7 @@ spatial direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-leftpos~17"></span>
+              <span class="anchor" id="variable-leftpos~6"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1690,7 +1707,7 @@ left and right of the face).</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rightpos~17"></span>
+              <span class="anchor" id="variable-rightpos~6"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1706,7 +1723,7 @@ left and right of the face).</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-poly_proj~95"></span>
+              <span class="anchor" id="variable-poly_proj~31"></span>
               type(<a href='../type/ply_poly_project_type.html'>ply_poly_project_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1721,7 +1738,7 @@ left and right of the face).</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-varrotation~9"></span>
+              <span class="anchor" id="variable-varrotation~2"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1736,7 +1753,7 @@ left and right of the face).</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_left~18"></span>
+              <span class="anchor" id="variable-material_left~4"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -1751,7 +1768,7 @@ left and right of the face).</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_right~18"></span>
+              <span class="anchor" id="variable-material_right~4"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -1787,40 +1804,18 @@ left and right of the face).</p>
           <div class="col">
             <p>
               Ateles
- was developed by University of Siegen<br>              &copy; 2024 
-<br /><small>7d09a0d6f343</small></p>
+ was developed by University of Siegen<br>              &copy; 2025 
+<br /><small>f9adb65cb21a</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-11-19T13:45:54.808297+0000             </p>
+ on 2025-05-03T11:58:52.506243+0000             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>

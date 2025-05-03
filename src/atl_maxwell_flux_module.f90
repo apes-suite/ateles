@@ -539,123 +539,123 @@ contains
     real(kind=rk), intent(in) :: material_left(nSides,1,4)
     real(kind=rk), intent(in) :: material_right(nSides,1,4)
     ! -------------------------------------------------------------------- !
-!! JZ: Old implementation of the flux. There must be an error somewhere. I have to
-!!     check my solution for the Riemann problem agian. So, I replaced the flux
-!!     by a simple Lax-Friedrich type flux.
-!!
-!!  integer :: iSide, left, right, iDof
-!!  real(kind=rk) :: left_mu, right_mu
-!!  real(kind=rk) :: left_epsi, right_epsi
-!!  real(kind=rk) :: left_gam, right_gam
-!!  real(kind=rk) :: left_chi, right_chi
-!!  real(kind=rk) :: left_speedOfLight, right_speedOfLight
-!!  real(kind=rk) :: inv_denom_mu, inv_denom_epsi
-!!  ! --------------------------------------------------------------------------
-!!
-!!  ! flux for D_X, B_Z, D_y and B_z
-!!  do iDof = 1, nFaceDofs
-!!
-!!    do iSide = 1, nSides
-!!
-!!      ! The position of the left and right element in the state
-!!      ! vector.
-!!      left = leftPos(iSide)
-!!      right = rightPos(iSide)
-!!
-!!      ! The material parameters of the left and right element
-!!      left_mu = material_left(iSide,1,1)
-!!      left_epsi = material_left(iSide,1,2)
-!!      left_gam = material_left(iSide,1,3)
-!!      left_chi = material_left(iSide,1,4)
-!!      left_speedOfLight = 1.0_rk / sqrt( left_mu * left_epsi )
-!!      right_mu = material_right(iSide,1,1)
-!!      right_epsi = material_right(iSide,1,2)
-!!      right_gam = material_right(iSide,1,3)
-!!      right_chi = material_right(iSide,1,4)
-!!      right_speedOfLight = 1.0_rk / sqrt( right_mu * right_epsi )
-!!
-!!      ! The inverse of the denominators
-!!      inv_denom_mu = 1.0_rk / ((-1.0_rk)*left_speedOfLight*left_mu - right_speedOfLight*right_mu)
-!!      inv_denom_epsi = 1.0_rk / (left_speedOfLight*left_epsi + right_speedOfLight*right_epsi)
-!!
-!!      ! flux for D_x
-!!      faceFlux(left,iDof,var(1),2) = inv_denom_mu * (                                   &
-!!                                     &       (-1.0_rk)*left_chi*faceRep(left,iDof,var(1),2)/left_epsi    &
-!!                                     &     - (-1.0_rk)*right_chi*faceRep(right,iDof,var(1),1)/right_epsi &
-!!                                     &              )                                   &
-!!                                     & + (                                              &
-!!                                     &        left_chi*left_chi*faceRep(left,iDof,var(7),2) &
-!!                                     &      + right_chi*right_chi*faceRep(right,iDof,var(7),1) &
-!!                                     &   ) / ( left_epsi*left_mu + right_epsi*right_mu  )
-!!
-!!      ! flux for B_x
-!!      faceFlux(left,iDof,var(4),2) = inv_denom_epsi * (                                 &
-!!                                     &        (-1.0_rk)*left_gam*faceRep(left,iDof,var(4),2)/left_mu &
-!!                                     &      - (-1.0_rk)*right_gam*faceRep(right,iDof,var(4),1)/right_mu) &
-!!                                     & + (                                              &
-!!                                     &       left_gam*left_gam*faceRep(left,iDof,var(8),2) &
-!!                                     &     + right_gam*right_gam*faceRep(right,iDof,var(8),1) &
-!!                                     &   ) / ( left_epsi*left_mu + right_epsi*right_mu  )
-!!
-!!      ! flux for phi (electric correction)
-!!      faceFlux(left,iDof,var(7),2) = (                                            &
-!!                                     &    left_speedOfLight*faceRep(left,iDof,var(1),2) &
-!!                                     &  + right_speedOfLight*faceRep(right,iDof,var(1),1) &
-!!                                     &  + left_speedOfLight*left_chi*faceRep(left,iDof,var(7),2) &
-!!                                     &  - right_speedOfLight*right_chi*faceRep(right,iDof,var(7),1)   &
-!!                                     & ) / (left_speedOfLight + right_speedOfLight)
-!!
-!!      ! flux for psi (magnetic correction)
-!!      faceFlux(left,iDof,var(8),2) = (                                            &
-!!                                     &    left_speedOfLight*faceRep(left,iDof,var(4),2)               &
-!!                                     &  + right_speedOfLight*faceRep(right,iDof,var(4),1)             &
-!!                                     &  + left_speedOfLight*left_gam*faceRep(left,iDof,var(8),2)      &
-!!                                     &  - right_speedOfLight*right_gam*faceRep(right,iDof,var(8),1)   &
-!!                                     & ) / (left_speedOfLight + right_speedOfLight)
-!!
-!!      ! the flux for D_y
-!!      faceFlux(left,iDof,var(2),2) = ( &
-!!        &                  ( ((-1.0_rk)*faceRep(left,iDof,var(2),2) / left_epsi)        &
-!!        &                    - ((-1.0_rk)*faceRep(right,iDof,var(2),1) / right_epsi)  ) &
-!!        &               -  ( left_speedOfLight * faceRep(left,iDof,var(6),2)          &
-!!        &                    + right_speedOfLight * faceRep(right,iDof,var(6),1) ))
-!!
-!!
-!!      ! the flux for B_z
-!!      faceFlux(left,iDof,var(6),2) = ( &
-!!        &                  ( left_speedOfLight * faceRep(left,iDof,var(2),2)     &
-!!        &                  + right_speedOfLight * faceRep(right,iDof,var(2),1) )&
-!!        &                + ( ( faceRep(left,iDof,var(6),2) / left_mu )     &
-!!        &                  - ( faceRep(right,iDof,var(6),1) / right_mu ) ))
-!!
-!!      ! the flux for D_z
-!!      faceFlux(left,iDof,var(3),2) = ( &
-!!        &                  ( ( (-1.0_rk) * faceRep(left,iDof,var(3),2) / left_epsi )     &
-!!        &                  - ( (-1.0_rk) * faceRep(right,iDof,var(3),1) / right_epsi ) ) &
-!!        &                + ( left_speedOfLight * faceRep(left,iDof,var(5),2)           &
-!!        &                  + right_speedOfLight * faceRep(right,iDof,var(5),1) )       &
-!!        &                            )
-!!
-!!      ! the flux for B_y
-!!      faceFlux(left,iDof,var(5),2) = ( &
-!!        &                  ( (-1.0_rk) * left_speedOfLight * faceRep(left,iDof,var(3),2) &
-!!        &                  - right_speedOfLight * faceRep(right,iDof,var(3),1) )       &
-!!        &                + ( ( faceRep(left,iDof,var(5),2) / left_mu )                 &
-!!        &                  - ( faceRep(right,iDof,var(5),1) / right_mu) )              &
-!!        &                            )
-!!
-!!      ! Normalize the calculated fluxes
-!!      faceFlux(left,iDof,var(2),2) = inv_denom_mu * faceFlux(left,iDof,var(2),2)
-!!      faceFlux(left,iDof,var(6),2) = inv_denom_epsi * faceFlux(left,iDof,var(6),2)
-!!      faceFlux(left,iDof,var(3),2) = inv_denom_mu * faceFlux(left,iDof,var(3),2)
-!!      faceFlux(left,iDof,var(5),2) = inv_denom_epsi * faceFlux(left,iDof,var(5),2)
-!!
-!!      ! Assign the same flux for both adjacent elements
-!!      faceFlux(right,iDof,:,1) = faceFlux(left,iDof,:,2)
-!!
-!!    end do
-!!
-!!  end do
+!JZ! JZ: Old implementation of the flux. There must be an error somewhere. I have to
+!JZ!     check my solution for the Riemann problem agian. So, I replaced the flux
+!JZ!     by a simple Lax-Friedrich type flux.
+!JZ!
+!JZ!  integer :: iSide, left, right, iDof
+!JZ!  real(kind=rk) :: left_mu, right_mu
+!JZ!  real(kind=rk) :: left_epsi, right_epsi
+!JZ!  real(kind=rk) :: left_gam, right_gam
+!JZ!  real(kind=rk) :: left_chi, right_chi
+!JZ!  real(kind=rk) :: left_speedOfLight, right_speedOfLight
+!JZ!  real(kind=rk) :: inv_denom_mu, inv_denom_epsi
+!JZ!  ! --------------------------------------------------------------------------
+!JZ!
+!JZ!  ! flux for D_X, B_Z, D_y and B_z
+!JZ!  do iDof = 1, nFaceDofs
+!JZ!
+!JZ!    do iSide = 1, nSides
+!JZ!
+!JZ!      ! The position of the left and right element in the state
+!JZ!      ! vector.
+!JZ!      left = leftPos(iSide)
+!JZ!      right = rightPos(iSide)
+!JZ!
+!JZ!      ! The material parameters of the left and right element
+!JZ!      left_mu = material_left(iSide,1,1)
+!JZ!      left_epsi = material_left(iSide,1,2)
+!JZ!      left_gam = material_left(iSide,1,3)
+!JZ!      left_chi = material_left(iSide,1,4)
+!JZ!      left_speedOfLight = 1.0_rk / sqrt( left_mu * left_epsi )
+!JZ!      right_mu = material_right(iSide,1,1)
+!JZ!      right_epsi = material_right(iSide,1,2)
+!JZ!      right_gam = material_right(iSide,1,3)
+!JZ!      right_chi = material_right(iSide,1,4)
+!JZ!      right_speedOfLight = 1.0_rk / sqrt( right_mu * right_epsi )
+!JZ!
+!JZ!      ! The inverse of the denominators
+!JZ!      inv_denom_mu = 1.0_rk / ((-1.0_rk)*left_speedOfLight*left_mu - right_speedOfLight*right_mu)
+!JZ!      inv_denom_epsi = 1.0_rk / (left_speedOfLight*left_epsi + right_speedOfLight*right_epsi)
+!JZ!
+!JZ!      ! flux for D_x
+!JZ!      faceFlux(left,iDof,var(1),2) = inv_denom_mu * (                                   &
+!JZ!                                     &       (-1.0_rk)*left_chi*faceRep(left,iDof,var(1),2)/left_epsi    &
+!JZ!                                     &     - (-1.0_rk)*right_chi*faceRep(right,iDof,var(1),1)/right_epsi &
+!JZ!                                     &              )                                   &
+!JZ!                                     & + (                                              &
+!JZ!                                     &        left_chi*left_chi*faceRep(left,iDof,var(7),2) &
+!JZ!                                     &      + right_chi*right_chi*faceRep(right,iDof,var(7),1) &
+!JZ!                                     &   ) / ( left_epsi*left_mu + right_epsi*right_mu  )
+!JZ!
+!JZ!      ! flux for B_x
+!JZ!      faceFlux(left,iDof,var(4),2) = inv_denom_epsi * (                                 &
+!JZ!                                     &        (-1.0_rk)*left_gam*faceRep(left,iDof,var(4),2)/left_mu &
+!JZ!                                     &      - (-1.0_rk)*right_gam*faceRep(right,iDof,var(4),1)/right_mu) &
+!JZ!                                     & + (                                              &
+!JZ!                                     &       left_gam*left_gam*faceRep(left,iDof,var(8),2) &
+!JZ!                                     &     + right_gam*right_gam*faceRep(right,iDof,var(8),1) &
+!JZ!                                     &   ) / ( left_epsi*left_mu + right_epsi*right_mu  )
+!JZ!
+!JZ!      ! flux for phi (electric correction)
+!JZ!      faceFlux(left,iDof,var(7),2) = (                                            &
+!JZ!                                     &    left_speedOfLight*faceRep(left,iDof,var(1),2) &
+!JZ!                                     &  + right_speedOfLight*faceRep(right,iDof,var(1),1) &
+!JZ!                                     &  + left_speedOfLight*left_chi*faceRep(left,iDof,var(7),2) &
+!JZ!                                     &  - right_speedOfLight*right_chi*faceRep(right,iDof,var(7),1)   &
+!JZ!                                     & ) / (left_speedOfLight + right_speedOfLight)
+!JZ!
+!JZ!      ! flux for psi (magnetic correction)
+!JZ!      faceFlux(left,iDof,var(8),2) = (                                            &
+!JZ!                                     &    left_speedOfLight*faceRep(left,iDof,var(4),2)               &
+!JZ!                                     &  + right_speedOfLight*faceRep(right,iDof,var(4),1)             &
+!JZ!                                     &  + left_speedOfLight*left_gam*faceRep(left,iDof,var(8),2)      &
+!JZ!                                     &  - right_speedOfLight*right_gam*faceRep(right,iDof,var(8),1)   &
+!JZ!                                     & ) / (left_speedOfLight + right_speedOfLight)
+!JZ!
+!JZ!      ! the flux for D_y
+!JZ!      faceFlux(left,iDof,var(2),2) = ( &
+!JZ!        &                  ( ((-1.0_rk)*faceRep(left,iDof,var(2),2) / left_epsi)        &
+!JZ!        &                    - ((-1.0_rk)*faceRep(right,iDof,var(2),1) / right_epsi)  ) &
+!JZ!        &               -  ( left_speedOfLight * faceRep(left,iDof,var(6),2)          &
+!JZ!        &                    + right_speedOfLight * faceRep(right,iDof,var(6),1) ))
+!JZ!
+!JZ!
+!JZ!      ! the flux for B_z
+!JZ!      faceFlux(left,iDof,var(6),2) = ( &
+!JZ!        &                  ( left_speedOfLight * faceRep(left,iDof,var(2),2)     &
+!JZ!        &                  + right_speedOfLight * faceRep(right,iDof,var(2),1) )&
+!JZ!        &                + ( ( faceRep(left,iDof,var(6),2) / left_mu )     &
+!JZ!        &                  - ( faceRep(right,iDof,var(6),1) / right_mu ) ))
+!JZ!
+!JZ!      ! the flux for D_z
+!JZ!      faceFlux(left,iDof,var(3),2) = ( &
+!JZ!        &                  ( ( (-1.0_rk) * faceRep(left,iDof,var(3),2) / left_epsi )     &
+!JZ!        &                  - ( (-1.0_rk) * faceRep(right,iDof,var(3),1) / right_epsi ) ) &
+!JZ!        &                + ( left_speedOfLight * faceRep(left,iDof,var(5),2)           &
+!JZ!        &                  + right_speedOfLight * faceRep(right,iDof,var(5),1) )       &
+!JZ!        &                            )
+!JZ!
+!JZ!      ! the flux for B_y
+!JZ!      faceFlux(left,iDof,var(5),2) = ( &
+!JZ!        &                  ( (-1.0_rk) * left_speedOfLight * faceRep(left,iDof,var(3),2) &
+!JZ!        &                  - right_speedOfLight * faceRep(right,iDof,var(3),1) )       &
+!JZ!        &                + ( ( faceRep(left,iDof,var(5),2) / left_mu )                 &
+!JZ!        &                  - ( faceRep(right,iDof,var(5),1) / right_mu) )              &
+!JZ!        &                            )
+!JZ!
+!JZ!      ! Normalize the calculated fluxes
+!JZ!      faceFlux(left,iDof,var(2),2) = inv_denom_mu * faceFlux(left,iDof,var(2),2)
+!JZ!      faceFlux(left,iDof,var(6),2) = inv_denom_epsi * faceFlux(left,iDof,var(6),2)
+!JZ!      faceFlux(left,iDof,var(3),2) = inv_denom_mu * faceFlux(left,iDof,var(3),2)
+!JZ!      faceFlux(left,iDof,var(5),2) = inv_denom_epsi * faceFlux(left,iDof,var(5),2)
+!JZ!
+!JZ!      ! Assign the same flux for both adjacent elements
+!JZ!      faceFlux(right,iDof,:,1) = faceFlux(left,iDof,:,2)
+!JZ!
+!JZ!    end do
+!JZ!
+!JZ!  end do
 
     integer :: iSide, left, right, iDof
     real(kind=rk) :: maxSpeedLeft, maxSpeedRight, maxSpeed
