@@ -180,16 +180,16 @@ the MODG scheme.</p>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_facedata_module.html'>tem_faceData_module</a></li>
-                  <li class="list-inline-item"><a href='atl_kerneldata_module.html'>atl_kerneldata_module</a></li>
-                  <li class="list-inline-item"><a href='atl_scheme_module.html'>atl_scheme_module</a></li>
-                  <li class="list-inline-item"><a href='atl_cube_elem_module.html'>atl_cube_elem_module</a></li>
+                  <li class="list-inline-item"><a href='atl_modg_1d_scheme_module.html'>atl_modg_1d_scheme_module</a></li>
                   <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_topology_module.html'>tem_topology_module</a></li>
+                  <li class="list-inline-item"><a href='atl_cube_elem_module.html'>atl_cube_elem_module</a></li>
+                  <li class="list-inline-item"><a href='atl_kerneldata_module.html'>atl_kerneldata_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_element_module.html'>tem_element_module</a></li>
+                  <li class="list-inline-item"><a href='atl_scheme_module.html'>atl_scheme_module</a></li>
                   <li class="list-inline-item"><a href='atl_facedata_module.html'>atl_facedata_module</a></li>
                   <li class="list-inline-item"><a href='ply_modg_basis_module.html'>ply_modg_basis_module</a></li>
-                  <li class="list-inline-item"><a href='atl_modg_1d_scheme_module.html'>atl_modg_1d_scheme_module</a></li>
-                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_element_module.html'>tem_element_module</a></li>
                   <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/env_module.html'>env_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_facedata_module.html'>tem_faceData_module</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -1167,191 +1167,6 @@ difference between coarser and finer faces has to be 1).</p><a href="../proc/atl
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-minlevel~53"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>minLevel</strong></td>
-            <td>
-<p>The minumum level of the mesh.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-maxlevel~59"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>maxLevel</strong></td>
-            <td>
-<p>The maximum level of the mesh.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-currentlevel~73"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>currentLevel</strong></td>
-            <td>
-<p>The current level (i.e. the coarse level).</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-mesh~116"></span>
-              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>mesh</strong>(minLevel:maxLevel)</td>
-            <td>
-<p>The mesh representation.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-facedata~45"></span>
-              type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
-            </td>
-<td>intent(inout)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>facedata</strong>(minLevel:maxLevel)</td>
-            <td>
-<p>The face representations (finer faces are interpolated from coarser ones).</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-nscalars~137"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nScalars</strong></td>
-            <td>
-<p>The number of scalar variables in your equation system.</p>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_1d_finetocoarseface"></span> <h3>public  subroutine <a href='../proc/atl_modg_1d_finetocoarseface.html'>atl_modg_1d_fineToCoarseFace</a>(minLevel, maxLevel, currentLevel, mesh, facedata, nScalars)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>I
-n
-t
-e
-r
-p
-o
-l
-a
-t
-e</p>
-<p>m
-o
-d
-a
-l</p>
-<p>f
-a
-c
-e</p>
-<p>r
-e
-p
-r
-e
-s
-e
-n
-t
-a
-t
-i
-o
-n</p>
-<p>f
-r
-o
-m</p>
-<p>n
-e
-x
-t</p>
-<p>f
-i
-n
-e
-r</p>
-<p>f
-a
-c
-e
-s</p>
-<p>t
-o</p>
-<p>c
-o
-a
-r
-s
-e</p>
-<p>l
-e
-v
-e
-l</p>
-<p>(
-l
-e
-v
-e
-l</p><a href="../proc/atl_modg_1d_finetocoarseface.html" class="pull-right"><emph>Read more&hellip;</emph></a>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
               <span class="anchor" id="variable-minlevel~54"></span>
               integer,
             </td>
@@ -1382,7 +1197,7 @@ l</p><a href="../proc/atl_modg_1d_finetocoarseface.html" class="pull-right"><emp
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-currentlevel~74"></span>
+              <span class="anchor" id="variable-currentlevel~73"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1397,7 +1212,7 @@ l</p><a href="../proc/atl_modg_1d_finetocoarseface.html" class="pull-right"><emp
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-mesh~117"></span>
+              <span class="anchor" id="variable-mesh~115"></span>
               type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1412,7 +1227,7 @@ l</p><a href="../proc/atl_modg_1d_finetocoarseface.html" class="pull-right"><emp
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-facedata~46"></span>
+              <span class="anchor" id="variable-facedata~42"></span>
               type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1427,7 +1242,7 @@ l</p><a href="../proc/atl_modg_1d_finetocoarseface.html" class="pull-right"><emp
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nscalars~138"></span>
+              <span class="anchor" id="variable-nscalars~135"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1448,12 +1263,11 @@ l</p><a href="../proc/atl_modg_1d_finetocoarseface.html" class="pull-right"><emp
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_finetocoarseelem_1d"></span> <h3>public  subroutine <a href='../proc/atl_modg_finetocoarseelem_1d.html'>atl_modg_fineToCoarseElem_1d</a>(minLevel, maxLevel, currentLevel, iDir, mesh, state_stab, scheme, nScalars)  
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_1d_finetocoarseface"></span> <h3>public  subroutine <a href='../proc/atl_modg_1d_finetocoarseface.html'>atl_modg_1d_fineToCoarseFace</a>(minLevel, maxLevel, currentLevel, mesh, facedata, nScalars)  
 </h3></div>
     <div class="card-body">
           
-  <p>Project data from 8 smaller elements to its parent element in terms
-of L2 projections.</p>
+  <p>Interpolate modal face representation from next finer faces to coarse level (level</p><a href="../proc/atl_modg_1d_finetocoarseface.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1498,7 +1312,7 @@ of L2 projections.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-currentlevel~75"></span>
+              <span class="anchor" id="variable-currentlevel~74"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1513,22 +1327,7 @@ of L2 projections.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-idir~120"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>iDir</strong></td>
-            <td>
-<p>The direction to interpolate.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-mesh~118"></span>
+              <span class="anchor" id="variable-mesh~116"></span>
               type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1543,37 +1342,22 @@ of L2 projections.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-state_stab~12"></span>
-              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>),
+              <span class="anchor" id="variable-facedata~43"></span>
+              type(<a href='../type/atl_facedata_type.html'>atl_facedata_type</a>),
             </td>
 <td>intent(inout)</td>
               <td></td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>state_stab</strong>(minLevel:maxLevel,1:3)</td>
+            <td><strong>facedata</strong>(minLevel:maxLevel)</td>
             <td>
 <p>The face representations (finer faces are interpolated from coarser ones).</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-scheme~90"></span>
-              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>scheme</strong>(minLevel:maxLevel)</td>
-            <td>
-<p>The schemes on the different levels.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-nscalars~139"></span>
+              <span class="anchor" id="variable-nscalars~136"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1594,12 +1378,12 @@ of L2 projections.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_coarsetofineelem_1d"></span> <h3>public  subroutine <a href='../proc/atl_modg_coarsetofineelem_1d.html'>atl_modg_coarseToFineElem_1d</a>(minLevel, maxLevel, currentLevel, iDir, mesh, state_stab, scheme, nScalars)  
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_finetocoarseelem_1d"></span> <h3>public  subroutine <a href='../proc/atl_modg_finetocoarseelem_1d.html'>atl_modg_fineToCoarseElem_1d</a>(minLevel, maxLevel, currentLevel, iDir, mesh, state_stab, scheme, nScalars)  
 </h3></div>
     <div class="card-body">
           
-  <p>Project coarse parent element to its 8 finer child elements
-by a simple L2 projection.</p>
+  <p>Project data from 8 smaller elements to its parent element in terms
+of L2 projections.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1644,6 +1428,152 @@ by a simple L2 projection.</p>
         </tr>
         <tr>
             <td>
+              <span class="anchor" id="variable-currentlevel~75"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>currentLevel</strong></td>
+            <td>
+<p>The current level (i.e. the coarse level).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-idir~119"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iDir</strong></td>
+            <td>
+<p>The direction to interpolate.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh~117"></span>
+              type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>The mesh representation.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state_stab~12"></span>
+              type(<a href='../type/atl_statedata_type.html'>atl_statedata_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state_stab</strong>(minLevel:maxLevel,1:3)</td>
+            <td>
+<p>The face representations (finer faces are interpolated from coarser ones).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-scheme~88"></span>
+              type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>scheme</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>The schemes on the different levels.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nscalars~137"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nScalars</strong></td>
+            <td>
+<p>The number of scalar variables in your equation system.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_modg_coarsetofineelem_1d"></span> <h3>public  subroutine <a href='../proc/atl_modg_coarsetofineelem_1d.html'>atl_modg_coarseToFineElem_1d</a>(minLevel, maxLevel, currentLevel, iDir, mesh, state_stab, scheme, nScalars)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Project coarse parent element to its 8 finer child elements
+by a simple L2 projection.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-minlevel~57"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>minLevel</strong></td>
+            <td>
+<p>The minumum level of the mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxlevel~63"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxLevel</strong></td>
+            <td>
+<p>The maximum level of the mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
               <span class="anchor" id="variable-currentlevel~76"></span>
               integer,
             </td>
@@ -1659,7 +1589,7 @@ by a simple L2 projection.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-idir~121"></span>
+              <span class="anchor" id="variable-idir~120"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1674,7 +1604,7 @@ by a simple L2 projection.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-mesh~119"></span>
+              <span class="anchor" id="variable-mesh~118"></span>
               type(<a href='../type/atl_cube_elem_type.html'>atl_cube_elem_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1704,7 +1634,7 @@ by a simple L2 projection.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-scheme~91"></span>
+              <span class="anchor" id="variable-scheme~89"></span>
               type(<a href='../type/atl_scheme_type.html'>atl_scheme_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1719,7 +1649,7 @@ by a simple L2 projection.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nscalars~140"></span>
+              <span class="anchor" id="variable-nscalars~138"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1778,7 +1708,7 @@ and nScalars for the second dimension.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-modg_basis~9"></span>
+              <span class="anchor" id="variable-modg_basis~10"></span>
               type(<a href='../type/ply_modg_basis_type.html'>ply_modg_basis_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1897,7 +1827,7 @@ and nScalars for the second dimension.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-modg_basis~10"></span>
+              <span class="anchor" id="variable-modg_basis~11"></span>
               type(<a href='../type/ply_modg_basis_type.html'>ply_modg_basis_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1995,13 +1925,13 @@ element.</p>
             <p>
               Ateles
  was developed by University of Siegen<br>              &copy; 2025 
-<br /><small>f9adb65cb21a</small></p>
+<br /><small>e739b33c2324</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-05-03T11:58:52.506243+0000             </p>
+ on 2025-05-09T16:32:21.530189+0000             </p>
           </div>
         </div>
         <br>
