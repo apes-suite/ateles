@@ -1,0 +1,33 @@
+name: SystemTests
+
+on:
+  workflow_dispatch:
+    inputs:
+      SeederVersion:
+        description: "Seeder Version"
+        default: ${{ vars.SEEDER_VERSION }}
+        required: true
+  pull_request:
+    branches: [ "main" ]
+  merge_group:
+    types: [checks_requested]
+
+jobs:
+  compileAndTest:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/apes-suite/seeder:${{ inputs.SeederVersion || vars.SEEDER_VERSION }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          path: 'ateles'
+          submodules: recursive
+
+      - name: Build Ateles
+        run: |
+          cd ateles && FC=mpif90 bin/waf --mpicmd 'mpiexec --oversubscribe' configure install --target=ateles --prefix=$VIRTUAL_ENV
+          
+      - name: Run System Tests
+        run: |
+          cd ateles/atl/examples && pysys.py run
