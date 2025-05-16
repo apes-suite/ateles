@@ -616,7 +616,139 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-euler~23"></span>
+              <span class="anchor" id="variable-euler~20"></span>
+              class(<a href='../type/atl_euler_type.html'>atl_euler_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>euler</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state_left~11"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state_left</strong>(:,:)</td>
+            <td>
+<p>The state on the face from its left limit (in conservative variables).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state_right~11"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state_right</strong>(:,:)</td>
+            <td>
+<p>The state on the face from its right limit (in conservative variables).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_left~14"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_left</strong>(:,:)</td>
+            <td>
+<p>The left value of the characteristic function (stemming from
+penalization)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_right~14"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_right</strong>(:,:)</td>
+            <td>
+<p>The right value of the characteristic function (stemming from
+penalization)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-npoints~17"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nPoints</strong></td>
+            <td>
+<p>Number of points to evaluate the flux at.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-flux~22"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>flux</strong>(:,:)</td>
+            <td>
+<p>Resulting flux for the left element (in conservative variables).</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_hlleuler2d"></span> <h3>public  subroutine <a href='../proc/atl_hlleuler2d.html'>atl_HLLEuler2D</a>(euler, state_left, state_right, material_left, material_right, nPoints, flux)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Calculate the 2D HLL flux given the left an right state.</p><a href="../proc/atl_hlleuler2d.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-euler~21"></span>
               class(<a href='../type/atl_euler_type.html'>atl_euler_type</a>),
             </td>
 <td>intent(in)</td>
@@ -661,7 +793,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_left~17"></span>
+              <span class="anchor" id="variable-material_left~15"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -677,7 +809,7 @@ penalization)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_right~17"></span>
+              <span class="anchor" id="variable-material_right~15"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -693,7 +825,7 @@ penalization)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-npoints~31"></span>
+              <span class="anchor" id="variable-npoints~18"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -708,7 +840,7 @@ penalization)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-flux~29"></span>
+              <span class="anchor" id="variable-flux~23"></span>
               real(kind=rk),
             </td>
 <td>intent(out)</td>
@@ -729,11 +861,11 @@ penalization)</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-atl_hlleuler2d"></span> <h3>public  subroutine <a href='../proc/atl_hlleuler2d.html'>atl_HLLEuler2D</a>(euler, state_left, state_right, material_left, material_right, nPoints, flux)  
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_hlleuler1d"></span> <h3>public  subroutine <a href='../proc/atl_hlleuler1d.html'>atl_HLLEuler1D</a>(euler, state_left, state_right, material_left, material_right, nPoints, flux)  
 </h3></div>
     <div class="card-body">
           
-  <p>Calculate the 2D HLL flux given the left an right state.</p><a href="../proc/atl_hlleuler2d.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Calculate the 1D HLL flux given the left an right state.</p><a href="../proc/atl_hlleuler1d.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -748,7 +880,7 @@ penalization)</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-euler~24"></span>
+              <span class="anchor" id="variable-euler~22"></span>
               class(<a href='../type/atl_euler_type.html'>atl_euler_type</a>),
             </td>
 <td>intent(in)</td>
@@ -793,7 +925,7 @@ penalization)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_left~18"></span>
+              <span class="anchor" id="variable-material_left~16"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -809,7 +941,7 @@ penalization)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_right~18"></span>
+              <span class="anchor" id="variable-material_right~16"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -825,7 +957,7 @@ penalization)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-npoints~32"></span>
+              <span class="anchor" id="variable-npoints~19"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -840,139 +972,7 @@ penalization)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-flux~30"></span>
-              real(kind=rk),
-            </td>
-<td>intent(out)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>flux</strong>(:,:)</td>
-            <td>
-<p>Resulting flux for the left element (in conservative variables).</p>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-atl_hlleuler1d"></span> <h3>public  subroutine <a href='../proc/atl_hlleuler1d.html'>atl_HLLEuler1D</a>(euler, state_left, state_right, material_left, material_right, nPoints, flux)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>Calculate the 1D HLL flux given the left an right state.</p><a href="../proc/atl_hlleuler1d.html" class="pull-right"><emph>Read more&hellip;</emph></a>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-euler~25"></span>
-              class(<a href='../type/atl_euler_type.html'>atl_euler_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>euler</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-state_left~14"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>state_left</strong>(:,:)</td>
-            <td>
-<p>The state on the face from its left limit (in conservative variables).</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-state_right~14"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>state_right</strong>(:,:)</td>
-            <td>
-<p>The state on the face from its right limit (in conservative variables).</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-material_left~19"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>material_left</strong>(:,:)</td>
-            <td>
-<p>The left value of the characteristic function (stemming from
-penalization)</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-material_right~19"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>material_right</strong>(:,:)</td>
-            <td>
-<p>The right value of the characteristic function (stemming from
-penalization)</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-npoints~33"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nPoints</strong></td>
-            <td>
-<p>Number of points to evaluate the flux at.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-flux~31"></span>
+              <span class="anchor" id="variable-flux~24"></span>
               real(kind=rk),
             </td>
 <td>intent(out)</td>
@@ -1015,7 +1015,7 @@ penalization)</p>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-05-16T20:35:24.643357+0000             </p>
+ on 2025-05-16T21:06:54.104625+0000             </p>
           </div>
         </div>
         <br>
