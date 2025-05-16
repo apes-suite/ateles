@@ -11,15 +11,12 @@ on:
     branches: [ "main" ]
   merge_group:
     types: [checks_requested]
-
-env:
-  SEEDER: ${{ inputs.SeederVersion || vars.SEEDER_VERSION }}
   
 jobs:
   compileAndTest:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/apes-suite/seeder:${{ env.SEEDER }}
+      image: ghcr.io/apes-suite/seeder:${{ inputs.SeederVersion || vars.SEEDER_VERSION }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
