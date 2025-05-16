@@ -5,18 +5,21 @@ on:
     inputs:
       SeederVersion:
         description: "Seeder Version"
-        default: "main"
+        default: "main-env.main-u24.04"
         required: true
   pull_request:
     branches: [ "main" ]
   merge_group:
     types: [checks_requested]
 
+env:
+  SEEDER: ${{ inputs.SeederVersion || vars.SEEDER_VERSION }}
+  
 jobs:
   compileAndTest:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/apes-suite/seeder:${{ inputs.SeederVersion || vars.SEEDER_VERSION }}
+      image: ghcr.io/apes-suite/seeder:${{ env.SEEDER }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -29,5 +32,13 @@ jobs:
           cd ateles && FC=mpif90 bin/waf --mpicmd 'mpiexec --oversubscribe' configure install --target=ateles --prefix=$VIRTUAL_ENV
           
       - name: Run System Tests
+        id: pysys
         run: |
-          cd ateles/atl/examples && pysys.py run
+          cd ateles/atl/examples && pysys.py run --ci --outdir=CItests
+          
+      - name: Upload archive artifacts for any test failures
+        uses: actions/upload-artifact@v4
+        if: always() && steps.pysys.outputs.artifact_TestOutputArchiveDir
+        with:
+          name: pysys_output
+          path: ${{ steps.pysys.outputs.artifact_TestOutputArchiveDir }}
