@@ -187,12 +187,12 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='atl_eqn_euler_module.html'>atl_eqn_euler_module</a></li>
-                  <li class="list-inline-item"><a href='atl_physfluxeuler_module.html'>atl_physFluxEuler_module</a></li>
-                  <li class="list-inline-item"><a href='atl_physfluxeuler_1d_module.html'>atl_physFluxEuler_1d_module</a></li>
                   <li class="list-inline-item"><a href='atl_physfluxeuler_2d_module.html'>atl_physFluxEuler_2d_module</a></li>
                   <li class="list-inline-item"><a href='atl_exact_riemann_euler_module.html'>atl_exact_riemann_euler_module</a></li>
+                  <li class="list-inline-item"><a href='atl_physfluxeuler_1d_module.html'>atl_physFluxEuler_1d_module</a></li>
+                  <li class="list-inline-item"><a href='atl_physfluxeuler_module.html'>atl_physFluxEuler_module</a></li>
                   <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/env_module.html'>env_module</a></li>
+                  <li class="list-inline-item"><a href='atl_eqn_euler_module.html'>atl_eqn_euler_module</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -776,7 +776,139 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-euler~9"></span>
+              <span class="anchor" id="variable-euler~5"></span>
+              class(<a href='../type/atl_euler_type.html'>atl_euler_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>euler</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state_left~3"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state_left</strong>(:,:)</td>
+            <td>
+<p>The state on the face from its left limit (in conservative variables).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state_right~3"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state_right</strong>(:,:)</td>
+            <td>
+<p>The state on the face from its right limit (in conservative variables).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_left~7"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_left</strong>(:,:)</td>
+            <td>
+<p>The left value of the characteristic function (stemming from
+penalization)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_right~7"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_right</strong>(:,:)</td>
+            <td>
+<p>The right value of the characteristic function (stemming from
+penalization)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-npoints~12"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nPoints</strong></td>
+            <td>
+<p>Number of points to evaluate the flux at.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-flux~23"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>flux</strong>(:,:)</td>
+            <td>
+<p>Resulting flux for the left element (in conservative variables).</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_godunoveuler2d"></span> <h3>public  subroutine <a href='../proc/atl_godunoveuler2d.html'>atl_GodunovEuler2D</a>(euler, state_left, state_right, material_left, material_right, nPoints, flux)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Godunov flux for the 2D Euler equation.</p><a href="../proc/atl_godunoveuler2d.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-euler~6"></span>
               class(<a href='../type/atl_euler_type.html'>atl_euler_type</a>),
             </td>
 <td>intent(in)</td>
@@ -821,7 +953,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_left~14"></span>
+              <span class="anchor" id="variable-material_left~8"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -837,7 +969,7 @@ penalization)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_right~14"></span>
+              <span class="anchor" id="variable-material_right~8"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -853,7 +985,7 @@ penalization)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-npoints~18"></span>
+              <span class="anchor" id="variable-npoints~13"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -889,11 +1021,11 @@ penalization)</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-atl_godunoveuler2d"></span> <h3>public  subroutine <a href='../proc/atl_godunoveuler2d.html'>atl_GodunovEuler2D</a>(euler, state_left, state_right, material_left, material_right, nPoints, flux)  
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_godunoveuler1d"></span> <h3>public  subroutine <a href='../proc/atl_godunoveuler1d.html'>atl_GodunovEuler1D</a>(euler, state_left, state_right, material_left, material_right, nPoints, flux)  
 </h3></div>
     <div class="card-body">
           
-  <p>Godunov flux for the 2D Euler equation.</p><a href="../proc/atl_godunoveuler2d.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Godunov flux for the 1D Euler equation.</p><a href="../proc/atl_godunoveuler1d.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -908,7 +1040,7 @@ penalization)</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-euler~10"></span>
+              <span class="anchor" id="variable-euler~7"></span>
               class(<a href='../type/atl_euler_type.html'>atl_euler_type</a>),
             </td>
 <td>intent(in)</td>
@@ -953,7 +1085,7 @@ penalization)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_left~15"></span>
+              <span class="anchor" id="variable-material_left~9"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -969,7 +1101,7 @@ penalization)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material_right~15"></span>
+              <span class="anchor" id="variable-material_right~9"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -985,7 +1117,7 @@ penalization)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-npoints~19"></span>
+              <span class="anchor" id="variable-npoints~14"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1001,138 +1133,6 @@ penalization)</p>
         <tr>
             <td>
               <span class="anchor" id="variable-flux~25"></span>
-              real(kind=rk),
-            </td>
-<td>intent(out)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>flux</strong>(:,:)</td>
-            <td>
-<p>Resulting flux for the left element (in conservative variables).</p>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-atl_godunoveuler1d"></span> <h3>public  subroutine <a href='../proc/atl_godunoveuler1d.html'>atl_GodunovEuler1D</a>(euler, state_left, state_right, material_left, material_right, nPoints, flux)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>Godunov flux for the 1D Euler equation.</p><a href="../proc/atl_godunoveuler1d.html" class="pull-right"><emph>Read more&hellip;</emph></a>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-euler~11"></span>
-              class(<a href='../type/atl_euler_type.html'>atl_euler_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>euler</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-state_left~6"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>state_left</strong>(:,:)</td>
-            <td>
-<p>The state on the face from its left limit (in conservative variables).</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-state_right~6"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>state_right</strong>(:,:)</td>
-            <td>
-<p>The state on the face from its right limit (in conservative variables).</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-material_left~16"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>material_left</strong>(:,:)</td>
-            <td>
-<p>The left value of the characteristic function (stemming from
-penalization)</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-material_right~16"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>material_right</strong>(:,:)</td>
-            <td>
-<p>The right value of the characteristic function (stemming from
-penalization)</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-npoints~20"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nPoints</strong></td>
-            <td>
-<p>Number of points to evaluate the flux at.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-flux~26"></span>
               real(kind=rk),
             </td>
 <td>intent(out)</td>
@@ -1172,7 +1172,7 @@ penalization)</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-isen_coeff~8"></span>
+              <span class="anchor" id="variable-isen_coeff~6"></span>
               real(kind=rk)
             </td>
 <td></td>
@@ -1209,13 +1209,13 @@ penalization)</p>
             <p>
               Ateles
  was developed by University of Siegen<br>              &copy; 2025 
-<br /><small>e739b33c2324</small></p>
+<br /><small>42d868737fab</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-05-16T22:29:19.395906+0000             </p>
+ on 2025-05-17T23:43:43.179040+0000             </p>
           </div>
         </div>
         <br>

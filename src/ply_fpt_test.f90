@@ -51,7 +51,6 @@ program ply_fpt_test
 
   ! Init the Treelm environment, needed to init the log Unit
   call tem_start(codeName = 'ply_fpt_test', &
-    &            version  = 'utest',        &
     &            general  = general         )
 
 

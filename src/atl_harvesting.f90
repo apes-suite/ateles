@@ -96,7 +96,6 @@ program atl_harvesting
 
   ! Initialize the treelm environment
   call tem_start( codeName   = 'ATL_HARVESTING',         &
-    &             version    = 'v0.1',                   &
     &             general    = params%general,           &
     &             simcontrol = params%general%simControl )
 

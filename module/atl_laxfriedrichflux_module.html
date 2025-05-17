@@ -178,13 +178,13 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='atl_eqn_acoustic_module.html'>atl_eqn_acoustic_module</a></li>
-                  <li class="list-inline-item"><a href='atl_eqn_euler_module.html'>atl_eqn_euler_module</a></li>
-                  <li class="list-inline-item"><a href='atl_physfluxfilnvrstk_module.html'>atl_physFluxFilNvrStk_module</a></li>
                   <li class="list-inline-item"><a href='atl_acoustic_physflux_module.html'>atl_acoustic_physflux_module</a></li>
-                  <li class="list-inline-item"><a href='atl_lineareuler_physflux_module.html'>atl_LinearEuler_physflux_module</a></li>
+                  <li class="list-inline-item"><a href='atl_eqn_euler_module.html'>atl_eqn_euler_module</a></li>
                   <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/env_module.html'>env_module</a></li>
+                  <li class="list-inline-item"><a href='atl_physfluxfilnvrstk_module.html'>atl_physFluxFilNvrStk_module</a></li>
                   <li class="list-inline-item"><a href='atl_eqn_lineareuler_module.html'>atl_eqn_LinearEuler_module</a></li>
+                  <li class="list-inline-item"><a href='atl_lineareuler_physflux_module.html'>atl_LinearEuler_physflux_module</a></li>
+                  <li class="list-inline-item"><a href='atl_eqn_acoustic_module.html'>atl_eqn_acoustic_module</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -974,7 +974,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-euler~19"></span>
+              <span class="anchor" id="variable-euler~27"></span>
               class(<a href='../type/atl_euler_type.html'>atl_euler_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1005,6 +1005,530 @@ modules which it uses.
         <tr>
             <td>
               <span class="anchor" id="variable-state_right~12"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state_right</strong>(:,:)</td>
+            <td>
+<p>The state on the face from its right limit (in conservative variables).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_left~20"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_left</strong>(:,:)</td>
+            <td>
+<p>The left value of the characteristic function (stemming from
+penalization)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_right~20"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_right</strong>(:,:)</td>
+            <td>
+<p>The right value of the characteristic function (stemming from
+penalization)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-npoints~30"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nPoints</strong></td>
+            <td>
+<p>Number of points to evaluate the flux at.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-flux~37"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>flux</strong>(:,:)</td>
+            <td>
+<p>Resulting flux for the left element (in conservative variables).</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_laxfriedlineareuler"></span> <h3>public  subroutine <a href='../proc/atl_laxfriedlineareuler.html'>atl_laxFriedLinearEuler</a>(nSides, nFaceDofs, faceRep, faceFlux, leftPos, rightPos, var, LinearEuler, idir)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Lax-Friedrich flux (in fully conservative variables) for the</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nsides~25"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nSides</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nfacedofs~29"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nFaceDofs</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facerep~25"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceRep</strong>(:,:,:,:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-faceflux~23"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faceFlux</strong>(:,:,:,:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-leftpos~24"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>leftPos</strong>(nSides)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rightpos~24"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rightPos</strong>(nsides)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-var~22"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>var</strong>(:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-lineareuler~16"></span>
+              type(<a href='../type/atl_lineareuler_type.html'>atl_LinearEuler_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>LinearEuler</strong></td>
+            <td>
+<p>Datatype for acoustic equation include all background data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-idir~17"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>idir</strong></td>
+            <td>
+<p>Direction of the flow, used for background velocity</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_laxfriedacoustic"></span> <h3>public  subroutine <a href='../proc/atl_laxfriedacoustic.html'>atl_laxFriedAcoustic</a>(left, right, acoustic, flux, idir)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Lax-Friedrich flux (in fully conservative variables) for the Acoustic equation</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-left~72"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>left</strong>(4)</td>
+            <td>
+<p>The state on the face from its left limit (in conservative variables).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-right~72"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>right</strong>(4)</td>
+            <td>
+<p>The state on the face from its right limit (in conservative variables).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-acoustic~7"></span>
+              type(<a href='../type/atl_acoustic_type.html'>atl_acoustic_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>acoustic</strong></td>
+            <td>
+<p>Datatype for acoustic equation include all background data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-flux~39"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>flux</strong>(4)</td>
+            <td>
+<p>Resulting flux for the left element (in conservative variables).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-idir~18"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>idir</strong></td>
+            <td>
+<p>Direction of the flow, used for background velocity</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_laxfriedrans"></span> <h3>public  subroutine <a href='../proc/atl_laxfriedrans.html'>atl_laxFriedRans</a>(euler, state_left, state_right, material_left, material_right, nPoints, flux)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Lax-Friedrich flux (in fully conservative variables) for the Euler equation</p><a href="../proc/atl_laxfriedrans.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-euler~28"></span>
+              class(<a href='../type/atl_euler_type.html'>atl_euler_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>euler</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state_left~13"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state_left</strong>(:,:)</td>
+            <td>
+<p>The state on the face from its left limit (in conservative variables).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state_right~13"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state_right</strong>(:,:)</td>
+            <td>
+<p>The state on the face from its right limit (in conservative variables).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_left~21"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_left</strong>(:,:)</td>
+            <td>
+<p>The left value of the characteristic function (stemming from
+penalization)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-material_right~21"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>material_right</strong>(:,:)</td>
+            <td>
+<p>The right value of the characteristic function (stemming from
+penalization)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-npoints~31"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nPoints</strong></td>
+            <td>
+<p>Number of points to evaluate the flux at.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-flux~40"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>flux</strong>(:,:)</td>
+            <td>
+<p>Resulting flux for the left element (in conservative variables).</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_laxfriedrans_2d"></span> <h3>public  subroutine <a href='../proc/atl_laxfriedrans_2d.html'>atl_laxFriedRans_2D</a>(euler, state_left, state_right, material_left, material_right, nPoints, flux)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-euler~29"></span>
+              class(<a href='../type/atl_euler_type.html'>atl_euler_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>euler</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state_left~14"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>state_left</strong>(:,:)</td>
+            <td>
+<p>The state on the face from its left limit (in conservative variables).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-state_right~14"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -1051,530 +1575,6 @@ penalization)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-npoints~30"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nPoints</strong></td>
-            <td>
-<p>Number of points to evaluate the flux at.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-flux~32"></span>
-              real(kind=rk),
-            </td>
-<td>intent(out)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>flux</strong>(:,:)</td>
-            <td>
-<p>Resulting flux for the left element (in conservative variables).</p>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-atl_laxfriedlineareuler"></span> <h3>public  subroutine <a href='../proc/atl_laxfriedlineareuler.html'>atl_laxFriedLinearEuler</a>(nSides, nFaceDofs, faceRep, faceFlux, leftPos, rightPos, var, LinearEuler, idir)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>Lax-Friedrich flux (in fully conservative variables) for the</p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-nsides~22"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nSides</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-nfacedofs~27"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nFaceDofs</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-facerep~24"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>faceRep</strong>(:,:,:,:)</td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-faceflux~21"></span>
-              real(kind=rk),
-            </td>
-<td>intent(inout)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>faceFlux</strong>(:,:,:,:)</td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-leftpos~21"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>leftPos</strong>(nSides)</td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-rightpos~21"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>rightPos</strong>(nsides)</td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-var~17"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>var</strong>(:)</td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-lineareuler~12"></span>
-              type(<a href='../type/atl_lineareuler_type.html'>atl_LinearEuler_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>LinearEuler</strong></td>
-            <td>
-<p>Datatype for acoustic equation include all background data</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-idir~9"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>idir</strong></td>
-            <td>
-<p>Direction of the flow, used for background velocity</p>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-atl_laxfriedacoustic"></span> <h3>public  subroutine <a href='../proc/atl_laxfriedacoustic.html'>atl_laxFriedAcoustic</a>(left, right, acoustic, flux, idir)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>Lax-Friedrich flux (in fully conservative variables) for the Acoustic equation</p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-left~59"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>left</strong>(4)</td>
-            <td>
-<p>The state on the face from its left limit (in conservative variables).</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-right~59"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>right</strong>(4)</td>
-            <td>
-<p>The state on the face from its right limit (in conservative variables).</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-acoustic~5"></span>
-              type(<a href='../type/atl_acoustic_type.html'>atl_acoustic_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>acoustic</strong></td>
-            <td>
-<p>Datatype for acoustic equation include all background data</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-flux~34"></span>
-              real(kind=rk),
-            </td>
-<td>intent(out)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>flux</strong>(4)</td>
-            <td>
-<p>Resulting flux for the left element (in conservative variables).</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-idir~10"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>idir</strong></td>
-            <td>
-<p>Direction of the flow, used for background velocity</p>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-atl_laxfriedrans"></span> <h3>public  subroutine <a href='../proc/atl_laxfriedrans.html'>atl_laxFriedRans</a>(euler, state_left, state_right, material_left, material_right, nPoints, flux)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>Lax-Friedrich flux (in fully conservative variables) for the Euler equation</p><a href="../proc/atl_laxfriedrans.html" class="pull-right"><emph>Read more&hellip;</emph></a>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-euler~20"></span>
-              class(<a href='../type/atl_euler_type.html'>atl_euler_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>euler</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-state_left~13"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>state_left</strong>(:,:)</td>
-            <td>
-<p>The state on the face from its left limit (in conservative variables).</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-state_right~13"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>state_right</strong>(:,:)</td>
-            <td>
-<p>The state on the face from its right limit (in conservative variables).</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-material_left~23"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>material_left</strong>(:,:)</td>
-            <td>
-<p>The left value of the characteristic function (stemming from
-penalization)</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-material_right~23"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>material_right</strong>(:,:)</td>
-            <td>
-<p>The right value of the characteristic function (stemming from
-penalization)</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-npoints~31"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nPoints</strong></td>
-            <td>
-<p>Number of points to evaluate the flux at.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-flux~35"></span>
-              real(kind=rk),
-            </td>
-<td>intent(out)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>flux</strong>(:,:)</td>
-            <td>
-<p>Resulting flux for the left element (in conservative variables).</p>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-atl_laxfriedrans_2d"></span> <h3>public  subroutine <a href='../proc/atl_laxfriedrans_2d.html'>atl_laxFriedRans_2D</a>(euler, state_left, state_right, material_left, material_right, nPoints, flux)  
-</h3></div>
-    <div class="card-body">
-          
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-euler~21"></span>
-              class(<a href='../type/atl_euler_type.html'>atl_euler_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>euler</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-state_left~14"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>state_left</strong>(:,:)</td>
-            <td>
-<p>The state on the face from its left limit (in conservative variables).</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-state_right~14"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>state_right</strong>(:,:)</td>
-            <td>
-<p>The state on the face from its right limit (in conservative variables).</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-material_left~24"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>material_left</strong>(:,:)</td>
-            <td>
-<p>The left value of the characteristic function (stemming from
-penalization)</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-material_right~24"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>material_right</strong>(:,:)</td>
-            <td>
-<p>The right value of the characteristic function (stemming from
-penalization)</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
               <span class="anchor" id="variable-npoints~32"></span>
               integer,
             </td>
@@ -1590,7 +1590,7 @@ penalization)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-flux~36"></span>
+              <span class="anchor" id="variable-flux~41"></span>
               real(kind=rk),
             </td>
 <td>intent(out)</td>
@@ -1627,13 +1627,13 @@ penalization)</p>
             <p>
               Ateles
  was developed by University of Siegen<br>              &copy; 2025 
-<br /><small>e739b33c2324</small></p>
+<br /><small>42d868737fab</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-05-16T22:29:19.395906+0000             </p>
+ on 2025-05-17T23:43:43.179040+0000             </p>
           </div>
         </div>
         <br>

@@ -88,7 +88,6 @@ program ateles
   ! ------------------------------------------------------------------------ !
   ! Initialize the treelm environment
   call tem_start( codeName   = 'ATELES',                 &
-    &             version    = 'v0.10',                  &
     &             general    = params%general,           &
     &             simcontrol = params%general%simControl )
 

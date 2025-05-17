@@ -44,7 +44,6 @@ program ply_fpt_ifpt_3D_multiVar_lobattoNodes_test
 
   ! Init the Treelm environment, needed to init the log Unit
   call tem_start(codeName = 'Ateles unit test', &
-    &            version  = 'utest',            &
     &            general  = general             )
 
   res = 0.0_rk

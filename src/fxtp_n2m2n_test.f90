@@ -51,7 +51,6 @@ program test_fxtd_n2m2n
 
   ! Init the Treelm environment, needed to init the log Unit
   call tem_start(codeName = 'Polynomials unit test', &
-    &            version  = 'utest',                 &
     &            general  = general                  )
   res1 = 0.0_rk
   res2 = 0.0_rk
