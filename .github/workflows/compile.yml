@@ -1,4 +1,4 @@
-name: CheckCompilation
+name: Compilation and Utests
 
 on:
   pull_request:
@@ -8,6 +8,9 @@ on:
 
 jobs:
   compilation:
+    permissions:
+      checks: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -15,23 +18,14 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Install gfortran
-        run: |
-          sudo apt install -y gfortran
-
-      - name: Install Open MPI
-        run: |
-          sudo apt install -y openmpi-bin openmpi-common libopenmpi-dev
-
-      - name: Install FFTW
-        run: |
-          sudo apt install -y libfftw3-dev
-
-      - name: Install Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.13'
-
       - name: Build Ateles
-        run: |
-          FC=mpif90 bin/waf --mpicmd 'mpiexec --oversubscribe' distclean configure build debug
+        uses: apes-suite/build-action@v1.1.1
+        with:
+          waf-args: "configure build debug"
+
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2.19.0
+        with:
+          files: |
+            build/**/waf-utest.xml
+          check_name: "Waf Unit Tests"
