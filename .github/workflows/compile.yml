@@ -11,21 +11,6 @@ jobs:
     permissions:
       checks: write
       pull-requests: write
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
-
-      - name: Build Ateles
-        uses: apes-suite/build-action@v1.1.1
-        with:
-          waf-args: "configure build debug"
-
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v2.19.0
-        with:
-          files: |
-            build/**/waf-utest.xml
-          check_name: "Waf Unit Tests"
+    uses: apes-suite/reus/.github/workflows/compile.yml@v1
+    with:
+      name: Ateles
