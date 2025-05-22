@@ -58,8 +58,8 @@ with the APES tools:
 * via the Spack manager with the packages in [apes-spack](https://github.com/apes-suite/apes-spack)
 * via a Python virtual environment as provided in [apes-pyenv](https://github.com/apes-suite/apes-pyenv)
 
-Please see the respective READMEs on instructions on how to
-use one of these methods.
+Please see the respective READMEs for instructions on how to use one of these
+methods.
 
 Testing
 -------
