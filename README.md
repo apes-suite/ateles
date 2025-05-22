@@ -71,7 +71,9 @@ with the `--notests` option.
 System tests are done with the help of [PySys-Test](https://pysys-test.github.io/pysys-test/),
 which is included in the `apes-pyenv`.
 The test cases to be run are found in `atl/examples`.
-Running all system tests can be achieved with an activated `apes-pyenv` with:
+Running all system tests can be achieved with an activated `apes-pyenv` and either
+the `ateles` executable in your `$PATH` (for example by installing it to the
+`$VIRTUAL_ENV` prefix) or indicated via the `$APES_ATELES` variable, by doing:
 
 ```
     cd atl/examples

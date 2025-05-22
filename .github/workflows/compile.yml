@@ -1,16 +1,22 @@
-name: Compilation and Utests
+name: Compilation and Tests
 
 on:
   pull_request:
     branches: [ "main" ]
+    types:
+      - opened
+      - reopened
+      - ready_for_review
+      - synchronize
   merge_group:
     types: [checks_requested]
 
 jobs:
-  compilation:
+  compile-test:
     permissions:
       checks: write
       pull-requests: write
     uses: apes-suite/reus/.github/workflows/compile.yml@v1
     with:
       name: Ateles
+      systest: ${{ github.event.pull_request.draft == false }}
