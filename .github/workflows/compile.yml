@@ -3,8 +3,11 @@ name: Compilation and Tests
 on:
   pull_request:
     branches: [ "main" ]
-  merge_group:
-    types: [checks_requested]
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
 
 jobs:
   compile-test:
@@ -14,4 +17,4 @@ jobs:
     uses: apes-suite/reus/.github/workflows/compile.yml@v1.3.2
     with:
       name: Ateles
-      systest: ${{ github.event.action == checks_requested }}
+      systest: ${{ github.event.pull_request.draft == false }}
