@@ -6,17 +6,17 @@ on:
     types:
       - opened
       - reopened
-      - ready_for_review
       - synchronize
+      - ready_for_review
   merge_group:
-    types: [checks_requested]
+    types: [ checks_requested ]
 
 jobs:
   compile-test:
     permissions:
       checks: write
       pull-requests: write
-    uses: apes-suite/reus/.github/workflows/compile.yml@v1.3.0
+    uses: apes-suite/reus/.github/workflows/compile.yml@v1.3.2
     with:
       name: Ateles
       systest: ${{ github.event.pull_request.draft == false }}
