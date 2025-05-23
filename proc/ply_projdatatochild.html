@@ -95,20 +95,20 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 0.1% of total for procedures.">25 statements</a>
+                 title=" 0.4% of total for procedures.">175 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/ply_LegPolyProjection_module.f90"> Source File</a>
+              <a href="../src/ply_poly_transformation_module.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/ply_legpolyprojection_module.f90.html'>ply_LegPolyProjection_module.f90</a></li>
-                <li class="breadcrumb-item"><a href='../module/ply_legpolyprojection_module.html'>ply_LegPolyProjection_module</a></li>
+                <li class="breadcrumb-item"><a href='../sourcefile/ply_poly_transformation_module.f90.html'>ply_poly_transformation_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/ply_poly_transformation_module.html'>ply_poly_transformation_module</a></li>
             <li class="breadcrumb-item active" aria-current="page">ply_projDataToChild</li>
           </ol>
         </nav>
@@ -156,12 +156,11 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>private  subroutine ply_projDataToChild(parentData, nParentDofs, nChildDofs, nComponents, nChilds, projection, childData)  
+    <h2>private  subroutine ply_projDataToChild(parentData, nParentDofs, nChildDofs, nComponents, nDimensions, nChilds, transform_matrix, childData)  
 </h2>
     
 
-    <p>Subroutine to project elemental data from a parent cell to one of
-its children.</p>
+    <p>Subroutine to project element data from a parent cell to its children.</p>
 
 
     <h3>Arguments</h3>
@@ -187,8 +186,7 @@ its children.</p>
             <td>::</td>
             <td><strong>parentData</strong>(:)</td>
             <td>
-                <p>Linearized data for a single variable (can have multiple components)
-and a single degree of freedom of the parent cell.</p>
+                <p>The polynomial data for a single parent element.</p>
             </td>
         </tr>
         <tr>
@@ -208,7 +206,7 @@ and a single degree of freedom of the parent cell.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nchilddofs~4"></span>
+              <span class="anchor" id="variable-nchilddofs~3"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -233,12 +231,27 @@ and a single degree of freedom of the parent cell.</p>
             <td>::</td>
             <td><strong>nComponents</strong></td>
             <td>
-                <p>The number of componentns of the given variable.</p>
+                <p>The number of componentns for the given variable.</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nchilds~5"></span>
+              <span class="anchor" id="variable-ndimensions~2"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nDimensions</strong></td>
+            <td>
+                <p>The number of dimensions.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nchilds~2"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -248,23 +261,22 @@ and a single degree of freedom of the parent cell.</p>
             <td>::</td>
             <td><strong>nChilds</strong></td>
             <td>
-                <p>The number of children.</p>
+                <p>The number of child elements.</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-projection~10"></span>
-              type(<a href='../type/ply_projcoeff_type.html'>ply_ProjCoeff_type</a>),
+              <span class="anchor" id="variable-transform_matrix~2"></span>
+              real(kind=rk),
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>projection</strong></td>
+            <td><strong>transform_matrix</strong>(:,:)</td>
             <td>
-                <p>The information about the projection coefficients for the parent
-dofs to the child dofs.</p>
+                <p>The transformation matrix for the linear coordinate transformation.</p>
             </td>
         </tr>
         <tr>
@@ -272,14 +284,14 @@ dofs to the child dofs.</p>
               <span class="anchor" id="variable-childdata~2"></span>
               real(kind=rk),
             </td>
-<td>intent(out)</td>
+<td>intent(out),</td>
               <td></td>            <td>
-              
+              allocatable
             </td>
             <td>::</td>
             <td><strong>childData</strong>(:)</td>
             <td>
-                <p>The created childData.</p>
+                <p>The new data representation for all child cell of the parent cell.</p>
             </td>
         </tr>
     </tbody>
@@ -310,13 +322,13 @@ dofs to the child dofs.</p>
             <p>
               Ateles
  was developed by University of Siegen<br>              &copy; 2025 
-<br /><small>42d868737fab+</small></p>
+<br /><small>42d868737fab</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-05-22T22:42:03.252870+0000             </p>
+ on 2025-05-23T11:03:13.677265+0000             </p>
           </div>
         </div>
         <br>

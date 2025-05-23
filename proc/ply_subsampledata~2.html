@@ -95,20 +95,20 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 0.2% of total for procedures.">92 statements</a>
+                 title=" 0.2% of total for procedures.">93 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/ply_poly_transformation_module.f90"> Source File</a>
+              <a href="../src/ply_LegPolyProjection_module.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/ply_poly_transformation_module.f90.html'>ply_poly_transformation_module.f90</a></li>
-                <li class="breadcrumb-item"><a href='../module/ply_poly_transformation_module.html'>ply_poly_transformation_module</a></li>
+                <li class="breadcrumb-item"><a href='../sourcefile/ply_legpolyprojection_module.f90.html'>ply_LegPolyProjection_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/ply_legpolyprojection_module.html'>ply_LegPolyProjection_module</a></li>
             <li class="breadcrumb-item active" aria-current="page">ply_subsampleData</li>
           </ol>
         </nav>
@@ -156,10 +156,11 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>private  subroutine ply_subsampleData(mesh, meshData, nDofs, nChildDofs, nComponents, refine_tree, new_refine_tree, nDims, subsamp, newMeshData)  
+    <h2>private  subroutine ply_subsampleData(tree, meshData, nDofs, nChildDofs, nComponents, projection, projection_oneDof, refine_tree, new_refine_tree, ndims, subsamp, newMeshData)  
 </h2>
     
 
+    <p>Routine to subsample mesh information for one refinement level.</p>
 
 
     <h3>Arguments</h3>
@@ -175,7 +176,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-mesh~103"></span>
+              <span class="anchor" id="variable-tree~6"></span>
               type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(in)</td>
@@ -183,9 +184,9 @@
               
             </td>
             <td>::</td>
-            <td><strong>mesh</strong></td>
+            <td><strong>tree</strong></td>
             <td>
-                <p>The mesh for the data.</p>
+                <p>The tree the data is written for.</p>
             </td>
         </tr>
         <tr>
@@ -200,12 +201,12 @@
             <td>::</td>
             <td><strong>meshData</strong>(:)</td>
             <td>
-                <p>The data to subsample</p>
+                <p>The data to sub-sample.</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ndofs~88"></span>
+              <span class="anchor" id="variable-ndofs~10"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -215,7 +216,7 @@
             <td>::</td>
             <td><strong>nDofs</strong></td>
             <td>
-                <p>The number of degrees of freedom.</p>
+                <p>The number of degrees of freedom for each scalar variable.</p>
             </td>
         </tr>
         <tr>
@@ -230,12 +231,13 @@
             <td>::</td>
             <td><strong>nChildDofs</strong></td>
             <td>
-                <p>The number of degrees of freedom for the child elements.</p>
+                <p>The number of degrees of freedom per scalar variable on the child
+elements.</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ncomponents~16"></span>
+              <span class="anchor" id="variable-ncomponents~8"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -245,7 +247,38 @@
             <td>::</td>
             <td><strong>nComponents</strong></td>
             <td>
-                <p>Number of Components.</p>
+                <p>Number of components</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-projection~3"></span>
+              type(<a href='../type/ply_projcoeff_type.html'>ply_ProjCoeff_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>projection</strong></td>
+            <td>
+                <p>Projection coefficients for the given data.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-projection_onedof~2"></span>
+              type(<a href='../type/ply_projcoeff_type.html'>ply_ProjCoeff_type</a>),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>projection_oneDof</strong></td>
+            <td>
+                <p>Projection coeffiecients for the the reduction to polynomial
+degree of 0.</p>
             </td>
         </tr>
         <tr>
@@ -253,15 +286,15 @@
               <span class="anchor" id="variable-refine_tree~4"></span>
               logical,
             </td>
-<td>intent(in)</td>
-              <td></td>            <td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
               
             </td>
             <td>::</td>
             <td><strong>refine_tree</strong>(:)</td>
             <td>
-                <p>Logical array that marks all elements for refinement for the previous
-sampling level.</p>
+                <p>Logical array that marks all elements for refinement from the last
+sampling lvl.</p>
             </td>
         </tr>
         <tr>
@@ -276,13 +309,12 @@ sampling level.</p>
             <td>::</td>
             <td><strong>new_refine_tree</strong>(:)</td>
             <td>
-                <p>Logical array that marks all elements for refinement for the current
-sampling level.</p>
+                <p>Logical array that marks all elements for refinement</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ndims~17"></span>
+              <span class="anchor" id="variable-ndims~6"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -290,7 +322,7 @@ sampling level.</p>
               
             </td>
             <td>::</td>
-            <td><strong>nDims</strong></td>
+            <td><strong>ndims</strong></td>
             <td>
                 <p>The number of dimensions in the polynomial representation.</p>
             </td>
@@ -298,7 +330,7 @@ sampling level.</p>
         <tr>
             <td>
               <span class="anchor" id="variable-subsamp~4"></span>
-              type(<a href='../type/ply_subsample_type~2.html'>ply_subsample_type</a>),
+              type(<a href='../type/ply_subsample_type.html'>ply_subsample_type</a>),
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
@@ -307,7 +339,7 @@ sampling level.</p>
             <td>::</td>
             <td><strong>subsamp</strong></td>
             <td>
-                <p>Parameters for subsampling.</p>
+                <p>Parameters for the subsampling.</p>
             </td>
         </tr>
         <tr>
@@ -322,7 +354,7 @@ sampling level.</p>
             <td>::</td>
             <td><strong>newMeshData</strong>(:)</td>
             <td>
-                <p>The subsampled Data.</p>
+                <p>The subsampled data.</p>
             </td>
         </tr>
     </tbody>
@@ -353,13 +385,13 @@ sampling level.</p>
             <p>
               Ateles
  was developed by University of Siegen<br>              &copy; 2025 
-<br /><small>42d868737fab+</small></p>
+<br /><small>42d868737fab</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-05-22T22:42:03.252870+0000             </p>
+ on 2025-05-23T11:03:13.677265+0000             </p>
           </div>
         </div>
         <br>

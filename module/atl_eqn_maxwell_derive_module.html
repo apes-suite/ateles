@@ -180,12 +180,12 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='atl_equation_module.html'>atl_equation_module</a></li>
-                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/treelmesh_module.html'>treelmesh_module</a></li>
-                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_time_module.html'>tem_time_module</a></li>
-                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/env_module.html'>env_module</a></li>
-                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_varsys_module.html'>tem_varSys_module</a></li>
                   <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_c_binding'>iso_c_binding</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_time_module.html'>tem_time_module</a></li>
+                  <li class="list-inline-item"><a href='atl_equation_module.html'>atl_equation_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/tem_varsys_module.html'>tem_varSys_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/env_module.html'>env_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/treelm/module/treelmesh_module.html'>treelmesh_module</a></li>
               </ul>
             </li>
         </ul>
@@ -224,7 +224,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-equation~261"></span>
+              <span class="anchor" id="variable-equation~257"></span>
               class(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
             </td>
 <td>intent(in)</td>
@@ -239,7 +239,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-instate~32"></span>
+              <span class="anchor" id="variable-instate~28"></span>
               real(kind=rk),
             </td>
 <td>intent(inout)</td>
@@ -254,7 +254,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-outstate~32"></span>
+              <span class="anchor" id="variable-outstate~28"></span>
               real(kind=rk),
             </td>
 <td>intent(out),</td>
@@ -269,7 +269,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material~116"></span>
+              <span class="anchor" id="variable-material~107"></span>
               real(kind=rk),
             </td>
 <td>intent(in),</td>
@@ -309,7 +309,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-equation~262"></span>
+              <span class="anchor" id="variable-equation~258"></span>
               class(<a href='../type/atl_equations_type.html'>atl_Equations_type</a>),
             </td>
 <td>intent(in)</td>
@@ -324,7 +324,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-instate~33"></span>
+              <span class="anchor" id="variable-instate~29"></span>
               real(kind=rk),
             </td>
 <td>intent(inout)</td>
@@ -339,7 +339,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-outstate~33"></span>
+              <span class="anchor" id="variable-outstate~29"></span>
               real(kind=rk),
             </td>
 <td>intent(out),</td>
@@ -354,7 +354,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-material~117"></span>
+              <span class="anchor" id="variable-material~108"></span>
               real(kind=rk),
             </td>
 <td>intent(in),</td>
@@ -394,7 +394,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-fun~97"></span>
+              <span class="anchor" id="variable-fun~90"></span>
               class(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
             </td>
 <td>intent(in)</td>
@@ -411,7 +411,287 @@ required variables.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-varsys~131"></span>
+              <span class="anchor" id="variable-varsys~122"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varSys</strong></td>
+            <td>
+<p>The variable system to obtain the variable from.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-point~25"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>point</strong>(:,:)</td>
+            <td>
+<p>Three-dimensional coordinates at which the variable should be
+evaluated. Only useful for variables provided as space-time functions.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-time~111"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>time</strong></td>
+            <td>
+<p>Point in time at which to evaluate the variable.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~152"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+<p>global treelm mesh info</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-npnts~28"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nPnts</strong></td>
+            <td>
+<p>Number of values to obtain for this variable (vectorized access).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-res~127"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>res</strong>(:)</td>
+            <td>
+<p>Resulting values for the requested variable.</p><a href="../proc/atl_xfrom3d_getpoint.html#variable-res~127" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_xfrom3d_getelement"></span> <h3>public  subroutine <a href='../proc/atl_xfrom3d_getelement.html'>atl_xFrom3D_getElement</a>(fun, varSys, elempos, time, tree, nElems, nDofs, res)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>We only want to have one component, thus we don't need to loop over them</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fun~91"></span>
+              class(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fun</strong></td>
+            <td>
+<p>Description of the method to obtain the variables, here some preset
+values might be stored, like the space time function to use or the
+required variables.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varsys~123"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varSys</strong></td>
+            <td>
+<p>The variable system to obtain the variable from.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elempos~54"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>elempos</strong>(:)</td>
+            <td>
+<p>TreeID of the element to get the variable for.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-time~112"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>time</strong></td>
+            <td>
+<p>Point in time at which to evaluate the variable.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~153"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+<p>global treelm mesh info</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nelems~102"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nElems</strong></td>
+            <td>
+<p>Number of values to obtain for this variable (vectorized access).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ndofs~120"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nDofs</strong></td>
+            <td>
+<p>Number of degrees of freedom within an element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-res~128"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>res</strong>(:)</td>
+            <td>
+<p>Resulting values for the requested variable.</p><a href="../proc/atl_xfrom3d_getelement.html#variable-res~128" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_yfrom3d_getpoint"></span> <h3>public  subroutine <a href='../proc/atl_yfrom3d_getpoint.html'>atl_yFrom3D_getPoint</a>(fun, varSys, point, time, tree, nPnts, res)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fun~92"></span>
+              class(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fun</strong></td>
+            <td>
+<p>Description of the method to obtain the variables, here some preset
+values might be stored, like the space time function to use or the
+required variables.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varsys~124"></span>
               type(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_type.html'>tem_varSys_type</a>),
             </td>
 <td>intent(in)</td>
@@ -442,139 +722,7 @@ evaluated. Only useful for variables provided as space-time functions.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-time~117"></span>
-              type(<a href='https://apes-suite.github.io/treelm/type/tem_time_type.html'>tem_time_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>time</strong></td>
-            <td>
-<p>Point in time at which to evaluate the variable.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-tree~153"></span>
-              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>tree</strong></td>
-            <td>
-<p>global treelm mesh info</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-npnts~29"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nPnts</strong></td>
-            <td>
-<p>Number of values to obtain for this variable (vectorized access).</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-res~130"></span>
-              real(kind=rk),
-            </td>
-<td>intent(out)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>res</strong>(:)</td>
-            <td>
-<p>Resulting values for the requested variable.</p><a href="../proc/atl_xfrom3d_getpoint.html#variable-res~130" class="pull-right"><emph>Read more&hellip;</emph></a>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-atl_xfrom3d_getelement"></span> <h3>public  subroutine <a href='../proc/atl_xfrom3d_getelement.html'>atl_xFrom3D_getElement</a>(fun, varSys, elempos, time, tree, nElems, nDofs, res)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>We only want to have one component, thus we don't need to loop over them</p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-fun~98"></span>
-              class(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>fun</strong></td>
-            <td>
-<p>Description of the method to obtain the variables, here some preset
-values might be stored, like the space time function to use or the
-required variables.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-varsys~132"></span>
-              type(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_type.html'>tem_varSys_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>varSys</strong></td>
-            <td>
-<p>The variable system to obtain the variable from.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-elempos~56"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>elempos</strong>(:)</td>
-            <td>
-<p>TreeID of the element to get the variable for.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-time~118"></span>
+              <span class="anchor" id="variable-time~113"></span>
               type(<a href='https://apes-suite.github.io/treelm/type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -604,7 +752,139 @@ required variables.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nelems~106"></span>
+              <span class="anchor" id="variable-npnts~29"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nPnts</strong></td>
+            <td>
+<p>Number of values to obtain for this variable (vectorized access).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-res~129"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>res</strong>(:)</td>
+            <td>
+<p>Resulting values for the requested variable.</p><a href="../proc/atl_yfrom3d_getpoint.html#variable-res~129" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_yfrom3d_getelement"></span> <h3>public  subroutine <a href='../proc/atl_yfrom3d_getelement.html'>atl_yFrom3D_getElement</a>(fun, varSys, elempos, time, tree, nElems, nDofs, res)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>We only want to have one component, thus we don't need to loop over them</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fun~93"></span>
+              class(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fun</strong></td>
+            <td>
+<p>Description of the method to obtain the variables, here some preset
+values might be stored, like the space time function to use or the
+required variables.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varsys~125"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varSys</strong></td>
+            <td>
+<p>The variable system to obtain the variable from.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elempos~55"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>elempos</strong>(:)</td>
+            <td>
+<p>TreeID of the element to get the variable for.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-time~114"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>time</strong></td>
+            <td>
+<p>Point in time at which to evaluate the variable.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~155"></span>
+              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+<p>global treelm mesh info</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nelems~103"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -619,7 +899,7 @@ required variables.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ndofs~116"></span>
+              <span class="anchor" id="variable-ndofs~121"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -634,7 +914,7 @@ required variables.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-res~131"></span>
+              <span class="anchor" id="variable-res~130"></span>
               real(kind=rk),
             </td>
 <td>intent(out)</td>
@@ -644,7 +924,7 @@ required variables.</p>
             <td>::</td>
             <td><strong>res</strong>(:)</td>
             <td>
-<p>Resulting values for the requested variable.</p><a href="../proc/atl_xfrom3d_getelement.html#variable-res~131" class="pull-right"><emph>Read more&hellip;</emph></a>
+<p>Resulting values for the requested variable.</p><a href="../proc/atl_yfrom3d_getelement.html#variable-res~130" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
     </tbody>
@@ -655,7 +935,7 @@ required variables.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-atl_yfrom3d_getpoint"></span> <h3>public  subroutine <a href='../proc/atl_yfrom3d_getpoint.html'>atl_yFrom3D_getPoint</a>(fun, varSys, point, time, tree, nPnts, res)  
+    <div class="card-header codesum"><span class="anchor" id="proc-atl_zfrom3d_getpoint"></span> <h3>public  subroutine <a href='../proc/atl_zfrom3d_getpoint.html'>atl_zFrom3D_getPoint</a>(fun, varSys, point, time, tree, nPnts, res)  
 </h3></div>
     <div class="card-body">
           
@@ -674,7 +954,7 @@ required variables.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-fun~99"></span>
+              <span class="anchor" id="variable-fun~94"></span>
               class(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
             </td>
 <td>intent(in)</td>
@@ -685,13 +965,13 @@ required variables.</p>
             <td><strong>fun</strong></td>
             <td>
 <p>Description of the method to obtain the variables, here some preset
-values might be stored, like the space time function to use or the
+values might be stored, like the point time function to use or the
 required variables.</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-varsys~133"></span>
+              <span class="anchor" id="variable-varsys~126"></span>
               type(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_type.html'>tem_varSys_type</a>),
             </td>
 <td>intent(in)</td>
@@ -722,139 +1002,7 @@ evaluated. Only useful for variables provided as space-time functions.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-time~119"></span>
-              type(<a href='https://apes-suite.github.io/treelm/type/tem_time_type.html'>tem_time_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>time</strong></td>
-            <td>
-<p>Point in time at which to evaluate the variable.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-tree~155"></span>
-              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>tree</strong></td>
-            <td>
-<p>global treelm mesh info</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-npnts~30"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nPnts</strong></td>
-            <td>
-<p>Number of values to obtain for this variable (vectorized access).</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-res~132"></span>
-              real(kind=rk),
-            </td>
-<td>intent(out)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>res</strong>(:)</td>
-            <td>
-<p>Resulting values for the requested variable.</p><a href="../proc/atl_yfrom3d_getpoint.html#variable-res~132" class="pull-right"><emph>Read more&hellip;</emph></a>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-atl_yfrom3d_getelement"></span> <h3>public  subroutine <a href='../proc/atl_yfrom3d_getelement.html'>atl_yFrom3D_getElement</a>(fun, varSys, elempos, time, tree, nElems, nDofs, res)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>We only want to have one component, thus we don't need to loop over them</p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-fun~100"></span>
-              class(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>fun</strong></td>
-            <td>
-<p>Description of the method to obtain the variables, here some preset
-values might be stored, like the space time function to use or the
-required variables.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-varsys~134"></span>
-              type(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_type.html'>tem_varSys_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>varSys</strong></td>
-            <td>
-<p>The variable system to obtain the variable from.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-elempos~57"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>elempos</strong>(:)</td>
-            <td>
-<p>TreeID of the element to get the variable for.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-time~120"></span>
+              <span class="anchor" id="variable-time~115"></span>
               type(<a href='https://apes-suite.github.io/treelm/type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -884,155 +1032,7 @@ required variables.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nelems~107"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nElems</strong></td>
-            <td>
-<p>Number of values to obtain for this variable (vectorized access).</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-ndofs~117"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nDofs</strong></td>
-            <td>
-<p>Number of degrees of freedom within an element.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-res~133"></span>
-              real(kind=rk),
-            </td>
-<td>intent(out)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>res</strong>(:)</td>
-            <td>
-<p>Resulting values for the requested variable.</p><a href="../proc/atl_yfrom3d_getelement.html#variable-res~133" class="pull-right"><emph>Read more&hellip;</emph></a>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-atl_zfrom3d_getpoint"></span> <h3>public  subroutine <a href='../proc/atl_zfrom3d_getpoint.html'>atl_zFrom3D_getPoint</a>(fun, varSys, point, time, tree, nPnts, res)  
-</h3></div>
-    <div class="card-body">
-          
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-fun~101"></span>
-              class(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>fun</strong></td>
-            <td>
-<p>Description of the method to obtain the variables, here some preset
-values might be stored, like the point time function to use or the
-required variables.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-varsys~135"></span>
-              type(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_type.html'>tem_varSys_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>varSys</strong></td>
-            <td>
-<p>The variable system to obtain the variable from.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-point~28"></span>
-              real(kind=rk),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>point</strong>(:,:)</td>
-            <td>
-<p>Three-dimensional coordinates at which the variable should be
-evaluated. Only useful for variables provided as space-time functions.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-time~121"></span>
-              type(<a href='https://apes-suite.github.io/treelm/type/tem_time_type.html'>tem_time_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>time</strong></td>
-            <td>
-<p>Point in time at which to evaluate the variable.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-tree~157"></span>
-              type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>tree</strong></td>
-            <td>
-<p>global treelm mesh info</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-npnts~31"></span>
+              <span class="anchor" id="variable-npnts~30"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1047,7 +1047,7 @@ evaluated. Only useful for variables provided as space-time functions.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-res~134"></span>
+              <span class="anchor" id="variable-res~131"></span>
               real(kind=rk),
             </td>
 <td>intent(out)</td>
@@ -1057,7 +1057,7 @@ evaluated. Only useful for variables provided as space-time functions.</p>
             <td>::</td>
             <td><strong>res</strong>(:)</td>
             <td>
-<p>Resulting values for the requested variable.</p><a href="../proc/atl_zfrom3d_getpoint.html#variable-res~134" class="pull-right"><emph>Read more&hellip;</emph></a>
+<p>Resulting values for the requested variable.</p><a href="../proc/atl_zfrom3d_getpoint.html#variable-res~131" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
     </tbody>
@@ -1087,7 +1087,7 @@ evaluated. Only useful for variables provided as space-time functions.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-fun~102"></span>
+              <span class="anchor" id="variable-fun~95"></span>
               class(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1104,7 +1104,7 @@ required variables.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-varsys~136"></span>
+              <span class="anchor" id="variable-varsys~127"></span>
               type(<a href='https://apes-suite.github.io/treelm/type/tem_varsys_type.html'>tem_varSys_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1119,7 +1119,7 @@ required variables.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-elempos~58"></span>
+              <span class="anchor" id="variable-elempos~56"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1134,7 +1134,7 @@ required variables.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-time~122"></span>
+              <span class="anchor" id="variable-time~116"></span>
               type(<a href='https://apes-suite.github.io/treelm/type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1149,7 +1149,7 @@ required variables.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~158"></span>
+              <span class="anchor" id="variable-tree~157"></span>
               type(<a href='https://apes-suite.github.io/treelm/type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1164,7 +1164,7 @@ required variables.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nelems~108"></span>
+              <span class="anchor" id="variable-nelems~104"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1179,7 +1179,7 @@ required variables.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ndofs~118"></span>
+              <span class="anchor" id="variable-ndofs~122"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1194,7 +1194,7 @@ required variables.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-res~135"></span>
+              <span class="anchor" id="variable-res~132"></span>
               real(kind=rk),
             </td>
 <td>intent(out)</td>
@@ -1204,7 +1204,7 @@ required variables.</p>
             <td>::</td>
             <td><strong>res</strong>(:)</td>
             <td>
-<p>Resulting values for the requested variable.</p><a href="../proc/atl_zfrom3d_getelement.html#variable-res~135" class="pull-right"><emph>Read more&hellip;</emph></a>
+<p>Resulting values for the requested variable.</p><a href="../proc/atl_zfrom3d_getelement.html#variable-res~132" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
     </tbody>
@@ -1231,13 +1231,13 @@ required variables.</p>
             <p>
               Ateles
  was developed by University of Siegen<br>              &copy; 2025 
-<br /><small>42d868737fab+</small></p>
+<br /><small>42d868737fab</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-05-22T22:42:03.252870+0000             </p>
+ on 2025-05-23T11:03:13.677265+0000             </p>
           </div>
         </div>
         <br>
