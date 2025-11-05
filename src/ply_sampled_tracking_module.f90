@@ -423,9 +423,6 @@ contains
           if ( me%tracking%instance(iTrack)%subTree%useGlobalMesh ) then
             call hvs_output_open(                                          &
               &    out_file   = me%tracking%instance(iTrack)%output_file,  &
-              &    use_iter   = me%tracking%config(iConfig)%output_config  &
-              &                                            %vtk            &
-              &                                            %iter_filename, &
               &    mesh       = mesh,                                      &
               &    varsys     = varsys,                                    &
               &    time       = time                                       )
@@ -442,9 +439,6 @@ contains
           else ! use subtree
             call hvs_output_open(                                        &
               &    out_file = me%tracking%instance(iTrack)%output_file,  &
-              &    use_iter = me%tracking%config(iConfig)%output_config  &
-              &                                          %vtk            &
-              &                                          %iter_filename, &
               &    mesh     = mesh,                                      &
               &    varsys   = varsys,                                    &
               &    subTree  = me%tracking%instance(iTrack)%subTree,      &
@@ -519,9 +513,6 @@ contains
 
         call hvs_output_open(                                        &
           &    out_file = me%tracking%instance(iTrack)%output_file,  &
-          &    use_iter = me%tracking%config(iConfig)%output_config  &
-          &                                          %vtk            &
-          &                                          %iter_filename, &
           &    mesh     = sampled_mesh,                              &
           &    varsys   = sampled_vars,                              &
           &    time     = loctime                                    )
@@ -548,9 +539,6 @@ contains
         if (me%tracking%instance(iTrack)%subTree%useGlobalMesh) then
           call hvs_output_open(                                        &
             &    out_file = me%tracking%instance(iTrack)%output_file,  &
-            &    use_iter = me%tracking%config(iConfig)%output_config  &
-            &                                          %vtk            &
-            &                                          %iter_filename, &
             &    mesh     = mesh,                                      &
             &    varsys   = varSys,                                    &
             &    time     = loctime                                    )
@@ -569,9 +557,6 @@ contains
         else
           call hvs_output_open(                                        &
             &    out_file = me%tracking%instance(iTrack)%output_file,  &
-            &    use_iter = me%tracking%config(iConfig)%output_config  &
-            &                                          %vtk            &
-            &                                          %iter_filename, &
             &    mesh     = mesh,                                      &
             &    subtree  = me%tracking%instance(iTrack)%subtree,      &
             &    varsys   = varSys,                                    &
