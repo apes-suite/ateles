@@ -66,14 +66,14 @@ scheme = {
   spatial =  {
     name = 'modg_2d',             
     m =  degree,    
-    modg_space = poly_space
+    modg_space = 'Q'
   }, 
   temporal = {
     name = 'explicitRungeKutta', 
     steps = 4,
     control = {
       name = 'cfl',   
-      cfl  = 0.95,
+      cfl  = 0.95*(2*degree+1)^2/(2*(degree+1)^2),
     },
   },
 }

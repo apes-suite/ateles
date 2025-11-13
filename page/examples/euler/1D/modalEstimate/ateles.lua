@@ -64,7 +64,7 @@ scheme = {
     control = {
       name = 'cfl',
       use_modal_estimate = true,
-      cfl  = 0.9
+      cfl  = 0.9/2
     }
   }
 }

@@ -29,34 +29,31 @@
 degree = 7
 poly_space = 'Q'
 
-
 -- Check for Nans and unphysical values
-check =  {
-           interval = 100,
-         }
-
+check =  { interval = 100, }
 
 -- ...the general projection table
 projection = {
-              kind = 'fpt',  -- 'fpt' or 'l2p', default 'l2p'
-              -- for fpt the  nodes are automatically 'chebyshev'
-              -- for lep the  nodes are automatically 'gauss-legendre'
-           -- lobattopoints = false  -- if lobatto points should be used, default = false,
-                                     -- only working for chebyshev points --> fpt
-              factor = 1.0,          -- dealising factpr for fpt, oversampling factor for l2p, float, default 1.0
-           -- blocksize = 32,        -- for fpt, default -1
-           -- fftmultithread = false -- for fpt, logical, default false
-             }
+  kind = 'fpt',  -- 'fpt' or 'l2p', default 'l2p'
+  -- for fpt the  nodes are automatically 'chebyshev'
+  -- for l2p the  nodes are automatically 'gauss-legendre'
+  -- lobattopoints = false  -- if lobatto points should be used, default = false,
+                            -- only working for chebyshev points --> fpt
+     factor = 1.0,          -- dealising factpr for fpt, oversampling factor for l2p, float, default 1.0
+  -- blocksize = 32,        -- for fpt, default -1
+  -- fftmultithread = false -- for fpt, logical, default false
+}
 
 --...Configuration of simulation time
 simulation_name = 'plane_wave_XQ8' -- the name of the simualtion
 timing_file = 'timing.res'         -- the filename of the timing results
 sim_control = { 
-                time_control = { max = 0.01*1,  -- final Simulated time
-                                 min = 0,
-                                 interval = {iter = 100} 
-                                }
-              }
+  time_control = {
+    max = 0.01*1,  -- final Simulated time
+    min = 0,
+    interval = {iter = 100} 
+  }
+}
 
 -- End  Parameters to vary --
 --------------------------------------------------------------------------------
@@ -67,64 +64,68 @@ sim_control = {
 level = 2
 -- ...the length of the cube
 cubeLength = 2.0
-mesh = { predefined = 'cube',
-         origin = { 
-                    (-1.0)*cubeLength/2.0,
-                    (-1.0)*cubeLength/2.0,
-                    (-1.0)*cubeLength/2.0
-                  },
-         length = cubeLength,
-         refinementLevel = level
-       }
+mesh = {
+  predefined = 'cube',
+  origin = { 
+    (-1.0)*cubeLength/2.0,
+    (-1.0)*cubeLength/2.0,
+    (-1.0)*cubeLength/2.0
+  },
+  length = cubeLength,
+  refinementLevel = level
+}
 
 -- Tracking              
 eps=cubeLength/(2^(level+1))
 tracking = {
-             label = 'track_line_density_m7',
-             folder = './',
-             variable = {'density'},
-             shape = {kind = 'canoND', object= { origin = {0.0+eps,0.0,0.0}, 
-                                               }
-                     },
-             time_control= { min = 0,
-                           --  max = sim_control.time_control.max,
-                             interval = sim_control.time_control.max/8.0,
-                           },
-             output = { format = 'ascii', ndofs = 1 },
-           }
+  label = 'track_line_density_m7',
+  folder = './',
+  variable = {'density'},
+  shape = {
+    kind = 'canoND',
+    object= {
+      origin = {0.0+eps,0.0,0.0}, 
+    }
+  },
+  time_control= {
+    min = 0,
+    --  max = sim_control.time_control.max,
+    interval = sim_control.time_control.max/8.0,
+  },
+  output = { format = 'ascii', ndofs = 1 },
+}
 
 
 -- Equation definitions --
 equation = {
-             name   = 'acoustic',
-             background = {
-                 density = 1.225, 
-                 velocityX = 0.0,
-                 velocityY = 0.0,
-                 velocityZ = 0.0,
-                 pressure = 100000.0
-                 }
-           }
+  name   = 'acoustic',
+  background = {
+    density = 1.225, 
+    velocityX = 0.0,
+    velocityY = 0.0,
+    velocityZ = 0.0,
+    pressure = 100000.0
+  }
+}
 
 -- Scheme definitions --
 scheme = {
-    -- the spatial discretization scheme
-    spatial =  {
-               name = 'modg',            -- we use the modal discontinuous Galerkin scheme 
-               m =  degree,                   -- the maximal polynomial degree for each spatial direction
-               modg_space = poly_space
-               }, 
-    -- the temporal discretization scheme
-    temporal = {
-                 name = 'explicitRungeKutta', 
-                 steps = 4,
-              -- how to control the timestep
-                 control = {
-                          name = 'cfl',   -- the name of the timestep control mechanism
-                          cfl  = 0.95,     -- CourantÐFriedrichsÐLewy number
-                         },
-               },
-             }
+  -- the spatial discretization scheme
+  spatial =  {
+    name = 'modg', -- we use the modal discontinuous Galerkin scheme 
+    m =  degree,   -- the maximal polynomial degree for each spatial direction
+    modg_space = poly_space
+  }, 
+  -- the temporal discretization scheme
+  temporal = {
+    name = 'explicitRungeKutta', 
+    steps = 4,
+    control = {
+      name = 'cfl',
+      cfl  = 0.95*(3*degree+1)^2/(2*(degree+1)^2),
+    }
+  }
+}
 
 
 c = math.sqrt(equation.background.pressure / equation.background.density)
@@ -161,8 +162,8 @@ end
 
 -- Initial Condition definitions --
 initial_condition = { 
-                      density = init_density, 
-                      velocityX = init_velocityX,
-                      velocityY = 0.0,
-                      velocityZ = 0.0,
-                    }
+  density = init_density, 
+  velocityX = init_velocityX,
+  velocityY = 0.0,
+  velocityZ = 0.0,
+}

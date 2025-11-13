@@ -171,11 +171,12 @@ projection = {
 }
 
 --... Scheme definitions --
+degree = 7
 scheme = {
   -- the spatial discretization scheme
   spatial =  {
-    name = 'modg',           -- we use the modal discontinuous Galerkin scheme 
-    m = 7,                   -- the maximal polynomial degree for each spatial direction
+    name = 'modg', -- we use the modal discontinuous Galerkin scheme 
+    m = degree,    -- the maximal polynomial degree for each spatial direction
     modg_space = 'Q'
   },
   -- the temporal discretization scheme
@@ -185,7 +186,7 @@ scheme = {
     -- how to control the timestep
     control = {
       name = 'cfl',   -- the name of the timestep control mechanism
-      cfl  = 0.95     -- CourantÐFriedrichsÐLewy number
+      cfl  = 0.95*(3*degree+1)^2/((degree+1)^2)
     }
   }
 }

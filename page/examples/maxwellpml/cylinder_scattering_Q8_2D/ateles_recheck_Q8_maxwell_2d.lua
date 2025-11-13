@@ -302,10 +302,11 @@ check =  {
 }
 
 -- Scheme definitions --
+degree = 8
 scheme = {
   spatial =  {
     name = 'modg_2d',
-    m = 8,
+    m = degree,
     modg_space = 'Q'
   },
   temporal = {
@@ -313,7 +314,7 @@ scheme = {
     steps = 4,
     control = {
       name = 'cfl',
-      cfl  = 0.6
+      cfl  = 0.6*(2*degree+1)^2/((degree+1)^2)
     }
   }
 }

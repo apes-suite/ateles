@@ -67,7 +67,7 @@ scheme = {
     -- how to control the timestep
     control = {
        name = 'cfl',
-       cfl  = 0.6
+       cfl  = 0.6/2
     }
   }
 }

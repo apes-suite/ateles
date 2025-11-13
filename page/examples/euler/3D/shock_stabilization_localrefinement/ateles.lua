@@ -130,18 +130,19 @@ initial_condition = {
 
 -- Scheme definitions --
 filter_order = 14
+degree = 3
 scheme = {
   -- the spatial discretization scheme
   spatial =  {
     name = 'modg',
-    m = 3
+    m = degree
   },
   temporal ={
     name = 'explicitSSPRungeKutta',
     steps = 2,
     control = {
       name = 'cfl',
-      cfl  = 0.3
+      cfl  = 0.3*(3*degree+1)^2/(2*(degree+1)^2)
     }
   },
 

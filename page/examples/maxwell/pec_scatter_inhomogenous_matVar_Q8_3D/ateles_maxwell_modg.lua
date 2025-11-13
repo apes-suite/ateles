@@ -127,11 +127,12 @@ equation = {
 }
 
 -- Scheme definitions --
+degree = 7
 scheme = {
   -- the spatial discretization scheme
   spatial =  {
-    name = 'modg',            -- we use the weno scheme for reconstruction
-    m =  7,                   -- the reconstructed polynomial is of degree 1
+    name = 'modg', -- we use the weno scheme for reconstruction
+    m =  degree,   -- the reconstructed polynomial is of degree 1
     modg_space = 'Q'
   },
   -- the temporal discretization scheme
@@ -141,7 +142,7 @@ scheme = {
     -- how to control the timestep
     control = {
       name = 'cfl',     -- the name of the timestep control mechanism
-      cfl  = 0.5,     -- Courant-Friedrichs-Lewy number
+      cfl  = 0.5*(3*degree+1)^2/((degree+1)^2),     -- Courant-Friedrichs-Lewy number
     }
   }
 }

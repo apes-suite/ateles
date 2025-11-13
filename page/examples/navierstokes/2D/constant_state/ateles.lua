@@ -97,8 +97,8 @@ scheme = {
     name = 'explicitEuler',
     control = {
       name     = 'cfl',
-      cfl      = 0.1,
-      cfl_visc = 0.4
+      cfl      = 0.1*(2*degree+1)^2/(2*(degree+1)^2),
+      cfl_visc = 0.4*((2*degree+1)^2/(2*(degree+1)^2))^2
     }
   }
 }

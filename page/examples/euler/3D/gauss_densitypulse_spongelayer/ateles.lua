@@ -113,6 +113,7 @@ source = {
 }
 
 -- Scheme definitions --
+degree = 3
 scheme = {
   -- the spatial discretization scheme
   spatial =  {
@@ -126,7 +127,7 @@ scheme = {
     -- how to control the timestep
     control = {
       name = 'cfl',
-      cfl  = 0.9
+      cfl  = 0.9*(3*degree+1)^2/(2*(degree+1)^2)
     }
   }
 }

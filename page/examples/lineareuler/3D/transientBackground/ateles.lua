@@ -109,7 +109,7 @@ scheme = {
     -- how to control the timestep
     control = {
       name = 'cfl',
-      cfl  = 0.95
+      cfl  = 0.95*(3*degree+1)^2/(2*(degree+1)^2)
     }
   }
 }

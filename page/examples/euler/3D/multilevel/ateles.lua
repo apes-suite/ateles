@@ -24,7 +24,7 @@ alpha_t = 1.e-6
 
 --Simulation
 spatial_degree = 7
-cfl = 0.66
+cfl = 0.66*(3*spatial_degree+1)^2/(2*(spatial_degree+1)^2)
 
 --  parameters for IC
 ini_vel_x = 0.0

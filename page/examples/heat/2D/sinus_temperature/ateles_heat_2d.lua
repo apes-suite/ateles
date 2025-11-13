@@ -71,8 +71,7 @@ scheme = {
     steps = 4,
     control = {
       name = 'cfl',
-      cfl  = 0.4,
-      cfl_visc  = 0.4,
+      cfl  = 0.07*0.4*((2*degree+1)/(degree+1))^4,
     },
   },
 }

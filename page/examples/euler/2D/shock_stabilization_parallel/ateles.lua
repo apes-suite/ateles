@@ -97,11 +97,12 @@ initial_condition = {
 
 -- Scheme definitions --
 filter_order = 14
+degree = 4
 scheme = {
   -- the spatial discretization scheme
   spatial =  {
     name = 'modg_2d',
-    m = 4
+    m = degree
   },
   ---- the stabilzation of the scheme
   stabilization = {
@@ -123,7 +124,7 @@ scheme = {
     steps = 4,
     control = {
       name = 'cfl',
-      cfl  = 0.3
+      cfl  = 0.3*(2*degree+1)^2/(2*(degree+1)^2)
     }
   }
 }

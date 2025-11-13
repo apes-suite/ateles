@@ -32,7 +32,7 @@ module atl_global_time_integration_module
   use tem_logging_module,       only: logUnit
   use tem_element_module,       only: eT_fluid
 
-  use aotus_module,             only: flu_State, aot_get_val
+  use aotus_module,             only: flu_State, aot_get_val, aoterr_Fatal
   use aot_table_module,         only: aot_table_open, aot_table_close
 
   use atl_time_integration_module, only:       &
@@ -218,10 +218,11 @@ contains
       if (equation%nDerivatives > 0) then
         ! get the cfl number (for the viscous part of the equation)
         call aot_get_val(L = conf, thandle = control_table, &
-          &              key = 'cfl_visc', &
-          &              val = me%control%cfl_visc, &
-          &              ErrCode = iError )
-        if (iError.ne.0) then
+          &              key = 'cfl_visc',                  &
+          &              val = me%control%cfl_visc,         &
+          &              default = me%control%cfl,          &
+          &              ErrCode = iError                   )
+        if (btest(iError, aoterr_Fatal)) then
           write(logUnit(1),*) 'ERROR in atl_global_time_integration_load:'
           write(logUnit(1),*) 'No cfl_visc number specified, stopping ...'
           call tem_abort()

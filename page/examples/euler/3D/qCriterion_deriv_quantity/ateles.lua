@@ -48,11 +48,12 @@ equation = {
 equation["cv"] = equation["r"] / (equation["isen_coef"] - 1.0)
 
 -- Scheme definitions --
+degree = 4
 scheme = {
   -- the spatial discretization scheme
   spatial =  {
     name = 'modg',
-    m = 4
+    m = degree
   },
   -- the temporal discretization scheme
   temporal = {
@@ -61,7 +62,7 @@ scheme = {
     -- how to control the timestep
     control = {
       name = 'cfl',
-      cfl = 0.9,
+      cfl = 0.9*(3*degree+1)^2/(2*(degree+1)^2),
       use_modal_estimate = true
     }
   }

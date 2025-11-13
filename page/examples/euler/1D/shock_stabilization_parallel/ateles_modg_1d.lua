@@ -5,6 +5,6 @@ scheme.temporal ={
                       steps = 4,
                       control = {
                                  name = 'cfl',   
-                                 cfl  = 0.3,     
+                                 cfl  = 0.3/2,
                                 },
                  }

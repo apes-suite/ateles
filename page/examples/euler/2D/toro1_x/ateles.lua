@@ -109,11 +109,12 @@ initial_condition = {
 }
 
 -- Scheme definitions --
+degree = 3
 scheme = {
   -- the spatial discretization scheme
   spatial =  {
     name = 'modg_2d',
-    m =  3
+    m =  degree
   },
   -- the temporal discretization scheme
   temporal = {
@@ -121,7 +122,7 @@ scheme = {
     steps = 4,
     control = {
       name = 'cfl',
-      cfl  = 0.6
+      cfl  = 0.6*(2*degree+1)^2/(2*(degree+1)^2)
     }
   }
 }

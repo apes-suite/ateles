@@ -78,7 +78,7 @@ sim_control = { -- >>>>>>>>>>>>>>>
     -- Time definitions are provided in terms of:
     -- * sim:   simulation time, this is the time measurement for the
     --          transient phenomenon that is simulated.
-    -- * iter:  the number of iterations that were done
+    -- * iter:  the number of iterations (time steps) that were done
     -- * clock: the real time that has passed since the beginning of
     --          the simulation in seconds.
     -- All three measures might be set, whatever is encountered first,
@@ -90,7 +90,7 @@ sim_control = { -- >>>>>>>>>>>>>>>
     max = { -- Point in time when to stop the simulation.
      sim   = 1.0,
      clock = jobtime - 5*60,
-     iter  = 2  -- This is just for a quick check that the setup works
+     iter  = 10  -- This is just for a quick check that the setup works
                 -- for real runs, you'd take this away.
     },
     -- Providing a clock setting for the max time allows you to ensure that
@@ -177,15 +177,15 @@ scheme = { -- >>>>>>>>>
       -- Choice of time step width.
       name = 'cfl',  -- the name of the timestep control mechanism
                      -- (alternatively a fixed timestep may be used).
-      cfl  = 0.8,    -- Courant-Friedrichs-Lewy number
+      cfl  = 0.9, -- Courant number
+      -- Alternatively a fixed time step may be configured:
+      -- name = 'fixed',
+      -- dt = 0.123,
       -- Modal to nodal conversion for the timestep width can be avoided
       -- by using a modal estimate. This is especially relevant when using
       -- linearization.
       -- Less accurate (may result in smaller time steps).
-      use_modal_estimate = false,
-      -- Alternatively a fixed time step may be configured:
-      -- name = 'fixed',
-      -- dt = 0.123
+      use_modal_estimate = false
     }
   }
 } -- scheme <<<<<<<<<<<<<<

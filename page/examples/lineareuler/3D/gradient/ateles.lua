@@ -160,7 +160,7 @@ scheme = {
     steps = 8,
     control = {
       name = 'cfl',
-      cfl = 2
+      cfl = 2*(3*degree+1)^2/(2*(degree+1)^2)
     }
   }
 }

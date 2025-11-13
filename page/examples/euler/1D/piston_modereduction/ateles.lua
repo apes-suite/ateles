@@ -253,7 +253,7 @@ scheme = {
     steps = 4,
     control = {
       name = 'cfl',
-      cfl = 0.2,
+      cfl = 0.2/2,
     },
   },
 }

@@ -55,6 +55,8 @@ module atl_calc_time_module
   use atl_cube_elem_module,                  only: atl_cube_elem_type
   use atl_time_integration_module,           only: atl_global_timestep_type
 
+  use ply_dof_module, only: Q_space
+
   implicit none
 
   private
@@ -65,8 +67,10 @@ contains
 
 
   ! ************************************************************************ !
-  !> Subrountine which gather all calls to get the timestep for the current
-  !! iteration
+  !> Get the timestep size
+  !!
+  !! This interface provides the timestep size computation for all supported
+  !! equation systems to solve.
   subroutine atl_get_timestep( tree, mesh_list, scheme_list, material_list,    &
     &                          equation, time, statedata_list, nCellsNoBnd,    &
     &                          general, adaptive_timestep, initial, precice_dt )
@@ -218,7 +222,7 @@ contains
   !> Calculate the timestep for a whole part of a cubic mesh by a CFL condition.
   !!
   !! This routine takes the primitive variables of the equation system and
-  !! calculates the next timestep.
+  !! calculates the timestep size for the explicit time integration.
   !! The calculation is based on the cfl condition and the next restart
   !! timepoints.
   subroutine calculate_cfl_timestep( length, cfl, cfl_visc, equation, dt,  &
@@ -256,19 +260,28 @@ contains
     integer :: nPoly
     ! -------------------------------------------------------------------- !
 
-    nPoly = 0 ! default value
+    nPoly = 0 ! Ensure nPoly is set
     ! Get the polynomial nPoly
     select case(scheme%scheme)
     case(atl_modg_scheme_prp)
-      nPoly = scheme%modg%maxPolyDegree + 1
+      if (scheme%modg%basisType == Q_space) then
+        nPoly = scheme%modg%maxPolyDegree*3
+      else
+        nPoly = scheme%modg%maxPolyDegree
+      end if
     case(atl_modg_2d_scheme_prp)
-      nPoly = scheme%modg_2d%maxPolyDegree + 1
+      if (scheme%modg_2d%basisType == Q_space) then
+        nPoly = scheme%modg_2d%maxPolyDegree*2
+      else
+        nPoly = scheme%modg_2d%maxPolyDegree
+      end if
     case(atl_modg_1d_scheme_prp)
-      nPoly = scheme%modg_1d%maxPolyDegree + 1
+      nPoly = scheme%modg_1d%maxPolyDegree
     case default
       call tem_abort(                                                 &
         & 'ERROR in calc_time: Unknown spatial scheme, stopping ... ' )
     end select
+    nPoly = nPoly + 1
 
     ! We calculate the new timestep based on the cfl condition with
     ! a given cfl-coefficient limit. We include fluid, ghost, halo
@@ -409,11 +422,11 @@ contains
         &                          nPoly  = nPoly                        )
 
     case('heat_1d','heat_2d','heat')
-      call calc_timestep_heat_cube_1d( cfl      = cfl_visc, & ! in
-        &                              length   = length,   & ! in
-        &                              dt       = dt,       & ! out
-        &                              equation = equation, & ! in
-        &                              nPoly    = nPoly     )
+      call calc_timestep_heat_cube( cfl      = cfl_visc, & ! in
+        &                           length   = length,   & ! in
+        &                           dt       = dt,       & ! out
+        &                           equation = equation, & ! in
+        &                           nPoly    = nPoly     )
 
     case default
       write(logUnit(1),*) 'Equation kind: ' // trim(equation%eq_kind)
@@ -431,7 +444,7 @@ contains
   !! simulation.
   !!
   !! This subroutine calculates the timstep according to the CFL condition.
-  subroutine calc_timestep_heat_cube_1d(cfl, length, dt, equation, nPoly )
+  subroutine calc_timestep_heat_cube(cfl, length, dt, equation, nPoly )
     ! -------------------------------------------------------------------- !
     !> CFL number
     real(kind=rk), intent(in)  :: cfl
@@ -450,9 +463,9 @@ contains
     npow = nPoly
     npow = npow**4
     ! Calculate timestep from CFL-condition
-    dt = 0.07* (cfl * length * length) / (equation%heat%k*nPow)
+    dt = (cfl * length * length) / (equation%heat%k*nPow)
 
-  end subroutine calc_timestep_heat_cube_1d
+  end subroutine calc_timestep_heat_cube
   ! ************************************************************************ !
 
 
@@ -563,7 +576,7 @@ contains
 
     max_vel = sqrt(sum(vel**2))
     ! Calculate timestep from CFL-condition
-    dt =  cfl * length / abs(max_vel + SpeedOfSound) / 2._rk / (nPoly**2)
+    dt =  cfl * length / abs(max_vel + SpeedOfSound) / (nPoly**2)
 
   end subroutine calc_timestep_linearEuler_cube
   ! ************************************************************************ !
@@ -597,7 +610,7 @@ contains
 
     max_vel = sqrt(sum(vel**2))
     ! Calculate timestep from CFL-condition
-    dt =  cfl * length / abs(max_vel + SpeedOfSound) / 2._rk / (nPoly**2)
+    dt =  cfl * length / abs(max_vel + SpeedOfSound) / (nPoly**2)
 
   end subroutine calc_timestep_linearEuler_2d_cube
   ! ************************************************************************ !
@@ -631,7 +644,7 @@ contains
 
     max_vel = sqrt(sum(vel**2))
     ! Calculate timestep from CFL-condition
-    dt =  cfl * length / abs(max_vel + SpeedOfSound) / 2._rk / (nPoly**2)
+    dt =  cfl * length / abs(max_vel + SpeedOfSound) / (nPoly**2)
 
   end subroutine calc_timestep_acoustic_2d_cube
   ! ************************************************************************ !
@@ -665,7 +678,7 @@ contains
 
     max_vel = sqrt(sum(vel**2))
     ! Calculate timestep from CFL-condition
-    dt =  cfl * length / abs(max_vel + SpeedOfSound) / 2._rk / (nPoly**2)
+    dt =  cfl * length / abs(max_vel + SpeedOfSound) / (nPoly**2)
 
   end subroutine calc_timestep_acoustic_cube
   ! ************************************************************************ !
@@ -697,7 +710,7 @@ contains
       & abs(timestep%euler%maxVel(:)) + abs(timestep%euler%speedOfSound(:)) )
 
     ! Calculate timestep from CFL-condition
-    dt =  cfl * length / max_velocity / 2._rk / (nPoly**2)
+    dt =  cfl * length / max_velocity / (nPoly**2)
 
   end subroutine calc_timestep_flow_cube
   ! ************************************************************************ !
@@ -723,7 +736,7 @@ contains
     max_velocity =  maxval( abs(timestep%LoclinEuler%meanVel(:))          &
       &                       + abs(timestep%LoclinEuler%speedOfSound(:)) )
     ! Calculate timestep from CFL-condition
-    dt =  cfl * length / max_velocity / 2._rk / (nPoly**2)
+    dt =  cfl * length / max_velocity / (nPoly**2)
 
   end subroutine calc_timestep_flow_cube_mod
   ! ************************************************************************ !
@@ -754,7 +767,7 @@ contains
     max_velocity =  maxval( abs(timestep%euler_2d%maxVel(:))           &
       &                       + abs(timestep%euler_2d%speedOfSound(:)) )
     ! Calculate timestep from CFL-condition
-    dt =  cfl * length / max_velocity / 2._rk / (nPoly**2)
+    dt =  cfl * length / max_velocity / (nPoly**2)
 
   end subroutine calc_timestep_flow_cube_2d
   ! ************************************************************************ !
@@ -793,7 +806,7 @@ contains
     max_velocity =  maxval( abs(timestep%euler%maxVel(:))           &
       &                       + abs(timestep%euler%speedOfSound(:)) )
 
-    disc_fact = 0.5_rk * length / (nPoly**2)
+    disc_fact = length / (nPoly**2)
 
     ! Calculate timestep from CFL-condition for the convective part
     ! of the Navier-Stokes equations
@@ -842,7 +855,7 @@ contains
     max_velocity =  maxval( abs(timestep%euler_2d%maxVel(:))           &
       &                       + abs(timestep%euler_2d%speedOfSound(:)) )
 
-    disc_fact = 0.5_rk * length / (nPoly**2)
+    disc_fact = length / (nPoly**2)
 
     ! Calculate timestep from CFL-condition for the convective part
     ! of the Navier-Stokes equations
@@ -884,7 +897,7 @@ contains
       &                       + abs(timestep%euler_1d%speedOfSound(:)) )
 
     ! Calculate timestep from CFL-condition
-    dt =  cfl * length / max_velocity / 2._rk / (nPoly**2)
+    dt =  cfl * length / max_velocity / (nPoly**2)
 
   end subroutine calc_timestep_flow_cube_1d
   ! ************************************************************************ !
