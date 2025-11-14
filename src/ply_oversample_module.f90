@@ -558,6 +558,7 @@ contains
     integer :: nScalars
     integer :: iVar
     integer :: mpd1, mpd1_square, mpd1_cube
+    integer :: p_mindofs
     integer :: iDegX, iDegY, iDegZ, idof, dof, dofOverSamp
     ! -------------------------------------------------------------------- !
 
@@ -590,7 +591,8 @@ contains
       iDegX = 1
       iDegY = 1
       iDegZ = 1
-      do idof = 1, poly_proj%body_3d%min_dofs
+      p_mindofs = min(poly_proj%body_3d%min_dofs, (mpd1*(mpd1+1)*(mpd1+2))/6)
+      do idof = 1, p_mindofs
   ! integer divisions are no mistake here.
   dof = (((idegx + idegy + idegz - 3) &
     &     * (idegx + idegy + idegz - 2) &
@@ -864,6 +866,7 @@ contains
     ! -------------------------------------------------------------------- !
     integer :: oversamp_degree
     integer :: mpd1, mpd1_square
+    integer :: p_mindofs
     integer :: iDegX, iDegY, iDegZ, idof, dof, dofOverSamp, nPVars
     ! -------------------------------------------------------------------- !
     ! Information for the oversampling loop
@@ -892,7 +895,8 @@ contains
       iDegX = 1
       iDegY = 1
       iDegZ = 0 ! not used in posOfModgCoeffPTens_2D, nextModgCoeffPTens
-      do idof = 1, poly_proj%body_2d%min_dofs
+      p_mindofs = min(poly_proj%body_2d%min_dofs, (mpd1*(mpd1+1))/2)
+      do idof = 1, p_mindofs
   ! integer divisions are no mistake here.
   dof = ((((idegx - 1) + (idegy - 1))            &
     &   * (((idegx - 1) + (idegy - 1)) + 1)) / 2 + 1) &
