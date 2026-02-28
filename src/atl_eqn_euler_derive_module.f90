@@ -6,6 +6,7 @@
 ! Copyright (c) 2016 Tobias Girresser <tobias.girresser@student.uni-siegen.de>
 ! Copyright (c) 2017 Kannan Masilamani <kannan.masilamani@uni-siegen.de>
 ! Copyright (c) 2017 Daniel Petró <daniel.petro@student.uni-siegen.de>
+! Copyright (c) 2025 Swagat Kumar Nayak <swagat.nayak@dlr.de>
 !
 ! Permission to use, copy, modify, and distribute this software for any
 ! purpose with or without fee is hereby granted, provided that the above
@@ -86,6 +87,7 @@ module atl_eqn_euler_derive_module
   public :: atl_machNumber_getPoint, atl_machNumber_getElement
   public :: atl_KineticEnergy_getPoint, atl_kineticEnergy_getElement
   public :: atl_vorticity_getPoint, atl_vorticity_getElement
+  public :: atl_enstrophy_getPoint, atl_enstrophy_getElement
   public :: atl_QCriterion_getPoint, atl_qCriterion_getElement
   public :: atl_lambda2_getPoint, atl_lambda2_getElement
   public :: atl_linindicator_getPoint, atl_linindicator_getElement
@@ -1199,6 +1201,159 @@ contains
 
   end subroutine atl_Vorticity_getElement
 
+  subroutine atl_enstrophy_getPoint(fun, varsys, point, time,tree, nPnts, res )
+    ! --------------------------------------------------------------------------
+    !> Description of the method to obtain the variables, here some preset
+    !! values might be stored, like the space time function to use or the
+    !! required variables.
+    class(tem_varSys_op_type), intent(in) :: fun
+
+    !> The variable system to obtain the variable from.
+    type(tem_varSys_type), intent(in) :: varSys
+
+    !> Three-dimensional coordinates at which the variable should be
+    !! evaluated. Only useful for variables provided as space-time functions.
+    real(kind=rk), intent(in) :: point(:,:)
+
+    !> Point in time at which to evaluate the variable.
+    type(tem_time_type), intent(in)  :: time
+
+    !> global treelm mesh info
+    type(treelmesh_type), intent(in) :: tree
+
+    !> Number of values to obtain for this variable (vectorized access).
+    integer, intent(in) :: nPnts
+
+    !> Resulting values for the requested variable.
+    !!
+    !! Dimension: n requested entries x nComponents of this variable
+    !! Access: (iElem-1)*fun%nComponents + iComp
+    real(kind=rk), intent(out) :: res(:)
+    ! --------------------------------------------------------------------------
+    type(atl_varSys_data_type), pointer :: fPtr
+    real(kind=rk), allocatable :: GradVelocity(:)
+    integer :: nGradVelComp, iComp
+    ! --------------------------------------------------------------------------
+
+    call C_F_POINTER( fun%method_Data, fPtr )
+
+    nGradVelComp = varSys%method%val(fun%input_varPos(1))%nComponents
+    allocate(GradVelocity(nGradVelComp*nPnts))
+
+    ! Calculate the Gradient of velocity
+    call varSys%method%val(fun%input_varPos(1))%get_point( &
+      & varSys  = varSys,                                  &
+      & point   = point,                                   &
+      & time    = time,                                    &
+      & tree    = tree,                                    &
+      & nPnts   = nPnts,                                   &
+      & res     = GradVelocity                             )
+
+    res = GradVelocity(1::nGradVelComp)**2
+    do iComp = 2, nGradVelComp
+      res = res + GradVelocity(iComp::nGradVelComp)**2
+    end do
+
+    deallocate(GradVelocity)
+
+  end subroutine atl_enstrophy_getPoint
+
+  subroutine atl_deriveEnstrophy(fun, varsys, tree, iElem, elemPos, &
+    &                                          nodalInput, nodalRes )
+    ! --------------------------------------------------------------------------
+    !> Description of the method to obtain the variables, here some preset
+    !! values might be stored, like the space time function to use or the
+    !! required variables.
+    class(tem_varSys_op_type), intent(in) :: fun
+
+    !> The variable system to obtain the variable from.
+    type(tem_varSys_type), intent(in) :: varSys
+
+    !> global treelm mesh info
+    type(treelmesh_type), intent(in) :: tree
+
+    !> The current element index
+    integer, intent(in) :: iElem
+
+    !> TreeID of the element to get the variable for.
+    integer, intent(in) :: elempos(:)
+
+    !> The input data. nodalInput contains one entry for each input variable.
+    !! This entry itself contains the nodal data for the dofs and components of
+    !! the input variable. These nodal data has to be gained by oversampling
+    !! and projecting the modal state into nodal space.
+    type(atl_derive_inputVar_type) :: nodalInput(:)
+    !> The result in nodal space
+    real(kind=rk), allocatable :: nodalRes(:,:)
+    ! --------------------------------------------------------------------------
+    ! integer, parameter :: density = 1, momentum = 2
+    integer :: nGradVelComp
+    integer :: iComp
+    ! --------------------------------------------------------------------------
+
+    nGradVelComp = varSys%method%val(fun%input_varPos(1))%nComponents
+
+    nodalRes(:,1) = nodalInput(1)%data(:,1)**2
+    do iComp = 2, nGradVelComp
+      nodalRes(:,1) = nodalRes(:,1) + nodalInput(1)%data(:,iComp)**2
+    end do
+
+  end subroutine atl_deriveEnstrophy
+
+  subroutine atl_enstrophy_getElement(fun, varsys, elempos, time, tree, &
+    &                                 nElems, nDofs, res                )
+    ! --------------------------------------------------------------------------
+    !> Description of the method to obtain the variables, here some preset
+    !! values might be stored, like the space time function to use or the
+    !! required variables.
+    class(tem_varSys_op_type), intent(in) :: fun
+
+    !> The variable system to obtain the variable from.
+    type(tem_varSys_type), intent(in) :: varSys
+
+    !> TreeID of the element to get the variable for.
+    integer, intent(in) :: elempos(:)
+
+    !> Point in time at which to evaluate the variable.
+    type(tem_time_type), intent(in)  :: time
+
+    !> global treelm mesh info
+    type(treelmesh_type), intent(in) :: tree
+
+    !> Number of values to obtain for this variable (vectorized access).
+    integer, intent(in) :: nElems
+
+    !> Number of degrees of freedom within an element.
+    integer, intent(in) :: nDofs
+
+    !> Resulting values for the requested variable.
+    !!
+    !! Linearized array dimension:
+    !! (n requested entries) x (nDegrees of freedom)
+    !! Access: (iElem-1)*nDofs + iDof
+    real(kind=rk), intent(out) :: res(:)
+    ! --------------------------------------------------------------------------
+    procedure(atl_derive_fromModalData), pointer :: fnCalcPtr
+    type(atl_varSys_data_type), pointer :: fPtr
+    ! --------------------------------------------------------------------------
+
+    call C_F_POINTER( fun%method_Data, fPtr )
+
+    fnCalcPtr => atl_deriveEnstrophy
+
+    call atl_generic_fromModal_getELement( &
+      & fun        = fun,                  &
+      & varsys     = varsys,               &
+      & elempos    = elempos,              &
+      & time       = time,                 &
+      & tree       = tree,                 &
+      & nElems     = nElems,               &
+      & nDofs      = nDofs,                &
+      & fnCalcPtr  = fnCalcPtr,            &
+      & solverData = fPtr%solverData,      &
+      & res        = res                   )
+
+  end subroutine atl_enstrophy_getElement
 
   subroutine atl_qCriterion_getPoint(fun, varsys, point, time,tree, nPnts, res )
     ! --------------------------------------------------------------------------

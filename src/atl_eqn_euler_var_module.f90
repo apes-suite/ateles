@@ -7,6 +7,7 @@
 ! Copyright (c) 2016-2017 Tobias Girresser <tobias.girresser@student.uni-siegen.de>
 ! Copyright (c) 2017 Daniel Petró <daniel.petro@student.uni-siegen.de>
 ! Copyright (c) 2018 Neda Ebrahimi Pour <neda.epour@uni-siegen.de>
+! Copyright (c) 2025 Swagat Kumar Nayak <swagat.nayak@dlr.de>
 !
 ! Permission to use, copy, modify, and distribute this software for any
 ! purpose with or without fee is hereby granted, provided that the above
@@ -71,6 +72,8 @@ module atl_eqn_euler_var_module
     &                                    atl_machNumber_getElement,   &
     &                                    atl_KineticEnergy_getPoint,  &
     &                                    atl_kineticEnergy_getElement,&
+    &                                    atl_enstrophy_getPoint,      &
+    &                                    atl_enstrophy_getElement,    &
     &                                    atl_vorticity_getPoint,      &
     &                                    atl_vorticity_getElement,    &
     &                                    atl_qCriterion_getPoint,     &
@@ -338,6 +341,8 @@ contains
   !! * kinetic_energy: the kinetic energy of the fluid
   !! * gradv:          gradient of the velocity field
   !! * vorticity:      vorticity of the flow field
+  !! * enstrophy:      The enstrophy of the fluid defined by the squared 
+  !!                   H_1 seminorm of velocity field
   !! * q_criterion:    Q-Criterion (positive second invariant of velocity
   !!                                gradient tensor)
   !! * lambda2:        Lambda 2 criterion: largest eigenvalue of shear and
@@ -375,8 +380,8 @@ contains
     allocate(derVarName(nDerivedVars))
     derVarName    = [ 'speedOfSound  ', 'temperature   ', 'mach_number   ', &
       &               'mach_vector   ', 'kinetic_energy', 'gradv         ', &
-      &               'vorticity     ', 'q_criterion   ', 'lambda2       ', &
-      &               'linindicator  ' ]
+      &               'vorticity     ', 'enstrophy     ', 'q_criterion   ', &
+      &               'lambda2       ', 'linindicator  ' ]
 
     do iVar = 1, nDerivedVars
       varname = trim(adjustl(derVarName(iVar)))
@@ -475,6 +480,15 @@ contains
         setup_indices => atl_opVar_setupIndices
         method_data = atl_get_new_varSys_data_ptr(solverData)
         nComponents = 3
+        allocate(invar_name(1))
+        invar_name(1) = 'gradv'
+
+      case ('enstrophy')
+        get_point => atl_enstrophy_getPoint
+        get_element => atl_enstrophy_getElement
+        setup_indices => atl_opVar_setupIndices
+        method_data = atl_get_new_varSys_data_ptr(solverData)
+        nComponents = 1
         allocate(invar_name(1))
         invar_name(1) = 'gradv'
 
